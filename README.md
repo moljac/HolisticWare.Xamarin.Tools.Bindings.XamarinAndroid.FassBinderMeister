@@ -1,0 +1,2 @@
+# HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
