@@ -77,7 +77,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 
             if ( ! System.IO.File.Exists(filename))
             {
-                this.Load();
             }
             else
             {
@@ -222,11 +221,16 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
             set;
         }
 
-        protected static string filename_google_repo = "maven.google.com.json";
+        protected static string filename_google_repo = null;
         protected static string content_json_google_repo = null;
 
         public static async Task LoadAsync(bool local = true)
         {
+            string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmm");
+            filename_google_repo = $"maven.google.com.{timestamp}.json";
+
+            Trace.WriteLine($"Downloading data from maven.google.com to: {filename_google_repo}");
+
             if (File.Exists(filename_google_repo) && local == true)
             {
                 content_json_google_repo = File.ReadAllText(filename_google_repo);
@@ -235,18 +239,20 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
             {
                 GoogleMavenRepositoryData = MavenNet.MavenRepository.FromGoogle();
                 await GoogleMavenRepositoryData.Refresh();
-                //content_json_google_repo = JsonConvert.SerializeObject(GoogleMavenRepositoryData);
-                //File.WriteAllText(filename_google_repo, content_json_google_repo);
-
-                foreach (MavenNet.Models.Group g in GoogleMavenRepositoryData.Groups)
-                {
-                    string group_name = g.Id;
-                    Models.Group group = new Models.Group()
-                    {
-
-                    };
-                }
+                                
+                content_json_google_repo = JsonConvert.SerializeObject
+                                                            (
+                                                                GoogleMavenRepositoryData,
+                                                                Formatting.Indented,
+                                                                new JsonSerializerSettings()
+                                                                {
+                                                                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                                                                }
+                                                            );
+                File.WriteAllText(filename_google_repo, content_json_google_repo);
             }
+
+            Trace.WriteLine($"  Data saved: {filename_google_repo}");
 
             return;
         }
