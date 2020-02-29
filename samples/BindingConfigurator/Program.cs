@@ -45,6 +45,7 @@ namespace BindingConfigurator
                                             (
                                                 "BinderatorConfigData",
                                                 "GooglePlayServicesFirebase",
+                                                "201911",
                                                 "config.json"
                                             )
                                 );
@@ -147,7 +148,7 @@ namespace BindingConfigurator
 
             google_maven_data.Initialize();
 
-            google_maven_data.LoadReposRemote();
+            google_maven_data.LoadRemoteReposAsync();
 
             google_maven_data.Save();
 
@@ -170,6 +171,7 @@ namespace BindingConfigurator
                                             (
                                                 "BinderatorConfigData",
                                                 "AndroidX",
+                                                "202001",
                                                 "config.json"
                                             )
                                 );
@@ -188,7 +190,7 @@ namespace BindingConfigurator
 
             google_maven_data.Initialize();
 
-            google_maven_data.LoadReposRemote();
+            google_maven_data.LoadRemoteReposAsync();
 
             google_maven_data.Save();
 
