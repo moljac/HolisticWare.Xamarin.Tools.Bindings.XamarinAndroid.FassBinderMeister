@@ -10,11 +10,33 @@
     <Folder Include="BinderatorConfigData\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BinderatorConfigData\AndroidX\config.json">
+    <Content Include="BinderatorConfigData\AndroidX\20190706\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="BinderatorConfigData\GooglePlayServicesFirebase\config.json">
+    <Content Include="BinderatorConfigData\AndroidX\201911\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BinderatorConfigData\AndroidX\201912\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BinderatorConfigData\AndroidX\202001\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BinderatorConfigData\AndroidX\202002\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BinderatorConfigData\GooglePlayServicesFirebase\20190706\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BinderatorConfigData\GooglePlayServicesFirebase\201911\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="RepositoryData\maven.google.com\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
