@@ -17,6 +17,8 @@ namespace BindingConfigurator
         {
             Trace.Listeners.Add(new ConsoleTraceListener());
 
+            Task.WaitAll(BinderatorConfigUrls.DownloadConfigsAsync());
+
             Task.WaitAll(GoogleMavenData.LoadAsync(local: false));
 
             ProcesGoogleAndroidX();
