@@ -6,7 +6,7 @@
 //
 //    var config = Config.FromJson(jsonString);
 
-namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator
+namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType
 {
     using System;
     using System.Collections.Generic;
@@ -14,81 +14,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
     using System.Globalization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
-
-    public partial class Config
-    {
-        [JsonProperty("mavenRepositoryType")]
-        public string MavenRepositoryType { get; set; }
-
-        [JsonProperty("slnFile")]
-        public string SlnFile { get; set; }
-
-        [JsonProperty("additionalProjects")]
-        public string[] AdditionalProjects { get; set; }
-
-        [JsonProperty("templates")]
-        public Template[] Templates { get; set; }
-
-        [JsonProperty("artifacts")]
-        public Artifact[] Artifacts { get; set; }
-    }
-
-    public partial class Artifact
-    {
-        [JsonProperty("groupId")]
-        public string GroupId { get; set; }
-
-        [JsonProperty("artifactId")]
-        public string ArtifactId { get; set; }
-
-        [JsonProperty("version")]
-        public string Version { get; set; }
-
-        [JsonProperty("nugetId")]
-        public string NugetId { get; set; }
-
-        [JsonProperty("dependencyOnly")]
-        public bool DependencyOnly { get; set; }
-
-        [JsonProperty("nugetVersion", NullValueHandling = NullValueHandling.Ignore)]
-        public string NugetVersion { get; set; }
-    }
-
-    public partial class Template
-    {
-        [JsonProperty("templateFile")]
-        public string TemplateFile { get; set; }
-
-        [JsonProperty("outputFileRule")]
-        public string OutputFileRule { get; set; }
-    }
-
-
-    public partial class Config
-    {
-        public static Config[] FromJson(string json)
-            =>
-            JsonConvert.DeserializeObject<Config[]>(json, Converter.Settings);
-    }
-
-    public static class Serialize
-    {
-        public static string ToJson(this Config[] self) => JsonConvert.SerializeObject(self, Converter.Settings);
-    }
-
-    internal static class Converter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                VersionConverter.Singleton,
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
-    }
 
     internal class VersionConverter : JsonConverter
     {

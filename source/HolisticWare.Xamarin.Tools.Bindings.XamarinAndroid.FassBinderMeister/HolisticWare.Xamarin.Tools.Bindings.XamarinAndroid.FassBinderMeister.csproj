@@ -5,15 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Class1.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Binderator\Data\config.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Binderator\" />
     <Folder Include="Models\" />
+    <Folder Include="Binderator\Newtonsoft\" />
+    <Folder Include="Binderator\QuickType\" />
   </ItemGroup>
+    
   <ItemGroup>
     <PackageReference Include="MavenNet" Version="2.1.2" />
     <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />

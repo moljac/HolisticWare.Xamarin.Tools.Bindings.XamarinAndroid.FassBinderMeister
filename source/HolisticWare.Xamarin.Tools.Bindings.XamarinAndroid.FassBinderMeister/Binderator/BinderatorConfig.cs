@@ -10,7 +10,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             return;
         }
 
-        public IEnumerable<Config> Config
+        public IEnumerable<NewtonSoft.ConfigRoot> Config
         {
             get;
             set;
