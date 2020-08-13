@@ -8,23 +8,24 @@ using Newtonsoft.Json;
 
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType;
 
 namespace BindingConfigurator
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Trace.Listeners.Add(new ConsoleTraceListener());
 
-            Task.WaitAll(BinderatorConfigUrls.DownloadConfigsAsync());
+            await BinderatorConfigUrls.DownloadConfigsAsync();
 
-            Task.WaitAll(GoogleMavenData.LoadAsync(local: false));
+            await GoogleMavenData.LoadAsync(local: false);
 
             ProcesGoogleAndroidX();
             ProcesGooglePlayServicesFirebase();
 
-            //Task.WaitAll(t1);
+            Console.WriteLine("Exiting ...");
 
             return;
         }
