@@ -10,8 +10,8 @@ using System.Net.Http;
 string owner        = $"xamarin";
 string repository   = $"AndroidX";
 string url          =   
-                    //$"https://api.github.com/repos/xamarin/AndroidX/tags"
-                    "https://raw.githubusercontent.com/xamarin/AndroidX/20200924-fix-dependencies-and-for-ArchTaskExecutor/config.json"
+                    $"https://api.github.com/repos/{owner}/{repository}/tags"
+                    //"https://raw.githubusercontent.com/{owner}/{repository}/20200924-fix-dependencies-and-for-ArchTaskExecutor/config.json"
                     ;
 
 using (System.Net.Http.HttpClient http_client = new System.Net.Http.HttpClient())
