@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet", "HolisticWare.Xamarin.Tools.NuGet\HolisticWare.Xamarin.Tools.NuGet.csproj", "{4036F62E-0833-42F1-8976-BC1CB3DD37A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.GitHub", "HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj", "{9D245D80-B18E-4D3F-BC96-94C1CB8A1228}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,5 +29,9 @@ Global
 		{4036F62E-0833-42F1-8976-BC1CB3DD37A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4036F62E-0833-42F1-8976-BC1CB3DD37A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4036F62E-0833-42F1-8976-BC1CB3DD37A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D245D80-B18E-4D3F-BC96-94C1CB8A1228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D245D80-B18E-4D3F-BC96-94C1CB8A1228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D245D80-B18E-4D3F-BC96-94C1CB8A1228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D245D80-B18E-4D3F-BC96-94C1CB8A1228}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
