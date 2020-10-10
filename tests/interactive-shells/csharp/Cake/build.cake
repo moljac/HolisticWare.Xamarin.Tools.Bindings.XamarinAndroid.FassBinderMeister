@@ -1,8 +1,20 @@
+#addin "nuget:https://www.nuget.org/api/v2?package=Newtonsoft.Json"
+#addin "nuget:?package=Newtonsoft.Json"
+
 using System.Net.Http;
 
-string url = $"https://api.github.com/repos/xamarin/AndroidX/tags";
+#load "Tag.cs"
 
-using (HttpClient http_client = new HttpClient())
+//using System.Net.Http;
+
+string owner        = $"xamarin";
+string repository   = $"AndroidX";
+string url          =   
+                    //$"https://api.github.com/repos/xamarin/AndroidX/tags"
+                    "https://raw.githubusercontent.com/xamarin/AndroidX/20200924-fix-dependencies-and-for-ArchTaskExecutor/config.json"
+                    ;
+
+using (System.Net.Http.HttpClient http_client = new System.Net.Http.HttpClient())
 {
     // https://stackoverflow.com/questions/57079111/requesting-to-github-api-using-net-httpclient-says-forbidden
     /*
