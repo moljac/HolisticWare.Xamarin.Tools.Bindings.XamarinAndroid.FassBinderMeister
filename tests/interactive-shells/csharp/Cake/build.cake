@@ -1,6 +1,9 @@
 #addin "nuget:https://www.nuget.org/api/v2?package=Newtonsoft.Json"
 #addin "nuget:?package=Newtonsoft.Json"
 
+#reference "../../../../source/HolisticWare.Xamarin.Tools.GitHub/bin/Debug/netstandard2.1/HolisticWare.Xamarin.Tools.GitHub.dll"
+//#addin nuget:file://localhost/packages/?package=microsoft.ml.1.5.2.nupkg
+
 using System.Net.Http;
 
 #load "Tag.cs"
@@ -10,7 +13,8 @@ using System.Net.Http;
 string owner        = $"xamarin";
 string repository   = $"AndroidX";
 string url          =   
-                    $"https://api.github.com/repos/{owner}/{repository}/tags"
+                    //$"https://api.github.com/repos/{owner}/{repository}/tags"
+                    $"https://api.github.com/repos/{owner}/repositories"
                     //"https://raw.githubusercontent.com/{owner}/{repository}/20200924-fix-dependencies-and-for-ArchTaskExecutor/config.json"
                     ;
 
