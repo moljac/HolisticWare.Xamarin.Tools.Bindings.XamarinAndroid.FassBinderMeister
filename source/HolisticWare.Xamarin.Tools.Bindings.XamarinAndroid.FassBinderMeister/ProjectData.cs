@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 {
-    class ProjectData
+    public class ProjectData
     {
         public Dictionary<string, string> ProjectConfigs
         {
