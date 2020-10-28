@@ -10,5 +10,11 @@ namespace HolisticWare.Xamarin.Tools.GitHub
             return JsonConvert.SerializeObject(self, Converter.Settings);
         }
 
+        public static string ToJson(this User self)
+            => JsonConvert.SerializeObject(self, Converter.Settings);
+
+        public static string ToJson(this Organization self)
+            => JsonConvert.SerializeObject(self, Converter.Settings);
+
     }
 }
