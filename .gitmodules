@@ -1,3 +1,9 @@
 [submodule "externals/Core"]
 	path = externals/Core
 	url = https://github.com/HolisticWare/HolisticWare.Core.git
+[submodule "externals/Core.Serialization"]
+	path = externals/Core.Serialization
+	url = https://github.com/HolisticWare/HolisticWare.Core.Serialization.git
+[submodule "externals/Core.Math.Discrete.GraphTheory"]
+	path = externals/Core.Math.Discrete.GraphTheory
+	url = https://github.com/HolisticWare/HolisticWare.Core.Math.Discrete.GraphTheory.git
