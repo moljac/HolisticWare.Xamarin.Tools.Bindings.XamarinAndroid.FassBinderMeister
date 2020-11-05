@@ -12,7 +12,7 @@
   </ItemGroup>
     
   <ItemGroup>
-    <PackageReference Include="MavenNet" Version="2.1.2" />
+    <PackageReference Include="MavenNet" Version="2.2.0" />
     <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
     <PackageReference Include="System.Diagnostics.TextWriterTraceListener" Version="4.3.0" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
