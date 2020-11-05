@@ -62,25 +62,21 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using System.IO;
-using System.Reflection;
-using System.Collections.ObjectModel;
 
+using HolisticWare.Xamarin.Tools.GitHub;
 
-namespace UnitTests.Core.Math.MatrixTheory
+namespace UnitTests.GitHub
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_BinderatorConfig
+    public partial class Test_GitHubClientAPI
     {
-
         [Test]
-        public void Test_Constructors_int_01()
+        public void Test_Tags_AndroidX()
         {
+            GitHubClient ghc = new GitHubClient();
+
+            IEnumerable<Tag> tags = ghc.Tags("xamarin", "AndroidX").Result;
 
             //#if MSTEST
             //Assert.AreEqual(m[2, 3], -6);

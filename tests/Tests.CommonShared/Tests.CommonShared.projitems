@@ -9,6 +9,6 @@
     <Import_RootNamespace>Tests.CommonShared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_BinderatorConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_GitHubClientAPI.cs" />
   </ItemGroup>
 </Project>
