@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace HolisticWare.Xamarin.Tools.GitHub
 {
@@ -27,7 +28,7 @@ namespace HolisticWare.Xamarin.Tools.GitHub
         // https://api.github.com/repos/xamarin/Essentials/tags
         public async Task<IEnumerable<Tag>> Tags(string user_organization, string repository)
         {
-            string url = "https://api.github.com/repos/{user_organization}/{repository}/tags";
+            string url = $"https://api.github.com/repos/{user_organization}/{repository}/tags";
 
             IEnumerable<Tag> tags = null;
 
@@ -46,15 +47,19 @@ namespace HolisticWare.Xamarin.Tools.GitHub
                                         "User-Agent",
                                         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
                                     )
-                                //.UserAgent.Add(new ProductInfoHeaderValue("yourAppName", "yourVersionNumber"))
+                                /*
+                                .UserAgent.Add(new ProductInfoHeaderValue("yourAppName", "yourVersionNumber"))
+                                */
                                 ;
                 string response_string_json = await http_client.GetStringAsync(url);
+                //tags = Tag.FromJson(response_string_json);
             }
             catch (HttpRequestException e)
             {
                 Console.WriteLine("\nException Caught!");
                 Console.WriteLine("Message :{0} ", e.Message);
             }
+
             return tags;
         }
     }

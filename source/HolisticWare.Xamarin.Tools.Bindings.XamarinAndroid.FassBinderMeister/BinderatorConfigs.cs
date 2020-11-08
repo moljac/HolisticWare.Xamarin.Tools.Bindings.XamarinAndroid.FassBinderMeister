@@ -9,7 +9,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
     public class BinderatorConfigs
     {
         [JsonProperty("ConfigArray")]
-        public List<ConfigRoot> ConfigArray { get; set; }
+        public List<ConfigRoot> ConfigArray
+        {
+            get;
+            set;
+        }
     }
 
 }

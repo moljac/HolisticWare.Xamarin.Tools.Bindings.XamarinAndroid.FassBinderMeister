@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using Newtonsoft.Json;
 
@@ -9,11 +10,11 @@ namespace HolisticWare.Xamarin.Tools.GitHub
 {
     // POCO class with Metadata for Buddy Class containing attributes
     [ModelMetadataType(typeof(HolisticWare.Xamarin.Tools.GitHub.JSON.Tag))]
-    public partial class Tag
+    public partial class Tags
     {
-        public static Tag Deserialize(string json)
+        public static IEnumerable<Tag> Deserialize(string json)
         {
-            return JsonConvert.DeserializeObject<Tag>(json, Converter.Settings);
+            return JsonConvert.DeserializeObject<IEnumerable<Tag>>(json, Converter.Settings);
         }
 
     }
@@ -21,7 +22,7 @@ namespace HolisticWare.Xamarin.Tools.GitHub
 
 namespace HolisticWare.Xamarin.Tools.GitHub.JSON
 {
-    public class Tag
+    public class Tags
     {
         [JsonProperty("name")]
         public string Name

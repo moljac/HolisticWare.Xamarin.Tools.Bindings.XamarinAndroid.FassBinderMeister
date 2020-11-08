@@ -4,21 +4,36 @@ using Newtonsoft.Json;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.NewtonSoft
 {
-    public class ConfigRoot
+    public partial class ConfigRoot
     {
-        [JsonProperty("mavenRepositoryType")]
-        public string MavenRepositoryType { get; set; }
+        public string MavenRepositoryType
+        {
+            get;
+            set;
+        }
 
-        [JsonProperty("slnFile")]
-        public string SlnFile { get; set; }
+        public string SlnFile
+        {
+            get;
+            set;
+        }
 
-        [JsonProperty("additionalProjects")]
-        public List<string> AdditionalProjects { get; set; }
+        public List<string> AdditionalProjects
+        {
+            get;
+            set;
+        }
 
-        [JsonProperty("templates")]
-        public List<Template> Templates { get; set; }
+        public List<Template> Templates
+        {
+            get;
+            set;
+        }
 
-        [JsonProperty("artifacts")]
-        public List<Artifact> Artifacts { get; set; }
+        public List<Artifact> Artifacts
+        {
+            get;
+            set;
+        }
     }
 }

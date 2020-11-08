@@ -9,6 +9,8 @@
     <Folder Include="Models\" />
     <Folder Include="Binderator\Newtonsoft\" />
     <Folder Include="Binderator\QuickType\" />
+    <Folder Include="Binderator\Newtonsoft\JSON\" />
+    <Folder Include="Binderator\QuickType\JSON\" />
   </ItemGroup>
     
   <ItemGroup>
@@ -17,5 +19,6 @@
     <PackageReference Include="System.Diagnostics.TextWriterTraceListener" Version="4.3.0" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
   </ItemGroup>
 </Project>

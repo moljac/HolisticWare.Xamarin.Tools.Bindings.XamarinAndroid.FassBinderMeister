@@ -10,15 +10,34 @@
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType
 {
-    public partial class Template
+
+    public partial class ConfigRoot
     {
-        public string TemplateFile
+        public string MavenRepositoryType
         {
             get;
             set;
         }
 
-        public string OutputFileRule
+        public string SlnFile
+        {
+            get;
+            set;
+        }
+
+        public string[] AdditionalProjects
+        {
+            get;
+            set;
+        }
+
+        public Template[] Templates
+        {
+            get;
+            set;
+        }
+
+        public Artifact[] Artifacts
         {
             get;
             set;
