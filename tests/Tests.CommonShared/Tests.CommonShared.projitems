@@ -10,5 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_GitHubClientAPI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_JSON_Deserialization_BuddyClass.cs" />
   </ItemGroup>
 </Project>
