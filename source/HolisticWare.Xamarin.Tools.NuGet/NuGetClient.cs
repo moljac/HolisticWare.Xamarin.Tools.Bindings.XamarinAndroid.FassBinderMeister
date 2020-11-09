@@ -14,7 +14,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet
     /// 
     /// </summary>
     /// <see cref="https://docs.microsoft.com/en-us/nuget/reference/nuget-client-sdk"/>
-    public partial class Client
+    public partial class NuGetClient
     {
         ILogger logger = null;
         CancellationToken cancellationToken;
@@ -22,13 +22,13 @@ namespace HolisticWare.Xamarin.Tools.NuGet
         SourceCacheContext cache = null;
         SourceRepository repository = null;
 
-        public Client()
+        public NuGetClient()
         {
-            ILogger logger = NullLogger.Instance;
-            CancellationToken cancellationToken = CancellationToken.None;
+            logger = NullLogger.Instance;
+            cancellationToken = CancellationToken.None;
 
-            SourceCacheContext cache = new SourceCacheContext();
-            SourceRepository repository = Repository.Factory.GetCoreV3("https://api.nuget.org/v3/index.json");
+            cache = new SourceCacheContext();
+            repository = Repository.Factory.GetCoreV3("https://api.nuget.org/v3/index.json");
 
             return;
         }
@@ -45,7 +45,6 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                                     string keyword
                                                 )
         {
-            SourceRepository repository = Repository.Factory.GetCoreV3("https://api.nuget.org/v3/index.json");
             PackageSearchResource resource = await repository.GetResourceAsync<PackageSearchResource>();
             SearchFilter searchFilter = new SearchFilter
                                                 (
@@ -130,13 +129,6 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                                                                     cancellationToken
                                                                                 );
 
-            foreach (IPackageSearchMetadata package in packages)
-            {
-                Console.WriteLine($"Version: {package.Identity.Version}");
-                Console.WriteLine($"Listed: {package.IsListed}");
-                Console.WriteLine($"Tags: {package.Tags}");
-                Console.WriteLine($"Description: {package.Description}");
-            }
             return packages;
         }
 
