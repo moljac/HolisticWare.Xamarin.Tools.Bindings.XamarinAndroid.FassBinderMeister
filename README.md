@@ -1,6 +1,6 @@
 # HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 
-Fast Binding Master/Guru tool for generating binderator `config.json` files for following rpoject:
+Fast Binding Master/Guru tool for generating binderator `config.json` files for following projects:
 
 * AndroidX
 
