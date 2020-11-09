@@ -66,6 +66,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 using HolisticWare.Xamarin.Tools.GitHub;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister;
 
 namespace UnitTests.JSON
 {
@@ -134,15 +135,59 @@ namespace UnitTests.JSON
   }},
 ]
 ";
-            IEnumerable<Tag> t = Tags.Deserialize(json);
+            IEnumerable<Tag> tags = Tags.Deserialize(json);
 
             #if MSTEST
-            Assert.AreEqual(t.Count(), 2);
+            Assert.AreEqual(tags.Count(), 2);
             #elif NUNIT
-            Assert.AreEqual(t.Count(), 2);
+            Assert.AreEqual(tags.Count(), 2);
             #elif XUNIT
-            Assert.Equal(t.Count(), 2);
+            Assert.Equal(tags.Count(), 2);
             #endif
+
+            return;
+        }
+
+        /// https://api.github.com/repos/xamarin/AndroidX/tags
+        [Test]
+        public void Test_JSON_Deserialization_Tags_IEnumerable_of_Tag_02_AndroidX()
+        {
+            string url = "https://api.github.com/repos/xamarin/AndroidX/tags";
+            Tests.CommonShared.Http.Client.DefaultRequestHeaders
+                                                .Add
+                                                    (
+                                                        "User-Agent",
+                                                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
+                                                    );
+
+            string response_json = Tests.CommonShared.Http.Client.GetStringAsync(url).Result;
+
+            IEnumerable<Tag> tags = Tags.Deserialize(response_json);
+
+            DataBinderatorAndroidX.TagsAsJSON = response_json;
+            DataBinderatorAndroidX.Tags = tags;
+
+            return;
+        }
+
+        /// https://api.github.com/repos/xamarin/GooglePlayServicesComponents/tags
+        [Test]
+        public void Test_JSON_Deserialization_Tags_IEnumerable_of_Tag_02_GPS_FB()
+        {
+            string url = "https://api.github.com/repos/xamarin/GooglePlayServicesComponents/tags";
+            Tests.CommonShared.Http.Client.DefaultRequestHeaders
+                                                .Add
+                                                    (
+                                                        "User-Agent",
+                                                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
+                                                    );
+
+            string response_json = Tests.CommonShared.Http.Client.GetStringAsync(url).Result;
+
+            IEnumerable<Tag> tags = Tags.Deserialize(response_json);
+
+            DataBinderatorGooglePlayServicesAndFirebase.TagsAsJSON = response_json;
+            DataBinderatorGooglePlayServicesAndFirebase.Tags = tags;
 
             return;
         }

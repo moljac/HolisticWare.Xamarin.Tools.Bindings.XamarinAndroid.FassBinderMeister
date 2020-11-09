@@ -22,7 +22,6 @@
     <PackageReference Include="Nito.AsyncEx.Context" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\externals\Core\source\HolisticWare.Core.netstandard11\HolisticWare.Core.netstandard11.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj" />
