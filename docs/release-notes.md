@@ -8,6 +8,23 @@ release-notes.md
 
    *   https://developer.android.com/jetpack/androidx/versions/stable-channel
 
+*  Google Play Services AKA Google APIs
+   
+   *  https://developers.google.com/android/guides/releases
+
+*  Firebase
+
+   *  https://firebase.google.com/support/release-notes/android
+
+##
+
+*  https://stackoverflow.com/questions/56107/what-is-the-best-way-to-parse-html-in-c
+
+*  https://html-agility-pack.net/?z=codeplex
+
+*  https://github.com/zzzprojects/html-agility-pack
+
+*  https://www.nuget.org/packages/HtmlAgilityPack/
 
 HTML node
 
