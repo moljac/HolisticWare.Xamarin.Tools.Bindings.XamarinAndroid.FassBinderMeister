@@ -80,7 +80,14 @@ namespace UnitTests.ReleaseNotes
             var release_notes_history = rn.ParseAsync(ReleaseNotesUrls.AndroidX.Stable).Result;
 
             string json_string;
-            json_string = System.Text.Json.JsonSerializer.Serialize(release_notes_history);
+            json_string = System.Text.Json.JsonSerializer.Serialize
+                                                            (
+                                                                release_notes_history,
+                                                                new System.Text.Json.JsonSerializerOptions
+                                                                {
+                                                                    WriteIndented = true
+                                                                }
+                                                            );
             string date = DateTime.Today.ToString("yyyy-MM-dd");
             System.IO.File.WriteAllText($"release-notes-androidx-stable-{date}.md", json_string);
 
@@ -103,7 +110,14 @@ namespace UnitTests.ReleaseNotes
             var release_notes_history = rn.ParseAsync(ReleaseNotesUrls.AndroidX.All).Result;
 
             string json_string;
-            json_string = System.Text.Json.JsonSerializer.Serialize(release_notes_history);
+            json_string = System.Text.Json.JsonSerializer.Serialize
+                                                            (
+                                                                release_notes_history,
+                                                                new System.Text.Json.JsonSerializerOptions
+                                                                {
+                                                                    WriteIndented = true
+                                                                }
+                                                            );
             string date = DateTime.Today.ToString("yyyy-MM-dd");
             System.IO.File.WriteAllText($"release-notes-androidx-all-{date}.md", json_string);
 
@@ -125,7 +139,14 @@ namespace UnitTests.ReleaseNotes
             var release_notes_history = rn.ParseAsync(ReleaseNotesUrls.AndroidX.RC).Result;
 
             string json_string;
-            json_string = System.Text.Json.JsonSerializer.Serialize(release_notes_history);
+            json_string = System.Text.Json.JsonSerializer.Serialize
+                                                            (
+                                                                release_notes_history,
+                                                                new System.Text.Json.JsonSerializerOptions
+                                                                {
+                                                                    WriteIndented = true
+                                                                }
+                                                            );
             string date = DateTime.Today.ToString("yyyy-MM-dd");
             System.IO.File.WriteAllText($"release-notes-androidx-rc-{date}.md", json_string);
 
@@ -147,7 +168,14 @@ namespace UnitTests.ReleaseNotes
             var release_notes_history = rn.ParseAsync(ReleaseNotesUrls.AndroidX.Beta).Result;
 
             string json_string;
-            json_string = System.Text.Json.JsonSerializer.Serialize(release_notes_history);
+            json_string = System.Text.Json.JsonSerializer.Serialize
+                                                            (
+                                                                release_notes_history,
+                                                                new System.Text.Json.JsonSerializerOptions
+                                                                {
+                                                                    WriteIndented = true
+                                                                }
+                                                            );
             string date = DateTime.Today.ToString("yyyy-MM-dd");
             System.IO.File.WriteAllText($"release-notes-androidx-beta-{date}.md", json_string);
 
@@ -169,7 +197,14 @@ namespace UnitTests.ReleaseNotes
             var release_notes_history = rn.ParseAsync(ReleaseNotesUrls.AndroidX.Alpha).Result;
 
             string json_string;
-            json_string = System.Text.Json.JsonSerializer.Serialize(release_notes_history);
+            json_string = System.Text.Json.JsonSerializer.Serialize
+                                                            (
+                                                                release_notes_history,
+                                                                new System.Text.Json.JsonSerializerOptions
+                                                                {
+                                                                    WriteIndented = true
+                                                                }
+                                                            );
             string date = DateTime.Today.ToString("yyyy-MM-dd");
             System.IO.File.WriteAllText($"release-notes-androidx-alpha-{date}.md", json_string);
 
