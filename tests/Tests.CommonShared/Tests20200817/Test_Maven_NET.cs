@@ -77,7 +77,6 @@ namespace UnitTests.Binderator.Config
         public void Test_Binderator_Config_Download_01()
         {
             ReleaseNotesHTMLData rn = new ReleaseNotesHTMLData();
-            var l = rn.ParseAsync().Result;
 
             #if MSTEST
             Assert.IsNotNull(rn);

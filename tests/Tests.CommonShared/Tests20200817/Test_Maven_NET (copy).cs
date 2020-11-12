@@ -77,7 +77,6 @@ namespace UnitTests.ReleaseNotes
         public void Test_Maven_NET_Artifact_01()
         {
             ReleaseNotesHTMLData rn = new ReleaseNotesHTMLData();
-            var l = rn.ParseAsync().Result;
 
             #if MSTEST
             Assert.IsNotNull(rn);

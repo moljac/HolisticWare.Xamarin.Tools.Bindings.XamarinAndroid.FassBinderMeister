@@ -74,10 +74,15 @@ namespace UnitTests.ReleaseNotes
     public partial class Test_ReleaseNotesHTMLData
     {
         [Test]
-        public void Test_ReleaseNotes_AndroidX()
+        public void Test_ReleaseNotes_AndroidX_Stable()
         {
             ReleaseNotesHTMLData rn = new ReleaseNotesHTMLData();
-            var l = rn.ParseAsync().Result;
+            var release_notes_history = rn.ParseAsync(ReleaseNotesUrls.AndroidX.Stable).Result;
+
+            string json_string;
+            json_string = System.Text.Json.JsonSerializer.Serialize(release_notes_history);
+            string date = DateTime.Today.ToString("yyyy-MM-dd");
+            System.IO.File.WriteAllText($"release-notes-androidx-stable-{date}.md", json_string);
 
             #if MSTEST
             Assert.IsNotNull(rn);
@@ -91,5 +96,92 @@ namespace UnitTests.ReleaseNotes
             return;
         }
 
+        [Test]
+        public void Test_ReleaseNotes_AndroidX_All()
+        {
+            ReleaseNotesHTMLData rn = new ReleaseNotesHTMLData();
+            var release_notes_history = rn.ParseAsync(ReleaseNotesUrls.AndroidX.All).Result;
+
+            string json_string;
+            json_string = System.Text.Json.JsonSerializer.Serialize(release_notes_history);
+            string date = DateTime.Today.ToString("yyyy-MM-dd");
+            System.IO.File.WriteAllText($"release-notes-androidx-all-{date}.md", json_string);
+
+            #if MSTEST
+            Assert.IsNotNull(rn);
+            #elif NUNIT
+            Assert.NotNull(rn);
+            #elif XUNIT
+            Assert.NotNull(rn);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_ReleaseNotes_AndroidX_RC()
+        {
+            ReleaseNotesHTMLData rn = new ReleaseNotesHTMLData();
+            var release_notes_history = rn.ParseAsync(ReleaseNotesUrls.AndroidX.RC).Result;
+
+            string json_string;
+            json_string = System.Text.Json.JsonSerializer.Serialize(release_notes_history);
+            string date = DateTime.Today.ToString("yyyy-MM-dd");
+            System.IO.File.WriteAllText($"release-notes-androidx-rc-{date}.md", json_string);
+
+            #if MSTEST
+            Assert.IsNotNull(rn);
+            #elif NUNIT
+            Assert.NotNull(rn);
+            #elif XUNIT
+            Assert.NotNull(rn);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_ReleaseNotes_AndroidX_Beta()
+        {
+            ReleaseNotesHTMLData rn = new ReleaseNotesHTMLData();
+            var release_notes_history = rn.ParseAsync(ReleaseNotesUrls.AndroidX.Beta).Result;
+
+            string json_string;
+            json_string = System.Text.Json.JsonSerializer.Serialize(release_notes_history);
+            string date = DateTime.Today.ToString("yyyy-MM-dd");
+            System.IO.File.WriteAllText($"release-notes-androidx-beta-{date}.md", json_string);
+
+            #if MSTEST
+            Assert.IsNotNull(rn);
+            #elif NUNIT
+            Assert.NotNull(rn);
+            #elif XUNIT
+            Assert.NotNull(rn);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_ReleaseNotes_AndroidX_Alpha()
+        {
+            ReleaseNotesHTMLData rn = new ReleaseNotesHTMLData();
+            var release_notes_history = rn.ParseAsync(ReleaseNotesUrls.AndroidX.Alpha).Result;
+
+            string json_string;
+            json_string = System.Text.Json.JsonSerializer.Serialize(release_notes_history);
+            string date = DateTime.Today.ToString("yyyy-MM-dd");
+            System.IO.File.WriteAllText($"release-notes-androidx-alpha-{date}.md", json_string);
+
+            #if MSTEST
+            Assert.IsNotNull(rn);
+            #elif NUNIT
+            Assert.NotNull(rn);
+            #elif XUNIT
+            Assert.NotNull(rn);
+            #endif
+
+            return;
+        }
     }
 }
