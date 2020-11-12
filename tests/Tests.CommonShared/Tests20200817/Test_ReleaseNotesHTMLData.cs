@@ -89,7 +89,7 @@ namespace UnitTests.ReleaseNotes
                                                                 }
                                                             );
             string date = DateTime.Today.ToString("yyyy-MM-dd");
-            System.IO.File.WriteAllText($"release-notes-androidx-stable-{date}.md", json_string);
+            System.IO.File.WriteAllText($"release-notes-androidx-stable-{date}.json", json_string);
 
             #if MSTEST
             Assert.IsNotNull(rn);
@@ -119,7 +119,7 @@ namespace UnitTests.ReleaseNotes
                                                                 }
                                                             );
             string date = DateTime.Today.ToString("yyyy-MM-dd");
-            System.IO.File.WriteAllText($"release-notes-androidx-all-{date}.md", json_string);
+            System.IO.File.WriteAllText($"release-notes-androidx-all-{date}.json", json_string);
 
             #if MSTEST
             Assert.IsNotNull(rn);
@@ -148,7 +148,7 @@ namespace UnitTests.ReleaseNotes
                                                                 }
                                                             );
             string date = DateTime.Today.ToString("yyyy-MM-dd");
-            System.IO.File.WriteAllText($"release-notes-androidx-rc-{date}.md", json_string);
+            System.IO.File.WriteAllText($"release-notes-androidx-rc-{date}.json", json_string);
 
             #if MSTEST
             Assert.IsNotNull(rn);
@@ -177,7 +177,7 @@ namespace UnitTests.ReleaseNotes
                                                                 }
                                                             );
             string date = DateTime.Today.ToString("yyyy-MM-dd");
-            System.IO.File.WriteAllText($"release-notes-androidx-beta-{date}.md", json_string);
+            System.IO.File.WriteAllText($"release-notes-androidx-beta-{date}.json", json_string);
 
             #if MSTEST
             Assert.IsNotNull(rn);
@@ -206,7 +206,7 @@ namespace UnitTests.ReleaseNotes
                                                                 }
                                                             );
             string date = DateTime.Today.ToString("yyyy-MM-dd");
-            System.IO.File.WriteAllText($"release-notes-androidx-alpha-{date}.md", json_string);
+            System.IO.File.WriteAllText($"release-notes-androidx-alpha-{date}.json", json_string);
 
             #if MSTEST
             Assert.IsNotNull(rn);
