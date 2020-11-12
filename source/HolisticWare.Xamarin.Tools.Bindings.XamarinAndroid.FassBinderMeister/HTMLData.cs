@@ -19,29 +19,59 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
             set;
         } = "BinderatorConfigData/PROJECT/TIMESTAMP/config.json";
 
-        public async Task<ReleaseNotesHistory> ParseAsync()
+        public async Task<ReleaseNotesHistory> ParseAsync(string html)
         {
-            string html =
-                        //@"https://developer.android.com/jetpack/androidx/versions/all-channel"
-                        @"https://developer.android.com/jetpack/androidx/versions/stable-channel"
-                        ;
-
             HtmlWeb web = new HtmlWeb();
-            HtmlDocument htmlDoc = await web.LoadFromWebAsync(html);
+            web.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36";
+            web.PreRequest = OnPreRequest;
+            HtmlDocument html_doc = await web.LoadFromWebAsync(html);
+            HtmlNodeCollection nodes = null;
 
-            HtmlNodeCollection nodes = htmlDoc.DocumentNode.SelectNodes
-                                                            (
-                                                                //"//head/title"
-                                                                //"//h3[@data-text]"
-                                                                "//div[contains(@class, 'devsite-article-body')]"
-                                                            );
+            HtmlNode node_title = html_doc.DocumentNode.SelectSingleNode("//head/title");
 
-            List<ReleaseNote> release_notes = new List<ReleaseNote>();
+            if (node_title.InnerText == "Moved Temporarily")
+            {
+                HtmlNodeCollection node_href = html_doc.DocumentNode.SelectNodes("//A");
+                html_doc = await web.LoadFromWebAsync(html);
+            }
 
+            if
+                (
+                    html == ReleaseNotesUrls.AndroidX.Stable
+                    ||
+                    html == ReleaseNotesUrls.AndroidX.RC
+                    ||
+                    html == ReleaseNotesUrls.AndroidX.Beta
+                    ||
+                    html == ReleaseNotesUrls.AndroidX.Alpha
+                )
+            {
+                nodes = html_doc.DocumentNode.SelectNodes
+                                                    (
+                                                        //"//head/title"
+                                                        //"//h3[@data-text]"
+                                                        //"//div[contains(@class, 'devsite-article-body')]"
+                                                        ".//*[contains(@class, 'devsite-article-body')]"
+                                                    );
+            }
+            if
+                (
+                    html == ReleaseNotesUrls.AndroidX.All
+                )
+            {
+                nodes = html_doc.DocumentNode.SelectNodes
+                                                    (
+                                                        //"//head/title"
+                                                        //"//h3[@data-text]"
+                                                        ".//*[contains(@class, 'devsite-article-body')]"
+                                                    );
+            }
+
+            List<ReleaseNote> release_notes = release_notes = new List<ReleaseNote>();
             ReleaseNote rn = null;
 
             foreach (HtmlNode node in nodes.Descendants())
-            {   
+            {
                 if (node.Name == "h3")
                 {
                     string inner_html = node.InnerHtml;
@@ -55,7 +85,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
                 }
                 if (node.Name == "ul")
                 {
-                    foreach(HtmlNode node_ul in node.ChildNodes)
+                    foreach (HtmlNode node_ul in node.ChildNodes)
                     {
                         if (node_ul.Name == "li")
                         {
@@ -66,7 +96,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
                 }
 
             }
-
+           
             ReleaseNotesHistory release_notes_history = new ReleaseNotesHistory()
             {
                 Count = release_notes.Count,
@@ -74,11 +104,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
                 ReleaseNotes = release_notes
             };
 
-            string json_string;
-            json_string = System.Text.Json.JsonSerializer.Serialize(release_notes_history);
-            System.IO.File.WriteAllText("release-notes-20201110.md", json_string);
-
             return release_notes_history;
+        }
+
+        private static bool OnPreRequest(System.Net.HttpWebRequest request)
+        {
+            request.AllowAutoRedirect = true;
+
+            return true;
         }
     }
 }
