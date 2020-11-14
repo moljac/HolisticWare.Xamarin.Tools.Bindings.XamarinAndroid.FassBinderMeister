@@ -2,6 +2,7 @@
 
 release-notes.md
 
+
 *  AndroidX:
 
    *   https://developer.android.com/jetpack/androidx/versions/all-channel
@@ -25,6 +26,12 @@ release-notes.md
 *  https://github.com/zzzprojects/html-agility-pack
 
 *  https://www.nuget.org/packages/HtmlAgilityPack/
+
+## Related
+
+*  https://github.com/xamarin/components/tree/master/AndroidDocUtil
+
+## Details
 
 HTML node
 
