@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 
+using HolisticWare.Xamarin.Tools.GitHub;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType;
@@ -18,12 +19,20 @@ namespace BindingConfigurator
         {
             Trace.Listeners.Add(new ConsoleTraceListener());
 
-            await BinderatorConfigUrls.DownloadConfigsAsync();
+            Dictionary<string, IEnumerable<(Tag, string)>> repo_tags_content;
 
-            await GoogleMavenData.LoadAsync(local: false);
+            repo_tags_content = await new BinderatorConfig().DownloadBinderatorConfigsAsync
+                                                                            (
+                                                                                "xamarin",
+                                                                                "androidx"
+                                                                            );
 
-            ProcesGoogleAndroidX();
-            ProcesGooglePlayServicesFirebase();
+
+
+            //await GoogleMavenData.LoadAsync(local: false);
+
+            //ProcesGoogleAndroidX();
+            //ProcesGooglePlayServicesFirebase();
 
             Console.WriteLine("Exiting ...");
 
@@ -52,7 +61,8 @@ namespace BindingConfigurator
                                                 "config.json"
                                             )
                                 );
-            IEnumerable<Config> config = JsonConvert.DeserializeObject<IEnumerable<Config>>(json);
+            ConfigRoot cr = new ConfigRoot();
+            IEnumerable<ConfigRoot> config = JsonConvert.DeserializeObject<IEnumerable<ConfigRoot>>(json);
 
             google_maven_data.BinderatorConfig = new BinderatorConfig()
             {
@@ -178,7 +188,7 @@ namespace BindingConfigurator
                                                 "config.json"
                                             )
                                 );
-            IEnumerable<Config> config = JsonConvert.DeserializeObject<IEnumerable<Config>>(json);
+            IEnumerable<ConfigRoot> config = JsonConvert.DeserializeObject<IEnumerable<ConfigRoot>>(json);
 
             google_maven_data.BinderatorConfig = new BinderatorConfig()
             {
