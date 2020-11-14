@@ -62,6 +62,7 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
+using System.Linq;
 using System.Collections.Generic;
 
 using HolisticWare.Xamarin.Tools.GitHub;
@@ -71,23 +72,57 @@ namespace UnitTests.GitHub
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_GitHubClientAPI
     {
+        GitHubClient ghc = new GitHubClient();
+
+        // https://api.github.com/repos/xamarin/AndroidX/tags
+        // https://api.github.com/repos/xamarin/Essentials/tags
+
         [Test]
         public void Test_Tags_AndroidX()
         {
-            GitHubClient ghc = new GitHubClient();
-
             IEnumerable<Tag> tags = ghc.Tags("xamarin", "AndroidX").Result;
 
-            //#if MSTEST
-            //Assert.AreEqual(m[2, 3], -6);
-            //#elif NUNIT
-            //Assert.AreEqual(m[1, 1], 1);
-            //#elif XUNIT
-            //Assert.Equal(m[1, 1], 1);
-            //#endif
+            #if MSTEST
+            Assert.IsTrue(tags.Any());
+            #elif NUNIT
+            Assert.True(tags.Any());
+            #elif XUNIT
+            Assert.True(tags.Any());
+            #endif
 
             return;
         }
 
+        [Test]
+        public void GooglePlayServices()
+        {
+            IEnumerable<Tag> tags = ghc.Tags("xamarin", "GooglePlayServiceComponents").Result;
+
+            #if MSTEST
+            Assert.IsTrue(tags.Any());
+            #elif NUNIT
+            Assert.True(tags.Any());
+            #elif XUNIT
+            Assert.True(tags.Any());
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Tags_Essentials()
+        {
+            IEnumerable<Tag> tags = ghc.Tags("xamarin", "Essentials").Result;
+
+            #if MSTEST
+            Assert.IsTrue(tags.Any());
+            #elif NUNIT
+            Assert.True(tags.Any());
+            #elif XUNIT
+            Assert.True(tags.Any());
+            #endif
+
+            return;
+        }
     }
 }

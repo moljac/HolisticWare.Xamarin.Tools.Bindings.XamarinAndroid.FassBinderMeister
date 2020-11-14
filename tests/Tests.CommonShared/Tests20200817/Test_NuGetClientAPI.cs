@@ -62,13 +62,13 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
+using System;
 using System.Collections.Generic;
 
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
 
 using HolisticWare.Xamarin.Tools.NuGet;
-using System;
 
 namespace UnitTests.NuGet
 {

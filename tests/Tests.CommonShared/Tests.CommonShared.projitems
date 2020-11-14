@@ -15,6 +15,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_NuGetClientAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_ReleaseNotesHTMLData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_Maven_NET.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_Maven_NET %28copy%29.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_BinderatorConfig.cs" />
   </ItemGroup>
 </Project>

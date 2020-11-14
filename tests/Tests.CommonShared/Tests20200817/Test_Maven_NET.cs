@@ -65,27 +65,53 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 using System;
 using System.Collections.Generic;
 
+using MavenNet;
+
 using HolisticWare.Xamarin.Tools.NuGet;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister;
 
-namespace UnitTests.Binderator.Config
+namespace UnitTests.MavenNet
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_Binderator_Config
+    public partial class Test_Maven_NET
     {
+        // https://github.com/Redth/MavenNet/blob/master/MavenNet.Tests/Test.cs
+
         [Test]
-        public void Test_Binderator_Config_Download_01()
+        public void Test_Maven_Google()
         {
-            ReleaseNotesHTMLData rn = new ReleaseNotesHTMLData();
+            MavenRepository repo = MavenRepository.FromGoogle();
+            repo.Refresh("androidx.car");
+
+            //var project = repo.GetProjectAsync("androidx.car", "car").Result;
 
             #if MSTEST
-            Assert.IsNotNull(rn);
+            Assert.IsNotNull(repo);
             #elif NUNIT
-            Assert.NotNull(rn);
+            Assert.NotNull(repo);
             #elif XUNIT
-            Assert.NotNull(rn);
+            Assert.NotNull(repo);
             #endif
 
+
+            return;
+        }
+
+
+        [Test]
+        public void Test_Maven_GoogleMavenData()
+        {
+            GoogleMavenData gd = new GoogleMavenData();
+            GoogleMavenData.LoadAsync(local: false);
+
+
+            #if MSTEST
+            Assert.IsNotNull(gd);
+            #elif NUNIT
+            Assert.NotNull(gd);
+            #elif XUNIT
+            Assert.NotNull(gd);
+            #endif
 
             return;
         }
