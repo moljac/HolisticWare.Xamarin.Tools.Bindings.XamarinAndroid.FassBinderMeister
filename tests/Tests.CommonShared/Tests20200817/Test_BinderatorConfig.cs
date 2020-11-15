@@ -109,6 +109,15 @@ namespace UnitTests.Binderator.Config
                 {
                     Console.WriteLine($"        Tag     : {tag_content.tag}");
                     Console.WriteLine($"        Content : {tag_content.content}");
+                    System.IO.Directory.CreateDirectory
+                                            (
+                                                $"binderator-configs/{repo}/{tag_content.tag}/"
+                                            );
+                    System.IO.File.WriteAllText
+                                        (
+                                            $"binderator-configs/{repo}/{tag_content.tag}/config.json",
+                                            tag_content.content
+                                        );
                 }
 
                 return;
