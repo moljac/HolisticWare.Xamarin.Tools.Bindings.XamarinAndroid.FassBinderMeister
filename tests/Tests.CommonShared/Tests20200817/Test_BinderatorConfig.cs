@@ -171,7 +171,11 @@ namespace UnitTests.Binderator.Config
                                             (
                                                 $"binderator-configs/{repo}/{tag_config_object.tag.Name}/"
                                             );
-                    string json = Newtonsoft.Json.JsonConvert.SerializeObject(tag_config_object.config_root);
+                    string json = Newtonsoft.Json.JsonConvert.SerializeObject
+                                                                    (
+                                                                        tag_config_object.config_root,
+                                                                        Newtonsoft.Json.Formatting.Indented
+                                                                    );
                     System.IO.File.WriteAllText
                                         (
                                             $"binderator-configs/{repo}/{tag_config_object.tag.Name}/config.json",
