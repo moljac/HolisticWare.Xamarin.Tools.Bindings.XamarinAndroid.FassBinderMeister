@@ -21,7 +21,7 @@ namespace BindingConfigurator
 
             Dictionary<string, IEnumerable<(Tag, string)>> repo_tags_content;
 
-            repo_tags_content = await new BinderatorConfig().DownloadBinderatorConfigsAsync
+            repo_tags_content = await new BinderatorConfig().DownloadBinderatorConfigContentsAsync
                                                                             (
                                                                                 "xamarin",
                                                                                 "androidx"
