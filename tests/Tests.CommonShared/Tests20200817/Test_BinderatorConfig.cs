@@ -71,6 +71,7 @@ using NuGet.Versioning;
 
 using HolisticWare.Xamarin.Tools.GitHub;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType;
 
 namespace UnitTests.Binderator.Config
 {
@@ -78,11 +79,11 @@ namespace UnitTests.Binderator.Config
     public partial class Test_BinderatorConfig
     {
         [Test]
-        public void Test_BinderatorConfig_DownloadBinderatorConfigs()
+        public void Test_BinderatorConfig_DownloadBinderatorConfigContents()
         {
             BinderatorConfig bc = new BinderatorConfig();
 
-            Dictionary<string, IEnumerable<(Tag, string)>> configs = bc.DownloadBinderatorConfigsAsync
+            Dictionary<string, IEnumerable<(Tag, string)>> configs = bc.DownloadBinderatorConfigContentsAsync
                                                                                 (
                                                                                     user_org: "xamarin",
                                                                                     repo: "androidx"
@@ -107,15 +108,15 @@ namespace UnitTests.Binderator.Config
                 Console.WriteLine($"Repo   : {c.Key}");
                 foreach ((Tag tag, string content) tag_content in c.Value)
                 {
-                    Console.WriteLine($"        Tag     : {tag_content.tag}");
+                    Console.WriteLine($"        Tag     : {tag_content.tag.Name}");
                     Console.WriteLine($"        Content : {tag_content.content}");
                     System.IO.Directory.CreateDirectory
                                             (
-                                                $"binderator-configs/{repo}/{tag_content.tag}/"
+                                                $"binderator-configs/{repo}/{tag_content.tag.Name}/"
                                             );
                     System.IO.File.WriteAllText
                                         (
-                                            $"binderator-configs/{repo}/{tag_content.tag}/config.json",
+                                            $"binderator-configs/{repo}/{tag_content.tag.Name}/config.json",
                                             tag_content.content
                                         );
                 }
@@ -124,5 +125,18 @@ namespace UnitTests.Binderator.Config
             }
 
         }
+
+        [Test]
+        public void Test_BinderatorConfig_DownloadBinderatorConfigObjects()
+        {
+            BinderatorConfig bc = new BinderatorConfig();
+
+            Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>> configs = bc.DownloadBinderatorConfigObjectsAsync
+                                                                                            (
+                                                                                                user_org: "xamarin",
+                                                                                                repo: "androidx"
+                                                                                            ).Result;
+        }
+
     }
 }
