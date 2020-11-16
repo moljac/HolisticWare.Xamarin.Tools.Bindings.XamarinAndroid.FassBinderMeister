@@ -11,13 +11,37 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 
     public partial class Artifact
     {
-        public string ArtifactIdDependencies
+        public string GroupId
         {
             get;
             set;
         }
 
-        public string NugetIdDependencies
+        public string ArtifactId
+        {
+            get;
+            set;
+        }
+
+        public string Version
+        {
+            get;
+            set;
+        }
+
+        public string NugetId
+        {
+            get;
+            set;
+        }
+
+        public bool DependencyOnly
+        {
+            get;
+            set;
+        }
+
+        public string NugetVersion
         {
             get;
             set;

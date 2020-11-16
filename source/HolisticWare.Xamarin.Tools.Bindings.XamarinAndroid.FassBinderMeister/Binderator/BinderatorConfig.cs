@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using HolisticWare.Xamarin.Tools.GitHub;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator
 {
@@ -35,10 +36,46 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 
             return binderator_configs;
         }
+        public async
+            Task<Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>>>
+                                    DownloadBinderatorConfigObjectsAsync
+                                                            (
+                                                                string user_org,
+                                                                string repo,
+                                                                string tag = null
+                                                            )
+        {
+            Dictionary<string, IEnumerable<(Tag, string)>> contents = null;
+
+            contents = await DownloadBinderatorConfigContentsAsync
+                                                            (
+                                                                user_org,
+                                                                repo,
+                                                                tag
+                                                            );
+
+            Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>> config_objects = null;
+
+            config_objects = new Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>>();
+
+            foreach (KeyValuePair<string, IEnumerable<(Tag tag, string content)>> c in contents)
+            {
+                string r = c.Key;
+                List<(Tag tag, List<ConfigRoot> config_object)> tags_config_objects = new List<(Tag tag, List<ConfigRoot> config_object)>();
+                foreach ((Tag tag, string content) tag_content in c.Value)
+                {
+                    List<ConfigRoot> cr = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ConfigRoot>>(tag_content.content);
+                    tags_config_objects.Add((tag_content.tag, cr));
+                }
+                config_objects.Add(r, tags_config_objects);
+            }
+
+            return config_objects;
+        }
 
         public async
             Task<Dictionary<string, IEnumerable<(Tag, string)>>>
-                                    DownloadBinderatorConfigsAsync
+                                    DownloadBinderatorConfigContentsAsync
                                                             (
                                                                 string user_org,
                                                                 string repo,
