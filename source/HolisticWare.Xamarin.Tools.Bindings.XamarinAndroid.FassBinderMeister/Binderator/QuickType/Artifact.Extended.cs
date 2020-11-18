@@ -47,6 +47,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 
         IEnumerable<IPackageSearchMetadata> package_metadata = null;
 
+        [Newtonsoft.Json.JsonIgnore]
         public IEnumerable<IPackageSearchMetadata> NugetPackageMetadata
         {
             get
@@ -95,6 +96,46 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             nuget_versions.Sort();
 
             this.NugetVersions = nuget_versions;
+
+            var repo = MavenNet.MavenRepository.FromGoogle();
+            try
+            {
+                await repo.Refresh(this.GroupId);
+            }
+            catch (System.Exception exc)
+            {
+                string msg = $"Not a Google Maven repository: {this.GroupId}";
+                System.Diagnostics.Debug.WriteLine(msg);
+                System.Console.WriteLine(msg);
+                if (this.GroupId == "com.xamarin.androidx")
+                {
+                    string msg1 = "com.xamarin.androidx";
+                }
+            }
+
+            //await repo.LoadMetadataAsync();
+            //foreach (var item in repo.Metadata)
+            //{
+            //    foreach (var version in item.AllVersions)
+            //    {
+            //    }
+            //}
+
+            try
+            {
+                MavenNet.Models.Project project = await repo.GetProjectAsync
+                                                                (
+                                                                    this.GroupId,
+                                                                    this.ArtifactId,
+                                                                    this.Version
+                                                                );
+            }
+            catch (System.Exception exc)
+            {
+                string msg = $"Not a Google Maven repository: {this.GroupId}";
+                System.Diagnostics.Debug.WriteLine(msg);
+                System.Console.WriteLine(msg);
+            }
 
             return package_metadata;
         }
