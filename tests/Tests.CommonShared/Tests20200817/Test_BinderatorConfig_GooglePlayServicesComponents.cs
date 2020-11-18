@@ -76,10 +76,10 @@ using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binde
 namespace UnitTests.Binderator.Config
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_BinderatorConfig
+    public partial class Test_BinderatorConfig_GooglePlayServiceComponents
     {
         [Test]
-        public void Test_BinderatorConfig_AndroidX_DownloadBinderatorConfigContents()
+        public void Test_BinderatorConfig_DownloadBinderatorConfigContents()
         {
             BinderatorConfig bc = new BinderatorConfig();
 
@@ -87,7 +87,7 @@ namespace UnitTests.Binderator.Config
             configs = bc.DownloadBinderatorConfigContentsAsync
                                                         (
                                                             user_org: "xamarin",
-                                                            repo: "androidx"
+                                                            repo: "googleplayservicecomponents"
                                                         ).Result;
 
             #if MSTEST
@@ -128,7 +128,7 @@ namespace UnitTests.Binderator.Config
         }
 
         [Test]
-        public void Test_BinderatorConfig_AndroidX_DownloadBinderatorConfigObjects()
+        public void Test_BinderatorConfig_DownloadBinderatorConfigObjects()
         {
             BinderatorConfig bc = new BinderatorConfig();
 
@@ -137,7 +137,7 @@ namespace UnitTests.Binderator.Config
             configs = bc.DownloadBinderatorConfigObjectsAsync
                                                         (
                                                             user_org: "xamarin",
-                                                            repo: "androidx"
+                                                            repo: "googleplayservicecomponents"
                                                         ).Result;
 
             return;
@@ -145,7 +145,7 @@ namespace UnitTests.Binderator.Config
 
 
         [Test]
-        public void Test_BinderatorConfig_AndroidX_DownloadAndExtendBinderatorConfigObjects()
+        public void Test_BinderatorConfig_DownloadAndExtendBinderatorConfigObjects()
         {
             BinderatorConfig bc = new BinderatorConfig();
 
@@ -154,7 +154,7 @@ namespace UnitTests.Binderator.Config
             configs = bc.DownloadAndExtendBinderatorConfigObjectsAsync
                                                         (
                                                             user_org: "xamarin",
-                                                            repo: "androidx"
+                                                            repo: "googleplayservicecomponents"
                                                         ).Result;
 
 
