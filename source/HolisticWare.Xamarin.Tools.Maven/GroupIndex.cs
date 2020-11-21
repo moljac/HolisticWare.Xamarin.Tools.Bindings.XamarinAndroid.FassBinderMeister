@@ -81,12 +81,16 @@ namespace HolisticWare.Xamarin.Tools.Maven
             xmldoc.LoadXml(xml);
             System.Xml.XmlNamespaceManager ns = new System.Xml.XmlNamespaceManager(xmldoc.NameTable);
 
-            System.Xml.XmlNodeList node_list = xmldoc.SelectNodes("/metadata/*", ns);
+            System.Xml.XmlNodeList node_list = xmldoc.SelectNodes($"/{this.Name}/*", ns);
             foreach (System.Xml.XmlNode xn in node_list)
             {
                 string n = xn.Name;
-
-                yield return (name: n, versions: null);
+                string[] vs = xn.Attributes["versions"].InnerXml.Split
+                                                            (
+                                                                new string[] { "," },
+                                                                StringSplitOptions.RemoveEmptyEntries
+                                                            );
+                yield return (name: n, versions: vs);
             }
         }
 

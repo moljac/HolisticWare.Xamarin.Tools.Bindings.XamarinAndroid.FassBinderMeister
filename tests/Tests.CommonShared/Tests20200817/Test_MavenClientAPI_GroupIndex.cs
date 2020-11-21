@@ -94,7 +94,6 @@ namespace UnitTests.MavenClientAPI
             Assert.NotNull(gi);
             #endif
 
-
             return;
         }
 
@@ -116,7 +115,6 @@ namespace UnitTests.MavenClientAPI
             #elif XUNIT
             Assert.NotNull(gi);
             #endif
-
 
             return;
         }
