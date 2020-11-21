@@ -34,6 +34,7 @@
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet\HolisticWare.Xamarin.Tools.NuGet.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj" />
   </ItemGroup>
   <Choose>
     <When Condition="! exists('..\..\..\..\source\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10.csproj')">

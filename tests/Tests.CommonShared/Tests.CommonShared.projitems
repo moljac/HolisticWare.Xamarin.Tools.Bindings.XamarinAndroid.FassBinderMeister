@@ -14,8 +14,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)HttpClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_NuGetClientAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_ReleaseNotesHTMLData.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_Maven_NET.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_MavenNET.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_BinderatorConfig_AndroidX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_BinderatorConfig_GooglePlayServicesComponents.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_MavenClientAPI_MasterIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_MavenClientAPI_GroupIndex.cs" />
   </ItemGroup>
 </Project>

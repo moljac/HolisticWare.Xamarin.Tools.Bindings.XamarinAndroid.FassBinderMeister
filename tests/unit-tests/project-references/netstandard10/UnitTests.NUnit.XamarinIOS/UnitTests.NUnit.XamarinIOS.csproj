@@ -105,10 +105,6 @@
     <Compile Include="UnitTestAppDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\externals\Core\source\HolisticWare.Core.netstandard11\HolisticWare.Core.netstandard11.csproj">
-      <Project>{e041b996-7dac-41fc-a538-757482195bbf}</Project>
-      <Name>HolisticWare.Core.netstandard11</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data.csproj">
       <Project>{b7a2ea9f-9d42-440a-9a12-f3a64b179e01}</Project>
       <Name>HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data</Name>
@@ -124,6 +120,10 @@
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet\HolisticWare.Xamarin.Tools.NuGet.csproj">
       <Project>{4036f62e-0833-42f1-8976-bc1cb3dd37a5}</Project>
       <Name>HolisticWare.Xamarin.Tools.NuGet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj">
+      <Project>{A027ED7D-FDC8-4A52-908F-3640133CAA41}</Project>
+      <Name>HolisticWare.Xamarin.Tools.Maven</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
