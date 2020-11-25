@@ -7,19 +7,8 @@ namespace HolisticWare.Xamarin.Tools.Maven
     /// 
     /// </summary>
     /// https://dl.google.com/android/maven2/androidx/arch/core/core-common/2.0.0/artifact-metadata.json
-    /// dl.google.com/android/maven2/ artifact-metadata.json
-    public partial class Artifact
+    /// 404 dl.google.com/android/maven2/ artifact-metadata.json
+    public partial class ArtifactMetadata
     {
-        public string Id
-        {
-            get;
-            set;
-        }
-
-        public List<Artifact> Dependencies
-        {
-            get;
-            set;
-        }
     }
 }
