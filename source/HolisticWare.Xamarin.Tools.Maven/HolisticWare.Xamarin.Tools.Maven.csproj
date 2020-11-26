@@ -19,5 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Core.Serialization\" />
+    <Folder Include="ProjectObjectModel\" />
   </ItemGroup>
 </Project>

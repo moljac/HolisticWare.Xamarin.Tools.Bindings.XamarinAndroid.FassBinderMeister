@@ -8,7 +8,6 @@ namespace HolisticWare.Xamarin.Tools.Maven
 	/// Project Object Model
 	/// POM file XML
 	/// </summary>
-	/// https://maven.apache.org/guides/introduction/introduction-to-the-pom.html
 	public partial class ProjectObjectModel
     {
 
