@@ -53,6 +53,7 @@ namespace HolisticWare.Xamarin.Tools.Maven
                 */
                 // new helper method below
                 response_string_xml = await MavenClient.HttpClient.GetStringAsync(MasterIndex.Url);
+                this.Content = response_string_xml;
             }
             catch (HttpRequestException e)
             {
@@ -60,12 +61,12 @@ namespace HolisticWare.Xamarin.Tools.Maven
                 Console.WriteLine("Message :{0} ", e.Message);
             }
 
-            return ParseGroupNamesFromXMl(response_string_xml);
+            return ParseGroupNamesFromXML(response_string_xml);
         }
 
 
         public IEnumerable<string>
-                                                ParseGroupNamesFromXMl
+                                                ParseGroupNamesFromXML
                                                     (
                                                         string xml
                                                     )

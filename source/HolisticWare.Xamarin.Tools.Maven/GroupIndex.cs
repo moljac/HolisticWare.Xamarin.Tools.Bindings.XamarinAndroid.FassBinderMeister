@@ -61,6 +61,7 @@ namespace HolisticWare.Xamarin.Tools.Maven
                 */
                 // new helper method below
                 response_string_xml = await MavenClient.HttpClient.GetStringAsync(this.UrlGroupIndex);
+                this.Content = response_string_xml;
             }
             catch (HttpRequestException e)
             {

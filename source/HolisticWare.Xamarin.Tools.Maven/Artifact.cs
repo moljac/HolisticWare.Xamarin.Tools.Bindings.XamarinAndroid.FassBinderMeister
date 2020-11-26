@@ -41,7 +41,8 @@ namespace HolisticWare.Xamarin.Tools.Maven
         {
             foreach(string vt in versions_textual)
             {
-                System.Version v = System.Version.Parse(vt);
+                System.Version v;
+                bool parsed = System.Version.TryParse(vt, out v);
 
                 yield return v;
             }
