@@ -16,10 +16,35 @@ namespace HolisticWare.Xamarin.Tools.Maven
             set;
         }
 
+        public List<string> VersionsTextual
+        {
+            get;
+            set;
+        }
+
+        public List<System.Version> Versions
+        {
+            get;
+            set;
+        }
+
         public List<Artifact> Dependencies
         {
             get;
             set;
+        }
+
+        public static IEnumerable<System.Version> GetVersions
+                                                        (
+                                                            IEnumerable<string> versions_textual
+                                                        )
+        {
+            foreach(string vt in versions_textual)
+            {
+                System.Version v = System.Version.Parse(vt);
+
+                yield return v;
+            }
         }
     }
 }

@@ -4,16 +4,26 @@ using System.Xml.Serialization;
 
 namespace HolisticWare.Xamarin.Tools.Maven.ProjectObjectModel
 {
-
-	[XmlRoot(ElementName = "license", Namespace = "http://maven.apache.org/POM/4.0.0")]
 	public partial class License
 	{
-		[XmlElement(ElementName = "name", Namespace = "http://maven.apache.org/POM/4.0.0")]
-		public string Name { get; set; }
-		[XmlElement(ElementName = "url", Namespace = "http://maven.apache.org/POM/4.0.0")]
-		public string Url { get; set; }
-		[XmlElement(ElementName = "distribution", Namespace = "http://maven.apache.org/POM/4.0.0")]
-		public string Distribution { get; set; }
+		public string Name
+		{
+			get;
+			set;
+		}
+
+		public string Url
+		{
+			get;
+			set;
+		}
+
+		public string Distribution
+		{
+			get;
+			set;
+		}
+
 	}
 
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -101,12 +102,18 @@ namespace HolisticWare.Xamarin.Tools.Maven
                                                         IEnumerable<(string name, string[] versions)> artifacts_textual
                                                     )
         {
-            foreach((string name, string[] versions) in artifacts_textual)
+            foreach((string name, string[] versions) at in artifacts_textual)
             {
-                yield return new Artifact
+                Artifact a = new Artifact
                                     {
-                                        Id = name,
+                                        Id = at.name,
+                                        VersionsTextual = (at.versions).ToList(),
+                                        Versions = Artifact.GetVersions(at.versions)
+                                                                .ToList()
+                                                                //.OrderByDescending()
                                     };
+
+                yield return a;
             }
         }
 

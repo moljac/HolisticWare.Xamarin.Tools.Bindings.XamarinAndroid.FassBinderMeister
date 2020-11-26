@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace HolisticWare.Xamarin.Tools.Maven
 {
     // POCO class with Metadata for Buddy Class containing attributes
@@ -12,12 +11,12 @@ namespace HolisticWare.Xamarin.Tools.Maven
     ]
     public partial class Artifact
     {
-        public static Artifact DeserializeFromJSON(string json)
+        public static Artifact DeserializeFromJSON_Newtonsoft(string json)
         {
             return Newtonsoft.Json.JsonConvert.DeserializeObject<Artifact>(json);
         }
 
-        public static Artifact DeserializeFromJSON1(string json)
+        public static Artifact DeserializeFromJSON_System_Text_Json(string json)
         {
             return System.Text.Json.JsonSerializer.Deserialize<Artifact>(json);
         }

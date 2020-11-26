@@ -21,4 +21,8 @@
     <Folder Include="Core.Serialization\" />
     <Folder Include="ProjectObjectModel\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\externals\Core\source\HolisticWare.Core\HolisticWare.Core.csproj" />
+    <ProjectReference Include="..\..\externals\Core\source\HolisticWare.Core.netstandard10\HolisticWare.Core.netstandard10.csproj" />
+  </ItemGroup>
 </Project>
