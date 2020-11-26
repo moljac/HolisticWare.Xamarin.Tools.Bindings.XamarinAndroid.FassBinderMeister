@@ -63,12 +63,10 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
 using System;
-using System.Collections.Generic;
 
-using HolisticWare.Xamarin.Tools.NuGet;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister;
 
-namespace UnitTests.ReleaseNotes
+namespace UnitTests.Android.Developer.ReleaseNotesScraping
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_ReleaseNotesHTMLData

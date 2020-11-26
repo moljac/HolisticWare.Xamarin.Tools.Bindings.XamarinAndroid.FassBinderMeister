@@ -9,15 +9,23 @@
     <Import_RootNamespace>Tests.CommonShared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_GitHubClientAPI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_JSON_Deserialization_BuddyClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HttpClient.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_NuGetClientAPI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_ReleaseNotesHTMLData.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_MavenNET.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_BinderatorConfig_AndroidX.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_BinderatorConfig_GooglePlayServicesComponents.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_MavenClientAPI_MasterIndex.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tests20200817\Test_MavenClientAPI_GroupIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Binderator.Config\Binderator.Config_AndroidX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Binderator.Config\Binderator.Config_GooglePlayServicesComponents.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GitHubClientAPI\GitHubClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core.Serialization\JSON_Deserialization_BuddyClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\GroupIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MasterIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenNET\MavenNET.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NuGetClientAPI\NuGetClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\ReleaseNotesHTMLData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Core.Serialization\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MavenClientAPI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MavenNET\" />
+    <Folder Include="$(MSBuildThisFileDirectory)NuGetClientAPI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\" />
   </ItemGroup>
 </Project>

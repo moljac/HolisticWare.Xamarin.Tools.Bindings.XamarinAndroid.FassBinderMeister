@@ -4,20 +4,20 @@
 //    moljac
 //    Test.cs
 //
-//    Pergission is hereby granted, free of charge, to any person
+//    Permission is hereby granted, free of charge, to any person
 //    obtaining a copy of this software and associated documentation
 //    files (the "Software"), to deal in the Software without
-//    restriction, including without ligitation the rights to use,
+//    restriction, including without limitation the rights to use,
 //    copy, modify, merge, publish, distribute, sublicense, and/or sell
-//    copies of the Software, and to pergit persons to whom the
+//    copies of the Software, and to permit persons to whom the
 //    Software is furnished to do so, subject to the following
 //    conditions:
 //
-//    The above copyright notice and this pergission notice shall be
+//    The above copyright notice and this permission notice shall be
 //    included in all copies or substantial portions of the Software.
 //
 //    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-//    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIgiTED TO THE WARRANTIES
+//    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
 //    OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 //    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
 //    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
@@ -62,59 +62,76 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
-using System;
 using System.Collections.Generic;
-
-using MavenNet;
 
 using HolisticWare.Xamarin.Tools.Maven;
 
 namespace UnitTests.MavenClientAPI
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_GroupIndex
+    public partial class Test_MasterIndex
     {
-        // MavenNet is gissing some API
+        // MavenNet is missing some API
         // https://github.com/Redth/MavenNet/
         // MavenClient is simple client for Google Maven Repo
 
         [Test]
-        public void Test_Maven_Google_GroupIndex_GetGroupNamesAsync()
+        public void Test_Maven_Google_MasterIndex_GetGroupNamesAsync()
         {
-            GroupIndex gi = new GroupIndex("androidx.car");
+            MasterIndex mi = new MasterIndex();
 
-            IEnumerable<(string name, string[] versions)> groups = gi.GetArtifactNamesAndVersionsAsync()
-                                                                        .Result;
+            IEnumerable<string> groups = mi.GetGroupNamesAsync().Result;
 
             #if MSTEST
-            Assert.IsNotNull(gi);
+            Assert.IsNotNull(mi);
+            Assert.IsNotNull(groups);
             #elif NUNIT
-            Assert.NotNull(gi);
+            Assert.NotNull(mi);
+            Assert.NotNull(groups);
             #elif XUNIT
-            Assert.NotNull(gi);
+            Assert.NotNull(mi);
+            Assert.NotNull(groups);
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_Maven_Google_GroupIndex_GetAtifactsAsync()
+        public void Test_Maven_Google_MasterIndex_GetGroupIndicesAsync()
         {
-            GroupIndex gi = new GroupIndex("androidx.car");
+            MasterIndex mi = new MasterIndex();
 
-            IEnumerable<(string name, string[] versions)> artifact_names = null;
-
-            artifact_names = gi.GetArtifactNamesAndVersionsAsync().Result;
-
-            IEnumerable<Artifact> group_indices = gi.GetArtifacts(artifact_names);
+            IEnumerable<GroupIndex> groups = mi.GetGroupIndicesAsync().Result;
 
             #if MSTEST
-            Assert.IsNotNull(gi);
+            Assert.IsNotNull(mi);
+            Assert.IsNotNull(groups);
             #elif NUNIT
-            Assert.NotNull(gi);
+            Assert.NotNull(mi);
+            Assert.NotNull(groups);
             #elif XUNIT
-            Assert.NotNull(gi);
+            Assert.NotNull(mi);
+            Assert.NotNull(groups);
             #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Maven_Google_MasterIndex()
+        {
+            MavenClient mc = new MavenClient();
+
+            MasterIndex mi = mc.GetMasterIndexAsync().Result;
+
+            #if MSTEST
+            Assert.IsNotNull(mc);
+            #elif NUNIT
+            Assert.NotNull(mc);
+            #elif XUNIT
+            Assert.NotNull(mc);
+            #endif
+
 
             return;
         }
