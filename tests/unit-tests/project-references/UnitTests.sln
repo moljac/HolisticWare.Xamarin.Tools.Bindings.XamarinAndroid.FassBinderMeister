@@ -37,9 +37,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core", "..\..\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{80C70099-123A-4EEC-B2C0-426E7244B592}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingConfigurator", "..\..\..\samples\BindingConfigurator\BindingConfigurator.csproj", "{9925D7B1-70E9-47F6-8F6C-24D335D7D110}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BindingConfigurator", "..\..\..\samples\BindingConfigurator\BindingConfigurator.csproj", "{9925D7B1-70E9-47F6-8F6C-24D335D7D110}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Maven", "..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj", "{A027ED7D-FDC8-4A52-908F-3640133CAA41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Maven", "..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj", "{A027ED7D-FDC8-4A52-908F-3640133CAA41}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -51,10 +51,8 @@ Global
 		..\..\Tests.CommonShared\Tests.CommonShared.projitems*{6144c0cb-53eb-4bfd-b30c-62566c1be10a}*SharedItemsImports = 4
 		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{6144c0cb-53eb-4bfd-b30c-62566c1be10a}*SharedItemsImports = 4
 		..\..\..\externals\Core\source\HolisticWare.Core\HolisticWare.Core.projitems*{aac41b7e-91c6-4cc2-b0dc-12c7b5a413a9}*SharedItemsImports = 5
-		..\..\..\externals\Core\source\HolisticWare.Core\HolisticWare.Core.projitems*{d9c95725-5047-492a-ae33-052d970e74b1}*SharedItemsImports = 13
 		..\..\Tests.CommonShared\Tests.CommonShared.projitems*{dd4ac4fc-52b0-49f2-85de-6e6c441f5207}*SharedItemsImports = 5
 		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{dd4ac4fc-52b0-49f2-85de-6e6c441f5207}*SharedItemsImports = 5
-		..\..\..\externals\Core\source\HolisticWare.Core\HolisticWare.Core.projitems*{e041b996-7dac-41fc-a538-757482195bbf}*SharedItemsImports = 5
 		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{e390f6da-9f4b-43a4-8abf-f9434df2c70d}*SharedItemsImports = 13
 		..\..\Tests.CommonShared\Tests.CommonShared.projitems*{ed0c66ac-eae7-4cd0-bf81-df5d8d3b2e58}*SharedItemsImports = 5
 		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{ed0c66ac-eae7-4cd0-bf81-df5d8d3b2e58}*SharedItemsImports = 5
