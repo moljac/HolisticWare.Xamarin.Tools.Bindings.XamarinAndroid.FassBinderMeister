@@ -1,12 +1,12 @@
 ﻿
-namespace HolisticWare.Xamarin.Tools.Maven.ProjectObjectModel.Serialization.Formatters
+namespace HolisticWare.Xamarin.Tools.Maven.Models.GeneratedFromXML.Refactored.Serialization.Formatters
 {
 	/// <summary>
 	/// Project Object Model
 	/// POM file XML
 	/// </summary>
 	[Newtonsoft.Json.JsonObject("project")]
-	//[System.Text.Json.Serialization.("project")]
+	//[System.Text.Json.Serialization("project")]
 	[System.Xml.Serialization.XmlRoot
 								(
 									ElementName = "project",

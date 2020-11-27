@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace HolisticWare.Xamarin.Tools.Maven.ProjectObjectModel.Serialization.Formatters
+namespace HolisticWare.Xamarin.Tools.Maven.Models.GeneratedFromXML.Refactored.Serialization.Formatters
 {
 	public partial class Licenses
 	{

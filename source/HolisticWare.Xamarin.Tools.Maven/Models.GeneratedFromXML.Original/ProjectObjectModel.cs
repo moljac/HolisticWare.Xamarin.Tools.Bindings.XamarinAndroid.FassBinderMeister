@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace HolisticWare.Xamarin.Tools.Maven
+namespace HolisticWare.Xamarin.Tools.Maven.Models.GeneratedFromXML.Original
 {
 	/// <summary>
 	/// Project Object Model

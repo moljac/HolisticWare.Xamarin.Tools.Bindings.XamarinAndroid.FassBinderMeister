@@ -19,7 +19,9 @@
 
   <ItemGroup>
     <Folder Include="Core.Serialization\" />
-    <Folder Include="ProjectObjectModel\" />
+    <Folder Include="Models.GeneratedFromXML.Original\" />
+    <Folder Include="Models.GeneratedFromXML.Refactored\" />
+    <Folder Include="Models.GeneratedFromXSD.Refactored\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\externals\Core\source\HolisticWare.Core\HolisticWare.Core.csproj" />
