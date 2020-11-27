@@ -26,7 +26,13 @@ HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 
 ## Maven 
 
-*   mavenNET
+*   POM
+
+    *   https://maven.apache.org/guides/introduction/introduction-to-the-pom.html
+
+    *   https://maven.apache.org/pom.html
+
+### mavenNET
 
     *   https://github.com/Redth/MavenNet
 
