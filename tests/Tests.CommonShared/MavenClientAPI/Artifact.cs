@@ -65,76 +65,142 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 using System.Collections.Generic;
 
 using HolisticWare.Xamarin.Tools.Maven;
+using HolisticWare.Xamarin.Tools.Maven.Models.GeneratedFromXML;
+using HolisticWare.Xamarin.Tools.Maven.ModelsFromOfficialXSD;
+using HolisticWare.Xamarin.Tools.Maven.Models.GeneratedFromXML.Original;
 
 namespace UnitTests.MavenClientAPI
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_GroupIndex
+    public partial class Test_Artifact
     {
         // MavenNet is gissing some API
         // https://github.com/Redth/MavenNet/
         // MavenClient is simple client for Google Maven Repo
 
         [Test]
-        public void Test_Maven_Google_GroupIndex_GetGroupNamesAsync()
+        public void Test_Maven_Google_Artifact_Initializer()
         {
-            GroupIndex gi = new GroupIndex("androidx.car");
-
-            IEnumerable<(string name, string[] versions)> groups = gi.GetArtifactNamesAndVersionsAsync()
-                                                                        .Result;
+            Artifact a = new Artifact
+            {
+                Id = "androidx.car.car"                
+            };
 
             #if MSTEST
-            Assert.IsNotNull(gi);
+            Assert.IsNotNull(a);
             #elif NUNIT
-            Assert.NotNull(gi);
+            Assert.NotNull(a);
             #elif XUNIT
-            Assert.NotNull(gi);
+            Assert.NotNull(a);
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_Maven_Google_GroupIndex_GetArtifacts()
+        public void Test_Maven_Google_Artifact_DownloadArtifactMetadata()
         {
-            GroupIndex gi = new GroupIndex("androidx.car");
+            Artifact a = new Artifact
+            {
+                IdGroup = "androidx.car",
+                Id = "car",
+                VersionTextual = "1.0.0-alpha7"
+            };
 
-            IEnumerable<(string name, string[] versions)> artifact_names = null;
+            string content = a.DownloadArtifactMetadata().Result;
 
-            artifact_names = gi.GetArtifactNamesAndVersionsAsync().Result;
 
-            IEnumerable<Artifact> artifacts = gi.GetArtifacts(artifact_names);
+
+#if MSTEST
+            Assert.IsNotNull(a);
+            Assert.IsNotNull(content);
+#elif NUNIT
+            Assert.NotNull(a);
+            Assert.NotNull(content);
+#elif XUNIT
+            Assert.NotNull(a);
+            Assert.NotNull(content);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Maven_Google_Artifact_DownloadProjectObjectModelPOM()
+        {
+            Artifact a = new Artifact
+            {
+                IdGroup = "androidx.car",
+                Id = "car",
+                VersionTextual = "1.0.0-alpha7"
+            };
+
+            string content = a.DownloadProjectObjectModelPOM().Result;
+
+#if MSTEST
+            Assert.IsNotNull(a);
+            Assert.IsNotNull(content);
+#elif NUNIT
+            Assert.NotNull(a);
+            Assert.NotNull(content);
+#elif XUNIT
+            Assert.NotNull(a);
+            Assert.NotNull(content);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Maven_Google_Artifact_DeserializeProjectObjectModelPOM()
+        {
+            Artifact a = new Artifact
+            {
+                IdGroup = "androidx.car",
+                Id = "car",
+                VersionTextual = "1.0.0-alpha7"
+            };
+
+            ProjectObjectModel.Project p = a.DeserializeProjectObjectModelPOM().Result;
 
             #if MSTEST
-            Assert.IsNotNull(gi);
-            Assert.IsNotNull(artifacts);
+            Assert.IsNotNull(a);
+            Assert.IsNotNull(p);
             #elif NUNIT
-            Assert.NotNull(gi);
-            Assert.NotNull(artifacts);
+            Assert.NotNull(a);
+            Assert.NotNull(p);
             #elif XUNIT
-            Assert.NotNull(gi);
-            Assert.NotNull(artifacts);
+            Assert.NotNull(a);
+            Assert.NotNull(p);
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_Maven_Google_GroupIndex_GetArtifactMetadata()
+        public void Test_Maven_Google_Artifact_DeserializeProjectObjectModelPOMFromOfficialXSD()
         {
-            System.Net.Http.HttpClient hc = new System.Net.Http.HttpClient();
-            string response = hc.GetStringAsync("https://dl.google.com/android/maven2/androidx/arch/core/core-common/2.0.0/artifact-metadata.json").Result;
+            Artifact a = new Artifact
+            {
+                IdGroup = "androidx.car",
+                Id = "car",
+                VersionTextual = "1.0.0-alpha7"
+            };
 
-            #if MSTEST
-            Assert.IsNotNull(response);
-            #elif NUNIT
-            Assert.NotNull(response);
-            #elif XUNIT
-            Assert.NotNull(response);
-            #endif
+            Model p = a.DeserializeProjectObjectModelPOMFromOfficialXSD().Result;
+
+#if MSTEST
+            Assert.IsNotNull(a);
+            Assert.IsNotNull(p);
+#elif NUNIT
+            Assert.NotNull(a);
+            Assert.NotNull(p);
+#elif XUNIT
+            Assert.NotNull(a);
+            Assert.NotNull(p);
+#endif
 
             return;
         }
-
     }
 }

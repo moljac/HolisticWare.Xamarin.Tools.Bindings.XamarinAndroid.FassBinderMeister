@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MavenNET\MavenNET.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClientAPI\NuGetClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\ReleaseNotesHTMLData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\Artifact.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
