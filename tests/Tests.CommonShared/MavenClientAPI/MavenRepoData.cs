@@ -4,20 +4,20 @@
 //    moljac
 //    Test.cs
 //
-//    Pergission is hereby granted, free of charge, to any person
+//    Permission is hereby granted, free of charge, to any person
 //    obtaining a copy of this software and associated documentation
 //    files (the "Software"), to deal in the Software without
-//    restriction, including without ligitation the rights to use,
+//    restriction, including without limitation the rights to use,
 //    copy, modify, merge, publish, distribute, sublicense, and/or sell
-//    copies of the Software, and to pergit persons to whom the
+//    copies of the Software, and to permit persons to whom the
 //    Software is furnished to do so, subject to the following
 //    conditions:
 //
-//    The above copyright notice and this pergission notice shall be
+//    The above copyright notice and this permission notice shall be
 //    included in all copies or substantial portions of the Software.
 //
 //    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-//    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIgiTED TO THE WARRANTIES
+//    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
 //    OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 //    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
 //    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
@@ -69,80 +69,49 @@ using HolisticWare.Xamarin.Tools.Maven;
 namespace UnitTests.MavenClientAPI
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_GroupIndex
+    public partial class Test_MavenRepoData
     {
-        // MavenNet is gissing some API
+        // MavenNet is missing some API
         // https://github.com/Redth/MavenNet/
         // MavenClient is simple client for Google Maven Repo
 
         [Test]
-        public void Test_Maven_Google_GroupIndex_GetGroupNamesAsync()
+        public void Test_Maven_Google_MavenRepoData_InitializeAsync()
         {
-            GroupIndex gi = new GroupIndex("androidx.car");
+            MavenRepoData mrd = new MavenRepoData();
 
-            IEnumerable<(string name, string[] versions)> groups = gi.GetArtifactNamesAndVersionsAsync()
-                                                                        .Result;
+
+            mrd.InitializeAsync().Wait();
 
             #if MSTEST
-            Assert.IsNotNull(gi);
+            Assert.IsNotNull(mrd);
             #elif NUNIT
-            Assert.NotNull(gi);
+            Assert.NotNull(mrd);
             #elif XUNIT
-            Assert.NotNull(gi);
+            Assert.NotNull(mrd);
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_Maven_Google_GroupIndex_GetArtifacts()
+        public void Test_Maven_Google_MavenRepoData_Save()
         {
-            GroupIndex gi = new GroupIndex("androidx.car");
+            MavenRepoData mrd = new MavenRepoData();
 
-            IEnumerable<(string name, string[] versions)> artifact_names = null;
 
-            artifact_names = gi.GetArtifactNamesAndVersionsAsync().Result;
+            mrd.InitializeAsync().Wait();
 
-            IEnumerable<Artifact> artifacts = gi.GetArtifacts(artifact_names);
+            mrd.Save().Wait();
 
             #if MSTEST
-            Assert.IsNotNull(gi);
-            Assert.IsNotNull(artifacts);
+            Assert.IsNotNull(mrd);
             #elif NUNIT
-            Assert.NotNull(gi);
-            Assert.NotNull(artifacts);
+            Assert.NotNull(mrd);
             #elif XUNIT
-            Assert.NotNull(gi);
-            Assert.NotNull(artifacts);
+            Assert.NotNull(mrd);
             #endif
-
-            return;
-        }
-
-        [Test]
-        public void Test_Maven_Google_GroupIndex_GetArtifactMetadata()
-        {
-            System.Net.Http.HttpClient hc = new System.Net.Http.HttpClient();
-            string response = null;
-
-            string url = "https://dl.google.com/android/maven2/androidx/arch/core/core-common/2.0.0/artifact-metadata.json";
-
-            try
-            {
-                response = hc.GetStringAsync(url).Result;
-            }
-            catch
-            {
-            }
-
-            #if MSTEST
-            Assert.IsNull(response);
-            #elif NUNIT
-            Assert.IsNull(response);
-            #elif XUNIT
-            Assert.Equal(response, null);
-            #endif
-
+            
             return;
         }
 

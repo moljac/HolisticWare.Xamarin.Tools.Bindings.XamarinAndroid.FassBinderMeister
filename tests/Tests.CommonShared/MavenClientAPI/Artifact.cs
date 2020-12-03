@@ -189,18 +189,36 @@ namespace UnitTests.MavenClientAPI
 
             Model p = a.DeserializeProjectObjectModelPOMFromOfficialXSD().Result;
 
-#if MSTEST
+            #if MSTEST
             Assert.IsNotNull(a);
             Assert.IsNotNull(p);
-#elif NUNIT
+            #elif NUNIT
             Assert.NotNull(a);
             Assert.NotNull(p);
-#elif XUNIT
+            #elif XUNIT
             Assert.NotNull(a);
             Assert.NotNull(p);
-#endif
+            #endif
 
             return;
         }
+
+
+        /*
+            Serialization order:
+
+            "groupId": "androidx.activity",
+            "artifactId": "activity",
+            "version": "1.1.0",
+            "nugetVersion": "1.1.0.4",
+            "nugetId": "Xamarin.AndroidX.Activity",
+
+            "artifactIdVersions"
+            "artifactIdVersionLatest"
+            "nugetVersions"
+            "nugetVersionLatest"
+            "dependencies"
+         */
+
     }
 }
