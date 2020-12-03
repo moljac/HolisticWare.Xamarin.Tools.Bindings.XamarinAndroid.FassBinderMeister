@@ -65,13 +65,35 @@ namespace HolisticWare.Xamarin.Tools.Maven
             set;
         }
 
-        public static IEnumerable<System.Version> GetVersions
-                                                        (
-                                                            IEnumerable<string> versions_textual
-                                                        )
+
+
+
+        public static
+            IEnumerable<System.Version>
+                                        GetVersions
+                                                (
+                                                    IEnumerable<string> versions_textual
+                                                )
         {
             foreach(string vt in versions_textual)
             {
+                System.Version v;
+                bool parsed = System.Version.TryParse(vt, out v);
+
+                yield return v;
+            }
+        }
+
+        public static
+            IEnumerable<System.Version>
+                                    GetVersionsOfBindingsNuGetPackage
+                                                (
+                                                    IEnumerable<string> versions_textual
+                                                )
+        {
+            foreach (string vt in versions_textual)
+            {
+
                 System.Version v;
                 bool parsed = System.Version.TryParse(vt, out v);
 
@@ -122,7 +144,9 @@ namespace HolisticWare.Xamarin.Tools.Maven
             xs = new System.Xml.Serialization.XmlSerializer(typeof(ProjectObjectModel.Project));
             ProjectObjectModel.Project result;
 
-            System.IO.File.WriteAllText("pom.xml", content);
+            string id_g = this.IdGroup;
+            string id_a = this.Id;
+            System.IO.File.WriteAllText($"{id_g}.{id_a}-pom.xml", content);
 
             using (System.IO.TextReader tr = new System.IO.StringReader(content))
             {
@@ -144,7 +168,9 @@ namespace HolisticWare.Xamarin.Tools.Maven
             xs = new System.Xml.Serialization.XmlSerializer(typeof(ModelsFromOfficialXSD.Model));
             ModelsFromOfficialXSD.Model result;
 
-            System.IO.File.WriteAllText("pom.xml", content);
+            string id_g = this.IdGroup;
+            string id_a = this.Id;
+            System.IO.File.WriteAllText($"{id_g}.{id_a}-pom.xml", content);
 
             using (System.IO.TextReader tr = new System.IO.StringReader(content))
             {

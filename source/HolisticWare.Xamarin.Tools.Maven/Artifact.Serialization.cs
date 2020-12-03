@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace HolisticWare.Xamarin.Tools.Maven
 {
     // POCO class with Metadata for Buddy Class containing attributes
@@ -16,9 +18,29 @@ namespace HolisticWare.Xamarin.Tools.Maven
             return Newtonsoft.Json.JsonConvert.DeserializeObject<Artifact>(json);
         }
 
+        public static string SerializeToJSON_Newtonsoft(Artifact artifact)
+        {
+            string content = Newtonsoft.Json.JsonConvert.SerializeObject(artifact);
+
+            return content;
+        }
+
         public static Artifact DeserializeFromJSON_System_Text_Json(string json)
         {
             return System.Text.Json.JsonSerializer.Deserialize<Artifact>(json);
+        }
+
+        public static string SerializeToJSON_System_Text_Json(Artifact artifact)
+        {
+            string content = System.Text.Json.JsonSerializer.Serialize<Artifact>
+                                                                    (
+                                                                        artifact,
+                                                                        null
+                                                                    );
+            string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmm");
+            System.IO.File.WriteAllText($"maven-repo-data-{timestamp}", content);
+
+            return content;
         }
 
         public static Artifact DeserializeFromXML(string xml)
@@ -31,6 +53,22 @@ namespace HolisticWare.Xamarin.Tools.Maven
 
                 return (Artifact) xs.Deserialize(tr);
             }
+        }
+
+        public static string SerializeToXML(string filename, Artifact artifact)
+        {
+            System.Xml.Serialization.XmlSerializer xs = null;
+            string content = null;
+
+            using (System.IO.TextWriter tw = new System.IO.StringWriter())
+            {
+                xs = new System.Xml.Serialization.XmlSerializer(typeof(Artifact));
+
+                xs.Serialize(tw, artifact);
+                content = tw.ToString();
+            }
+
+            return content;
         }
     }
 }

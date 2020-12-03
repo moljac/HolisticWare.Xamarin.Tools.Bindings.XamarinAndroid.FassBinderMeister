@@ -7,8 +7,11 @@ namespace HolisticWare.Xamarin.Tools.Maven.Serialization.Formatters
     /// </summary>
     public class Artifact
     {
-        [Newtonsoft.Json.JsonProperty("id")]
+        [Newtonsoft.Json.JsonProperty("id", Order = 1)]
         [System.Text.Json.Serialization.JsonPropertyName("id")]
+        // System.Text.Json.Serialization.Json
+        //  does not hve Order Property
+        // https://stackoverflow.com/questions/59134564/net-core-3-order-of-serialization-for-jsonpropertyname-system-text-json-seria
         [System.Xml.Serialization.XmlElement
                                         (
                                             ElementName = "id",
