@@ -80,10 +80,24 @@ namespace UnitTests.NuGet
         {
             NuGetClient ngc = new NuGetClient();
 
-            IEnumerable<IPackageSearchMetadata> search = ngc.SearchPackagesByKeywordAsync
-                                                                                (
-                                                                                        "androidx"
-                                                                                ).Result;
+            IEnumerable<IPackageSearchMetadata> search = null;
+            search = ngc.SearchPackagesByKeywordAsync
+                            (
+                                "androidx",
+                                new global::NuGet.Protocol.Core.Types.SearchFilter
+                                                                        (
+                                                                            includePrerelease: true
+                                                                        ),
+                                psm =>
+                                {
+                                    return
+                                    (
+                                        psm.Description.Contains("car")
+                                        ||
+                                        psm.Description.Contains("androidx.car")
+                                    );
+                                }
+                            ).Result;
 
             #if MSTEST
             Assert.IsNotNull(search);
