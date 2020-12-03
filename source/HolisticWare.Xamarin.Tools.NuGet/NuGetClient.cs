@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -43,32 +44,38 @@ namespace HolisticWare.Xamarin.Tools.NuGet
             Task<IEnumerable<IPackageSearchMetadata>>
                                         SearchPackagesByKeywordAsync
                                                 (
-                                                    string keyword
+                                                    string keyword,
+                                                    SearchFilter search_filter,
+                                                    // Func<IPackageSearchMetadata, bool> filter
+                                                    Predicate<IPackageSearchMetadata> filter
                                                 )
         {
             PackageSearchResource resource = await repository.GetResourceAsync<PackageSearchResource>();
-            SearchFilter searchFilter = new SearchFilter
-                                                (
-                                                    includePrerelease: true,
-                                                    new SearchFilterType
-                                                    {                                                       
-                                                    }
-                                                );
-
+ 
+            // https://apisof.net/catalog/NuGet.Protocol.Core.Types.IPackageSearchMetadata
+            // https://apisof.net/catalog/NuGet.Protocol.Core.Types.SearchFilter
+            // https://github.com/NuGet/Home/issues/8719
+            // https://apisof.net/catalog/NuGet.Protocol.Core.Types.PackageSearchResource.SearchAsync(String,SearchFilter,Int32,Int32,ILogger,CancellationToken)
+            // search_filter_type
+            // https://scm.mbwarez.dk/tools/nuget-package-overview/blob/3dab8c9ba3d9d65c52d9036d4695e91eb6ee169a/NugetOverview/Program.cs
+            // https://128.39.141.180/justworks/playground/blob/168480a22f353c250ed0276af21e9b1993f40032/InternalDevTools/GitHooks/Resharper/NuGet.Protocol.xml
+            // https://aakinshin.net/posts/rider-nuget-search/
+ 
             IEnumerable<IPackageSearchMetadata> results = await resource.SearchAsync
                                                                                 (
                                                                                     keyword,
-                                                                                    searchFilter,
+                                                                                    search_filter,
                                                                                     skip: 0,
-                                                                                    take: 100,
+                                                                                    take: 1000,
                                                                                     logger,
                                                                                     cancellationToken
                                                                                 );
 
-            foreach (IPackageSearchMetadata result in results)
-            {
-                Console.WriteLine($"Found package {result.Identity.Id} {result.Identity.Version}");
-            }
+            IEnumerable<IPackageSearchMetadata> results_filtered = null;
+            results_filtered =
+                from IPackageSearchMetadata psm in results
+                where filter(psm)
+                select psm;
 
             return results;
         }

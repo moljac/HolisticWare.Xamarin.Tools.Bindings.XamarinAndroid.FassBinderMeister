@@ -11,6 +11,7 @@
     <Folder Include="Binderator\QuickType\" />
     <Folder Include="Binderator\Newtonsoft\JSON\" />
     <Folder Include="Binderator\QuickType\JSON\" />
+    <Folder Include="BindEx\" />
   </ItemGroup>
     
   <ItemGroup>
@@ -26,5 +27,6 @@
   <ItemGroup>
     <ProjectReference Include="..\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj" />
     <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet\HolisticWare.Xamarin.Tools.NuGet.csproj" />
+    <ProjectReference Include="..\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj" />
   </ItemGroup>
 </Project>

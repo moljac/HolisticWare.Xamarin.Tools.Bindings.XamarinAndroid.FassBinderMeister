@@ -12,7 +12,37 @@ namespace HolisticWare.Xamarin.Tools.Maven
     /// dl.google.com/android/maven2/ artifact-metadata.json
     public partial class Artifact
     {
+        public Artifact()
+        {
+
+            return;
+        }
+
+        public Artifact(string id_group, string id_artifact)
+        {
+            this.IdGroup = id_group;
+            this.Id = id_artifact;
+
+            return;
+        }
+
+        public Artifact(string id_fully_qualified)
+        {
+            int idx = id_fully_qualified.LastIndexOf('.');
+
+            this.IdGroup = id_fully_qualified.Substring(0, idx);
+            this.Id = id_fully_qualified.Substring(idx + 1, id_fully_qualified.Length - (idx + 1));
+
+            return;
+        }
+
         public string Id
+        {
+            get;
+            set;
+        }
+
+        public string IdGroup
         {
             get;
             set;
@@ -27,12 +57,6 @@ namespace HolisticWare.Xamarin.Tools.Maven
             set
             {
             }
-        }
-
-        public string IdGroup
-        {
-            get;
-            set;
         }
 
         public string VersionTextual
@@ -111,7 +135,16 @@ namespace HolisticWare.Xamarin.Tools.Maven
             string v = this.VersionTextual;
             string url = $"https://dl.google.com/android/maven2/{gid}/{v}/artifact-metadata.json";
 
-            string response = await MavenClient.HttpClient.GetStringAsync(url);
+            string response = null;
+
+            try
+            {
+                response = await MavenClient.HttpClient.GetStringAsync(url);
+            }
+            catch(Exception exc)
+            {
+                response = exc.Message;
+            }
 
             return response;
         }
