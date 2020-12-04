@@ -64,10 +64,10 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 
 using System.Collections.Generic;
 
-using HolisticWare.Xamarin.Tools.Maven;
-using HolisticWare.Xamarin.Tools.Maven.Models.GeneratedFromXML;
-using HolisticWare.Xamarin.Tools.Maven.ModelsFromOfficialXSD;
-using HolisticWare.Xamarin.Tools.Maven.Models.GeneratedFromXML.Original;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.Models.GeneratedFromXML;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.ModelsFromOfficialXSD;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.Models.GeneratedFromXML.Original;
 
 namespace UnitTests.MavenClientAPI
 {

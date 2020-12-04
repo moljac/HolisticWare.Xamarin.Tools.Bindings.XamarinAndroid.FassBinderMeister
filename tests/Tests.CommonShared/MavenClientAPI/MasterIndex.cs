@@ -64,7 +64,7 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 
 using System.Collections.Generic;
 
-using HolisticWare.Xamarin.Tools.Maven;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven;
 
 namespace UnitTests.MavenClientAPI
 {
