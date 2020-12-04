@@ -6,7 +6,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
     /// </summary>
     /// https://dl.google.com/android/maven2/androidx/arch/core/core-common/2.0.0/artifact-metadata.json
     /// dl.google.com/android/maven2/ artifact-metadata.json
-    public partial class Artifact : HolisticWare.Xamarin.Tools.Maven.Artifact
+    public partial class Artifact : HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.Artifact
     {
         public Artifact()
             : base()

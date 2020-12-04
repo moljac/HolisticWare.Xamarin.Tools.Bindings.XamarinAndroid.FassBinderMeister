@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 {
     public class AndroidMavenPackage
