@@ -73,7 +73,5 @@
         <Folder Include="Models.GeneratedFromXSD.Refactored\" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\externals\Core\source\HolisticWare.Core\HolisticWare.Core.csproj" />
-        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet\HolisticWare.Xamarin.Tools.NuGet.csproj" />
     </ItemGroup>
 </Project>
