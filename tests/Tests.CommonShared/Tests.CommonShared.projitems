@@ -20,12 +20,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClientAPI\NuGetClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\ReleaseNotesHTMLData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\Artifact.cs" />
-<<<<<<< Updated upstream
     <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MavenRepoData.cs" />
-=======
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\ArtifactBindingNugetData.cs" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />

@@ -39,7 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{80C7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BindingConfigurator", "..\..\..\samples\BindingConfigurator\BindingConfigurator.csproj", "{9925D7B1-70E9-47F6-8F6C-24D335D7D110}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Maven", "..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj", "{A027ED7D-FDC8-4A52-908F-3640133CAA41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven", "..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Maven.csproj", "{A027ED7D-FDC8-4A52-908F-3640133CAA41}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
