@@ -1,4 +1,6 @@
-﻿
+﻿using System;
+using System.Threading.Tasks;
+
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.BindEx
 {
     /// <summary>
@@ -36,5 +38,32 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             set;
         }
 
+        public async
+            Task
+                            SaveAsync
+                                        (
+                                            string format = "json"
+                                        )
+        {
+            string content = null;
+
+            switch (format)
+            {
+                case "json":
+                default:
+                    content = Artifact.SerializeToJSON_Newtonsoft(this);
+                    break;
+            }
+
+            string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmm");
+            string filename = $"maven-repo-data-{timestamp}.{format}";
+            //System.IO.File.WriteAllText(filename, content);
+            using (System.IO.StreamWriter writer = System.IO.File.CreateText(filename))
+            {
+                await writer.WriteAsync(content);
+            }
+
+            return;
+        }
     }
 }
