@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 {
-    public class GoogleMavenData
+    public partial class GoogleMavenData
     {
         public GoogleMavenData()
         {
@@ -68,14 +68,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
             get;
             set;
         }
-            
+
         protected static string filename = "GoogleMavenData.json";
 
         public Configurator Load()
         {
             Configurator data = null;
 
-            if ( ! System.IO.File.Exists(filename))
+            if (!System.IO.File.Exists(filename))
             {
             }
             else
@@ -87,22 +87,46 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
             return data;
         }
 
-        public void Save()
+        public async
+            Task
+                            SaveAsync
+                                        (
+                                            string format = "json"
+                                        )
         {
-            string text = Newtonsoft.Json.JsonConvert.SerializeObject(this.Configurator);
-            System.IO.File.WriteAllText(filename, contents: text);
+            string content = null;
+
+            switch (format)
+            {
+                case "json":
+                default:
+                    content = GoogleMavenData.SerializeToJSON_Newtonsoft(this);
+                    break;
+            }
+
+            string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmm");
+            string filename = $"maven-repo-data-{timestamp}.{format}";
+            //System.IO.File.WriteAllText(filename, content);
+            using (System.IO.StreamWriter writer = System.IO.File.CreateText(filename))
+            {
+                await writer.WriteAsync(content);
+            }
 
             return;
         }
 
-		public void LoadRemoteReposAsync()
+        public async
+            void
+                                LoadRemoteReposAsync
+                                            (
+                                            )
         {
             Trace.WriteLine($"downloading ...");
             this.Configurator = new Configurator();
 
             IEnumerable<Models.Repository> repositories = LoadMavenRepositories(RepositoryNames);
 
-            this.Save();
+            await this.SaveAsync();
 
             return;
         }
@@ -239,7 +263,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
             {
                 GoogleMavenRepositoryData = MavenNet.MavenRepository.FromGoogle();
                 await GoogleMavenRepositoryData.Refresh();
-                                
+
                 content_json_google_repo = JsonConvert.SerializeObject
                                                             (
                                                                 GoogleMavenRepositoryData,

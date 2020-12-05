@@ -50,8 +50,11 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                                     Predicate<IPackageSearchMetadata> filter
                                                 )
         {
-            PackageSearchResource resource = await repository.GetResourceAsync<PackageSearchResource>();
- 
+            PackageSearchResource resource = null;
+            IEnumerable<IPackageSearchMetadata> results = null;
+
+            resource = await repository.GetResourceAsync<PackageSearchResource>();
+
             // https://apisof.net/catalog/NuGet.Protocol.Core.Types.IPackageSearchMetadata
             // https://apisof.net/catalog/NuGet.Protocol.Core.Types.SearchFilter
             // https://github.com/NuGet/Home/issues/8719
@@ -60,16 +63,17 @@ namespace HolisticWare.Xamarin.Tools.NuGet
             // https://scm.mbwarez.dk/tools/nuget-package-overview/blob/3dab8c9ba3d9d65c52d9036d4695e91eb6ee169a/NugetOverview/Program.cs
             // https://128.39.141.180/justworks/playground/blob/168480a22f353c250ed0276af21e9b1993f40032/InternalDevTools/GitHooks/Resharper/NuGet.Protocol.xml
             // https://aakinshin.net/posts/rider-nuget-search/
- 
-            IEnumerable<IPackageSearchMetadata> results = await resource.SearchAsync
-                                                                                (
-                                                                                    keyword,
-                                                                                    search_filter,
-                                                                                    skip: 0,
-                                                                                    take: 1000,
-                                                                                    logger,
-                                                                                    cancellationToken
-                                                                                );
+            // https://devblogs.microsoft.com/nuget/improved-search-syntax/
+
+            results = await resource.SearchAsync
+                                            (
+                                                keyword,
+                                                search_filter,
+                                                skip: 0,
+                                                take: 1000,
+                                                logger,
+                                                cancellationToken
+                                            );
 
             IEnumerable<IPackageSearchMetadata> results_filtered = null;
             results_filtered =
@@ -93,20 +97,17 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                                     string nuget_id
                                                 )
         {
-            FindPackageByIdResource resource = await repository.GetResourceAsync<FindPackageByIdResource>();
+            FindPackageByIdResource resource = null;
+            IEnumerable<NuGetVersion> versions = null;
 
-            IEnumerable<NuGetVersion> versions = await resource.GetAllVersionsAsync
-                                                                            (
-                                                                                nuget_id,
-                                                                                cache,
-                                                                                logger,
-                                                                                cancellationToken
-                                                                            );
-
-            foreach (NuGetVersion version in versions)
-            {
-                Console.WriteLine($"Found version {version}");
-            }
+            resource = await repository.GetResourceAsync<FindPackageByIdResource>();
+            versions = await resource.GetAllVersionsAsync
+                                                (
+                                                    nuget_id,
+                                                    cache,
+                                                    logger,
+                                                    cancellationToken
+                                                );
 
             return versions;
         }
@@ -122,20 +123,25 @@ namespace HolisticWare.Xamarin.Tools.NuGet
             Task<IEnumerable<IPackageSearchMetadata>>
                                         GetPackageMetadataAsync
                                                 (
-                                                    string nuget_id
+                                                    string nuget_id,
+                                                    bool include_prerelease = true,
+                                                    bool include_unlisted = true
                                                 )
         {
-            PackageMetadataResource resource = await repository.GetResourceAsync<PackageMetadataResource>();
+            PackageMetadataResource resource = null;
+            IEnumerable<IPackageSearchMetadata> packages = null;
 
-            IEnumerable<IPackageSearchMetadata> packages = await resource.GetMetadataAsync
-                                                                                (
-                                                                                    nuget_id,
-                                                                                    includePrerelease: true,
-                                                                                    includeUnlisted: false,
-                                                                                    cache,
-                                                                                    logger,
-                                                                                    cancellationToken
-                                                                                );
+            resource = await repository.GetResourceAsync<PackageMetadataResource>();
+
+            packages = await resource.GetMetadataAsync
+                                            (
+                                                nuget_id,
+                                                includePrerelease: include_prerelease,
+                                                includeUnlisted: include_unlisted,
+                                                cache,
+                                                logger,
+                                                cancellationToken
+                                            );
 
             return packages;
         }

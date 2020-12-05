@@ -1,13 +1,16 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HolisticWare.Xamarin.Tools.NuGet;
+
 using NuGet.Protocol.Core.Types;
-using System;
+using global::NuGet.Packaging;
+
+using HolisticWare.Xamarin.Tools.NuGet;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.BindEx
 {
-    public class ArtifactBindingNugetData
+    public partial class ArtifactBindingNugetData
     {
         public ArtifactBindingNugetData()
         {
@@ -55,7 +58,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 
         public async
             Task<IEnumerable<IPackageSearchMetadata>>
-                            SearchPackagesByKeywordAsync
+                            SearchPackagesByKeywordWithFilterAsync
                                                 (
                                                     string keyword,
                                                     SearchFilter search_filter,
@@ -74,7 +77,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                                                             );
             search_result_filtered =
                 from IPackageSearchMetadata psm in search_result
-                where filter(psm)
+                where
+                    FilterByTargetFrameworkAsync(psm, "MonoAndroid").Result
+                    &&
+                    filter(psm)
                 select psm;
 
             this.NuGetPackagesFound = search_result_filtered;
@@ -82,14 +88,66 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             return search_result_filtered;
         }
 
-        public bool FilterByNuGetId
+        public
+            bool
+                            FilterByNuGetId
                                                 (
-                                                    IPackageSearchMetadata package_metadata
+                                                    IPackageSearchMetadata pms
                                                 )
         {
             return
-                package_metadata.Identity.Id == this.IdNuGet
+                pms.Identity.Id == this.IdNuGet
                 ;
+        }
+
+        public async
+            Task<bool>
+                            FilterByTargetFrameworkAsync
+                                                (
+                                                    IPackageSearchMetadata pms,
+                                                    string target_framework = "MonoAndroid"
+                                                )
+        {
+            bool result = false;
+
+            if (pms.DependencySets.Count() == 0)
+            {
+                IEnumerable<IPackageSearchMetadata> search_result = null;
+                search_result = await nuget_client.GetPackageMetadataAsync
+                                                                (
+                                                                    pms.Identity.Id
+                                                                );
+
+                foreach (IPackageSearchMetadata psm_tf in search_result)
+                {
+                    foreach (PackageDependencyGroup tf in psm_tf.DependencySets)
+                    {
+                        if (tf.TargetFramework.Framework == target_framework)
+                        {
+                            result = true;
+                            break;
+                        }
+                    }
+
+                    if (result == true)
+                    {
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                foreach (PackageDependencyGroup tf in pms.DependencySets)
+                {
+                    if (tf.TargetFramework.Framework == target_framework)
+                    {
+                        result = true;
+                        break;
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }
