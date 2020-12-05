@@ -102,7 +102,7 @@ namespace UnitTests.MavenClientAPI
 
             mrd.InitializeAsync().Wait();
 
-            mrd.Save().Wait();
+            mrd.SaveAsync().Wait();
 
             #if MSTEST
             Assert.IsNotNull(mrd);

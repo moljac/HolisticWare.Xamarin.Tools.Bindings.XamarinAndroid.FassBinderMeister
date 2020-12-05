@@ -63,6 +63,7 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
 using System.Collections.Generic;
+using System.Linq;
 
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.BindEx;
 
@@ -96,7 +97,7 @@ namespace UnitTests.FassBinderMeister.BindEx
             };
 
             IEnumerable<global::NuGet.Protocol.Core.Types.IPackageSearchMetadata> result = null;
-            result = abnd.SearchPackagesByKeywordAsync
+            result = abnd.SearchPackagesByKeywordWithFilterAsync
                             (
                                 abnd.Id,
                                 new global::NuGet.Protocol.Core.Types.SearchFilter
@@ -122,13 +123,18 @@ namespace UnitTests.FassBinderMeister.BindEx
                                 }
                             )
                             .Result;
-            
+
+            List<global::NuGet.Protocol.Core.Types.IPackageSearchMetadata> l = result.ToList();
+
             #if MSTEST
             Assert.IsNotNull(abnd);
+            Assert.IsNotNull(result);
             #elif NUNIT
             Assert.NotNull(abnd);
+            Assert.NotNull(result);
             #elif XUNIT
             Assert.NotNull(abnd);
+            Assert.NotNull(result);
             #endif
 
             return;
