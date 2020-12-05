@@ -22,7 +22,11 @@ HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 
 ## NuGet Client API
 
-*   
+*   https://docs.microsoft.com/en-us/nuget/reference/nuget-client-sdk
+
+*   https://github.com/NuGet/NuGet.Client
+
+*   https://github.com/nuget/home/issues
 
 ## Maven 
 
