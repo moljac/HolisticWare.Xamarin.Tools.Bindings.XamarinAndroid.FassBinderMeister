@@ -115,6 +115,8 @@ namespace UnitTests.FassBinderMeister.BindEx
 
             string content = a.DownloadArtifactMetadata().Result;
 
+            a.SaveAsync().Wait();
+
             #if MSTEST
             Assert.IsNotNull(a);
             Assert.IsNotNull(content);
@@ -143,6 +145,8 @@ namespace UnitTests.FassBinderMeister.BindEx
             };
 
             string content = a.DownloadProjectObjectModelPOM().Result;
+
+            a.SaveAsync().Wait();
 
             #if MSTEST
             Assert.IsNotNull(a);

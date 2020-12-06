@@ -100,10 +100,16 @@ namespace UnitTests.FassBinderMeister.BindEx
             result = abnd.SearchPackagesByKeywordWithFilterAsync
                             (
                                 abnd.Id,
+                                // null,
                                 new global::NuGet.Protocol.Core.Types.SearchFilter
                                                                         (
                                                                             includePrerelease: true
                                                                         ),
+                                skip: 0,
+                                take: 100,
+                                // default (for null) predicates:
+                                // 
+                                // custom predicate:
                                 psm =>
                                 {
                                     return
