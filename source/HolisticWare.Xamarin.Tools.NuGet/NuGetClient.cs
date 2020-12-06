@@ -45,11 +45,22 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                         SearchPackagesByKeywordAsync
                                                 (
                                                     string keyword,
-                                                    SearchFilter search_filter,
+                                                    SearchFilter search_filter = null,
+                                                    int skip = 0,
+                                                    int take = 100,
                                                     // Func<IPackageSearchMetadata, bool> filter
-                                                    Predicate<IPackageSearchMetadata> filter
+                                                    Predicate<IPackageSearchMetadata> filter = null
                                                 )
         {
+            if (null == search_filter)
+            {
+                search_filter = new SearchFilter(true);
+            }
+
+            if (null == filter)
+            {
+            }
+
             PackageSearchResource resource = null;
             IEnumerable<IPackageSearchMetadata> results = null;
 

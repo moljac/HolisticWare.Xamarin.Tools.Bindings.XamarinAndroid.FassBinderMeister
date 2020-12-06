@@ -61,18 +61,32 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                             SearchPackagesByKeywordWithFilterAsync
                                                 (
                                                     string keyword,
-                                                    SearchFilter search_filter,
+                                                    SearchFilter search_filter = null,
+                                                    int skip = 0,
+                                                    int take = 100,
                                                     // Func<IPackageSearchMetadata, bool> filter
-                                                    Predicate<IPackageSearchMetadata> filter
+                                                    Predicate<IPackageSearchMetadata> filter = null
                                                 )
         {
+            if (null == search_filter)
+            {
+                search_filter = new SearchFilter(true);
+            }
+
+            if (null == filter)
+            {
+            }
+
             IEnumerable<IPackageSearchMetadata> search_result = null;
             IEnumerable<IPackageSearchMetadata> search_result_filtered = null;
+
 
             search_result = await nuget_client.SearchPackagesByKeywordAsync
                                                             (
                                                                 this.Id,
                                                                 search_filter,
+                                                                skip,
+                                                                take,
                                                                 filter
                                                             );
             search_result_filtered =
