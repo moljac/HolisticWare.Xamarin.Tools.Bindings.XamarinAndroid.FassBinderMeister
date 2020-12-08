@@ -10,45 +10,30 @@ using HolisticWare.Xamarin.Tools.NuGet;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.BindEx
 {
-    public partial class ArtifactBindingNugetData
+    public partial class ArtifactBindingNuget
     {
-        public ArtifactBindingNugetData()
+        public ArtifactBindingNuget()
         {
             nuget_client = new NuGetClient();
 
             return;
         }
 
-        public ArtifactBindingNugetData(string id_group, string id_artifact)
+        public ArtifactBindingNuget(string id_group, string id_artifact)
             : this()
         {
-            this.Id = id_artifact;
-            this.IdGroup = id_group;
-
             nuget_client = new NuGetClient();
 
             return;
         }
 
-        public string Id
+        public string NuGetId
         {
             get;
             set;
         }
 
-        public string IdGroup
-        {
-            get;
-            set;
-        }
-
-        public string IdNuGet
-        {
-            get;
-            set;
-        }
-
-        public IEnumerable<IPackageSearchMetadata> NuGetPackagesFound
+        public List<IPackageSearchMetadata> NuGetPackagesSearchResults
         {
             get;
             set;
@@ -83,7 +68,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 
             search_result = await nuget_client.SearchPackagesByKeywordAsync
                                                             (
-                                                                this.Id,
+                                                                this.NuGetId,
                                                                 search_filter,
                                                                 skip,
                                                                 take,
@@ -97,7 +82,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                     filter(psm)
                 select psm;
 
-            this.NuGetPackagesFound = search_result_filtered;
+            this.NuGetPackagesSearchResults = search_result_filtered.ToList();
 
             return search_result_filtered;
         }
@@ -110,7 +95,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                                                 )
         {
             return
-                pms.Identity.Id == this.IdNuGet
+                pms.Identity.Id == this.NuGetId
                 ;
         }
 
@@ -163,5 +148,36 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 
             return result;
         }
+
+        public async
+            Task
+                            SaveAsync
+                                        (
+                                            string format = "json"
+                                        )
+        {
+            string content = null;
+
+            switch (format)
+            {
+                case "json":
+                default:
+                    content = this.SerializeToJSON_Newtonsoft();
+                    break;
+            }
+
+            string type_name = this.GetType().FullName;
+            string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmmss.ff");
+            string filename = $"{type_name}-{timestamp}.{format}";
+            //System.IO.File.WriteAllText(filename, content);
+            using (System.IO.StreamWriter writer = System.IO.File.CreateText(filename))
+            {
+                await writer.WriteAsync(content);
+            }
+
+            return;
+        }
+
+
     }
 }

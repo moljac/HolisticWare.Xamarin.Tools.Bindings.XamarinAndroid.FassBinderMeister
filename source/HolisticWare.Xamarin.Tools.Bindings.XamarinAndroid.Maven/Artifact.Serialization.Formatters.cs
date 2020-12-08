@@ -1,42 +1,52 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
-namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.Serialization.Formatters
+namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
+//namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.Serialization.Formatters
 {
-    /// <summary>
-    /// Artifact Buddy Class
-    /// </summary>
-    public class Artifact
+
+    internal class OrderedContractResolver
+        :
+        Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver
+        // Newtonsoft.Json.Serialization.DefaultContractResolver
     {
-        [Newtonsoft.Json.JsonProperty("id", Order = 1)]
-        [System.Text.Json.Serialization.JsonPropertyName("id")]
-        // System.Text.Json.Serialization.Json
-        //  does not hve Order Property
-        // https://stackoverflow.com/questions/59134564/net-core-3-order-of-serialization-for-jsonpropertyname-system-text-json-seria
-        [System.Xml.Serialization.XmlElement
-                                        (
-                                            ElementName = "id",
-                                            Namespace = "http://holisticware.net"
-                                        )
-        ]
-        public string Id
+        private IList<string> properties_to_serialize = null;
+
+        public OrderedContractResolver(IList<string> list)
         {
-            get;
-            set;
+            properties_to_serialize = list;
         }
 
-        [Newtonsoft.Json.JsonProperty("dependencies")]
-        [System.Text.Json.Serialization.JsonPropertyName("dependencies")]
-        [System.Xml.Serialization.XmlElement
-                                        (
-                                            ElementName = "dependencies",
-                                            Namespace = "http://holisticware.net"
-                                        )
-        ]
-        public List<Artifact> Dependencies
+        protected override
+            IList<Newtonsoft.Json.Serialization.JsonProperty>
+                                    CreateProperties
+                                            (
+                                                System.Type t,
+                                                Newtonsoft.Json.MemberSerialization ms
+                                            )
         {
-            get;
-            set;
+            if (t.Name.Contains("ArtifactSerializationMetadata"))
+            {
+
+            }
+            IList<Newtonsoft.Json.Serialization.JsonProperty> properties = null;
+            properties = base.CreateProperties(t, ms);
+
+            var p2 = properties.Where(p => properties_to_serialize.Contains(p.PropertyName));
+
+            var p3 = p2.ToList();
+
+            foreach (Newtonsoft.Json.Serialization.JsonProperty prop in properties)
+            {
+                prop.Order = properties_to_serialize.IndexOf(prop.PropertyName) + 1;
+            }
+
+            var list_ordered = properties.OrderBy(p => p.Order).ToList();
+
+
+            return list_ordered;
         }
     }
+
 }
 

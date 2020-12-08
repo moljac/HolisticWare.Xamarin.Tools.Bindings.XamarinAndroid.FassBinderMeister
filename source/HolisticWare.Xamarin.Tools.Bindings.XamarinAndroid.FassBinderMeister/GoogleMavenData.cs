@@ -104,8 +104,9 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
                     break;
             }
 
+            string type_name = this.GetType().Name;
             string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmm");
-            string filename = $"maven-repo-data-{timestamp}.{format}";
+            string filename = $"{type_name}-{timestamp}.{format}";
             //System.IO.File.WriteAllText(filename, content);
             using (System.IO.StreamWriter writer = System.IO.File.CreateText(filename))
             {
@@ -273,6 +274,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
                                                                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                                                                 }
                                                             );
+
                 File.WriteAllText(filename_google_repo, content_json_google_repo);
             }
 

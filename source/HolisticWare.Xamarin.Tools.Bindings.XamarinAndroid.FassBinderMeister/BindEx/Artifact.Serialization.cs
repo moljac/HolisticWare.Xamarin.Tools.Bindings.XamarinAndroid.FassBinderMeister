@@ -8,7 +8,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
         // Microsoft.AspNetCore.Mvc.ModelMetadataType
         Core.Serialization.ModelMetadataType
         (
-            typeof(Serialization.Formatters.Artifact)
+            typeof(ArtifactSerializationMetadata)
         )
     ]
     public partial class Artifact
@@ -20,7 +20,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 
         public static string SerializeToJSON_Newtonsoft(Artifact artifact)
         {
-            string content = Newtonsoft.Json.JsonConvert.SerializeObject(artifact);
+            string content = Newtonsoft.Json.JsonConvert.SerializeObject
+                                                            (
+                                                                artifact,
+                                                                Newtonsoft.Json.Formatting.Indented
+                                                            );
 
             return content;
         }
@@ -35,10 +39,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             string content = System.Text.Json.JsonSerializer.Serialize<Artifact>
                                                                     (
                                                                         artifact,
-                                                                        null
+                                                                        new System.Text.Json.JsonSerializerOptions
+                                                                        {
+                                                                            WriteIndented = true
+                                                                        }                                                                        
                                                                     );
-            string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmm");
-            System.IO.File.WriteAllText($"maven-repo-data-{timestamp}", content);
 
             return content;
         }

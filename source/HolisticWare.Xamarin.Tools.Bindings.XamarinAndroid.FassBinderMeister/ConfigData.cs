@@ -21,7 +21,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
             string[] directories = System.IO.Directory.GetDirectories(this.CachePathPattern.Replace("PROJECT", project));
             List<string> configs_strings = new List<string>();
 
-
             return configs_strings;
         }
     }

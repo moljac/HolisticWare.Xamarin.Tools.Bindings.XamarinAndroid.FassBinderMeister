@@ -69,7 +69,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                 Console.WriteLine("Message :{0} ", e.Message);
             }
 
-            return ParseArtifactNamesAndVersionsFromXML(response_string_xml);
+            IEnumerable<(string name, string[] versions)> result = null;
+            result = ParseArtifactNamesAndVersionsFromXML(response_string_xml);
+
+            return result;
         }
 
         public
@@ -107,7 +110,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             {
                 Artifact a = new Artifact
                                     {
-                                        Id = at.name,
+                                        ArtifactId = at.name,
                                         VersionsTextual = (at.versions).ToList(),
                                         Versions = Artifact.GetVersions(at.versions)
                                                                 .ToList()

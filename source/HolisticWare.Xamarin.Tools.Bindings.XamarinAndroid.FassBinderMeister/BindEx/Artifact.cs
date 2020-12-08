@@ -13,7 +13,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
         public Artifact()
             : base()
         {
-            this.ArtifactBindingNugetData = new ArtifactBindingNugetData();
+            this.ArtifactBindingNuget = new ArtifactBindingNuget();
 
             return;
         }
@@ -32,11 +32,15 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             return;
         }
 
-        public ArtifactBindingNugetData ArtifactBindingNugetData
+        public ArtifactBindingNuget ArtifactBindingNuget
         {
             get;
             set;
         }
+
+
+
+
 
         public async
             Task
@@ -55,8 +59,9 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                     break;
             }
 
-            string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmm");
-            string filename = $"maven-repo-data-{timestamp}.{format}";
+            string type_name = this.GetType().FullName;
+            string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmmssmm");
+            string filename = $"{type_name}-{timestamp}.{format}";
             //System.IO.File.WriteAllText(filename, content);
             using (System.IO.StreamWriter writer = System.IO.File.CreateText(filename))
             {

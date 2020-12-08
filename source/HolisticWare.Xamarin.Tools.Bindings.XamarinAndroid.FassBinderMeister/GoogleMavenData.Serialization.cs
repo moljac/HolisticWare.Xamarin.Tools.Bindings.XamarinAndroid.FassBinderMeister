@@ -42,8 +42,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
                                                                         GoogleMavenData,
                                                                         null
                                                                     );
+            string type_name = GoogleMavenData.GetType().Name;
             string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmm");
-            System.IO.File.WriteAllText($"maven-repo-data-{timestamp}", content);
+            string filename = $"{type_name}-{timestamp}.json";
+            System.IO.File.WriteAllText(filename, content);
 
             return content;
         }

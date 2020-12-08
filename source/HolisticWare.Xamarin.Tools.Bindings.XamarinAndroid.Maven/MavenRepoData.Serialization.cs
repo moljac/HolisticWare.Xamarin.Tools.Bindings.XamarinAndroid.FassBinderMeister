@@ -39,8 +39,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                                                                         maven_repo_data,
                                                                         null
                                                                     );
+            string type_name = maven_repo_data.GetType().Name;
             string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmm");
-            System.IO.File.WriteAllText($"maven-repo-data-{timestamp}", content);
+            string filename = $"{type_name}-{timestamp}.json";
+            System.IO.File.WriteAllText(filename, content);
 
             return content;
         }
