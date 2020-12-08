@@ -70,12 +70,12 @@ using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.BindE
 namespace UnitTests.FassBinderMeister.BindEx
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_ArtifactBindingNugetData
+    public partial class Test_ArtifactBindingNuget
     {
         [Test]
-        public void Test_Maven_Google_ArtifactBindingNugetData_Ctor_01()
+        public void Test_Maven_Google_ArtifactBindingNuget_Ctor_01()
         {
-            ArtifactBindingNugetData abnd = new ArtifactBindingNugetData("androidx.car", "car");
+            ArtifactBindingNuget abnd = new ArtifactBindingNuget("androidx.car", "car");
 
             #if MSTEST
             Assert.IsNotNull(abnd);
@@ -89,17 +89,17 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_Maven_Google_ArtifactBindingNugetData_SearchPackagesByKeywordAsync()
+        public void Test_Maven_Google_ArtifactBindingNuget_SearchPackagesByKeywordAsync()
         {
-            ArtifactBindingNugetData abnd = new ArtifactBindingNugetData("androidx.car", "car")
+            ArtifactBindingNuget abnd = new ArtifactBindingNuget("androidx.car", "car")
             {
-                IdNuGet = "Xamarin.AndroidX.Car.Car"
+                NuGetId = "Xamarin.AndroidX.Car.Car"
             };
 
             IEnumerable<global::NuGet.Protocol.Core.Types.IPackageSearchMetadata> result = null;
             result = abnd.SearchPackagesByKeywordWithFilterAsync
                             (
-                                abnd.Id,
+                                abnd.NuGetId,
                                 // null,
                                 new global::NuGet.Protocol.Core.Types.SearchFilter
                                                                         (
@@ -131,6 +131,10 @@ namespace UnitTests.FassBinderMeister.BindEx
                             .Result;
 
             List<global::NuGet.Protocol.Core.Types.IPackageSearchMetadata> l = result.ToList();
+
+            abnd.NuGetPackagesSearchResults = l;
+
+            abnd.SaveAsync().Wait();
 
             #if MSTEST
             Assert.IsNotNull(abnd);
