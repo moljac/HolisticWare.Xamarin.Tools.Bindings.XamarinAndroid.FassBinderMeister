@@ -15,7 +15,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
     {
         public Artifact()
         {
-
             return;
         }
 

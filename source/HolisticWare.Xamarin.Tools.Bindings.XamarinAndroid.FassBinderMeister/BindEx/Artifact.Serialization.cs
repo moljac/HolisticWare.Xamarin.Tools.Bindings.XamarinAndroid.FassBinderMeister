@@ -3,14 +3,6 @@ using System;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.BindEx
 {
-    // POCO class with Metadata for Buddy Class containing attributes
-    [
-        // Microsoft.AspNetCore.Mvc.ModelMetadataType
-        Core.Serialization.ModelMetadataType
-        (
-            typeof(ArtifactSerializationMetadata)
-        )
-    ]
     public partial class Artifact
     {
         public static new Artifact DeserializeFromJSON_Newtonsoft(string json)

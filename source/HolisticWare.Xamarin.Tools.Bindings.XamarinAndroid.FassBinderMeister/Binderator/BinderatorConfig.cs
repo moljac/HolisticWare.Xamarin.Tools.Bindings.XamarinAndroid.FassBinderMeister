@@ -64,7 +64,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 {
                     foreach (ConfigRoot cr in tag_content.config_object)
                     {
-                        foreach (Artifact a in cr.Artifacts)
+                        foreach (QuickType.Artifact a in cr.Artifacts)
                         {
                             string artifact_id = a.ArtifactId;
                             string artifact_id_version = a.Version;

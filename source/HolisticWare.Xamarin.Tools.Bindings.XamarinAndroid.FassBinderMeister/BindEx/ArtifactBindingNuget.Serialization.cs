@@ -10,56 +10,8 @@ using HolisticWare.Xamarin.Tools.NuGet;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.BindEx
 {
-    // POCO class with Metadata for Buddy Class containing attributes
-    [
-        // Microsoft.AspNetCore.Mvc.ModelMetadataType
-        Core.Serialization.ModelMetadataType
-        (
-            typeof(ArtifactBindingNugetSerializationMetadata)
-        )
-    ]
     public partial class ArtifactBindingNuget
     {
-        public partial class ArtifactBindingNugetSerializationMetadata
-        {
-            [Newtonsoft.Json.JsonProperty("nugetId")]
-            [System.Text.Json.Serialization.JsonPropertyName("nugetId")]
-            // System.Text.Json.Serialization.Json
-            //  does not hve Order Property
-            // https://stackoverflow.com/questions/59134564/net-core-3-order-of-serialization-for-jsonpropertyname-system-text-json-seria
-            [System.Xml.Serialization.XmlElement
-                                            (
-                                                ElementName = "nugetId",
-                                                Namespace = "http://holisticware.net"
-                                            )
-            ]
-            public string NuGetId
-            {
-                get;
-                set;
-            }
-
-            [Newtonsoft.Json.JsonProperty("nugetPackagesSearchResults")]
-            [System.Text.Json.Serialization.JsonPropertyName("nugetPackagesSearchResults")]
-            // System.Text.Json.Serialization.Json
-            //  does not hve Order Property
-            // https://stackoverflow.com/questions/59134564/net-core-3-order-of-serialization-for-jsonpropertyname-system-text-json-seria
-            [System.Xml.Serialization.XmlElement
-                                            (
-                                                ElementName = "nugetPackagesSearchResults",
-                                                Namespace = "http://holisticware.net"
-                                            )
-            ]
-            public List<IPackageSearchMetadata> NuGetPackagesSearchResults
-            {
-                get;
-                set;
-            }
-        }
-
-
-
-
         public
             Artifact DeserializeFromJSON_Newtonsoft(string json)
         {
