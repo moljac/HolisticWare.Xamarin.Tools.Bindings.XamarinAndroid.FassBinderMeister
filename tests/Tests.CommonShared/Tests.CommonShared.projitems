@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MavenRepoData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\ArtifactBindingNugetData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Binderator.Artifact\Artifact.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
@@ -32,5 +33,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)NuGetClientAPI\" />
     <Folder Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\" />
     <Folder Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Binderator.Artifact\" />
   </ItemGroup>
 </Project>

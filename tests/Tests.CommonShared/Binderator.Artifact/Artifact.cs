@@ -232,7 +232,7 @@ namespace UnitTests.Binderator.Artifacts
             string type_name = this.GetType().Name;
             string timestamp = System.DateTime.Now.ToString("yyyyMMdd-HHmmssff");
 
-            a.SaveAsync($"Artifact-{timestamp}.newtonsoft.json").Wait();
+            a.SaveAsync($"Artifact-{timestamp}.newtonsoft-json.json").Wait();
 
             #if MSTEST
             Assert.IsNotNull(a);
@@ -272,7 +272,7 @@ namespace UnitTests.Binderator.Artifacts
         }
 
         [Test]
-        public void Test_Binderator_Artifact_SaveAsync_Protobuffers()
+        public void Test_Binderator_Artifact_SaveAsync_XML()
         {
             Artifact a = new Artifact
             {
@@ -281,11 +281,10 @@ namespace UnitTests.Binderator.Artifacts
                 Version = "1.0.0-alpha5"
             };
 
-            using (var file = System.IO.File.Create("artfact.proto.bin"))
-            {
-                ProtoBuf.Serializer.Serialize(file, a);
-            }
-            a.SaveAsync().Wait();
+            string type_name = this.GetType().Name;
+            string timestamp = System.DateTime.Now.ToString("yyyyMMdd-HHmmssff");
+
+            a.SaveAsync($"Artifact-{timestamp}.xml").Wait();
 
             #if MSTEST
             Assert.IsNotNull(a);
@@ -298,5 +297,54 @@ namespace UnitTests.Binderator.Artifacts
             return;
         }
 
+        [Test]
+        public void Test_Binderator_Artifact_SaveAsync_Binary_Protobuffers()
+        {
+            Artifact a = new Artifact
+            {
+                GroupId = "androidx.car",
+                ArtifactId = "car",
+                Version = "1.0.0-alpha5"
+            };
+
+            string type_name = this.GetType().Name;
+            string timestamp = System.DateTime.Now.ToString("yyyyMMdd-HHmmssff");
+            a.SaveAsync($"Artifact-{timestamp}.protobuf-net.bin").Wait();
+
+            #if MSTEST
+            Assert.IsNotNull(a);
+            #elif NUNIT
+            Assert.NotNull(a);
+            #elif XUNIT
+            Assert.NotNull(a);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Binderator_Artifact_SaveAsync_Binary_System_Runtime_Serialization()
+        {
+            Artifact a = new Artifact
+            {
+                GroupId = "androidx.car",
+                ArtifactId = "car",
+                Version = "1.0.0-alpha5"
+            };
+
+            string type_name = this.GetType().Name;
+            string timestamp = System.DateTime.Now.ToString("yyyyMMdd-HHmmssff");
+            a.SaveAsync($"Artifact-{timestamp}.system-runtime-serialization.bin").Wait();
+
+            #if MSTEST
+            Assert.IsNotNull(a);
+            #elif NUNIT
+            Assert.NotNull(a);
+            #elif XUNIT
+            Assert.NotNull(a);
+            #endif
+
+            return;
+        }
     }
 }

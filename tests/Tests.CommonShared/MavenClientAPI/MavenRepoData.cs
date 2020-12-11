@@ -78,7 +78,7 @@ namespace UnitTests.MavenClientAPI
         [Test]
         public void Test_Maven_Google_MavenRepoData_InitializeAsync()
         {
-            MavenRepoData mrd = new MavenRepoData();
+            MavenRepository mrd = new MavenRepository();
 
 
             mrd.InitializeAsync().Wait();
@@ -97,8 +97,7 @@ namespace UnitTests.MavenClientAPI
         [Test]
         public void Test_Maven_Google_MavenRepoData_Save()
         {
-            MavenRepoData mrd = new MavenRepoData();
-
+            MavenRepository mrd = new MavenRepository();
 
             mrd.InitializeAsync().Wait();
 
