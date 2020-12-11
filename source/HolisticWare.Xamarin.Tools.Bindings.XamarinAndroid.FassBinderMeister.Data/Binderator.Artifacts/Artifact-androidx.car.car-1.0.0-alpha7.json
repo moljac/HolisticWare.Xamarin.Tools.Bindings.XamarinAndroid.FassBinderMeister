@@ -1,0 +1,8 @@
+﻿{
+  "groupId": "androidx.car",
+  "artifactId": "car",
+  "version": "1.0.0-alpha7",
+  "nugetVersion": "1.0.0.3-alpha7",
+  "nugetId": "Xamarin.AndroidX.Car.Car",
+  "dependencyOnly": false
+}

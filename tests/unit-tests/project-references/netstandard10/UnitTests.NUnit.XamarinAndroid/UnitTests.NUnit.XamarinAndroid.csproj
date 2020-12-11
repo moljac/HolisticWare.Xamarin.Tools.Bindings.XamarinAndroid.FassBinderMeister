@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>UnitTests.NUnit.XamarinAndroid</RootNamespace>
     <AssemblyName>UnitTests.NUnit.XamarinAndroid</AssemblyName>
-    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -86,9 +86,9 @@
       <Project>{4036f62e-0833-42f1-8976-bc1cb3dd37a5}</Project>
       <Name>HolisticWare.Xamarin.Tools.NuGet</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj">
-      <Project>{A027ED7D-FDC8-4A52-908F-3640133CAA41}</Project>
-      <Name>HolisticWare.Xamarin.Tools.Maven</Name>
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj">
+      <Project>{DE08CDA6-AFAA-4724-A5F0-9D2B500F5A2D}</Project>
+      <Name>HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

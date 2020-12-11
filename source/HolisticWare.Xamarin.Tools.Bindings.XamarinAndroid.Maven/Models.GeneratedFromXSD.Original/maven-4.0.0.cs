@@ -23,7 +23,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.ModelsFromOff
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://maven.apache.org/POM/4.0.0")]
     [System.Xml.Serialization.XmlRootAttribute("project", Namespace="http://maven.apache.org/POM/4.0.0", IsNullable=false)]
-    public partial class Model {
+    public partial class ProjectObjectModel // Model
+    {
         
         private string modelVersionField;
         
@@ -87,7 +88,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.ModelsFromOff
         
         private string childprojecturlinheritappendpathField;
         
-        public Model() {
+        public ProjectObjectModel /* Model */() {
             this.packagingField = "jar";
         }
         

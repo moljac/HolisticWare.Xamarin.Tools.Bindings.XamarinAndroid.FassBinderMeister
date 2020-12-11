@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.Models.GeneratedFromXML.Original;
 
@@ -14,14 +15,13 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
     {
         public Artifact()
         {
-
             return;
         }
 
         public Artifact(string id_group, string id_artifact)
         {
-            this.IdGroup = id_group;
-            this.Id = id_artifact;
+            this.GroupId = id_group;
+            this.ArtifactId = id_artifact;
 
             return;
         }
@@ -30,19 +30,20 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
         {
             int idx = id_fully_qualified.LastIndexOf('.');
 
-            this.IdGroup = id_fully_qualified.Substring(0, idx);
-            this.Id = id_fully_qualified.Substring(idx + 1, id_fully_qualified.Length - (idx + 1));
+            this.GroupId = id_fully_qualified.Substring(0, idx);
+            this.ArtifactId = id_fully_qualified.Substring(idx + 1, id_fully_qualified.Length - (idx + 1));
 
             return;
         }
 
-        public string Id
+       
+        public string GroupId
         {
             get;
             set;
         }
 
-        public string IdGroup
+        public string ArtifactId
         {
             get;
             set;
@@ -52,7 +53,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
         {
             get
             {
-                return string.Concat(this.IdGroup, ".", this.Id);
+                return string.Concat(this.GroupId, ".", this.ArtifactId);
             }
             set
             {
@@ -71,6 +72,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             set;
         }
 
+        public GroupIndex GroupIndex
+        {
+            get;
+            set;
+        }
+
         public List<string> VersionsTextual
         {
             get;
@@ -83,6 +90,18 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             set;
         }
 
+        public string ProjectObjectModelTextual
+        {
+            get;
+            set;
+        }
+
+        public ModelsFromOfficialXSD.ProjectObjectModel ProjectObjectModel
+        {
+            get;
+            set;
+        }
+
         public List<Artifact> Dependencies
         {
             get;
@@ -90,6 +109,35 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
         }
 
 
+
+
+
+        public async
+            Task<List<string>>
+                                        GetVersionsFromGroupIndexAsync
+                                                (
+                                                )
+        {
+            GroupIndex gi = new GroupIndex(this.GroupId);
+
+            IEnumerable<(string name, string[] versions)> artifacts_and_versions = null;
+
+            artifacts_and_versions = await gi.GetArtifactNamesAndVersionsAsync();
+
+            IEnumerable<string[]> artifact_versions_filtered = null;
+
+            artifact_versions_filtered = 
+                                from (string name, string[] versions) av in artifacts_and_versions
+                                    where av.name == this.ArtifactId 
+                                    select av.versions
+                                ;
+
+            List<string> result = artifact_versions_filtered.FirstOrDefault().Reverse().ToList();
+
+            this.VersionsTextual = result;
+
+            return result;
+        }
 
 
         public static
@@ -155,7 +203,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                                             (
                                             )
         {
-            string id = this.Id;
+            string id = this.ArtifactId;
             string idfq = this.IdFullyQualified.Replace(".", "/");
             string v = this.VersionTextual;
             string url = $"https://dl.google.com/android/maven2/{idfq}/{v}/{id}-{v}.pom";
@@ -177,8 +225,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             xs = new System.Xml.Serialization.XmlSerializer(typeof(ProjectObjectModel.Project));
             ProjectObjectModel.Project result;
 
-            string id_g = this.IdGroup;
-            string id_a = this.Id;
+            string id_g = this.GroupId;
+            string id_a = this.ArtifactId;
             System.IO.File.WriteAllText($"{id_g}.{id_a}-pom.xml", content);
 
             using (System.IO.TextReader tr = new System.IO.StringReader(content))
@@ -190,7 +238,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
         }
         
         public async
-            Task<ModelsFromOfficialXSD.Model>
+            Task<ModelsFromOfficialXSD.ProjectObjectModel>
                                     DeserializeProjectObjectModelPOMFromOfficialXSD
                                             (
                                             )
@@ -198,19 +246,47 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             string content = await DownloadProjectObjectModelPOM();
 
             System.Xml.Serialization.XmlSerializer xs = null;
-            xs = new System.Xml.Serialization.XmlSerializer(typeof(ModelsFromOfficialXSD.Model));
-            ModelsFromOfficialXSD.Model result;
-
-            string id_g = this.IdGroup;
-            string id_a = this.Id;
-            System.IO.File.WriteAllText($"{id_g}.{id_a}-pom.xml", content);
+            xs = new System.Xml.Serialization.XmlSerializer(typeof(ModelsFromOfficialXSD.ProjectObjectModel));
+            ModelsFromOfficialXSD.ProjectObjectModel result;
 
             using (System.IO.TextReader tr = new System.IO.StringReader(content))
             {
-                result = (ModelsFromOfficialXSD.Model)xs.Deserialize(tr);
+                result = (ModelsFromOfficialXSD.ProjectObjectModel)xs.Deserialize(tr);
             }
 
+            this.ProjectObjectModelTextual = content;
+            this.ProjectObjectModel = result;
+
             return result;
+        }
+
+        public async
+            Task
+                            SaveAsync
+                                        (
+                                            string format = "json"
+                                        )
+        {
+            string content = null;
+
+            switch (format)
+            {
+                case "json":
+                default:
+                    content = this.SerializeToJSON_Newtonsoft();
+                    break;
+            }
+
+            string type_name = this.GetType().FullName;
+            string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmmss.ff");
+            string filename = $"{type_name}-{timestamp}.{format}";
+            //System.IO.File.WriteAllText(filename, content);
+            using (System.IO.StreamWriter writer = System.IO.File.CreateText(filename))
+            {
+                await writer.WriteAsync(content);
+            }
+
+            return;
         }
 
     }

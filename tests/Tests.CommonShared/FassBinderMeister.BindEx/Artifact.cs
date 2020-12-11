@@ -76,6 +76,8 @@ namespace UnitTests.FassBinderMeister.BindEx
         {
             Artifact a = new Artifact("androidx.car", "car");
 
+            a.SaveAsync().Wait();
+
             #if MSTEST
             Assert.IsNotNull(a);
             #elif NUNIT
@@ -91,6 +93,8 @@ namespace UnitTests.FassBinderMeister.BindEx
         public void Test_Maven_Google_Artifact_Ctor_02()
         {
             Artifact a = new Artifact("androidx.car.car");
+
+            a.SaveAsync().Wait();
 
             #if MSTEST
             Assert.IsNotNull(a);
@@ -108,12 +112,14 @@ namespace UnitTests.FassBinderMeister.BindEx
         {
             Artifact a = new Artifact
             {
-                IdGroup = "androidx.car",
-                Id = "car",
+                GroupId = "androidx.car",
+                ArtifactId = "car",
                 VersionTextual = "1.0.0-alpha7"
             };
 
             string content = a.DownloadArtifactMetadata().Result;
+
+            a.SaveAsync().Wait();
 
             #if MSTEST
             Assert.IsNotNull(a);
@@ -137,12 +143,14 @@ namespace UnitTests.FassBinderMeister.BindEx
         {
             Artifact a = new Artifact
             {
-                IdGroup = "androidx.car",
-                Id = "car",
+                GroupId = "androidx.car",
+                ArtifactId = "car",
                 VersionTextual = "1.0.0-alpha7"
             };
 
             string content = a.DownloadProjectObjectModelPOM().Result;
+
+            a.SaveAsync().Wait();
 
             #if MSTEST
             Assert.IsNotNull(a);

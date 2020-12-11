@@ -63,11 +63,9 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
-using HolisticWare.Xamarin.Tools.Maven;
-using HolisticWare.Xamarin.Tools.Maven.Models.GeneratedFromXML;
-using HolisticWare.Xamarin.Tools.Maven.ModelsFromOfficialXSD;
-using HolisticWare.Xamarin.Tools.Maven.Models.GeneratedFromXML.Original;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven;
 
 namespace UnitTests.MavenClientAPI
 {
@@ -83,8 +81,10 @@ namespace UnitTests.MavenClientAPI
         {
             Artifact a = new Artifact
             {
-                Id = "androidx.car.car"                
+                ArtifactId = "androidx.car.car"                
             };
+
+            a.SaveAsync().Wait();
 
             #if MSTEST
             Assert.IsNotNull(a);
@@ -102,25 +102,50 @@ namespace UnitTests.MavenClientAPI
         {
             Artifact a = new Artifact
             {
-                IdGroup = "androidx.car",
-                Id = "car",
-                VersionTextual = "1.0.0-alpha7"
+                GroupId = "androidx.car",
+                ArtifactId = "car",
+                VersionTextual = "1.0.0-alpha5"
             };
 
             string content = a.DownloadArtifactMetadata().Result;
 
+            a.SaveAsync().Wait();
 
-
-#if MSTEST
+            #if MSTEST
             Assert.IsNotNull(a);
             Assert.IsNotNull(content);
-#elif NUNIT
+            #elif NUNIT
             Assert.NotNull(a);
             Assert.NotNull(content);
-#elif XUNIT
+            #elif XUNIT
             Assert.NotNull(a);
             Assert.NotNull(content);
-#endif
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Maven_Google_Artifact_GetVersionsFromGroupindexAsync()
+        {
+            Artifact a = new Artifact
+            {
+                GroupId = "androidx.car",
+                ArtifactId = "car",
+                VersionTextual = "1.0.0-alpha5"
+            };
+
+            List<string> versions = a.GetVersionsFromGroupIndexAsync().Result;
+
+            a.SaveAsync().Wait();
+
+            #if MSTEST
+            Assert.IsNotNull(a);
+            #elif NUNIT
+            Assert.NotNull(a);
+            #elif XUNIT
+            Assert.NotNull(a);
+            #endif
 
             return;
         }
@@ -130,23 +155,25 @@ namespace UnitTests.MavenClientAPI
         {
             Artifact a = new Artifact
             {
-                IdGroup = "androidx.car",
-                Id = "car",
-                VersionTextual = "1.0.0-alpha7"
+                GroupId = "androidx.car",
+                ArtifactId = "car",
+                VersionTextual = "1.0.0-alpha5"
             };
 
             string content = a.DownloadProjectObjectModelPOM().Result;
 
-#if MSTEST
+            a.SaveAsync().Wait();
+
+            #if MSTEST
             Assert.IsNotNull(a);
             Assert.IsNotNull(content);
-#elif NUNIT
+            #elif NUNIT
             Assert.NotNull(a);
             Assert.NotNull(content);
-#elif XUNIT
+            #elif XUNIT
             Assert.NotNull(a);
             Assert.NotNull(content);
-#endif
+            #endif
 
             return;
         }
@@ -156,12 +183,15 @@ namespace UnitTests.MavenClientAPI
         {
             Artifact a = new Artifact
             {
-                IdGroup = "androidx.car",
-                Id = "car",
-                VersionTextual = "1.0.0-alpha7"
+                GroupId = "androidx.car",
+                ArtifactId = "car",
+                VersionTextual = "1.0.0-alpha5"
             };
 
-            ProjectObjectModel.Project p = a.DeserializeProjectObjectModelPOM().Result;
+            HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.Models.GeneratedFromXML.Original.ProjectObjectModel.Project p = null;
+            p = a.DeserializeProjectObjectModelPOM().Result;
+
+            a.SaveAsync().Wait();
 
             #if MSTEST
             Assert.IsNotNull(a);
@@ -182,12 +212,15 @@ namespace UnitTests.MavenClientAPI
         {
             Artifact a = new Artifact
             {
-                IdGroup = "androidx.car",
-                Id = "car",
-                VersionTextual = "1.0.0-alpha7"
+                GroupId = "androidx.car",
+                ArtifactId = "car",
+                VersionTextual = "1.0.0-alpha5"
             };
 
-            Model p = a.DeserializeProjectObjectModelPOMFromOfficialXSD().Result;
+            HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.ModelsFromOfficialXSD.ProjectObjectModel p = null;
+            p= a.DeserializeProjectObjectModelPOMFromOfficialXSD().Result;
+
+            a.SaveAsync().Wait();
 
             #if MSTEST
             Assert.IsNotNull(a);
@@ -202,23 +235,6 @@ namespace UnitTests.MavenClientAPI
 
             return;
         }
-
-
-        /*
-            Serialization order:
-
-            "groupId": "androidx.activity",
-            "artifactId": "activity",
-            "version": "1.1.0",
-            "nugetVersion": "1.1.0.4",
-            "nugetId": "Xamarin.AndroidX.Activity",
-
-            "artifactIdVersions"
-            "artifactIdVersionLatest"
-            "nugetVersions"
-            "nugetVersionLatest"
-            "dependencies"
-         */
 
     }
 }

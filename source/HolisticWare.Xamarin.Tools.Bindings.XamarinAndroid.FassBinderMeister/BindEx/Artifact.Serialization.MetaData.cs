@@ -1,9 +1,11 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
-namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
+namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.BindEx
 {
+    /// <summary>
+    /// Artifact Buddy Class
+    /// </summary>
     // POCO class with Metadata for Buddy Class containing attributes
     [
         Microsoft.AspNetCore.Mvc.ModelMetadataType
@@ -16,8 +18,23 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
     ]
     public partial class Artifact
     {
-        public class ArtifactSerializationMetadata
+        public new class ArtifactSerializationMetadata
         {
+            /*
+                Serialization order:
+
+                "groupId": "androidx.activity",
+                "artifactId": "activity",
+                "version": "1.1.0",
+                "nugetVersion": "1.1.0.4",
+                "nugetId": "Xamarin.AndroidX.Activity",
+
+                "artifactIdVersions"
+                "artifactIdVersionLatest"
+                "nugetVersions"
+                "nugetVersionLatest"
+                "dependencies"
+             */
             [Newtonsoft.Json.JsonProperty("groupId")]
             [System.Text.Json.Serialization.JsonPropertyName("groupId")]
             // System.Text.Json.Serialization.Json
@@ -145,132 +162,72 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                                                 Namespace = "http://holisticware.net"
                                             )
             ]
-            public ModelsFromOfficialXSD.ProjectObjectModel ProjectObjectModel
+            public Maven.ModelsFromOfficialXSD.ProjectObjectModel ProjectObjectModel
             {
                 get;
                 set;
             }
 
 
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public
-            Artifact DeserializeFromJSON_Newtonsoft(string json)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Artifact>(json);
-        }
-
-        public
-            string SerializeToJSON_Newtonsoft()
-        {
-            /*
-                Serialization order:
-
-                "groupId": "androidx.activity",
-                "artifactId": "activity",
-                "version": "1.1.0",
-                "nugetVersion": "1.1.0.4",
-                "nugetId": "Xamarin.AndroidX.Activity",
-
-                "artifactIdVersions"
-                "artifactIdVersionLatest"
-                "nugetVersions"
-                "nugetVersionLatest"
-                "dependencies"
-             */
-            List<string> properties_to_serialize = new List<string>
+            [Newtonsoft.Json.JsonProperty("artifactBindingNuget")]
+            [System.Text.Json.Serialization.JsonPropertyName("artifactBindingNuget")]
+            [System.Xml.Serialization.XmlElement
+                                            (
+                                                ElementName = "artifactBindingNuget",
+                                                Namespace = "http://holisticware.net"
+                                            )
+            ]
+            public ArtifactBindingNuget ArtifactBindingNuget
             {
-                "groupId",
-                "artifactId",
-                "version",
-                // extended
-                "idFullyQualified",
-                "versionTextual",
-                "groupIndex",
-                "versions",
-                "versionsTextual",
-                "projectObjectModelTextual",
-                "projectObjectModel",
-                "dependencies",
-            };
-
-            //Serialization.Formatters.
-                OrderedContractResolver resolver = null;
-
-            resolver = new //Serialization.Formatters.
-                OrderedContractResolver(properties_to_serialize);
-
-            string content = Newtonsoft.Json.JsonConvert.SerializeObject
-                                                                (
-                                                                    this,
-                                                                    Newtonsoft.Json.Formatting.Indented,
-                                                                    new Newtonsoft.Json.JsonSerializerSettings
-                                                                    {
-                                                                        ContractResolver = resolver
-                                                                    }
-                                                                );
-
-            return content;
-        }
-
-        public static Artifact DeserializeFromJSON_System_Text_Json(string json)
-        {
-            return System.Text.Json.JsonSerializer.Deserialize<Artifact>(json);
-        }
-
-        public static string SerializeToJSON_System_Text_Json(Artifact artifact)
-        {
-            string content = System.Text.Json.JsonSerializer.Serialize<Artifact>
-                                                                    (
-                                                                        artifact,
-                                                                        new System.Text.Json.JsonSerializerOptions
-                                                                        {
-                                                                            WriteIndented = true
-                                                                        }
-                                                                    );
-
-            return content;
-        }
-
-        public static Artifact DeserializeFromXML(string xml)
-        {
-            System.Xml.Serialization.XmlSerializer xs = null;
-
-            using (System.IO.TextReader tr = new System.IO.StringReader(xml))
-            {
-                xs = new System.Xml.Serialization.XmlSerializer(typeof(Artifact));
-
-                return (Artifact) xs.Deserialize(tr);
+                get;
+                set;
             }
         }
 
-        public static string SerializeToXML(string filename, Artifact artifact)
+        internal class OrderedContractResolver
+            :
+            Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver
+        // Newtonsoft.Json.Serialization.DefaultContractResolver
         {
-            System.Xml.Serialization.XmlSerializer xs = null;
-            string content = null;
+            private IList<string> properties_to_serialize = null;
 
-            using (System.IO.TextWriter tw = new System.IO.StringWriter())
+            public OrderedContractResolver(IList<string> list)
             {
-                xs = new System.Xml.Serialization.XmlSerializer(typeof(Artifact));
-
-                xs.Serialize(tw, artifact);
-                content = tw.ToString();
+                properties_to_serialize = list;
             }
 
-            return content;
+            protected override
+                IList<Newtonsoft.Json.Serialization.JsonProperty>
+                                        CreateProperties
+                                                (
+                                                    System.Type t,
+                                                    Newtonsoft.Json.MemberSerialization ms
+                                                )
+            {
+                if (t.Name.Contains("ArtifactSerializationMetadata"))
+                {
+
+                }
+                IList<Newtonsoft.Json.Serialization.JsonProperty> properties = null;
+                properties = base.CreateProperties(t, ms);
+
+                var p2 = properties.Where(p => properties_to_serialize.Contains(p.PropertyName));
+
+                var p3 = p2.ToList();
+
+                foreach (Newtonsoft.Json.Serialization.JsonProperty prop in properties)
+                {
+                    prop.Order = properties_to_serialize.IndexOf(prop.PropertyName) + 1;
+                }
+
+                var list_ordered = properties.OrderBy(p => p.Order).ToList();
+
+
+                return list_ordered;
+            }
         }
+
+
     }
 }
 

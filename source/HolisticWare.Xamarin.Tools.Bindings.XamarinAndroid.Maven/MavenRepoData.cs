@@ -30,7 +30,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
 
         public async
             Task
-                            Save
+                            SaveAsync
                                         (
                                             string format = "json"
                                         )
@@ -45,8 +45,16 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                     break;
             }
 
+            string type_name = this.GetType().Name;
             string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmm");
-            System.IO.File.WriteAllText($"maven-repo-data-{timestamp}.{format}", content);
+            string filename = $"{type_name}-{timestamp}.json";
+            //System.IO.File.WriteAllText(filename, content);
+            using (System.IO.StreamWriter writer = System.IO.File.CreateText(filename))
+            {
+                await writer.WriteAsync(content);
+            }
+
+            return;
         }
 
     }

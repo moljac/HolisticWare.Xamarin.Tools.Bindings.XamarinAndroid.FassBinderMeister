@@ -63,18 +63,19 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
 using System.Collections.Generic;
+using System.Linq;
 
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.BindEx;
 
 namespace UnitTests.FassBinderMeister.BindEx
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_ArtifactBindingNugetData
+    public partial class Test_ArtifactBindingNuget
     {
         [Test]
-        public void Test_Maven_Google_ArtifactBindingNugetData_Ctor_01()
+        public void Test_Maven_Google_ArtifactBindingNuget_Ctor_01()
         {
-            ArtifactBindingNugetData abnd = new ArtifactBindingNugetData("androidx.car", "car");
+            ArtifactBindingNuget abnd = new ArtifactBindingNuget("androidx.car", "car");
 
             #if MSTEST
             Assert.IsNotNull(abnd);
@@ -88,21 +89,27 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_Maven_Google_ArtifactBindingNugetData_SearchPackagesByKeywordAsync()
+        public void Test_Maven_Google_ArtifactBindingNuget_SearchPackagesByKeywordAsync()
         {
-            ArtifactBindingNugetData abnd = new ArtifactBindingNugetData("androidx.car", "car")
+            ArtifactBindingNuget abnd = new ArtifactBindingNuget("androidx.car", "car")
             {
-                IdNuGet = "Xamarin.AndroidX.Car.Car"
+                NuGetId = "Xamarin.AndroidX.Car.Car"
             };
 
             IEnumerable<global::NuGet.Protocol.Core.Types.IPackageSearchMetadata> result = null;
-            result = abnd.SearchPackagesByKeywordAsync
+            result = abnd.SearchPackagesByKeywordWithFilterAsync
                             (
-                                abnd.Id,
+                                abnd.NuGetId,
+                                // null,
                                 new global::NuGet.Protocol.Core.Types.SearchFilter
                                                                         (
                                                                             includePrerelease: true
                                                                         ),
+                                skip: 0,
+                                take: 100,
+                                // default (for null) predicates:
+                                // 
+                                // custom predicate:
                                 psm =>
                                 {
                                     return
@@ -122,13 +129,22 @@ namespace UnitTests.FassBinderMeister.BindEx
                                 }
                             )
                             .Result;
-            
+
+            List<global::NuGet.Protocol.Core.Types.IPackageSearchMetadata> l = result.ToList();
+
+            abnd.NuGetPackagesSearchResults = l;
+
+            abnd.SaveAsync().Wait();
+
             #if MSTEST
             Assert.IsNotNull(abnd);
+            Assert.IsNotNull(result);
             #elif NUNIT
             Assert.NotNull(abnd);
+            Assert.NotNull(result);
             #elif XUNIT
             Assert.NotNull(abnd);
+            Assert.NotNull(result);
             #endif
 
             return;

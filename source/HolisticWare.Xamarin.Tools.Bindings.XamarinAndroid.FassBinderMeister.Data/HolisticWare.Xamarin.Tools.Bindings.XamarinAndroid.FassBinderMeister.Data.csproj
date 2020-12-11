@@ -61,6 +61,7 @@
 
   <ItemGroup>
     <Folder Include="BinderatorConfigData\" />
+    <Folder Include="Binderator.Artifacts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BinderatorConfigData\AndroidX\20190706\config.json">
@@ -84,6 +85,9 @@
     <Content Include="BinderatorConfigData\GooglePlayServicesFirebase\201911\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Binderator.Artifacts\Artifact-androidx.car.car-1.0.0-alpha7.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -92,4 +96,7 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Binderator.Artifacts\Artifact-androidx.car.car-1.0.0-alpha7.json" />
+  </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@ using HolisticWare.Xamarin.Tools.GitHub;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 {
-    public class DataBinderator
+    public partial class DataBinderator
     {
         public static IEnumerable<Tag> Tags
         {

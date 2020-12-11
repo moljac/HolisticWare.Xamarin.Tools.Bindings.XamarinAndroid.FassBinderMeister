@@ -88,6 +88,8 @@ namespace UnitTests.NuGet
                                                                         (
                                                                             includePrerelease: true
                                                                         ),
+                                skip: 0,
+                                take: 100,
                                 psm =>
                                 {
                                     return
