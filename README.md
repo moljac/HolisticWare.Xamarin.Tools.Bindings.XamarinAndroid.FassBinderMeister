@@ -90,6 +90,18 @@ HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 
 ## Serialization
 
+### JSON
+
+*   `System.Text.Json`
+
+    *   https://blog.fractalia.se/blog/keeping-system-text-json-lean/
+
+*   `Newtonsoft.Json`
+
+### Protobuffers
+
 *   https://www.ben-morris.com/protocol-buffers-protobuf-net-vs-protobuf-csharp-port/
+
+### Binary
 
 *   https://docs.microsoft.com/en-us/dotnet/standard/serialization/binary-serialization
