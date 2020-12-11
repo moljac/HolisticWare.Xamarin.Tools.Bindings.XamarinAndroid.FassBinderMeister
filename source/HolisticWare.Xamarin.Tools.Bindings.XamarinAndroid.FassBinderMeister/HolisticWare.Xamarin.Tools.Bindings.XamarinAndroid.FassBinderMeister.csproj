@@ -69,7 +69,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <PackageReference Include="MavenNet" Version="2.1.0" />
+        <PackageReference Include="MavenNet" Version="2.2.0" />
         <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
         <PackageReference Include="System.Diagnostics.TextWriterTraceListener" Version="4.3.0" />
         <PackageReference Include="System.Reflection" Version="4.3.0" />
@@ -77,6 +77,9 @@
         <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
         <PackageReference Include="HtmlAgilityPack" Version="1.11.28" />
         <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+
+        <PackageReference Include="protobuf-net" Version="3.0.73" />
+        <PackageReference Include="protobuf-net.BuildTools" Version="3.0.81" PrivateAssets="all" IncludeAssets="runtime;build;native;contentfiles;analyzers;buildtransitive" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj" />

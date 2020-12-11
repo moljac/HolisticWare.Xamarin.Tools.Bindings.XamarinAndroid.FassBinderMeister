@@ -25,7 +25,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             [Newtonsoft.Json.JsonProperty("nugetId")]
             [System.Text.Json.Serialization.JsonPropertyName("nugetId")]
             // System.Text.Json.Serialization.Json
-            //  does not hve Order Property
+            //  does not have Order Property
             // https://stackoverflow.com/questions/59134564/net-core-3-order-of-serialization-for-jsonpropertyname-system-text-json-seria
             [System.Xml.Serialization.XmlElement
                                             (
@@ -42,7 +42,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             [Newtonsoft.Json.JsonProperty("nugetPackagesSearchResults")]
             [System.Text.Json.Serialization.JsonPropertyName("nugetPackagesSearchResults")]
             // System.Text.Json.Serialization.Json
-            //  does not hve Order Property
+            //  does not have Order Property
             // https://stackoverflow.com/questions/59134564/net-core-3-order-of-serialization-for-jsonpropertyname-system-text-json-seria
             [System.Xml.Serialization.XmlElement
                                             (

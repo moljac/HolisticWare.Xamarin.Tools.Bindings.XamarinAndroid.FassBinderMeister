@@ -3,10 +3,6 @@ using System.Linq;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.BindEx
 {
-    /// <summary>
-    /// Artifact Buddy Class
-    /// </summary>
-    // POCO class with Metadata for Buddy Class containing attributes
     [
         Microsoft.AspNetCore.Mvc.ModelMetadataType
         //System.ComponentModel.DataAnnotations.MetadataType
@@ -38,7 +34,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             [Newtonsoft.Json.JsonProperty("groupId")]
             [System.Text.Json.Serialization.JsonPropertyName("groupId")]
             // System.Text.Json.Serialization.Json
-            //  does not hve Order Property
+            //  does not have Order Property
             // https://stackoverflow.com/questions/59134564/net-core-3-order-of-serialization-for-jsonpropertyname-system-text-json-seria
             [System.Xml.Serialization.XmlElement
                                             (
@@ -46,7 +42,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                                                 Namespace = "http://holisticware.net"
                                             )
             ]
-            public string IdGroup
+            public string GroupId
             {
                 get;
                 set;
@@ -55,7 +51,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             [Newtonsoft.Json.JsonProperty("artifactId")]
             [System.Text.Json.Serialization.JsonPropertyName("artifactId")]
             // System.Text.Json.Serialization.Json
-            //  does not hve Order Property
+            //  does not have Order Property
             // https://stackoverflow.com/questions/59134564/net-core-3-order-of-serialization-for-jsonpropertyname-system-text-json-seria
             [System.Xml.Serialization.XmlElement
                                             (
@@ -63,7 +59,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                                                 Namespace = "http://holisticware.net"
                                             )
             ]
-            public string Id
+            public string ArtifactId
             {
                 get;
                 set;
@@ -184,10 +180,15 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             }
         }
 
+
+
+
+
+
         internal class OrderedContractResolver
             :
             Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver
-        // Newtonsoft.Json.Serialization.DefaultContractResolver
+            // Newtonsoft.Json.Serialization.DefaultContractResolver
         {
             private IList<string> properties_to_serialize = null;
 
@@ -226,7 +227,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 return list_ordered;
             }
         }
-
 
     }
 }
