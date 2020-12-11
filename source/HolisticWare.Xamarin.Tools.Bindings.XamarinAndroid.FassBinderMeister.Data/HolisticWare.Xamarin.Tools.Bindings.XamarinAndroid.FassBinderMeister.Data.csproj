@@ -60,43 +60,51 @@
     </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BinderatorConfigData\" />
-    <Folder Include="Binderator.Artifacts\" />
+    <Folder Include="externals\" />
+    <Folder Include="externals\Binderator\" />
+    <Folder Include="externals\Binderator\Artifacts\" />
+    <Folder Include="externals\RepositoryData\" />
+    <Folder Include="externals\Binderator\Configs\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BinderatorConfigData\AndroidX\20190706\config.json">
+    <Content Include="externals\Binderator\Artifacts\Artifact-androidx.car.car-1.0.0-alpha7.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="BinderatorConfigData\AndroidX\201911\config.json">
+    <Content Include="externals\RepositoryData\maven.google.com\20200229-2112.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="BinderatorConfigData\AndroidX\201912\config.json">
+    <Content Include="externals\Binderator\Configs\AndroidX\20190706\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="BinderatorConfigData\AndroidX\202001\config.json">
+    <Content Include="externals\Binderator\Configs\AndroidX\201911\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="BinderatorConfigData\AndroidX\202002\config.json">
+    <Content Include="externals\Binderator\Configs\AndroidX\201912\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="BinderatorConfigData\GooglePlayServicesFirebase\20190706\config.json">
+    <Content Include="externals\Binderator\Configs\AndroidX\202001\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="BinderatorConfigData\GooglePlayServicesFirebase\201911\config.json">
+    <Content Include="externals\Binderator\Configs\AndroidX\202002\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Binderator.Artifacts\Artifact-androidx.car.car-1.0.0-alpha7.json">
+    <Content Include="externals\Binderator\Configs\GooglePlayServicesFirebase\20190706\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="externals\Binderator\Configs\GooglePlayServicesFirebase\201911\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="RepositoryData\maven.google.com\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Binderator.Artifacts\Artifact-androidx.car.car-1.0.0-alpha7.json" />
+    <None Remove="externals\Binderator\Binderator.Artifacts\Artifact-androidx.car.car-1.0.0-alpha7.json" />
+    <None Remove="externals\RepositoryData\maven.google.com\20200229-2112.json" />
+    <None Remove="externals\Binderator\BinderatorConfigData\AndroidX\20190706\config.json" />
+    <None Remove="externals\Binderator\BinderatorConfigData\AndroidX\201911\config.json" />
+    <None Remove="externals\Binderator\BinderatorConfigData\AndroidX\201912\config.json" />
+    <None Remove="externals\Binderator\BinderatorConfigData\AndroidX\202001\config.json" />
+    <None Remove="externals\Binderator\BinderatorConfigData\AndroidX\202002\config.json" />
+    <None Remove="externals\Binderator\BinderatorConfigData\GooglePlayServicesFirebase\20190706\config.json" />
+    <None Remove="externals\Binderator\BinderatorConfigData\GooglePlayServicesFirebase\201911\config.json" />
   </ItemGroup>
 </Project>
