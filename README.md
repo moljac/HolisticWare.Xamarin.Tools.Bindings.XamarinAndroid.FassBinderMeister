@@ -87,3 +87,9 @@ HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 
         *   https://mvnrepository.com/repos
         
+
+## Serialization
+
+*   https://www.ben-morris.com/protocol-buffers-protobuf-net-vs-protobuf-csharp-port/
+
+*   https://docs.microsoft.com/en-us/dotnet/standard/serialization/binary-serialization
