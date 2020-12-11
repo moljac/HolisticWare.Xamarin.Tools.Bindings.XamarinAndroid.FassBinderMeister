@@ -163,7 +163,7 @@ namespace BindingConfigurator
 
             google_maven_data.LoadRemoteReposAsync();
 
-            google_maven_data.Save();
+            google_maven_data.SaveAsync().Wait();
 
             return;
         }
@@ -205,7 +205,7 @@ namespace BindingConfigurator
 
             google_maven_data.LoadRemoteReposAsync();
 
-            google_maven_data.Save();
+            google_maven_data.SaveAsync().Wait();
 
             return;
         }
