@@ -180,7 +180,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 };
             }
 
-            Dictionary<string, IEnumerable<Tag>> tags_for_repo = null;
             ConfigsNotFound = new List
                                     <
                                     (
@@ -190,8 +189,9 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                                     )
                                     >();
 
-            new Dictionary<string, IEnumerable<Tag>>();
-            Dictionary<string, IEnumerable<(Tag, string)>> tags_for_repo_content = null;
+            Dictionary<string, IEnumerable<Tag>> tags_for_repo = null;
+            tags_for_repo = new Dictionary<string, IEnumerable<Tag>>();
+
             GitHubClient gc = new GitHubClient();
 
             if (string.IsNullOrEmpty(tag))
@@ -211,6 +211,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                                 );
             }
 
+            Dictionary<string, IEnumerable<(Tag, string)>> tags_for_repo_content = null;
             tags_for_repo_content = new Dictionary<string, IEnumerable<(Tag, string)>>();
 
             foreach (string r in tags_for_repo.Keys)
