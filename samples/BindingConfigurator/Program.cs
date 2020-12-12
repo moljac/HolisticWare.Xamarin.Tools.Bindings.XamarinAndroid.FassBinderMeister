@@ -21,7 +21,7 @@ namespace BindingConfigurator
 
             Dictionary<string, IEnumerable<(Tag, string)>> repo_tags_content;
 
-            repo_tags_content = await new BinderatorConfig().DownloadBinderatorConfigContentsAsync
+            repo_tags_content = await new BinderatorConfigDownloader().DownloadBinderatorConfigContentsAsync
                                                                             (
                                                                                 "xamarin",
                                                                                 "androidx"
@@ -64,9 +64,9 @@ namespace BindingConfigurator
             ConfigRoot cr = new ConfigRoot();
             IEnumerable<ConfigRoot> config = JsonConvert.DeserializeObject<IEnumerable<ConfigRoot>>(json);
 
-            google_maven_data.BinderatorConfig = new BinderatorConfig()
+            google_maven_data.BinderatorConfig = new BinderatorConfigDownloader()
             {
-                Config = config
+                Configs = config
             };
 
             google_maven_data.ArtifactsToBind = new List<string>
@@ -190,9 +190,9 @@ namespace BindingConfigurator
                                 );
             IEnumerable<ConfigRoot> config = JsonConvert.DeserializeObject<IEnumerable<ConfigRoot>>(json);
 
-            google_maven_data.BinderatorConfig = new BinderatorConfig()
+            google_maven_data.BinderatorConfig = new BinderatorConfigDownloader()
             {
-                Config = config
+                Configs = config
             };
 
             google_maven_data.RepositoryNames = new List<string>
