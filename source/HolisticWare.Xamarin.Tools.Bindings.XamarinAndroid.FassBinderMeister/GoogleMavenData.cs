@@ -63,7 +63,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
             return;
         }
 
-        public Binderator.BinderatorConfig BinderatorConfig
+        public Binderator.BinderatorConfigDownloader BinderatorConfig
         {
             get;
             set;

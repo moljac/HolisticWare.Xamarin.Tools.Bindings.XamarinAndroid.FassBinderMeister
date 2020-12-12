@@ -8,35 +8,42 @@ using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binde
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator
 {
-    public class BinderatorConfig
+    public class BinderatorConfigDownloader
     {
         static System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
 
-        public IEnumerable<QuickType.ConfigRoot> Config
+        public IEnumerable<QuickType.ConfigRoot> Configs
         {
             get;
             set;
         }
 
-        public async
-            Task<Dictionary<string, IEnumerable<Tag>>>
-                    DownloadDefaultBinderatorConfigsAsync
-                                                (
-                                                )
+
+        public static List<string> GroupIdsNotFoundByMavenNet
         {
-            Dictionary<string, IEnumerable<Tag>> binderator_configs = null;
-
-            foreach (var rt in BinderatorConfigUrls.RepoTags)
-            {
-                //binderator_configs = await DownloadBinderatorConfigsAsync(rt.repo, rt.tag);
-
-                if (rt.repo == "AndroidX")
-                {
-                }
-            }
-
-            return binderator_configs;
+            get;
+            set;
         }
+
+        //public async
+        //    Task<Dictionary<string, IEnumerable<Tag>>>
+        //            DownloadDefaultBinderatorConfigsAsync
+        //                                        (
+        //                                        )
+        //{
+        //    Dictionary<string, IEnumerable<Tag>> binderator_configs = null;
+
+        //    foreach (var rt in BinderatorConfigUrls.RepoTags)
+        //    {
+        //        //binderator_configs = await DownloadBinderatorConfigsAsync(rt.repo, rt.tag);
+
+        //        if (rt.repo == "AndroidX")
+        //        {
+        //        }
+        //    }
+
+        //    return binderator_configs;
+        //}
 
         public async
             Task<Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>>>
@@ -71,7 +78,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                             string nuget_id = a.NugetId;
                             string nuget_version = a.NugetVersion;
 
-                            IEnumerable<IPackageSearchMetadata> package_metadata = await a.GetPackageMetadataAsync();
+                            IEnumerable<IPackageSearchMetadata> package_metadata = null;
+                            package_metadata = await a.GetPackageMetadataAsync();
 
 
                         }
@@ -100,7 +108,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                                                             )
         {
             Dictionary<string, IEnumerable<(Tag, string)>> contents = null;
-
             contents = await DownloadBinderatorConfigContentsAsync
                                                             (
                                                                 user_org,
@@ -109,7 +116,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                                                             );
 
             Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>> config_objects = null;
-
             config_objects = new Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>>();
 
             foreach (KeyValuePair<string, IEnumerable<(Tag tag, string content)>> c in contents)
@@ -127,9 +133,24 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             return config_objects;
         }
 
+        public
+            List
+                <
+                (
+                    string GithubUserOrganization,
+                    string RepositoryName,
+                    string TagName
+                )
+                >
+                           ConfigsNotFound
+        {
+            get;
+            set;
+        }
+
         /// <summary>
-        /// Download and deserialize BinderatorConfig objects from the repo of the user/organization
-        /// and given tag list.
+        /// Download and deserialize BinderatorConfig objects from the repo of the
+        /// user/organization and given tag list.
         /// </summary>
         /// <param name="user_org"></param>
         /// <param name="repo"></param>
@@ -159,7 +180,17 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 };
             }
 
-            Dictionary<string, IEnumerable<Tag>> tags_for_repo = new Dictionary<string, IEnumerable<Tag>>();
+            Dictionary<string, IEnumerable<Tag>> tags_for_repo = null;
+            ConfigsNotFound = new List
+                                    <
+                                    (
+                                        string GithubUserOrganization,
+                                        string RepositoryName,
+                                        string TagName
+                                    )
+                                    >();
+
+            new Dictionary<string, IEnumerable<Tag>>();
             Dictionary<string, IEnumerable<(Tag, string)>> tags_for_repo_content = null;
             GitHubClient gc = new GitHubClient();
 
@@ -189,6 +220,19 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 {
                     string url_github = $"https://raw.githubusercontent.com/{user_org}/{r}/{t.Name}/config.json";
                     System.Net.Http.HttpResponseMessage result = await client.GetAsync(url_github);
+                    if(result.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        // TODO: configs not found
+                        ConfigsNotFound.Add
+                            (
+                                (
+                                    GithubUserOrganization: user_org,
+                                    RepositoryName: r,
+                                    TagName: t.Name
+                                )
+                            );
+                        continue;
+                    }
                     string content = await result.Content.ReadAsStringAsync();
                     list_tag_content.Add((t, content));                    
                 }

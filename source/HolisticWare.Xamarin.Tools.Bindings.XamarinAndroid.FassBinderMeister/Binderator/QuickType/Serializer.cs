@@ -12,7 +12,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 {
     public static class Serializer
     {
-        public static string ToJson(this BinderatorConfig[] self)
+        public static string ToJson(this BinderatorConfigDownloader[] self)
             =>
             JsonConvert.SerializeObject(self, Converter.Settings);
     }

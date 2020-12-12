@@ -30,7 +30,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             set;
         }
 
-        public Dictionary<string, List<string>> NugetIdDependencies
+        public List<(string TargetFramework, List<string> Packages)> NugetIdDependencies
         {
             get;
             set;
@@ -75,29 +75,35 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 global::NuGet.Versioning.NuGetVersion nv = pmd.Version;
                 nuget_versions.Add(nv.OriginalVersion.ToString());
 
-                Dictionary<string, List<string>> d = new Dictionary<string, List<string>>();
+                List<(string TargetFramework, List<string> Packages)> list = null;
+
+                list = new List<(string TargetFramework, List<string> Packages)>();
 
                 foreach (global::NuGet.Packaging.PackageDependencyGroup dependency in pmd.DependencySets)
                 {
-                    d.Add
+                    list.Add
                         (
-                            dependency.TargetFramework.Framework,
                             (
-                                from PackageDependency p in dependency.Packages
-                                select p.Id
+                                TargetFramework: dependency.TargetFramework.Framework,
+                                Packages:
+                                (
+                                    from PackageDependency p in dependency.Packages
 
-                            ).ToList()
+                                    select p.Id
+                                )
+                                .ToList()
+                            )
                         );
                 }
 
-                this.NugetIdDependencies = d;
+                this.NugetIdDependencies = list;
             }
 
-            nuget_versions.Sort();
+            nuget_versions.Reverse();
 
             this.NugetVersions = nuget_versions;
 
-            var repo = MavenNet.MavenRepository.FromGoogle();
+            MavenNet.GoogleMavenRepository repo = MavenNet.MavenRepository.FromGoogle();
             try
             {
                 await repo.Refresh(this.GroupId);
@@ -111,15 +117,30 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 {
                     string msg1 = "com.xamarin.androidx";
                 }
+
+                if (BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet ==  null)
+                {
+                    BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet = new List<string>();
+                }
+                BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet.Add(this.GroupId);
+
+                return package_metadata;
             }
 
-            //await repo.LoadMetadataAsync();
-            //foreach (var item in repo.Metadata)
-            //{
-            //    foreach (var version in item.AllVersions)
-            //    {
-            //    }
-            //}
+            /*
+            // https://github.com/Redth/MavenNet/blob/master/MavenNet.Tests/Test.cs
+            // no API?
+            await repo.LoadMetadataAsync();
+
+            // https://github.com/Redth/MavenNet#usage
+            // No API?
+            foreach (var item in repo.Metadata)
+            {
+                foreach (var version in item.AllVersions)
+                {
+                }
+            }
+            */
 
             try
             {
@@ -135,6 +156,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 string msg = $"Not a Google Maven repository: {this.GroupId}";
                 System.Diagnostics.Debug.WriteLine(msg);
                 System.Console.WriteLine(msg);
+
+                if (BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet == null)
+                {
+                    BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet = new List<string>();
+                }
+                BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet.Add(this.GroupId);
+
+                return package_metadata;
             }
 
             return package_metadata;
