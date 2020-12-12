@@ -66,28 +66,25 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-using NuGet.Protocol.Core.Types;
-using NuGet.Versioning;
-
 using HolisticWare.Xamarin.Tools.GitHub;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType;
 
-namespace UnitTests.Binderator.Config
+namespace UnitTests.Binderator.Configs
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_BinderatorConfig_AndroidX
+    public partial class Test_BinderatorConfigDownloader_AndroidX
     {
         [Test]
         public void Test_BinderatorConfig_DownloadBinderatorConfigContents()
         {
-            BinderatorConfig bc = new BinderatorConfig();
+            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader();
 
             Dictionary<string, IEnumerable<(Tag, string)>> configs = null;
-            configs = bc.DownloadBinderatorConfigContentsAsync
+            configs = bcd.DownloadBinderatorConfigContentsAsync
                                                         (
                                                             user_org: "xamarin",
-                                                            repo: "androidx"
+                                                            repo: "AndroidX"
                                                         ).Result;
 
             #if MSTEST
@@ -128,16 +125,16 @@ namespace UnitTests.Binderator.Config
         }
 
         [Test]
-        public void Test_BinderatorConfig_DownloadBinderatorConfigObjects()
+        public void Test_BinderatorConfigDownloader_DownloadBinderatorConfigObjects()
         {
-            BinderatorConfig bc = new BinderatorConfig();
+            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader();
 
             Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>> configs = null;
 
-            configs = bc.DownloadBinderatorConfigObjectsAsync
+            configs = bcd.DownloadBinderatorConfigObjectsAsync
                                                         (
                                                             user_org: "xamarin",
-                                                            repo: "androidx"
+                                                            repo: "AndroidX"
                                                         ).Result;
 
             return;
@@ -145,16 +142,16 @@ namespace UnitTests.Binderator.Config
 
 
         [Test]
-        public void Test_BinderatorConfig_DownloadAndExtendBinderatorConfigObjects()
+        public void Test_BinderatorConfigDownloader_DownloadAndExtendBinderatorConfigObjects()
         {
-            BinderatorConfig bc = new BinderatorConfig();
+            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader();
 
             Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>> configs = null;
 
-            configs = bc.DownloadAndExtendBinderatorConfigObjectsAsync
+            configs = bcd.DownloadAndExtendBinderatorConfigObjectsAsync
                                                         (
                                                             user_org: "xamarin",
-                                                            repo: "androidx"
+                                                            repo: "AndroidX"
                                                         ).Result;
 
 
@@ -171,15 +168,25 @@ namespace UnitTests.Binderator.Config
                                             (
                                                 $"binderator-configs/{repo}/{tag_config_object.tag.Name}/"
                                             );
-                    string json = Newtonsoft.Json.JsonConvert.SerializeObject
-                                                                    (
-                                                                        tag_config_object.config_root,
-                                                                        Newtonsoft.Json.Formatting.Indented
-                                                                    );
+
+                    string json = null;
+
+                    json = Newtonsoft.Json.JsonConvert.SerializeObject
+                                                            (
+                                                                tag_config_object.config_root,
+                                                                Newtonsoft.Json.Formatting.Indented
+                                                            );
                     System.IO.File.WriteAllText
                                         (
                                             $"binderator-configs/{repo}/{tag_config_object.tag.Name}/config.json",
                                             json
+                                        );
+
+
+                    System.IO.File.WriteAllLines
+                                        (
+                                            $"binderator-configs/{repo}/{tag_config_object.tag.Name}/group-ids-not-found-by-mavennet.txt",
+                                            BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet.ToArray()
                                         );
                 }
             }
