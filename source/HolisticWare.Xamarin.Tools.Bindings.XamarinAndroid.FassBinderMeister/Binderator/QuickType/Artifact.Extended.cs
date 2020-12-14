@@ -76,7 +76,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 nuget_versions.Add(nv.OriginalVersion.ToString());
 
                 List<(string TargetFramework, List<string> Packages)> list = null;
-
                 list = new List<(string TargetFramework, List<string> Packages)>();
 
                 foreach (global::NuGet.Packaging.PackageDependencyGroup dependency in pmd.DependencySets)
@@ -171,7 +170,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 
         public async
             Task<IEnumerable<IPackageSearchMetadata>>
-                            GetPackageMetadataAsync
+                            GetNugetPackageMetadataAsync
                                             (
                                                 string nuget_id
                                             )

@@ -10,14 +10,26 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 {
     public class BinderatorConfigDownloader
     {
-        static System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
-
         public IEnumerable<QuickType.ConfigRoot> Configs
         {
             get;
             set;
         }
 
+        public
+            List
+                <
+                (
+                    string GithubUserOrganization,
+                    string RepositoryName,
+                    string TagName
+                )
+                >
+                           ConfigsNotFound
+        {
+            get;
+            set;
+        }
 
         public static List<string> GroupIdsNotFoundByMavenNet
         {
@@ -25,25 +37,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             set;
         }
 
-        //public async
-        //    Task<Dictionary<string, IEnumerable<Tag>>>
-        //            DownloadDefaultBinderatorConfigsAsync
-        //                                        (
-        //                                        )
-        //{
-        //    Dictionary<string, IEnumerable<Tag>> binderator_configs = null;
-
-        //    foreach (var rt in BinderatorConfigUrls.RepoTags)
-        //    {
-        //        //binderator_configs = await DownloadBinderatorConfigsAsync(rt.repo, rt.tag);
-
-        //        if (rt.repo == "AndroidX")
-        //        {
-        //        }
-        //    }
-
-        //    return binderator_configs;
-        //}
+        static System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
 
         public async
             Task<Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>>>
@@ -133,21 +127,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             return config_objects;
         }
 
-        public
-            List
-                <
-                (
-                    string GithubUserOrganization,
-                    string RepositoryName,
-                    string TagName
-                )
-                >
-                           ConfigsNotFound
-        {
-            get;
-            set;
-        }
-
         /// <summary>
         /// Download and deserialize BinderatorConfig objects from the repo of the
         /// user/organization and given tag list.
@@ -180,6 +159,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 };
             }
 
+            Dictionary<string, IEnumerable<Tag>> tags_for_repo = null;
             ConfigsNotFound = new List
                                     <
                                     (
@@ -189,9 +169,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                                     )
                                     >();
 
-            Dictionary<string, IEnumerable<Tag>> tags_for_repo = null;
-            tags_for_repo = new Dictionary<string, IEnumerable<Tag>>();
-
+            new Dictionary<string, IEnumerable<Tag>>();
+            Dictionary<string, IEnumerable<(Tag, string)>> tags_for_repo_content = null;
             GitHubClient gc = new GitHubClient();
 
             if (string.IsNullOrEmpty(tag))
@@ -211,7 +190,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                                 );
             }
 
-            Dictionary<string, IEnumerable<(Tag, string)>> tags_for_repo_content = null;
             tags_for_repo_content = new Dictionary<string, IEnumerable<(Tag, string)>>();
 
             foreach (string r in tags_for_repo.Keys)

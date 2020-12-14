@@ -88,12 +88,6 @@
     <Content Include="externals\Binderator\Configs\AndroidX\202002\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="externals\Binderator\Configs\GooglePlayServicesFirebase\20190706\config.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="externals\Binderator\Configs\GooglePlayServicesFirebase\201911\config.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
