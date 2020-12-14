@@ -1,15 +1,78 @@
 //  Cake.CoreCLR add to ./tools/ folder for debugging
 #tool   nuget:?package=Cake.CoreCLR
 
-#addin  nuget:?package=HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister&prerelease&loaddependencies=true
 #addin  nuget:?package=HolisticWare.Xamarin.Tools.NuGet&prerelease&loaddependencies=true
 
 
-using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator;
+using HolisticWare.Xamarin.Tools.NuGet;
 
-Artifact a = null;
 
-a = new Artifact("androidx.car", "car", "0.0.0");
+            NuGetPackages.NugetClient = new NuGetClient();
+            NuGetPackages np = new NuGetPackages();
 
-a.SaveAsync().Wait();
+            List<string> package_ids = new List<string>()
+            {
+                "Xamarin.AndroidX.Legacy.Support.V13",
+                "Xamarin.Google.Guava.ListenableFuture",
+                "Xamarin.AndroidX.Annotations",
+                "Xamarin.AndroidX.Activity",
+                "Xamarin.AndroidX.NonExistentPackage",
+            };
+            List<NuGetPackage> result = np.GetPackageSearchMetadataForPackageNamesAsync(package_ids)
+                                                .Result;
+
+            System.IO.Directory.CreateDirectory
+                                    (
+                                        $"nuget-client-api/NugetPackages/"
+                                    );
+
+            string timestamp = System.DateTime.Now.ToString("yyyyMMdd-HHmmssff");
+            string json = null;
+
+            json = Newtonsoft.Json.JsonConvert.SerializeObject
+                                                    (
+                                                        result,
+                                                        Newtonsoft.Json.Formatting.Indented
+                                                    );
+            System.IO.File.WriteAllText
+                                (
+                                    $"nuget-client-api/NugetPackages/PackageSearchMetadata-{timestamp}.json",
+                                    json
+                                );
+
+
+
+
+
+
+            NuGetPackage.NugetClient = new NuGetClient();
+
+            NuGetPackage np = new NuGetPackage()
+            {
+                PackageId = "Xamarin.AndroidX.Core",
+                VersionTextual = "1.3.2",
+            };
+
+            List<NuGetPackage> result = null;
+            result = np.GetDependencyTreeHierarchyAsync()
+                            .Result;
+
+            System.IO.Directory.CreateDirectory
+                                    (
+                                        $"nuget-client-api/NugetPackage/"
+                                    );
+
+            string timestamp = System.DateTime.Now.ToString("yyyyMMdd-HHmmssff");
+            string json = null;
+
+            json = Newtonsoft.Json.JsonConvert.SerializeObject
+                                                    (
+                                                        result,
+                                                        Newtonsoft.Json.Formatting.Indented
+                                                    );
+            System.IO.File.WriteAllText
+                                (
+                                    $"nuget-client-api/NugetPackage/DependencyTreeHierarchy-{timestamp}.json",
+                                    json
+                                );
 
