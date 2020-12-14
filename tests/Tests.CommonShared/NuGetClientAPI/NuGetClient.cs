@@ -73,10 +73,10 @@ using HolisticWare.Xamarin.Tools.NuGet;
 namespace UnitTests.NuGet
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_NuGetClientAPI
+    public partial class Test_NuGetClient_ClientAPI
     {
         [Test]
-        public void Test_NuGet_Packages_Search()
+        public void Test_NuGetClient__Packages_Search()
         {
             NuGetClient ngc = new NuGetClient();
 
@@ -122,14 +122,15 @@ namespace UnitTests.NuGet
         }
 
         [Test]
-        public void Test_NuGet_Packages_PackageMetadata()
+        public void Test_NuGetClient__Packages_PackageMetadata()
         {
             NuGetClient ngc = new NuGetClient();
 
-            IEnumerable<IPackageSearchMetadata> package_metadata = ngc.GetPackageMetadataAsync
-                                                                                (
-                                                                                 "Xamarin.AndroidX.Core"
-                                                                                ).Result;
+            IEnumerable<IPackageSearchMetadata> package_metadata = null;
+            package_metadata = ngc.GetPackageMetadataAsync
+                                                (
+                                                    "Xamarin.AndroidX.Core"
+                                                ).Result;
 
             #if MSTEST
             Assert.IsNotNull(package_metadata);
@@ -152,7 +153,7 @@ namespace UnitTests.NuGet
         }
 
         [Test]
-        public void Test_NuGet_Packages_PackageVersions()
+        public void Test_NuGetClient__Packages_PackageVersions()
         {
             NuGetClient ngc = new NuGetClient();
 

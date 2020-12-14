@@ -24,6 +24,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\ArtifactBindingNugetData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Binderator.Artifact\Artifact.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NuGetClientAPI\NugetPackages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NuGetClientAPI\NugetPackage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
