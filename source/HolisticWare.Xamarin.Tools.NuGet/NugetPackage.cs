@@ -52,6 +52,11 @@ namespace HolisticWare.Xamarin.Tools.NuGet
             set;
         }
 
+        public NuGetPackage DependencyOf
+        {
+            get;
+            set;
+        }
 
         public IEnumerable<IPackageSearchMetadata> PackageSearchMetadata
         {
@@ -70,11 +75,19 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                                 (
                                                     this.PackageId
                                                 );
-
+            // sorting in reverse order of version
+            // in order to hit later versions first (speeding up) when iterating through
+            // IEnumebrable/collections/containers
+            package_metadata = from IPackageSearchMetadata psm in package_metadata
+                               orderby psm.Identity.Version descending
+                               select psm
+                               ;
             IEnumerable<string> versions = null;
             versions = from IPackageSearchMetadata psm in package_metadata
-                       orderby psm.Identity.Version descending
-                       select psm.Identity.Version.ToFullString();
+                       // no need to sort - done above
+                       //orderby psm.Identity.Version descending
+                       select psm.Identity.Version.ToFullString()
+                       ;
 
             this.VersionsTextual = versions.ToList();
 
@@ -82,12 +95,21 @@ namespace HolisticWare.Xamarin.Tools.NuGet
         }
 
 
+        #if DEBUG
+        public System.CodeDom.Compiler.IndentedTextWriter w = new System.CodeDom.Compiler.IndentedTextWriter(Console.Out);
+        #endif
+
         public async
             Task<List<NuGetPackage>>
                                 GetDependencyTreeHierarchyAsync
                                         (
                                         )
         {
+            #if DEBUG
+            w.Indent++;
+            await w.WriteLineAsync($" id = {this.PackageId}");
+            #endif
+
             List<NuGetPackage> dependencies = null;
 
             if (null == PackageSearchMetadata)
@@ -97,34 +119,49 @@ namespace HolisticWare.Xamarin.Tools.NuGet
 
             foreach (IPackageSearchMetadata psm in PackageSearchMetadata)
             {
-                foreach(PackageDependencyGroup ds in psm.DependencySets)
+                if (! psm.Identity.Version.OriginalVersion.Contains(this.VersionTextual))
+                {
+                    continue;
+                }
+
+                foreach (PackageDependencyGroup ds in psm.DependencySets)
                 {
                     global::NuGet.Frameworks.NuGetFramework tf = ds.TargetFramework;
 
                     if (tf.DotNetFrameworkName.ToLower().Contains("monoandroid"))
                     {
-                        foreach(global::NuGet.Packaging.Core.PackageDependency p in ds.Packages)
+                        foreach (global::NuGet.Packaging.Core.PackageDependency p in ds.Packages)
                         {
-                            string id = p.Id;
-                            Console.WriteLine($"id = {id}");
+                            if (null == dependencies)
+                            {
+                                dependencies = new List<NuGetPackage>();
+                            }
 
+                            string id = p.Id;
                             global::NuGet.Versioning.VersionRange vr = p.VersionRange;
                             string vrpp = vr.PrettyPrint();
 
                             NuGetPackage np = new NuGetPackage()
                             {
                                 PackageId = id,
+                                VersionTextual = vr.MinVersion.ToFullString(),
                                 DependencyVersionRange = vrpp,
+                                DependencyOf = this,
                             };
-                            dependencies = await np.GetDependencyTreeHierarchyAsync();
-                            np.Dependencies = dependencies;
 
-                            Console.WriteLine($"    has dependencies  = { null != dependencies}");
+                            np.Dependencies = await np.GetDependencyTreeHierarchyAsync();
+
+                            dependencies.Add(np);
                         }
                     }
+                    else
+                    {
+                        break;
+                    }
                 }
-            }
 
+                this.Dependencies = dependencies;
+            }
 
             return dependencies;
         }
