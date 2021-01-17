@@ -101,4 +101,5 @@
     <None Remove="externals\Binderator\BinderatorConfigData\GooglePlayServicesFirebase\20190706\config.json" />
     <None Remove="externals\Binderator\BinderatorConfigData\GooglePlayServicesFirebase\201911\config.json" />
   </ItemGroup>
+
 </Project>

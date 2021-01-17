@@ -87,4 +87,5 @@
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet\HolisticWare.Xamarin.Tools.NuGet.csproj" />
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj" />
     </ItemGroup>
+
 </Project>

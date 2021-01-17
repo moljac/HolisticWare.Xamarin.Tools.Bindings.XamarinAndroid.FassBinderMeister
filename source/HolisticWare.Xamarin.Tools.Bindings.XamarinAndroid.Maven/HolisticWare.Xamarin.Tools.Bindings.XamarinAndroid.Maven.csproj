@@ -73,6 +73,4 @@
         <Folder Include="Models.GeneratedFromXML.Refactored\" />
         <Folder Include="Models.GeneratedFromXSD.Refactored\" />
     </ItemGroup>
-    <ItemGroup>
-    </ItemGroup>
 </Project>
