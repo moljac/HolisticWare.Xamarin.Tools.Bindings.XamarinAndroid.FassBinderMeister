@@ -1,0 +1,8 @@
+{
+  "GroupId": "androidx.car",
+  "ArtifactId": "car",
+  "Version": "0.0.0",
+  "NugetVersion": "0.0.0",
+  "NugetId": "0.0.0",
+  "DependencyOnly": false
+}
