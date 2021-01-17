@@ -32,19 +32,21 @@ Task("libs-msbuild-solutions")
     (
         () =>
         {
+
             foreach (string configuration in configurations)
             {
+                MSBuildSettings settings = new MSBuildSettings()
+                                                    .WithRestore()
+                                                    .WithTarget("Build")
+                                                    .SetConfiguration(configuration)
+                                                    .EnableBinaryLogger($"./output/libs-{configuration}.binlog")
+                                                    .WithProperty("DesignTimeBuild", "false")
+                                                    //.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
+                                                    ;
+
                 foreach(FilePath sln in LibrarySourceSolutions)
                 {
-                    MSBuild
-                    (
-                        sln.ToString(),
-                        new MSBuildSettings
-                        {
-                            Configuration = configuration,
-                        }
-                        //.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
-                    );
+                    MSBuild(sln.ToString(), settings);
                 }
             }
 
