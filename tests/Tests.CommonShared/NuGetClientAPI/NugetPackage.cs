@@ -209,7 +209,6 @@ namespace UnitTests.NuGet
             //Assert.NotNull(search);
             //#endif
 
-
             return;
         }
 
