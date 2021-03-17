@@ -105,3 +105,71 @@ HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 ### Binary
 
 *   https://docs.microsoft.com/en-us/dotnet/standard/serialization/binary-serialization
+
+
+
+# For cleanup
+
+## Bintray
+
+
+https://bintray.com/bintray/jcenter/com.microsoft.identity%3Acommon/3.0.9
+
+*   https://bintray.com/bintray/jcenter/com.microsoft.identity%3Acommon/3.0.9#files/com/microsoft/identity/common
+
+
+## Maven Central
+
+com.microsoft.identity:common
+
+https://search.maven.org/artifact/com.microsoft.identity/common
+
+https://search.maven.org/artifact/com.microsoft.identity/common/3.0.9/aar
+
+
+
+
+Apache Maven
+maven.apache.org
+<dependency>
+  <groupId>com.microsoft.identity</groupId>
+  <artifactId>common</artifactId>
+  <version>3.0.9</version>
+  <type>aar</type>
+</dependency>
+Gradle Groovy DSL
+gradle.org
+implementation 'com.microsoft.identity:common:3.0.9'
+Gradle Kotlin DSL
+github.com/gradle/kotlin-dsl
+implementation("com.microsoft.identity:common:3.0.9")
+Scala SBT
+scala-sbt.org
+libraryDependencies += "com.microsoft.identity" % "common" % "3.0.9"
+Apache Ivy
+ant.apache.org/ivy/
+<dependency org="com.microsoft.identity" name="common" rev="3.0.9" />
+Groovy Grape
+groovy-lang.org/grape.html
+@Grapes(
+  @Grab(group='com.microsoft.identity', module='common', version='3.0.9')
+)
+Leiningen
+leiningen.org
+[com.microsoft.identity/common "3.0.9"]
+Apache Buildr
+buildr.apache.org
+'com.microsoft.identity:common:jar:3.0.9'
+Maven Central Badge
+search.maven.org
+[![Maven Central](https://img.shields.io/maven-central/v/com.microsoft.identity/common.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.microsoft.identity%22%20AND%20a:%22common%22)
+PURL
+github.com/package-url/purl-spec
+pkg:maven/com.microsoft.identity/common@3.0.9
+Bazel
+bazel.build
+maven_jar(
+    name = "common",
+    artifact = "com.microsoft.identity:common:3.0.9",
+    sha1 = "calculating...",
+)
