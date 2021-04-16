@@ -74,7 +74,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet
             package_metadata = await NugetClient.GetPackageMetadataAsync
                                                 (
                                                     this.PackageId
-                                                );
+                                                ).ConfigureAwait(false);
             // sorting in reverse order of version
             // in order to hit later versions first (speeding up) when iterating through
             // IEnumebrable/collections/containers
@@ -84,8 +84,8 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                ;
             IEnumerable<string> versions = null;
             versions = from IPackageSearchMetadata psm in package_metadata
-                       // no need to sort - done above
-                       //orderby psm.Identity.Version descending
+                           // no need to sort - done above
+                           //orderby psm.Identity.Version descending
                        select psm.Identity.Version.ToFullString()
                        ;
 
@@ -119,7 +119,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet
 
             foreach (IPackageSearchMetadata psm in PackageSearchMetadata)
             {
-                if (! psm.Identity.Version.OriginalVersion.Contains(this.VersionTextual))
+                if (!psm.Identity.Version.OriginalVersion.Contains(this.VersionTextual))
                 {
                     continue;
                 }
@@ -165,5 +165,21 @@ namespace HolisticWare.Xamarin.Tools.NuGet
 
             return dependencies;
         }
+
+        public async
+             Task<IEnumerable<IPackageSearchMetadata>>
+                                 GetPackageMetadataAsync
+                                         (
+                                         )
+        {
+            IEnumerable<IPackageSearchMetadata> package_metadata = null;
+            package_metadata = await NugetClient.GetPackageMetadataAsync
+                                                (
+                                                    this.PackageId
+                                                ).ConfigureAwait(false);
+
+            return package_metadata;
+        }
+
     }
 }
