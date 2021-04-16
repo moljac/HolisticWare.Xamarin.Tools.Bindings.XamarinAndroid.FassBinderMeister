@@ -76,11 +76,15 @@
         <PackageReference Include="System.Reflection" Version="4.3.0" />
         <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
-        <PackageReference Include="HtmlAgilityPack" Version="1.11.28" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.32" />
         <PackageReference Include="System.Net.Requests" Version="4.3.0" />
 
-        <PackageReference Include="protobuf-net" Version="3.0.73" />
-        <PackageReference Include="protobuf-net.BuildTools" Version="3.0.81" PrivateAssets="all" IncludeAssets="runtime;build;native;contentfiles;analyzers;buildtransitive" />
+        <PackageReference Include="protobuf-net" Version="3.0.101" />
+        <PackageReference Include="protobuf-net.BuildTools" Version="3.0.101" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3" />
+        <PackageReference Include="Roslynator.Analyzers" Version="3.1.0" />
+        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.1.0" />
+        <PackageReference Include="AsyncFixer" Version="1.5.1" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj" />
