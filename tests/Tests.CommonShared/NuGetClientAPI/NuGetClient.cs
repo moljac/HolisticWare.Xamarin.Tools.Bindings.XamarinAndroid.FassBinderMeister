@@ -76,7 +76,7 @@ namespace UnitTests.NuGet
     public partial class Test_NuGetClient_ClientAPI
     {
         [Test]
-        public void Test_NuGetClient__Packages_Search()
+        public void Test_NuGetClient_Packages_Search()
         {
             NuGetClient ngc = new NuGetClient();
 
@@ -122,7 +122,7 @@ namespace UnitTests.NuGet
         }
 
         [Test]
-        public void Test_NuGetClient__Packages_PackageMetadata()
+        public void Test_NuGetClient_Packages_PackageMetadata()
         {
             NuGetClient ngc = new NuGetClient();
 
@@ -153,7 +153,7 @@ namespace UnitTests.NuGet
         }
 
         [Test]
-        public void Test_NuGetClient__Packages_PackageVersions()
+        public void Test_NuGetClient_Packages_PackageVersions()
         {
             NuGetClient ngc = new NuGetClient();
 

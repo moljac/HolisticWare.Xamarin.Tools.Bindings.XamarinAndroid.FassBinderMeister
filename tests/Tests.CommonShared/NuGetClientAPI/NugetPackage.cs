@@ -258,7 +258,7 @@ namespace UnitTests.NuGet
             return;
         }
 
-        //[Test]
+        [Test]
         public void Test_NuGet_NugetPackage_GetDependencyTreeHierarchyAsync_AndroidX_Activity()
         {
             NuGetPackage.NugetClient = new NuGetClient();
@@ -300,6 +300,42 @@ namespace UnitTests.NuGet
             //Assert.NotNull(search);
             //#endif
 
+
+            return;
+        }
+
+        [Test]
+        public void Test_NuGet_NugetPackage_Versioned_VersionLatest()
+        {
+            NuGetPackage.NugetClient = new NuGetClient();
+
+            NuGetPackage np = new NuGetPackage()
+            {
+                PackageId = "Xamarin.AndroidX.Activity",
+                VersionTextual = "1.1.0.4",
+            };
+
+            string ersion_latest = np.VersionLatestTextual;
+
+            return;
+        }
+
+        [Test]
+        public void Test_NuGet_NugetPackage_Named_VersionLatest()
+        {
+            NuGetPackage.NugetClient = new NuGetClient();
+
+            NuGetPackage np = new NuGetPackage()
+            {
+                PackageId = "Xamarin.AndroidX.Activity",
+            };
+
+            NuGetClient ngc = new NuGetClient();
+
+            IEnumerable<IPackageSearchMetadata> package_metadata = null;
+            package_metadata = ngc.GetPackageMetadataAsync();
+
+            string ersion_latest = np.VersionLatestTextual;
 
             return;
         }
