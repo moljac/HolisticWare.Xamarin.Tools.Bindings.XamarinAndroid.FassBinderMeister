@@ -333,7 +333,7 @@ namespace UnitTests.NuGet
             NuGetClient ngc = new NuGetClient();
 
             IEnumerable<IPackageSearchMetadata> package_metadata = null;
-            package_metadata = ngc.GetPackageMetadataAsync();
+            package_metadata = np.GetPackageMetadataAsync().Result;
 
             string ersion_latest = np.VersionLatestTextual;
 
