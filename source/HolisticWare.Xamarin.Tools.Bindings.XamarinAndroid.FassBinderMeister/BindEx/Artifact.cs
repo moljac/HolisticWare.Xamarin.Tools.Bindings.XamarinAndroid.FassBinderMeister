@@ -71,10 +71,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             else
             {
                 id_g = id_fully_qualified?.Substring(0, idx_last.Value);
-                id_a = id_fully_qualified?.Substring(idx_last.Value, id_fully_qualified.Length - idx_last.Value);
+                id_a = id_fully_qualified?.Substring(idx_last.Value + 1, id_fully_qualified.Length - idx_last.Value -1);
             }
 
-            return (id_group: "g", id_artifact: "a");
+            return (id_group: id_g, id_artifact: id_a);
         }
 
 
