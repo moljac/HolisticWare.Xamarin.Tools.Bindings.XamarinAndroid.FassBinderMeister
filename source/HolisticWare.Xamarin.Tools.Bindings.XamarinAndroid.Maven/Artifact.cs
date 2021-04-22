@@ -11,6 +11,20 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
     /// </summary>
     /// https://dl.google.com/android/maven2/androidx/arch/core/core-common/2.0.0/artifact-metadata.json
     /// dl.google.com/android/maven2/ artifact-metadata.json
+    ///
+    /// https://search.maven.org/
+    /// 
+    /// https://search.maven.org/search?q=a:tensorflow-lite
+    /// https://search.maven.org/artifact/org.tensorflow/tensorflow-lite
+    /// https://search.maven.org/remotecontent?filepath=org/tensorflow/tensorflow-lite/2.4.0/tensorflow-lite-2.4.0.aar
+    /// https://repo1.maven.org/maven2/org/tensorflow/tensorflow-lite/
+    /// https://repo1.maven.org/maven2/org/tensorflow/tensorflow-lite/maven-metadata.xml
+    /// https://search.maven.org/solrsearch/select?q=opencensus&start=0&rows=200
+    ///
+    /// https://mvnrepository.com/
+    /// 
+    /// https://repo1.maven.org/maven2/org/tensorflow/tensorflow-lite/2.4.0/
+    /// https://repo1.maven.org/maven2/org/tensorflow/tensorflow-lite/
     public partial class Artifact
     {
         public Artifact()
