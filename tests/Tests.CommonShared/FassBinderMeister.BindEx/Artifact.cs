@@ -108,6 +108,82 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
+        public void Test_Maven_Google_Artifact_Parse_androidx_car_car_01()
+        {
+            (string id_group, string id_artifact) result = Artifact.Parse("androidx.car.car");
+
+            #if MSTEST
+            Assert.Equals(result.id_group, "androidx.car");
+            Assert.Equals(result.id_artifact, "car");
+            #elif NUNIT
+            Assert.Equals(result.id_group, "androidx.car");
+            Assert.Equals(result.id_artifact, "car");
+            #elif XUNIT
+            Assert.Equal(result.id_group, "androidx.car");
+            Assert.Equal(result.id_artifact, "car");
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Maven_Google_Artifact_Parse_androidx_car_car_02()
+        {
+            (string id_group, string id_artifact) result = Artifact.Parse("androidx.car:car");
+
+            #if MSTEST
+            Assert.Equals(result.id_group, "androidx.car");
+            Assert.Equals(result.id_artifact, "car");
+            #elif NUNIT
+            Assert.Equals(result.id_group, "androidx.car");
+            Assert.Equals(result.id_artifact, "car");
+            #elif XUNIT
+            Assert.Equal(result.id_group, "androidx.car");
+            Assert.Equal(result.id_artifact, "car");
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Maven_Google_Artifact_Parse_org_tensorflow_tensorflow_lite_01()
+        {
+            (string id_group, string id_artifact) result = Artifact.Parse("org.tensorflow.tensorflow-lite");
+
+            #if MSTEST
+            Assert.Equals(result.id_group, "org.tensorflow");
+            Assert.Equals(result.id_artifact, "tensorflow-lite");
+            #elif NUNIT
+            Assert.Equals(result.id_group, "org.tensorflow");
+            Assert.Equals(result.id_artifact, "tensorflow-lite");
+            #elif XUNIT
+            Assert.Equal(result.id_group, "org.tensorflow");
+            Assert.Equal(result.id_artifact, "tensorflow-lite");
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Maven_Google_Artifact_Parse_org_tensorflow_tensorflow_lite_02()
+        {
+            (string id_group, string id_artifact) result = Artifact.Parse("org.tensorflow:tensorflow-lite");
+
+            #if MSTEST
+            Assert.Equals(result.id_group, "org.tensorflow");
+            Assert.Equals(result.id_artifact, "tensorflow-lite");
+            #elif NUNIT
+            Assert.Equals(result.id_group, "org.tensorflow");
+            Assert.Equals(result.id_artifact, "tensorflow-lite");
+            #elif XUNIT
+            Assert.Equal(result.id_group, "org.tensorflow");
+            Assert.Equal(result.id_artifact, "tensorflow-lite");
+            #endif
+
+            return;
+        }
+
+        [Test]
         public void Test_Maven_Google_Artifact_DownloadArtifactMetadata()
         {
             Artifact a = new Artifact
