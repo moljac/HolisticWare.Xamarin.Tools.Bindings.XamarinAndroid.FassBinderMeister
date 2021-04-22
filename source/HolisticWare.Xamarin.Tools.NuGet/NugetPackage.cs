@@ -178,6 +178,8 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                                     this.PackageId
                                                 ).ConfigureAwait(false);
 
+            PackageSearchMetadata = package_metadata;
+
             return package_metadata;
         }
 
