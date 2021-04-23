@@ -11,7 +11,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
         {
         }
 
-        public async Task InitializeAsync()
+        public virtual async
+            Task
+                            InitializeAsync
+                                        (
+                                        )
         {
             MavenClient mc = new MavenClient();
             this.MasterIndex = await mc.GetMasterIndexAsync();

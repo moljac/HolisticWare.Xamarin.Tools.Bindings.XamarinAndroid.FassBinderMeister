@@ -9,7 +9,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
     {
         // HttpClient is intended to be instantiated once per application,
         // rather than per-use. See Remarks.
-        public static readonly HttpClient HttpClient = new HttpClient();
+        public static HttpClient HttpClient
+        {
+            get;
+            set;
+        }
 
         public MavenClient()
         {
