@@ -164,6 +164,29 @@ namespace UnitTests.FassBinderMeister.BindEx
             return;
         }
 
+        // https://developer.android.com/studio/build/dependencies
+        [Test]
+        public void Test_Maven_Google_Artifact_Parse_com_example_android_app_magic_12_3_01()
+        {
+            (string id_group, string id_artifact) result;
+            // https://developer.android.com/studio/build/dependencies
+
+            result = Artifact.Parse("com.example.android:app-magic:12.3");
+
+            #if MSTEST
+            Assert.Equals(result.id_group, "com.example.android");
+            Assert.Equals(result.id_artifact, "app-magic");
+            #elif NUNIT
+            Assert.Equals(result.id_group, "com.example.android");
+            Assert.Equals(result.id_artifact, "app-magic");
+            #elif XUNIT
+            Assert.Equal(result.id_group, "com.example.android");
+            Assert.Equal(result.id_artifact, "app-magic");
+            #endif
+
+            return;
+        }
+        
         [Test]
         public void Test_Maven_Google_Artifact_Parse_org_tensorflow_tensorflow_lite_02()
         {

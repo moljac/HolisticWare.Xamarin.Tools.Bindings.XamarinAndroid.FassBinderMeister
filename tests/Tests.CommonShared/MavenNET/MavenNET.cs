@@ -70,6 +70,7 @@ using MavenNet;
 using HolisticWare.Xamarin.Tools.NuGet;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister;
 
+
 namespace UnitTests.MavenNet
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
@@ -83,7 +84,8 @@ namespace UnitTests.MavenNet
             MavenRepository repo = MavenRepository.FromGoogle();
             repo.Refresh("androidx.car");
 
-            //var project = repo.GetProjectAsync("androidx.car", "car").Result;
+            global::MavenNet.Models.Project project;
+            project = repo.GetProjectAsync("androidx.car", "car").Result;
 
             #if MSTEST
             Assert.IsNotNull(repo);
@@ -92,7 +94,6 @@ namespace UnitTests.MavenNet
             #elif XUNIT
             Assert.NotNull(repo);
             #endif
-
 
             return;
         }

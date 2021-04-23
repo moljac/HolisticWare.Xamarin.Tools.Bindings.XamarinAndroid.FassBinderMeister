@@ -67,11 +67,14 @@ using System.Collections.Generic;
 
 using HolisticWare.Xamarin.Tools.GitHub;
 
-namespace UnitTests.GitHub
+namespace UnitTests.ClientsAPI.GitHub
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_GitHubClientAPI
     {
+        //GitHubClient.HttpClient = Tests.CommonShared.Http.Client;
+
+
         GitHubClient ghc = new GitHubClient();
 
         // https://api.github.com/repos/xamarin/AndroidX/tags

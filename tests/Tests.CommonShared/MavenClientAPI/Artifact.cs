@@ -67,7 +67,7 @@ using System.Threading.Tasks;
 
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven;
 
-namespace UnitTests.MavenClientAPI
+namespace UnitTests.ClientsAPI.Maven
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Artifact
