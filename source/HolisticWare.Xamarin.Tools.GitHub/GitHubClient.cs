@@ -10,11 +10,15 @@ namespace HolisticWare.Xamarin.Tools.GitHub
     {
         // HttpClient is intended to be instantiated once per application,
         // rather than per-use. See Remarks.
-        static readonly HttpClient http_client = new HttpClient();
+        public static HttpClient HttpClient
+        {
+            get;
+            set;
+        }
 
         public GitHubClient()
         {
-            http_client.DefaultRequestHeaders
+            HttpClient.DefaultRequestHeaders
                             .Add
                                 (
                                     "User-Agent",
@@ -38,6 +42,13 @@ namespace HolisticWare.Xamarin.Tools.GitHub
                                             string tag
                                         )
         {
+            if (HttpClient == null)
+            {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.Append($"API not initialized - initialize static HttpClient");
+                throw new InvalidOperationException(sb.ToString());
+            }
+
             string url = $"https://api.github.com/repos/{user_organization}/{repository}/tags/{tag}";
 
             IEnumerable<Tag> tags = null;
@@ -50,7 +61,7 @@ namespace HolisticWare.Xamarin.Tools.GitHub
                 string response_body = await response.Content.ReadAsStringAsync();
                 */
                 // new helper method below
-                string response_string_json = await http_client.GetStringAsync(url);
+                string response_string_json = await HttpClient.GetStringAsync(url).ConfigureAwait(false);
                 tags = GitHub.Tags.Deserialize(response_string_json).ToList();
             }
             catch (HttpRequestException e)
@@ -82,6 +93,13 @@ namespace HolisticWare.Xamarin.Tools.GitHub
                                             string repository
                                         )
         {
+            if (HttpClient == null)
+            {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.Append($"API not initialized - initialize static HttpClient");
+                throw new InvalidOperationException(sb.ToString());
+            }
+
             string url = $"https://api.github.com/repos/{user_organization}/{repository}/tags";
 
             IEnumerable<Tag> tags = null;
@@ -94,7 +112,7 @@ namespace HolisticWare.Xamarin.Tools.GitHub
                 string response_body = await response.Content.ReadAsStringAsync();
                 */
                 // new helper method below
-                string response_string_json = await http_client.GetStringAsync(url);
+                string response_string_json = await HttpClient.GetStringAsync(url).ConfigureAwait(false);
                 tags = GitHub.Tags.Deserialize(response_string_json);
             }
             catch (HttpRequestException e)
