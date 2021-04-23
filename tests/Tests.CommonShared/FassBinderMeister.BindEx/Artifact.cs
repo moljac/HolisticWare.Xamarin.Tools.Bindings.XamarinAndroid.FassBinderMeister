@@ -116,8 +116,8 @@ namespace UnitTests.FassBinderMeister.BindEx
             Assert.Equals(result.id_group, "androidx.car");
             Assert.Equals(result.id_artifact, "car");
             #elif NUNIT
-            Assert.Equals(result.id_group, "androidx.car");
-            Assert.Equals(result.id_artifact, "car");
+            Assert.AreEqual(result.id_group, "androidx.car");
+            Assert.AreEqual(result.id_artifact, "car");
             #elif XUNIT
             Assert.Equal(result.id_group, "androidx.car");
             Assert.Equal(result.id_artifact, "car");
@@ -135,8 +135,8 @@ namespace UnitTests.FassBinderMeister.BindEx
             Assert.Equals(result.id_group, "androidx.car");
             Assert.Equals(result.id_artifact, "car");
             #elif NUNIT
-            Assert.Equals(result.id_group, "androidx.car");
-            Assert.Equals(result.id_artifact, "car");
+            Assert.AreEqual(result.id_group, "androidx.car");
+            Assert.AreEqual(result.id_artifact, "car");
             #elif XUNIT
             Assert.Equal(result.id_group, "androidx.car");
             Assert.Equal(result.id_artifact, "car");
@@ -154,8 +154,8 @@ namespace UnitTests.FassBinderMeister.BindEx
             Assert.Equals(result.id_group, "org.tensorflow");
             Assert.Equals(result.id_artifact, "tensorflow-lite");
             #elif NUNIT
-            Assert.Equals(result.id_group, "org.tensorflow");
-            Assert.Equals(result.id_artifact, "tensorflow-lite");
+            Assert.AreEqual(result.id_group, "org.tensorflow");
+            Assert.AreEqual(result.id_artifact, "tensorflow-lite");
             #elif XUNIT
             Assert.Equal(result.id_group, "org.tensorflow");
             Assert.Equal(result.id_artifact, "tensorflow-lite");
@@ -173,8 +173,8 @@ namespace UnitTests.FassBinderMeister.BindEx
             Assert.Equals(result.id_group, "org.tensorflow");
             Assert.Equals(result.id_artifact, "tensorflow-lite");
             #elif NUNIT
-            Assert.Equals(result.id_group, "org.tensorflow");
-            Assert.Equals(result.id_artifact, "tensorflow-lite");
+            Assert.AreEqual(result.id_group, "org.tensorflow");
+            Assert.AreEqual(result.id_artifact, "tensorflow-lite");
             #elif XUNIT
             Assert.Equal(result.id_group, "org.tensorflow");
             Assert.Equal(result.id_artifact, "tensorflow-lite");
