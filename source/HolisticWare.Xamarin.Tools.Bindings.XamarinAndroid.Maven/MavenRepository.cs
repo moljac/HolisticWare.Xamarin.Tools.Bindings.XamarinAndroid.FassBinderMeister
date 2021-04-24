@@ -5,10 +5,19 @@ using System.Threading.Tasks;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
 {
-    public partial class MavenRepository
+    public abstract partial class MavenRepository
     {
+        protected MavenClient maven_client = null;
+
         public MavenRepository()
         {
+            return;
+        }
+
+        public MavenClient MavenClient
+        {
+            get;
+            set;
         }
 
         public virtual async
@@ -17,8 +26,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                                         (
                                         )
         {
-            MavenClient mc = new MavenClient();
-            this.MasterIndex = await mc.GetMasterIndexAsync();
+            this.MasterIndex = await maven_client.GetMasterIndexAsync();
 
             await this.MasterIndex.GetGroupNamesAsync();
             await this.MasterIndex.GetGroupIndicesAsync();
@@ -26,10 +34,47 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             return;
         }
 
-        public MasterIndex MasterIndex
+        public abstract string DefaultUrl
         {
             get;
             set;
+        }
+
+        public abstract string DefaultUrlMasterIndex
+        {
+            get;
+            set;
+        }
+
+
+        public abstract MasterIndex MasterIndex
+        {
+            get;
+            set;
+        }
+
+        public async
+            Task<Group>
+                            GetGroupAsync
+                                        (
+                                            string group_id
+                                        )
+        {
+
+            return null;
+        }
+
+
+        public async
+            Task<Artifact>
+                            GetArtifactAsync
+                                        (
+                                            string group_id,
+                                            string artifact_id
+                                        )
+        {
+
+            return null;
         }
 
         public async

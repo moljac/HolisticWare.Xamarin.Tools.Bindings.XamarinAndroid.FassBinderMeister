@@ -6,19 +6,13 @@ using System.Threading.Tasks;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
 {
-    public partial class GroupIndex
+    public partial class GroupIndexMavenGoogle : GroupIndex
     {
-        public GroupIndex (string group_id)
+        public GroupIndexMavenGoogle(string group_name) : base(group_name)
         {
-            this.Name = group_id;
+            this.Name = group_name;
 
             return;
-        }
-
-        public string Name
-        {
-            get;
-            set;
         }
 
         public string UrlGroupIndex

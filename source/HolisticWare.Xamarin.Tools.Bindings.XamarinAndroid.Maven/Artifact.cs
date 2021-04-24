@@ -123,7 +123,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
         }
 
         public static
-            (string id_group, string id_artifact)
+            (string id_group, string id_artifact, string version)
                             Parse
                                         (
                                             string id_fully_qualified
@@ -133,6 +133,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
 
             string id_g = null;
             string id_a = null;
+            string version = null;
 
 
             parts1 = id_fully_qualified?.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
@@ -142,7 +143,23 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                 id_g = parts1[0];
                 id_a = parts1[1];
 
-                return (id_group: id_g, id_artifact: id_a);
+                return (id_group: id_g, id_artifact: id_a, version: version);
+            }
+            else if (parts1.Length == 3)
+            {
+                id_g = parts1[0];
+                id_a = parts1[1];
+                version = parts1[2];
+
+                return (id_group: id_g, id_artifact: id_a, version: version);
+            }
+            else if (parts1.Length == 1)
+            {
+                // No Op - string did not contain ':'
+            }
+            else
+            {
+                throw new InvalidOperationException($"Fully qualified artifact name error");
             }
 
             int? idx_last = id_fully_qualified?.LastIndexOf('.');
@@ -157,7 +174,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                 id_a = id_fully_qualified?.Substring(idx_last.Value + 1, id_fully_qualified.Length - idx_last.Value - 1);
             }
 
-            return (id_group: id_g, id_artifact: id_a);
+            return (id_group: id_g, id_artifact: id_a, version: version);
         }
 
         /// <summary>
@@ -172,14 +189,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                                             string id_fully_qualified
                                         )
         {
-            (string id_group, string id_artifact) a = Artifact.Parse(id_fully_qualified);
+            (string id_group, string id_artifact, string version) a = Artifact.Parse(id_fully_qualified);
 
             string url_metadata_google_maven = $"";
             MavenRepository mr = null;
 
             try
             {
-                mr = new MavenRepository();
+                mr = new MavenRepositoryGoogle();
             }
             catch
             {
@@ -191,6 +208,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             string url_metadata_maven_central = $"";
             try
             {
+                mr = new MavenRepositoryMavenCentral();
 
             }
             catch

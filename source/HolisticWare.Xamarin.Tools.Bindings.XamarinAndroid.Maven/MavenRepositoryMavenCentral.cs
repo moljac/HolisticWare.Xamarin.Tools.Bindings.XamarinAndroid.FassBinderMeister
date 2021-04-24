@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
 {
-    public partial class MavenRepositoryGoogle : MavenRepository
+    public partial class MavenRepositoryMavenCentral : MavenRepository
     {
-        public MavenRepositoryGoogle() : base()
+        public MavenRepositoryMavenCentral() : base()
         {
             defalt_url = "";
             defalt_url_master_index = null;
