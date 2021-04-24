@@ -20,12 +20,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClientAPI\NuGetClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\ReleaseNotesHTMLData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\Artifact.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MavenRepoData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MavenRepositoryGoogle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\ArtifactBindingNugetData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Binderator.Artifact\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClientAPI\NugetPackages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClientAPI\NugetPackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MasterIndexMavenGoogle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MasterIndexMavenCentral.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MavenRepositoryMavenCentral.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />

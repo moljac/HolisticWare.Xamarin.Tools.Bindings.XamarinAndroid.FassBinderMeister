@@ -62,65 +62,46 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
-using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using NuGet.Protocol.Core.Types;
-using NuGet.Versioning;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven;
 
-using HolisticWare.Xamarin.Tools.NuGet;
-
-namespace UnitTests.ClientsAPI.NuGet
+namespace UnitTests.ClientsAPI.Maven
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_NugetPackages
+    public partial class Test_MavenRepositoryGoogle
     {
+        // MavenNet is missing some API
+        // https://github.com/Redth/MavenNet/
+        // MavenClient is simple client for Google Maven Repo
+
         [Test]
-        public void Test_NuGet_NugetPackages_GetPackageMetadataAsync()
+        public void Test_MavenRepositoryGoogle_InitializeAsync()
         {
-            NuGetPackages.NugetClient = new NuGetClient();
-            NuGetPackages np = new NuGetPackages();
-
-            List<string> package_ids = new List<string>()
-            {
-                "Xamarin.AndroidX.Legacy.Support.V13",
-                "Xamarin.Google.Guava.ListenableFuture",
-                "Xamarin.AndroidX.Annotations",
-                "Xamarin.AndroidX.Activity",
-                "Xamarin.AndroidX.NonExistentPackage",
-            };
-            List<NuGetPackage> result = np.GetPackageSearchMetadataForPackageNamesAsync(package_ids)
-                                                .Result;
-
-            System.IO.Directory.CreateDirectory
-                                    (
-                                        $"nuget-client-api/NugetPackages/"
-                                    );
-
-            string timestamp = System.DateTime.Now.ToString("yyyyMMdd-HHmmssff");
-            string json = null;
-
-            json = Newtonsoft.Json.JsonConvert.SerializeObject
-                                                    (
-                                                        result,
-                                                        Newtonsoft.Json.Formatting.Indented
-                                                    );
-            System.IO.File.WriteAllText
-                                (
-                                    $"nuget-client-api/NugetPackages/PackageSearchMetadata-{timestamp}.json",
-                                    json
-                                );
-
             //#if MSTEST
-            //Assert.IsNotNull(search);
+            //Assert.IsNotNull(mrd);
             //#elif NUNIT
-            //Assert.NotNull(search);
+            //Assert.NotNull(mrd);
             //#elif XUNIT
-            //Assert.NotNull(search);
+            //Assert.NotNull(mrd);
             //#endif
-
 
             return;
         }
+
+        [Test]
+        public void Test_Maven_Google_MavenRepoData_Save()
+        {
+            //#if MSTEST
+            //Assert.IsNotNull(mrd);
+            //#elif NUNIT
+            //Assert.NotNull(mrd);
+            //#elif XUNIT
+            //Assert.NotNull(mrd);
+            //#endif
+            
+            return;
+        }
+
     }
 }

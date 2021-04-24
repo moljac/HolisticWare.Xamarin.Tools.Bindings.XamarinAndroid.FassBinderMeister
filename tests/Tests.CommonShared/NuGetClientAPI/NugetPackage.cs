@@ -70,7 +70,7 @@ using NuGet.Versioning;
 
 using HolisticWare.Xamarin.Tools.NuGet;
 
-namespace UnitTests.NuGet
+namespace UnitTests.ClientsAPI.NuGet
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_NugetPackage

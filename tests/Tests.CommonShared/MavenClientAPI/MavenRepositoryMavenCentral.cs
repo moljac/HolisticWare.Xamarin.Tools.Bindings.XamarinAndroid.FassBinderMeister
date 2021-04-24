@@ -69,48 +69,38 @@ using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven;
 namespace UnitTests.ClientsAPI.Maven
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_MavenRepoData
+    public partial class Test_MavenRepositoryMavenCentral
     {
         // MavenNet is missing some API
         // https://github.com/Redth/MavenNet/
         // MavenClient is simple client for Google Maven Repo
 
         [Test]
-        public void Test_Maven_Google_MavenRepoData_InitializeAsync()
+        public void Test_InitializeAsync()
         {
-            MavenRepository mrd = new MavenRepository();
 
-
-            mrd.InitializeAsync().Wait();
-
-            #if MSTEST
-            Assert.IsNotNull(mrd);
-            #elif NUNIT
-            Assert.NotNull(mrd);
-            #elif XUNIT
-            Assert.NotNull(mrd);
-            #endif
+            //#if MSTEST
+            //Assert.IsNotNull(mrd);
+            //#elif NUNIT
+            //Assert.NotNull(mrd);
+            //#elif XUNIT
+            //Assert.NotNull(mrd);
+            //#endif
 
             return;
         }
 
         [Test]
-        public void Test_Maven_Google_MavenRepoData_Save()
+        public void Test_Save()
         {
-            MavenRepository mrd = new MavenRepository();
+            //#if MSTEST
+            //Assert.IsNotNull(mrd);
+            //#elif NUNIT
+            //Assert.NotNull(mrd);
+            //#elif XUNIT
+            //Assert.NotNull(mrd);
+            //#endif
 
-            mrd.InitializeAsync().Wait();
-
-            mrd.SaveAsync().Wait();
-
-            #if MSTEST
-            Assert.IsNotNull(mrd);
-            #elif NUNIT
-            Assert.NotNull(mrd);
-            #elif XUNIT
-            Assert.NotNull(mrd);
-            #endif
-            
             return;
         }
 

@@ -62,65 +62,81 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
-using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using NuGet.Protocol.Core.Types;
-using NuGet.Versioning;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven;
 
-using HolisticWare.Xamarin.Tools.NuGet;
-
-namespace UnitTests.ClientsAPI.NuGet
+namespace UnitTests.ClientsAPI.Maven
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_NugetPackages
+    public partial class Test_MasterIndexMavenCentral
     {
+        // MavenNet is missing some API
+        // https://github.com/Redth/MavenNet/
+        // MavenClient is simple client for Google Maven Repo
+
         [Test]
-        public void Test_NuGet_NugetPackages_GetPackageMetadataAsync()
+        public void Test_MasterIndexMavenCentral_GetGroupNamesAsync()
         {
-            NuGetPackages.NugetClient = new NuGetClient();
-            NuGetPackages np = new NuGetPackages();
+            MasterIndex mi = new MasterIndex();
 
-            List<string> package_ids = new List<string>()
-            {
-                "Xamarin.AndroidX.Legacy.Support.V13",
-                "Xamarin.Google.Guava.ListenableFuture",
-                "Xamarin.AndroidX.Annotations",
-                "Xamarin.AndroidX.Activity",
-                "Xamarin.AndroidX.NonExistentPackage",
-            };
-            List<NuGetPackage> result = np.GetPackageSearchMetadataForPackageNamesAsync(package_ids)
-                                                .Result;
+            IEnumerable<string> groups = mi.GetGroupNamesAsync().Result;
 
-            System.IO.Directory.CreateDirectory
-                                    (
-                                        $"nuget-client-api/NugetPackages/"
-                                    );
+            #if MSTEST
+            Assert.IsNotNull(mi);
+            Assert.IsNotNull(groups);
+            #elif NUNIT
+            Assert.NotNull(mi);
+            Assert.NotNull(groups);
+            #elif XUNIT
+            Assert.NotNull(mi);
+            Assert.NotNull(groups);
+            #endif
 
-            string timestamp = System.DateTime.Now.ToString("yyyyMMdd-HHmmssff");
-            string json = null;
+            return;
+        }
 
-            json = Newtonsoft.Json.JsonConvert.SerializeObject
-                                                    (
-                                                        result,
-                                                        Newtonsoft.Json.Formatting.Indented
-                                                    );
-            System.IO.File.WriteAllText
-                                (
-                                    $"nuget-client-api/NugetPackages/PackageSearchMetadata-{timestamp}.json",
-                                    json
-                                );
+        [Test]
+        public void Test_MasterIndexMavenCentral_GetGroupIndicesAsync()
+        {
+            MasterIndex mi = new MasterIndex();
 
-            //#if MSTEST
-            //Assert.IsNotNull(search);
-            //#elif NUNIT
-            //Assert.NotNull(search);
-            //#elif XUNIT
-            //Assert.NotNull(search);
-            //#endif
+            IEnumerable<GroupIndex> groups = mi.GetGroupIndicesAsync().Result;
+
+            #if MSTEST
+            Assert.IsNotNull(mi);
+            Assert.IsNotNull(groups);
+            #elif NUNIT
+            Assert.NotNull(mi);
+            Assert.NotNull(groups);
+            #elif XUNIT
+            Assert.NotNull(mi);
+            Assert.NotNull(groups);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_MasterIndexMavenCentral_GetMasterIndexAsync()
+        {
+            MavenClient mc = new MavenClient();
+
+            MasterIndex mi = mc.GetMasterIndexAsync().Result;
+
+            #if MSTEST
+            Assert.IsNotNull(mc);
+            #elif NUNIT
+            Assert.NotNull(mc);
+            #elif XUNIT
+            Assert.NotNull(mc);
+            #endif
 
 
             return;
         }
+
+
+
     }
 }
