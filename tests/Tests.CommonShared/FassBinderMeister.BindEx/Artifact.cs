@@ -72,7 +72,7 @@ namespace UnitTests.FassBinderMeister.BindEx
     public partial class Test_Artifact
     {
         [Test]
-        public void Test_Maven_Google_Artifact_Ctor_01()
+        public void Test_Ctor_01()
         {
             Artifact a = new Artifact("androidx.car", "car");
 
@@ -90,7 +90,7 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_Maven_Google_Artifact_Ctor_02()
+        public void Test_Ctor_02()
         {
             Artifact a = new Artifact("androidx.car.car");
 
@@ -108,106 +108,194 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_Maven_Google_Artifact_Parse_androidx_car_car_01()
+        public void Test_Parse_androidx_car_car_01()
         {
-            (string id_group, string id_artifact) result = Artifact.Parse("androidx.car.car");
+            (string id_group, string id_artifact, string version) result;
+            result = Artifact.Parse("androidx.car.car");
 
             #if MSTEST
-            Assert.Equals(result.id_group, "androidx.car");
-            Assert.Equals(result.id_artifact, "car");
+            Assert.AreEqual(result.id_group, "androidx.car");
+            Assert.AreEqual(result.id_artifact, "car");
+            Assert.AreEqual(result.version, null);
             #elif NUNIT
             Assert.AreEqual(result.id_group, "androidx.car");
             Assert.AreEqual(result.id_artifact, "car");
+            Assert.AreEqual(result.version, null);
             #elif XUNIT
             Assert.Equal(result.id_group, "androidx.car");
             Assert.Equal(result.id_artifact, "car");
+            Assert.Equal(result.version, null);
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_Maven_Google_Artifact_Parse_androidx_car_car_02()
+        public void Test_Parse_androidx_car_car_02()
         {
-            (string id_group, string id_artifact) result = Artifact.Parse("androidx.car:car");
+            (string id_group, string id_artifact, string version) result;
+            result = Artifact.Parse("androidx.car:car");
 
             #if MSTEST
-            Assert.Equals(result.id_group, "androidx.car");
-            Assert.Equals(result.id_artifact, "car");
+            Assert.AreEqual(result.id_group, "androidx.car");
+            Assert.AreEqual(result.id_artifact, "car");
+            Assert.AreEqual(result.version, null);
             #elif NUNIT
             Assert.AreEqual(result.id_group, "androidx.car");
             Assert.AreEqual(result.id_artifact, "car");
+            Assert.AreEqual(result.version, null);
             #elif XUNIT
             Assert.Equal(result.id_group, "androidx.car");
             Assert.Equal(result.id_artifact, "car");
+            Assert.Equal(result.version, null);
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_Maven_Google_Artifact_Parse_org_tensorflow_tensorflow_lite_01()
+        public void Test_Parse_org_tensorflow_tensorflow_lite_01()
         {
-            (string id_group, string id_artifact) result = Artifact.Parse("org.tensorflow.tensorflow-lite");
+            (string id_group, string id_artifact, string version) result;
+            result = Artifact.Parse("org.tensorflow.tensorflow-lite");
 
             #if MSTEST
-            Assert.Equals(result.id_group, "org.tensorflow");
-            Assert.Equals(result.id_artifact, "tensorflow-lite");
+            Assert.AreEqual(result.id_group, "org.tensorflow");
+            Assert.AreEqual(result.id_artifact, "tensorflow-lite");
+            Assert.AreEqual(result.version, null);
             #elif NUNIT
             Assert.AreEqual(result.id_group, "org.tensorflow");
             Assert.AreEqual(result.id_artifact, "tensorflow-lite");
+            Assert.AreEqual(result.version, null);
             #elif XUNIT
             Assert.Equal(result.id_group, "org.tensorflow");
             Assert.Equal(result.id_artifact, "tensorflow-lite");
-            #endif
-
-            return;
-        }
-
-        // https://developer.android.com/studio/build/dependencies
-        [Test]
-        public void Test_Maven_Google_Artifact_Parse_com_example_android_app_magic_12_3_01()
-        {
-            (string id_group, string id_artifact) result;
-            // https://developer.android.com/studio/build/dependencies
-
-            result = Artifact.Parse("com.example.android:app-magic:12.3");
-
-            #if MSTEST
-            Assert.Equals(result.id_group, "com.example.android");
-            Assert.Equals(result.id_artifact, "app-magic");
-            #elif NUNIT
-            Assert.Equals(result.id_group, "com.example.android");
-            Assert.Equals(result.id_artifact, "app-magic");
-            #elif XUNIT
-            Assert.Equal(result.id_group, "com.example.android");
-            Assert.Equal(result.id_artifact, "app-magic");
+            Assert.Equal(result.version, null);
             #endif
 
             return;
         }
         
         [Test]
-        public void Test_Maven_Google_Artifact_Parse_org_tensorflow_tensorflow_lite_02()
+        public void Test_Parse_org_tensorflow_tensorflow_lite_02()
         {
-            (string id_group, string id_artifact) result = Artifact.Parse("org.tensorflow:tensorflow-lite");
+            (string id_group, string id_artifact, string version) result;
+            result = Artifact.Parse("org.tensorflow:tensorflow-lite");
 
             #if MSTEST
-            Assert.Equals(result.id_group, "org.tensorflow");
-            Assert.Equals(result.id_artifact, "tensorflow-lite");
+            Assert.AreEqual(result.id_group, "org.tensorflow");
+            Assert.AreEqual(result.id_artifact, "tensorflow-lite");
+            Assert.AreEqual(result.version, null);
             #elif NUNIT
             Assert.AreEqual(result.id_group, "org.tensorflow");
             Assert.AreEqual(result.id_artifact, "tensorflow-lite");
+            Assert.AreEqual(result.version, null);
             #elif XUNIT
             Assert.Equal(result.id_group, "org.tensorflow");
             Assert.Equal(result.id_artifact, "tensorflow-lite");
+            Assert.Equal(result.version, null);
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_Maven_Google_Artifact_DownloadArtifactMetadata()
+        public void Test_Parse_com_example_android_app_magic_12_3_01()
+        {
+            (string id_group, string id_artifact, string version) result;
+
+            // https://developer.android.com/studio/build/dependencies
+            result = Artifact.Parse("com.example.android:app-magic:12.3");
+
+            #if MSTEST
+            Assert.AreEqual(result.id_group, "com.example.android");
+            Assert.AreEqual(result.id_artifact, "app-magic");
+            Assert.AreEqual(result.version, "12.3");
+            #elif NUNIT
+            Assert.Equals(result.id_group, "com.example.android");
+            Assert.Equals(result.id_artifact, "app-magic");
+            Assert.Equals(result.version, "12.3");
+            #elif XUNIT
+            Assert.Equal(result.id_group, "com.example.android");
+            Assert.Equal(result.id_artifact, "app-magic");
+            Assert.Equal(result.version, "12.3");
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_DetectMavenRepository_01a()
+        {
+            var result = Artifact.DetectMavenRepository("androidx.car:car");
+
+
+            //#if MSTEST
+            //Assert.AreEqual(result.id_group, "com.example.android");
+            //Assert.AreEqual(result.id_artifact, "app-magic");
+            //Assert.AreEqual(result.version, "12.3");
+            //#elif NUNIT
+            //Assert.Equals(result.id_group, "com.example.android");
+            //Assert.Equals(result.id_artifact, "app-magic");
+            //Assert.Equals(result.version, "12.3");
+            //#elif XUNIT
+            //Assert.Equal(result.id_group, "com.example.android");
+            //Assert.Equal(result.id_artifact, "app-magic");
+            //Assert.Equal(result.version, "12.3");
+            //#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_DetectMavenRepository_02a()
+        {
+            var result = Artifact.DetectMavenRepository("org.tensorflow:tensorflow-lite:2.4.0");
+
+
+            //#if MSTEST
+            //Assert.AreEqual(result.id_group, "com.example.android");
+            //Assert.AreEqual(result.id_artifact, "app-magic");
+            //Assert.AreEqual(result.version, "12.3");
+            //#elif NUNIT
+            //Assert.Equals(result.id_group, "com.example.android");
+            //Assert.Equals(result.id_artifact, "app-magic");
+            //Assert.Equals(result.version, "12.3");
+            //#elif XUNIT
+            //Assert.Equal(result.id_group, "com.example.android");
+            //Assert.Equal(result.id_artifact, "app-magic");
+            //Assert.Equal(result.version, "12.3");
+            //#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_DetectMavenRepository_03()
+        {
+            var result = Artifact.DetectMavenRepository("com.example.android:app-magic:12.3");
+
+
+            //#if MSTEST
+            //Assert.AreEqual(result.id_group, "com.example.android");
+            //Assert.AreEqual(result.id_artifact, "app-magic");
+            //Assert.AreEqual(result.version, "12.3");
+            //#elif NUNIT
+            //Assert.Equals(result.id_group, "com.example.android");
+            //Assert.Equals(result.id_artifact, "app-magic");
+            //Assert.Equals(result.version, "12.3");
+            //#elif XUNIT
+            //Assert.Equal(result.id_group, "com.example.android");
+            //Assert.Equal(result.id_artifact, "app-magic");
+            //Assert.Equal(result.version, "12.3");
+            //#endif
+
+            return;
+        }
+
+
+        [Test]
+        public void Test_DownloadArtifactMetadata()
         {
             Artifact a = new Artifact
             {
@@ -238,7 +326,7 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_Maven_Google_Artifact_DownloadProjectObjectModelPOM()
+        public void Test_DownloadProjectObjectModelPOM()
         {
             Artifact a = new Artifact
             {

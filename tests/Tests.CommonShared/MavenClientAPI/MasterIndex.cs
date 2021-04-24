@@ -76,7 +76,7 @@ namespace UnitTests.ClientsAPI.Maven
         // MavenClient is simple client for Google Maven Repo
 
         [Test]
-        public void Test_Maven_Google_MasterIndex_GetGroupNamesAsync()
+        public void Test_MasterIndex_GetGroupNamesAsync()
         {
             MasterIndex mi = new MasterIndex();
 
@@ -97,7 +97,7 @@ namespace UnitTests.ClientsAPI.Maven
         }
 
         [Test]
-        public void Test_Maven_Google_MasterIndex_GetGroupIndicesAsync()
+        public void Test_MasterIndex_GetGroupIndicesAsync()
         {
             MasterIndex mi = new MasterIndex();
 
@@ -118,7 +118,7 @@ namespace UnitTests.ClientsAPI.Maven
         }
 
         [Test]
-        public void Test_Maven_Google_MasterIndex()
+        public void Test_MasterIndex_GetMasterIndexAsync()
         {
             MavenClient mc = new MavenClient();
 
