@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
+    <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.Tool</RootNamespace>
+    <ToolCommandName>githubber</ToolCommandName>
+    <PackAsTool>true</PackAsTool>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageOutputPath>../../../output</PackageOutputPath>
+  </PropertyGroup>
+
+</Project>
