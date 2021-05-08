@@ -72,7 +72,7 @@ namespace UnitTests.FassBinderMeister.BindEx
     public partial class Test_Artifact
     {
         [Test]
-        public void Test_Ctor_01()
+        public void Ctor_01()
         {
             Artifact a = new Artifact("androidx.car", "car");
 
@@ -90,7 +90,7 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_Ctor_02()
+        public void Ctor_02()
         {
             Artifact a = new Artifact("androidx.car.car");
 
@@ -108,7 +108,7 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_Parse_androidx_car_car_01()
+        public void Parse_androidx_car_car_01()
         {
             (string id_group, string id_artifact, string version) result;
             result = Artifact.Parse("androidx.car.car");
@@ -131,7 +131,7 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_Parse_androidx_car_car_02()
+        public void Parse_androidx_car_car_02()
         {
             (string id_group, string id_artifact, string version) result;
             result = Artifact.Parse("androidx.car:car");
@@ -154,7 +154,7 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_Parse_org_tensorflow_tensorflow_lite_01()
+        public void Parse_org_tensorflow_tensorflow_lite_01()
         {
             (string id_group, string id_artifact, string version) result;
             result = Artifact.Parse("org.tensorflow.tensorflow-lite");
@@ -177,7 +177,7 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
         
         [Test]
-        public void Test_Parse_org_tensorflow_tensorflow_lite_02()
+        public void Parse_org_tensorflow_tensorflow_lite_02()
         {
             (string id_group, string id_artifact, string version) result;
             result = Artifact.Parse("org.tensorflow:tensorflow-lite");
@@ -200,7 +200,7 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_Parse_com_example_android_app_magic_12_3_01()
+        public void Parse_com_example_android_app_magic_12_3_01()
         {
             (string id_group, string id_artifact, string version) result;
 
@@ -225,7 +225,7 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_DetectMavenRepository_01a()
+        public void DetectMavenRepository_01a()
         {
             var result = Artifact.DetectMavenRepository("androidx.car:car");
 
@@ -248,7 +248,7 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_DetectMavenRepository_02a()
+        public void DetectMavenRepository_02a()
         {
             var result = Artifact.DetectMavenRepository("org.tensorflow:tensorflow-lite:2.4.0");
 
@@ -271,7 +271,7 @@ namespace UnitTests.FassBinderMeister.BindEx
         }
 
         [Test]
-        public void Test_DetectMavenRepository_03()
+        public void DetectMavenRepository_03()
         {
             var result = Artifact.DetectMavenRepository("com.example.android:app-magic:12.3");
 
@@ -295,7 +295,7 @@ namespace UnitTests.FassBinderMeister.BindEx
 
 
         [Test]
-        public void Test_DownloadArtifactMetadata()
+        public void DownloadArtifactMetadata()
         {
             Artifact a = new Artifact
             {
@@ -311,22 +311,22 @@ namespace UnitTests.FassBinderMeister.BindEx
             #if MSTEST
             Assert.IsNotNull(a);
             Assert.IsNotNull(content);
-            Assert.IsTrue(content.Contains("404 (Not Found)."));
+            Assert.IsFalse(content.Contains("404 (Not Found)."));
             #elif NUNIT
             Assert.NotNull(a);
             Assert.NotNull(content);
-            Assert.IsTrue(content.Contains("404 (Not Found)."));
+            Assert.IsFalse(content.Contains("404 (Not Found)."));
             #elif XUNIT
             Assert.NotNull(a);
             Assert.NotNull(content);
-            Assert.True(content.Contains("404 (Not Found)."));
+            Assert.False(content.Contains("404 (Not Found)."));
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_DownloadProjectObjectModelPOM()
+        public void DownloadProjectObjectModelPOM()
         {
             Artifact a = new Artifact
             {
