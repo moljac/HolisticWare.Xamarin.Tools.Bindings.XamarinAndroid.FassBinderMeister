@@ -21,15 +21,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             set;
         }
 
-        public string UrlGroupIndex
+        public virtual string UrlGroupIndex
         {
-            get
-            {
-                string gid = this.Name.Replace(".", "/");
-                string url = $"https://dl.google.com/android/maven2/{gid}/group-index.xml";
-
-                return url;
-            }
+            get;
+            set;
         }
 
         public string Content
@@ -63,10 +58,13 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                 response_string_xml = await MavenClient.HttpClient.GetStringAsync(this.UrlGroupIndex);
                 this.Content = response_string_xml;
             }
-            catch (HttpRequestException e)
+            catch (HttpRequestException exc)
             {
-                Console.WriteLine("Exception Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.AppendLine($"GroupIndex.GetArtifactNamesAndVersionsAsync HttpRequestException");
+                sb.AppendLine($"    Message : {exc.Message}");
+
+                System.Diagnostics.Trace.WriteLine(sb.ToString());
             }
 
             IEnumerable<(string name, string[] versions)> result = null;

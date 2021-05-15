@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
 {
-    public partial class MasterIndexMavenCentral : MasterIndex
+    public partial class MasterIndexGoogle : MasterIndex
     {
-        public static string Url
+        public override string Url
         {
             get;
             set;
-        }  = $"hhttps://repo1.maven.org/maven2/";
+        } = MavenRepository.UrlMasterIndexDefault;
 
-        public async
+        public override async
             Task<IEnumerable<GroupIndex>>
                                                 GetGroupIndicesAsync
                                                     (
@@ -40,7 +40,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                 string response_body = await response.Content.ReadAsStringAsync();
                 */
                 // new helper method below
-                response_string_xml = await MavenClient.HttpClient.GetStringAsync(MasterIndex.Url);
+                response_string_xml = await MavenClient.HttpClient.GetStringAsync(this.Url);
                 this.Content = response_string_xml;
             }
             catch (HttpRequestException e)
@@ -79,7 +79,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
         {
             foreach (string gn in groupnames)
             {
-                GroupIndex gi = new GroupIndex(gn);
+                GroupIndex gi = new GroupIndexGoogle(gn);
 
                 yield return gi;
             }

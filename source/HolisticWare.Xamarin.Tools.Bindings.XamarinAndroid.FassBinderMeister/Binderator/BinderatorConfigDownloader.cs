@@ -178,7 +178,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 tags_for_repo.Add
                                 (
                                     repo,
-                                    await gc.Tags(user_org, repository: repo)
+                                    await gc.GetTagsAsync(user_org, repository: repo)
                                 );
             }
             else
@@ -186,7 +186,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 tags_for_repo.Add
                                 (
                                     repo,
-                                    await gc.Tags(user_org, repository: repo, tag)
+                                    await gc.GetTagsAsync(user_org, repository: repo, tag)
                                 );
             }
 

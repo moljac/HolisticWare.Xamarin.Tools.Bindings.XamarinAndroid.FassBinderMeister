@@ -213,8 +213,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
                             }
                             catch (Exception exc)
                             {
-                                string msg = $"Not found {g.Id} {a.Id} {v}";
-                                Console.WriteLine(msg);
+                                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                                sb.AppendLine($"GoogleMavenData.LoadMavenRepositories Exception");
+                                sb.AppendLine($"    Message : {exc.Message}");
+                                sb.AppendLine($"    Not found {g.Id} {a.Id} {v}");
+
+                                System.Diagnostics.Trace.WriteLine(sb.ToString());
                             }
 
 

@@ -7,94 +7,48 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
 {
     public partial class MasterIndex
     {
-        public string Content
+        public MavenRepository MavenRepository
         {
             get;
             set;
         }
 
-        public IEnumerable<string> GroupsTextual
+        public virtual string Content
         {
             get;
             set;
         }
 
-        public static string Url
+        public virtual IEnumerable<string> GroupsTextual
         {
             get;
             set;
-        }  = $"https://dl.google.com/android/maven2/master-index.xml";
+        }
 
-        public async
+        public virtual string Url
+        {
+            get;
+            set;
+        }
+
+
+        public virtual async
             Task<IEnumerable<GroupIndex>>
                                                 GetGroupIndicesAsync
                                                     (
                                                     )
         {
-            this.GroupsTextual = await GetGroupNamesAsync();
-
-            return GroupIndicesFromGroupNames(this.GroupsTextual);
-        }
-
-        public async
-            Task<IEnumerable<string>>
-                                                GetGroupNamesAsync
-                                                    (
-                                                    )
-        {
-            string response_string_xml = null;
-
-            try
+            if(MavenRepository == null)
             {
-                /*
-                HttpResponseMessage response = await client.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-                string response_body = await response.Content.ReadAsStringAsync();
-                */
-                // new helper method below
-                response_string_xml = await MavenClient.HttpClient.GetStringAsync(MasterIndex.Url);
-                this.Content = response_string_xml;
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine("Exception Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                return null;
             }
 
-            return ParseGroupNamesFromXML(response_string_xml);
+            IEnumerable<GroupIndex> group_indices = null;
+
+            group_indices = await this.MavenRepository.GetGroupIndicesAsync();
+
+            return group_indices;
         }
 
-
-        public IEnumerable<string>
-                                                ParseGroupNamesFromXML
-                                                    (
-                                                        string xml
-                                                    )
-        {
-            System.Xml.XmlDocument xmldoc = new System.Xml.XmlDocument();
-            xmldoc.LoadXml(xml);
-            System.Xml.XmlNamespaceManager ns = new System.Xml.XmlNamespaceManager(xmldoc.NameTable);
-
-            System.Xml.XmlNodeList node_list = xmldoc.SelectNodes("/metadata/*", ns);
-            foreach(System.Xml.XmlNode xn in node_list)
-            {
-                string name = xn.Name;
-                yield return name;
-            }
-        }
-
-        public IEnumerable<GroupIndex>
-                                                GroupIndicesFromGroupNames
-                                                    (
-                                                        IEnumerable<string> groupnames
-                                                    )
-        {
-            foreach (string gn in groupnames)
-            {
-                GroupIndex gi = new GroupIndex(gn);
-
-                yield return gi;
-            }
-        }
     }
 }

@@ -9,7 +9,19 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
     /// <summary>
     /// 
     /// </summary>
+    /// https://maven.google.com/web/index.html
+    /// https://maven.google.com/web/index.html#android.arch.core:common:1.0.0
+    ///
+    /// https://dl.google.com/android/maven2/master-index.xml
+    /// https://dl.google.com/android/maven2/androidx/arch/core/group-index.xml
+    ///
+    /// Artifact metadata - 
     /// https://dl.google.com/android/maven2/androidx/arch/core/core-common/2.0.0/artifact-metadata.json
+    /// https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-alpha07/artifact-metadata.json
+    ///
+    /// Artifact POM
+    /// https://dl.google.com/android/maven2/androidx/arch/core/core-common/2.0.0/core-common-2.0.0.pom
+    /// 
     /// dl.google.com/android/maven2/ artifact-metadata.json
     ///
     /// https://search.maven.org/
@@ -50,7 +62,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             return;
         }
 
-       
+        public MavenRepository MavenRepository
+        {
+            get;
+            set;
+        }
+
         public string GroupId
         {
             get;
@@ -177,56 +194,13 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             return (id_group: id_g, id_artifact: id_a, version: version);
         }
 
-        /// <summary>
-        /// Detect Maven Repository for given artifact
-        /// </summary>
-        /// <param name="id_fully_qualified"></param>
-        /// <returns></returns>
-        public static
-            IEnumerable<MavenRepository>
-                            DetectMavenRepository
-                                        (
-                                            string id_fully_qualified
-                                        )
-        {
-            (string id_group, string id_artifact, string version) a = Artifact.Parse(id_fully_qualified);
-
-            string url_metadata_google_maven = $"";
-            MavenRepository mr = null;
-
-            try
-            {
-                mr = new MavenRepositoryGoogle();
-            }
-            catch
-            {
-
-            }
-
-            yield return mr;
-
-            string url_metadata_maven_central = $"";
-            try
-            {
-                mr = new MavenRepositoryMavenCentral();
-
-            }
-            catch
-            {
-
-            }
-
-        }
-
-
-
         public async
             Task<List<string>>
                                         GetVersionsFromGroupIndexAsync
                                                 (
                                                 )
         {
-            GroupIndex gi = new GroupIndex(this.GroupId);
+            GroupIndex gi = await this.MavenRepository.GetGroupIndexAsync(this.GroupId);
 
             IEnumerable<(string name, string[] versions)> artifacts_and_versions = null;
 
@@ -299,7 +273,13 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             }
             catch(Exception exc)
             {
-                response = exc.Message;
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.AppendLine($"Artifact.DownloadArtifactMetadata Exception");
+                sb.AppendLine($"    Message : {exc.Message}");
+
+                System.Diagnostics.Trace.WriteLine(sb.ToString());
+
+                return sb.ToString();
             }
 
             return response;

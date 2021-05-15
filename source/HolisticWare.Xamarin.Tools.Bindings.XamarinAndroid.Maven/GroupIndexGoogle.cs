@@ -6,36 +6,36 @@ using System.Threading.Tasks;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
 {
-    public partial class GroupIndexMavenGoogle : GroupIndex
+    public partial class GroupIndexGoogle : GroupIndex
     {
-        public GroupIndexMavenGoogle(string group_name) : base(group_name)
+        public GroupIndexGoogle(string group_id) : base (group_id)
         {
-            this.Name = group_name;
+            this.Name = group_id;
+
+            this.UrlGroupIndex = MavenRepository.UrlGroupIndexDefault.Replace("GROUP_ID", group_id);
 
             return;
         }
 
-        public string UrlGroupIndex
+        public string Name
+        {
+            get;
+            set;
+        }
+
+        public override string UrlGroupIndex
         {
             get
             {
                 string gid = this.Name.Replace(".", "/");
-                string url = $"https://dl.google.com/android/maven2/{gid}/group-index.xml";
+                string url = MavenRepository.UrlGroupIndexDefault.Replace("GROUP_ID", gid);
 
                 return url;
             }
-        }
+            set
+            {
 
-        public string Content
-        {
-            get;
-            set;
-        }
-
-        public List<(string name, string[] versions)> ArtifactsTextual
-        {
-            get;
-            set;
+            }
         }
 
         public async
@@ -57,10 +57,16 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
                 response_string_xml = await MavenClient.HttpClient.GetStringAsync(this.UrlGroupIndex);
                 this.Content = response_string_xml;
             }
-            catch (HttpRequestException e)
+            catch (HttpRequestException exc)
             {
-                Console.WriteLine("Exception Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.AppendLine($"GroupIndexGoogle.GetArtifactNamesAndVersionsAsync HttpRequestException");
+                sb.AppendLine($"    Message : {exc.Message}");
+                sb.AppendLine($"    UrlGroupIndex : {this.UrlGroupIndex}");
+
+                System.Diagnostics.Trace.WriteLine(sb.ToString());
+
+                throw;
             }
 
             IEnumerable<(string name, string[] versions)> result = null;

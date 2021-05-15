@@ -35,7 +35,7 @@ namespace HolisticWare.Xamarin.Tools.GitHub
 
         public async
             Task<IEnumerable<Tag>>
-                                    Tags
+                                    GetTagsAsync
                                         (
                                             string user_organization,
                                             string repository,
@@ -66,8 +66,14 @@ namespace HolisticWare.Xamarin.Tools.GitHub
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.AppendLine($"GitHubClient.GetTagsAsync HttpRequestException");
+                sb.AppendLine($"    Message : {e.Message}");
+                sb.AppendLine($"    Url     : {url}");
+
+                System.Diagnostics.Trace.WriteLine(sb.ToString());
+
+                throw;
             }
 
             IEnumerable<Tag> tags_found = from t in tags
@@ -87,7 +93,7 @@ namespace HolisticWare.Xamarin.Tools.GitHub
         ///
         public async
             Task<IEnumerable<Tag>>
-                                    Tags
+                                    GetTagsAsync
                                         (
                                             string user_organization,
                                             string repository
@@ -117,8 +123,14 @@ namespace HolisticWare.Xamarin.Tools.GitHub
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.AppendLine($"GitHubClient.GetTagsAsync HttpRequestException");
+                sb.AppendLine($"    Message : {e.Message}");
+                sb.AppendLine($"    Url     : {url}");
+
+                System.Diagnostics.Trace.WriteLine(sb.ToString());
+
+                throw;
             }
 
             return tags;

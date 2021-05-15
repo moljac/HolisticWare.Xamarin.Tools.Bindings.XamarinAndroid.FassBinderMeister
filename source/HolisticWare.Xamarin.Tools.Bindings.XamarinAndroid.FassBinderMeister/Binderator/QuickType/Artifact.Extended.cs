@@ -109,9 +109,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             }
             catch (System.Exception exc)
             {
-                string msg = $"Not a Google Maven repository: {this.GroupId}";
-                System.Diagnostics.Debug.WriteLine(msg);
-                System.Console.WriteLine(msg);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.AppendLine($"Binderator.Artifact.GetPackageMetadataAsync Exception");
+                sb.AppendLine($"    Message : {exc.Message}");
+
+                System.Diagnostics.Trace.WriteLine(sb.ToString());
+
                 if (this.GroupId == "com.xamarin.androidx")
                 {
                     string msg1 = "com.xamarin.androidx";
@@ -152,9 +155,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             }
             catch (System.Exception exc)
             {
-                string msg = $"Not a Google Maven repository: {this.GroupId}";
-                System.Diagnostics.Debug.WriteLine(msg);
-                System.Console.WriteLine(msg);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.AppendLine($"Binderator.Artifact.GetPackageMetadataAsync Exception");
+                sb.AppendLine($"    Message : {exc.Message}");
+                sb.AppendLine($"    Not a Google Maven repository: {this.GroupId}");
+
+                System.Diagnostics.Trace.WriteLine(sb.ToString());
 
                 if (BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet == null)
                 {

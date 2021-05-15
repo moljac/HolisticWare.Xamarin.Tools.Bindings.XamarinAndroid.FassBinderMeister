@@ -31,15 +31,5 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             return;
         }
 
-        public async
-            Task<MasterIndex>
-                            GetMasterIndexAsync
-                                                (
-                                                )
-        {
-            MasterIndex mi = new MasterIndex();
-
-            return mi;
-        }
     }
 }
