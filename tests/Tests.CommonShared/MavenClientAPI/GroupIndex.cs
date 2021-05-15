@@ -120,7 +120,7 @@ namespace UnitTests.ClientsAPI.Maven
         }
 
         [Test]
-        public void Test_Maven_Google_GroupIndex_GetArtifactMetadata()
+        public void Test_HttpClient_GetStringAsync()
         {
             System.Net.Http.HttpClient hc = new System.Net.Http.HttpClient();
             string response = null;
@@ -131,8 +131,15 @@ namespace UnitTests.ClientsAPI.Maven
             {
                 response = hc.GetStringAsync(url).Result;
             }
-            catch
+            catch (System.Exception exc)
             {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.AppendLine($"Testing HttpClient Exception");
+                sb.AppendLine($"    Message : {exc.Message}");
+
+                System.Diagnostics.Trace.WriteLine(sb.ToString());
+
+                throw;
             }
 
             #if MSTEST

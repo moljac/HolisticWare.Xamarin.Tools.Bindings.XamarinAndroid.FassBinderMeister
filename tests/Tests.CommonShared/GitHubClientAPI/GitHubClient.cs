@@ -72,18 +72,17 @@ namespace UnitTests.ClientsAPI.GitHub
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_GitHubClientAPI
     {
-        //GitHubClient.HttpClient = Tests.CommonShared.Http.Client;
-
-
-        GitHubClient ghc = new GitHubClient();
 
         // https://api.github.com/repos/xamarin/AndroidX/tags
         // https://api.github.com/repos/xamarin/Essentials/tags
 
         [Test]
-        public void Test_Tags_AndroidX()
+        public void Test_GetTagsAsync_AndroidX()
         {
-            IEnumerable<Tag> tags = ghc.Tags("xamarin", "AndroidX").Result;
+            GitHubClient.HttpClient = Tests.CommonShared.Http.Client;
+            GitHubClient ghc = new GitHubClient();
+
+            IEnumerable<Tag> tags = ghc.GetTagsAsync("xamarin", "AndroidX").Result;
 
             #if MSTEST
             Assert.IsTrue(tags.Any());
@@ -97,9 +96,12 @@ namespace UnitTests.ClientsAPI.GitHub
         }
 
         [Test]
-        public void GooglePlayServices()
+        public void Test_GetTagsAsync_GooglePlayServices()
         {
-            IEnumerable<Tag> tags = ghc.Tags("xamarin", "GooglePlayServiceComponents").Result;
+            GitHubClient.HttpClient = Tests.CommonShared.Http.Client;
+            GitHubClient ghc = new GitHubClient();
+
+            IEnumerable<Tag> tags = ghc.GetTagsAsync("xamarin", "GooglePlayServicesComponents").Result;
 
             #if MSTEST
             Assert.IsTrue(tags.Any());
@@ -113,9 +115,12 @@ namespace UnitTests.ClientsAPI.GitHub
         }
 
         [Test]
-        public void Test_Tags_Essentials()
+        public void Test_GetTagsAsync_Essentials()
         {
-            IEnumerable<Tag> tags = ghc.Tags("xamarin", "Essentials").Result;
+            GitHubClient.HttpClient = Tests.CommonShared.Http.Client;
+            GitHubClient ghc = new GitHubClient();
+
+            IEnumerable<Tag> tags = ghc.GetTagsAsync("xamarin", "Essentials").Result;
 
             #if MSTEST
             Assert.IsTrue(tags.Any());

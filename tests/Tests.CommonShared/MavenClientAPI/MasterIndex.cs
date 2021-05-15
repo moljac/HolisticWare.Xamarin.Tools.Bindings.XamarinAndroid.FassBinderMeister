@@ -76,62 +76,9 @@ namespace UnitTests.ClientsAPI.Maven
         // MavenClient is simple client for Google Maven Repo
 
         [Test]
-        public void Test_MasterIndex_GetGroupNamesAsync()
+        public void Test_MasterIndex_Ctor()
         {
             MasterIndex mi = new MasterIndex();
-
-            IEnumerable<string> groups = mi.GetGroupNamesAsync().Result;
-
-            #if MSTEST
-            Assert.IsNotNull(mi);
-            Assert.IsNotNull(groups);
-            #elif NUNIT
-            Assert.NotNull(mi);
-            Assert.NotNull(groups);
-            #elif XUNIT
-            Assert.NotNull(mi);
-            Assert.NotNull(groups);
-            #endif
-
-            return;
-        }
-
-        [Test]
-        public void Test_MasterIndex_GetGroupIndicesAsync()
-        {
-            MasterIndex mi = new MasterIndex();
-
-            IEnumerable<GroupIndex> groups = mi.GetGroupIndicesAsync().Result;
-
-            #if MSTEST
-            Assert.IsNotNull(mi);
-            Assert.IsNotNull(groups);
-            #elif NUNIT
-            Assert.NotNull(mi);
-            Assert.NotNull(groups);
-            #elif XUNIT
-            Assert.NotNull(mi);
-            Assert.NotNull(groups);
-            #endif
-
-            return;
-        }
-
-        [Test]
-        public void Test_MasterIndex_GetMasterIndexAsync()
-        {
-            MavenClient mc = new MavenClient();
-
-            MasterIndex mi = mc.GetMasterIndexAsync().Result;
-
-            #if MSTEST
-            Assert.IsNotNull(mc);
-            #elif NUNIT
-            Assert.NotNull(mc);
-            #elif XUNIT
-            Assert.NotNull(mc);
-            #endif
-
 
             return;
         }

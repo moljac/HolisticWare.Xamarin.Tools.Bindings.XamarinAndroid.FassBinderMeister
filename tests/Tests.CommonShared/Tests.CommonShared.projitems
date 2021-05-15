@@ -26,8 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Binderator.Artifact\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClientAPI\NugetPackages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClientAPI\NugetPackage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MasterIndexMavenGoogle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MasterIndexMavenCentral.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MasterIndexGoogle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MavenRepositoryMavenCentral.cs" />
   </ItemGroup>
   <ItemGroup>

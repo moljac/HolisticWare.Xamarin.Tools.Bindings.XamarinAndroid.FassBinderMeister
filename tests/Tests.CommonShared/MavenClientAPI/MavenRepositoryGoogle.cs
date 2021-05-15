@@ -76,30 +76,99 @@ namespace UnitTests.ClientsAPI.Maven
         // MavenClient is simple client for Google Maven Repo
 
         [Test]
-        public void Test_MavenRepositoryGoogle_InitializeAsync()
+        public void Test_GetUrlForGroupId_androidx_car()
         {
-            //#if MSTEST
-            //Assert.IsNotNull(mrd);
-            //#elif NUNIT
-            //Assert.NotNull(mrd);
-            //#elif XUNIT
-            //Assert.NotNull(mrd);
-            //#endif
+            string url = MavenRepositoryGoogle.GetUrlForGroupId("androidx.car");
+
+            #if MSTEST
+            Assert.IsNotNull(url);
+            Assert.AreEqual(url, "https://dl.google.com/android/maven2/androidx/car/group-index.xml");
+            #elif NUNIT
+            Assert.NotNull(url);
+            Assert.AreEqual(url, "https://dl.google.com/android/maven2/androidx/car/group-index.xml");
+            #elif XUNIT
+            Assert.NotNull(url);
+            Assert.Equals(url, "https://dl.google.com/android/maven2/androidx/car/group-index.xml");
+            #endif
 
             return;
         }
 
         [Test]
-        public void Test_Maven_Google_MavenRepoData_Save()
+        public void Test_GetUrlForGroupId_androidx_security()
         {
-            //#if MSTEST
-            //Assert.IsNotNull(mrd);
-            //#elif NUNIT
-            //Assert.NotNull(mrd);
-            //#elif XUNIT
-            //Assert.NotNull(mrd);
-            //#endif
-            
+            string url = MavenRepositoryGoogle.GetUrlForGroupId("androidx.security");
+
+            #if MSTEST
+            Assert.IsNotNull(url);
+            Assert.AreEqual(url, "https://dl.google.com/android/maven2/androidx/security/group-index.xml");
+            #elif NUNIT
+            Assert.NotNull(url);
+            Assert.AreEqual(url, "https://dl.google.com/android/maven2/androidx/security/group-index.xml");
+            #elif XUNIT
+            Assert.NotNull(url);
+            Assert.Equals(url, "https://dl.google.com/android/maven2/androidx/security/group-index.xml");
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_GetUrlForGroupId_com_google_android_gms()
+        {
+            string url = MavenRepositoryGoogle.GetUrlForGroupId("com.google.android.gms");
+
+            #if MSTEST
+            Assert.IsNotNull(url);
+            Assert.AreEqual(url, "https://dl.google.com/android/maven2/com/google/android/gms/group-index.xml");
+            #elif NUNIT
+            Assert.NotNull(url);
+            Assert.AreEqual(url, "https://dl.google.com/android/maven2/com/google/android/gms/group-index.xml");
+            #elif XUNIT
+            Assert.NotNull(url);
+            Assert.Equals(url, "https://dl.google.com/android/maven2/com/google/android/gms/group-index.xml");
+            #endif
+
+            return;
+        }
+
+
+        [Test]
+        public void Test_GetUrlForGroupId_com_google_android_gms()
+        {
+            string url = MavenRepositoryGoogle.GetUrlForGroupId("com.google.firebase");
+
+            #if MSTEST
+            Assert.IsNotNull(url);
+            Assert.AreEqual(url, "https://dl.google.com/android/maven2/com/google/firebase/group-index.xml");
+            #elif NUNIT
+            Assert.NotNull(url);
+            Assert.AreEqual(url, "https://dl.google.com/android/maven2/com/google/firebase/group-index.xml");
+            #elif XUNIT
+            Assert.NotNull(url);
+            Assert.Equals(url, "https://dl.google.com/android/maven2/com/google/firebase/group-index.xml");
+            #endif
+
+            return;
+        }
+
+
+        [Test]
+        public void Test_GetUrlForGroupId_com_google_android_material()
+        {
+            string url = MavenRepositoryGoogle.GetUrlForGroupId("com.google.android.material");
+
+            #if MSTEST
+            Assert.IsNotNull(url);
+            Assert.AreEqual(url, "https://dl.google.com/android/maven2/com/google/android/material/group-index.xml");
+            #elif NUNIT
+            Assert.NotNull(url);
+            Assert.AreEqual(url, "https://dl.google.com/android/maven2/com/google/android/material/group-index.xml");
+            #elif XUNIT
+            Assert.NotNull(url);
+            Assert.Equals(url, "https://dl.google.com/android/maven2/com/google/android/material/group-index.xml");
+            #endif
+
             return;
         }
 
