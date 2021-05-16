@@ -1,6 +1,10 @@
-
 //---------------------------------------------------------------------------------------
 Task("nuget-pack")
+    .IsDependentOn ("nuget-pack-msbuild")
+    .IsDependentOn ("nuget-pack-dotnet")
+	;
+//---------------------------------------------------------------------------------------
+Task("nuget-pack-msbuild")
     .IsDependentOn ("libs")
     .Does
     (
@@ -9,7 +13,7 @@ Task("nuget-pack")
 			MSBuildSettings settings = new MSBuildSettings()
 												.WithTarget("Pack")
 												.SetConfiguration("Release")
-												.EnableBinaryLogger("./output/nuget.binlog")
+												.EnableBinaryLogger("./output/nuget-pack-msbuild.binlog")
 												.WithProperty("NoBuild", "true")
 												.WithProperty
 													(
@@ -32,5 +36,32 @@ Task("nuget-pack")
             return;
         }
     );
+//---------------------------------------------------------------------------------------
+Task("nuget-pack-dotnet")
+    .IsDependentOn ("libs")
+    .Does
+    (
+        () =>
+        {
+			DotNetCorePackSettings settings = new DotNetCorePackSettings()
+															{
+																Configuration = "Release",
+																NoBuild = true,
+																OutputDirectory = "./output/",
+																IncludeSymbols = true
+															};
 
+			foreach(FilePath sln in LibrarySourceSolutions)
+			{
+				Information($"Solution: 	{sln}");
+			}
+			foreach(FilePath prj in LibrarySourceProjects)
+			{
+				Information($"Project: 		{prj}");
+				DotNetCorePack(prj.GetDirectory().FullPath, settings);
+			}
+
+            return;
+        }
+    );
 //---------------------------------------------------------------------------------------
