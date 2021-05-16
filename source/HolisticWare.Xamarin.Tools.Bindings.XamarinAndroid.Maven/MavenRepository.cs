@@ -207,6 +207,16 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
             return null;
         }
 
+        public virtual async
+            Task<IEnumerable<GroupIndex>>
+                                                GetGroupIndicesAsync
+                                                    (
+                                                    )
+        {
+            IEnumerable<GroupIndex> group_indices = null;
+
+            return group_indices;
+        }
 
         public virtual async
             Task<Artifact>

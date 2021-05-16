@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
 {
     // POCO class with Metadata for Buddy Class containing attributes
-    [
-        Microsoft.AspNetCore.Mvc.ModelMetadataType
+    //[
+        //Microsoft.AspNetCore.Mvc.ModelMetadataType
         //System.ComponentModel.DataAnnotations.MetadataType
         //Core.Serialization.ModelMetadataType
-        (
+        //(
             //typeof(Serialization.Formatters.MavenRepository)
-            typeof(MavenRepositorySerializationMetadata)
-        )
-    ]
+            //typeof(MavenRepositorySerializationMetadata)
+        //)
+    //]
     public partial class MavenRepository
     {
         public partial class MavenRepositorySerializationMetadata
