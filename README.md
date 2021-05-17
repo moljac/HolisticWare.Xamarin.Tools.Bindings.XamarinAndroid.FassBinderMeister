@@ -19,6 +19,74 @@ HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 
 *   no need for API Key for few calls for tags
 
+## NuGet Server API (REST)
+
+*   https://docs.microsoft.com/en-us/nuget/api/overview
+
+### REST API
+
+```
+GET {@id}/{LOWER_ID}/index.json
+```
+
+#### Index
+
+https://api.nuget.org/v3-flatcontainer/owin/index.json
+
+https://api.nuget.org/v3-flatcontainer/xamarin.androidx.car.car/index.json
+
+#### Search
+
+```
+GET {@id}?q={QUERY}&skip={SKIP}&take={TAKE}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}&packageType={PACKAGETYPE}
+```
+
+https://azuresearch-usnc.nuget.org/query?q=androidx&prerelease=false&semVerLevel=1.0.0
+
+https://api.nuget.org/v3/registration5-gz-semver1/xamarin.androidx.core/1.3.2.3.json
+
+https://azuresearch-usnc.nuget.org/query?q=androidx&prerelease=false&semVerLevel=1.0.0
+
+https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.core/1.3.2.3.json
+
+```
+GET {@id}/{LOWER_ID}/{LOWER_VERSION}/{LOWER_ID}.nuspec
+```
+
+https://api.nuget.org/v3-flatcontainer/newtonsoft.json/6.0.4/newtonsoft.json.nuspec
+
+https://api.nuget.org/v3-flatcontainer/xamarin.androidx.car.car/1.0.0-alpha7/xamarin.androidx.car.car.json.nuspec
+
+#### Autocomplete
+
+```
+GET {@id}?id={ID}&prerelease={PRERELEASE}&semVerLevel={SEMVERLEVEL}
+```
+
+https://api-v2v3search-0.nuget.org/autocomplete?q=androidx&prerelease=true
+
+https://api-v2v3search-0.nuget.org/autocomplete?q=mlkit&prerelease=true
+
+#### Package Details
+
+https://www.nuget.org/packages/{id}/{version}
+
+https://www.nuget.org/packages/newtonsoft.json/9.0.1
+
+https://www.nuget.org/packages/xamarin.androidx.car.car/1.0.0-alpha7
+
+https://api.nuget.org/v3/v3-flatcontainer/xamarin.androidx.car.car/index.json
+
+https://api.nuget.org/v3/registration3/ravendb.client/page/1.0.531/1.0.729-unstable.json
+
+
+
+#### Download
+
+GET {@id}/{LOWER_ID}/{LOWER_VERSION}/{LOWER_ID}.{LOWER_VERSION}.nupkg
+
+https://api.nuget.org/v3-flatcontainer/newtonsoft.json/9.0.1/newtonsoft.json.9.0.1.nupkg
+
 
 ## NuGet Client API
 
@@ -29,6 +97,10 @@ HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 *   https://github.com/nuget/home/issues
 
 *   https://devblogs.microsoft.com/nuget/improved-search-syntax/
+
+*   samples
+
+    *   https://github.com/NuGet/Samples/blob/main/NuGetProtocolSamples/Program.cs
 
 *   search API
 
