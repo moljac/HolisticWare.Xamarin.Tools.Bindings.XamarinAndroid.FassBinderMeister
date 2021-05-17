@@ -8,8 +8,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-preview.3.21201.13" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-preview.3.21201.13" PrivateAssets="all" />
 
-    <PackageReference Include="HolisticWare.Xamarin.Tools.NuGet" Version="0.0.1-alpha-202105151759" />
-    <PackageReference Include="HolisticWare.Xamarin.Tools.GitHub" Version="0.0.1-alpha-202105151759" />
+    <PackageReference Include="NuGet.Protocol" Version="5.9.1" />
+    <PackageReference Include="HolisticWare.Xamarin.Tools.NuGet" Version="0.0.1-alpha-202105172223" />
+    <!--
+    <PackageReference Include="HolisticWare.Xamarin.Tools.GitHub" Version="0.0.1-alpha-202105162240" />
+    -->
   </ItemGroup>
 
 </Project>
