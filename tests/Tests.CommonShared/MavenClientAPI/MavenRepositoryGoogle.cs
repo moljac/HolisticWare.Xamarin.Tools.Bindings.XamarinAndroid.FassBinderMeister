@@ -76,7 +76,7 @@ namespace UnitTests.ClientsAPI.Maven
         // MavenClient is simple client for Google Maven Repo
 
         [Test]
-        public void Test_GetUrlForGroupId_androidx_car()
+        public void GetUrlForGroupId_androidx_car()
         {
             string url = MavenRepositoryGoogle.GetUrlForGroupId("androidx.car");
 
@@ -88,14 +88,14 @@ namespace UnitTests.ClientsAPI.Maven
             Assert.AreEqual(url, "https://dl.google.com/android/maven2/androidx/car/group-index.xml");
             #elif XUNIT
             Assert.NotNull(url);
-            Assert.Equals(url, "https://dl.google.com/android/maven2/androidx/car/group-index.xml");
+            Assert.Equal("https://dl.google.com/android/maven2/androidx/car/group-index.xml", url);
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_GetUrlForGroupId_androidx_security()
+        public void GetUrlForGroupId_androidx_security()
         {
             string url = MavenRepositoryGoogle.GetUrlForGroupId("androidx.security");
 
@@ -107,14 +107,14 @@ namespace UnitTests.ClientsAPI.Maven
             Assert.AreEqual(url, "https://dl.google.com/android/maven2/androidx/security/group-index.xml");
             #elif XUNIT
             Assert.NotNull(url);
-            Assert.Equals(url, "https://dl.google.com/android/maven2/androidx/security/group-index.xml");
+            Assert.Equal("https://dl.google.com/android/maven2/androidx/security/group-index.xml", url);
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_GetUrlForGroupId_com_google_android_gms()
+        public void GetUrlForGroupId_com_google_android_gms()
         {
             string url = MavenRepositoryGoogle.GetUrlForGroupId("com.google.android.gms");
 
@@ -126,7 +126,7 @@ namespace UnitTests.ClientsAPI.Maven
             Assert.AreEqual(url, "https://dl.google.com/android/maven2/com/google/android/gms/group-index.xml");
             #elif XUNIT
             Assert.NotNull(url);
-            Assert.Equals(url, "https://dl.google.com/android/maven2/com/google/android/gms/group-index.xml");
+            Assert.Equal("https://dl.google.com/android/maven2/com/google/android/gms/group-index.xml", url);
             #endif
 
             return;
@@ -134,7 +134,7 @@ namespace UnitTests.ClientsAPI.Maven
 
 
         [Test]
-        public void Test_GetUrlForGroupId_com_google_android_gms()
+        public void GetUrlForGroupId_com_firebase()
         {
             string url = MavenRepositoryGoogle.GetUrlForGroupId("com.google.firebase");
 
@@ -146,7 +146,7 @@ namespace UnitTests.ClientsAPI.Maven
             Assert.AreEqual(url, "https://dl.google.com/android/maven2/com/google/firebase/group-index.xml");
             #elif XUNIT
             Assert.NotNull(url);
-            Assert.Equals(url, "https://dl.google.com/android/maven2/com/google/firebase/group-index.xml");
+            Assert.Equal("https://dl.google.com/android/maven2/com/google/firebase/group-index.xml", url);
             #endif
 
             return;
@@ -154,7 +154,7 @@ namespace UnitTests.ClientsAPI.Maven
 
 
         [Test]
-        public void Test_GetUrlForGroupId_com_google_android_material()
+        public void GetUrlForGroupId_com_google_android_material()
         {
             string url = MavenRepositoryGoogle.GetUrlForGroupId("com.google.android.material");
 
@@ -166,7 +166,7 @@ namespace UnitTests.ClientsAPI.Maven
             Assert.AreEqual(url, "https://dl.google.com/android/maven2/com/google/android/material/group-index.xml");
             #elif XUNIT
             Assert.NotNull(url);
-            Assert.Equals(url, "https://dl.google.com/android/maven2/com/google/android/material/group-index.xml");
+            Assert.Equal("https://dl.google.com/android/maven2/com/google/android/material/group-index.xml", url);
             #endif
 
             return;

@@ -68,16 +68,19 @@ using System.Collections.Generic;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
 
-using HolisticWare.Xamarin.Tools.NuGet;
+using HolisticWare.Xamarin.Tools.NuGet.ClientAPI;
 
-namespace UnitTests.ClientsAPI.NuGet
+namespace UnitTests.ClientsAPI.NuGet.ClientAPI
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_NuGetClient_ClientAPI
+    public partial class Test_NuGetClient
     {
+
         [Test]
-        public void Test_NuGetClient_Packages_Search()
+        public void NuGetClient_Packages_Search()
         {
+            NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
+
             NuGetClient ngc = new NuGetClient();
 
             IEnumerable<IPackageSearchMetadata> search = null;
@@ -122,14 +125,14 @@ namespace UnitTests.ClientsAPI.NuGet
         }
 
         [Test]
-        public void Test_NuGetClient_Packages_PackageMetadata()
+        public void NuGetClient_Packages_PackageMetadata()
         {
             NuGetClient ngc = new NuGetClient();
 
             IEnumerable<IPackageSearchMetadata> package_metadata = null;
             package_metadata = ngc.GetPackageMetadataAsync
                                                 (
-                                                    "Xamarin.AndroidX.Core"
+                                                  "Xamarin.AndroidX.Core"
                                                 ).Result;
 
             #if MSTEST
@@ -153,7 +156,7 @@ namespace UnitTests.ClientsAPI.NuGet
         }
 
         [Test]
-        public void Test_NuGetClient_Packages_PackageVersions()
+        public void NuGetClient_Packages_PackageVersions()
         {
             NuGetClient ngc = new NuGetClient();
 

@@ -68,9 +68,9 @@ using System.Collections.Generic;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
 
-using HolisticWare.Xamarin.Tools.NuGet;
+using HolisticWare.Xamarin.Tools.NuGet.ClientAPI;
 
-namespace UnitTests.ClientsAPI.NuGet
+namespace UnitTests.ClientsAPI.NuGet.ClientAPI
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_NugetPackages
