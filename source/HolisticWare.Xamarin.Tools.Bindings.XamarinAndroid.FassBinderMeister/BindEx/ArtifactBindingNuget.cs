@@ -14,7 +14,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
     {
         public ArtifactBindingNuget()
         {
-            nuget_client = new NuGetClient();
+            nuget_client = new NuGet.ClientAPI.NuGetClient();
 
             return;
         }
@@ -22,7 +22,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
         public ArtifactBindingNuget(string id_group, string id_artifact)
             : this()
         {
-            nuget_client = new NuGetClient();
+            nuget_client = new NuGet.ClientAPI.NuGetClient();
 
             return;
         }
@@ -39,7 +39,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             set;
         }
 
-        protected NuGetClient nuget_client = null;
+        protected NuGet.ClientAPI.NuGetClient nuget_client = null;
 
         public async
             Task<IEnumerable<IPackageSearchMetadata>>

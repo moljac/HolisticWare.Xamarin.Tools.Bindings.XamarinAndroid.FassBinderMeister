@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using NuGet.Protocol;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
 
-namespace HolisticWare.Xamarin.Tools.NuGet
+namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
 {
     /// <summary>
     /// 
@@ -18,6 +19,14 @@ namespace HolisticWare.Xamarin.Tools.NuGet
     /// <see cref="https://devblogs.microsoft.com/nuget/improved-search-syntax/"/>
     public partial class NuGetClient
     {
+        // HttpClient is intended to be instantiated once per application,
+        // rather than per-use. See Remarks.
+        public static HttpClient HttpClient
+        {
+            get;
+            set;
+        }
+
         ILogger logger = null;
         CancellationToken cancellationToken;
 
@@ -31,6 +40,9 @@ namespace HolisticWare.Xamarin.Tools.NuGet
 
             cache = new SourceCacheContext();
             repository = Repository.Factory.GetCoreV3("https://api.nuget.org/v3/index.json");
+
+
+            UserAgent.SetUserAgent(HttpClient);
 
             return;
         }

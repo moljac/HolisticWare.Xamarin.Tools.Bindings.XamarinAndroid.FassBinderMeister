@@ -36,11 +36,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             set;
         }
 
-        NuGetClient ngc = null;
+        NuGet.ClientAPI.NuGetClient ngc = null;
 
         public Artifact()
         {
-            ngc = new NuGetClient();
+            ngc = new NuGet.ClientAPI.NuGetClient();
 
             return;
         }

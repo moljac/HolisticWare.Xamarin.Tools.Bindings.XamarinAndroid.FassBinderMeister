@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NuGet.Protocol.Core.Types;
 
-namespace HolisticWare.Xamarin.Tools.NuGet
+namespace HolisticWare.Xamarin.Tools.NuGet.Core
 {
     public partial class NuGetPackages
     {
@@ -42,11 +42,6 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                 {
                     PackageId = package_id,
                  };
-
-                NuGetPackage.NugetClient = NuGetPackages.NugetClient;
-
-                np.PackageSearchMetadata = await np.GetPackageSearchMetadataAsync();
-                np.Dependencies = await np.GetDependencyTreeHierarchyAsync();
 
                 result.Add(np);
             }

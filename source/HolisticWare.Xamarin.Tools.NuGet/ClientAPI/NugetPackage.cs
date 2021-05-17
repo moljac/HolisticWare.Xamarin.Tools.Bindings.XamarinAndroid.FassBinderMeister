@@ -6,41 +6,11 @@ using System.Threading.Tasks;
 using NuGet.Packaging;
 using NuGet.Protocol.Core.Types;
 
-namespace HolisticWare.Xamarin.Tools.NuGet
+namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
 {
-    public partial class NuGetPackage
+    public partial class NuGetPackage : Core.NuGetPackage
     {
         public static NuGetClient NugetClient
-        {
-            get;
-            set;
-        }
-
-        public string PackageId
-        {
-            get;
-            set;
-        }
-
-        public string VersionTextual
-        {
-            get;
-            set;
-        }
-
-        public string VersionLatestTextual
-        {
-            get;
-            set;
-        }
-
-        public string DependencyVersionRange
-        {
-            get;
-            set;
-        }
-
-        public List<string> VersionsTextual
         {
             get;
             set;
@@ -72,9 +42,9 @@ namespace HolisticWare.Xamarin.Tools.NuGet
         {
             IEnumerable<IPackageSearchMetadata> package_metadata = null;
             package_metadata = await NugetClient.GetPackageMetadataAsync
-                                                (
-                                                    this.PackageId
-                                                ).ConfigureAwait(false);
+                                                            (
+                                                                this.PackageId
+                                                            ).ConfigureAwait(false);
             // sorting in reverse order of version
             // in order to hit later versions first (speeding up) when iterating through
             // IEnumebrable/collections/containers

@@ -67,4 +67,9 @@
       <PackageReference Include="AsyncFixer" Version="1.5.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ServerAPI\" />
+      <Folder Include="ClientAPI\" />
+      <Folder Include="Core\" />
+    </ItemGroup>
 </Project>

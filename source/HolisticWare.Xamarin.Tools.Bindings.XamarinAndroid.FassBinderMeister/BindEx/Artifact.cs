@@ -67,5 +67,16 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 
             return;
         }
+
+        public static
+            IEnumerable<string>
+                                            DetectMavenRepository
+                                                            (
+                                                                string fully_qualified_artifact_id
+                                                            )
+        {
+            yield return "Google";
+            yield return "Maven Central";
+        }
     }
 }
