@@ -105,26 +105,13 @@
     <Compile Include="UnitTestAppDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data.csproj">
-      <Project>{b7a2ea9f-9d42-440a-9a12-f3a64b179e01}</Project>
-      <Name>HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.csproj">
-      <Project>{541ca104-b14d-45da-a5ac-ce9d852d3f3e}</Project>
-      <Name>HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj">
-      <Project>{9d245d80-b18e-4d3f-bc96-94c1cb8a1228}</Project>
-      <Name>HolisticWare.Xamarin.Tools.GitHub</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet\HolisticWare.Xamarin.Tools.NuGet.csproj">
-      <Project>{4036f62e-0833-42f1-8976-bc1cb3dd37a5}</Project>
-      <Name>HolisticWare.Xamarin.Tools.NuGet</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj">
-      <Project>{DE08CDA6-AFAA-4724-A5F0-9D2B500F5A2D}</Project>
-      <Name>HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Nito.AsyncEx.Context">
