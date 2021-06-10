@@ -31,6 +31,10 @@ GET {@id}/{LOWER_ID}/index.json
 
 #### Index
 
+https://api.nuget.org/v3/index.json
+
+#### Service Index
+
 https://api.nuget.org/v3-flatcontainer/owin/index.json
 
 https://api.nuget.org/v3-flatcontainer/xamarin.androidx.car.car/index.json
