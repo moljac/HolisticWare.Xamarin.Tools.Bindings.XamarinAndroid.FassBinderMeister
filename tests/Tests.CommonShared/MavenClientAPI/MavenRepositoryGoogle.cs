@@ -80,15 +80,16 @@ namespace UnitTests.ClientsAPI.Maven
         {
             string url = MavenRepositoryGoogle.GetUrlForGroupId("androidx.car");
 
+            string url_correct = "https://dl.google.com/android/maven2/androidx/car/group-index.xml";
             #if MSTEST
             Assert.IsNotNull(url);
-            Assert.AreEqual(url, "https://dl.google.com/android/maven2/androidx/car/group-index.xml");
+            Assert.AreEqual(url, url_correct);
             #elif NUNIT
             Assert.NotNull(url);
-            Assert.AreEqual(url, "https://dl.google.com/android/maven2/androidx/car/group-index.xml");
+            Assert.AreEqual(url, url_correct);
             #elif XUNIT
             Assert.NotNull(url);
-            Assert.Equal("https://dl.google.com/android/maven2/androidx/car/group-index.xml", url);
+            Assert.Equal(url_correct, url);
             #endif
 
             return;

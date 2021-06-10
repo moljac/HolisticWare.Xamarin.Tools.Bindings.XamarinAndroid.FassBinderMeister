@@ -68,9 +68,9 @@ using System.Collections.Generic;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
 
-using HolisticWare.Xamarin.Tools.NuGet.ClientAPI;
+using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
 
-namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
+namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_NuGetClient
@@ -84,25 +84,25 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
             NuGetClient ngc = new NuGetClient();
 
             IEnumerable<IPackageSearchMetadata> search = null;
-            search = ngc.SearchPackagesByKeywordAsync
-                            (
-                                "androidx",
-                                new global::NuGet.Protocol.Core.Types.SearchFilter
-                                                                        (
-                                                                            includePrerelease: true
-                                                                        ),
-                                skip: 0,
-                                take: 100,
-                                psm =>
-                                {
-                                    return
-                                    (
-                                        psm.Description.Contains("car")
-                                        ||
-                                        psm.Description.Contains("androidx.car")
-                                    );
-                                }
-                            ).Result;
+            //search = ngc.SearchPackagesByKeywordAsync
+            //                (
+            //                    "androidx",
+            //                    new global::NuGet.Protocol.Core.Types.SearchFilter
+            //                                                            (
+            //                                                                includePrerelease: true
+            //                                                            ),
+            //                    skip: 0,
+            //                    take: 100,
+            //                    psm =>
+            //                    {
+            //                        return
+            //                        (
+            //                            psm.Description.Contains("car")
+            //                            ||
+            //                            psm.Description.Contains("androidx.car")
+            //                        );
+            //                    }
+            //                ).Result;
 
             #if MSTEST
             Assert.IsNotNull(search);
@@ -130,10 +130,10 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
             NuGetClient ngc = new NuGetClient();
 
             IEnumerable<IPackageSearchMetadata> package_metadata = null;
-            package_metadata = ngc.GetPackageMetadataAsync
-                                                (
-                                                  "Xamarin.AndroidX.Core"
-                                                ).Result;
+            //package_metadata = ngc.GetPackageMetadataAsync
+            //                                    (
+            //                                      "Xamarin.AndroidX.Core"
+            //                                    ).Result;
 
             #if MSTEST
             Assert.IsNotNull(package_metadata);
@@ -160,10 +160,11 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         {
             NuGetClient ngc = new NuGetClient();
 
-            IEnumerable<NuGetVersion> package_versions = ngc.GetPackageVersionsAsync
-                                                                                (
-                                                                                 "Xamarin.AndroidX.Core"
-                                                                                ).Result;
+            IEnumerable<NuGetVersion> package_versions = null;
+            //package_versions = ngc.GetPackageVersionsAsync
+            //                                        (
+            //                                            "Xamarin.AndroidX.Core"
+            //                                        ).Result;
 
             #if MSTEST
             Assert.IsNotNull(package_versions);

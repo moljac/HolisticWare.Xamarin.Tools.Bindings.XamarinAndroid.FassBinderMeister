@@ -28,6 +28,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ClientAPI\NuGetClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ClientAPI\NugetPackage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ClientAPI\NugetPackages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ServerAPI\NuGetClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BinderatorConfigsFetcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Binderator.Config\BinderatorConfigsFetcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
@@ -39,5 +42,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\" />
     <Folder Include="$(MSBuildThisFileDirectory)Binderator.Artifact\" />
     <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\ClientAPI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\ServerAPI\" />
   </ItemGroup>
 </Project>

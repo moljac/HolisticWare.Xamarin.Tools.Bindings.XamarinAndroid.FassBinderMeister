@@ -14,12 +14,9 @@
     <DefineConstants>TRACE;MSTEST;RELEASE;NETCOREAPP2_0</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Memory" Version="4.5.4" />
-    <PackageReference Include="Nito.AsyncEx.Tasks" Version="5.1.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.4" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.4" />
-    <PackageReference Include="Nito.AsyncEx.Context" Version="5.1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
