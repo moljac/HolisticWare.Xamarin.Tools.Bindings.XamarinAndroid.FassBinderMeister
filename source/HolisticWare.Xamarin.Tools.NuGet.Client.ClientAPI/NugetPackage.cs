@@ -35,23 +35,26 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
         }
 
         public async
-            Task<IEnumerable<IPackageSearchMetadata>>
+            Task<List<IPackageSearchMetadata>>
                                 GetPackageSearchMetadataAsync
                                         (
                                         )
         {
-            IEnumerable<IPackageSearchMetadata> package_metadata = null;
+            List<IPackageSearchMetadata> package_metadata = null;
             package_metadata = await NugetClient.GetPackageMetadataAsync
                                                             (
                                                                 this.PackageId
-                                                            ).ConfigureAwait(false);
+                                                            );
             // sorting in reverse order of version
             // in order to hit later versions first (speeding up) when iterating through
             // IEnumebrable/collections/containers
-            package_metadata = from IPackageSearchMetadata psm in package_metadata
+            package_metadata =
+                (
+                    from IPackageSearchMetadata psm in package_metadata
                                orderby psm.Identity.Version descending
                                select psm
-                               ;
+                ).ToList()
+                ;
             IEnumerable<string> versions = null;
             versions = from IPackageSearchMetadata psm in package_metadata
                            // no need to sort - done above

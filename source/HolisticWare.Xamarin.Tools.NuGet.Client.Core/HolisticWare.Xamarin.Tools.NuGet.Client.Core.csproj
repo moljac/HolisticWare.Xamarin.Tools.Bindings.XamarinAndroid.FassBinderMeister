@@ -4,14 +4,14 @@
         <TargetFramework>netstandard2.0</TargetFramework>
 
         <LangVersion>Latest</LangVersion>
-        <RootNamespace>HolisticWare.Xamarin.Tools.NuGet</RootNamespace>
+        <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.Client.Core</RootNamespace>
         <!--
         If moved to separate PropertyGroup - UI is cleared?!?!
         -->
         <PackOnBuild>true</PackOnBuild>
-        <PackageId>HolisticWare.Xamarin.Tools.NuGet</PackageId>
+        <PackageId>HolisticWare.Xamarin.Tools.NuGet.Client.Core</PackageId>
         <Title>
-            HolisticWare.Xamarin.Tools.NuGet
+            HolisticWare.Xamarin.Tools.NuGet.Client.Core
         </Title>
         <summary>
             NuGet client API. Tools for nuget client API for bindings productivity.
@@ -60,16 +60,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="NuGet.Protocol" Version="5.9.1" />
-      <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3" />
-      <PackageReference Include="Roslynator.Analyzers" Version="3.1.0" />
-      <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.1.0" />
-      <PackageReference Include="AsyncFixer" Version="1.5.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="ServerAPI\" />
-      <Folder Include="ClientAPI\" />
-      <Folder Include="Core\" />
-    </ItemGroup>
 </Project>

@@ -143,7 +143,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
         /// <returns></returns>
         /// <see cref="https://docs.microsoft.com/en-us/nuget/reference/nuget-client-sdk#get-package-metadata"/>
         public async
-            Task<IEnumerable<IPackageSearchMetadata>>
+            Task<List<IPackageSearchMetadata>>
                                         GetPackageMetadataAsync
                                                 (
                                                     string nuget_id,
@@ -152,10 +152,9 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
                                                 )
         {
             PackageMetadataResource resource = null;
-            IEnumerable<IPackageSearchMetadata> packages = null;
-
             resource = await repository.GetResourceAsync<PackageMetadataResource>();
 
+            IEnumerable<IPackageSearchMetadata> packages = null;
             packages = await resource.GetMetadataAsync
                                             (
                                                 nuget_id,
@@ -166,7 +165,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
                                                 cancellationToken
                                             );
 
-            return packages;
+            return packages.ToList();
         }
 
     }

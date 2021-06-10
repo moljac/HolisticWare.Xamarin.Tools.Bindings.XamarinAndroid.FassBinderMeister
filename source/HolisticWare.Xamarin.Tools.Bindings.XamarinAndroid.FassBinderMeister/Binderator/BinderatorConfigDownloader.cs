@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using global::NuGet.Protocol.Core.Types;
-
 using HolisticWare.Xamarin.Tools.GitHub;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType;
+using NuGet.Protocol.Core.Types;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator
 {
@@ -72,8 +71,9 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                             string nuget_id = a.NugetId;
                             string nuget_version = a.NugetVersion;
 
-                            IEnumerable<IPackageSearchMetadata> package_metadata = null;
-                            package_metadata = await a.GetPackageMetadataAsync();
+                            List<IPackageSearchMetadata> package_metadata = null;
+                            package_metadata = await a.GetPackageMetadataAsync()
+                                                        .ConfigureAwait(false);
 
 
                         }

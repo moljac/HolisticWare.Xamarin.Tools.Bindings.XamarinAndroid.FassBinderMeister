@@ -2,8 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30524.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.NuGet", "HolisticWare.Xamarin.Tools.NuGet\HolisticWare.Xamarin.Tools.NuGet.csproj", "{4036F62E-0833-42F1-8976-BC1CB3DD37A5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.GitHub", "HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj", "{9D245D80-B18E-4D3F-BC96-94C1CB8A1228}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven", "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj", "{E830D87B-7934-4613-B5F8-79A01A05E165}"
@@ -22,9 +20,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core.Math.Discrete.GraphThe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core", "..\externals-submodules\Core\source\HolisticWare.Core\HolisticWare.Core.csproj", "{30B61126-739F-47EC-97FE-D8D9F45D6D87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10", "..\externals-submodules\Core.Math.Discrete.GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10.csproj", "{148B37B5-6BC6-4276-8866-A792F1EBE721}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Serialization", "..\externals-submodules\Core.Serialization\source\HolisticWare.Core.Serialization\HolisticWare.Core.Serialization.csproj", "{8E0F537C-1023-4AE1-B244-E6E87758053F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI", "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj", "{D415348E-06A2-4050-A0B6-4AD59ACEDC9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI", "HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI.csproj", "{52E23EFC-504B-472A-9580-CC8355B9C9FB}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10", "..\externals-submodules\Core.Math.Discrete.GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10.csproj", "{558868B8-8818-4578-8710-12E6A127F37A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.Core", "HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj", "{09FC6485-959E-440F-BA16-284960DE50B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,10 +36,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4036F62E-0833-42F1-8976-BC1CB3DD37A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4036F62E-0833-42F1-8976-BC1CB3DD37A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4036F62E-0833-42F1-8976-BC1CB3DD37A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4036F62E-0833-42F1-8976-BC1CB3DD37A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9D245D80-B18E-4D3F-BC96-94C1CB8A1228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9D245D80-B18E-4D3F-BC96-94C1CB8A1228}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D245D80-B18E-4D3F-BC96-94C1CB8A1228}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,14 +56,26 @@ Global
 		{30B61126-739F-47EC-97FE-D8D9F45D6D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30B61126-739F-47EC-97FE-D8D9F45D6D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30B61126-739F-47EC-97FE-D8D9F45D6D87}.Release|Any CPU.Build.0 = Release|Any CPU
-		{148B37B5-6BC6-4276-8866-A792F1EBE721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{148B37B5-6BC6-4276-8866-A792F1EBE721}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{148B37B5-6BC6-4276-8866-A792F1EBE721}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{148B37B5-6BC6-4276-8866-A792F1EBE721}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E0F537C-1023-4AE1-B244-E6E87758053F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E0F537C-1023-4AE1-B244-E6E87758053F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E0F537C-1023-4AE1-B244-E6E87758053F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E0F537C-1023-4AE1-B244-E6E87758053F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D415348E-06A2-4050-A0B6-4AD59ACEDC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D415348E-06A2-4050-A0B6-4AD59ACEDC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D415348E-06A2-4050-A0B6-4AD59ACEDC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D415348E-06A2-4050-A0B6-4AD59ACEDC9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52E23EFC-504B-472A-9580-CC8355B9C9FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E23EFC-504B-472A-9580-CC8355B9C9FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E23EFC-504B-472A-9580-CC8355B9C9FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E23EFC-504B-472A-9580-CC8355B9C9FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{558868B8-8818-4578-8710-12E6A127F37A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{558868B8-8818-4578-8710-12E6A127F37A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{558868B8-8818-4578-8710-12E6A127F37A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{558868B8-8818-4578-8710-12E6A127F37A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09FC6485-959E-440F-BA16-284960DE50B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09FC6485-959E-440F-BA16-284960DE50B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09FC6485-959E-440F-BA16-284960DE50B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09FC6485-959E-440F-BA16-284960DE50B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,8 +85,8 @@ Global
 		{9BBB7531-CA9D-4169-BAF6-C40E9E5388A7} = {4CA4F6C3-EE77-4829-B0AA-A4D1BA076720}
 		{3B0E422A-965B-42E0-BD9E-1DB96D9014FC} = {4CA4F6C3-EE77-4829-B0AA-A4D1BA076720}
 		{30B61126-739F-47EC-97FE-D8D9F45D6D87} = {1CC48AA9-5618-4049-9649-E50DADE9CBEF}
-		{148B37B5-6BC6-4276-8866-A792F1EBE721} = {3B0E422A-965B-42E0-BD9E-1DB96D9014FC}
 		{8E0F537C-1023-4AE1-B244-E6E87758053F} = {9BBB7531-CA9D-4169-BAF6-C40E9E5388A7}
+		{558868B8-8818-4578-8710-12E6A127F37A} = {3B0E422A-965B-42E0-BD9E-1DB96D9014FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {110BC8EF-DB8B-4752-949E-1F6DFFA3521E}

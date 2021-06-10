@@ -17,7 +17,5 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
             set;
         }
 
-
-
     }
 }
