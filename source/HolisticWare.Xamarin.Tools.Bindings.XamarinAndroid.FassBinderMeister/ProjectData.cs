@@ -5,9 +5,9 @@ using System.Text;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 {
-    public class ProjectData
+    public static partial class ProjectData
     {
-        public Dictionary<string, string> ProjectConfigs
+        public static Dictionary<string, string> ProjectConfigs
         {
             get;
             set;
@@ -15,19 +15,23 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
         {
             {
                 "AndroidX",
-                "https://github.com/xamarin/AndroidX/blob/master/config.json"
+                "https://raw.githubusercontent.com/xamarin/AndroidX/main/config.json"
+            },
+            {
+                "GooglePlayServices with AndroidX",
+                "https://raw.githubusercontent.com/xamarin/GooglePlayServicesComponents/main/config.json"
             },
             {
                 "GooglePlayServices with Android.Support",
-                "https://github.com/xamarin/GooglePlayServicesComponents/blob/master/config.json"
-            },
-            {
-                "GooglePlayServices with Android.Support",
-                "https://github.com/xamarin/GooglePlayServicesComponents/blob/master_based_androidx/config.json"
+                "https://raw.githubusercontent.com/xamarin/GooglePlayServicesComponents/71.x.y.z-legacy-Android.Support/config.json"
             },
             {
                 "Android.Support",
-                "https://github.com/xamarin/AndroidSupportComponents/blob/master/config.json"
+                "https://raw.githubusercontent.com/xamarin/AndroidSupportComponents/master/config.json"
+            },
+            {
+                "XamarinComponents Android Kotlin",
+                "https://raw.githubusercontent.com/xamarin/XamarinComponents/main/Android/Kotlin/config.json"
             },
         };
     }

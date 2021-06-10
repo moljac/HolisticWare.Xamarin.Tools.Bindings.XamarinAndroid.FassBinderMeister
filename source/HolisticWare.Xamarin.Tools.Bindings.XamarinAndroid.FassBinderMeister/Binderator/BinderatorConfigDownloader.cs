@@ -212,8 +212,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                             );
                         continue;
                     }
-                    string content = await result.Content.ReadAsStringAsync();
-                    list_tag_content.Add((t, content));                    
+                    string content = await result.Content
+                                                    .ReadAsStringAsync()
+                                                    .ConfigureAwait(false);
+                    list_tag_content.Add((t, content));
                 }
 
                 tags_for_repo_content.Add(r, list_tag_content);
