@@ -1,0 +1,16 @@
+#!/bin/bash
+
+dotnet build \
+    --project ./HolisticWare.Xamarin.Tools.AndroidSampleProjectKreator.dotnet-tool/HolisticWare.Xamarin.Tools.AndroidSampleProjectKreator.dotnet-tool.csproj  \
+
+
+
+
+dotnet run \
+    --project ./HolisticWare.Xamarin.Tools.AndroidSampleProjectKreator.dotnet-tool/HolisticWare.Xamarin.Tools.AndroidSampleProjectKreator.dotnet-tool.csproj  \
+    --framework net5.0 \
+    -- \
+    create \
+    --input-folder a \
+    --output-folder b \
+    --name Demo
