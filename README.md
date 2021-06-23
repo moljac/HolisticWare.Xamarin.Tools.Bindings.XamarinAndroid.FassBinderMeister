@@ -20,7 +20,7 @@ root
 
   * https://maven.google.com/web/index.html
 
-  ```
+  ```csharp
   string url_root = $"https://dl.google.com/android/maven2/";
   ```
 
@@ -34,7 +34,7 @@ root
 
       * https://repo1.maven.org/maven2/
   
-  ```
+  ```csharp
   string url_root = $"https://repo1.maven.org/maven2/";
   ```
 
@@ -49,7 +49,7 @@ root
 
   * https://dl.google.com/android/maven2/master-index.xml
 
-  ```
+  ```csharp
   string url_master_index = $"{url_root}/master-index.xml";
   ```
 
@@ -59,7 +59,7 @@ root
 
     * HTML response must be parsed
   
-  ```
+  ```csharp
   string url_master_index = $"{url_root}/";
   ```
 
@@ -70,15 +70,16 @@ group metadata discovery
 
 * google
 
-  ```
+  ```csharp
   string group_id = "androidx.ads";
-  string url_group_id = $"{url_root}/{group_id.Replace(".", "/"}}/group-index.xml
+  string url_group_id = $"{url_root}/{group_id.Replace(".", "/")}/group-index.xml";
   ```
 
 * maven central
 
-  ```
-  string url_root = $"";
+  ```csharp
+  string group_id = "io.opencensus";
+  string url_group_id = $"{url_root}/{group_id.Replace(".", "/"}}";
   ```
 
 
