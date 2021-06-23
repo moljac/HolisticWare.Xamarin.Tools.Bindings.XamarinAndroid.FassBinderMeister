@@ -1,6 +1,100 @@
 # HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
 
-Fast Binding Master/Guru tool for generating binderator `config.json` files for following projects:
+Fast Binding Master/Guru tool for 
+
+  * maven artifact discovery
+
+  * nuget detection
+
+  * .Net project creation
+  
+  * generating binderator `config.json` files for following projects:
+
+## Maven Artifact
+
+### Repository
+
+root
+
+* google
+
+  * https://maven.google.com/web/index.html
+
+  ```
+  string url_root = $"https://dl.google.com/android/maven2/";
+  ```
+
+* maven central
+
+  * https://search.maven.org/
+
+  * https://search.maven.org/classic/
+
+    * Browse
+
+      * https://repo1.maven.org/maven2/
+  
+  ```
+  string url_root = $"https://repo1.maven.org/maven2/";
+  ```
+
+### Master index
+
+* google
+
+  * available
+
+  * list of group_ids in xml
+
+
+  * https://dl.google.com/android/maven2/master-index.xml
+
+  ```
+  string url_master_index = $"{url_root}/master-index.xml";
+  ```
+
+* maven central
+
+  * NOT available
+
+    * HTML response must be parsed
+  
+  ```
+  string url_master_index = $"{url_root}/";
+  ```
+
+
+### Group
+
+group metadata discovery
+
+* google
+
+  ```
+  string group_id = "androidx.ads";
+  string url_group_id = $"{url_root}/{group_id.Replace(".", "/"}}/group-index.xml
+  ```
+
+* maven central
+
+  ```
+  string url_root = $"";
+  ```
+
+
+### Artifact
+
+* google
+
+  ```
+  string group_id = "androidx.ads";
+  string url_group_id = $"{url_root}/{group_id.Replace(".", "/"}}/group-index.xml
+  ```
+https://dl.google.com/android/maven2/androidx/ads/ads-identifier/1.0.0-alpha04/ads-identifier-1.0.0-alpha04.aar
+
+## Xamarin.Android Bindings
+
+### Repos
 
 * AndroidX
 
