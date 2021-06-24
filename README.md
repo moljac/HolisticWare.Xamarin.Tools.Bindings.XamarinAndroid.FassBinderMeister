@@ -38,6 +38,11 @@ root
   string url_root = $"https://repo1.maven.org/maven2/";
   ```
 
+  ```bash
+  export url_root="https://repo1.maven.org/maven2/"
+  curl $url_root
+  ```
+
 ### Master index
 
 * google
@@ -51,6 +56,12 @@ root
 
   ```csharp
   string url_master_index = $"{url_root}/master-index.xml";
+  ```
+
+  ```bash
+  export url_root="https://dl.google.com/android/maven2/"
+  export url_master_index="$url_root/master-index.xml"
+  curl -i --location $url_master_index
   ```
 
 * maven central
@@ -72,7 +83,14 @@ group metadata discovery
 
   ```csharp
   string group_id = "androidx.ads";
-  string url_group_id = $"{url_root}/{group_id.Replace(".", "/")}/group-index.xml";
+  string url_group_index = $"{url_root}/{group_id.Replace(".", "/")}/group-index.xml";
+  ```
+
+  ```bash
+  export url_root="https://dl.google.com/android/maven2/"
+  export group_id="androidx.ads"
+  export url_group_index="$url_root/${group_id//\.//}/group-index.xml"
+  curl -i --location $url_group_index
   ```
 
 * maven central
@@ -81,6 +99,10 @@ group metadata discovery
   string group_id = "io.opencensus";
   string url_group_id = $"{url_root}/{group_id.Replace(".", "/"}}";
   ```
+  * NOT available
+
+    * HTML response must be parsed
+  
 
 
 ### Artifact
@@ -89,9 +111,14 @@ group metadata discovery
 
   ```
   string group_id = "androidx.ads";
-  string url_group_id = $"{url_root}/{group_id.Replace(".", "/"}}/group-index.xml
+  string artifact_id = "ads-identifier";
+  string artifact_version = "1.0.0-alpha04";
+  string artifact_extension = "aar";
+
+  string url_artifact = $"{url_root}/{group_id.Replace(".", "/")}/{artifact_id}/{artifact_version}/{artifact_id}-{artifact_version}.{artifact_extension}";
   ```
-https://dl.google.com/android/maven2/androidx/ads/ads-identifier/1.0.0-alpha04/ads-identifier-1.0.0-alpha04.aar
+
+  * https://dl.google.com/android/maven2/androidx/ads/ads-identifier/1.0.0-alpha04/ads-identifier-1.0.0-alpha04.aar
 
 ## Xamarin.Android Bindings
 
