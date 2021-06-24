@@ -83,7 +83,7 @@ group metadata discovery
 
   ```csharp
   string group_id = "androidx.ads";
-  string url_group_index = $"{url_root}/{group_id.Replace(".", "/")}/group-index.xml";
+  string url_group_index = $"{url_root}/{group_id.Replace('.', '/')}/group-index.xml";
   ```
 
   ```bash
@@ -104,6 +104,23 @@ group metadata discovery
   string url_group_id = $"{url_root}/{group_id.Replace(".", "/")}";
   ```
 
+### Artifact Metadata
+
+* google
+
+  * availablity - partially
+
+    * per version
+
+    * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/artifact-metadata.json
+
+* maven
+
+  * availablity - always 
+
+    needs to be verified in the future!!!!
+
+  * https://repo1.maven.org/maven2/io/opencensus/opencensus-api/maven-metadata.xml
 
 ### Artifact
 
@@ -119,9 +136,16 @@ group metadata discovery
   ```
 
   * https://dl.google.com/android/maven2/androidx/ads/ads-identifier/1.0.0-alpha04/ads-identifier-1.0.0-alpha04.aar
-
+https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02-sources.jar
+https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.aar
+https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.module
+https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.pom
+https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.pom
+https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/artifact-metadata.json
 
 * maven
+
+  * .
 
 
 ## Xamarin.Android Bindings
