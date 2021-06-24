@@ -95,14 +95,14 @@ group metadata discovery
 
 * maven central
 
-  ```csharp
-  string group_id = "io.opencensus";
-  string url_group_id = $"{url_root}/{group_id.Replace(".", "/"}}";
-  ```
   * NOT available
 
     * HTML response must be parsed
   
+  ```csharp
+  string group_id = "io.opencensus";
+  string url_group_id = $"{url_root}/{group_id.Replace(".", "/")}";
+  ```
 
 
 ### Artifact
@@ -119,6 +119,10 @@ group metadata discovery
   ```
 
   * https://dl.google.com/android/maven2/androidx/ads/ads-identifier/1.0.0-alpha04/ads-identifier-1.0.0-alpha04.aar
+
+
+* maven
+
 
 ## Xamarin.Android Bindings
 
