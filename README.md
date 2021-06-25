@@ -93,6 +93,8 @@ group metadata discovery
   curl -i --location $url_group_index
   ```
 
+  * https://dl.google.com/android/maven2/androidx/lifecycle/group-index.xml
+  
 * maven central
 
   * NOT available
