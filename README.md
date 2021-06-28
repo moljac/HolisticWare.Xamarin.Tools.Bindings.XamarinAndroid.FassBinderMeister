@@ -138,12 +138,18 @@ group metadata discovery
   ```
 
   * https://dl.google.com/android/maven2/androidx/ads/ads-identifier/1.0.0-alpha04/ads-identifier-1.0.0-alpha04.aar
-https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02-sources.jar
-https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.aar
-https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.module
-https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.pom
-https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.pom
-https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/artifact-metadata.json
+
+  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02-sources.jar
+
+  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.aar
+
+  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.module
+
+  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.pom
+
+  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.pom
+
+  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/artifact-metadata.json
 
 * maven
 
