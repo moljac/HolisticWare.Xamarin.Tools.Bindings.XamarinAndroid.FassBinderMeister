@@ -124,17 +124,59 @@ group metadata discovery
 
   * https://repo1.maven.org/maven2/io/opencensus/opencensus-api/maven-metadata.xml
 
-### Artifact
+### ArtifactUnversioned
 
 * google
 
+  * not available
+  
+* maven
+
+  * https://repo1.maven.org/maven2/io/opencensus/opencensus-api/
+
+  * https://repo1.maven.org/maven2/io/opencensus/opencensus-api/maven-metadata.xml
+
+### ArtifactUnversioned Metadata
+
+* google
+
+  * not available
+  
+* maven
+
+  * https://repo1.maven.org/maven2/io/opencensus/opencensus-api/
+
+  * https://repo1.maven.org/maven2/io/opencensus/opencensus-api/maven-metadata.xml
+
+  * metadatq
+
+    * groupId
+
+    * artifactId
+
+    * versioning
+
+    * latest
+
+    * release
+
+    * versions
+
+    * lastUpdated
+
+### ArtifactVersioned
+
+* google
+
+  * available
   ```
   string group_id = "androidx.ads";
   string artifact_id = "ads-identifier";
   string artifact_version = "1.0.0-alpha04";
   string artifact_extension = "aar";
 
-  string url_artifact = $"{url_root}/{group_id.Replace(".", "/")}/{artifact_id}/{artifact_version}/{artifact_id}-{artifact_version}.{artifact_extension}";
+  string url_artifact_root = $"{url_root}/{group_id.Replace(".", "/")}/{artifact_id}/{artifact_version}/{artifact_id}-{artifact_version}.{artifact_extension}";
+
   ```
 
   * https://dl.google.com/android/maven2/androidx/ads/ads-identifier/1.0.0-alpha04/ads-identifier-1.0.0-alpha04.aar
@@ -143,18 +185,54 @@ group metadata discovery
 
   * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.aar
 
-  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.module
-
-  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.pom
-
-  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.pom
-
-  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/artifact-metadata.json
-
 * maven
 
   * .
 
+#### ArtifactVersioned Metadata (`artifact-metadata.json`)
+
+* google
+
+  * available
+
+  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/artifact-metadata.json
+
+  * JSON
+  
+  * artifacts (files) 
+
+    * name - tag pairs
+
+    * tags
+
+      * aar
+      * jar
+      * pom
+      * source
+      * gradle-module-metadata
+      * ???
+
+* maven
+
+  * not available
+
+#### Artifact POM (`pom.xml`)
+
+* google
+
+  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.pom
+
+  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.pom
+
+* maven
+
+  * .
+  
+#### Artifact Gradle Module (`*.module`)
+
+* google
+
+  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/activity-1.3.0-beta02.module
 
 ## Xamarin.Android Bindings
 
