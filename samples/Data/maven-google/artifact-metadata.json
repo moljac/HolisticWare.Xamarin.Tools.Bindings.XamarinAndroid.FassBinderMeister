@@ -1,0 +1,21 @@
+{
+    "artifacts": 
+    [
+        {
+            "name": "activity-1.3.0-beta02-sources.jar",
+            "tag": "source"
+        },
+        {
+            "name": "activity-1.3.0-beta02.aar",
+            "tag": "aar"
+        },
+        {
+            "name": "activity-1.3.0-beta02.module",
+            "tag": "gradle-module-metadata"
+        },
+        {
+            "name": "activity-1.3.0-beta02.pom",
+            "tag": "pom"
+        }
+    ]
+}
