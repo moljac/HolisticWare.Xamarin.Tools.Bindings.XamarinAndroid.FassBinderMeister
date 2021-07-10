@@ -14,28 +14,31 @@
     <Compile Include="$(MSBuildThisFileDirectory)Binderator.Config\Binderator.Config_GooglePlayServicesComponents.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GitHubClientAPI\GitHubClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core.Serialization\JSON_Deserialization_BuddyClass.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\GroupIndex.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MasterIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\GroupIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MasterIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenNET\MavenNET.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\ReleaseNotesHTMLData.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\Artifact.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MavenRepositoryGoogle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Artifact.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MavenRepositoryGoogle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\ArtifactBindingNugetData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Binderator.Artifact\Artifact.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MasterIndexGoogle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenClientAPI\MavenRepositoryMavenCentral.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MasterIndexGoogle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MavenRepositoryMavenCentral.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ClientAPI\NuGetClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ClientAPI\NugetPackage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ClientAPI\NugetPackages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ServerAPI\NuGetClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BinderatorConfigsFetcher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Binderator.Config\BinderatorConfigsFetcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\Maven\Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenCentral\Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenGoogle\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
     <Folder Include="$(MSBuildThisFileDirectory)Core.Serialization\" />
-    <Folder Include="$(MSBuildThisFileDirectory)MavenClientAPI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenNET\" />
     <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\" />
     <Folder Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\" />
@@ -43,5 +46,9 @@
     <Folder Include="$(MSBuildThisFileDirectory)Binderator.Artifact\" />
     <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\ClientAPI\" />
     <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\ServerAPI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenGoogle\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenCentral\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\Maven\" />
   </ItemGroup>
 </Project>

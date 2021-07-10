@@ -206,10 +206,15 @@ group metadata discovery
     * tags
 
       * aar
+  
       * jar
+  
       * pom
+  
       * source
+  
       * gradle-module-metadata
+  
       * ???
 
 * maven
