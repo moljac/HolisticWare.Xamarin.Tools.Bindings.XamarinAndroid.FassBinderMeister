@@ -38,6 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Google\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MavenCentralSonatype\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\RepositoryAgnosticDiscovery\Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Google\Repository %28copy%29.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
