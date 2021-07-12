@@ -35,18 +35,18 @@ namespace HolisticWare.Xamarin.Tools.Maven
 
         public async static
             Task<Uri>
-                                                    GetUriForGroupAsync
+                                                    GetUriForGroupIndexAsync
                                                             (
                                                                 Group group
                                                             )
         {
-            return await GetGroupUriAsync(group.Id);
+            return await GetUriForGroupIndexAsync(group.Id);
         }
 
 
         public async static
             Task<Uri>
-                                                    GetGroupUriAsync
+                                                    GetUriForGroupIndexAsync
                                                             (
                                                                 string id
                                                             )
@@ -58,6 +58,31 @@ namespace HolisticWare.Xamarin.Tools.Maven
             {
                 result = new Uri(url);
             }
+
+            return result;
+        }
+
+        public async static
+            Task<GroupIndex>
+                                                    GetGroupIndexAsync
+                                                            (
+                                                                Group group
+                                                            )
+        {
+            return await GetGroupIndexAsync(group.Id);
+        }
+
+        public async static
+            Task<GroupIndex>
+                                                    GetGroupIndexAsync
+                                                            (
+                                                                string group_id
+                                                            )
+        {
+            GroupIndex result = null;
+
+            Uri uri = await GetUriForGroupIndexAsync(group_id);
+
 
             return result;
         }

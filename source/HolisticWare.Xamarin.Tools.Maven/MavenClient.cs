@@ -5,8 +5,12 @@ namespace HolisticWare.Xamarin.Tools.Maven
 {
     public partial class MavenClient
     {
-        // HttpClient is intended to be instantiated once per application,
-        // rather than per-use. See Remarks.
+        /// <summary>
+        /// HttpClient object
+        /// best practice to create one HttpClient per Application and inject it
+        /// 
+        /// HttpClient is intended to be instantiated once per application, rather than per-use.
+        /// </summary>
         public static HttpClient HttpClient
         {
             get;

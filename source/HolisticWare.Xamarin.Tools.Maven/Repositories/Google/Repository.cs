@@ -119,7 +119,17 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
             if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
             {
-                result.Content = await MavenClient.HttpClient.Get
+                using (System.Net.Http.HttpResponseMessage response = await MavenClient.HttpClient.GetAsync(url))
+                {
+                    using (System.Net.Http.HttpContent content = response.Content)
+                    {
+                        this.MasterIndex = new MasterIndex()
+                        {
+                            Content = await response.Content.ReadAsStringAsync(),
+                        };
+                        await this.MasterIndex.GetGroupsAsync();
+                    }
+                }
             }
 
             

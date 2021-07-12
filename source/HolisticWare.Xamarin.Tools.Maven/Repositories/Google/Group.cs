@@ -33,9 +33,14 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             set;
         }
 
-        public async static
+
+
+
+
+
+        public static async
             Task<Uri>
-                                                    GetUriForGroupAsync
+                                                    GetUriForGroupIndexAsync
                                                             (
                                                                 Group group
                                                             )
@@ -44,9 +49,9 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         }
 
 
-        public async static
+        public static async
             Task<Uri>
-                                                    GetUriForGroupAsync
+                                                    GetUriForGroupIndexAsync
                                                             (
                                                                 string id
                                                             )
@@ -62,5 +67,42 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             return result;
         }
 
+        public async static
+            Task<Uri>
+                                                    GetUriForGroupAsync
+                                                            (
+                                                                Group group
+                                                            )
+        {
+            return await GetUriForGroupAsync(group.Id);
+        }
+
+
+        public static async
+            Task<Uri>
+                                                    GetUriForGroupAsync
+                                                            (
+                                                                string id
+                                                            )
+        {
+            Uri result = null;
+
+            return result;
+        }
+
+        public static async
+            Task<GroupIndex>
+                                                    GetGroupIndexAsync
+                                                            (
+                                                                string group_id
+                                                            )
+        {
+            GroupIndex result = null;
+
+            Uri uri = await GetUriForGroupIndexAsync(group_id);
+
+
+            return result;
+        }
     }
 }

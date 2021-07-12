@@ -34,10 +34,20 @@ namespace HolisticWare.Xamarin.Tools.Maven
             return;
         }
 
-        public Repository Repository
+        protected Group group = null;
+
+        public Group Group
         {
-            get;
-            set;
+            get
+            {
+                return group;
+            }
+            set
+            {
+                group = value;
+
+                return;
+            }
         }
 
         public string GroupId
@@ -172,7 +182,7 @@ namespace HolisticWare.Xamarin.Tools.Maven
                                                 (
                                                 )
         {
-            GroupIndex gi = await this.Repository.GetGroupIndexAsync(this.GroupId);
+            GroupIndex gi = await Group.GetGroupIndexAsync(this.GroupId);
 
             IEnumerable<(string name, string[] versions)> artifacts_and_versions = null;
 
@@ -201,7 +211,7 @@ namespace HolisticWare.Xamarin.Tools.Maven
                                                     IEnumerable<string> versions_textual
                                                 )
         {
-            foreach(string vt in versions_textual)
+            foreach (string vt in versions_textual)
             {
                 System.Version v;
                 bool parsed = System.Version.TryParse(vt, out v);
@@ -243,7 +253,7 @@ namespace HolisticWare.Xamarin.Tools.Maven
             {
                 response = await MavenClient.HttpClient.GetStringAsync(url);
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
                 sb.AppendLine($"Artifact.DownloadArtifactMetadata Exception");

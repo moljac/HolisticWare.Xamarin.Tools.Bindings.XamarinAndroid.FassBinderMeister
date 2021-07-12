@@ -46,12 +46,35 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
         public async static
             Task<Uri>
+                                                    GetUriForGroupIndexAsync
+                                                            (
+                                                                Group group
+                                                            )
+        {
+            return await GetUriForGroupAsync(group.Id);
+        }
+
+
+        public static async
+            Task<Uri>
+                                                    GetUriForGroupIndexAsync
+                                                            (
+                                                                string id
+                                                            )
+        {
+            Uri result = null;
+
+            return result;
+        }
+
+        public static async
+            Task<Uri>
                                                     GetUriForGroupAsync
                                                             (
                                                                 string id
                                                             )
         {
-            string url = $"{RepositoryDefault.UrlRoot}/{id.Replace('.', '/')}/group-index.xml";
+            string url = $"{RepositoryDefault.UrlRoot}/{id.Replace('.', '/')}";
 
             Uri result = null;
             if (await MavenClient.HttpClient.IsReachableUrlAsync(url))

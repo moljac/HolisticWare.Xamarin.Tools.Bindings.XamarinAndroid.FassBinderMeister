@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Core.Net.HTTP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static partial class HttpClientExtensions
     {
         public static async
