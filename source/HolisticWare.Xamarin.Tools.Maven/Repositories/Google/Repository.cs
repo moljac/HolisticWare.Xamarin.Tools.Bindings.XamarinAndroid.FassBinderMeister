@@ -132,7 +132,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                 }
             }
 
-            
+            string xml = this.MasterIndex.Content;
 
             return result;
         }
