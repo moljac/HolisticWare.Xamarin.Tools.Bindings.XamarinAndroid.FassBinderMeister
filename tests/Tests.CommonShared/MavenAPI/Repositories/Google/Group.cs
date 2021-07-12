@@ -62,8 +62,7 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System;
 
 using HolisticWare.Xamarin.Tools.Maven.Repositories.Google;
 
@@ -75,49 +74,76 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Group_Google_static_defaults()
         {
-#if MSTEST
-            Assert.IsNotNull(Repository.UrlRootDefault);
-            Assert.IsNotNull(Repository.UrlMasterIndexDefault);
-            Assert.IsNotNull(Repository.MasterIndexDefault);
+            #if MSTEST
+            Assert.IsNull(Group.UrlGroupDefault);
+            Assert.IsNotNull(Group.UrlGroupIndexDefault);
             Assert.AreEqual
                         (
-                            Repository.UrlRootDefault,
-                            $"https://dl.google.com/android/maven2"
+                            Group.GetUriForGroupAsync("androidx.window").Result,
+                            null
                         );
             Assert.AreEqual
                         (
-                            Repository.UrlMasterIndexDefault,
-                            $"https://dl.google.com/android/maven2/master-index.xml"
-                        );
-#elif NUNIT
-            Assert.NotNull(Repository.UrlRootDefault);
-            Assert.NotNull(Repository.UrlMasterIndexDefault);
-            Assert.NotNull(Repository.MasterIndexDefault);
-            Assert.AreEqual
-                        (
-                            Repository.UrlRootDefault,
-                            $"https://dl.google.com/android/maven2"
+                            Group.GetUriForGroupAsync("io.opencensus").Result,
+                            null
                         );
             Assert.AreEqual
                         (
-                            Repository.UrlMasterIndexDefault,
-                            $"https://dl.google.com/android/maven2/master-index.xml"
+                            Group.GetUriForGroupIndexAsync("androidx.window").Result,
+                            new Uri($"https://dl.google.com/android/maven2/androidx/window/group-index.xml")
                         );
-#elif XUNIT
-            Assert.NotNull(Repository.UrlRootDefault);
-            Assert.NotNull(Repository.UrlMasterIndexDefault);
-            Assert.NotNull(Repository.MasterIndexDefault);
+            Assert.AreEqual
+                        (
+                            Group.GetUriForGroupIndexAsync("io.opencensus").Result,
+                            null
+                        );
+            #elif NUNIT
+            Assert.IsNull(Group.UrlGroupDefault);
+            Assert.IsNotNull(Group.UrlGroupIndexDefault);
+            Assert.AreEqual
+                        (
+                            Group.GetUriForGroupAsync("androidx.window").Result,
+                            null
+                        );
+            Assert.AreEqual
+                        (
+                            Group.GetUriForGroupAsync("io.opencensus").Result,
+                            null
+                        );
+            Assert.AreEqual
+                        (
+                            Group.GetUriForGroupIndexAsync("androidx.window").Result,
+                            new Uri($"https://dl.google.com/android/maven2/androidx/window/group-index.xml")
+                        );
+            Assert.AreEqual
+                        (
+                            Group.GetUriForGroupIndexAsync("io.opencensus").Result,
+                            null
+                        );
+            #elif XUNIT
+            Assert.Null(Group.UrlGroupDefault);
+            Assert.NotNull(Group.UrlGroupIndexDefault);
             Assert.Equal
                         (
-                            Repository.UrlRootDefault,
-                            $"https://dl.google.com/android/maven2"
+                            Group.GetUriForGroupAsync("androidx.window").Result,
+                            null
                         );
             Assert.Equal
                         (
-                            Repository.UrlMasterIndexDefault,
-                            $"https://dl.google.com/android/maven2/master-index.xml"
+                            Group.GetUriForGroupAsync("io.opencensus").Result,
+                            null
                         );
-#endif
+            Assert.Equal
+                        (
+                            Group.GetUriForGroupIndexAsync("androidx.window").Result,
+                            new Uri($"https://dl.google.com/android/maven2/androidx/window/group-index.xml")
+                        );
+            Assert.Equal
+                        (
+                            Group.GetUriForGroupIndexAsync("io.opencensus").Result,
+                            null
+                        );
+            #endif
 
         }
 
@@ -127,7 +153,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             Repository r = new Repository();
 
 
-            #if MSTEST
+#if MSTEST
             Assert.IsNotNull(r);
             Assert.IsNotNull(r.UrlMasterIndex);
             Assert.IsNotNull(r.MasterIndex);
@@ -153,7 +179,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                             r.UrlRoot,
                             Repository.UrlRootDefault
                         );
-            #elif XUNIT
+#elif XUNIT
             Assert.NotNull(r);
             Assert.Equal
                         (
@@ -165,7 +191,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                             r.UrlRoot,
                             Repository.UrlRootDefault
                         );
-            #endif
+#endif
 
             return;
         }
