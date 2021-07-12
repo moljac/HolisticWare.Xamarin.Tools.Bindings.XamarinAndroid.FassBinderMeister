@@ -68,4 +68,8 @@
       <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.2.0" />
       <PackageReference Include="AsyncFixer" Version="1.5.1" />
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+    </ItemGroup>
 </Project>

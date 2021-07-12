@@ -3,39 +3,39 @@
     <PropertyGroup>
       <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>Latest</LangVersion>
-        <RootNamespace>HolisticWare.Xamarin.Tools.GitHub</RootNamespace>
+        <RootNamespace>HolisticWare.Xamarin.Tools.Maven</RootNamespace>
         <!--
         If moved to separate PropertyGroup - UI is cleared?!?!
         -->
         <PackOnBuild>true</PackOnBuild>
-        <PackageId>HolisticWare.Xamarin.Tools.GitHub</PackageId>
+        <PackageId>HolisticWare.Xamarin.Tools.Maven</PackageId>
         <Title>
-            HolisticWare.Xamarin.Tools.GitHub
+            HolisticWare.Xamarin.Tools.Maven
         </Title>
         <summary>
-            GitHub client API. Tools for GitHub client API for bindings productivity.
+            Maven client API. Tools for Maven client API for bindings productivity.
         </summary>
         <Description>
-            GitHub client API. Tools for GitHub client API for bindings productivity.
+            Maven client API. Tools for Maven client API for bindings productivity.
         </Description>
         <Owners>HolisticWare, moljac</Owners>
         <Authors>HolisticWare, moljac</Authors>
         <Copyright>2020</Copyright>
         <ProjectUrl>
-            https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
         </ProjectUrl>
         <PackageProjectUrl>
-            https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
         </PackageProjectUrl>
         <RepositoryUrl>
-            https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
         </RepositoryUrl>
         <license>LICENSE</license>
         <licenseUrl>
-            https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/blob/master/LICENSE
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/blob/master/LICENSE
         </licenseUrl>
         <PackageLicenseUrl>
-            https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/blob/master/LICENSE
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/blob/master/LICENSE
         </PackageLicenseUrl>
         <iconUrl>
             https://secure.gravatar.com/avatar/b662959e712466f393541935b664d3c5
@@ -45,7 +45,7 @@
         </PackageIconUrl>
         <VersionPrefix>0.0.1</VersionPrefix>
         <!--
-        VersionSuffix - For debugging and local GitHub feed
+        VersionSuffix - For debugging and local Maven feed
         -->
         <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</VersionSuffix>
         <PackageVersion>$(Version)</PackageVersion>
@@ -53,7 +53,7 @@
 
     <PropertyGroup>
         <!--
-        put the package output into a GitHub test folder
+        put the package output into a Maven test folder
         -->
         <PackageOutputPath>../../output</PackageOutputPath>
     </PropertyGroup>
@@ -68,4 +68,21 @@
         <PackageReference Include="AsyncFixer" Version="1.5.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Repositories\" />
+      <None Remove="Repositories\Google\" />
+      <None Remove="Repositories\MavenCentralSonatype\" />
+      <None Remove="POM.ProjectObjectModel\" />
+      <None Remove="RepositoryAgnosticDiscovery\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Repositories\" />
+      <Folder Include="Repositories\Google\" />
+      <Folder Include="Repositories\MavenCentralSonatype\" />
+      <Folder Include="POM.ProjectObjectModel\" />
+      <Folder Include="RepositoryAgnosticDiscovery\" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+    </ItemGroup>
 </Project>

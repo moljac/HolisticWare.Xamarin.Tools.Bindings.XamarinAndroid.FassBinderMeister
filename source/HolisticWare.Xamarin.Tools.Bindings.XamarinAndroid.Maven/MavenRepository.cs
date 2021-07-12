@@ -198,10 +198,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven
 
         public virtual async
             Task<GroupIndex>
-                            GetGroupIndexAsync
-                                        (
-                                            string group_id
-                                        )
+                                                GetGroupIndexAsync
+                                                    (
+                                                        string group_id
+                                                    )
         {
 
             return null;

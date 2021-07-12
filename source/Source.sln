@@ -26,13 +26,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI", "HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI.csproj", "{52E23EFC-504B-472A-9580-CC8355B9C9FB}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10", "..\externals-submodules\Core.Math.Discrete.GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10.csproj", "{558868B8-8818-4578-8710-12E6A127F37A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10", "..\externals-submodules\Core.Math.Discrete.GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10.csproj", "{558868B8-8818-4578-8710-12E6A127F37A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.Core", "HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj", "{09FC6485-959E-440F-BA16-284960DE50B7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Maven", "HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj", "{FCFB4B96-C0BC-4DFE-B3F4-B5118E586792}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Maven.Repositories", "HolisticWare.Xamarin.Tools.Maven.Repositories\HolisticWare.Xamarin.Tools.Maven.Repositories.csproj", "{3A60C13B-25EF-4D3A-A94D-78D46A42C24B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Net.HTTP", "HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj", "{0C7A1243-5A57-40A5-87C2-C5D3BA0A04D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,6 +90,10 @@ Global
 		{3A60C13B-25EF-4D3A-A94D-78D46A42C24B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A60C13B-25EF-4D3A-A94D-78D46A42C24B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A60C13B-25EF-4D3A-A94D-78D46A42C24B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C7A1243-5A57-40A5-87C2-C5D3BA0A04D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C7A1243-5A57-40A5-87C2-C5D3BA0A04D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C7A1243-5A57-40A5-87C2-C5D3BA0A04D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C7A1243-5A57-40A5-87C2-C5D3BA0A04D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
