@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Core.Net.HTTP;
 
 namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 {
@@ -114,7 +115,14 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         {
             MasterIndex result = null;
 
-            // Discovery
+            string url = this.UrlMasterIndex;
+
+            if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
+            {
+                result.Content = await MavenClient.HttpClient.Get
+            }
+
+            
 
             return result;
         }

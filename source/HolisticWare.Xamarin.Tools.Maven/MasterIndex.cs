@@ -40,7 +40,7 @@ namespace HolisticWare.Xamarin.Tools.Maven
 
         public virtual async
             Task<IEnumerable<GroupIndex>>
-                                                GetGroupIndicesAsync
+                                                GetGroupsAsync
                                                     (
                                                     )
         {
@@ -51,7 +51,7 @@ namespace HolisticWare.Xamarin.Tools.Maven
 
             IEnumerable<GroupIndex> group_indices = null;
 
-            //group_indices = await this.Repository.GetGroupIndicesAsync();
+            group_indices = await this.Repository.GetGroupIndicesAsync();
 
             return group_indices;
         }
