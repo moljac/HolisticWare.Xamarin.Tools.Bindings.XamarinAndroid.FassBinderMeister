@@ -13,7 +13,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
         static Repository()
         {
-            url_root_default = $"https://repo1.maven.org/maven2/";
+            url_root_default = $"https://repo1.maven.org/maven2";
 
             return;
         }

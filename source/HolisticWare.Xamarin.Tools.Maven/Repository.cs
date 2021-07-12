@@ -70,6 +70,57 @@ namespace HolisticWare.Xamarin.Tools.Maven
             }
         }
 
+        protected static string url_master_index = null;
+
+        public static string UrlMasterIndex
+        {
+            get
+            {
+                return url_master_index;
+            }
+            set
+            {
+                url_master_index = value;
+
+                return;
+            }
+        }
+
+        protected MasterIndex master_index = null;
+
+        public MasterIndex MasterIndex
+        {
+            get
+            {
+                return master_index;
+            }
+            set
+            {
+                master_index = value;
+
+                return;
+            }
+        }
+
+        public virtual async
+            Task<MasterIndex>
+                                            GetMasterIndexAsync
+                                                    (
+                                                    )
+        {
+            MasterIndex result = null;
+
+            // Discovery
+
+            return result;
+        }
+
+
+
+
+
+
+
 
         public async static
             Task<Repository>
@@ -107,25 +158,25 @@ namespace HolisticWare.Xamarin.Tools.Maven
         }
 
         public virtual async
-            Task<GroupIndex>
-                                            GetGroupIndexAsync
+            Task<IEnumerable<Group>>
+                                            GetGroupsAsync
                                                     (
-                                                        string group_id
                                                     )
         {
+            IEnumerable<Group> result = null;
 
-            return null;
+            return result;
         }
 
         public virtual async
-            Task<IEnumerable<GroupIndex>>
+            Task<IEnumerable<Group>>
                                             GetGroupIndicesAsync
                                                     (
                                                     )
         {
-            IEnumerable<GroupIndex> group_indices = null;
+            IEnumerable<Group> result = null;
 
-            return group_indices;
+            return result;
         }
     }
 }

@@ -5,6 +5,12 @@ using System.Threading.Tasks;
 
 namespace HolisticWare.Xamarin.Tools.Maven
 {
+    /// <summary>
+    /// MasterIndex - index of all group ids
+    /// Google                  Maven Repository     -   available
+    /// MavenCentralSonatype    Maven Repository     -   not available
+    /// MavenCentralSonatype    Maven Repository     -   built from HTML
+    /// </summary>
     public partial class MasterIndex
     {
         public Repository Repository

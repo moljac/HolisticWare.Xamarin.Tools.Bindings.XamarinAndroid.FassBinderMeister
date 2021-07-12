@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 {
@@ -7,6 +8,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         public Repository() : base()
         {
             this.UrlRoot = Repositories.Google.Repository.UrlRootDefault;
+            this.UrlMasterIndex = Repositories.Google.Repository.UrlMasterIndexDefault;
 
             return;
         }
@@ -45,6 +47,76 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
                 return;
             }
+        }
+
+        public static MasterIndex MasterIndexDefault
+        {
+            get
+            {
+                return master_index_default;
+            }
+            set
+            {
+                master_index_default = value;
+
+                return;
+            }
+        }
+
+        public string UrlRoot
+        {
+            get
+            {
+                return url_root;
+            }
+            set
+            {
+                url_root = value;
+
+                return;
+            }
+        }
+
+        public string UrlMasterIndex
+        {
+            get
+            {
+                return url_master_index;
+            }
+            set
+            {
+                url_master_index = value;
+
+                return;
+            }
+        }
+
+        public MasterIndex MasterIndex
+        {
+            get
+            {
+                return master_index;
+            }
+            set
+            {
+                master_index = value;
+
+                return;
+            }
+        }
+
+
+        public virtual async
+            Task<MasterIndex>
+                                            GetMasterIndexAsync
+                                                    (
+                                                    )
+        {
+            MasterIndex result = null;
+
+            // Discovery
+
+            return result;
         }
 
     }
