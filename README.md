@@ -79,7 +79,7 @@ root
 
 group metadata discovery
 
-* google
+*   google
 
   ```csharp
   string group_id = "androidx.ads";
@@ -93,18 +93,20 @@ group metadata discovery
   curl -i --location $url_group_index
   ```
 
-  * https://dl.google.com/android/maven2/androidx/lifecycle/group-index.xml
+*   https://dl.google.com/android/maven2/androidx/lifecycle/group-index.xml
   
-* maven central
+*   maven central
 
-  * NOT available
+    *   NOT available
 
-    * HTML response must be parsed
+    *   HTML response must be parsed
   
   ```csharp
   string group_id = "io.opencensus";
   string url_group_id = $"{url_root}/{group_id.Replace(".", "/")}";
   ```
+
+*   https://repo1.maven.org/maven2/io/opencensus/
 
 ### Artifact Metadata
 
