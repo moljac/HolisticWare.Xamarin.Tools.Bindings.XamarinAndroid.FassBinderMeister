@@ -65,61 +65,61 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using HolisticWare.Xamarin.Tools.Maven;
+using HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype;
 
-namespace UnitTests.ClientsAPI.Maven.Repositories.RepositoryAgnosticDiscovery
+namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_Repository
+    public partial class Test_Group
     {
         [Test]
-        public void Test_Repository_RepositoryAgnosticDiscovery_static_defaults()
+        public void Test_Group_MavenCentralSonatype_static_defaults()
         {
-            #if MSTEST
+#if MSTEST
             Assert.IsNotNull(Repository.UrlRootDefault);
             Assert.IsNotNull(Repository.UrlMasterIndexDefault);
             Assert.AreEqual
                         (
                             Repository.UrlRootDefault,
-                            null
+                            $"https://repo1.maven.org/maven2"
                         );
             Assert.AreEqual
                         (
                             Repository.UrlMasterIndexDefault,
                             null
                         );
-            #elif NUNIT
+#elif NUNIT
             Assert.NotNull(Repository.UrlRootDefault);
             Assert.NotNull(Repository.UrlMasterIndexDefault);
             Assert.AreEqual
                         (
                             Repository.UrlRootDefault,
-                            null
+                            $"https://repo1.maven.org/maven2"
                         );
             Assert.AreEqual
                         (
                             Repository.UrlMasterIndexDefault,
                             null
                         );
-            #elif XUNIT
+#elif XUNIT
             Assert.NotNull(Repository.UrlRootDefault);
             Assert.NotNull(Repository.UrlMasterIndexDefault);
             Assert.Equal
                         (
                             Repository.UrlRootDefault,
-                            null
+                            $"https://repo1.maven.org/maven2"
                         );
             Assert.Equal
                         (
                             Repository.UrlMasterIndexDefault,
                             null
                         );
-            #endif
+#endif
 
         }
 
         [Test]
-        public void Test_Repository_RepositoryAgnosticDiscovery_ctor01()
+        public void Test_Group_MavenCentralSonatype_ctor01()
         {
             Repository r = new Repository();
 
@@ -129,7 +129,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.RepositoryAgnosticDiscovery
             Assert.AreEqual
                         (
                             r.UrlRoot,
-                            null
+                            $"https://dl.google.com/android/maven2"
                         );
             Assert.AreEqual
                         (
@@ -141,19 +141,19 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.RepositoryAgnosticDiscovery
             Assert.AreEqual
                         (
                             r.UrlRoot,
-                            null
+                            $"https://dl.google.com/android/maven2"
                         );
             Assert.AreEqual
                         (
                             r.UrlRoot,
-                            null
+                            Repository.UrlRootDefault
                         );
             #elif XUNIT
             Assert.NotNull(r);
             Assert.Equal
                         (
                             r.UrlRoot,
-                            null
+                            $"https://dl.google.com/android/maven2"
                         );
             Assert.Equal
                         (

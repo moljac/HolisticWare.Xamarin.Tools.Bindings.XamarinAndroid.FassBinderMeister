@@ -70,10 +70,10 @@ using HolisticWare.Xamarin.Tools.Maven.Repositories.Google;
 namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_Repository
+    public partial class Test_Group
     {
         [Test]
-        public void Test_Maven_Repository_Google_static_defaults()
+        public void Test_Group_Google_static_defaults()
         {
 #if MSTEST
             Assert.IsNotNull(Repository.UrlRootDefault);
@@ -122,7 +122,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Maven_Repository_Google_ctor01()
+        public void Test_Group_Google_ctor01()
         {
             Repository r = new Repository();
 

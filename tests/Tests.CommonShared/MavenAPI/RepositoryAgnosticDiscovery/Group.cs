@@ -70,10 +70,10 @@ using HolisticWare.Xamarin.Tools.Maven;
 namespace UnitTests.ClientsAPI.Maven.Repositories.RepositoryAgnosticDiscovery
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_Repository
+    public partial class Test_Group
     {
         [Test]
-        public void Test_Repository_RepositoryAgnosticDiscovery_static_defaults()
+        public void Test_Group_RepositoryAgnosticDiscovery_static_defaults()
         {
             #if MSTEST
             Assert.IsNotNull(Repository.UrlRootDefault);
@@ -119,7 +119,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.RepositoryAgnosticDiscovery
         }
 
         [Test]
-        public void Test_Repository_RepositoryAgnosticDiscovery_ctor01()
+        public void Test_Group_RepositoryAgnosticDiscovery_ctor01()
         {
             Repository r = new Repository();
 
