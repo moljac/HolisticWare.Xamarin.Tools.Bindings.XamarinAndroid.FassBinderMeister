@@ -18,6 +18,7 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.0" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -30,6 +31,11 @@
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj" />
+    <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="BenchmarkDotNet" />
   </ItemGroup>
   <Choose>
     <When Condition="! exists('..\..\..\..\source\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10.csproj')">

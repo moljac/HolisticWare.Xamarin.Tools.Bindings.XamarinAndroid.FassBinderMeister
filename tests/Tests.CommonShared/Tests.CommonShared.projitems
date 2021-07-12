@@ -34,6 +34,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\Maven\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenCentral\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenGoogle\Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Google\Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MavenCentralSonatype\Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\RepositoryAgnosticDiscovery\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
@@ -50,5 +54,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenGoogle\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenCentral\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\Maven\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\Google\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\MavenCentralSonatype\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\RepositoryAgnosticDiscovery\" />
   </ItemGroup>
 </Project>
