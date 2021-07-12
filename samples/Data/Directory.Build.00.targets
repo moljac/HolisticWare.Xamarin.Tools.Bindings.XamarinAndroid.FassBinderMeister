@@ -1,0 +1,40 @@
+<Project>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\Directory.Build.targets" />
+
+  <PropertyGroup>
+    <!--
+      CA1034    Nested types should not be visible (Design)
+      CA1303    Do not pass literals as localized parameters (Globalization)
+      CA1707    Identifiers should not contain underscores (Naming)
+      CA2007    Consider calling ConfigureAwait on the awaited task (Reliability)
+      IDE0002   Simplify Member Access
+    -->
+    <NoWarn>$(NoWarn);CA1034;CA1303;CA1707;CA2007;IDE0002</NoWarn>
+
+    <!--<RunSettingsFilePath>$(MSBuildThisFileDirectory)test-$(Configuration).runsettings</RunSettingsFilePath>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)xunit.runner.json">
+      <Visible>false</Visible>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+
+    <PackageReference Include="coverlet.msbuild" Version="3.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
