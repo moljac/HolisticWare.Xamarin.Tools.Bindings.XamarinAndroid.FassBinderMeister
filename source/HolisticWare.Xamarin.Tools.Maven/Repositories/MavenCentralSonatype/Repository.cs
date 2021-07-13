@@ -13,12 +13,12 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
         static Repository()
         {
-            url_root_default = $"https://repo1.maven.org/maven2";
+            url_root_default = new Uri($"https://repo1.maven.org/maven2");
 
             return;
         }
 
-        public static string UrlRootDefault
+        public static Uri UrlRootDefault
         {
             get
             {
@@ -32,7 +32,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
             }
         }
 
-        public static new string UrlMasterIndexDefault
+        public static new Uri UrlMasterIndexDefault
         {
             get
             {

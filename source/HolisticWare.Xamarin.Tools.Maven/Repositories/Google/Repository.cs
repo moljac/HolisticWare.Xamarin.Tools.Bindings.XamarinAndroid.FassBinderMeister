@@ -16,13 +16,13 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
         static Repository()
         {
-            url_root_default = $"https://dl.google.com/android/maven2";
-            url_master_index_default = $"{UrlRootDefault}/master-index.xml";
+            url_root_default = new Uri($"https://dl.google.com/android/maven2");
+            url_master_index_default = new Uri($"{UrlRootDefault.AbsolutePath}/master-index.xml");
 
             return;
         }
 
-        public static string UrlRootDefault
+        public static Uri UrlRootDefault
         {
             get
             {
@@ -36,7 +36,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
         }
 
-        public static new string UrlMasterIndexDefault
+        public static new Uri UrlMasterIndexDefault
         {
             get
             {
@@ -64,7 +64,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
         }
 
-        public string UrlRoot
+        public Uri UrlRoot
         {
             get
             {
@@ -78,7 +78,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
         }
 
-        public string UrlMasterIndex
+        public Uri UrlMasterIndex
         {
             get
             {
@@ -115,7 +115,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         {
             MasterIndex result = null;
 
-            string url = this.UrlMasterIndex;
+            string url = this.UrlMasterIndex.AbsolutePath;
 
             if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
             {

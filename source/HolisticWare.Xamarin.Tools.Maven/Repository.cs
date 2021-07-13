@@ -6,9 +6,9 @@ namespace HolisticWare.Xamarin.Tools.Maven
 {
     public partial class Repository
     {
-        protected static string url_root_default = null;
+        protected static Uri url_root_default = null;
 
-        public static string UrlRootDefault
+        public static Uri UrlRootDefault
         {
             get
             {
@@ -22,9 +22,9 @@ namespace HolisticWare.Xamarin.Tools.Maven
             }
         }
 
-        protected static string url_master_index_default = null;
+        protected static Uri url_master_index_default = null;
 
-        public static string UrlMasterIndexDefault
+        public static Uri UrlMasterIndexDefault
         {
             get
             {
@@ -54,9 +54,9 @@ namespace HolisticWare.Xamarin.Tools.Maven
             }
         }
 
-        protected string url_root = null;
+        protected Uri url_root = null;
 
-        public string UrlRoot
+        public Uri UrlRoot
         {
             get
             {
@@ -70,9 +70,9 @@ namespace HolisticWare.Xamarin.Tools.Maven
             }
         }
 
-        protected static string url_master_index = null;
+        protected static Uri url_master_index = null;
 
-        public static string UrlMasterIndex
+        public static Uri UrlMasterIndex
         {
             get
             {

@@ -33,6 +33,43 @@ namespace HolisticWare.Xamarin.Tools.Maven
             set;
         }
 
+        public static Uri UrlGroupDefault
+        {
+            get;
+            set;
+        }
+
+        public virtual Uri UrlGroup
+        {
+            get;
+            set;
+        }
+
+        public static Uri UrlGroupIndexDefault
+        {
+            get;
+            set;
+        }
+
+        public virtual Uri UrlGroupIndex
+        {
+            get;
+            set;
+        }
+
+
+        public static GroupIndex GroupIndexDefault
+        {
+            get;
+            set;
+        }
+
+        public virtual GroupIndex GroupIndex
+        {
+            get;
+            set;
+        }
+
         public async static
             Task<Uri>
                                                     GetUriForGroupIndexAsync
