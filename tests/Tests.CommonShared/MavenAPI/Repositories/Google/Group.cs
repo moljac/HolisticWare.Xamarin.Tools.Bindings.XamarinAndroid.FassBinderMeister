@@ -79,9 +79,9 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             Uri uri_group_index_default = new Uri($"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_/group-index.xml");
 
             #if MSTEST
-            Assert.IsNotNull(Group.UrlGroupDefault);
+            Assert.IsNull(Group.UrlGroupDefault);
             Assert.IsNotNull(Group.UrlGroupIndexDefault);
-            Assert.IsNotNull(Group.GroupIndexDefault);
+            Assert.IsNull(Group.GroupIndexDefault);
             Assert.AreEqual
                         (
                             Group.UrlGroupDefault,
@@ -93,9 +93,9 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                             uri_group_index_default
                         );
             #elif NUNIT
-            Assert.NotNull(Group.UrlGroupDefault);
+            Assert.Null(Group.UrlGroupDefault);
             Assert.NotNull(Group.UrlGroupIndexDefault);
-            Assert.NotNull(Group.GroupIndexDefault);
+            Assert.Null(Group.GroupIndexDefault);
             Assert.AreEqual
                         (
                             Group.UrlGroupDefault,
@@ -107,9 +107,9 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                             uri_group_index_default
                         );
             #elif XUNIT
-            Assert.NotNull(Group.UrlGroupDefault);
+            Assert.Null(Group.UrlGroupDefault);
             Assert.NotNull(Group.UrlGroupIndexDefault);
-            Assert.NotNull(Group.GroupIndexDefault);
+            Assert.Null(Group.GroupIndexDefault);
             Assert.Equal
                         (
                             Group.UrlGroupDefault,
