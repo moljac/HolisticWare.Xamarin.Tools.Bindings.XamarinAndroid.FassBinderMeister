@@ -18,7 +18,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         static Group()
         {
             url_group_default = null;
-            url_group_index_default = $"{Repository.UrlRootDefault}/_PLACEHOLDER_GROUP_/group-index.xml";
+            url_group_index_default = new Uri($"{Repository.UrlRootDefault}/_PLACEHOLDER_GROUP_/group-index.xml");
 
             return;
         }
@@ -41,17 +41,17 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             set;
         }
 
-        protected static string url_group_default = null;
+        protected static Uri url_group_default = null;
 
-        public static string UrlGroupDefault
+        public static Uri UrlGroupDefault
         {
             get;
             set;
         }
 
-        protected static string url_group_index_default = null;
+        protected static Uri url_group_index_default = null;
 
-        public static string UrlGroupIndexDefault
+        public static Uri UrlGroupIndexDefault
         {
             get
             {
@@ -63,13 +63,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
         }
 
-        public virtual string UrlGroup
-        {
-            get;
-            set;
-        }
-
-        public virtual string UrlGroupIndex
+        public virtual Uri UrlGroup
         {
             get;
             set;
