@@ -74,6 +74,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Group_Google_static_defaults()
         {
+
             Uri uri_group_default = new Uri($"https://dl.google.com/android/maven2");
             Uri uri_group_index_default = new Uri($"https://dl.google.com/android/maven2/master-index.xml");
 
@@ -119,7 +120,17 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                             Group.UrlMasterIndexDefault,
                             $"https://dl.google.com/android/maven2/master-index.xml"
                         );
-#endif
+            Assert.Equal
+                        (
+                            Group.GetUriForGroupIndexAsync("androidx.window").Result,
+                            new Uri($"https://dl.google.com/android/maven2/androidx/window/group-index.xml")
+                        );
+            Assert.Equal
+                        (
+                            Group.GetUriForGroupIndexAsync("io.opencensus").Result,
+                            null
+                        );
+            #endif
 
         }
 
@@ -129,7 +140,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             Repository r = new Repository();
 
 
-            #if MSTEST
+#if MSTEST
             Assert.IsNotNull(r);
             Assert.IsNotNull(r.UrlMasterIndex);
             Assert.IsNotNull(r.MasterIndex);
@@ -155,7 +166,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                             r.UrlRoot,
                             Group.UrlRootDefault
                         );
-            #elif XUNIT
+#elif XUNIT
             Assert.NotNull(r);
             Assert.Equal
                         (
@@ -167,7 +178,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                             r.UrlRoot,
                             Group.UrlRootDefault
                         );
-            #endif
+#endif
 
             return;
         }
