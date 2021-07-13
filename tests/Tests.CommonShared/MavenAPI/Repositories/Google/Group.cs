@@ -62,8 +62,7 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System;
 
 using HolisticWare.Xamarin.Tools.Maven.Repositories.Google;
 
@@ -75,46 +74,49 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Group_Google_static_defaults()
         {
+            Uri uri_group_default = new Uri($"https://dl.google.com/android/maven2");
+            Uri uri_group_index_default = new Uri($"https://dl.google.com/android/maven2/master-index.xml");
+
 #if MSTEST
-            Assert.IsNotNull(Repository.UrlRootDefault);
-            Assert.IsNotNull(Repository.UrlMasterIndexDefault);
-            Assert.IsNotNull(Repository.MasterIndexDefault);
+            Assert.IsNotNull(Group.UrlGroupDefault);
+            Assert.IsNotNull(Group.UrlGroupIndexDefault);
+            Assert.IsNotNull(Group.GroupIndexDefault);
             Assert.AreEqual
                         (
-                            Repository.UrlRootDefault,
-                            $"https://dl.google.com/android/maven2"
+                            Group.UrlGroupDefault,
+                            uri_group_default
                         );
             Assert.AreEqual
                         (
-                            Repository.UrlMasterIndexDefault,
-                            $"https://dl.google.com/android/maven2/master-index.xml"
+                            Group.UrlGroupIndexDefault,
+                            uri_group_index_default
                         );
 #elif NUNIT
-            Assert.NotNull(Repository.UrlRootDefault);
-            Assert.NotNull(Repository.UrlMasterIndexDefault);
-            Assert.NotNull(Repository.MasterIndexDefault);
+            Assert.NotNull(Group.UrlGroupDefault);
+            Assert.NotNull(Group.UrlGroupIndexDefault);
+            Assert.NotNull(Group.GroupIndexDefault);
             Assert.AreEqual
                         (
-                            Repository.UrlRootDefault,
-                            $"https://dl.google.com/android/maven2"
+                            Group.UrlGroupDefault,
+                            uri_group_default
                         );
             Assert.AreEqual
                         (
-                            Repository.UrlMasterIndexDefault,
-                            $"https://dl.google.com/android/maven2/master-index.xml"
+                            Group.UrlGroupIndexDefault,
+                            uri_group_index_default
                         );
-#elif XUNIT
-            Assert.NotNull(Repository.UrlRootDefault);
-            Assert.NotNull(Repository.UrlMasterIndexDefault);
-            Assert.NotNull(Repository.MasterIndexDefault);
+            #elif XUNIT
+            Assert.NotNull(Group.UrlGroupDefault);
+            Assert.NotNull(Group.UrlGroupIndexDefault);
+            Assert.NotNull(Group.MasterIndexDefault);
             Assert.Equal
                         (
-                            Repository.UrlRootDefault,
+                            Group.UrlRootDefault,
                             $"https://dl.google.com/android/maven2"
                         );
             Assert.Equal
                         (
-                            Repository.UrlMasterIndexDefault,
+                            Group.UrlMasterIndexDefault,
                             $"https://dl.google.com/android/maven2/master-index.xml"
                         );
 #endif
@@ -138,8 +140,8 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                         );
             Assert.AreEqual
                         (
-                            r.UrlRoot,
-                            Repository.UrlRootDefault
+                            r.UrlGroup,
+                            Group.UrlGroupDefault
                         );
 #elif NUNIT
             Assert.NotNull(r);
@@ -151,7 +153,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             Assert.AreEqual
                         (
                             r.UrlRoot,
-                            Repository.UrlRootDefault
+                            Group.UrlRootDefault
                         );
             #elif XUNIT
             Assert.NotNull(r);
@@ -163,7 +165,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             Assert.Equal
                         (
                             r.UrlRoot,
-                            Repository.UrlRootDefault
+                            Group.UrlRootDefault
                         );
             #endif
 

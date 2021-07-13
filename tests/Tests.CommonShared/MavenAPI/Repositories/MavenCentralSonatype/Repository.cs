@@ -62,8 +62,7 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System;
 
 using HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype;
 
@@ -75,46 +74,52 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         [Test]
         public void Test_Repository_MavenCentralSonatype_static_defaults()
         {
-#if MSTEST
+            Uri uri_root_default = new Uri($"https://repo1.maven.org/maven2");
+
+            // Maven Central Sonatype - does not have master index
+            // must be built from HTML
+            Uri uri_master_index_default = null;
+
+            #if MSTEST
             Assert.IsNotNull(Repository.UrlRootDefault);
             Assert.IsNotNull(Repository.UrlMasterIndexDefault);
             Assert.AreEqual
                         (
                             Repository.UrlRootDefault,
-                            $"https://repo1.maven.org/maven2"
+                            uri_root_default
                         );
             Assert.AreEqual
                         (
                             Repository.UrlMasterIndexDefault,
-                            null
+                            uri_master_index_default
                         );
-#elif NUNIT
+            #elif NUNIT
             Assert.NotNull(Repository.UrlRootDefault);
             Assert.NotNull(Repository.UrlMasterIndexDefault);
             Assert.AreEqual
                         (
                             Repository.UrlRootDefault,
-                            $"https://repo1.maven.org/maven2"
+                            uri_root_default
                         );
             Assert.AreEqual
                         (
                             Repository.UrlMasterIndexDefault,
-                            null
+                            uri_master_index_default
                         );
-#elif XUNIT
+            #elif XUNIT
             Assert.NotNull(Repository.UrlRootDefault);
             Assert.NotNull(Repository.UrlMasterIndexDefault);
             Assert.Equal
                         (
                             Repository.UrlRootDefault,
-                            $"https://repo1.maven.org/maven2"
+                            uri_root_default
                         );
             Assert.Equal
                         (
                             Repository.UrlMasterIndexDefault,
-                            null
+                            uri_master_index_default
                         );
-#endif
+            #endif
 
         }
 
@@ -123,13 +128,14 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         {
             Repository r = new Repository();
 
+            Uri uri = new Uri($"https://dl.google.com/android/maven2");
 
             #if MSTEST
             Assert.IsNotNull(r);
             Assert.AreEqual
                         (
                             r.UrlRoot,
-                            $"https://dl.google.com/android/maven2"
+                            uri
                         );
             Assert.AreEqual
                         (
@@ -141,7 +147,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
             Assert.AreEqual
                         (
                             r.UrlRoot,
-                            $"https://dl.google.com/android/maven2"
+                            uri
                         );
             Assert.AreEqual
                         (
@@ -153,7 +159,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
             Assert.Equal
                         (
                             r.UrlRoot,
-                            $"https://dl.google.com/android/maven2"
+                            uri
                         );
             Assert.Equal
                         (
