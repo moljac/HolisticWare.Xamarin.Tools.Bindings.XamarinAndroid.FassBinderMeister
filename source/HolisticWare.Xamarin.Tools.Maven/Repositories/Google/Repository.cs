@@ -106,6 +106,23 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
         }
 
+        public static class Utilities
+        {
+            public static async
+                Task<SearchData>
+                                                Search
+                                                        (
+                                                            string search_term,
+                                                            int search_results_count = 20
+                                                        )
+            {
+                SearchData result = null;
+
+                return result;
+            }
+        }
+
+
 
         public virtual async
             Task<MasterIndex>
@@ -133,36 +150,6 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
 
             string xml = this.MasterIndex.Content;
-
-            return result;
-        }
-
-        public virtual async
-           Task<SearchData>
-                                           Search
-                                                   (
-                                                       string search_term,
-                                                       int search_results_count = 20
-                                                   )
-        {
-            SearchData result = null;
-
-            Uri url = Repository.UrlSearchDefault;
-
-            if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
-            {
-                using (System.Net.Http.HttpResponseMessage response = await MavenClient.HttpClient.GetAsync(url))
-                {
-                    using (System.Net.Http.HttpContent content = response.Content)
-                    {
-                        this.MasterIndex = new MasterIndex()
-                        {
-                            Content = await response.Content.ReadAsStringAsync(),
-                        };
-                        await this.MasterIndex.GetGroupsAsync();
-                    }
-                }
-            }
 
             return result;
         }

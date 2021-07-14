@@ -98,7 +98,7 @@ namespace HolisticWare.Xamarin.Tools.Maven
         }
 
         public 
-            IEnumerable<Artifact>
+            IEnumerable<ArtifactUnversioned>
                                                 GetArtifacts
                                                     (
                                                         IEnumerable<(string name, string[] versions)> artifacts_textual
@@ -106,11 +106,11 @@ namespace HolisticWare.Xamarin.Tools.Maven
         {
             foreach((string name, string[] versions) at in artifacts_textual)
             {
-                Artifact a = new Artifact
+                ArtifactUnversioned a = new ArtifactUnversioned
                                     {
                                         ArtifactId = at.name,
                                         VersionsTextual = (at.versions).ToList(),
-                                        Versions = Artifact.GetVersions(at.versions)
+                                        Versions = ArtifactUnversioned.GetVersions(at.versions)
                                                                 .ToList()
                                                                 //.OrderByDescending()
                                     };

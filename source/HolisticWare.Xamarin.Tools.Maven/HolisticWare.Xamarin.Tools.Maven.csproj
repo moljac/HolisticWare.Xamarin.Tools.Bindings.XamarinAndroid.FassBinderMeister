@@ -75,6 +75,7 @@
       <None Remove="POM.ProjectObjectModel\" />
       <None Remove="RepositoryAgnosticDiscovery\" />
       <None Remove="Repositories\MavenCentralSonatype\Search\" />
+      <None Remove="Repositories\MavenCentralSonatype\ArtifactMetadata\" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Repositories\" />
@@ -83,6 +84,7 @@
       <Folder Include="POM.ProjectObjectModel\" />
       <Folder Include="RepositoryAgnosticDiscovery\" />
       <Folder Include="Repositories\MavenCentralSonatype\Search\" />
+      <Folder Include="Repositories\MavenCentralSonatype\ArtifactMetadata\" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />

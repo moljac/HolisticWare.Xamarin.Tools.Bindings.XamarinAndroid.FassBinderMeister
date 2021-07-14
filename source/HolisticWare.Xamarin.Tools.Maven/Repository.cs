@@ -119,8 +119,25 @@ namespace HolisticWare.Xamarin.Tools.Maven
             }
         }
 
+        public static class Utilities
+        {
+            public static async
+                Task<SearchData>
+                                                Search
+                                                        (
+                                                            string search_term,
+                                                            int search_results_count = 20
+                                                        )
+            {
+                SearchData result = null;
 
-        public static async
+                // Discovery
+
+                return result;
+            }
+        }
+
+        public virtual async
             Task<SearchData>
                                             Search
                                                     (
@@ -134,6 +151,7 @@ namespace HolisticWare.Xamarin.Tools.Maven
 
             return result;
         }
+
 
         public static async
             Task<MasterIndex>
