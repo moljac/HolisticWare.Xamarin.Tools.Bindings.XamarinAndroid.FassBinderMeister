@@ -130,19 +130,37 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_Search_01()
+        public void Test_Repository_MavenCentralSonatype_static_Search_io_opencensu_01()
         {
 
-            SearchData result  = Repository.Search("io.opencensus").Result;
+            SearchData result  = Repository.Utilities.Search("io.opencensus").Result;
 
             return;
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_Search_02()
+        public void Test_Repository_MavenCentralSonatype_static_Search_io_opencensu_02()
         {
 
-            SearchData result = Repository.Search("io.opencensus", 100).Result;
+            SearchData result = Repository.Utilities.Search("io.opencensus", 100).Result;
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_Search_androidx_car_01()
+        {
+
+            SearchData result = Repository.Utilities.Search("androidx.car").Result;
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_Search_androidx_car_02()
+        {
+
+            SearchData result = Repository.Utilities.Search("androidx.car", 100).Result;
 
             return;
         }
