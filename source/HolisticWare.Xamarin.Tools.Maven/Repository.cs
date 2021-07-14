@@ -102,7 +102,40 @@ namespace HolisticWare.Xamarin.Tools.Maven
             }
         }
 
-        public virtual async
+
+        protected static Uri url_search_default = null;
+
+        public static Uri UrlSearchDefault
+        {
+            get
+            {
+                return url_search_default;
+            }
+            set
+            {
+                url_search_default = value;
+
+                return;
+            }
+        }
+
+
+        public static async
+            Task<SearchData>
+                                            Search
+                                                    (
+                                                        string search_term,
+                                                        int search_results_count = 20
+                                                    )
+        {
+            SearchData result = null;
+
+            // Discovery
+
+            return result;
+        }
+
+        public static async
             Task<MasterIndex>
                                             GetMasterIndexAsync
                                                     (
