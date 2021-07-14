@@ -1,0 +1,510 @@
+{
+    "responseHeader": {
+        "status": 0,
+        "QTime": 1,
+        "params": {
+            "q": "io.opencensus",
+            "core": "",
+            "defType": "dismax",
+            "indent": "off",
+            "qf": "text^20 g^5 a^10",
+            "spellcheck": "true",
+            "fl": "id,g,a,latestVersion,p,ec,repositoryId,text,timestamp,versionCount",
+            "start": "0",
+            "sort": "score desc,timestamp desc,g asc,a asc",
+            "spellcheck.count": "5",
+            "rows": "20",
+            "wt": "json",
+            "version": "2.2"
+        }
+    },
+    "response": {
+        "numFound": 41,
+        "start": 0,
+        "docs": [
+            {
+                "id": "io.opencensus:opencensus-testing",
+                "g": "io.opencensus",
+                "a": "opencensus-testing",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731668000,
+                "versionCount": 43,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-testing",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-impl",
+                "g": "io.opencensus",
+                "a": "opencensus-impl",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731640000,
+                "versionCount": 43,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-impl",
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-api",
+                "g": "io.opencensus",
+                "a": "opencensus-api",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731097000,
+                "versionCount": 43,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-api",
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-proto",
+                "g": "io.opencensus",
+                "a": "opencensus-proto",
+                "latestVersion": "0.2.0",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1552439861000,
+                "versionCount": 3,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-proto",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:ocjdbc",
+                "g": "io.opencensus",
+                "a": "ocjdbc",
+                "latestVersion": "0.0.1",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1537906828000,
+                "versionCount": 1,
+                "text": [
+                    "io.opencensus",
+                    "ocjdbc",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-impl-lite",
+                "g": "io.opencensus",
+                "a": "opencensus-impl-lite",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731659000,
+                "versionCount": 43,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-impl-lite",
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-impl-core",
+                "g": "io.opencensus",
+                "a": "opencensus-impl-core",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731650000,
+                "versionCount": 43,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-impl-core",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-trace-zipkin",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-trace-zipkin",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731628000,
+                "versionCount": 38,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-trace-zipkin",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-trace-util",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-trace-util",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731612000,
+                "versionCount": 12,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-trace-util",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-trace-stackdriver",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-trace-stackdriver",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731585000,
+                "versionCount": 40,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-trace-stackdriver",
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-trace-ocagent",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-trace-ocagent",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731558000,
+                "versionCount": 14,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-trace-ocagent",
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-trace-logging",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-trace-logging",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731536000,
+                "versionCount": 40,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-trace-logging",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-trace-jaeger",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-trace-jaeger",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731526000,
+                "versionCount": 27,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-trace-jaeger",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-trace-instana",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-trace-instana",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731516000,
+                "versionCount": 31,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-trace-instana",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-trace-elasticsearch",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-trace-elasticsearch",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731506000,
+                "versionCount": 14,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-trace-elasticsearch",
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-trace-datadog",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-trace-datadog",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731496000,
+                "versionCount": 17,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-trace-datadog",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-stats-stackdriver",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-stats-stackdriver",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731487000,
+                "versionCount": 37,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-stats-stackdriver",
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-sources.jar",
+                    "-javadoc.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-stats-signalfx",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-stats-signalfx",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731477000,
+                "versionCount": 33,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-stats-signalfx",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-stats-prometheus",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-stats-prometheus",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731467000,
+                "versionCount": 31,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-stats-prometheus",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            },
+            {
+                "id": "io.opencensus:opencensus-exporter-metrics-util",
+                "g": "io.opencensus",
+                "a": "opencensus-exporter-metrics-util",
+                "latestVersion": "0.28.3",
+                "repositoryId": "central",
+                "p": "jar",
+                "timestamp": 1610731458000,
+                "versionCount": 17,
+                "text": [
+                    "io.opencensus",
+                    "opencensus-exporter-metrics-util",
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ],
+                "ec": [
+                    "-javadoc.jar",
+                    "-sources.jar",
+                    ".jar",
+                    ".pom"
+                ]
+            }
+        ]
+    },
+    "spellcheck": {
+        "suggestions": []
+    }
+}
