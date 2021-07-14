@@ -62,22 +62,26 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
+using System;
 using System.Collections.Generic;
 
-//using HolisticWare.Xamarin.Tools.Maven.Repositories;
+using NuGet.Protocol.Core.Types;
+using NuGet.Versioning;
 
-namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentral
+using HolisticWare.Xamarin.Tools.Maven;
+
+namespace UnitTests.ClientsAPI.MavenClients
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_Repository
+    public partial class Test_NuGetClient
     {
-        // MavenNet is missing some API
-        // https://github.com/Redth/MavenNet/
-        // MavenClient is simple client for Google Maven Repo
-
-        [Test]
-        public void GetUrlForGroupId_androidx_car()
+        static Test_NuGetClient()
         {
+            MavenClient.HttpClient = Tests.CommonShared.Http.Client;
+
+
+            return;
         }
+
     }
 }

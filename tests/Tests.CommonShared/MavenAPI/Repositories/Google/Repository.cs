@@ -71,6 +71,12 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Repository
     {
+        static Test_Repository()
+        {
+            HolisticWare.Xamarin.Tools.Maven.MavenClient.HttpClient = Tests.CommonShared.Http.Client;
+
+        }
+
         [Test]
         public void Test_Repository_Google_static_defaults()
         {

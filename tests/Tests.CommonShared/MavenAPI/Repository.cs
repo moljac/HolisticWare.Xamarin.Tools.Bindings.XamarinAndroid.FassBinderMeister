@@ -88,7 +88,22 @@ namespace UnitTests.ClientsAPI.Maven
             return;
         }
 
- 
+        [Test]
+        public void Test_Repository_static_Search_01()
+        {
+
+            SearchData result = Repository.Search("io.opencensus").Result;
+
+        }
+
+        [Test]
+        public void Test_Repository_static_Search_02()
+        {
+
+            SearchData result = Repository.Search("io.opencensus", 100).Result;
+
+        }
+
 
     }
 }

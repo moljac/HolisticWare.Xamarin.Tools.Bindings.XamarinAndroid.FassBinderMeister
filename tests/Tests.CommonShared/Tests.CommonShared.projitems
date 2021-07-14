@@ -31,9 +31,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ServerAPI\NuGetClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BinderatorConfigsFetcher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Binderator.Config\BinderatorConfigsFetcher.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\Maven\Repository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenCentral\Repository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenGoogle\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\RepositoryAgnosticDiscovery\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\RepositoryAgnosticDiscovery\Group.cs" />
@@ -41,6 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\Group.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MavenClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
@@ -53,10 +51,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Binderator.Artifact\" />
     <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\ClientAPI\" />
     <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\ServerAPI\" />
-    <Folder Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\" />
-    <Folder Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenGoogle\" />
-    <Folder Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\MavenCentral\" />
-    <Folder Include="$(MSBuildThisFileDirectory)MavenRepositoriesAPI\Maven\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\RepositoryAgnosticDiscovery\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\" />

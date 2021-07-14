@@ -71,6 +71,12 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Repository
     {
+        static Test_Repository()
+        {
+            HolisticWare.Xamarin.Tools.Maven.MavenClient.HttpClient = Tests.CommonShared.Http.Client;
+
+        }
+
         [Test]
         public void Test_Repository_MavenCentralSonatype_static_defaults()
         {
@@ -121,6 +127,24 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                         );
             #endif
 
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_Search_01()
+        {
+
+            SearchData result  = Repository.Search("io.opencensus").Result;
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_Search_02()
+        {
+
+            SearchData result = Repository.Search("io.opencensus", 100).Result;
+
+            return;
         }
 
         [Test]

@@ -76,7 +76,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         {
             // not browsable
             Uri uri_group_default = null;
-            Uri uri_group_index_default = new Uri($"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_/group-index.xml");
+            Uri uri_group_index_default = new Uri($"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/group-index.xml");
 
             #if MSTEST
             Assert.IsNull(Group.UrlGroupDefault);
