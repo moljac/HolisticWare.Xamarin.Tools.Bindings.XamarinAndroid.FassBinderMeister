@@ -4,7 +4,7 @@ using Core.Net.HTTP;
 
 namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 {
-    public class Repository : Maven.Repository
+    public partial class Repository : Maven.Repository
     {
         public Repository() : base()
         {
@@ -17,7 +17,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         static Repository()
         {
             url_root_default = new Uri($"https://dl.google.com/android/maven2");
-            url_master_index_default = new Uri($"{UrlRootDefault.AbsolutePath}/master-index.xml");
+            url_master_index_default = new Uri($"{UrlRootDefault.AbsoluteUri}/master-index.xml");
 
             return;
         }
@@ -106,53 +106,6 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
         }
 
-        public static class Utilities
-        {
-            public static async
-                Task<SearchData>
-                                                Search
-                                                        (
-                                                            string search_term,
-                                                            int search_results_count = 20
-                                                        )
-            {
-                SearchData result = null;
-
-                return result;
-            }
-        }
-
-
-
-        public virtual async
-            Task<MasterIndex>
-                                            GetMasterIndexAsync
-                                                    (
-                                                    )
-        {
-            MasterIndex result = null;
-
-            string url = this.UrlMasterIndex.AbsolutePath;
-
-            if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
-            {
-                using (System.Net.Http.HttpResponseMessage response = await MavenClient.HttpClient.GetAsync(url))
-                {
-                    using (System.Net.Http.HttpContent content = response.Content)
-                    {
-                        this.MasterIndex = new MasterIndex()
-                        {
-                            Content = await response.Content.ReadAsStringAsync(),
-                        };
-                        await this.MasterIndex.GetGroupsAsync();
-                    }
-                }
-            }
-
-            string xml = this.MasterIndex.Content;
-
-            return result;
-        }
 
     }
 }
