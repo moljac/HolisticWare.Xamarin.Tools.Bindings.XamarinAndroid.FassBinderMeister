@@ -44,16 +44,30 @@ namespace HolisticWare.Xamarin.Tools.Maven
                                                     (
                                                     )
         {
-            if(Repository == null)
+            if(this.Repository == null)
             {
                 return null;
             }
 
-            IEnumerable<Group> group_indices = null;
+            //Load the XML file in XmlDocument.
+            System.Xml.XmlDocument xd = new System.Xml.XmlDocument();
+            System.Xml.XmlNamespaceManager ns = new System.Xml.XmlNamespaceManager(xd.NameTable);
 
-            group_indices = await this.Repository.GetGroupIndicesAsync();
+            xd.LoadXml(this.Content);
 
-            return group_indices;
+            System.Xml.XmlNodeList nl = xd.SelectNodes("/metadata/*", ns);
+
+            List<Group> groups = new List<Group>();
+
+            foreach (System.Xml.XmlNode node in nl)
+            {
+                string node_name = node.Name;
+
+                Group g = new Group(node_name);
+                groups.Add(g);
+            }
+
+            return groups;
         }
 
     }
