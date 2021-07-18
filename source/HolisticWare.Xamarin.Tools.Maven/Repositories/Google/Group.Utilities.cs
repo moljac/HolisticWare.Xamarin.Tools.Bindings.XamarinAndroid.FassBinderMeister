@@ -1,0 +1,77 @@
+﻿using System;
+using System.Threading.Tasks;
+
+using Core.Net.HTTP;
+
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
+{
+    public partial class Group
+    {
+        public static partial class Utilities
+        {
+            public static async
+                Task<Uri>
+                                                        GetUriForGroupIndexAsync
+                                                                (
+                                                                    Group group
+                                                                )
+            {
+                return await GetUriForGroupAsync(group.Id);
+            }
+
+            public static async
+                Task<Uri>
+                                                        GetUriForGroupIndexAsync
+                                                                (
+                                                                    string id
+                                                                )
+            {
+                string url = $"{RepositoryDefault.UrlRoot}/{id.Replace('.', '/')}/group-index.xml";
+
+                Uri result = null;
+                if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
+                {
+                    result = new Uri(url);
+                }
+
+                return result;
+            }
+
+            public async static
+                Task<Uri>
+                                                        GetUriForGroupAsync
+                                                                (
+                                                                    Group group
+                                                                )
+            {
+                return await GetUriForGroupAsync(group.Id);
+            }
+
+            public static async
+                Task<Uri>
+                                                        GetUriForGroupAsync
+                                                                (
+                                                                    string id
+                                                                )
+            {
+                Uri result = null;
+
+                return result;
+            }
+
+            public static async
+                Task<GroupIndex>
+                                                        GetGroupIndexAsync
+                                                                (
+                                                                    string group_id
+                                                                )
+            {
+                GroupIndex result = null;
+
+                Uri uri = await GetUriForGroupIndexAsync(group_id);
+
+                return result;
+            }
+        }
+    }
+}

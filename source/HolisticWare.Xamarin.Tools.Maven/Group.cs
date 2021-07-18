@@ -51,12 +51,13 @@ namespace HolisticWare.Xamarin.Tools.Maven
             set;
         }
 
+        protected Uri url_group_index = null;
+
         public virtual Uri UrlGroupIndex
         {
             get;
             set;
         }
-
 
         public static GroupIndex GroupIndexDefault
         {
