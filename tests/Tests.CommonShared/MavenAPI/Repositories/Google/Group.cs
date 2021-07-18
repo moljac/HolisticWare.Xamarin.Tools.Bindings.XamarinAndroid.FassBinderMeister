@@ -135,12 +135,148 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Group_Google_ctor01()
+        public void Test_Group_Google_static_API_01_GetUriForGroupAsync()
+        {
+            Uri ugi = null;
+
+            ugi = Group.Utilities.GetUriForGroupAsync("androidx.car").Result;
+
+
+            return;
+        }
+
+        [Test]
+        public void Test_Group_Google_static_API_02_GetUriForGroupIndexAsync()
+        {
+            Uri ugi = null;
+
+            ugi = Group.Utilities.GetUriForGroupIndexAsync("androidx.car").Result;
+
+
+            return;
+        }
+
+        [Test]
+        public void Test_Group_Google_static_API_03_GetGroupIndexAsync()
+        {
+            HolisticWare.Xamarin.Tools.Maven.GroupIndex gi = null;
+
+            gi = Group.Utilities.GetGroupIndexAsync("androidx.car").Result;
+
+
+            return;
+        }
+
+
+        [Test]
+        public void Test_Group_Google_ctor01_androidx_car()
         {
             Group g = new Group("androidx.car");
 
             Uri uri_group = null;
             Uri uri_group_index = new Uri($"https://dl.google.com/android/maven2/androidx/car/group-index.xml");
+
+            #if MSTEST
+            Assert.IsNotNull(g);
+            Assert.IsNotNull(g.UrlGroupIndex);
+            Assert.IsNotNull(g.GroupIndex);
+            Assert.AreEqual
+                        (
+                            g.UrlGroup,
+                            uri_group
+                        );
+            Assert.AreEqual
+                        (
+                            g.UrlGroupIndex,
+                            uri_group_index
+                        );
+            #elif NUNIT
+            Assert.NotNull(g);
+            Assert.AreEqual
+                        (
+                            g.UrlGroup,
+                            uri_group
+                        );
+            Assert.AreEqual
+                        (
+                            g.UrlGroupIndex,
+                            uri_group_index
+                        );
+            #elif XUNIT
+            Assert.NotNull(g);
+            Assert.Equal
+                        (
+                            g.UrlGroup,
+                            uri_group
+                        );
+            Assert.Equal
+                        (
+                            g.UrlGroupIndex,
+                            uri_group_index
+                        );
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Group_Google_ctor02_androidx_compose()
+        {
+            Group g = new Group("androidx.compose");
+
+            Uri uri_group = null;
+            Uri uri_group_index = null;
+
+            #if MSTEST
+            Assert.IsNotNull(g);
+            Assert.IsNotNull(g.UrlGroupIndex);
+            Assert.IsNotNull(g.GroupIndex);
+            Assert.AreEqual
+                        (
+                            g.UrlGroup,
+                            uri_group
+                        );
+            Assert.AreEqual
+                        (
+                            g.UrlGroupIndex,
+                            uri_group_index
+                        );
+            #elif NUNIT
+            Assert.NotNull(g);
+            Assert.AreEqual
+                        (
+                            g.UrlGroup,
+                            uri_group
+                        );
+            Assert.AreEqual
+                        (
+                            g.UrlGroupIndex,
+                            uri_group_index
+                        );
+            #elif XUNIT
+            Assert.NotNull(g);
+            Assert.Equal
+                        (
+                            g.UrlGroup,
+                            uri_group
+                        );
+            Assert.Equal
+                        (
+                            g.UrlGroupIndex,
+                            uri_group_index
+                        );
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Group_Google_ctor10_io_opencensus()
+        {
+            Group g = new Group("io.opencensus");
+
+            Uri uri_group = null;
+            Uri uri_group_index = null;
 
             #if MSTEST
             Assert.IsNotNull(g);
