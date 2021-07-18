@@ -50,7 +50,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
         }
 
-        public static MasterIndex MasterIndexDefault
+        public static Maven.MasterIndex MasterIndexDefault
         {
             get
             {
@@ -92,7 +92,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
         }
 
-        public MasterIndex MasterIndex
+        public Maven.MasterIndex MasterIndex
         {
             get
             {

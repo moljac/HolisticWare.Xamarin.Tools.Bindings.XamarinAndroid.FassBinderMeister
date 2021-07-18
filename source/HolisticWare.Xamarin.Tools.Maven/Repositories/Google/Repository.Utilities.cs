@@ -19,14 +19,31 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             {
                 SearchData result = null;
 
-                MasterIndex master_index = await GetMasterIndexAsync();
+                Maven.MasterIndex master_index = await GetMasterIndexAsync();
+                master_index.GetGroupsAsync();
+
+                Repository.MasterIndexDefault = master_index;
+
+                result = new SearchData();
+                result.Artifacts = new List<Maven.ArtifactUnversioned>();
+
+                foreach(Maven.Group g in master_index.Groups)
+                {
+                    ArtifactUnversioned a = new ArtifactUnversioned()
+                    {
+                        Group = g,
+                        GroupId = g.Id,
+                    };
+
+                    result.Artifacts.Add(a);
+                }
 
                 return result;
             }
 
 
             public static async
-                Task<MasterIndex>
+                Task<Maven.MasterIndex>
                                                 GetMasterIndexAsync
                                                         (
                                                         )
@@ -43,7 +60,11 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                         Content = await MavenClient.HttpClient.GetStringContentAsync(url),
                     };
 
-                    IEnumerable<Group> groups = await result.GetGroupsAsync();
+                    IEnumerable<string> groups_textual = await result.GetGroupsTextualAsync();
+                    result.GroupsTextual = groups_textual;
+
+                    IEnumerable<Maven.Group> groups = await result.GetGroupsAsync();
+                    result.Groups = groups;
                 }
 
                 MasterIndexDefault = result;

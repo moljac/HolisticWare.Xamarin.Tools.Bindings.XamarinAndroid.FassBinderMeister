@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace HolisticWare.Xamarin.Tools.Maven
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 {
     /// <summary>
     /// MasterIndex - index of all group ids
@@ -11,40 +11,10 @@ namespace HolisticWare.Xamarin.Tools.Maven
     /// MavenCentralSonatype    Maven Repository     -   not available
     /// MavenCentralSonatype    Maven Repository     -   built from HTML
     /// </summary>
-    public partial class MasterIndex
+    public partial class MasterIndex : Maven.MasterIndex
     {
-        public Repository Repository
-        {
-            get;
-            set;
-        }
 
-        public virtual string Content
-        {
-            get;
-            set;
-        }
-
-        public virtual IEnumerable<string> GroupsTextual
-        {
-            get;
-            set;
-        }
-
-        public virtual IEnumerable<Maven.Group> Groups
-        {
-            get;
-            set;
-        }
-
-        public virtual string Url
-        {
-            get;
-            set;
-        }
-
-
-        public virtual async
+        public override async
             Task<IEnumerable<string>>
                                                 GetGroupsTextualAsync
                                                     (
@@ -55,15 +25,15 @@ namespace HolisticWare.Xamarin.Tools.Maven
             return result;
         }
 
-        public virtual async
+        public override async
             Task<IEnumerable<Maven.Group>>
                                                 GetGroupsAsync
                                                     (
                                                     )
         {
-            List<Maven.Group> groups = new List<Maven.Group>();
+            List<Maven.Group> result = new List<Maven.Group>();
 
-            return groups;
+            return result;
         }
 
     }
