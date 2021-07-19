@@ -17,8 +17,19 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
         static Repository()
         {
+            // Maven Central Sonatype
+            // root url
             url_root_default = new Uri($"https://repo1.maven.org/maven2");
+
+            // Maven Central Sonatype
+            // search url
             url_search_default = new Uri($"https://search.maven.org/solrsearch/select?q=_PLACEHOLDER_SEARCH_TERM_&start=0&rows=_PLACEHOLDER_SEARCH_RESULTS_");
+
+
+            // Maven Central Sonatype
+            // master index - must be built/implemented
+            url_master_index_default = null;
+
             return;
         }
 

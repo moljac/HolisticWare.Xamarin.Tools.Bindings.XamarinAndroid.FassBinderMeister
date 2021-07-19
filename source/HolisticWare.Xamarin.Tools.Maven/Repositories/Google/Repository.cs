@@ -16,7 +16,16 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
         static Repository()
         {
+            // Google
+            // root url
             url_root_default = new Uri($"https://dl.google.com/android/maven2");
+
+            // Google
+            // search url - not available, search must be built/implemented
+            url_search_default = null;
+
+            // Google
+            // master index - must be built/implemented
             url_master_index_default = new Uri($"{UrlRootDefault.AbsolutePath}/master-index.xml");
 
             return;
@@ -118,40 +127,37 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             {
                 SearchData result = null;
 
+                MasterIndex master_index = await GetMasterIndexAsync();
+
                 return result;
             }
-        }
 
 
-
-        public virtual async
-            Task<MasterIndex>
-                                            GetMasterIndexAsync
-                                                    (
-                                                    )
-        {
-            MasterIndex result = null;
-
-            string url = this.UrlMasterIndex.AbsolutePath;
-
-            if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
+            public static async
+                Task<MasterIndex>
+                                                GetMasterIndexAsync
+                                                        (
+                                                        )
             {
-                using (System.Net.Http.HttpResponseMessage response = await MavenClient.HttpClient.GetAsync(url))
+                MasterIndex result = null;
+
+                string url = Repository.UrlMasterIndexDefault.AbsoluteUri;
+
+                if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
                 {
-                    using (System.Net.Http.HttpContent content = response.Content)
+                    string content = await MavenClient.HttpClient.GetStringContentAsync(url);
+
+                    Repository.MasterIndexDefault = new MasterIndex()
                     {
-                        this.MasterIndex = new MasterIndex()
-                        {
-                            Content = await response.Content.ReadAsStringAsync(),
-                        };
-                        await this.MasterIndex.GetGroupsAsync();
-                    }
+                        Content = content
+                    };
+                    await Repository.MasterIndexDefault.GetGroupsAsync();
                 }
+
+                string xml = Repository.MasterIndexDefault.Content;
+
+                return result;
             }
-
-            string xml = this.MasterIndex.Content;
-
-            return result;
         }
 
     }
