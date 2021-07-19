@@ -132,7 +132,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                                                 (
                                                 )
         {
-            GroupIndex gi = await Maven.Group.GetGroupIndexAsync(this.GroupId);
+            GroupIndex gi = await Maven.Group.Utilities.GetGroupIndexAsync(this.GroupId);
 
             IEnumerable<(string name, string[] versions)> artifacts_and_versions = null;
 
