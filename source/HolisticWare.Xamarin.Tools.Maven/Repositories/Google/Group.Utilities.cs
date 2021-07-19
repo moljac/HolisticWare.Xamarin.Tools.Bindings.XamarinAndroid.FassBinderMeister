@@ -9,52 +9,59 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
     {
         public static partial class Utilities
         {
-            public static async
+            public async static
                 Task<Uri>
-                                                        GetUriForGroupIndexAsync
+                                                        GetUriAsync
                                                                 (
                                                                     Group group
                                                                 )
             {
-                return await GetUriForGroupAsync(group.Id);
+                return await GetUriAsync(group.Id);
             }
 
+            /// <summary>
+            /// GetUriAsync
+            /// null for Uri - Google Maven Repo has no accessible Group Uri
+            /// </summary>
+            /// <param name="id">Group Id (Name)</param>
+            /// <returns>null</returns>
             public static async
                 Task<Uri>
-                                                        GetUriForGroupIndexAsync
+                                                        GetUriAsync
                                                                 (
                                                                     string id
                                                                 )
             {
-                string url = $"{RepositoryDefault.UrlRoot}/{id.Replace('.', '/')}/group-index.xml";
-
                 Uri result = null;
-                if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
-                {
-                    result = new Uri(url);
-                }
 
                 return result;
             }
 
-            public async static
+            public static async
                 Task<Uri>
-                                                        GetUriForGroupAsync
+                                                        GetUriForGroupIndexAsync
                                                                 (
                                                                     Group group
                                                                 )
             {
-                return await GetUriForGroupAsync(group.Id);
+                return await GetUriForGroupIndexAsync(group.Id);
             }
 
             public static async
                 Task<Uri>
-                                                        GetUriForGroupAsync
+                                                        GetUriForGroupIndexAsync
                                                                 (
                                                                     string id
                                                                 )
             {
+                string url = $"{GroupIndex.UrlDefaultTextual.Replace("_PLACEHOLDER_GROUP_ID_", id.Replace('.', '/'))}";
+
                 Uri result = null;
+
+                if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
+                {
+                    result = new Uri(url);
+                }
 
                 return result;
             }

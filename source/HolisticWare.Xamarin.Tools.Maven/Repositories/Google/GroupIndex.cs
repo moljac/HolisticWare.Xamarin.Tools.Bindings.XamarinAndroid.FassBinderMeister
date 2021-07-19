@@ -17,6 +17,29 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             return;
         }
 
+        static GroupIndex()
+        {
+            url_default_textual = $"{Repository.UrlRootDefault}/_PLACEHOLDER_GROUP_ID_/group-index.xml";
+            url_default = new Uri(url_default_textual);
+
+            return;
+        }
+
+        public static string UrlDefaultTextual
+        {
+            get
+            {
+                return url_default_textual;
+            }
+
+            set
+            {
+                url_default_textual = value;
+
+                return;
+            }
+        }
+
         public string Name
         {
             get;

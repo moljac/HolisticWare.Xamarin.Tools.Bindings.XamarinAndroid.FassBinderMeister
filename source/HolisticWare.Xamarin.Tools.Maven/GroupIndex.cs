@@ -15,6 +15,48 @@ namespace HolisticWare.Xamarin.Tools.Maven
             return;
         }
 
+        static GroupIndex()
+        {
+            url_default_textual = null;
+            url_default = null;
+
+            return;
+        }
+
+        protected static string url_default_textual = null;
+
+        public static string UrlDefaultTextual
+        {
+            get
+            {
+                return url_default_textual;
+            }
+
+            set
+            {
+                url_default_textual = value;
+
+                return;
+            }
+        }
+
+        protected static Uri url_default = null;
+
+        public static Uri UrlDefault
+        {
+            get
+            {
+                return url_default;
+            }
+
+            set
+            {
+                url_default = value;
+
+                return;
+            }
+        }
+
         public string Name
         {
             get;

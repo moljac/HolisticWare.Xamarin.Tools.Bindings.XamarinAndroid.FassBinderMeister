@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 {
-    public partial class GroupIndex : Maven.GroupIndex
+    public partial class GroupIndex
     {
         public static partial class Utilities
         {

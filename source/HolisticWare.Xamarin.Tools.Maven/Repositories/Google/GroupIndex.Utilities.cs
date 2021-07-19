@@ -10,6 +10,27 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
     {
         public static partial class Utilities
         {
+            public async static
+                Task<Uri>
+                                                        GetUriAsync
+                                                                (
+                                                                    Group group
+                                                                )
+            {
+                return await GetUriAsync(group.Id);
+            }
+
+            public static async
+                Task<Uri>
+                                                        GetUriAsync
+                                                                (
+                                                                    string id
+                                                                )
+            {
+                Uri result = null;
+
+                return result;
+            }
         }
     }
 }

@@ -6,37 +6,25 @@ using System.Threading.Tasks;
 
 namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 {
-    public partial class GroupIndex
+    public partial class GroupIndex : Maven.GroupIndex
     {
         public GroupIndex (string group_id)
+            :
+            base(group_id)
         {
             this.Name = group_id;
 
             return;
         }
 
-        public string Name
+        static GroupIndex()
         {
-            get;
-            set;
-        }
+            url_default_textual = null;
+            url_default = null;
 
-        public virtual string UrlGroupIndex
-        {
-            get;
-            set;
-        }
+            // TODO: build GroupIndex
 
-        public string Content
-        {
-            get;
-            set;
-        }
-
-        public List<(string name, string[] versions)> ArtifactsTextual
-        {
-            get;
-            set;
+            return;
         }
 
         public async
