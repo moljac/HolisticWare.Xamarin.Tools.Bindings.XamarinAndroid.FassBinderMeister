@@ -75,6 +75,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         {
             HolisticWare.Xamarin.Tools.Maven.MavenClient.HttpClient = Tests.CommonShared.Http.Client;
 
+            return;
         }
 
         [Test]
@@ -128,6 +129,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                         );
             #endif
 
+            return;
         }
 
         [Test]

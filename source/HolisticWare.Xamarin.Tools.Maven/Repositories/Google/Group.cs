@@ -63,8 +63,6 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             set;
         }
 
-        protected static string url_default_textual = null;
-
         public static string UrlDefaultTextual
         {
             get
@@ -79,8 +77,6 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                 return;
             }
         }
-
-        protected static Uri url_default = null;
 
         public static Uri UrlDefault
         {
@@ -122,7 +118,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         {
             get
             {
-                Uri url_tmp = Utilities.GetUriForGroupIndexAsync(this.Id).Result;
+                Uri url_tmp = GroupIndex.Utilities.GetUriForGroupIndexAsync(this.Id).Result;
 
                 if (MavenClient.HttpClient.IsReachableUrlAsync(url_tmp).Result)
                 {
