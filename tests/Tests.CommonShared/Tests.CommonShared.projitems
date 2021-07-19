@@ -39,8 +39,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\Group.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MavenClient.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Group %28copy%29.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\MasterIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\GroupIndex.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
