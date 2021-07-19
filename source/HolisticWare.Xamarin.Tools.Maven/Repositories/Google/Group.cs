@@ -90,7 +90,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         {
             get
             {
-                Uri url = GetUriForGroupIndexAsync(this.Id).Result;
+                Uri url = Utilities.GetUriForGroupIndexAsync(this.Id).Result;
 
                 if (MavenClient.HttpClient.IsReachableUrlAsync(url).Result)
                 {
