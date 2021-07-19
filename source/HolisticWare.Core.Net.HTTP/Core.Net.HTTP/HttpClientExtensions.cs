@@ -54,6 +54,8 @@ namespace Core.Net.HTTP
             catch (Exception exc)
             {
                 string msg = exc.Message;
+
+                throw;
             }
 
             return is_reachable;
