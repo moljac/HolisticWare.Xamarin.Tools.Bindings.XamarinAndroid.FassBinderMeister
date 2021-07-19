@@ -4,11 +4,13 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace HolisticWare.Xamarin.Tools.Maven
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 {
-    public partial class GroupIndex
+    public partial class GroupIndex : Maven.GroupIndex
     {
         public GroupIndex (string group_id)
+            :
+            base(group_id)
         {
             this.Name = group_id;
 
@@ -17,13 +19,11 @@ namespace HolisticWare.Xamarin.Tools.Maven
 
         static GroupIndex()
         {
-            url_default_textual = null;
-            url_default = null;
+            url_default_textual = $"{Repository.UrlRootDefault}/_PLACEHOLDER_GROUP_ID_/group-index.xml";
+            url_default = new Uri(url_default_textual);
 
             return;
         }
-
-        protected static string url_default_textual = null;
 
         public static string UrlDefaultTextual
         {
@@ -35,23 +35,6 @@ namespace HolisticWare.Xamarin.Tools.Maven
             set
             {
                 url_default_textual = value;
-
-                return;
-            }
-        }
-
-        protected static Uri url_default = null;
-
-        public static Uri UrlDefault
-        {
-            get
-            {
-                return url_default;
-            }
-
-            set
-            {
-                url_default = value;
 
                 return;
             }

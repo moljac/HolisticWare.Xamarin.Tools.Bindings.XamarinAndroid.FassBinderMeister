@@ -119,23 +119,6 @@ namespace HolisticWare.Xamarin.Tools.Maven
             }
         }
 
-        public static class Utilities
-        {
-            public static async
-                Task<SearchData>
-                                                Search
-                                                        (
-                                                            string search_term,
-                                                            int search_results_count = 20
-                                                        )
-            {
-                SearchData result = null;
-
-                // Discovery
-
-                return result;
-            }
-        }
 
         public virtual async
             Task<SearchData>
@@ -192,11 +175,11 @@ namespace HolisticWare.Xamarin.Tools.Maven
         {
             Repository r = null;
 
-            if ( await Repositories.Google.Group.GetUriForGroupAsync(group_id) != null)
+            if ( await Repositories.Google.Group.Utilities.GetUriAsync(group_id) != null)
             {
                 r = new Repositories.Google.Repository();
             }
-            else if (await Repositories.MavenCentralSonatype.Group.GetUriForGroupAsync(group_id) != null)
+            else if (await Repositories.MavenCentralSonatype.Group.Utilities.GetUriAsync(group_id) != null)
             {
                 r = new Repositories.MavenCentralSonatype.Repository();
             }

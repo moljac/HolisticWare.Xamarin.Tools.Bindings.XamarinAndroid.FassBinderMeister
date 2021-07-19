@@ -15,113 +15,175 @@ namespace HolisticWare.Xamarin.Tools.Maven
             return;
         }
 
+        protected string id = null;
+
         public string Id
         {
-            get;
-            set;
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+
+                return;
+            }
         }
+
+        protected static Repository repository_default = null;
 
         public static Repository RepositoryDefault
         {
-            get;
-            set;
+            get
+            {
+                return repository_default;
+            }
+
+            set
+            {
+                repository_default = value;
+
+                return;
+            }
         }
+
+        protected Repository repository = null;
 
         public virtual Repository Repository
         {
-            get;
-            set;
+            get
+            {
+                return repository;
+            }
+
+            set
+            {
+                repository = value;
+
+                return;
+            }
         }
 
-        public static Uri UrlGroupDefault
+        protected static string url_default_textual = null;
+
+        public static string UrlDefaultTextual
         {
-            get;
-            set;
+            get
+            {
+                return url_default_textual;
+            }
+
+            set
+            {
+                url_default_textual = value;
+
+                return;
+            }
         }
 
-        public virtual Uri UrlGroup
+        protected static Uri url_default = null;
+
+        public static Uri UrlDefault
         {
-            get;
-            set;
+            get
+            {
+                return url_default;
+            }
+
+            set
+            {
+                url_default = value;
+
+                return;
+            }
         }
+
+        protected Uri url = null;
+
+        public virtual Uri Url
+        {
+            get
+            {
+                return url;
+            }
+
+            set
+            {
+                url = value;
+
+                return;
+            }
+        }
+
+        protected static Uri url_group_index_default = null;
 
         public static Uri UrlGroupIndexDefault
         {
-            get;
-            set;
+            get
+            {
+                return url_group_index_default;
+            }
+
+            set
+            {
+                url_group_index_default = value;
+
+                return;
+            }
         }
+
+        protected Uri url_group_index = null;
 
         public virtual Uri UrlGroupIndex
         {
-            get;
-            set;
+            get
+            {
+                return url_group_index;
+            }
+
+            set
+            {
+                url_group_index = value;
+
+                return;
+            }
         }
 
+        protected static GroupIndex group_index_default = null;
 
         public static GroupIndex GroupIndexDefault
         {
-            get;
-            set;
+            get
+            {
+                return group_index_default;
+            }
+
+            set
+            {
+                group_index_default = value;
+
+                return;
+            }
         }
+
+        protected GroupIndex group_index = null;
 
         public virtual GroupIndex GroupIndex
         {
-            get;
-            set;
-        }
-
-        public async static
-            Task<Uri>
-                                                    GetUriForGroupIndexAsync
-                                                            (
-                                                                Group group
-                                                            )
-        {
-            return await GetUriForGroupIndexAsync(group.Id);
-        }
-
-
-        public async static
-            Task<Uri>
-                                                    GetUriForGroupIndexAsync
-                                                            (
-                                                                string id
-                                                            )
-        {
-            string url = $"{RepositoryDefault.UrlRoot}/{id.Replace('.', '/')}/group-index.xml";
-
-            Uri result = null;
-            if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
+            get
             {
-                result = new Uri(url);
+                return group_index;
             }
 
-            return result;
+            set
+            {
+                group_index = value;
+
+                return;
+            }
         }
 
-        public async static
-            Task<GroupIndex>
-                                                    GetGroupIndexAsync
-                                                            (
-                                                                Group group
-                                                            )
-        {
-            return await GetGroupIndexAsync(group.Id);
-        }
-
-        public async static
-            Task<GroupIndex>
-                                                    GetGroupIndexAsync
-                                                            (
-                                                                string group_id
-                                                            )
-        {
-            GroupIndex result = null;
-
-            Uri uri = await GetUriForGroupIndexAsync(group_id);
-
-
-            return result;
-        }
     }
 }

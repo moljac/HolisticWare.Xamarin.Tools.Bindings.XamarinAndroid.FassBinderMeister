@@ -100,7 +100,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             #elif NUNIT
             Assert.NotNull(Repository.UrlRootDefault);
             Assert.NotNull(Repository.UrlMasterIndexDefault);
-            Assert.NotNull(Repository.MasterIndexDefault);
+            Assert.Null(Repository.MasterIndexDefault);
             Assert.AreEqual
                         (
                             Repository.UrlRootDefault,

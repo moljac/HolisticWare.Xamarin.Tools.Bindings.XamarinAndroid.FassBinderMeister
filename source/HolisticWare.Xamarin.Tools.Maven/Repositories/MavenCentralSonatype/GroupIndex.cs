@@ -4,11 +4,13 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace HolisticWare.Xamarin.Tools.Maven
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 {
-    public partial class GroupIndex
+    public partial class GroupIndex : Maven.GroupIndex
     {
         public GroupIndex (string group_id)
+            :
+            base(group_id)
         {
             this.Name = group_id;
 
@@ -20,65 +22,9 @@ namespace HolisticWare.Xamarin.Tools.Maven
             url_default_textual = null;
             url_default = null;
 
+            // TODO: build GroupIndex
+
             return;
-        }
-
-        protected static string url_default_textual = null;
-
-        public static string UrlDefaultTextual
-        {
-            get
-            {
-                return url_default_textual;
-            }
-
-            set
-            {
-                url_default_textual = value;
-
-                return;
-            }
-        }
-
-        protected static Uri url_default = null;
-
-        public static Uri UrlDefault
-        {
-            get
-            {
-                return url_default;
-            }
-
-            set
-            {
-                url_default = value;
-
-                return;
-            }
-        }
-
-        public string Name
-        {
-            get;
-            set;
-        }
-
-        public virtual string UrlGroupIndex
-        {
-            get;
-            set;
-        }
-
-        public string Content
-        {
-            get;
-            set;
-        }
-
-        public List<(string name, string[] versions)> ArtifactsTextual
-        {
-            get;
-            set;
         }
 
         public async

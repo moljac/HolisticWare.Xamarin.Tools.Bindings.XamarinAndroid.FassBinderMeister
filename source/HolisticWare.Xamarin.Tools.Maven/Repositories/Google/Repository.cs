@@ -4,7 +4,7 @@ using Core.Net.HTTP;
 
 namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 {
-    public class Repository : Maven.Repository
+    public partial class Repository : Maven.Repository
     {
         public Repository() : base()
         {
@@ -26,7 +26,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
             // Google
             // master index - must be built/implemented
-            url_master_index_default = new Uri($"{UrlRootDefault.AbsolutePath}/master-index.xml");
+            url_master_index_default = new Uri($"{UrlRootDefault.AbsoluteUri}/master-index.xml");
 
             return;
         }
@@ -59,7 +59,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
         }
 
-        public static MasterIndex MasterIndexDefault
+        public static Maven.MasterIndex MasterIndexDefault
         {
             get
             {
@@ -101,7 +101,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
         }
 
-        public MasterIndex MasterIndex
+        public Maven.MasterIndex MasterIndex
         {
             get
             {
@@ -112,51 +112,6 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                 master_index = value;
 
                 return;
-            }
-        }
-
-        public static class Utilities
-        {
-            public static async
-                Task<SearchData>
-                                                Search
-                                                        (
-                                                            string search_term,
-                                                            int search_results_count = 20
-                                                        )
-            {
-                SearchData result = null;
-
-                MasterIndex master_index = await GetMasterIndexAsync();
-
-                return result;
-            }
-
-
-            public static async
-                Task<MasterIndex>
-                                                GetMasterIndexAsync
-                                                        (
-                                                        )
-            {
-                MasterIndex result = null;
-
-                string url = Repository.UrlMasterIndexDefault.AbsoluteUri;
-
-                if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
-                {
-                    string content = await MavenClient.HttpClient.GetStringContentAsync(url);
-
-                    Repository.MasterIndexDefault = new MasterIndex()
-                    {
-                        Content = content
-                    };
-                    await Repository.MasterIndexDefault.GetGroupsAsync();
-                }
-
-                string xml = Repository.MasterIndexDefault.Content;
-
-                return result;
             }
         }
 

@@ -71,6 +71,12 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Group
     {
+        static Test_Group()
+        {
+            HolisticWare.Xamarin.Tools.Maven.MavenClient.HttpClient = Tests.CommonShared.Http.Client;
+
+        }
+
         [Test]
         public void Test_Group_MavenCentralSonatype_static_defaults()
         {
@@ -78,7 +84,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
 
             #if MSTEST
             Assert.IsNotNull(Repository.UrlRootDefault);
-            Assert.IsNotNull(Repository.UrlMasterIndexDefault);
+            Assert.IsNull(Repository.UrlMasterIndexDefault);
             Assert.AreEqual
                         (
                             Repository.UrlRootDefault,
@@ -91,7 +97,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                         );
             #elif NUNIT
             Assert.NotNull(Repository.UrlRootDefault);
-            Assert.NotNull(Repository.UrlMasterIndexDefault);
+            Assert.Null(Repository.UrlMasterIndexDefault);
             Assert.AreEqual
                         (
                             Repository.UrlRootDefault,
@@ -104,7 +110,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                         );
             #elif XUNIT
             Assert.NotNull(Repository.UrlRootDefault);
-            Assert.NotNull(Repository.UrlMasterIndexDefault);
+            Assert.Null(Repository.UrlMasterIndexDefault);
             Assert.Equal
                         (
                             Repository.UrlRootDefault,
@@ -124,7 +130,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         {
             Repository r = new Repository();
 
-            Uri uri = new Uri($"https://dl.google.com/android/maven2");
+            Uri uri = new Uri($"https://repo1.maven.org/maven2");
 
             #if MSTEST
             Assert.IsNotNull(r);
