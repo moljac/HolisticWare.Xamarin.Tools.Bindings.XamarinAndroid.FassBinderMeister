@@ -31,8 +31,16 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
         static Group()
         {
-            url_group_default = null;
-            url_group_index_default = new Uri($"{Repository.UrlRootDefault}/_PLACEHOLDER_GROUP_ID_/group-index.xml");
+            repository_default = new Maven.Repositories.Google.Repository();
+
+            // group is not browseable/accessible
+            url_default_textual = null;
+
+            // group is not browseable/accessible
+            url_default = null;
+
+            // group index
+            url_group_index_default = GroupIndex.UrlDefault;
 
             return;
         }
@@ -55,15 +63,39 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             set;
         }
 
-        protected static Uri url_group_default = null;
+        protected static string url_default_textual = null;
 
-        public static Uri UrlGroupDefault
+        public static string UrlDefaultTextual
         {
-            get;
-            set;
+            get
+            {
+                return url_default_textual;
+            }
+
+            set
+            {
+                url_default_textual = value;
+
+                return;
+            }
         }
 
-        protected static Uri url_group_index_default = null;
+        protected static Uri url_default = null;
+
+        public static Uri UrlDefault
+        {
+            get
+            {
+                return url_default;
+            }
+
+            set
+            {
+                url_default = value;
+
+                return;
+            }
+        }
 
         public static Uri UrlGroupIndexDefault
         {
@@ -86,23 +118,23 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             set;
         }
 
-        public virtual Uri UrlGroupIndex
+        public virtual Uri Url
         {
             get
             {
-                Uri url = Utilities.GetUriForGroupIndexAsync(this.Id).Result;
+                Uri url_tmp = Utilities.GetUriForGroupIndexAsync(this.Id).Result;
 
-                if (MavenClient.HttpClient.IsReachableUrlAsync(url).Result)
+                if (MavenClient.HttpClient.IsReachableUrlAsync(url_tmp).Result)
                 {
-                    url_group_index = url;
+                    url = url_tmp;
                 }
 
-                return url;
+                return url_tmp;
             }
 
             set
             {
-                url_group_index = value;
+                url = value;
 
                 return;
             }
