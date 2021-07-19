@@ -71,6 +71,12 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Group
     {
+        static Test_Group()
+        {
+            HolisticWare.Xamarin.Tools.Maven.MavenClient.HttpClient = Tests.CommonShared.Http.Client;
+
+        }
+
         [Test]
         public void Test_Group_MavenCentralSonatype_static_defaults()
         {

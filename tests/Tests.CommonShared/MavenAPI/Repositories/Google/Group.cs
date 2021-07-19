@@ -71,6 +71,12 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Group
     {
+        static Test_Group()
+        {
+            HolisticWare.Xamarin.Tools.Maven.MavenClient.HttpClient = Tests.CommonShared.Http.Client;
+
+        }
+
         [Test]
         public void Test_Group_Google_static_defaults()
         {
@@ -79,12 +85,12 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             Uri uri_group_index_default = new Uri($"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/group-index.xml");
 
             #if MSTEST
-            Assert.IsNull(Group.UrlGroupDefault);
+            Assert.IsNull(Group.UrlDefault);
             Assert.IsNotNull(Group.UrlGroupIndexDefault);
             Assert.IsNull(Group.GroupIndexDefault);
             Assert.AreEqual
                         (
-                            Group.UrlGroupDefault,
+                            Group.UrlDefault,
                             uri_group_default
                         );
             Assert.AreEqual
@@ -93,12 +99,12 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                             uri_group_index_default
                         );
             #elif NUNIT
-            Assert.Null(Group.UrlGroupDefault);
+            Assert.Null(Group.UrlDefault);
             Assert.NotNull(Group.UrlGroupIndexDefault);
             Assert.Null(Group.GroupIndexDefault);
             Assert.AreEqual
                         (
-                            Group.UrlGroupDefault,
+                            Group.UrlDefault,
                             uri_group_default
                         );
             Assert.AreEqual
@@ -107,12 +113,12 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                             uri_group_index_default
                         );
             #elif XUNIT
-            Assert.Null(Group.UrlGroupDefault);
+            Assert.Null(Group.UrlDefault);
             Assert.NotNull(Group.UrlGroupIndexDefault);
             Assert.Null(Group.GroupIndexDefault);
             Assert.Equal
                         (
-                            Group.UrlGroupDefault,
+                            Group.UrlDefault,
                             uri_group_default
                         );
             Assert.Equal
@@ -120,27 +126,74 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                             Group.UrlGroupIndexDefault,
                             uri_group_index_default
                         );
-            Assert.Equal
-                        (
-                            Group.GetUriForGroupIndexAsync("androidx.window").Result,
-                            new Uri($"https://dl.google.com/android/maven2/androidx/window/group-index.xml")
-                        );
-            Assert.Equal
-                        (
-                            Group.GetUriForGroupIndexAsync("io.opencensus").Result,
-                            null
-                        );
             #endif
 
         }
 
         [Test]
-        public void Test_Group_Google_static_API_01_GetUriForGroupAsync()
+        public void Test_Group_Google_static_API_01_GetUriAsync()
         {
-            Uri ugi = null;
+            Uri ug_artifact_exists_01 = null;
 
-            ugi = Group.Utilities.GetUriForGroupAsync("androidx.car").Result;
+            ug_artifact_exists_01 = Group.Utilities.GetUriAsync("androidx.car").Result;
 
+            Uri ug_artifact_exists_02 = null;
+
+            ug_artifact_exists_02 = Group.Utilities.GetUriAsync("androidx.window").Result;
+
+            Uri ug_artifact_does_not_exists = null;
+
+            ug_artifact_does_not_exists = Group.Utilities.GetUriAsync("io.opencensus").Result;
+
+            #if MSTEST
+            Assert.AreEqual
+                        (
+                            ug_artifact_exists_01,
+                            null
+                        );
+            Assert.AreEqual
+                        (
+                            ug_artifact_exists_02,
+                            null
+                        );
+            Assert.AreEqual
+                        (
+                            ug_artifact_does_not_exists,
+                            null
+                        );
+            #elif NUNIT
+            Assert.AreEqual
+                        (
+                            ug_artifact_exists_01,
+                            null
+                        );
+            Assert.AreEqual
+                        (
+                            ug_artifact_exists_02,
+                            null
+                        );
+            Assert.AreEqual
+                        (
+                            ug_artifact_does_not_exists,
+                            null
+                        );
+            #elif XUNIT
+            Assert.Equal
+                        (
+                            ug_artifact_exists_01,
+                            null
+                        );
+            Assert.Equal
+                        (
+                            ug_artifact_exists_02,
+                            null
+                        );
+            Assert.Equal
+                        (
+                            ug_artifact_does_not_exists,
+                            null
+                        );
+            #endif
 
             return;
         }
@@ -148,10 +201,67 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Group_Google_static_API_02_GetUriForGroupIndexAsync()
         {
-            Uri ugi = null;
+            Uri ugi_artifact_exists_01 = null;
 
-            ugi = Group.Utilities.GetUriForGroupIndexAsync("androidx.car").Result;
+            ugi_artifact_exists_01 = Group.Utilities.GetUriForGroupIndexAsync("androidx.car").Result;
 
+            Uri ugi_artifact_exists_02 = null;
+
+            ugi_artifact_exists_02 = Group.Utilities.GetUriForGroupIndexAsync("androidx.window").Result;
+
+            Uri ugi_artifact_does_not_exists = null;
+
+            ugi_artifact_does_not_exists = Group.Utilities.GetUriForGroupIndexAsync("io.opencensus").Result;
+
+            #if MSTEST
+            Assert.AreEqual
+                        (
+                            ugi_artifact_exists_01,
+                            new Uri($"https://dl.google.com/android/maven2/androidx/car/group-index.xml")
+                        );
+            Assert.AreEqual
+                        (
+                            ugi_artifact_exists_02,
+                            new Uri($"https://dl.google.com/android/maven2/androidx/window/group-index.xml")
+                        );
+            Assert.AreEqual
+                        (
+                            ugi_artifact_does_not_exists,
+                            null
+                        );
+            #elif NUNIT
+            Assert.AreEqual
+                        (
+                            ugi_artifact_exists_01,
+                            new Uri($"https://dl.google.com/android/maven2/androidx/car/group-index.xml")
+                        );
+            Assert.AreEqual
+                        (
+                            ugi_artifact_exists_02,
+                            new Uri($"https://dl.google.com/android/maven2/androidx/window/group-index.xml")
+                        );
+            Assert.AreEqual
+                        (
+                            ugi_artifact_does_not_exists,
+                            null
+                        );
+            #elif XUNIT
+            Assert.Equal
+                        (
+                            ugi_artifact_exists_01,
+                            new Uri($"https://dl.google.com/android/maven2/androidx/car/group-index.xml")
+                        );
+            Assert.Equal
+                        (
+                            ugi_artifact_exists_02,
+                            new Uri($"https://dl.google.com/android/maven2/androidx/window/group-index.xml")
+                        );
+            Assert.Equal
+                        (
+                            ugi_artifact_does_not_exists,
+                            null
+                        );
+            #endif
 
             return;
         }
@@ -159,10 +269,17 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Group_Google_static_API_03_GetGroupIndexAsync()
         {
-            HolisticWare.Xamarin.Tools.Maven.GroupIndex gi = null;
+            HolisticWare.Xamarin.Tools.Maven.GroupIndex gi_artifact_exists_01 = null;
 
-            gi = Group.Utilities.GetGroupIndexAsync("androidx.car").Result;
+            gi_artifact_exists_01 = Group.Utilities.GetGroupIndexAsync("androidx.car").Result;
 
+            HolisticWare.Xamarin.Tools.Maven.GroupIndex gi_artifact_exists_02 = null;
+
+            gi_artifact_exists_02 = Group.Utilities.GetGroupIndexAsync("androidx.window").Result;
+
+            HolisticWare.Xamarin.Tools.Maven.GroupIndex gi_artifact_does_not_exists = null;
+
+            gi_artifact_does_not_exists = Group.Utilities.GetGroupIndexAsync("io.opencensus").Result;
 
             return;
         }
