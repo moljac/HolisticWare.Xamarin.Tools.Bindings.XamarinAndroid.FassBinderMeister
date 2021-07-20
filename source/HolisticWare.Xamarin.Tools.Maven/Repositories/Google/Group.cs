@@ -17,21 +17,21 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             this.UrlGroup = null;
             this.UrlGroupIndex = new Uri
                                         (
-                                            Group
-                                                .UrlGroupIndexDefault
-                                                    .AbsoluteUri
-                                                        .Replace
-                                                            (
-                                                                "_PLACEHOLDER_GROUP_ID_",
-                                                                this.Id.Replace('.', '/')
-                                                            )
+                                            GroupIndex.UrlDefault
+                                                            .AbsoluteUri
+                                                                .Replace
+                                                                    (
+                                                                        "_PLACEHOLDER_GROUP_ID_",
+                                                                        this.Id.Replace('.', '/')
+                                                                    )
                                         );
+
             return;
         }
 
         static Group()
         {
-            repository_default = new Maven.Repositories.Google.Repository();
+            repository_default = new Repositories.Google.Repository();
 
             // group is not browseable/accessible
             url_default_textual = null;
@@ -40,7 +40,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             url_default = null;
 
             // group index
-            url_group_index_default = GroupIndex.UrlDefault;
+            url_group_index_default = Repositories.Google.GroupIndex.UrlDefault;
 
             return;
         }
@@ -118,28 +118,37 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         {
             get
             {
-                Uri url_tmp = GroupIndex.Utilities.GetUriForGroupIndexAsync(this.Id).Result;
+                Uri url_tmp = Group.Utilities.GetUriForGroupIndexAsync(this.Id).Result;
 
                 if (MavenClient.HttpClient.IsReachableUrlAsync(url_tmp).Result)
                 {
-                    url = url_tmp;
+                    this.url = url_tmp;
                 }
 
-                return url_tmp;
+                return this.url;
             }
 
             set
             {
-                url = value;
+                this.url = value;
 
                 return;
             }
         }
 
-        public static GroupIndex GroupIndexDefault
+        public static Maven.GroupIndex GroupIndexDefault
         {
-            get;
-            set;
+            get
+            {
+                return group_index_default;
+            }
+
+            set
+            {
+                group_index_default = value;
+
+                return;
+            }
         }
 
         public virtual GroupIndex GroupIndex

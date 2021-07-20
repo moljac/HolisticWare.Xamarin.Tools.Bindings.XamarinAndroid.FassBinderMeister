@@ -43,7 +43,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                 string response_body = await response.Content.ReadAsStringAsync();
                 */
                 // new helper method below
-                response_string_xml = await MavenClient.HttpClient.GetStringAsync(this.UrlGroupIndex);
+                response_string_xml = await MavenClient.HttpClient.GetStringAsync(this.Url);
                 this.Content = response_string_xml;
             }
             catch (HttpRequestException exc)
@@ -59,30 +59,6 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
             result = ParseArtifactNamesAndVersionsFromXML(response_string_xml);
 
             return result;
-        }
-
-        public
-            IEnumerable<(string name, string[] versions)>
-                                                ParseArtifactNamesAndVersionsFromXML
-                                                    (
-                                                        string xml
-                                                    )
-        {
-            System.Xml.XmlDocument xmldoc = new System.Xml.XmlDocument();
-            xmldoc.LoadXml(xml);
-            System.Xml.XmlNamespaceManager ns = new System.Xml.XmlNamespaceManager(xmldoc.NameTable);
-
-            System.Xml.XmlNodeList node_list = xmldoc.SelectNodes($"/{this.Name}/*", ns);
-            foreach (System.Xml.XmlNode xn in node_list)
-            {
-                string n = xn.Name;
-                string[] vs = xn.Attributes["versions"].InnerXml.Split
-                                                            (
-                                                                new string[] { "," },
-                                                                StringSplitOptions.RemoveEmptyEntries
-                                                            );
-                yield return (name: n, versions: vs);
-            }
         }
 
         public 

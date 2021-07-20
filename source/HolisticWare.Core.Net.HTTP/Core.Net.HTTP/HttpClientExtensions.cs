@@ -84,9 +84,12 @@ namespace Core.Net.HTTP
 
             using (System.Net.Http.HttpResponseMessage response = await c.GetAsync(uri.AbsoluteUri))
             {
-                using (System.Net.Http.HttpContent content = response.Content)
+                if (response.IsSuccessStatusCode)
                 {
-                    content_textual = await response.Content.ReadAsStringAsync();
+                    using (System.Net.Http.HttpContent content = response.Content)
+                    {
+                        content_textual = await response.Content.ReadAsStringAsync();
+                    }
                 }
             }
 

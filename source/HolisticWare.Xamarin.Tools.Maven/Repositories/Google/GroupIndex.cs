@@ -20,6 +20,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         static GroupIndex()
         {
             url_default_textual = $"{Repository.UrlRootDefault}/_PLACEHOLDER_GROUP_ID_/group-index.xml";
+
             url_default = new Uri(url_default_textual);
 
             return;
@@ -40,28 +41,96 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
         }
 
-        public string Name
+        public static Uri UrlDefault
         {
-            get;
-            set;
+            get
+            {
+                return url_default;
+            }
+
+            set
+            {
+                url_default = value;
+
+                return;
+            }
         }
 
-        public virtual string UrlGroupIndex
+        public override string Name
         {
-            get;
-            set;
+            get
+            {
+                return this.name;
+            }
+
+            set
+            {
+                this.name = value;
+
+                return;
+            }
         }
 
-        public string Content
+        public override Uri Url
         {
-            get;
-            set;
+            get
+            {
+                return this.url;
+            }
+
+            set
+            {
+                this.url = value;
+
+                return;
+            }
         }
 
-        public List<(string name, string[] versions)> ArtifactsTextual
+        public override string Content
         {
-            get;
-            set;
+            get
+            {
+                return this.content;
+            }
+
+            set
+            {
+                this.content = value;
+
+                return;
+            }
+        }
+
+        public override
+            List<(string name, string[] versions)> ArtifactsTextual
+        {
+            get
+            {
+                return this.artifacts_textual;
+            }
+
+            set
+            {
+                this.artifacts_textual = value;
+
+                return;
+            }
+        }
+
+        public override
+            List<Artifact> Artifacts
+        {
+            get
+            {
+                return this.artifacts;
+            }
+
+            set
+            {
+                this.artifacts = value;
+
+                return;
+            }
         }
 
         public async
@@ -80,7 +149,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                 string response_body = await response.Content.ReadAsStringAsync();
                 */
                 // new helper method below
-                response_string_xml = await MavenClient.HttpClient.GetStringAsync(this.UrlGroupIndex);
+                response_string_xml = await MavenClient.HttpClient.GetStringAsync(this.Url);
                 this.Content = response_string_xml;
             }
             catch (HttpRequestException exc)

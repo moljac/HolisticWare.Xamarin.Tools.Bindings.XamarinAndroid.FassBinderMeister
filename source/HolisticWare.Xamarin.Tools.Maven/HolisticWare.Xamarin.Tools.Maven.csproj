@@ -86,6 +86,7 @@
       <Folder Include="Repositories\MavenCentralSonatype\Search\" />
       <Folder Include="Repositories\MavenCentralSonatype\ArtifactMetadata\" />
     </ItemGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
     </ItemGroup>
