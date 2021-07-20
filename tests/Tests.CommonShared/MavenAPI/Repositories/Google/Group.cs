@@ -283,6 +283,174 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
             gi_artifact_does_not_exists = Group.Utilities.GetGroupIndexAsync("io.opencensus").Result;
 
+            #if MSTEST
+            Assert.IsNotNull
+                        (
+                            gi_artifact_exists_01
+                        );
+            Assert.IsNotNull
+                        (
+                            gi_artifact_exists_02
+                        );
+            Assert.IsNotNull
+                        (
+                            gi_artifact_exists_01.ArtifactsTextual                            
+                        );
+            Assert.IsNotNull
+                        (
+                            gi_artifact_exists_02.ArtifactsTextual
+                        );
+            Assert.IsNull
+                        (
+                            gi_artifact_does_not_exists
+                        );
+            #elif NUNIT
+            Assert.NotNull
+                        (
+                            gi_artifact_exists_01
+                        );
+            Assert.NotNull
+                        (
+                            gi_artifact_exists_02
+                        );
+            Assert.NotNull
+                        (
+                            gi_artifact_exists_01.ArtifactsTextual                            
+                        );
+            Assert.NotNull
+                        (
+                            gi_artifact_exists_02.ArtifactsTextual
+                        );
+            Assert.Null
+                        (
+                            gi_artifact_does_not_exists
+                        );
+            #elif XUNIT
+            Assert.NotNull
+                        (
+                            gi_artifact_exists_01
+                        );
+            Assert.NotNull
+                        (
+                            gi_artifact_exists_02
+                        );
+            Assert.NotNull
+                        (
+                            gi_artifact_exists_01.ArtifactsTextual                            
+                        );
+            Assert.NotNull
+                        (
+                            gi_artifact_exists_02.ArtifactsTextual
+                        );
+            Assert.Null
+                        (
+                            gi_artifact_does_not_exists
+                        );
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Group_Google_static_API_04_GetGroupsMissingForPrefixAsync()
+        {
+            System.Collections.Generic.List<string> groups_missing = null;
+
+            groups_missing = Group.Utilities.GetGroupsMissingForPrefixAsync
+                                                            (
+                                                                "androidx",
+                                                                new string[]
+                                                                        {
+                                                                            "window",
+                                                                            "compose",
+                                                                            "ui",
+                                                                            "car",
+                                                                        }
+                                                            )
+                                                            .Result;
+
+            #if MSTEST
+            Assert.IsNotNull
+                        (
+                            groups_missing
+                        );
+            #elif NUNIT
+            Assert.NotNull
+                        (
+                            groups_missing
+                        );
+            #elif XUNIT
+            Assert.NotNull
+                        (
+                            groups_missing
+                        );
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Group_Google_static_API_05_GetGroupsMissingForContent()
+        {
+            System.Collections.Generic.List<string> groups_missing_01 = null;
+
+            groups_missing_01 = Group.Utilities.GetGroupsMissingForContentAsync
+                                                            (
+                                                                "core",
+                                                                new string[]
+                                                                        {
+                                                                            "window",
+                                                                            "compose",
+                                                                            "ui",
+                                                                            "car",
+                                                                        }
+                                                            )
+                                                            .Result;
+
+            System.Collections.Generic.List<string> groups_missing_02 = null;
+
+            groups_missing_02 = Group.Utilities.GetGroupsMissingForContentAsync
+                                                            (
+                                                                "androidx.core",
+                                                                new string[]
+                                                                        {
+                                                                            "window",
+                                                                            "compose",
+                                                                            "ui",
+                                                                            "car",
+                                                                        }
+                                                            )
+                                                            .Result;
+
+            #if MSTEST
+            Assert.IsNotNull
+                        (
+                            groups_missing_01
+                        );
+            Assert.IsNotNull
+                        (
+                            groups_missing_02
+                        );
+            #elif NUNIT
+            Assert.NotNull
+                        (
+                            groups_missing_01
+                        );
+            Assert.NotNull
+                        (
+                            groups_missing_02
+                        );
+            #elif XUNIT
+            Assert.NotNull
+                        (
+                            groups_missing_01
+                        );
+            Assert.NotNull
+                        (
+                            groups_missing_02
+                        );
+            #endif
+
             return;
         }
 
