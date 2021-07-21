@@ -166,7 +166,7 @@ group metadata discovery
 
     * lastUpdated
 
-### ArtifactVersioned
+### Artifact (Versioned)
 
 * google
 
@@ -180,6 +180,17 @@ group metadata discovery
   string url_artifact_root = $"{url_root}/{group_id.Replace(".", "/")}/{artifact_id}/{artifact_version}/{artifact_id}-{artifact_version}.{artifact_extension}";
 
   ```
+
+  * https://maven.google.com/web/index.html#androidx.biometric:biometric
+
+
+```
+https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0.aar
+https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0.pom
+https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0-sources.jar
+https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0-javadoc.jar
+https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0.module
+```
 
   * https://dl.google.com/android/maven2/androidx/ads/ads-identifier/1.0.0-alpha04/ads-identifier-1.0.0-alpha04.aar
 
