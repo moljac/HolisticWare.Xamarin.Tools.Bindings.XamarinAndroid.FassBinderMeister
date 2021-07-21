@@ -41,6 +41,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MavenClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\MasterIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\GroupIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Artifact.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
