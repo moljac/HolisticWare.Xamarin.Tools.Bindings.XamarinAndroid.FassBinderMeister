@@ -112,7 +112,8 @@ namespace HolisticWare.Xamarin.Tools.Maven
         protected List<(string name, string[] versions)> artifacts_textual = null;
 
         public virtual
-            List<(string name, string[] versions)> ArtifactsTextual
+            List<(string name, string[] versions)>
+                                                ArtifactsTextual
         {
             get
             {
