@@ -1,14 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 
 namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 {
-    public partial class MavenMetadata 
+    public partial class SearchData : Maven.SearchData
     {
-        public ArtifactMetadata.Metadata Metadata
+        public virtual
+            List<Maven.Artifact>
+                                                Artifacts
         {
-            get;
-            set;
+            get
+            {
+                return artifacts;
+            }
+
+            set
+            {
+                artifacts = value;
+
+                return;
+            }
         }
     }
 }

@@ -102,7 +102,8 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         }
 
         public override
-            List<(string name, string[] versions)> ArtifactsTextual
+            List<(string name, string[] versions)>
+                                                ArtifactsTextual
         {
             get
             {
@@ -118,7 +119,8 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         }
 
         public override
-            List<Artifact> Artifacts
+            List<Maven.Artifact>
+                                                Artifacts
         {
             get
             {

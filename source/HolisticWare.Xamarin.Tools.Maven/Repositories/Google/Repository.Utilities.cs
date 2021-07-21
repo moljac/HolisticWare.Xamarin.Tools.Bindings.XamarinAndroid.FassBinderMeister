@@ -25,11 +25,11 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                 Repository.MasterIndexDefault = master_index;
 
                 result = new SearchData();
-                result.Artifacts = new List<Maven.ArtifactUnversioned>();
+                result.Artifacts = new List<Maven.Artifact>();
 
                 foreach(Maven.Group g in master_index.Groups)
                 {
-                    ArtifactUnversioned a = new ArtifactUnversioned()
+                    Artifact a = new Artifact()
                     {
                         Group = g,
                         GroupId = g.Id,

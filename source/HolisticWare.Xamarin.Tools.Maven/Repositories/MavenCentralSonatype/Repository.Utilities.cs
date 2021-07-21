@@ -38,12 +38,12 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
                     result = new SearchData()
                     {
-                        Artifacts = new List<Maven.ArtifactUnversioned>()
+                        Artifacts = new List<Maven.Artifact>()
                     };
 
                     foreach (Search.Doc d in root.Response.Docs)
                     {
-                        Maven.ArtifactUnversioned a = new ArtifactUnversioned()
+                        Maven.Artifact a = new Maven.Artifact()
                         {
                             ArtifactId = d.A,
                             Group = new Maven.Group(d.G),
@@ -53,11 +53,9 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                         string g_id = d.Text[0];
                         string a_id = d.Text[1];
 
-
-                        ((ArtifactUnversioned)a).GetMavenMetadataAsync();
+                        //((Artifact)a).GetMavenMetadataAsync();
 
                         string url_base = $"{Repository.UrlRootDefault}/{g_id.Replace('.', '/')}/{a_id}/maven-metadata.xml";
-
 
                         for (int i = 2; i < d.Text.Count; i++)
                         {

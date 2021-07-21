@@ -1,6 +1,6 @@
-﻿namespace HolisticWare.Xamarin.Tools.Maven
+﻿namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 {
-    public partial class Artifact : Maven.ArtifactUnversioned
+    public partial class Artifact : Maven.Artifact
     {
         public Artifact()
             :
