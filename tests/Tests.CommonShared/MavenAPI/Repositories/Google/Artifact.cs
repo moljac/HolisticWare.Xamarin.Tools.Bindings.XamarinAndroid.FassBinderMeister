@@ -65,6 +65,7 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 using System;
 
 using HolisticWare.Xamarin.Tools.Maven.Repositories.Google;
+using Core;
 
 namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 {
@@ -278,29 +279,6 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Artifact_Google_member_API_01_VersionSemantic_Parse()
         {
-            Core.VersionSemantic.Parse("1");
-            Core.VersionSemantic.Parse01("1");
-            Core.VersionSemantic.Parse02("1");
-
-            Core.VersionSemantic.Parse("1.0");
-            Core.VersionSemantic.Parse01("1.0");
-            Core.VersionSemantic.Parse02("1.0");
-
-            Core.VersionSemantic.Parse("1.0.0");
-            Core.VersionSemantic.Parse01("1.0.0");
-            Core.VersionSemantic.Parse02("1.0.0");
-
-            Core.VersionSemantic.Parse("1.0.0-alpha01");
-            Core.VersionSemantic.Parse01("1.0.0-alpha01");
-            Core.VersionSemantic.Parse02("1.0.0-alpha01");
-
-            Core.VersionSemantic.Parse("1.0.0-alpha01-20210712");
-            Core.VersionSemantic.Parse01("1.0.0-alpha01-20210712");
-            Core.VersionSemantic.Parse02("1.0.0-alpha01-20210712");
-
-            Core.VersionSemantic.Parse("1.0.0-alpha01+20210712");
-            Core.VersionSemantic.Parse01("1.0.0-alpha01+20210712");
-            Core.VersionSemantic.Parse02("1.0.0-alpha01+20210712");
 
             return;
         }
@@ -308,29 +286,29 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Artifact_Google_member_API_01_ParseArtifactIdFullyQualfied()
         {
-            Core.VersionSemantic.Parse01("androidx.ads.ads-identifier");
-            Core.VersionSemantic.Parse02("androidx.ads.ads-identifier");
+            VersionSemantic.Parse01("androidx.ads.ads-identifier");
+            VersionSemantic.Parse02("androidx.ads.ads-identifier");
 
-            Core.VersionSemantic.Parse01("androidx.ads:ads-identifier");
-            Core.VersionSemantic.Parse02("androidx.ads:ads-identifier");
+            VersionSemantic.Parse01("androidx.ads:ads-identifier");
+            VersionSemantic.Parse02("androidx.ads:ads-identifier");
 
-            Core.VersionSemantic.Parse01("androidx.ads.ads-identifier-1.0.0");
-            Core.VersionSemantic.Parse02("androidx.ads.ads-identifier-1.0.0");
+            VersionSemantic.Parse01("androidx.ads.ads-identifier-1.0.0");
+            VersionSemantic.Parse02("androidx.ads.ads-identifier-1.0.0");
 
-            Core.VersionSemantic.Parse01("androidx.ads:ads-identifier-1.0.0");
-            Core.VersionSemantic.Parse02("androidx.ads:ads-identifier-1.0.0");
+            VersionSemantic.Parse01("androidx.ads:ads-identifier-1.0.0");
+            VersionSemantic.Parse02("androidx.ads:ads-identifier-1.0.0");
 
-            Core.VersionSemantic.Parse01("androidx.ads:ads-identifier:1.0.0");
-            Core.VersionSemantic.Parse02("androidx.ads:ads-identifier:1.0.0");
+            VersionSemantic.Parse01("androidx.ads:ads-identifier:1.0.0");
+            VersionSemantic.Parse02("androidx.ads:ads-identifier:1.0.0");
 
-            Core.VersionSemantic.Parse01("androidx.ads.ads-identifier-1.0.0-alpha01");
-            Core.VersionSemantic.Parse02("androidx.ads.ads-identifier-1.0.0-alpha01");
+            VersionSemantic.Parse01("androidx.ads.ads-identifier-1.0.0-alpha01");
+            VersionSemantic.Parse02("androidx.ads.ads-identifier-1.0.0-alpha01");
 
-            Core.VersionSemantic.Parse01("androidx.ads:ads-identifier-1.0.0-alpha01");
-            Core.VersionSemantic.Parse02("androidx.ads:ads-identifier-1.0.0-alpha01");
+            VersionSemantic.Parse01("androidx.ads:ads-identifier-1.0.0-alpha01");
+            VersionSemantic.Parse02("androidx.ads:ads-identifier-1.0.0-alpha01");
 
-            Core.VersionSemantic.Parse01("androidx.ads:ads-identifier:1.0.0-alpha01");
-            Core.VersionSemantic.Parse02("androidx.ads:ads-identifier:1.0.0-alpha01");
+            VersionSemantic.Parse01("androidx.ads:ads-identifier:1.0.0-alpha01");
+            VersionSemantic.Parse02("androidx.ads:ads-identifier:1.0.0-alpha01");
 
             return;
         }

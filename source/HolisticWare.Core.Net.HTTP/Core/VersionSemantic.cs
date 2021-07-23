@@ -147,5 +147,54 @@ namespace Core
         {
             return;
         }
+
+        public VersionSemantic(string version)
+        {
+            (
+                int major,
+                int minor,
+                int patch,
+                string prerelease,
+                string build
+            ) parsed = Parse(version);
+
+            this.Major = parsed.major;
+            this.Minor = parsed.minor;
+            this.Patch = parsed.patch;
+            this.PreRelease = parsed.prerelease;
+            this.Build = parsed.build;
+
+            return;
+        }
+
+        public int Major
+        {
+            get;
+            set;
+        }
+
+        public int Minor
+        {
+            get;
+            set;
+        }
+
+        public int Patch
+        {
+            get;
+            set;
+        }
+
+        public string PreRelease
+        {
+            get;
+            set;
+        }
+
+        public string Build
+        {
+            get;
+            set;
+        }
     }
 }

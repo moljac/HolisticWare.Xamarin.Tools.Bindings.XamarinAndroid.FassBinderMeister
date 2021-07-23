@@ -13,7 +13,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Binderator.Config\Binderator.Config_AndroidX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Binderator.Config\Binderator.Config_GooglePlayServicesComponents.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GitHubClientAPI\GitHubClient.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core.Serialization\JSON_Deserialization_BuddyClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\GroupIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MasterIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenNET\MavenNET.cs" />
@@ -42,10 +41,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\MasterIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\GroupIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Artifact.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Serialization\JSON_Deserialization_BuddyClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\VersionSemantic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\HttpClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Core.Serialization\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Core\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenNET\" />
     <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\" />
@@ -58,5 +60,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Core\Serialization\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Core\Net\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\" />
   </ItemGroup>
 </Project>

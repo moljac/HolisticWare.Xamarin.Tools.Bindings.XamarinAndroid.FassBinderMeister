@@ -68,7 +68,7 @@ using System.Collections.Generic;
 using HolisticWare.Xamarin.Tools.GitHub;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister;
 
-namespace UnitTests.JSON
+namespace UnitTests.Core.Serialization.JSON
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_JSON_Deserialization_BuddyClass
