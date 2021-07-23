@@ -81,6 +81,10 @@
       <Name>HolisticWare.Xamarin.Tools.Maven</Name>
     </ProjectReference>
       <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+      <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj">
+        <Project>{F42C1657-731C-47A8-9071-E0403D4C72D3}</Project>
+        <Name>HolisticWare.Core.Net.HTTP</Name>
+      </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MavenNet">
