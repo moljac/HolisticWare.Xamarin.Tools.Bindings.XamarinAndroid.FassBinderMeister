@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel;
+using HolisticWare.Xamarin.Tools.Maven.POM;
 
 namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 {

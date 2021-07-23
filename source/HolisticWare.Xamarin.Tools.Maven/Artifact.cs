@@ -2,12 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel;
+using HolisticWare.Xamarin.Tools.Maven.POM;
 
 namespace HolisticWare.Xamarin.Tools.Maven
 {
     public partial class Artifact : Maven.ArtifactUnversioned
     {
+        /// <summary>
+        /// Artifact (Maven Artifact object)
+        ///
+        /// IdFullyQualified        <groupId>:<artifactId>:<version>
+        /// </summary>
+        /// <see href="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#minimal-pom"/>
+        static Artifact()
+        {
+            return;
+        }
+
         public Artifact()
             :
             base()
@@ -52,19 +63,6 @@ namespace HolisticWare.Xamarin.Tools.Maven
 
             this.GroupId = id_fully_qualified.Substring(0, idx);
             this.ArtifactId = id_fully_qualified.Substring(idx + 1, id_fully_qualified.Length - (idx + 1));
-
-            return;
-        }
-
-        static Artifact()
-        {
-            // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID_/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_"
-            url_default_textual_root = $"{Repository.UrlRootDefault}/";
-            url_default_textual_binary = $"{url_default_textual_root}._PLACEHOLDER_BINARY_EXTENSION_";
-            url_default_textual_pom = $"{url_default_textual_root}.pom";
-            url_default_textual_sources = $"{url_default_textual_root}-sources.jar";
-            url_default_textual_javadoc = $"{url_default_textual_root}-javadoc.jar";
-            url_default_textual_module = $"{url_default_textual_root}.module";
 
             return;
         }
@@ -177,13 +175,25 @@ namespace HolisticWare.Xamarin.Tools.Maven
             set;
         }
 
-        public List<string> VersionsTextual
+        public string Version
         {
             get;
             set;
         }
 
-        public List<System.Version> Versions
+        public List<string> Versions
+        {
+            get;
+            set;
+        }
+
+        public List<System.Version> VersionsDotNet
+        {
+            get;
+            set;
+        }
+
+        public List<Artifact> Dependencies
         {
             get;
             set;
@@ -200,13 +210,6 @@ namespace HolisticWare.Xamarin.Tools.Maven
             get;
             set;
         }
-
-        public List<ArtifactUnversioned> Dependencies
-        {
-            get;
-            set;
-        }
-
 
         public async
             Task<List<string>>
@@ -299,65 +302,35 @@ namespace HolisticWare.Xamarin.Tools.Maven
             return response;
         }
 
-        public async
+        public virtual async
             Task<string>
                                     DownloadProjectObjectModelPOM
                                             (
                                             )
         {
-            string id = this.ArtifactId;
-            string idfq = this.IdFullyQualified.Replace(".", "/");
-            string v = this.VersionTextual;
-            string url = $"https://dl.google.com/android/maven2/{idfq}/{v}/{id}-{v}.pom";
-
-            string response = await MavenClient.HttpClient.GetStringAsync(url);
+            string response = null;
 
             return response;
         }
 
-        public async
+        public virtual async
             Task<ProjectObjectModel.Project>
                                     DeserializeProjectObjectModelPOM
                                             (
                                             )
         {
-            string content = await DownloadProjectObjectModelPOM();
-
-            System.Xml.Serialization.XmlSerializer xs = null;
-            xs = new System.Xml.Serialization.XmlSerializer(typeof(ProjectObjectModel.Project));
-            ProjectObjectModel.Project result;
-
-            string id_g = this.GroupId;
-            string id_a = this.ArtifactId;
-            System.IO.File.WriteAllText($"{id_g}.{id_a}-pom.xml", content);
-
-            using (System.IO.TextReader tr = new System.IO.StringReader(content))
-            {
-                result = (ProjectObjectModel.Project)xs.Deserialize(tr);
-            }
+            ProjectObjectModel.Project result = null;
 
             return result;
         }
 
-        public async
-            Task<POM.ProjectObjectModel.ProjectObjectModel>
+        public virtual async
+            Task<POM.ProjectObjectModel>
                                     DeserializeProjectObjectModelPOMFromOfficialXSD
                                             (
                                             )
         {
-            string content = await DownloadProjectObjectModelPOM();
-
-            System.Xml.Serialization.XmlSerializer xs = null;
-            xs = new System.Xml.Serialization.XmlSerializer(typeof(POM.ProjectObjectModel.ProjectObjectModel));
-            POM.ProjectObjectModel.ProjectObjectModel result;
-
-            using (System.IO.TextReader tr = new System.IO.StringReader(content))
-            {
-                result = (POM.ProjectObjectModel.ProjectObjectModel)xs.Deserialize(tr);
-            }
-
-            this.ProjectObjectModelTextual = content;
-            this.ProjectObjectModel = result;
+            POM.ProjectObjectModel result = null;
 
             return result;
         }

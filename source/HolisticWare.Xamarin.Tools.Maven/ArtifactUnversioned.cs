@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel;
+using HolisticWare.Xamarin.Tools.Maven.POM;
 
 namespace HolisticWare.Xamarin.Tools.Maven
 {
@@ -324,7 +324,7 @@ namespace HolisticWare.Xamarin.Tools.Maven
         }
         
         public async
-            Task<POM.ProjectObjectModel.ProjectObjectModel>
+            Task<POM.ProjectObjectModel>
                                     DeserializeProjectObjectModelPOMFromOfficialXSD
                                             (
                                             )
@@ -332,12 +332,12 @@ namespace HolisticWare.Xamarin.Tools.Maven
             string content = await DownloadProjectObjectModelPOM();
 
             System.Xml.Serialization.XmlSerializer xs = null;
-            xs = new System.Xml.Serialization.XmlSerializer(typeof(POM.ProjectObjectModel.ProjectObjectModel));
-            POM.ProjectObjectModel.ProjectObjectModel result;
+            xs = new System.Xml.Serialization.XmlSerializer(typeof(POM.ProjectObjectModel));
+            POM.ProjectObjectModel result;
 
             using (System.IO.TextReader tr = new System.IO.StringReader(content))
             {
-                result = (POM.ProjectObjectModel.ProjectObjectModel)xs.Deserialize(tr);
+                result = (POM.ProjectObjectModel)xs.Deserialize(tr);
             }
 
             this.ProjectObjectModelTextual = content;

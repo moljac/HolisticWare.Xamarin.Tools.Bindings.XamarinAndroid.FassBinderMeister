@@ -2,12 +2,14 @@
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel
+namespace HolisticWare.Xamarin.Tools.Maven.POM
 {
 	public partial class ProjectObjectModel
 	{
+		[XmlRoot(ElementName = "licenses", Namespace = "http://maven.apache.org/POM/4.0.0")]
 		public partial class Licenses
 		{
+			[XmlElement(ElementName = "license", Namespace = "http://maven.apache.org/POM/4.0.0")]
 			public License License
 			{
 				get;
