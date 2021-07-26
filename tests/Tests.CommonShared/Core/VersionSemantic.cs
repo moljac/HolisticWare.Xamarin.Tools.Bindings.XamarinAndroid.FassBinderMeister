@@ -150,12 +150,24 @@ namespace UnitTests.Core
                 { "1.0.0-0A.is.legal", new VersionSemantic() },
             };
 
-#if MSTEST
+            #if MSTEST
             Assert.AreEqual(data["1.9.0"].Major, 1);
+            Assert.AreEqual(data["1.9.0"].Minor, 9);
+            Assert.AreEqual(data["1.9.0"].Patch, 0);
+            Assert.AreEqual(data["1.9.0"].PreRelease, null);
+            Assert.AreEqual(data["1.9.0"].Build, null);
 #elif NUNIT
             Assert.AreEqual(data["1.9.0"].Major, 1);
+            Assert.AreEqual(data["1.9.0"].Minor, 9);
+            Assert.AreEqual(data["1.9.0"].Patch, 0);
+            Assert.AreEqual(data["1.9.0"].PreRelease, null);
+            Assert.AreEqual(data["1.9.0"].Build, null);
 #elif XUNIT
             Assert.Equal(data["1.9.0"].Major, 1);
+            Assert.Equal(data["1.9.0"].Minor, 9);
+            Assert.Equal(data["1.9.0"].Patch, 0);
+            Assert.Equal(data["1.9.0"].PreRelease, null);
+            Assert.Equal(data["1.9.0"].Build, null);
 #endif
 
             return;
@@ -169,78 +181,81 @@ namespace UnitTests.Core
             data = new Dictionary<string, VersionSemantic>()
             {
                 //{ "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
+                { "1", null },
+                { "1.2", null },
+                { "1.2.3-0123", null },
+                //{ "1.2.3-0123.0123", new VersionSemantic("1.2.3-0123.0123") },
+                //{ "1.1.2+.123", new VersionSemantic("1.1.2+.123") },
+                //{ "+invalid", new VersionSemantic("+invalid") },
+                //{ "-invalid", new VersionSemantic("-invalid") },
+                //{ "-invalid+invalid", new VersionSemantic("-invalid+invalid") },
+                //{ "-invalid.01", new VersionSemantic("-invalid.01") },
+                //{ "alpha", new VersionSemantic("alpha") },
+                //{ "alpha.beta", new VersionSemantic("alpha.beta") },
+                //{ "alpha.beta.1", new VersionSemantic("alpha.beta.1") },
+                //{ "alpha.1", new VersionSemantic("alpha.1") },
+                //{ "alpha+beta", new VersionSemantic("alpha+beta") },
+                //{ "alpha_beta", new VersionSemantic("alpha_beta") },
+                //{ "alpha.", new VersionSemantic("alpha.") },
+                //{ "alpha..beta", new VersionSemantic("alpha..beta") },
+                //{ "1.0.0-alpha_beta", new VersionSemantic("1.0.0-alpha_beta") },
+                //{ "-alpha.", new VersionSemantic("-alpha.") },
+                //{ "1.0.0-alpha..1.0.0-alpha..1", new VersionSemantic("1.0.0-alpha..1.0.0-alpha..1") },
+                //{ "1.0.0-alpha...1", new VersionSemantic("1.0.0-alpha...1") },
+                //{ "1.0.0-alpha....1", new VersionSemantic("1.0.0-alpha....1") },
+                //{ "1.0.0-alpha.....1", new VersionSemantic("1.0.0-alpha....1") },
+                //{ "1.0.0-alpha......1", new VersionSemantic("1.0.0-alpha......1") },
+                //{ "1.0.0-alpha.......1", new VersionSemantic("1.0.0-alpha.......1") },
+                //{ "01.1.1", new VersionSemantic("01.1.1") },
+                //{ "1.01.1", new VersionSemantic("1.01.1") },
+                //{ "1.1.01", new VersionSemantic("1.1.01") },
+                //{ "1.2", new VersionSemantic("1.2") },
+                //{ "1.2.3.DEV", new VersionSemantic("1.2.3.DEV") },
+                //{ "1.2-SNAPSHOT", new VersionSemantic("1.2-SNAPSHOT") },
+                //{ "1.2.31.2.3----RC-SNAPSHOT.12.09.1--..12+788", new VersionSemantic("1.2.31.2.3----RC-SNAPSHOT.12.09.1--..12+788") },
+                //{ "1.2-RC-SNAPSHOT", new VersionSemantic("1.2-RC-SNAPSHOT") },
+                //{ "-1.0.3-gamma+b7718", new VersionSemantic("-1.0.3-gamma+b7718") },
+                //{ "+justmeta", new VersionSemantic("+justmeta") },
+                //{ "9.8.7+meta+meta", new VersionSemantic("9.8.7+meta+meta") },
+                //{ "9.8.7-whatever+meta+meta", new VersionSemantic("9.8.7-whatever+meta+meta") },
+                //{ "99999999999999999999999.999999999999999999.99999999999999999----RC-SNAPSHOT.12.09.1--------------------------------..12", new VersionSemantic("99999999999999999999999.999999999999999999.99999999999999999----RC-SNAPSHOT.12.09.1--------------------------------..12") },
             };
 
-#if MSTEST
-            Assert.AreEqual(data["1.9.0"].Major, 1);
-#elif NUNIT
-            Assert.AreEqual(data["1.9.0"].Major, 1);
-#elif XUNIT
-            Assert.Equal(data["1.9.0"].Major, 1);
-#endif
-
-            return;
-        }
-
-        [Test]
-        public void Test_VersionSemantic_member_API_01_ctor_03_valid()
-        {
-            Dictionary<string, VersionSemantic> data;
-
-            data = new Dictionary<string, VersionSemantic>()
+            foreach (KeyValuePair<string, VersionSemantic> kvp in data)
             {
-                //{ "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-            };
+                try
+                {
+                    VersionSemantic vs = new VersionSemantic(kvp.Key);
 
+                    data[kvp.Key] = vs;
+                }
+                catch (System.InvalidOperationException exc)
+                {
+                }
+            }
 
+            int a = 2;
 
-
-#if MSTEST
-            Assert.AreEqual(data["1.9.0"].Major, 1);
-#elif NUNIT
-            Assert.AreEqual(data["1.9.0"].Major, 1);
-#elif XUNIT
-            Assert.Equal(data["1.9.0"].Major, 1);
-#endif
-
-            return;
-        }
-
-        [Test]
-        public void Test_VersionSemantic_member_API_01_ctor_03_invalid()
-        {
-            Dictionary<string, VersionSemantic> data;
-
-            data = new Dictionary<string, VersionSemantic>()
+            #if MSTEST
+            foreach (KeyValuePair<string, VersionSemantic> kvp in data)
             {
-                //{ "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-                { "", new VersionSemantic() },
-            };
-
-#if MSTEST
-            Assert.AreEqual(data["1.9.0"].Major, 1);
-#elif NUNIT
-            Assert.AreEqual(data["1.9.0"].Major, 1);
-#elif XUNIT
-            Assert.Equal(data["1.9.0"].Major, 1);
-#endif
+                Assert.IsNull(kvp.Value);
+            }
+            #elif NUNIT
+            foreach (KeyValuePair<string, VersionSemantic> kvp in data)
+            {
+                Assert.IsNull(kvp.Value);
+            }
+            #elif XUNIT
+            foreach (KeyValuePair<string, VersionSemantic> kvp in data)
+            {
+                Assert.Null(kvp.Value);
+            }
+            #endif
 
             return;
         }
+
 
         [Test]
         public void Test_VersionSemantic_static_API_01_Parse_02()
@@ -277,7 +292,7 @@ namespace UnitTests.Core
             VersionSemantic.Parse01("1.0.0-alpha01+20210712");
             VersionSemantic.Parse02("1.0.0-alpha01+20210712");
 
-            #if MSTEST
+#if MSTEST
             Assert.AreEqual(r01.major, 1);
 #elif NUNIT
             Assert.AreEqual(r01.major, 1);
@@ -343,7 +358,7 @@ namespace UnitTests.Core
             bool test87 = new VersionSemantic("1.0.0-rc.1") < new VersionSemantic("1.0.0");
             bool test88 = new VersionSemantic("1.0.0-rc") < new VersionSemantic("1.0.0");
 
-            #if MSTEST
+#if MSTEST
             Assert.AreEqual(test01, true);
 #elif NUNIT
             Assert.AreEqual(test01, true);
