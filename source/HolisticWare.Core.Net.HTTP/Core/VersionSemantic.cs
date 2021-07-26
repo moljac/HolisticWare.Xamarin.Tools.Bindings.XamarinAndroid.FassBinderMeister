@@ -74,18 +74,33 @@ namespace Core
 
             if (parts_core.Length == 3)
             {
+                if
+                    (
+                        parts_core[0].StartsWith("0") || parts_core[0].StartsWith("-")
+                        ||
+                        parts_core[1].StartsWith("0") || parts_core[1].StartsWith("-")
+                        ||
+                        parts_core[2].StartsWith("0") || parts_core[2].StartsWith("-")
+                    )
+                {
+                    throw new InvalidOperationException("Semantic Version not recognized");
+                }
+
                 int.TryParse(parts_core[0], out major);
                 int.TryParse(parts_core[1], out minor);
                 int.TryParse(parts_core[2], out patch);
             }
             else if (parts_core.Length == 2)
             {
-                int.TryParse(parts_core[0], out major);
-                int.TryParse(parts_core[1], out minor);
+                throw new InvalidOperationException("Semantic Version not recognized");
+            }
+            else if (parts_core.Length > 3)
+            {
+                throw new InvalidOperationException("Semantic Version not recognized");
             }
             else if (parts_core.Length == 1)
             {
-                int.TryParse(parts_core[0], out major);
+                throw new InvalidOperationException("Semantic Version not recognized");
             }
             else
             {
@@ -99,6 +114,15 @@ namespace Core
             else if ( contains_minus && ! contains_plus )
             {
                 prerelease = text.Substring(idx_minus + 1, text.Length - idx_minus - 1);
+
+                string[] parts_prerelease = prerelease.Split(new char[] { '.' }, StringSplitOptions.None);
+                foreach(string pp in parts_prerelease)
+                {
+                    if (pp == null)
+                    {
+                        throw new InvalidOperationException("Semantic Version not recognized");
+                    }
+                }
             }
             else if ( ! contains_minus && contains_plus )
             {
