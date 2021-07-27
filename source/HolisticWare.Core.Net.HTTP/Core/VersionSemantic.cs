@@ -9,19 +9,36 @@ namespace Core
     /// </summary>
     /// https://regex101.com/r/Ly7O1x/3/
     /// ^(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+	/// .NET does not support '?P'
+    /// ^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?:-(?<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
     /// https://regex101.com/r/vkijKf/1/
     /// ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
     public partial class VersionSemantic
     {
         static VersionSemantic()
         {
-            //re01 = new Regex(@"^(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$");
+            re01 = new Regex(@"^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?:-(?<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$");
             re02 = new Regex(@"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$");
 
             // https://dotnetfiddle.net/tnKTPd
             re03 = new Regex("^(?:\\d+\\.){2}\\d+(?:-(?:0|[1-9]\\d*|\\d*[a-z-][a-z\\d-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-z-][a-z\\d-]*))*)?(?:\\+[a-z\\d-]+(?:\\.[a-z\\d-]+)*)?$", RegexOptions.IgnoreCase);
+
+            ParsingMethod = ParseDummyNaive;
+
             return;
         }
+
+        public static Func
+            <
+                string,
+                (
+                    int major,
+                    int minor,
+                    int patch,
+                    string prerelease,
+                    string build
+                )
+            >                                       ParsingMethod;
 
         static Regex re01 = null;
         static Regex re02 = null;
@@ -36,7 +53,7 @@ namespace Core
                 string prerelease,
                 string build
             )
-                                                    Parse
+                                                    ParseDummyNaive
                                                         (
                                                             string text
                                                         )
@@ -76,11 +93,11 @@ namespace Core
             {
                 if
                     (
-                        parts_core[0].StartsWith("0") || parts_core[0].StartsWith("-")
+                        (parts_core[0].Length > 1 && parts_core[0].StartsWith("0")) || parts_core[0].StartsWith("-")
                         ||
-                        parts_core[1].StartsWith("0") || parts_core[1].StartsWith("-")
+                        (parts_core[1].Length > 1 && parts_core[1].StartsWith("0")) || parts_core[1].StartsWith("-")
                         ||
-                        parts_core[2].StartsWith("0") || parts_core[2].StartsWith("-")
+                        (parts_core[2].Length > 1 && parts_core[2].StartsWith("0")) || parts_core[2].StartsWith("-")
                     )
                 {
                     throw new InvalidOperationException("Semantic Version not recognized");
@@ -166,22 +183,172 @@ namespace Core
         }
 
         public static
-            void
-            Parse01(string text)
+            (
+                int major,
+                int minor,
+                int patch,
+                string prerelease,
+                string build
+            )
+                                                ParseRegexV01
+                                                            (
+                                                                string text
+                                                            )
         {
-            // MatchCollection matches = re01.Matches(text);
+            int major = -1;
+            int minor = -1;
+            int patch = -1;
+            string prerelease = null;
+            string build = null;
 
-            return;
+            MatchCollection matches = re01.Matches(text);
+
+            foreach (Match m in matches)
+            {
+                if (m.Groups["major"].Success)
+                {
+                    major = int.Parse(m.Groups["major"].Value);
+                }
+                if (m.Groups["minor"].Success)
+                {
+                    minor = int.Parse(m.Groups["minor"].Value);
+                }
+                if (m.Groups["patch"].Success)
+                {
+                    patch = int.Parse(m.Groups["patch"].Value);
+                }
+                if (m.Groups["prerelease"].Success)
+                {
+                    prerelease = m.Groups["prerelease"].Value;
+                }
+                if (m.Groups["buildmetadata"].Success)
+                {
+                    build = m.Groups["buildmetadata"].Value;
+                }
+            }
+
+            return
+                    (
+                        major: major,
+                        minor: minor,
+                        patch: patch,
+                        prerelease: prerelease,
+                        build: build
+                    );
         }
 
         public static
-            void
-            Parse02(string text)
+            (
+                int major,
+                int minor,
+                int patch,
+                string prerelease,
+                string build
+            )
+                                                ParseRegexV02
+                                                            (
+                                                                string text
+                                                            )
         {
+            int major = -1;
+            int minor = -1;
+            int patch = -1;
+            string prerelease = null;
+            string build = null;
+
+            MatchCollection matches = re02.Matches(text);
+
+            foreach (Match m in matches)
+            {
+                if (m.Groups["1"].Success)
+                {
+                    major = int.Parse(m.Groups["1"].Value);
+                }
+                if (m.Groups["2"].Success)
+                {
+                    minor = int.Parse(m.Groups["2"].Value);
+                }
+                if (m.Groups["3"].Success)
+                {
+                    patch = int.Parse(m.Groups["3"].Value);
+                }
+                if (m.Groups["4"].Success)
+                {
+                    prerelease = m.Groups["4"].Value;
+                }
+                if (m.Groups["5"].Success)
+                {
+                    build = m.Groups["5"].Value;
+                }
+            }
+
+            return
+                    (
+                        major: major,
+                        minor: minor,
+                        patch: patch,
+                        prerelease: prerelease,
+                        build: build
+                    );
+        }
+
+        private static
+            (
+                int major,
+                int minor,
+                int patch,
+                string prerelease,
+                string build
+            )
+                                                ParseRegexV03
+                                                            (
+                                                                string text
+                                                            )
+        {
+            int major = -1;
+            int minor = -1;
+            int patch = -1;
+            string prerelease = null;
+            string build = null;
+
+
             MatchCollection matches = re03.Matches(text);
 
-            return;
+            foreach (Match m in matches)
+            {
+                if (m.Groups["0"].Success)
+                {
+                    major = int.Parse(m.Groups["major"].Value);
+                }
+                if (m.Groups["minor"].Success)
+                {
+                    minor = int.Parse(m.Groups["minor"].Value);
+                }
+                if (m.Groups["patch"].Success)
+                {
+                    patch = int.Parse(m.Groups["patch"].Value);
+                }
+                if (m.Groups["prerelease"].Success)
+                {
+                    prerelease = m.Groups["prerelease"].Value;
+                }
+                if (m.Groups["buildmetadata"].Success)
+                {
+                    build = m.Groups["buildmetadata"].Value;
+                }
+            }
+
+            return
+                    (
+                        major: major,
+                        minor: minor,
+                        patch: patch,
+                        prerelease: prerelease,
+                        build: build
+                    );
         }
+
+
 
         public VersionSemantic()
         {
@@ -219,7 +386,7 @@ namespace Core
                 int patch,
                 string prerelease,
                 string build
-            ) parsed = Parse(version);
+            ) parsed = ParsingMethod(version);
 
             this.Major = parsed.major;
             this.Minor = parsed.minor;
