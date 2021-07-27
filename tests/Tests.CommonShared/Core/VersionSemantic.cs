@@ -125,13 +125,13 @@ namespace UnitTests.Core
                 { "1.1.2+meta-valid", new VersionSemantic("1.1.2+meta-valid") },
                 { "1.0.0-alpha", new VersionSemantic("1.0.0-alpha") },
                 { "1.0.0-beta", new VersionSemantic("1.0.0-beta") },
-                { "1.0.0-alpha.beta", new VersionSemantic() },
+                { "1.0.0-alpha.beta", new VersionSemantic("1.0.0-alpha.beta") },
                 { "1.0.0-alpha.beta.1", new VersionSemantic() },
-                { "1.0.0-alpha.1", new VersionSemantic() },
-                { "1.0.0-alpha0.valid", new VersionSemantic() },
-                { "1.0.0-alpha.0valid", new VersionSemantic() },
-                { "1.0.0-alpha-a.b-c-somethinglong+build.1-aef.1-its-okay", new VersionSemantic() },
-                { "1.0.0-rc.1+build.1", new VersionSemantic() },
+                { "1.0.0-alpha.1", new VersionSemantic("1.0.0-alpha.beta.1") },
+                { "1.0.0-alpha0.valid", new VersionSemantic("1.0.0-alpha0.valid") },
+                { "1.0.0-alpha.0valid", new VersionSemantic("1.0.0-alpha.0valid") },
+                { "1.0.0-alpha-a.b-c-somethinglong+build.1-aef.1-its-okay", new VersionSemantic("1.0.0-alpha-a.b-c-somethinglong+build.1-aef.1-its-okay") },
+                { "1.0.0-rc.1+build.1", new VersionSemantic("1.0.0-rc.1+build.1") },
                 { "2.0.0-rc.1+build.123", new VersionSemantic() },
                 { "1.2.3-beta", new VersionSemantic() },
                 { "10.2.3-DEV-SNAPSHOT", new VersionSemantic() },
@@ -263,41 +263,59 @@ namespace UnitTests.Core
             (int major, int minor, int patch, string prerelease, string build) r02;
             (int major, int minor, int patch, string prerelease, string build) r03;
             (int major, int minor, int patch, string prerelease, string build) r04;
-            (int major, int minor, int patch, string prerelease, string build) r05;
-            (int major, int minor, int patch, string prerelease, string build) r06;
-            (int major, int minor, int patch, string prerelease, string build) r07;
 
-            r01 = VersionSemantic.Parse("1");
-            VersionSemantic.Parse01("1");
-            VersionSemantic.Parse02("1");
-
-            r02 = VersionSemantic.Parse("1.0");
-            VersionSemantic.Parse01("1.0");
-            VersionSemantic.Parse02("1.0");
-
-            r03 = VersionSemantic.Parse("1.0.0");
-            VersionSemantic.Parse01("1.0.0");
-            VersionSemantic.Parse02("1.0.0");
-
-            r04 = VersionSemantic.Parse("1.0.0-alpha01");
-            VersionSemantic.Parse01("1.0.0-alpha01");
-            VersionSemantic.Parse02("1.0.0-alpha01");
-
-            r05 = VersionSemantic.Parse("1.0.0-alpha01-20210712");
-            VersionSemantic.Parse01("1.0.0-alpha01-20210712");
-            VersionSemantic.Parse02("1.0.0-alpha01-20210712");
-
-            r06 = VersionSemantic.Parse("1.0.0-alpha01+20210712");
-            VersionSemantic.Parse01("1.0.0-alpha01+20210712");
-            VersionSemantic.Parse02("1.0.0-alpha01+20210712");
-
+            r01 = VersionSemantic.ParseDummyNaive("1.0.0");
 #if MSTEST
             Assert.AreEqual(r01.major, 1);
+            Assert.AreEqual(r01.minor, 0);
+            Assert.AreEqual(r01.patch, 0);
+            Assert.IsNull(r01.prerelease);
+            Assert.IsNull(r01.build);
 #elif NUNIT
             Assert.AreEqual(r01.major, 1);
+            Assert.AreEqual(r01.minor, 0);
+            Assert.AreEqual(r01.patch, 0);
+            Assert.IsNull(r01.prerelease);
+            Assert.IsNull(r01.build);
 #elif XUNIT
             Assert.Equal(r01.major, 1);
+            Assert.Equal(r01.minor, 0);
+            Assert.Equal(r01.patch, 0);
+            Assert.Null(r01.prerelease);
+            Assert.Null(r01.build);
 #endif
+
+            r02 = VersionSemantic.ParseRegexV01("1.0.0");
+            r03 = VersionSemantic.ParseRegexV02("1.0.0");
+            // r04 = VersionSemantic.ParseRegexV03("1.0.0");
+
+            r01 = VersionSemantic.ParseDummyNaive("1.0.0-alpha01");
+            r02 = VersionSemantic.ParseRegexV01("1.0.0-alpha01");
+            r03 = VersionSemantic.ParseRegexV02("1.0.0-alpha01");
+            // r04 = VersionSemantic.ParseRegexV03("1.0.0-alpha01");
+
+            r01 = VersionSemantic.ParseDummyNaive("1.0.0-alpha01-20210712");
+            r02 = VersionSemantic.ParseRegexV01("1.0.0-alpha01-20210712");
+            r03 = VersionSemantic.ParseRegexV02("1.0.0-alpha01-20210712");
+            // r04 = VersionSemantic.ParseRegexV03("1.0.0-alpha01-20210712");
+
+            r01 = VersionSemantic.ParseDummyNaive("1.0.0-alpha01+20210712");
+            r02 = VersionSemantic.ParseRegexV01("1.0.0-alpha01+20210712");
+            r03 = VersionSemantic.ParseRegexV02("1.0.0-alpha01+20210712");
+            // r04 = VersionSemantic.ParseRegexV03("1.0.0-alpha01+20210712");
+
+            /*
+            r01 = VersionSemantic.ParseDummyNaive("1");
+            r02 = VersionSemantic.ParseRegexV01("1");
+            r03 = VersionSemantic.ParseRegexV02("1");
+            // r04 = VersionSemantic.ParseRegexV03("1");
+
+            r01 = VersionSemantic.ParseDummyNaive("1.0");
+            r02 = VersionSemantic.ParseRegexV01("1.0");
+            r03 = VersionSemantic.ParseRegexV02("1.0");
+            // r04 = VersionSemantic.ParseRegexV03("1.0");
+            */
+
 
             return;
         }
