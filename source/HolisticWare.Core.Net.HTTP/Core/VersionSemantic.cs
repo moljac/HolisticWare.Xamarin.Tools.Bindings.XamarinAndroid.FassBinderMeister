@@ -86,9 +86,21 @@ namespace Core
                     throw new InvalidOperationException("Semantic Version not recognized");
                 }
 
-                int.TryParse(parts_core[0], out major);
-                int.TryParse(parts_core[1], out minor);
-                int.TryParse(parts_core[2], out patch);
+                bool parsed_int_1 = int.TryParse(parts_core[0], out major);
+                if (parsed_int_1 == false)
+                {
+                    throw new InvalidOperationException("Semantic Version not recognized");
+                }
+                bool parsed_int_2 = int.TryParse(parts_core[1], out minor);
+                if (parsed_int_2 == false)
+                {
+                    throw new InvalidOperationException("Semantic Version not recognized");
+                }
+                bool parsed_int_3 = int.TryParse(parts_core[2], out patch);
+                if (parsed_int_3 == false)
+                {
+                    throw new InvalidOperationException("Semantic Version not recognized");
+                }
             }
             else if (parts_core.Length == 2)
             {
@@ -118,7 +130,7 @@ namespace Core
                 string[] parts_prerelease = prerelease.Split(new char[] { '.' }, StringSplitOptions.None);
                 foreach(string pp in parts_prerelease)
                 {
-                    if (pp == null)
+                    if ( pp.StartsWith("0") || pp == null )
                     {
                         throw new InvalidOperationException("Semantic Version not recognized");
                     }
@@ -131,6 +143,10 @@ namespace Core
             else if ( contains_minus && contains_plus)
             {
                 build = text.Substring(idx_plus + 1, text.Length - idx_plus - 1);
+                if (build.Contains("+"))
+                {
+                    throw new InvalidOperationException("Semantic Version not recognized");
+                }
                 prerelease = text.Substring(idx_minus + 1, text.Length - idx_minus - 1)
                                  .Replace($"+{build}", "");
             }
