@@ -265,50 +265,107 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         {
             Artifact a01 = new Artifact("androidx.car", "car", "1.0.0-alpha1");
 
-            HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p01 = null;
-            p01= a01.DeserializeProjectObjectModelPOM().Result;
-
             Artifact a02 = new Artifact("androidx.car", "car", "1.0.0");
 
+            return;
+        }
+
+        [Test]
+        public void Test_Artifact_Google_member_API_02_ParseArtifactIdFullyQualfied()
+        {
+            Artifact a01 = new Artifact("androidx.ads.ads-identifier");
+
+            Artifact a02 = new Artifact("androidx.ads:ads-identifier");
+
+            Artifact a03 = new Artifact("androidx.ads.ads-identifier-1.0.0");
+
+            Artifact a04 = new Artifact("androidx.ads:ads-identifier-1.0.0");
+
+            Artifact a05 = new Artifact("androidx.ads:ads-identifier:1.0.0");
+
+            Artifact a06 = new Artifact("androidx.ads.ads-identifier-1.0.0-alpha01");
+
+            Artifact a07 = new Artifact("androidx.ads:ads-identifier-1.0.0-alpha01");
+
+            Artifact a08 = new Artifact("androidx.ads:ads-identifier:1.0.0-alpha01");
+
+
+
+
+            Artifact a11 = new Artifact("androidx.car.car");
+
+            Artifact a12 = new Artifact("androidx.car:car");
+
+            Artifact a13 = new Artifact("androidx.car.car-1.0.0-alpha1");
+
+            Artifact a14 = new Artifact("androidx.car:car-1.0.0-alpha1");
+
+            Artifact a15 = new Artifact("androidx.car:car:1.0.0-alpha1");
+
+            Artifact a16 = new Artifact("androidx.car.car-1.0.0-alpha5");
+
+            Artifact a17 = new Artifact("androidx.car:car-1.0.0-alpha5");
+
+            Artifact a18 = new Artifact("androidx.car:car:1.0.0-alpha5");
+
+
+
+            Artifact a21 = new Artifact("androidx.cardview.cardview");
+
+            Artifact a22 = new Artifact("androidx.cardview:cardview");
+
+            Artifact a23 = new Artifact("androidx.cardview.cardview-1.0.0");
+
+            Artifact a24 = new Artifact("androidx.cardview:cardview-1.0.0");
+
+            Artifact a25 = new Artifact("androidx.cardview:cardview:1.0.0");
+
+            Artifact a26 = new Artifact("androidx.cardview.cardview-1.0.0-alpha3");
+
+            Artifact a27 = new Artifact("androidx.cardview:cardview-1.0.0-alpha3");
+
+            Artifact a28 = new Artifact("androidx.cardview:cardview:1.0.0-alpha3");
+
+            return;
+        }
+
+        [Test]
+        public void Test_Artifact_Google_member_API_03_DeserializeProjectObjectModelPOM()
+        {
+            Artifact a01 = new Artifact("androidx.car", "car", "1.0.0-alpha1");
+
+            HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p01 = null;
+            p01 = a01.DeserializeProjectObjectModelPOM().Result;
+
+            Artifact a02 = new Artifact("androidx.cardview", "cardview", "1.0.0");
+
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p02 = null;
-            p02 = a01.DeserializeProjectObjectModelPOM().Result;
+            p02 = a02.DeserializeProjectObjectModelPOM().Result;
 
-            return;
-        }
+            Artifact a03 = new Artifact("androidx.core", "core", "1.6.0-alpha01");
 
-        [Test]
-        public void Test_Artifact_Google_member_API_01_VersionSemantic_Parse()
-        {
+            HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p03 = null;
+            p03 = a03.DeserializeProjectObjectModelPOM().Result;
 
-            return;
-        }
+            Artifact a04 = new Artifact("androidx.core", "core", "1.6.0-alpha01");
 
-        [Test]
-        public void Test_Artifact_Google_member_API_01_ParseArtifactIdFullyQualfied()
-        {
-            VersionSemantic.Parse01("androidx.ads.ads-identifier");
-            VersionSemantic.Parse02("androidx.ads.ads-identifier");
+            HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p04 = null;
+            p04 = a04.DeserializeProjectObjectModelPOM().Result;
 
-            VersionSemantic.Parse01("androidx.ads:ads-identifier");
-            VersionSemantic.Parse02("androidx.ads:ads-identifier");
+            Artifact a05 = new Artifact("androidx.core", "core", "1.6.0");
 
-            VersionSemantic.Parse01("androidx.ads.ads-identifier-1.0.0");
-            VersionSemantic.Parse02("androidx.ads.ads-identifier-1.0.0");
+            HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p05 = null;
+            p05 = a05.DeserializeProjectObjectModelPOM().Result;
 
-            VersionSemantic.Parse01("androidx.ads:ads-identifier-1.0.0");
-            VersionSemantic.Parse02("androidx.ads:ads-identifier-1.0.0");
+            Artifact a06 = new Artifact("androidx.fragment", "fragment", "1.3.0-alpha01");
 
-            VersionSemantic.Parse01("androidx.ads:ads-identifier:1.0.0");
-            VersionSemantic.Parse02("androidx.ads:ads-identifier:1.0.0");
+            HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p06 = null;
+            p06 = a06.DeserializeProjectObjectModelPOM().Result;
 
-            VersionSemantic.Parse01("androidx.ads.ads-identifier-1.0.0-alpha01");
-            VersionSemantic.Parse02("androidx.ads.ads-identifier-1.0.0-alpha01");
+            Artifact a07 = new Artifact("androidx.fragment", "fragment", "1.3.6");
 
-            VersionSemantic.Parse01("androidx.ads:ads-identifier-1.0.0-alpha01");
-            VersionSemantic.Parse02("androidx.ads:ads-identifier-1.0.0-alpha01");
-
-            VersionSemantic.Parse01("androidx.ads:ads-identifier:1.0.0-alpha01");
-            VersionSemantic.Parse02("androidx.ads:ads-identifier:1.0.0-alpha01");
+            HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p07 = null;
+            p07 = a07.DeserializeProjectObjectModelPOM().Result;
 
             return;
         }
