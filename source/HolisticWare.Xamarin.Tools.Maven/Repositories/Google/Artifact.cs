@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core.Net.HTTP;
 
@@ -77,7 +78,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
         public virtual async
             Task<string>
-                                    DownloadProjectObjectModelPOM
+                                    DownloadProjectObjectModelPOMAsync
                                             (
                                             )
         {
@@ -104,11 +105,11 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
         public virtual async
             Task<POM.ProjectObjectModel.Project>
-                                    DeserializeProjectObjectModelPOM
+                                    DeserializeProjectObjectModelPOMAsync
                                             (
                                             )
         {
-            string content = await DownloadProjectObjectModelPOM();
+            string content = await DownloadProjectObjectModelPOMAsync();
 
             if ( null == content)
             {
@@ -128,5 +129,16 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             return result;
         }
 
-    }
+        public virtual async
+           Task<Dictionary<string, Artifact>>
+                                   DependencyTreeAsync
+                                           (
+                                                Dictionary<string, Artifact> dictionary
+                                           )
+        {
+
+
+            return dictionary;
+        }
+   }
 }
