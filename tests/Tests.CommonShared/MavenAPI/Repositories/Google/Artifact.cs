@@ -66,6 +66,7 @@ using System;
 
 using HolisticWare.Xamarin.Tools.Maven.Repositories.Google;
 using Core;
+using System.Collections.Generic;
 
 namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 {
@@ -335,39 +336,99 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             Artifact a01 = new Artifact("androidx.car", "car", "1.0.0-alpha1");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p01 = null;
-            p01 = a01.DeserializeProjectObjectModelPOM().Result;
+            p01 = a01.DeserializeProjectObjectModelPOMAsync().Result;
 
             Artifact a02 = new Artifact("androidx.cardview", "cardview", "1.0.0");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p02 = null;
-            p02 = a02.DeserializeProjectObjectModelPOM().Result;
+            p02 = a02.DeserializeProjectObjectModelPOMAsync().Result;
 
             Artifact a03 = new Artifact("androidx.core", "core", "1.6.0-alpha01");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p03 = null;
-            p03 = a03.DeserializeProjectObjectModelPOM().Result;
+            p03 = a03.DeserializeProjectObjectModelPOMAsync().Result;
 
             Artifact a04 = new Artifact("androidx.core", "core", "1.6.0-alpha01");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p04 = null;
-            p04 = a04.DeserializeProjectObjectModelPOM().Result;
+            p04 = a04.DeserializeProjectObjectModelPOMAsync().Result;
 
             Artifact a05 = new Artifact("androidx.core", "core", "1.6.0");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p05 = null;
-            p05 = a05.DeserializeProjectObjectModelPOM().Result;
+            p05 = a05.DeserializeProjectObjectModelPOMAsync().Result;
 
             Artifact a06 = new Artifact("androidx.fragment", "fragment", "1.3.0-alpha01");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p06 = null;
-            p06 = a06.DeserializeProjectObjectModelPOM().Result;
+            p06 = a06.DeserializeProjectObjectModelPOMAsync().Result;
 
             Artifact a07 = new Artifact("androidx.fragment", "fragment", "1.3.6");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p07 = null;
-            p07 = a07.DeserializeProjectObjectModelPOM().Result;
+            p07 = a07.DeserializeProjectObjectModelPOMAsync().Result;
+
+
+
+
+            Artifact a11 = new Artifact("com.google.android.material", "material", "1.4.0-alpha01");
+
+            HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p11 = null;
+            p11 = a11.DeserializeProjectObjectModelPOMAsync().Result;
+
+            Artifact a12 = new Artifact("com.google.android.material", "material", "1.4.0");
+
+            HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p12 = null;
+            p12 = a12.DeserializeProjectObjectModelPOMAsync().Result;
+
 
             return;
         }
+
+        [Test]
+        public void Test_Artifact_Google_member_API_03_DependencyTree()
+        {
+            Dictionary<string, Artifact> d01 = new Dictionary<string, Artifact>();
+            Artifact a01 = new Artifact("androidx.car", "car", "1.0.0-alpha1");
+            a01.DependencyTreeAsync(d01).Result;
+
+            Dictionary<string, Artifact> d02 = new Dictionary<string, Artifact>();
+            Artifact a02 = new Artifact("androidx.cardview", "cardview", "1.0.0");
+            a02.DependencyTreeAsync(d02).Result;
+
+            Dictionary<string, Artifact> d03 = new Dictionary<string, Artifact>();
+            Artifact a03 = new Artifact("androidx.core", "core", "1.6.0-alpha01");
+            a03.DependencyTreeAsync(d03).Result;
+
+            Dictionary<string, Artifact> d04 = new Dictionary<string, Artifact>();
+            Artifact a04 = new Artifact("androidx.core", "core", "1.6.0-alpha01");
+            a04.DependencyTreeAsync(d04).Result;
+
+            Dictionary<string, Artifact> d05 = new Dictionary<string, Artifact>();
+            Artifact a05 = new Artifact("androidx.core", "core", "1.6.0");
+            a05.DependencyTreeAsync(d05).Result;
+
+            Dictionary<string, Artifact> d06 = new Dictionary<string, Artifact>();
+            Artifact a06 = new Artifact("androidx.fragment", "fragment", "1.3.0-alpha01");
+            a06.DependencyTreeAsync(d06).Result;
+
+            Dictionary<string, Artifact> d07 = new Dictionary<string, Artifact>();
+            Artifact a07 = new Artifact("androidx.fragment", "fragment", "1.3.6");
+            a07.DependencyTreeAsync(d07).Result;
+
+
+
+
+            Dictionary<string, Artifact> d11 = new Dictionary<string, Artifact>();
+            Artifact a11 = new Artifact("com.google.android.material", "material", "1.4.0-alpha01");
+            a11.DependencyTreeAsync(d11).Result;
+
+            Dictionary<string, Artifact> d12 = new Dictionary<string, Artifact>();
+            Artifact a12 = new Artifact("com.google.android.material", "material", "1.4.0");
+            a12.DependencyTreeAsync(d12).Result;
+
+            return;
+        }
+
     }
 }
