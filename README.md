@@ -208,7 +208,7 @@ https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometri
 
   * available
 
-  * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/artifact-metadata.json
+    * https://dl.google.com/android/maven2/androidx/activity/activity/1.3.0-beta02/artifact-metadata.json
 
   * JSON
   
