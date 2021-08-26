@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google.Artifact.Module.Generated
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google.Artifacts.Module.Generated
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
     public class Attributes
