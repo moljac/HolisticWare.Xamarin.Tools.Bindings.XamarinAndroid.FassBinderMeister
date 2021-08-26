@@ -130,6 +130,32 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
                 return response;
             }
+
+
+            public static async
+                Task<string>
+                                        DownloadModuleAsync
+                                                (
+                                                    string group_id,
+                                                    string artifact_id,
+                                                    string version
+                                                )
+            {
+                string id = artifact_id;
+                string idg_url = group_id.Replace(".", "/");
+                string v = version;
+                string url = $"{Repository.UrlRootDefault}/{idg_url}/{id}/{v}/{id}-{v}.module";
+
+                string response = null;
+
+                if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
+                {
+                    response = await MavenClient.HttpClient.GetStringContentAsync(url);
+                }
+
+                return response;
+            }
+
             //------------------------------------------------------------------------------------
             public static async
                 Task<byte[]>
