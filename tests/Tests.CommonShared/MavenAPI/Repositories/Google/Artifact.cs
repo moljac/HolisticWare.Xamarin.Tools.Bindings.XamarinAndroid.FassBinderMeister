@@ -30,9 +30,10 @@
 using Xunit;
 // NUnit aliases
 using Test = Xunit.FactAttribute;
+using TestClass = Xunit.FactAttribute;
 using OneTimeSetUp = HolisticWare.Core.Testing.UnitTests.UnitTestsCompatibilityAliasAttribute;
 // XUnit aliases
-using TestClass = HolisticWare.Core.Testing.UnitTests.UnitTestsCompatibilityAliasAttribute;
+// using TestClass = HolisticWare.Core.Testing.UnitTests.UnitTestsCompatibilityAliasAttribute;
 using TestContext = HolisticWare.Core.Testing.UnitTests.TestContext;
 #elif NUNIT
 using NUnit.Framework;
@@ -63,13 +64,16 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
 using System;
-
-using HolisticWare.Xamarin.Tools.Maven.Repositories.Google;
-using Core;
 using System.Collections.Generic;
+
+using Core;
+
 
 namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 {
+    //using AliasRepoAgnostic   = global::HolisticWare.Xamarin.Tools.Maven;
+    using AliasArtifactGoogle = global::HolisticWare.Xamarin.Tools.Maven.Repositories.Google.Artifact;
+
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Artifact
     {
@@ -91,28 +95,28 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                 https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0.module
              */
             string url_default_textual_root     =
-                                                  Artifact.UrlDefaultTextualRoot
+                                                  AliasArtifactGoogle.UrlDefaultTextualRoot
                                                   // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_"
                                                   ;
             string url_default_textual_binary   =
-                                                  Artifact.UrlDefaultTextualBinary
+                                                  AliasArtifactGoogle.UrlDefaultTextualBinary
                                                   // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_.aar"
                                                   // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_.jar"
                                                   ;
             string url_default_textual_pom      =
-                                                  Artifact.UrlDefaultTextualProjectObjectModel
+                                                  AliasArtifactGoogle.UrlDefaultTextualProjectObjectModel
                                                   // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_.pom"
                                                   ;
             string url_default_textual_sources  =
-                                                  Artifact.UrlDefaultTextualSources
+                                                  AliasArtifactGoogle.UrlDefaultTextualSources
                                                   // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_-sources.jar"
                                                   ;
             string url_default_textual_javadoc  =
-                                                  Artifact.UrlDefaultTextualJavaDoc
+                                                  AliasArtifactGoogle.UrlDefaultTextualJavaDoc
                                                   // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_-javadoc.jar"
                                                   ;
             string url_default_textual_module   =
-                                                  Artifact.UrlDefaultTextualModule
+                                                  AliasArtifactGoogle.UrlDefaultTextualModule
                                                   // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_.module"
                                                   ;
 
@@ -229,44 +233,68 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Artifact_Google_static_API_01_ParseArtifactIdFullyQualified()
+        public void Test_Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_androidx_car_car_01()
         {
-            // unversioned:
-            //                  androidx.ads.ads-identifier
-            //                  androidx.ads:ads-identifier
-            // versioned:
-            //                  androidx.ads.ads-identifier-1.0.0
-            //                  androidx.ads:ads-identifier-1.0.0
-            //                  androidx.ads.ads-identifier-1.0.0
-            //                  androidx.ads:ads-identifier-1.0.0
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.pom
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.aar
+            byte[] bytez = AliasArtifactGoogle.Utilities.DownloadArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
+            return;
+        }
 
-            (string id_group, string id_artifact, string version) a01;
-            a01 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.ads.ads-identifier");
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_androidx_car_car_01()
+        {
+            // N/A
+            byte[] bytez = AliasArtifactGoogle.Utilities.DownloadArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
+            return;
+        }
 
-            (string id_group, string id_artifact, string version) a02;
-            a02 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.ads:ads-identifier");
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_androidx_car_car_01()
+        {
+            // N/A
+            byte[] bytez = AliasArtifactGoogle.Utilities.DownloadJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
+            return;
+        }
 
-            (string id_group, string id_artifact, string version) a03;
-            a03 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.biometric.biometric-1.0.0");
-
-            (string id_group, string id_artifact, string version) a04;
-            a04 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.biometric:biometric-1.0.0");
-
-            (string id_group, string id_artifact, string version) a05;
-            a05 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.ads.ads-identifier-1.0.0-alpha04");
-
-            (string id_group, string id_artifact, string version) a06;
-            a06 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.ads:ads-identifier-1.0.0-alpha04");
-
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_androidx_car_car_01()
+        {
+            // N/A
+            byte[] bytez = AliasArtifactGoogle.Utilities.DownloadSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
             return;
         }
 
         [Test]
         public void Test_Artifact_Google_member_API_01_ParseArtifactIdFullyQualified()
         {
-            Artifact a01 = new Artifact("androidx.car", "car", "1.0.0-alpha1");
+            AliasArtifactGoogle a01 = new AliasArtifactGoogle("androidx.car", "car", "1.0.0-alpha1");
 
-            Artifact a02 = new Artifact("androidx.car", "car", "1.0.0");
+            AliasArtifactGoogle a02 = new AliasArtifactGoogle("androidx.car", "car", "1.0.0");
 
             return;
         }
@@ -274,58 +302,58 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Artifact_Google_member_API_02_ParseArtifactIdFullyQualfied()
         {
-            Artifact a01 = new Artifact("androidx.ads.ads-identifier");
+            AliasArtifactGoogle a01 = new AliasArtifactGoogle("androidx.ads.ads-identifier");
 
-            Artifact a02 = new Artifact("androidx.ads:ads-identifier");
+            AliasArtifactGoogle a02 = new AliasArtifactGoogle("androidx.ads:ads-identifier");
 
-            Artifact a03 = new Artifact("androidx.ads.ads-identifier-1.0.0");
+            AliasArtifactGoogle a03 = new AliasArtifactGoogle("androidx.ads.ads-identifier-1.0.0");
 
-            Artifact a04 = new Artifact("androidx.ads:ads-identifier-1.0.0");
+            AliasArtifactGoogle a04 = new AliasArtifactGoogle("androidx.ads:ads-identifier-1.0.0");
 
-            Artifact a05 = new Artifact("androidx.ads:ads-identifier:1.0.0");
+            AliasArtifactGoogle a05 = new AliasArtifactGoogle("androidx.ads:ads-identifier:1.0.0");
 
-            Artifact a06 = new Artifact("androidx.ads.ads-identifier-1.0.0-alpha01");
+            AliasArtifactGoogle a06 = new AliasArtifactGoogle("androidx.ads.ads-identifier-1.0.0-alpha01");
 
-            Artifact a07 = new Artifact("androidx.ads:ads-identifier-1.0.0-alpha01");
+            AliasArtifactGoogle a07 = new AliasArtifactGoogle("androidx.ads:ads-identifier-1.0.0-alpha01");
 
-            Artifact a08 = new Artifact("androidx.ads:ads-identifier:1.0.0-alpha01");
-
-
-
-
-            Artifact a11 = new Artifact("androidx.car.car");
-
-            Artifact a12 = new Artifact("androidx.car:car");
-
-            Artifact a13 = new Artifact("androidx.car.car-1.0.0-alpha1");
-
-            Artifact a14 = new Artifact("androidx.car:car-1.0.0-alpha1");
-
-            Artifact a15 = new Artifact("androidx.car:car:1.0.0-alpha1");
-
-            Artifact a16 = new Artifact("androidx.car.car-1.0.0-alpha5");
-
-            Artifact a17 = new Artifact("androidx.car:car-1.0.0-alpha5");
-
-            Artifact a18 = new Artifact("androidx.car:car:1.0.0-alpha5");
+            AliasArtifactGoogle a08 = new AliasArtifactGoogle("androidx.ads:ads-identifier:1.0.0-alpha01");
 
 
 
-            Artifact a21 = new Artifact("androidx.cardview.cardview");
 
-            Artifact a22 = new Artifact("androidx.cardview:cardview");
+            AliasArtifactGoogle a11 = new AliasArtifactGoogle("androidx.car.car");
 
-            Artifact a23 = new Artifact("androidx.cardview.cardview-1.0.0");
+            AliasArtifactGoogle a12 = new AliasArtifactGoogle("androidx.car:car");
 
-            Artifact a24 = new Artifact("androidx.cardview:cardview-1.0.0");
+            AliasArtifactGoogle a13 = new AliasArtifactGoogle("androidx.car.car-1.0.0-alpha1");
 
-            Artifact a25 = new Artifact("androidx.cardview:cardview:1.0.0");
+            AliasArtifactGoogle a14 = new AliasArtifactGoogle("androidx.car:car-1.0.0-alpha1");
 
-            Artifact a26 = new Artifact("androidx.cardview.cardview-1.0.0-alpha3");
+            AliasArtifactGoogle a15 = new AliasArtifactGoogle("androidx.car:car:1.0.0-alpha1");
 
-            Artifact a27 = new Artifact("androidx.cardview:cardview-1.0.0-alpha3");
+            AliasArtifactGoogle a16 = new AliasArtifactGoogle("androidx.car.car-1.0.0-alpha5");
 
-            Artifact a28 = new Artifact("androidx.cardview:cardview:1.0.0-alpha3");
+            AliasArtifactGoogle a17 = new AliasArtifactGoogle("androidx.car:car-1.0.0-alpha5");
+
+            AliasArtifactGoogle a18 = new AliasArtifactGoogle("androidx.car:car:1.0.0-alpha5");
+
+
+
+            AliasArtifactGoogle a21 = new AliasArtifactGoogle("androidx.cardview.cardview");
+
+            AliasArtifactGoogle a22 = new AliasArtifactGoogle("androidx.cardview:cardview");
+
+            AliasArtifactGoogle a23 = new AliasArtifactGoogle("androidx.cardview.cardview-1.0.0");
+
+            AliasArtifactGoogle a24 = new AliasArtifactGoogle("androidx.cardview:cardview-1.0.0");
+
+            AliasArtifactGoogle a25 = new AliasArtifactGoogle("androidx.cardview:cardview:1.0.0");
+
+            AliasArtifactGoogle a26 = new AliasArtifactGoogle("androidx.cardview.cardview-1.0.0-alpha3");
+
+            AliasArtifactGoogle a27 = new AliasArtifactGoogle("androidx.cardview:cardview-1.0.0-alpha3");
+
+            AliasArtifactGoogle a28 = new AliasArtifactGoogle("androidx.cardview:cardview:1.0.0-alpha3");
 
             return;
         }
@@ -333,37 +361,37 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Artifact_Google_member_API_03_DeserializeProjectObjectModelPOM()
         {
-            Artifact a01 = new Artifact("androidx.car", "car", "1.0.0-alpha1");
+            AliasArtifactGoogle a01 = new AliasArtifactGoogle("androidx.car", "car", "1.0.0-alpha1");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p01 = null;
             p01 = a01.DeserializeProjectObjectModelPOMAsync().Result;
 
-            Artifact a02 = new Artifact("androidx.cardview", "cardview", "1.0.0");
+            AliasArtifactGoogle a02 = new AliasArtifactGoogle("androidx.cardview", "cardview", "1.0.0");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p02 = null;
             p02 = a02.DeserializeProjectObjectModelPOMAsync().Result;
 
-            Artifact a03 = new Artifact("androidx.core", "core", "1.6.0-alpha01");
+            AliasArtifactGoogle a03 = new AliasArtifactGoogle("androidx.core", "core", "1.6.0-alpha01");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p03 = null;
             p03 = a03.DeserializeProjectObjectModelPOMAsync().Result;
 
-            Artifact a04 = new Artifact("androidx.core", "core", "1.6.0-alpha01");
+            AliasArtifactGoogle a04 = new AliasArtifactGoogle("androidx.core", "core", "1.6.0-alpha01");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p04 = null;
             p04 = a04.DeserializeProjectObjectModelPOMAsync().Result;
 
-            Artifact a05 = new Artifact("androidx.core", "core", "1.6.0");
+            AliasArtifactGoogle a05 = new AliasArtifactGoogle("androidx.core", "core", "1.6.0");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p05 = null;
             p05 = a05.DeserializeProjectObjectModelPOMAsync().Result;
 
-            Artifact a06 = new Artifact("androidx.fragment", "fragment", "1.3.0-alpha01");
+            AliasArtifactGoogle a06 = new AliasArtifactGoogle("androidx.fragment", "fragment", "1.3.0-alpha01");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p06 = null;
             p06 = a06.DeserializeProjectObjectModelPOMAsync().Result;
 
-            Artifact a07 = new Artifact("androidx.fragment", "fragment", "1.3.6");
+            AliasArtifactGoogle a07 = new AliasArtifactGoogle("androidx.fragment", "fragment", "1.3.6");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p07 = null;
             p07 = a07.DeserializeProjectObjectModelPOMAsync().Result;
@@ -371,12 +399,12 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
 
 
-            Artifact a11 = new Artifact("com.google.android.material", "material", "1.4.0-alpha01");
+            AliasArtifactGoogle a11 = new AliasArtifactGoogle("com.google.android.material", "material", "1.4.0-alpha01");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p11 = null;
             p11 = a11.DeserializeProjectObjectModelPOMAsync().Result;
 
-            Artifact a12 = new Artifact("com.google.android.material", "material", "1.4.0");
+            AliasArtifactGoogle a12 = new AliasArtifactGoogle("com.google.android.material", "material", "1.4.0");
 
             HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p12 = null;
             p12 = a12.DeserializeProjectObjectModelPOMAsync().Result;
@@ -388,44 +416,44 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Artifact_Google_member_API_03_DependencyTree()
         {
-            Dictionary<string, Artifact> d01 = new Dictionary<string, Artifact>();
-            Artifact a01 = new Artifact("androidx.car", "car", "1.0.0-alpha1");
-            a01.DependencyTreeAsync(d01).Result;
+            Dictionary<string, AliasArtifactGoogle> d01 = new Dictionary<string, AliasArtifactGoogle>();
+            AliasArtifactGoogle a01 = new AliasArtifactGoogle("androidx.car", "car", "1.0.0-alpha1");
+            Dictionary<string, AliasArtifactGoogle> result_a01 = a01.DependencyTreeAsync(d01).Result;
 
-            Dictionary<string, Artifact> d02 = new Dictionary<string, Artifact>();
-            Artifact a02 = new Artifact("androidx.cardview", "cardview", "1.0.0");
-            a02.DependencyTreeAsync(d02).Result;
+            Dictionary<string, AliasArtifactGoogle> d02 = new Dictionary<string, AliasArtifactGoogle>();
+            AliasArtifactGoogle a02 = new AliasArtifactGoogle("androidx.cardview", "cardview", "1.0.0");
+            Dictionary<string, AliasArtifactGoogle> result_a02 = a02.DependencyTreeAsync(d02).Result;
 
-            Dictionary<string, Artifact> d03 = new Dictionary<string, Artifact>();
-            Artifact a03 = new Artifact("androidx.core", "core", "1.6.0-alpha01");
-            a03.DependencyTreeAsync(d03).Result;
+            Dictionary<string, AliasArtifactGoogle> d03 = new Dictionary<string, AliasArtifactGoogle>();
+            AliasArtifactGoogle a03 = new AliasArtifactGoogle("androidx.core", "core", "1.6.0-alpha01");
+            Dictionary<string, AliasArtifactGoogle> result_a03 = a03.DependencyTreeAsync(d03).Result;
 
-            Dictionary<string, Artifact> d04 = new Dictionary<string, Artifact>();
-            Artifact a04 = new Artifact("androidx.core", "core", "1.6.0-alpha01");
-            a04.DependencyTreeAsync(d04).Result;
+            Dictionary<string, AliasArtifactGoogle> d04 = new Dictionary<string, AliasArtifactGoogle>();
+            AliasArtifactGoogle a04 = new AliasArtifactGoogle("androidx.core", "core", "1.6.0-alpha01");
+            Dictionary<string, AliasArtifactGoogle> result_a04 = a04.DependencyTreeAsync(d04).Result;
 
-            Dictionary<string, Artifact> d05 = new Dictionary<string, Artifact>();
-            Artifact a05 = new Artifact("androidx.core", "core", "1.6.0");
-            a05.DependencyTreeAsync(d05).Result;
+            Dictionary<string, AliasArtifactGoogle> d05 = new Dictionary<string, AliasArtifactGoogle>();
+            AliasArtifactGoogle a05 = new AliasArtifactGoogle("androidx.core", "core", "1.6.0");
+            Dictionary<string, AliasArtifactGoogle> result_a05 = a05.DependencyTreeAsync(d05).Result;
 
-            Dictionary<string, Artifact> d06 = new Dictionary<string, Artifact>();
-            Artifact a06 = new Artifact("androidx.fragment", "fragment", "1.3.0-alpha01");
-            a06.DependencyTreeAsync(d06).Result;
+            Dictionary<string, AliasArtifactGoogle> d06 = new Dictionary<string, AliasArtifactGoogle>();
+            AliasArtifactGoogle a06 = new AliasArtifactGoogle("androidx.fragment", "fragment", "1.3.0-alpha01");
+            Dictionary<string, AliasArtifactGoogle> result_a06 = a06.DependencyTreeAsync(d06).Result;
 
-            Dictionary<string, Artifact> d07 = new Dictionary<string, Artifact>();
-            Artifact a07 = new Artifact("androidx.fragment", "fragment", "1.3.6");
-            a07.DependencyTreeAsync(d07).Result;
-
-
+            Dictionary<string, AliasArtifactGoogle> d07 = new Dictionary<string, AliasArtifactGoogle>();
+            AliasArtifactGoogle a07 = new AliasArtifactGoogle("androidx.fragment", "fragment", "1.3.6");
+            Dictionary<string, AliasArtifactGoogle> result_a07 = a07.DependencyTreeAsync(d07).Result;
 
 
-            Dictionary<string, Artifact> d11 = new Dictionary<string, Artifact>();
-            Artifact a11 = new Artifact("com.google.android.material", "material", "1.4.0-alpha01");
-            a11.DependencyTreeAsync(d11).Result;
 
-            Dictionary<string, Artifact> d12 = new Dictionary<string, Artifact>();
-            Artifact a12 = new Artifact("com.google.android.material", "material", "1.4.0");
-            a12.DependencyTreeAsync(d12).Result;
+
+            Dictionary<string, AliasArtifactGoogle> d11 = new Dictionary<string, AliasArtifactGoogle>();
+            AliasArtifactGoogle a11 = new AliasArtifactGoogle("com.google.android.material", "material", "1.4.0-alpha01");
+            Dictionary<string, AliasArtifactGoogle> result_a11 = a11.DependencyTreeAsync(d11).Result;
+
+            Dictionary<string, AliasArtifactGoogle> d12 = new Dictionary<string, AliasArtifactGoogle>();
+            AliasArtifactGoogle a12 = new AliasArtifactGoogle("com.google.android.material", "material", "1.4.0");
+            Dictionary<string, AliasArtifactGoogle> result_a12 = a12.DependencyTreeAsync(d12).Result;
 
             return;
         }

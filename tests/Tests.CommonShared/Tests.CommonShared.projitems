@@ -40,10 +40,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MavenClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\MasterIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\GroupIndex.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Serialization\JSON_Deserialization_BuddyClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\VersionSemantic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\HttpClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Artifact.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />

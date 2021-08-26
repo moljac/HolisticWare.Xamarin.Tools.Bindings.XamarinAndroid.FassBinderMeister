@@ -63,16 +63,15 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
-using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven;
+using HolisticWare.Xamarin.Tools.Maven;
 
 namespace UnitTests.ClientsAPI.Maven
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Artifact
     {
-        // MavenNet is gissing some API
+        // MavenNet is missing some API
         // https://github.com/Redth/MavenNet/
         // MavenClient is simple client for Google Maven Repo
 
@@ -121,6 +120,39 @@ namespace UnitTests.ClientsAPI.Maven
             Assert.NotNull(a);
             Assert.NotNull(content);
             #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Artifact_static_API_01_ParseArtifactIdFullyQualified()
+        {
+            // unversioned:
+            //                  androidx.ads.ads-identifier
+            //                  androidx.ads:ads-identifier
+            // versioned:
+            //                  androidx.ads.ads-identifier-1.0.0
+            //                  androidx.ads:ads-identifier-1.0.0
+            //                  androidx.ads.ads-identifier-1.0.0
+            //                  androidx.ads:ads-identifier-1.0.0
+
+            (string id_group, string id_artifact, string version) a01;
+            a01 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.ads.ads-identifier");
+
+            (string id_group, string id_artifact, string version) a02;
+            a02 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.ads:ads-identifier");
+
+            (string id_group, string id_artifact, string version) a03;
+            a03 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.biometric.biometric-1.0.0");
+
+            (string id_group, string id_artifact, string version) a04;
+            a04 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.biometric:biometric-1.0.0");
+
+            (string id_group, string id_artifact, string version) a05;
+            a05 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.ads.ads-identifier-1.0.0-alpha04");
+
+            (string id_group, string id_artifact, string version) a06;
+            a06 = Artifact.Utilities.ParseArtifactIdFullyQualified("androidx.ads:ads-identifier-1.0.0-alpha04");
 
             return;
         }
@@ -188,7 +220,7 @@ namespace UnitTests.ClientsAPI.Maven
                 VersionTextual = "1.0.0-alpha5"
             };
 
-            HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.Models.GeneratedFromXML.Original.ProjectObjectModel.Project p = null;
+            HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p = null;
             p = a.DeserializeProjectObjectModelPOM().Result;
 
             a.SaveAsync().Wait();
@@ -217,8 +249,8 @@ namespace UnitTests.ClientsAPI.Maven
                 VersionTextual = "1.0.0-alpha5"
             };
 
-            HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.ModelsFromOfficialXSD.ProjectObjectModel p = null;
-            p= a.DeserializeProjectObjectModelPOMFromOfficialXSD().Result;
+            HolisticWare.Xamarin.Tools.Maven.POM.ProjectObjectModel.Project p = null;
+            p = a.DeserializeProjectObjectModelPOM().Result;
 
             a.SaveAsync().Wait();
 
