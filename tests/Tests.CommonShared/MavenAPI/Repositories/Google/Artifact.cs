@@ -231,6 +231,9 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             return;
         }
 
+
+
+
         //-----------------------------------------------------------------------------------------------------------
         // https://maven.google.com/web/index.html?q=car#androidx.car:car:1.0.0-alpha7
 
@@ -349,6 +352,176 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
             return;
         }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_androidx_car_car_01()
+        {
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.module
+            string module = Artifact.Utilities.DownloadModuleAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(module);
+            Assert.IsTrue(string.IsNullOrEmpty(module));
+            #elif NUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
+            #elif XUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
+            #endif
+
+            return;
+        }
+        //-----------------------------------------------------------------------------------------------------------
+
+        //-----------------------------------------------------------------------------------------------------------
+        // https://maven.google.com/web/index.html#androidx.biometric:biometric:1.1.0
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_androidx_biometric_biometric_01()
+        {
+            string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
+                                                                (
+                                                                    "androidx.biometric",
+                                                                    "biometric",
+                                                                    "1.1.0"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_androidx_biometric_biometric_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "androidx.biometric",
+                                                                    "biometric",
+                                                                    "1.1.0"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.NotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_androidx_biometric_biometric_01()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.biometric",
+                                                                    "biometric",
+                                                                    "1.1.0"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.IsNull(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_androidx_biometric_biometric_01()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.biometric",
+                                                                    "biometric",
+                                                                    "1.1.0"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.IsNull(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_androidx_biometric_biometric_01()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.biometric",
+                                                                    "biometric",
+                                                                    "1.1.0"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_androidx_biometric_biometric_01()
+        {
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.module
+            string module = Artifact.Utilities.DownloadModuleAsync
+                                                                (
+                                                                    "androidx.biometric",
+                                                                    "biometric",
+                                                                    "1.1.0"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module);
+            Assert.IsFalse(string.IsNullOrEmpty(module));
+            #elif NUNIT
+            Assert.NotNull(module);
+            Assert.False(string.IsNullOrEmpty(module));
+            #elif XUNIT
+            Assert.NotNull(module);
+            Assert.False(string.IsNullOrEmpty(module));
+            #endif
+
+            return;
+        }
         //-----------------------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------------------------------------------------
@@ -357,7 +530,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_androidx_appcompat_appcompat_01()
         {
-            // https://dl.google.com/android/maven2/androidx/appcompat/appcompat/1.0.0-alpha7/car-1.0.0-alpha7.pom
+            // https://dl.google.com/android/maven2/androidx/appcompat/appcompat/1.3.1/car-1.3.1.pom
             string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
                                                                 (
                                                                     "androidx.appcompat",
@@ -366,16 +539,16 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                                                                 )
                                                                 .Result;
 
-#if MSTEST
+            #if MSTEST
             Assert.IsNotNull(pom);
             Assert.IsFalse(string.IsNullOrEmpty(pom));
-#elif NUNIT
+            #elif NUNIT
             Assert.NotNull(pom);
             Assert.False(string.IsNullOrEmpty(pom));
-#elif XUNIT
+            #elif XUNIT
             Assert.NotNull(pom);
             Assert.False(string.IsNullOrEmpty(pom));
-#endif
+            #endif
 
             return;
         }
@@ -383,7 +556,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_androidx_appcompat_appcompat_01()
         {
-            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.aar
+            // https://dl.google.com/android/maven2/androidx/appcompat/appcompat/1.3.1/car-1.3.1.aar
             byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
                                                                 (
                                                                     "androidx.appcompat",
@@ -392,13 +565,13 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                                                                 )
                                                                 .Result;
 
-#if MSTEST
+            #if MSTEST
             Assert.IsNotNull(bytez);
-#elif NUNIT
+            #elif NUNIT
             Assert.NotNull(bytez);
-#elif XUNIT
+            #elif XUNIT
             Assert.NotNull(bytez);
-#endif
+            #endif
 
             return;
         }
@@ -414,13 +587,13 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                                                                     "1.3.1"
                                                                 )
                                                                 .Result;
-#if MSTEST
+            #if MSTEST
             Assert.IsNull(bytez);
-#elif NUNIT
+            #elif NUNIT
             Assert.IsNull(bytez);
-#elif XUNIT
+            #elif XUNIT
             Assert.Null(bytez);
-#endif
+            #endif
 
             return;
         }
@@ -437,13 +610,13 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                                                                 )
                                                                 .Result;
 
-#if MSTEST
+            #if MSTEST
             Assert.IsNull(bytez);
-#elif NUNIT
+            #elif NUNIT
             Assert.IsNull(bytez);
-#elif XUNIT
+            #elif XUNIT
             Assert.Null(bytez);
-#endif
+            #endif
 
             return;
         }
@@ -459,13 +632,39 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
                                                                     "1.3.1"
                                                                 )
                                                                 .Result;
-#if MSTEST
+            #if MSTEST
             Assert.IsNotNull(bytez);
-#elif NUNIT
+            #elif NUNIT
             Assert.IsNotNull(bytez);
-#elif XUNIT
+            #elif XUNIT
             Assert.NotNull(bytez);
-#endif
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_androidx_appcompat_appcompat_01()
+        {
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.module
+            string module = Artifact.Utilities.DownloadModuleAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(module);
+            Assert.IsTrue(string.IsNullOrEmpty(module));
+            #elif NUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
+            #elif XUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
+            #endif
 
             return;
         }
@@ -583,6 +782,31 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             Assert.IsNull(bytez);
             #elif XUNIT
             Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_com_google_android_gms_play_services_ads_01()
+        {
+            string module = Artifact.Utilities.DownloadModuleAsync
+                                                                (
+                                                                    "com.google.android.gms",
+                                                                    "play-services-ads",
+                                                                    "20.3.0"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(module);
+            Assert.IsTrue(string.IsNullOrEmpty(module));
+            #elif NUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
+            #elif XUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
             #endif
 
             return;
@@ -707,6 +931,31 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
             return;
         }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_org_chromium_net_cronet_api_01()
+        {
+            string module = Artifact.Utilities.DownloadModuleAsync
+                                                                (
+                                                                    "org.chromium.net",
+                                                                    "cronet-api",
+                                                                    "92.4515.131"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(module);
+            Assert.IsTrue(string.IsNullOrEmpty(module));
+            #elif NUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
+            #elif XUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
+            #endif
+
+            return;
+        }
         //-----------------------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------------------------------------------------
@@ -826,6 +1075,30 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             return;
         }
 
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_com_android_tools_build_jetifier_jetifier_core_01()
+        {
+            string module = Artifact.Utilities.DownloadModuleAsync
+                                                                (
+                                                                    "com.android.tools.build.jetifier",
+                                                                    "jetifier-core",
+                                                                    "1.0.0-beta10"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module);
+            Assert.IsFalse(string.IsNullOrEmpty(module));
+            #elif NUNIT
+            Assert.NotNull(module);
+            Assert.False(string.IsNullOrEmpty(module));
+            #elif XUNIT
+            Assert.NotNull(module);
+            Assert.False(string.IsNullOrEmpty(module));
+            #endif
+
+            return;
+        }
         //-----------------------------------------------------------------------------------------------------------
 
 
