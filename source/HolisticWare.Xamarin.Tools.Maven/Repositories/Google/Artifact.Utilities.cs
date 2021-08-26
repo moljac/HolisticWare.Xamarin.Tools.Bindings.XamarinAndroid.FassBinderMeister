@@ -12,30 +12,48 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
         public static partial class Utilities
         {
             public static async
-                Task<byte[]>
-                                        DownloadArtifactAndroidArchiveAARAsync
+                Task<string>
+                                        DownloadProjectObjecModelPOMAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
-                                                    string version,
-                                                    string filename = null
+                                                    string version
                                                 )
             {
                 string id = artifact_id;
                 string idg_url = group_id.Replace(".", "/");
                 string v = version;
-                string url = $"{Repository.UrlRootDefault}/{idg_url}/{v}/{id}-{v}.aar";
+                string url = $"{Repository.UrlRootDefault}/{idg_url}/{id}/{v}/{id}-{v}.pom";
+
+                string response = null;
+
+                if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
+                {
+                    response = await MavenClient.HttpClient.GetStringContentAsync(url);
+                }
+
+                return response;
+            }
+
+            public static async
+                Task<byte[]>
+                                        DownloadArtifactAndroidArchiveAARAsync
+                                                (
+                                                    string group_id,
+                                                    string artifact_id,
+                                                    string version
+                                                )
+            {
+                string id = artifact_id;
+                string idg_url = group_id.Replace(".", "/");
+                string v = version;
+                string url = $"{Repository.UrlRootDefault}/{idg_url}/{id}/{v}/{id}-{v}.aar";
 
                 byte[] response = null;
 
                 if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
                 {
                     response = await MavenClient.HttpClient.GetByteArrayAsync(url);
-                }
-
-                if (string.IsNullOrEmpty(filename))
-                {
-                    filename = $"{group_id}.{artifact_id}-{version}.aar";
                 }
 
                 return response;
@@ -47,25 +65,19 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                                                 (
                                                     string group_id,
                                                     string artifact_id,
-                                                    string version,
-                                                    string filename = null
+                                                    string version
                                                 )
             {
                 string id = artifact_id;
                 string idg_url = group_id.Replace(".", "/");
                 string v = version;
-                string url = $"{Repository.UrlRootDefault}/{idg_url}/{v}/{id}-{v}.jar";
+                string url = $"{Repository.UrlRootDefault}/{idg_url}/{id}/{v}/{id}-{v}.jar";
 
                 byte[] response = null;
 
                 if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
                 {
                     response = await MavenClient.HttpClient.GetByteArrayAsync(url);
-                }
-
-                if (string.IsNullOrEmpty(filename))
-                {
-                    filename = $"{group_id}.{artifact_id}-{version}.jar";
                 }
 
                 return response;
@@ -77,25 +89,19 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                                                 (
                                                     string group_id,
                                                     string artifact_id,
-                                                    string version,
-                                                    string filename = null
+                                                    string version
                                                 )
             {
                 string id = artifact_id;
                 string idg_url = group_id.Replace(".", "/");
                 string v = version;
-                string url = $"{Repository.UrlRootDefault}/{idg_url}/{v}/{id}-{v}-sources.jar";
+                string url = $"{Repository.UrlRootDefault}/{idg_url}/{id}/{v}/{id}-{v}-sources.jar";
 
                 byte[] response = null;
 
                 if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
                 {
                     response = await MavenClient.HttpClient.GetByteArrayAsync(url);
-                }
-
-                if (string.IsNullOrEmpty(filename))
-                {
-                    filename = $"{group_id}.{artifact_id}-{version}-sources.jar";
                 }
 
                 return response;
@@ -107,14 +113,13 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                                                 (
                                                     string group_id,
                                                     string artifact_id,
-                                                    string version,
-                                                    string filename = null
+                                                    string version
                                                 )
             {
                 string id = artifact_id;
                 string idg_url = group_id.Replace(".", "/");
                 string v = version;
-                string url = $"{Repository.UrlRootDefault}/{idg_url}/{v}/{id}-{v}-javadoc.jar";
+                string url = $"{Repository.UrlRootDefault}/{idg_url}/{id}/{v}/{id}-{v}-javadoc.jar";
 
                 byte[] response = null;
 
@@ -123,10 +128,113 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                     response = await MavenClient.HttpClient.GetByteArrayAsync(url);
                 }
 
+                return response;
+            }
+            //------------------------------------------------------------------------------------
+            public static async
+                Task<byte[]>
+                                        DownloadAndSaveArtifactAndroidArchiveAARAsync
+                                                (
+                                                    string group_id,
+                                                    string artifact_id,
+                                                    string version,
+                                                    string filename = null
+                                                )
+            {
+                byte[] response = await DownloadAndSaveArtifactAndroidArchiveAARAsync
+                                                (
+                                                    group_id,
+                                                    artifact_id,
+                                                    version
+                                                );
+
                 if (string.IsNullOrEmpty(filename))
                 {
-                    filename = $"{group_id}.{artifact_id}-{version}-javadoc.jar";
+                    filename = $"google-repo--{group_id}.{artifact_id}-{version}.aar";
                 }
+
+                System.IO.File.WriteAllBytes(filename, response);
+
+                return response;
+            }
+
+            public static async
+                Task<byte[]>
+                                        DownloadAndSaveArtifactJavaArchiveJARAsync
+                                                (
+                                                    string group_id,
+                                                    string artifact_id,
+                                                    string version,
+                                                    string filename = null
+                                                )
+            {
+                byte[] response = await DownloadArtifactJavaArchiveJARAsync
+                                                (
+                                                    group_id,
+                                                    artifact_id,
+                                                    version
+                                                );
+
+                if (string.IsNullOrEmpty(filename))
+                {
+                    filename = $"google-repo--{group_id}.{artifact_id}-{version}.jar";
+                }
+
+                System.IO.File.WriteAllBytes(filename, response);
+
+                return response;
+            }
+
+            public static async
+                Task<byte[]>
+                                        DownloadAndSaveSourcesJavaArchiveJARAsync
+                                                (
+                                                    string group_id,
+                                                    string artifact_id,
+                                                    string version,
+                                                    string filename = null
+                                                )
+            {
+                byte[] response = await DownloadSourcesJavaArchiveJARAsync
+                                                (
+                                                    group_id,
+                                                    artifact_id,
+                                                    version
+                                                );
+
+                if (string.IsNullOrEmpty(filename))
+                {
+                    filename = $"google-repo--{group_id}.{artifact_id}-{version}.aar";
+                }
+
+                System.IO.File.WriteAllBytes(filename, response);
+
+                return response;
+            }
+
+            public static async
+                Task<byte[]>
+                                        DownloadAndSaveJavaDocJavaArchiveJARAsync
+                                                (
+                                                    string group_id,
+                                                    string artifact_id,
+                                                    string version,
+                                                    string filename = null
+                                                )
+            {
+                byte[] response = await DownloadJavaDocJavaArchiveJARAsync
+                                                (
+                                                    group_id,
+                                                    artifact_id,
+                                                    version
+                                                );
+
+                if (string.IsNullOrEmpty(filename))
+                {
+                    filename = $"google-repo--{group_id}.{artifact_id}-{version}.aar";
+                }
+
+                System.IO.File.WriteAllBytes(filename, response);
 
                 return response;
             }
