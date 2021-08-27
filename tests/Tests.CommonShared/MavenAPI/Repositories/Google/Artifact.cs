@@ -80,6 +80,11 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         {
             HolisticWare.Xamarin.Tools.Maven.MavenClient.HttpClient = Tests.CommonShared.Http.Client;
 
+            // download and save tests
+            if ( ! System.IO.Directory.Exists("../../../../../../../../output/"))
+            {
+                System.IO.Directory.CreateDirectory("../../../../../../../../output/");
+            }
             return;
         }
 
@@ -378,6 +383,297 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
             return;
         }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveProjectObjecModelPOMAsync_androidx_car_car_01()
+        {
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.pom
+            string pom = Artifact.Utilities.DownloadAndSaveProjectObjecModelPOMAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveArtifactAndroidArchiveAARAsync_androidx_car_car_01()
+        {
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.aar
+            byte[] bytez = Artifact.Utilities.DownloadAndSaveArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.NotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveArtifactJavaArchiveJARAsync_androidx_car_car_01()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadAndSaveArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.IsNull(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveJavaDocJavaArchiveJARAsync_androidx_car_car_01()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadAndSaveJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.IsNull(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveSourcesJavaArchiveJARAsync_androidx_car_car_01()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadAndSaveSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveModuleAsync_androidx_car_car_01()
+        {
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.module
+            string module = Artifact.Utilities.DownloadAndSaveModuleAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(module);
+            Assert.IsTrue(string.IsNullOrEmpty(module));
+            #elif NUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
+            #elif XUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveProjectObjecModelPOMAsync_androidx_car_car_02()
+        {
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.pom
+            string pom = Artifact.Utilities.DownloadAndSaveProjectObjecModelPOMAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7",
+                                                                    "../../../../../../../../output/androidx.car.car-1.0.0-alpha7.pom"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveArtifactAndroidArchiveAARAsync_androidx_car_car_02()
+        {
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.aar
+            byte[] bytez = Artifact.Utilities.DownloadAndSaveArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7",
+                                                                    "../../../../../../../../output/androidx.car.car-1.0.0-alpha7.aar"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.NotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveArtifactJavaArchiveJARAsync_androidx_car_car_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadAndSaveArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7",
+                                                                    "../../../../../../../../output/androidx.car.car-1.0.0-alpha7.jar"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.IsNull(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveJavaDocJavaArchiveJARAsync_androidx_car_car_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadAndSaveJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7",
+                                                                    "../../../../../../../../output/androidx.car.car-1.0.0-alpha7.jar"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.IsNull(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveSourcesJavaArchiveJARAsync_androidx_car_car_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadAndSaveSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7",
+                                                                    "../../../../../../../../output/androidx.car.car-1.0.0-alpha7-sources.jar"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_Google_static_API_01_DownloadAndSaveModuleAsync_androidx_car_car_02()
+        {
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.module
+            string module = Artifact.Utilities.DownloadAndSaveModuleAsync
+                                                                (
+                                                                    "androidx.car",
+                                                                    "car",
+                                                                    "1.0.0-alpha7",
+                                                                    "../../../../../../../../output/androidx.car.car-1.0.0-alpha7.module"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(module);
+            Assert.IsTrue(string.IsNullOrEmpty(module));
+            #elif NUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
+            #elif XUNIT
+            Assert.Null(module);
+            Assert.True(string.IsNullOrEmpty(module));
+            #endif
+
+            return;
+        }
+
         //-----------------------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------------------------------------------------
