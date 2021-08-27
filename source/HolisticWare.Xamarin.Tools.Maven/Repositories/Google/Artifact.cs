@@ -75,7 +75,6 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             return;
         }
 
-
         public virtual async
             Task<string>
                                     DownloadProjectObjectModelPOMAsync
