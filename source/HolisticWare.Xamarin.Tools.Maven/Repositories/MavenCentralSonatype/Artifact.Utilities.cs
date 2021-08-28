@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 using Core.Net.HTTP;
 
@@ -27,8 +24,11 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
                 string response = null;
 
+                System.Diagnostics.Trace.WriteLine($"Url = {url}");
+                System.Diagnostics.Trace.WriteLine("       probing");
                 if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
                 {
+                    System.Diagnostics.Trace.WriteLine($"       downloading {url}");
                     response = await MavenClient.HttpClient.GetStringContentAsync(url);
                 }
 
@@ -47,12 +47,15 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                 string id = artifact_id;
                 string idg_url = group_id.Replace(".", "/");
                 string v = version;
-                string url = $"{Repository.UrlRootDefault}/{idg_url}/{v}/{id}-{v}.aar";
+                string url = $"{Repository.UrlRootDefault}/{idg_url}/{id}/{v}/{id}-{v}.aar";
 
                 byte[] response = null;
 
+                System.Diagnostics.Trace.WriteLine($"Url = {url}");
+                System.Diagnostics.Trace.WriteLine("       probing");
                 if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
                 {
+                    System.Diagnostics.Trace.WriteLine($"       downloading {url}");
                     response = await MavenClient.HttpClient.GetByteArrayAsync(url);
                 }
 
@@ -71,12 +74,15 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                 string id = artifact_id;
                 string idg_url = group_id.Replace(".", "/");
                 string v = version;
-                string url = $"{Repository.UrlRootDefault}/{idg_url}/{v}/{id}-{v}.jar";
+                string url = $"{Repository.UrlRootDefault}/{idg_url}/{id}/{v}/{id}-{v}.jar";
 
                 byte[] response = null;
 
+                System.Diagnostics.Trace.WriteLine($"Url = {url}");
+                System.Diagnostics.Trace.WriteLine("       probing");
                 if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
                 {
+                    System.Diagnostics.Trace.WriteLine($"       downloading {url}");
                     response = await MavenClient.HttpClient.GetByteArrayAsync(url);
                 }
 
@@ -95,12 +101,15 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                 string id = artifact_id;
                 string idg_url = group_id.Replace(".", "/");
                 string v = version;
-                string url = $"{Repository.UrlRootDefault}/{idg_url}/{v}/{id}-{v}-sources.jar";
+                string url = $"{Repository.UrlRootDefault}/{idg_url}/{id}/{v}/{id}-{v}-sources.jar";
 
                 byte[] response = null;
 
+                System.Diagnostics.Trace.WriteLine($"Url = {url}");
+                System.Diagnostics.Trace.WriteLine("       probing");
                 if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
                 {
+                    System.Diagnostics.Trace.WriteLine($"       downloading {url}");
                     response = await MavenClient.HttpClient.GetByteArrayAsync(url);
                 }
 
@@ -119,12 +128,15 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                 string id = artifact_id;
                 string idg_url = group_id.Replace(".", "/");
                 string v = version;
-                string url = $"{Repository.UrlRootDefault}/{idg_url}/{v}/{id}-{v}-javadoc.jar";
+                string url = $"{Repository.UrlRootDefault}/{idg_url}/{id}/{v}/{id}-{v}-javadoc.jar";
 
                 byte[] response = null;
 
+                System.Diagnostics.Trace.WriteLine($"Url = {url}");
+                System.Diagnostics.Trace.WriteLine("       probing");
                 if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
                 {
+                    System.Diagnostics.Trace.WriteLine($"       downloading {url}");
                     response = await MavenClient.HttpClient.GetByteArrayAsync(url);
                 }
 
@@ -136,7 +148,8 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                                         DownloadMetadataAsync
                                                 (
                                                     string group_id,
-                                                    string artifact_id
+                                                    string artifact_id,
+                                                    string version = null
                                                 )
             {
                 string id = artifact_id;
@@ -145,18 +158,135 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
                 string response = null;
 
+                System.Diagnostics.Trace.WriteLine($"Url = {url}");
+                System.Diagnostics.Trace.WriteLine("       probing");
                 if (await MavenClient.HttpClient.IsReachableUrlAsync(url))
                 {
+                    System.Diagnostics.Trace.WriteLine($"       downloading {url}");
                     response = await MavenClient.HttpClient.GetStringContentAsync(url);
                 }
 
                 return response;
             }
 
+            public static async
+                Task
+                    <
+                    (
+                        string pom,
+                        byte[] aar,
+                        byte[] jar,
+                        byte[] jar_javadoc,
+                        byte[] jar_sources,
+                        string metadata
+                    )
+                    >
+                                        DownloadAllAsync
+                                                (
+                                                    string group_id,
+                                                    string artifact_id,
+                                                    string version
+                                                )
+            {
+                string result_pom = null;
+                byte[] result_aar = null;
+                byte[] result_jar = null;
+                byte[] result_jar_javadoc = null;
+                byte[] result_jar_sources = null;
+                string result_metadata = null;
+
+                // cannot use Pralallel.ForEachAsync because of different return types
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_pom = await DownloadProjectObjecModelPOMAsync
+                                                          (
+                                                              group_id,
+                                                              artifact_id,
+                                                              version
+                                                          );
+                        }
+                    );
+
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_aar = await DownloadArtifactAndroidArchiveAARAsync
+                                                          (
+                                                              group_id,
+                                                              artifact_id,
+                                                              version
+                                                          );
+                        }
+                    );
+
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_jar = await DownloadArtifactJavaArchiveJARAsync
+                                                          (
+                                                              group_id,
+                                                              artifact_id,
+                                                              version
+                                                          );
+                        }
+                    );
+
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_jar_javadoc = await DownloadJavaDocJavaArchiveJARAsync
+                                                          (
+                                                              group_id,
+                                                              artifact_id,
+                                                              version
+                                                          );
+                        }
+                    );
+
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_jar_sources = await DownloadSourcesJavaArchiveJARAsync
+                                                              (
+                                                              group_id,
+                                                              artifact_id,
+                                                              version
+                                                          );
+                        }
+                    );
+
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_metadata = await DownloadMetadataAsync
+                                                          (
+                                                              group_id,
+                                                              artifact_id
+                                                          );
+                        }
+                    );
+
+                return
+                    (
+                        pom: result_pom,
+                        aar: result_aar,
+                        jar: result_jar,
+                        jar_javadoc: result_jar_javadoc,
+                        jar_sources: result_jar_sources,
+                        metadata: result_metadata
+                    );
+            }
             //------------------------------------------------------------------------------------
             public static async
                 Task<string>
-                                        DownloadAndSaveProjectObjecModelPOMAsync
+                                        DownloadThenSaveProjectObjecModelPOMAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
@@ -181,6 +311,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                     filename = $"google-repo--{group_id}.{artifact_id}-{version}.pom";
                 }
 
+                System.Diagnostics.Trace.WriteLine($"  saving to file {filename}");
                 System.IO.File.WriteAllText(filename, response);
 
                 return response;
@@ -188,7 +319,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
             public static async
                 Task<byte[]>
-                                        DownloadAndSaveArtifactAndroidArchiveAARAsync
+                                        DownloadThenSaveArtifactAndroidArchiveAARAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
@@ -213,6 +344,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                     filename = $"google-repo--{group_id}.{artifact_id}-{version}.aar";
                 }
 
+                System.Diagnostics.Trace.WriteLine($"  saving to file {filename}");
                 System.IO.File.WriteAllBytes(filename, response);
 
                 return response;
@@ -220,7 +352,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
             public static async
                 Task<byte[]>
-                                        DownloadAndSaveArtifactJavaArchiveJARAsync
+                                        DownloadThenSaveArtifactJavaArchiveJARAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
@@ -245,6 +377,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                     filename = $"google-repo--{group_id}.{artifact_id}-{version}.jar";
                 }
 
+                System.Diagnostics.Trace.WriteLine($"  saving to file {filename}");
                 System.IO.File.WriteAllBytes(filename, response);
 
                 return response;
@@ -252,7 +385,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
             public static async
                 Task<byte[]>
-                                        DownloadAndSaveSourcesJavaArchiveJARAsync
+                                        DownloadThenSaveSourcesJavaArchiveJARAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
@@ -277,6 +410,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                     filename = $"google-repo--{group_id}.{artifact_id}-{version}-sources.jar";
                 }
 
+                System.Diagnostics.Trace.WriteLine($"  saving to file {filename}");
                 System.IO.File.WriteAllBytes(filename, response);
 
                 return response;
@@ -284,7 +418,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
             public static async
                 Task<byte[]>
-                                        DownloadAndSaveJavaDocJavaArchiveJARAsync
+                                        DownloadThenSaveJavaDocJavaArchiveJARAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
@@ -309,6 +443,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
                     filename = $"google-repo--{group_id}.{artifact_id}-{version}-javadoc.jar";
                 }
 
+                System.Diagnostics.Trace.WriteLine($"  saving to file {filename}");
                 System.IO.File.WriteAllBytes(filename, response);
 
                 return response;
@@ -316,10 +451,11 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
             public static async
                 Task<string>
-                                        DownloadAndSaveMetadataAsync
+                                        DownloadThenSaveMetadataAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
+                                                    string version = null,
                                                     string filename = null
                                                 )
             {

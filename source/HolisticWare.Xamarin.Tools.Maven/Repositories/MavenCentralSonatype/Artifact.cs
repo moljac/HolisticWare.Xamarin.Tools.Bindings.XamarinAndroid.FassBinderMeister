@@ -6,14 +6,22 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 {
     public partial class Artifact : Maven.Artifact
     {
-        public Artifact()
-            :
-            base()
+        static Artifact()
         {
+            // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID_/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_"
+            url_default_textual_root = $"{Repository.UrlRootDefault}/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID_/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_";
+            url_default_textual_binary = $"{url_default_textual_root}._PLACEHOLDER_BINARY_EXTENSION_";
+            url_default_textual_pom = $"{url_default_textual_root}.pom";
+            url_default_textual_sources = $"{url_default_textual_root}-sources.jar";
+            url_default_textual_javadoc = $"{url_default_textual_root}-javadoc.jar";
+            url_default_textual_module = $"{url_default_textual_root}.module";
+
             return;
         }
 
-        static Artifact()
+        public Artifact()
+            :
+            base()
         {
             return;
         }
@@ -58,6 +66,100 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
             this.ArtifactId = id_fully_qualified.Substring(idx + 1, id_fully_qualified.Length - (idx + 1));
 
             return;
+        }
+
+        public static string UrlDefaultTextualRoot
+        {
+            get
+            {
+                return url_default_textual_root;
+            }
+
+            set
+            {
+                url_default_textual_root = value;
+
+                return;
+            }
+        }
+
+        public static string UrlDefaultTextualBinary
+        {
+            get
+            {
+                return url_default_textual_binary;
+            }
+
+            set
+            {
+                url_default_textual_binary = value;
+
+                return;
+            }
+        }
+
+        public static string UrlDefaultTextualProjectObjectModel
+        {
+            get
+            {
+                return url_default_textual_pom;
+            }
+
+            set
+            {
+                url_default_textual_pom = value;
+
+                return;
+            }
+        }
+
+        public static string UrlDefaultTextualSources
+        {
+            get
+            {
+                return url_default_textual_sources;
+            }
+
+            set
+            {
+                url_default_textual_sources = value;
+
+                return;
+            }
+        }
+
+        public static string UrlDefaultTextualJavaDoc
+        {
+            get
+            {
+                return url_default_textual_javadoc;
+            }
+
+            set
+            {
+                url_default_textual_javadoc = value;
+
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Artifact (unversioned) Metadata
+        /// Maven Central / Sonatype Repository Only!
+        /// </summary>
+        public static string UrlDefaultTextualMetadata
+        {
+            get
+            {
+                return url_default_textual_metadata;
+            }
+
+            set
+            {
+                url_default_textual_metadata = value;
+
+                return;
+            }
         }
 
         public virtual async

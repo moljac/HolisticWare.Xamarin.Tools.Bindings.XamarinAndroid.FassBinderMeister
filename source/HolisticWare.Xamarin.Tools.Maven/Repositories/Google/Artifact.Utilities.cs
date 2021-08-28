@@ -156,10 +156,125 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                 return response;
             }
 
+            public static async
+                Task
+                    <
+                    (
+                        string pom,
+                        byte[] aar,
+                        byte[] jar,
+                        byte[] jar_javadoc,
+                        byte[] jar_sources,
+                        string module
+                    )
+                    >
+                                        DownloadAllAsync
+                                                (
+                                                    string group_id,
+                                                    string artifact_id,
+                                                    string version
+                                                )
+            {
+                string result_pom = null;
+                byte[] result_aar = null;
+                byte[] result_jar = null;
+                byte[] result_jar_javadoc = null;
+                byte[] result_jar_sources = null;
+                string result_module = null;
+
+                // cannot use Pralallel.ForEachAsync because of different return types
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_pom = await DownloadProjectObjecModelPOMAsync
+                                                          (
+                                                              group_id,
+                                                              artifact_id,
+                                                              version
+                                                          );
+                        }
+                    );
+
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_aar = await DownloadArtifactAndroidArchiveAARAsync
+                                                          (
+                                                              group_id,
+                                                              artifact_id,
+                                                              version
+                                                          );
+                        }
+                    );
+
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_jar = await DownloadArtifactJavaArchiveJARAsync
+                                                          (
+                                                              group_id,
+                                                              artifact_id,
+                                                              version
+                                                          );
+                        }
+                    );
+
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_jar_javadoc = await DownloadJavaDocJavaArchiveJARAsync
+                                                          (
+                                                              group_id,
+                                                              artifact_id,
+                                                              version
+                                                          );
+                        }
+                    );
+
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_jar_sources = await DownloadSourcesJavaArchiveJARAsync
+                                                              (
+                                                              group_id,
+                                                              artifact_id,
+                                                              version
+                                                          );
+                        }
+                    );
+
+                Parallel.Invoke
+                    (
+                        async () =>
+                        {
+                            result_module = await DownloadModuleAsync
+                                                          (
+                                                              group_id,
+                                                              artifact_id,
+                                                              version
+                                                          );
+                        }
+                    );
+
+                return
+                    (
+                        pom: result_pom,
+                        aar: result_aar,
+                        jar: result_jar,
+                        jar_javadoc: result_jar_javadoc,
+                        jar_sources: result_jar_sources,
+                        module: result_module
+                    );
+            }
             //------------------------------------------------------------------------------------
             public static async
                 Task<string>
-                                        DownloadAndSaveProjectObjecModelPOMAsync
+                                        DownloadThenSaveProjectObjecModelPOMAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
@@ -191,7 +306,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
             public static async
                 Task<byte[]>
-                                        DownloadAndSaveArtifactAndroidArchiveAARAsync
+                                        DownloadThenSaveArtifactAndroidArchiveAARAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
@@ -223,7 +338,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
             public static async
                 Task<byte[]>
-                                        DownloadAndSaveArtifactJavaArchiveJARAsync
+                                        DownloadThenSaveArtifactJavaArchiveJARAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
@@ -255,7 +370,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
             public static async
                 Task<byte[]>
-                                        DownloadAndSaveSourcesJavaArchiveJARAsync
+                                        DownloadThenSaveSourcesJavaArchiveJARAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
@@ -287,7 +402,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
             public static async
                 Task<byte[]>
-                                        DownloadAndSaveJavaDocJavaArchiveJARAsync
+                                        DownloadThenSaveJavaDocJavaArchiveJARAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,
@@ -319,7 +434,7 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
 
             public static async
                 Task<string>
-                                        DownloadAndSaveModuleAsync
+                                        DownloadThenSaveModuleAsync
                                                 (
                                                     string group_id,
                                                     string artifact_id,

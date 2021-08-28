@@ -75,6 +75,100 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             return;
         }
 
+        public static string UrlDefaultTextualRoot
+        {
+            get
+            {
+                return url_default_textual_root;
+            }
+
+            set
+            {
+                url_default_textual_root = value;
+
+                return;
+            }
+        }
+
+        public static string UrlDefaultTextualBinary
+        {
+            get
+            {
+                return url_default_textual_binary;
+            }
+
+            set
+            {
+                url_default_textual_binary = value;
+
+                return;
+            }
+        }
+
+        public static string UrlDefaultTextualProjectObjectModel
+        {
+            get
+            {
+                return url_default_textual_pom;
+            }
+
+            set
+            {
+                url_default_textual_pom = value;
+
+                return;
+            }
+        }
+
+        public static string UrlDefaultTextualSources
+        {
+            get
+            {
+                return url_default_textual_sources;
+            }
+
+            set
+            {
+                url_default_textual_sources = value;
+
+                return;
+            }
+        }
+
+        public static string UrlDefaultTextualJavaDoc
+        {
+            get
+            {
+                return url_default_textual_javadoc;
+            }
+
+            set
+            {
+                url_default_textual_javadoc = value;
+
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Artifact (unversioned) Metadata
+        /// Google Repository Only!
+        /// </summary>
+        public static string UrlDefaultTextualModule
+        {
+            get
+            {
+                return url_default_textual_module;
+            }
+
+            set
+            {
+                url_default_textual_module = value;
+
+                return;
+            }
+        }
+
         public virtual async
             Task<string>
                                     DownloadProjectObjectModelPOMAsync

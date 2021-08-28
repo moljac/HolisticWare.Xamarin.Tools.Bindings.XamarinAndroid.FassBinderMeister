@@ -154,6 +154,10 @@ namespace HolisticWare.Xamarin.Tools.Maven
 
         protected static string url_default_textual_module = null;
 
+        /// <summary>
+        /// Artifact (unversioned) Metadata
+        /// Google Repository Only!
+        /// </summary>
         public static string UrlDefaultTextualModule
         {
             get
@@ -164,6 +168,27 @@ namespace HolisticWare.Xamarin.Tools.Maven
             set
             {
                 url_default_textual_module = value;
+
+                return;
+            }
+        }
+
+        protected static string url_default_textual_metadata = null;
+
+        /// <summary>
+        /// Artifact (unversioned) Metadata
+        /// Maven Central / Sonatype Repository Only!
+        /// </summary>
+        public static string UrlDefaultTextualMetadata
+        {
+            get
+            {
+                return url_default_textual_metadata;
+            }
+
+            set
+            {
+                url_default_textual_metadata = value;
 
                 return;
             }
