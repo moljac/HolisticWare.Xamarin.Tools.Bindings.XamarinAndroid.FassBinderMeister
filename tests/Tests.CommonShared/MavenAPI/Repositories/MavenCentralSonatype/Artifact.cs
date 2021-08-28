@@ -231,13 +231,8 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
             return;
         }
 
-        // https://repo1.maven.org/maven2/com/google/guava/guava-io/r03/
-        // https://repo1.maven.org/maven2/com/google/guava/guava/
-        // https://repo1.maven.org/maven2/com/google/guava/guava/30.1-android/
-        // https://repo1.maven.org/maven2/com/google/dagger/dagger/2.38.1/
-        // https://repo1.maven.org/maven2/com/squareup/dagger/dagger/1.2.5/
-
         //-----------------------------------------------------------------------------------------------------------
+        #region         Download com_google_crypto_tink_tink_android
         // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/
         // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/
 
@@ -735,8 +730,1487 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
             return;
         }
 
+        #endregion      Download com_google_crypto_tink_tink_android
         //-----------------------------------------------------------------------------------------------------------
 
+
+        //-----------------------------------------------------------------------------------------------------------
+        #region         Download com_google_crypto_dagger_dagger_android
+        // https://repo1.maven.org/maven2/com/google/dagger/dagger-android/
+        // https://repo1.maven.org/maven2/com/google/dagger/dagger-android/2.9/
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadProjectObjecModelPOMAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            // 
+            string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadArtifactAndroidArchiveAARAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/tink-android-1.6.1.aar
+            byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.NotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadArtifactJavaArchiveJARAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/tink-android-1.6.1.jar
+            byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.IsNull(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadJavaDocJavaArchiveJARAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/tink-android-1.6.1-javadoc.jar
+            byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadSourcesJavaArchiveJARAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadMetadataAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/maven-metadata.xml
+            string module_01 = Artifact.Utilities.DownloadMetadataAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+            #elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadMetadataAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #endif
+
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/tink-android-1.6.1.pom
+            string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/1.6.1/tink-android-1.6.1.aar
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.NotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.IsNull(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveModuleAsync_com_google_crypto_dagger_dagger_android_01()
+        {
+            string module_01 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+            #elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_com_google_crypto_dagger_dagger_android_02()
+        {
+            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.pom
+            string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.pom"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_com_google_crypto_dagger_dagger_android_02()
+        {
+            // 
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.aar"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.NotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_com_google_crypto_dagger_dagger_android_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.jar"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.IsNull(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_com_google_crypto_dagger_dagger_android_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-javadoc.jar"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_com_google_crypto_dagger_dagger_android_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-sources.jar"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveMetadataAsync_com_google_crypto_dagger_dagger_android_02()
+        {
+            string module_01 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+            #elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.google.dagger",
+                                                                    "dagger-android",
+                                                                    "2.9",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #endif
+
+            return;
+        }
+
+        #endregion      Download com_google_crypto_dagger_dagger_android
+        //-----------------------------------------------------------------------------------------------------------
+
+
+        //-----------------------------------------------------------------------------------------------------------
+        #region         Download com_squareup_dagger_dagger
+        // https://repo1.maven.org/maven2/com/squareup/dagger/dagger/
+        // https://repo1.maven.org/maven2/com/squareup/dagger/dagger/1.2.5/
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadProjectObjecModelPOMAsync_com_squareup_dagger_dagger_01()
+        {
+            // 
+            string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadArtifactAndroidArchiveAARAsync_com_squareup_dagger_dagger_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.Null(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadArtifactJavaArchiveJARAsync_com_squareup_dagger_dagger_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadJavaDocJavaArchiveJARAsync_com_squareup_dagger_dagger_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadSourcesJavaArchiveJARAsync_com_squareup_dagger_dagger_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadMetadataAsync_com_squareup_dagger_dagger_01()
+        {
+            string module_01 = Artifact.Utilities.DownloadMetadataAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+            #elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadMetadataAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #endif
+
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_com_squareup_dagger_dagger_01()
+        {
+            string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_com_squareup_dagger_dagger_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.Null(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_com_squareup_dagger_dagger_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_com_squareup_dagger_dagger_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_com_squareup_dagger_dagger_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveModuleAsync_com_squareup_dagger_dagger_01()
+        {
+            string module_01 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+            #elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_com_squareup_dagger_dagger_02()
+        {
+            string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.pom"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_com_squareup_dagger_dagger_02()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.aar"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.Null(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_com_squareup_dagger_dagger_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.jar"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_com_squareup_dagger_dagger_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-javadoc.jar"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_com_squareup_dagger_dagger_02()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-sources.jar"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveMetadataAsync_com_squareup_dagger_dagger_02()
+        {
+            string module_01 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "1.2.5",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+            #elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.squareup.dagger",
+                                                                    "dagger",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #endif
+
+            return;
+        }
+
+        #endregion      Download com_squareup_dagger_dagger
+        //-----------------------------------------------------------------------------------------------------------
+
+
+        //-----------------------------------------------------------------------------------------------------------
+        #region         Download org_jetbrains_kotlin_kotlin_stdlib
+        // https://repo1.maven.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/
+        // https://repo1.maven.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/1.5.30/
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadProjectObjecModelPOMAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            // 
+            string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadArtifactAndroidArchiveAARAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.Null(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadArtifactJavaArchiveJARAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadJavaDocJavaArchiveJARAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadSourcesJavaArchiveJARAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadMetadataAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            string module_01 = Artifact.Utilities.DownloadMetadataAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+            #elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadMetadataAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #endif
+
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.Null(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveModuleAsync_org_jetbrains_kotlin_kotlin_stdlib_01()
+        {
+            string module_01 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+            #elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_org_jetbrains_kotlin_kotlin_stdlib_02()
+        {
+            string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.pom"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+            #elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_org_jetbrains_kotlin_kotlin_stdlib_02()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.aar"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.Null(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_org_jetbrains_kotlin_kotlin_stdlib_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.jar"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_org_jetbrains_kotlin_kotlin_stdlib_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-javadoc.jar"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_org_jetbrains_kotlin_kotlin_stdlib_02()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-sources.jar"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveMetadataAsync_org_jetbrains_kotlin_kotlin_stdlib_02()
+        {
+            string module_01 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "1.5.30",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+            #elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "org.jetbrains.kotlin",
+                                                                    "kotlin-stdlib",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #endif
+
+            return;
+        }
+
+        #endregion      Download org_jetbrains_kotlin_kotlin_stdlib
+        //-----------------------------------------------------------------------------------------------------------
+
+        // https://repo1.maven.org/maven2/com/google/guava/guava/
+        // https://repo1.maven.org/maven2/com/google/guava/guava/30.1-android/
+
+
+        // https://repo1.maven.org/maven2/com/google/guava/guava-io/r03/
 
 
         [Test]
