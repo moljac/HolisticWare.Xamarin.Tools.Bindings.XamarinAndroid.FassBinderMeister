@@ -68,7 +68,7 @@ using System.Collections.Generic;
 using HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype;
 
 //using AliasRepoAgnostic   = global::HolisticWare.Xamarin.Tools.Maven;
-//using Artifact = global::HolisticWare.Xamarin.Tools.Maven.Repositories.Google.Artifact;
+//using Artifact = global::HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype.Artifact;
 
 namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
 {
@@ -92,36 +92,31 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         public void Test_Artifact_MavenCentralSonatype_static_defaults()
         {
             /*
-                https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0.aar
-                https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0.pom
-                https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0-sources.jar
-                https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0-javadoc.jar
-                https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0.module
              */
             string url_default_textual_root     =
                                                   Artifact.UrlDefaultTextualRoot
-                                                  // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_"
+                                                  // $"https://repo1.maven.org/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID_/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_"
                                                   ;
             string url_default_textual_binary   =
                                                   Artifact.UrlDefaultTextualBinary
-                                                  // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_.aar"
-                                                  // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_.jar"
+                                                  // $"https://repo1.maven.org/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID_/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_.aar"
+                                                  // $"https://repo1.maven.org/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID_/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_.jar"
                                                   ;
             string url_default_textual_pom      =
                                                   Artifact.UrlDefaultTextualProjectObjectModel
-                                                  // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_.pom"
+                                                  // $"https://repo1.maven.org/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID_/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_.pom"
                                                   ;
             string url_default_textual_sources  =
                                                   Artifact.UrlDefaultTextualSources
-                                                  // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_-sources.jar"
+                                                  // $"https://repo1.maven.org/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID_/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_-sources.jar"
                                                   ;
             string url_default_textual_javadoc  =
                                                   Artifact.UrlDefaultTextualJavaDoc
-                                                  // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_-javadoc.jar"
+                                                  // $"https://repo1.maven.org/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID_/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_-javadoc.jar"
                                                   ;
             string url_default_textual_module   =
                                                   Artifact.UrlDefaultTextualModule
-                                                  // $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_.module"
+                                                  // $"https://repo1.maven.org/maven2/_PLACEHOLDER_GROUP_ID_/_PLACEHOLDER_ARTIFACT_ID_/_PLACEHOLDER_VERSION_/_PLACEHOLDER_ARTIFACT_ID_-_PLACEHOLDER_VERSION_-javadoc.jar"
                                                   ;
 
 
@@ -140,7 +135,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
             Assert.AreEqual
                         (
                             url_default_textual_root,
-                            $"https://dl.google.com/android/maven2/_PLACEHOLDER_GROUP_ID_/group-index.xml"
+                            $""
                         );
             Assert.AreEqual
                         (
@@ -275,8 +270,56 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         [Test]
         public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadArtifactAndroidArchiveAARAsync_com_google_crypto_tink_tink_android_01()
         {
-            // 
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/tink-android-1.6.1.jar
             byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "com.google.crypto.tink",
+                                                                    "tink-android",
+                                                                    "1.6.1"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNull(bytez);
+            #elif NUNIT
+            Assert.Null(bytez);
+            #elif XUNIT
+            Assert.Null(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadArtifactJavaArchiveJARAsync_com_google_crypto_tink_tink_android_01()
+        {
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/tink-android-1.6.1.jar
+            byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.crypto.tink",
+                                                                    "tink-android",
+                                                                    "1.6.1"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadJavaDocJavaArchiveJARAsync_com_google_crypto_tink_tink_android_01()
+        {
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/tink-android-1.6.1-javadoc.jar
+            byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
@@ -287,54 +330,9 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
             #if MSTEST
             Assert.IsNotNull(bytez);
             #elif NUNIT
-            Assert.NotNull(bytez);
+            Assert.IsNotNull(bytez);
             #elif XUNIT
             Assert.NotNull(bytez);
-            #endif
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadArtifactJavaArchiveJARAsync_com_google_crypto_tink_tink_android_01()
-        {
-            // N/A
-            byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
-                                                                (
-                                                                    "com.google.crypto.tink",
-                                                                    "tink-android",
-                                                                    "1.6.1"
-                                                                )
-                                                                .Result;
-            #if MSTEST
-            Assert.IsNull(bytez);
-            #elif NUNIT
-            Assert.IsNull(bytez);
-            #elif XUNIT
-            Assert.Null(bytez);
-            #endif
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadJavaDocJavaArchiveJARAsync_com_google_crypto_tink_tink_android_01()
-        {
-            // N/A
-            byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
-                                                                (
-                                                                    "com.google.crypto.tink",
-                                                                    "tink-android",
-                                                                    "1.6.1"
-                                                                )
-                                                                .Result;
-
-            #if MSTEST
-            Assert.IsNull(bytez);
-            #elif NUNIT
-            Assert.IsNull(bytez);
-            #elif XUNIT
-            Assert.Null(bytez);
             #endif
 
             return;
@@ -365,8 +363,9 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         [Test]
         public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadMetadataAsync_com_google_crypto_tink_tink_android_01()
         {
-            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.module
-            string module = Artifact.Utilities.DownloadMetadataAsync
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/maven-metadata.xml
+            string module_01 = Artifact.Utilities.DownloadMetadataAsync
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android"
@@ -374,24 +373,46 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                 .Result;
 
             #if MSTEST
-            Assert.IsNull(module);
-            Assert.IsTrue(string.IsNullOrEmpty(module));
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
             #elif NUNIT
-            Assert.Null(module);
-            Assert.True(string.IsNullOrEmpty(module));
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
             #elif XUNIT
-            Assert.Null(module);
-            Assert.True(string.IsNullOrEmpty(module));
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
             #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadMetadataAsync
+                                                                (
+                                                                    "com.google.crypto.tink",
+                                                                    "tink-android",
+                                                                    "1.6.1"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #endif
+
 
             return;
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveProjectObjecModelPOMAsync_com_google_crypto_tink_tink_android_01()
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_com_google_crypto_tink_tink_android_01()
         {
-            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.pom
-            string pom = Artifact.Utilities.DownloadAndSaveProjectObjecModelPOMAsync
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/tink-android/1.6.1/tink-android-1.6.1.pom
+            string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
@@ -414,10 +435,10 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveArtifactAndroidArchiveAARAsync_com_google_crypto_tink_tink_android_01()
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_com_google_crypto_tink_tink_android_01()
         {
-            // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.aar
-            byte[] bytez = Artifact.Utilities.DownloadAndSaveArtifactAndroidArchiveAARAsync
+            // https://repo1.maven.org/maven2/com/google/crypto/tink/1.6.1/tink-android-1.6.1.aar
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
@@ -426,31 +447,9 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                 .Result;
 
             #if MSTEST
-            Assert.IsNotNull(bytez);
-            #elif NUNIT
-            Assert.NotNull(bytez);
-            #elif XUNIT
-            Assert.NotNull(bytez);
-            #endif
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveArtifactJavaArchiveJARAsync_com_google_crypto_tink_tink_android_01()
-        {
-            // N/A
-            byte[] bytez = Artifact.Utilities.DownloadAndSaveArtifactJavaArchiveJARAsync
-                                                                (
-                                                                    "com.google.crypto.tink",
-                                                                    "tink-android",
-                                                                    "1.6.1"
-                                                                )
-                                                                .Result;
-            #if MSTEST
             Assert.IsNull(bytez);
             #elif NUNIT
-            Assert.IsNull(bytez);
+            Assert.Null(bytez);
             #elif XUNIT
             Assert.Null(bytez);
             #endif
@@ -459,33 +458,10 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveJavaDocJavaArchiveJARAsync_com_google_crypto_tink_tink_android_01()
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_com_google_crypto_tink_tink_android_01()
         {
             // N/A
-            byte[] bytez = Artifact.Utilities.DownloadAndSaveJavaDocJavaArchiveJARAsync
-                                                                (
-                                                                    "com.google.crypto.tink",
-                                                                    "tink-android",
-                                                                    "1.6.1"
-                                                                )
-                                                                .Result;
-
-            #if MSTEST
-            Assert.IsNull(bytez);
-            #elif NUNIT
-            Assert.IsNull(bytez);
-            #elif XUNIT
-            Assert.Null(bytez);
-            #endif
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveSourcesJavaArchiveJARAsync_com_google_crypto_tink_tink_android_01()
-        {
-            // N/A
-            byte[] bytez = Artifact.Utilities.DownloadAndSaveSourcesJavaArchiveJARAsync
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
@@ -504,10 +480,10 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveModuleAsync_com_google_crypto_tink_tink_android_01()
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_com_google_crypto_tink_tink_android_01()
         {
-            // 
-            string module = Artifact.Utilities.DownloadAndSaveMetadataAsync
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
@@ -516,24 +492,87 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                 .Result;
 
             #if MSTEST
-            Assert.IsNull(module);
-            Assert.IsTrue(string.IsNullOrEmpty(module));
+            Assert.IsNotNull(bytez);
             #elif NUNIT
-            Assert.Null(module);
-            Assert.True(string.IsNullOrEmpty(module));
+            Assert.IsNotNull(bytez);
             #elif XUNIT
-            Assert.Null(module);
-            Assert.True(string.IsNullOrEmpty(module));
+            Assert.NotNull(bytez);
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveProjectObjecModelPOMAsync_com_google_crypto_tink_tink_android_02()
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_com_google_crypto_tink_tink_android_01()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.crypto.tink",
+                                                                    "tink-android",
+                                                                    "1.6.1"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveModuleAsync_com_google_crypto_tink_tink_android_01()
+        {
+            string module_01 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.google.crypto.tink",
+                                                                    "tink-android"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+            #elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.google.crypto.tink",
+                                                                    "tink-android",
+                                                                    "1.6.1"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_com_google_crypto_tink_tink_android_02()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.pom
-            string pom = Artifact.Utilities.DownloadAndSaveProjectObjecModelPOMAsync
+            string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
@@ -557,10 +596,10 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveArtifactAndroidArchiveAARAsync_com_google_crypto_tink_tink_android_02()
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_com_google_crypto_tink_tink_android_02()
         {
             // 
-            byte[] bytez = Artifact.Utilities.DownloadAndSaveArtifactAndroidArchiveAARAsync
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
@@ -570,32 +609,9 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                 .Result;
 
             #if MSTEST
-            Assert.IsNotNull(bytez);
-            #elif NUNIT
-            Assert.NotNull(bytez);
-            #elif XUNIT
-            Assert.NotNull(bytez);
-            #endif
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveArtifactJavaArchiveJARAsync_com_google_crypto_tink_tink_android_02()
-        {
-            // N/A
-            byte[] bytez = Artifact.Utilities.DownloadAndSaveArtifactJavaArchiveJARAsync
-                                                                (
-                                                                    "com.google.crypto.tink",
-                                                                    "tink-android",
-                                                                    "1.6.1",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.jar"
-                                                                )
-                                                                .Result;
-            #if MSTEST
             Assert.IsNull(bytez);
             #elif NUNIT
-            Assert.IsNull(bytez);
+            Assert.Null(bytez);
             #elif XUNIT
             Assert.Null(bytez);
             #endif
@@ -604,10 +620,33 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveJavaDocJavaArchiveJARAsync_com_google_crypto_tink_tink_android_02()
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_com_google_crypto_tink_tink_android_02()
         {
             // N/A
-            byte[] bytez = Artifact.Utilities.DownloadAndSaveJavaDocJavaArchiveJARAsync
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.crypto.tink",
+                                                                    "tink-android",
+                                                                    "1.6.1",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.jar"
+                                                                )
+                                                                .Result;
+            #if MSTEST
+            Assert.IsNotNull(bytez);
+            #elif NUNIT
+            Assert.IsNotNull(bytez);
+            #elif XUNIT
+            Assert.NotNull(bytez);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_com_google_crypto_tink_tink_android_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
@@ -617,21 +656,21 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                 .Result;
 
             #if MSTEST
-            Assert.IsNull(bytez);
+            Assert.IsNotNull(bytez);
             #elif NUNIT
-            Assert.IsNull(bytez);
+            Assert.IsNotNull(bytez);
             #elif XUNIT
-            Assert.Null(bytez);
+            Assert.NotNull(bytez);
             #endif
 
             return;
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveSourcesJavaArchiveJARAsync_com_google_crypto_tink_tink_android_02()
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_com_google_crypto_tink_tink_android_02()
         {
             // N/A
-            byte[] bytez = Artifact.Utilities.DownloadAndSaveSourcesJavaArchiveJARAsync
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
@@ -651,10 +690,9 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadAndSaveMetadataAsync_com_google_crypto_tink_tink_android_02()
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveMetadataAsync_com_google_crypto_tink_tink_android_02()
         {
-            // 
-            string module = Artifact.Utilities.DownloadAndSaveMetadataAsync
+            string module_01 = Artifact.Utilities.DownloadThenSaveMetadataAsync
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
@@ -663,14 +701,35 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                 .Result;
 
             #if MSTEST
-            Assert.IsNull(module);
-            Assert.IsTrue(string.IsNullOrEmpty(module));
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
             #elif NUNIT
-            Assert.Null(module);
-            Assert.True(string.IsNullOrEmpty(module));
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
             #elif XUNIT
-            Assert.Null(module);
-            Assert.True(string.IsNullOrEmpty(module));
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+            #endif
+
+
+            string module_02 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.google.crypto.tink",
+                                                                    "tink-android",
+                                                                    "1.6.1",
+                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                )
+                                                                .Result;
+
+            #if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+            #elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+            #elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
             #endif
 
             return;
