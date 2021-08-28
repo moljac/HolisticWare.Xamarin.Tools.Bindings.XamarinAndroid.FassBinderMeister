@@ -45,6 +45,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\HttpClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\Artifact.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Text\Transformations\HttpClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
@@ -64,5 +65,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Core\Serialization\" />
     <Folder Include="$(MSBuildThisFileDirectory)Core\Net\" />
     <Folder Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Core\Text\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Core\Text\Transformations\" />
   </ItemGroup>
 </Project>
