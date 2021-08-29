@@ -63,10 +63,8 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
 using System.Linq;
-using System.Collections.Generic;
 
-using HolisticWare.Xamarin.Tools.GitHub;
-using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister;
+using Core.Text.Transformations;
 
 namespace UnitTests.Core.Text.Transformations
 {
@@ -74,12 +72,147 @@ namespace UnitTests.Core.Text.Transformations
     public partial class Test_PascalCase
     {
         [Test]
-        public void Test_()
+        public void Test_string_extension_method_ToPascalCase_01()
         {
+            string pascal_case = "com.google.android.material".ToPascalCase();
 
+            #if MSTEST
+            Assert.AreEqual("ComGoogleAndroidMaterial", pascal_case);
+            #elif NUNIT
+            Assert.AreEqual("ComGoogleAndroidMaterial", pascal_case);
+            #elif XUNIT
+            Assert.Equal("ComGoogleAndroidMaterial", pascal_case);
+            #endif
 
             return;
         }
 
+        [Test]
+        public void Test_string_array_extension_method_ToPascalCase_01()
+        {
+            string[] pascal_case = "com.google.android.material"
+                                    .Split(new string[] { "." }, System.StringSplitOptions.RemoveEmptyEntries )
+                                    .ToPascalCase()
+                                    .ToArray();
+
+            #if MSTEST
+            CollectionAssert.AreEqual
+                    (
+                        new string[] { "Com", "Google", "Android", "Material" },
+                        pascal_case
+                    );
+            #elif NUNIT
+            Assert.AreEqual
+                    (
+                        new string[] { "Com", "Google", "Android", "Material" },
+                        pascal_case
+                    );
+            #elif XUNIT
+            Assert.Equal
+                    (
+                        new string[] { "Com", "Google", "Android", "Material" },
+                        pascal_case
+                    );
+            #endif
+
+            return;
+        }
+
+
+        [Test]
+        public void Test_string_extension_method_ToPascalCase_02()
+        {
+            string pascal_case = "androidx.activity".ToPascalCase();
+
+            #if MSTEST
+            Assert.AreEqual("AndroidxActivity", pascal_case);
+            #elif NUNIT
+            Assert.AreEqual("AndroidxActivity", pascal_case);
+            #elif XUNIT
+            Assert.Equal("AndroidxActivity", pascal_case);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_string_array_extension_method_ToPascalCase_02()
+        {
+            string[] pascal_case = "androidx.activity"
+                                    .Split(new string[] { "." }, System.StringSplitOptions.RemoveEmptyEntries)
+                                    .ToPascalCase()
+                                    .ToArray();
+
+            #if MSTEST
+            CollectionAssert.AreEqual
+                    (
+                        new string[] { "Androidx", "Activity" },
+                        pascal_case
+                    );
+            #elif NUNIT
+            Assert.AreEqual
+                    (
+                        new string[] { "Androidx", "Activity" },
+                        pascal_case
+                    );
+            #elif XUNIT
+            Assert.Equal
+                    (
+                        new string[] { "Androidx", "Activity" },
+                        pascal_case
+                    );
+            #endif
+
+            return;
+        }
+
+
+
+        [Test]
+        public void Test_string_extension_method_ToPascalCase_03()
+        {
+            string pascal_case = "com.google.crypto.tink.tink-android".ToPascalCase();
+
+            #if MSTEST
+            Assert.AreEqual("ComGoogleCryptoTinkTinkAndroid", pascal_case);
+            #elif NUNIT
+            Assert.AreEqual("ComGoogleCryptoTinkTinkAndroid", pascal_case);
+            #elif XUNIT
+            Assert.Equal("ComGoogleCryptoTinkTinkAndroid", pascal_case);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_string_array_extension_method_ToPascalCase_03()
+        {
+            string[] pascal_case = "com.google.crypto.tink.tink-android"
+                                    .Split(new string[] { "." }, System.StringSplitOptions.RemoveEmptyEntries)
+                                    .ToPascalCase()
+                                    .ToArray();
+
+            #if MSTEST
+            CollectionAssert.AreEqual
+                    (
+                        new string[] { "Com", "Google", "Crypto", "Tink", "TinkAndroid" },
+                        pascal_case
+                    );
+            #elif NUNIT
+            Assert.AreEqual
+                    (
+                        new string[] { "Com", "Google", "Crypto", "Tink", "TinkAndroid" },
+                        pascal_case
+                    );
+            #elif XUNIT
+            Assert.Equal
+                    (
+                        new string[] { "Com", "Google", "Crypto", "Tink", "TinkAndroid" },
+                        pascal_case
+                    );
+            #endif
+
+            return;
+        }
     }
 }
