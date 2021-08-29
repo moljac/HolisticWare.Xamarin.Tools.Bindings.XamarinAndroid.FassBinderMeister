@@ -1,13 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace Core.Text.Transformations
 {
     /// <summary>
-    /// 
+    /// Convert sreing to PascalCase
     /// </summary>
     public static partial class StringPascalCase
     {
@@ -47,5 +45,18 @@ namespace Core.Text.Transformations
             return string.Join(string.Empty, parts);
         }
 
+        public static
+            IEnumerable<string>
+                                    ToPascalCase
+                                                (
+                                                    this IEnumerable<string> strings,
+                                                    string replacement = "#"
+                                                )
+        {
+            foreach (string s in strings)
+            {
+                yield return s.ToPascalCase();
+            }
+        }
     }
 }
