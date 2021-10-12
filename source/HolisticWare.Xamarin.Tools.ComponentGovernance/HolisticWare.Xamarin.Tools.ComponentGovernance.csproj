@@ -1,0 +1,95 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>Latest</LangVersion>
+        <RootNamespace>HolisticWare.Xamarin.Tools.Maven</RootNamespace>
+        <!--
+        If moved to separate PropertyGroup - UI is cleared?!?!
+        -->
+        <PackOnBuild>true</PackOnBuild>
+        <PackageId>HolisticWare.Xamarin.Tools.Maven</PackageId>
+        <Title>
+            HolisticWare.Xamarin.Tools.Maven
+        </Title>
+        <summary>
+            Maven client API. Tools for Maven client API for bindings productivity.
+        </summary>
+        <Description>
+            Maven client API. Tools for Maven client API for bindings productivity.
+        </Description>
+        <Owners>HolisticWare, moljac</Owners>
+        <Authors>HolisticWare, moljac</Authors>
+        <Copyright>2020</Copyright>
+        <ProjectUrl>
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+        </ProjectUrl>
+        <PackageProjectUrl>
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+        </PackageProjectUrl>
+        <RepositoryUrl>
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+        </RepositoryUrl>
+        <license>LICENSE</license>
+        <licenseUrl>
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/blob/master/LICENSE
+        </licenseUrl>
+        <PackageLicenseUrl>
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/blob/master/LICENSE
+        </PackageLicenseUrl>
+        <iconUrl>
+            https://secure.gravatar.com/avatar/b662959e712466f393541935b664d3c5
+        </iconUrl>
+        <PackageIconUrl>
+            https://secure.gravatar.com/avatar/b662959e712466f393541935b664d3c5        
+        </PackageIconUrl>
+        <VersionPrefix>0.0.1</VersionPrefix>
+        <!--
+        VersionSuffix - For debugging and local Maven feed
+        -->
+        <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</VersionSuffix>
+        <PackageVersion>$(Version)</PackageVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!--
+        put the package output into a Maven test folder
+        -->
+        <PackageOutputPath>../../output</PackageOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Net.Http" Version="4.3.4" />
+        <PackageReference Include="System.Text.Json" Version="5.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3" />
+        <PackageReference Include="Roslynator.Analyzers" Version="3.2.2" />
+        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.2.2" />
+        <PackageReference Include="AsyncFixer" Version="1.5.1" />
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="1.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Repositories\" />
+      <None Remove="Repositories\Google\" />
+      <None Remove="Repositories\MavenCentralSonatype\" />
+      <None Remove="POM.ProjectObjectModel\" />
+      <None Remove="RepositoryAgnosticDiscovery\" />
+      <None Remove="Repositories\MavenCentralSonatype\Search\" />
+      <None Remove="Repositories\MavenCentralSonatype\ArtifactMetadata\" />
+      <None Remove="Roslynator.CodeAnalysis.Analyzers" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Repositories\" />
+      <Folder Include="Repositories\Google\" />
+      <Folder Include="Repositories\MavenCentralSonatype\" />
+      <Folder Include="POM.ProjectObjectModel\" />
+      <Folder Include="RepositoryAgnosticDiscovery\" />
+      <Folder Include="Repositories\MavenCentralSonatype\Search\" />
+      <Folder Include="Repositories\MavenCentralSonatype\ArtifactMetadata\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+    </ItemGroup>
+</Project>
