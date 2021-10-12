@@ -2,11 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30524.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Lumper.dotnet-tool", "HolisticWare.Xamarin.Tools.NuGet.dotnet-tool\HolisticWare.Xamarin.Tools.NuGet.Lumper.dotnet-tool.csproj", "{6863794C-4511-48C1-9D41-8833110AE825}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.GitHub.dotnet-tool", "HolisticWare.Xamarin.Tools.GitHub.dotnet-tool\HolisticWare.Xamarin.Tools.GitHub.dotnet-tool.csproj", "{93E8C35A-D535-4935-A15B-3781F677ED3E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Maven.Guru.dotnet-tool", "HolisticWare.Xamarin.Tools.Maven.dotnet-tool\HolisticWare.Xamarin.Tools.Maven.Guru.dotnet-tool.csproj", "{CEA0413D-9F73-4908-ADCF-E2BF75E8DC02}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.FassBinderMeister.dotnet-tool", "HolisticWare.Xamarin.Tools.FassBinderMeister.dotnet-tool\HolisticWare.Xamarin.Tools.FassBinderMeister.dotnet-tool.csproj", "{E4FCEEE4-FE4C-4AFA-9DD5-DEA5B4A1D623}"
 EndProject
@@ -18,24 +14,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.Core", "..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj", "{1E5391C7-2B21-4A8A-ABBC-7CFC95B824DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Lumper.dotnet-tool", "HolisticWare.Xamarin.Tools.NuGet.Lumper.dotnet-tool\HolisticWare.Xamarin.Tools.NuGet.Lumper.dotnet-tool.csproj", "{A2DA0D79-E095-4CD9-9C5F-5FB792F19941}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Maven.Guru.dotnet-tool", "HolisticWare.Xamarin.Tools.Maven.Guru.dotnet-tool\HolisticWare.Xamarin.Tools.Maven.Guru.dotnet-tool.csproj", "{6AF13DC0-3821-4AA6-BCC3-A9EA7EA690B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6863794C-4511-48C1-9D41-8833110AE825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6863794C-4511-48C1-9D41-8833110AE825}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6863794C-4511-48C1-9D41-8833110AE825}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6863794C-4511-48C1-9D41-8833110AE825}.Release|Any CPU.Build.0 = Release|Any CPU
 		{93E8C35A-D535-4935-A15B-3781F677ED3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{93E8C35A-D535-4935-A15B-3781F677ED3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93E8C35A-D535-4935-A15B-3781F677ED3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93E8C35A-D535-4935-A15B-3781F677ED3E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CEA0413D-9F73-4908-ADCF-E2BF75E8DC02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEA0413D-9F73-4908-ADCF-E2BF75E8DC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CEA0413D-9F73-4908-ADCF-E2BF75E8DC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEA0413D-9F73-4908-ADCF-E2BF75E8DC02}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E4FCEEE4-FE4C-4AFA-9DD5-DEA5B4A1D623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E4FCEEE4-FE4C-4AFA-9DD5-DEA5B4A1D623}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4FCEEE4-FE4C-4AFA-9DD5-DEA5B4A1D623}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -52,6 +44,14 @@ Global
 		{1E5391C7-2B21-4A8A-ABBC-7CFC95B824DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E5391C7-2B21-4A8A-ABBC-7CFC95B824DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E5391C7-2B21-4A8A-ABBC-7CFC95B824DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2DA0D79-E095-4CD9-9C5F-5FB792F19941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2DA0D79-E095-4CD9-9C5F-5FB792F19941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2DA0D79-E095-4CD9-9C5F-5FB792F19941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2DA0D79-E095-4CD9-9C5F-5FB792F19941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AF13DC0-3821-4AA6-BCC3-A9EA7EA690B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AF13DC0-3821-4AA6-BCC3-A9EA7EA690B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AF13DC0-3821-4AA6-BCC3-A9EA7EA690B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AF13DC0-3821-4AA6-BCC3-A9EA7EA690B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E6118F62-289A-4D47-A3DF-4F76C74F0EC6} = {6140CF53-A60E-4E3E-A466-EC78AAA99CD4}
