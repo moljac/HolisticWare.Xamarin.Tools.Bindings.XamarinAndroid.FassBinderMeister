@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFrameworks>netstandard2.0;net6;n</TargetFrameworks>
 
         <LangVersion>Latest</LangVersion>
         <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.Client.Core</RootNamespace>
@@ -64,12 +64,16 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3" />
-      <PackageReference Include="Roslynator.Analyzers" Version="3.2.0" />
-      <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.2.0" />
+      <PackageReference Include="Roslynator.Analyzers" Version="3.2.2" />
+      <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.2.2" />
       <PackageReference Include="AsyncFixer" Version="1.5.1" />
+      <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="1.1.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Roslynator.CodeAnalysis.Analyzers" />
     </ItemGroup>
 </Project>
