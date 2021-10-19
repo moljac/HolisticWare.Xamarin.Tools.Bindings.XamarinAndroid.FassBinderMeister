@@ -41,11 +41,6 @@ exit_code = StartProcess
                             $"/outputdir:{output_path}"
                     }
                 );                
-CopyFile
-(
-    input_path.ToString().Replace("xsd", "cs"),
-    "../../source/HolisticWare.Xamarin.Tools.NuGet.Client.Core/Models/NuSpec/Microsoft/Generated/nuspec.cs"
-);
 
 
 input_path = "./nuspec/sharwell/nuspec.xsd";
@@ -72,11 +67,6 @@ exit_code = StartProcess
                             $"/outputdir:{output_path}"
                     }
                 );                
-CopyFile
-(
-    input_path.ToString().Replace("xsd", "cs"),
-    "../../source/HolisticWare.Xamarin.Tools.NuGet.Client.Core/Models/NuSpec/Sharwell/Generated/nuspec.cs"
-);
 
 
 input_path = "./nuspec/myget/nuspec.xsd";
@@ -103,12 +93,6 @@ exit_code = StartProcess
                             $"/outputdir:{output_path}"
                     }
                 );                
-CopyFile
-(
-    input_path.ToString().Replace("xsd", "cs"),
-    "../../source/HolisticWare.Xamarin.Tools.NuGet.Client.Core/Models/NuSpec/MyGet/Generated/nuspec.cs"
-);
-
 
 
 input_path = "./pom/pom.xsd";
@@ -136,11 +120,33 @@ exit_code = StartProcess
                             $"/outputdir:{output_path}"
                     }
                 );                
-CopyFile
-(
-    "./pom/pom.cs",
-    "../../source/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven/Models/Data/ProjectObjectModel.POM/Generated/pom.cs"
-);
+
+input_path = "./pom/maven-4.0.0.xsd";
+output_path = "./pom/";
+EnsureDirectoryExists($"{output_path}");
+ns_root = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven";
+ns = ns_root 
+        + "." +
+        "Models.Repositories.Maven.ProjectObjectModel.POM.Generated"
+        ;
+exit_code = StartProcess
+                (
+                    "xsd",
+                    new ProcessSettings
+                    {
+                        Arguments =
+                            $"{input_path}"
+                            + " " +
+                            "/classes"
+                            + " " +
+                            $"/namespace:{ns}"
+                            + " " +
+                            "/language:CS"
+                            + " " +
+                            $"/outputdir:{output_path}"
+                    }
+                );                
+
 
 
 EnsureDirectoryExists("./maven-central/");
@@ -167,11 +173,39 @@ exit_code = StartProcess
                             $"/outputdir:{output_path}"
                     }
                 );                
+
+
+/*
+CopyFile
+(
+    input_path.ToString().Replace("xsd", "cs"),
+    "../../source/HolisticWare.Xamarin.Tools.NuGet.Client.Core/Models/NuSpec/Microsoft/Generated/nuspec.cs"
+);
+CopyFile
+(
+    input_path.ToString().Replace("xsd", "cs"),
+    "../../source/HolisticWare.Xamarin.Tools.NuGet.Client.Core/Models/NuSpec/Sharwell/Generated/nuspec.cs"
+);
+CopyFile
+(
+    input_path.ToString().Replace("xsd", "cs"),
+    "../../source/HolisticWare.Xamarin.Tools.NuGet.Client.Core/Models/NuSpec/MyGet/Generated/nuspec.cs"
+);
+CopyFile
+(
+    "./pom/pom.cs",
+    "../../source/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven/Models/Data/ProjectObjectModel.POM/Generated/pom.cs"
+);
+CopyFile
+(
+    "./pom/pom.cs",
+    "../../source/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven/Models/Data/ProjectObjectModel.POM/Generated/pom.cs"
+);
 CopyFile
 (
     "./maven-central/artifact-id-fully-qualified/maven-central.cs",
     "../../source/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven/Models/Repositories/MavenCentral/Generated/maven-central.cs"
 );
-
+*/
 
 EnsureDirectoryExists("./maven-google/");
