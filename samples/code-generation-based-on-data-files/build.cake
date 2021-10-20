@@ -16,7 +16,7 @@ EnsureDirectoryExists("./nuspec/");
 
 
 
-input_path = "./nuspec/microsoft-nuget/nuspec.xsd";
+input_path = "../../data/nuspec/microsoft-nuget/nuspec.xsd";
 output_path = "./nuspec/microsoft-nuget/";
 EnsureDirectoryExists($"{output_path}");
 ns_root = "HolisticWare.Tools.NuGet";
@@ -43,7 +43,7 @@ exit_code = StartProcess
                 );                
 
 
-input_path = "./nuspec/sharwell/nuspec.xsd";
+input_path = "../../data/nuspec/sharwell/nuspec.xsd";
 output_path = "./nuspec/sharwell/";
 EnsureDirectoryExists($"{output_path}");
 ns = ns_root 
@@ -69,7 +69,7 @@ exit_code = StartProcess
                 );                
 
 
-input_path = "./nuspec/myget/nuspec.xsd";
+input_path = "../../data/nuspec/myget/nuspec.xsd";
 output_path = "./nuspec/myget/";
 EnsureDirectoryExists($"{output_path}");
 ns = ns_root 
@@ -95,8 +95,8 @@ exit_code = StartProcess
                 );                
 
 
-input_path = "./pom/pom.xsd";
-output_path = "./pom/";
+input_path = "../../data/maven/xsd-maven-xsd-pom-xsd/pom.xsd";
+output_path = "./maven/xsd-maven-xsd-pom-xsd/";
 EnsureDirectoryExists($"{output_path}");
 ns_root = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven";
 ns = ns_root 
@@ -121,8 +121,8 @@ exit_code = StartProcess
                     }
                 );                
 
-input_path = "./pom/maven-4.0.0.xsd";
-output_path = "./pom/";
+input_path = "../../data/maven/xsd-maven-xsd-pom-xsd/maven-4.0.0.xsd";
+output_path = "./maven/xsd-maven-xsd-pom-xsd/";
 EnsureDirectoryExists($"{output_path}");
 ns_root = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven";
 ns = ns_root 
@@ -149,9 +149,9 @@ exit_code = StartProcess
 
 
 
-EnsureDirectoryExists("./maven-central/");
-input_path = "./maven-central/artifact-id-fully-qualified/maven-central.xsd";
-output_path = "./maven-central/artifact-id-fully-qualified/";
+input_path = "../../data/maven/maven-central/artifact-id-fully-qualified/maven-central.xsd";
+output_path = "./maven/maven-central/artifact-id-fully-qualified/";
+EnsureDirectoryExists($"{output_path}");
 ns = ns_root 
         + "." +
         "Maven.Repositories.MavenCentral.Artifact.Generated"
