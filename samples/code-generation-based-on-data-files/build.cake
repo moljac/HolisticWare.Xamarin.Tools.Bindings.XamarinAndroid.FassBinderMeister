@@ -101,7 +101,7 @@ EnsureDirectoryExists($"{output_path}");
 ns_root = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven";
 ns = ns_root 
         + "." +
-        "Models.Repositories.Maven.ProjectObjectModel.POM.Generated"
+        "Models.Repositories.Maven.ProjectObjectModel.POM.XSD.Generated"
         ;
 exit_code = StartProcess
                 (
@@ -127,7 +127,7 @@ EnsureDirectoryExists($"{output_path}");
 ns_root = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven";
 ns = ns_root 
         + "." +
-        "Models.Repositories.Maven.ProjectObjectModel.POM.Generated"
+        "Models.Repositories.Maven.ProjectObjectModel.Maven.v4.Generated"
         ;
 exit_code = StartProcess
                 (
@@ -175,12 +175,19 @@ exit_code = StartProcess
                 );                
 
 
-/*
 CopyFile
 (
-    input_path.ToString().Replace("xsd", "cs"),
-    "../../source/HolisticWare.Xamarin.Tools.NuGet.Client.Core/Models/NuSpec/Microsoft/Generated/nuspec.cs"
+    //input_path.ToString().Replace("xsd", "cs"),
+    "./maven/xsd-maven-xsd-pom-xsd/pom.cs",
+    "../../source/HolisticWare.Xamarin.Tools.Maven.ProjectObjectModelPOM/generated/pom.xsd/generated.cs"
 );
+CopyFile
+(
+    //input_path.ToString().Replace("xsd", "cs"),
+    "./maven/xsd-maven-xsd-pom-xsd/pom.cs",
+    "../../source/HolisticWare.Xamarin.Tools.Maven.ProjectObjectModelPOM/generated/maven-4.0.0.xsd/generated.cs"
+);
+/*
 CopyFile
 (
     input_path.ToString().Replace("xsd", "cs"),
