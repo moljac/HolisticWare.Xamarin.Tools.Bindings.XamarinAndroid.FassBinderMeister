@@ -10,6 +10,38 @@ Fast Binding Master/Guru tool for
   
   * generating binderator `config.json` files for following projects:
 
+## `bundler` .NET `dotnet` tool (CLI, commandline API)
+
+```
+binder
+buntler/buendler
+
+buntler 
+    maven
+        group
+            search
+                --group-id
+            complement
+                --group-id
+                --artifact-ids
+        artifact
+            search
+                --group-id
+                --artifact-id
+            search
+                --artifact-id-fully-qualified
+            bind
+                --group-id
+                --artifact-id
+            bind
+                --artifact-id-fully-qualified
+            analyze
+                --group-id
+                --artifact-id
+            analyze
+                --artifact-id-fully-qualified
+```
+
 ## Maven Artifact
 
 ### Repository
