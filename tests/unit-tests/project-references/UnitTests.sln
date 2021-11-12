@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30524.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "library-source", "library-source", "{56123580-99E9-45AC-8300-ABF8EE1D021E}"
 EndProject
@@ -9,7 +9,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UnitTests.Common.Utils.Shar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test-runner-projects", "test-runner-projects", "{C362EF23-0582-49A5-A658-3F12E0885F1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.XUnit", "netstandard10\UnitTests.XUnit\UnitTests.XUnit.csproj", "{20720034-0C48-47D1-9B31-743088366300}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.XUnit", "netstandard10\UnitTests.XUnit\UnitTests.XUnit.csproj", "{20720034-0C48-47D1-9B31-743088366300}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.NUnit.XamarinAndroid", "netstandard10\UnitTests.NUnit.XamarinAndroid\UnitTests.NUnit.XamarinAndroid.csproj", "{6144C0CB-53EB-4BFD-B30C-62566C1BE10A}"
 EndProject
@@ -31,38 +31,38 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E4A8EC0E-1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core.Serialization", "Core.Serialization", "{BB1E27D1-F35D-4845-A13F-07F5061C2EB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.Core", "..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj", "{8238001D-6665-46B7-BB8C-8E2857AB1C87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.NuGet.Client.Core", "..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj", "{8238001D-6665-46B7-BB8C-8E2857AB1C87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI", "..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI.csproj", "{4F9C1C18-A9EC-45A0-9780-730D15E05316}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI", "..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI.csproj", "{4F9C1C18-A9EC-45A0-9780-730D15E05316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI", "..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj", "{29FE79A0-6128-47C7-A804-C1D8D3B7EDC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI", "..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj", "{29FE79A0-6128-47C7-A804-C1D8D3B7EDC7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5F7DFABD-679F-435B-8875-884BB54A9DD4}"
 	ProjectSection(SolutionItems) = preProject
 		..\Directory.Packages.props = ..\Directory.Packages.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Maven", "..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj", "{86A1A2E4-BCA8-4F6C-B66B-0C60940138C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Maven", "..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj", "{86A1A2E4-BCA8-4F6C-B66B-0C60940138C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Maven.Repositories", "..\..\..\source\HolisticWare.Xamarin.Tools.Maven.Repositories\HolisticWare.Xamarin.Tools.Maven.Repositories.csproj", "{CAEA0836-B35A-44A0-B741-04DCB90C5926}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Maven.Repositories", "..\..\..\source\HolisticWare.Xamarin.Tools.Maven.Repositories\HolisticWare.Xamarin.Tools.Maven.Repositories.csproj", "{CAEA0836-B35A-44A0-B741-04DCB90C5926}"
 EndProject
 Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "HolisticWare.Core", "..\..\..\externals-git-submodules\Core\source\HolisticWare.Core\HolisticWare.Core.csproj", "{6886A43D-1003-40C0-870C-90F9904FD537}"
 EndProject
 Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "HolisticWare.Core.Serialization", "..\..\..\externals-git-submodules\Core.Serialization\source\HolisticWare.Core.Serialization\HolisticWare.Core.Serialization.csproj", "{DA967B72-0250-47D3-930E-60126DC1F961}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Net.HTTP", "..\..\..\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj", "{F42C1657-731C-47A8-9071-E0403D4C72D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Net.HTTP", "..\..\..\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj", "{F42C1657-731C-47A8-9071-E0403D4C72D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.NUnit.XamarinIOS", "netstandard10\UnitTests.NUnit.XamarinIOS\UnitTests.NUnit.XamarinIOS.csproj", "{454143FE-45E8-48CE-AE04-71BFB0B413DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.MSTest", "netstandard10\UnitTests.MSTest\UnitTests.MSTest.csproj", "{56422C9D-17D1-4E86-BDBD-9DB52903A96F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.MSTest", "netstandard10\UnitTests.MSTest\UnitTests.MSTest.csproj", "{56422C9D-17D1-4E86-BDBD-9DB52903A96F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.NUnit", "netstandard10\UnitTests.NUnit\UnitTests.NUnit.csproj", "{A01B6471-41BD-4CE2-876F-D954E44C9662}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.NUnit", "netstandard10\UnitTests.NUnit\UnitTests.NUnit.csproj", "{A01B6471-41BD-4CE2-876F-D954E44C9662}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingConfigurator", "..\..\..\samples\BindingConfigurator\BindingConfigurator.csproj", "{FD7F0A39-62B5-4E14-9D08-20C26424C538}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BindingConfigurator", "..\..\..\samples\BindingConfigurator\BindingConfigurator.csproj", "{FD7F0A39-62B5-4E14-9D08-20C26424C538}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Versioning", "..\..\..\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj", "{2F2EFACD-C3E9-4BC1-81AB-0FA7002B5FAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Versioning", "..\..\..\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj", "{2F2EFACD-C3E9-4BC1-81AB-0FA7002B5FAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Text.Transformations", "..\..\..\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj", "{C7A35D80-2496-4B6B-88C2-DD005DAE9088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Text.Transformations", "..\..\..\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj", "{C7A35D80-2496-4B6B-88C2-DD005DAE9088}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -71,13 +71,13 @@ Global
 		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{20720034-0c48-47d1-9b31-743088366300}*SharedItemsImports = 5
 		..\..\Tests.CommonShared\Tests.CommonShared.projitems*{454143fe-45e8-48ce-ae04-71bfb0b413db}*SharedItemsImports = 4
 		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{454143fe-45e8-48ce-ae04-71bfb0b413db}*SharedItemsImports = 4
+		..\..\Tests.CommonShared\Tests.CommonShared.projitems*{56422c9d-17d1-4e86-bdbd-9db52903a96f}*SharedItemsImports = 5
+		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{56422c9d-17d1-4e86-bdbd-9db52903a96f}*SharedItemsImports = 5
 		..\..\Tests.CommonShared\Tests.CommonShared.projitems*{6144c0cb-53eb-4bfd-b30c-62566c1be10a}*SharedItemsImports = 4
 		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{6144c0cb-53eb-4bfd-b30c-62566c1be10a}*SharedItemsImports = 4
-		..\..\Tests.CommonShared\Tests.CommonShared.projitems*{dd4ac4fc-52b0-49f2-85de-6e6c441f5207}*SharedItemsImports = 5
-		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{dd4ac4fc-52b0-49f2-85de-6e6c441f5207}*SharedItemsImports = 5
+		..\..\Tests.CommonShared\Tests.CommonShared.projitems*{a01b6471-41bd-4ce2-876f-d954e44c9662}*SharedItemsImports = 5
+		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{a01b6471-41bd-4ce2-876f-d954e44c9662}*SharedItemsImports = 5
 		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{e390f6da-9f4b-43a4-8abf-f9434df2c70d}*SharedItemsImports = 13
-		..\..\Tests.CommonShared\Tests.CommonShared.projitems*{ed0c66ac-eae7-4cd0-bf81-df5d8d3b2e58}*SharedItemsImports = 5
-		..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.projitems*{ed0c66ac-eae7-4cd0-bf81-df5d8d3b2e58}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
