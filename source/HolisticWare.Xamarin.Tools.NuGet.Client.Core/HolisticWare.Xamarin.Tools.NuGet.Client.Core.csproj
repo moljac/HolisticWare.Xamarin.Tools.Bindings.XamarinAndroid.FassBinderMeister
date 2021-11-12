@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net6;n</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;net6</TargetFrameworks>
 
         <LangVersion>Latest</LangVersion>
         <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.Client.Core</RootNamespace>
