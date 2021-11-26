@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentral
 {
     public partial class GroupIndex
     {

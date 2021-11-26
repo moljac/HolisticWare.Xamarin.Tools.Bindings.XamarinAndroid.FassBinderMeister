@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype.Search
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentral.Search
 {
     public class Doc
     {

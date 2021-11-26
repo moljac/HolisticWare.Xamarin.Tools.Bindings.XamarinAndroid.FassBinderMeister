@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Core.Net.HTTP;
 
-namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentral
 {
     public partial class Artifact : Maven.Artifact
     {

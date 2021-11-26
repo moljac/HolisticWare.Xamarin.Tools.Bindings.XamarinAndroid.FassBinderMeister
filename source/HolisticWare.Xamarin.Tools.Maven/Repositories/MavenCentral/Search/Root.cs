@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype.Search
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentral.Search
 {
     public class Root
     {

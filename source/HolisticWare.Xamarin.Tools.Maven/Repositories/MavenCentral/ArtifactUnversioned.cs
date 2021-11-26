@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HolisticWare.Xamarin.Tools.Maven.POM;
 
-namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentral
 {
     /// <summary>
     /// 
