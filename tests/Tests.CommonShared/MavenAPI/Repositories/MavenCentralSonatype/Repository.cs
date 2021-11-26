@@ -64,9 +64,9 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 
 using System;
 
-using HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype;
+using HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentral;
 
-namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
+namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentral
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Repository
