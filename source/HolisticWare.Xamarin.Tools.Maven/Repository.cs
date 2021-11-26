@@ -179,9 +179,9 @@ namespace HolisticWare.Xamarin.Tools.Maven
             {
                 r = new Repositories.Google.Repository();
             }
-            else if (await Repositories.MavenCentral.Group.Utilities.GetUriAsync(group_id) != null)
+            else if (await Repositories.MavenCentralSonatype.Group.Utilities.GetUriAsync(group_id) != null)
             {
-                r = new Repositories.MavenCentral.Repository();
+                r = new Repositories.MavenCentralSonatype.Repository();
             }
             else
             {

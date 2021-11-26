@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentral
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 {
     /// <summary>
     /// MasterIndex - index of all group ids

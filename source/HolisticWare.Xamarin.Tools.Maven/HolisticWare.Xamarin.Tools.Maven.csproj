@@ -72,21 +72,15 @@
     <ItemGroup>
       <None Remove="Repositories\" />
       <None Remove="Repositories\Google\" />
-      <None Remove="Repositories\MavenCentralSonatype\" />
       <None Remove="POM.ProjectObjectModel\" />
       <None Remove="RepositoryAgnosticDiscovery\" />
-      <None Remove="Repositories\MavenCentralSonatype\Search\" />
-      <None Remove="Repositories\MavenCentralSonatype\ArtifactMetadata\" />
       <None Remove="Roslynator.CodeAnalysis.Analyzers" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Repositories\" />
       <Folder Include="Repositories\Google\" />
-      <Folder Include="Repositories\MavenCentralSonatype\" />
       <Folder Include="POM.ProjectObjectModel\" />
       <Folder Include="RepositoryAgnosticDiscovery\" />
-      <Folder Include="Repositories\MavenCentralSonatype\Search\" />
-      <Folder Include="Repositories\MavenCentralSonatype\ArtifactMetadata\" />
     </ItemGroup>
 
     <ItemGroup>

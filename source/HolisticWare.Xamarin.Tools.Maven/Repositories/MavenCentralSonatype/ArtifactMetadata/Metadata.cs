@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentral.ArtifactMetadata
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype.ArtifactMetadata
 {
     [System.Xml.Serialization.XmlType("metadata")]
     /// <remarks/>

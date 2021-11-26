@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Core.Net.HTTP;
 
-namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentral
+namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 {
     public partial class Repository
     {
