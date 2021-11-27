@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Text.Tran
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Versioning", "HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj", "{166D152D-04D8-40ED-A0B1-783030A35E14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.IO", "HolisticWare.Core.IO\HolisticWare.Core.IO.csproj", "{0FD0562A-D5C5-423A-B696-BADC09258E6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +108,10 @@ Global
 		{166D152D-04D8-40ED-A0B1-783030A35E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{166D152D-04D8-40ED-A0B1-783030A35E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{166D152D-04D8-40ED-A0B1-783030A35E14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FD0562A-D5C5-423A-B696-BADC09258E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FD0562A-D5C5-423A-B696-BADC09258E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FD0562A-D5C5-423A-B696-BADC09258E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FD0562A-D5C5-423A-B696-BADC09258E6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

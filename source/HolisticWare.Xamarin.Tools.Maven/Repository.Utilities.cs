@@ -22,6 +22,26 @@ namespace HolisticWare.Xamarin.Tools.Maven
 
                 return result;
             }
+
+            /// <summary>
+            /// Get MasterIndex of the MavenCentralSonatype Maven repository
+            /// MavenCentralSonatype Maven repository dos not have pregenerated MasterIndex
+            /// parsing HTTP directory output
+            /// https://repo1.maven.org/maven2/
+            /// </summary>
+            /// <returns>Maven.MasterIndex</returns>
+            public static async
+                Task<Maven.MasterIndex>
+                                                GetMasterIndexAsync
+                                                        (
+                                                        )
+            {
+                MasterIndex result = null;
+
+                MasterIndexDefault = result;
+
+                return result;
+            }
         }
     }
 }

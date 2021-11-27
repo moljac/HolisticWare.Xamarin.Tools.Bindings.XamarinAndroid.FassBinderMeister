@@ -102,7 +102,6 @@ namespace HolisticWare.Xamarin.Tools.Maven
             }
         }
 
-
         protected static Uri url_search_default = null;
 
         public static Uri UrlSearchDefault
