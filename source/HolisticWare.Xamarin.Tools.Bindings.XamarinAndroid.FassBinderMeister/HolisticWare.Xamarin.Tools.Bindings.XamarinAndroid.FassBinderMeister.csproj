@@ -70,21 +70,24 @@
     </ItemGroup>
     
     <ItemGroup>
-        <PackageReference Include="MavenNet" Version="2.2.12" />
-        <PackageReference Include="NuGet.Protocol" Version="5.10.0" />
+        <PackageReference Include="MavenNet" Version="2.2.13" />
+        <PackageReference Include="NuGet.Protocol" Version="6.0.0" />
         <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
         <PackageReference Include="System.Diagnostics.TextWriterTraceListener" Version="4.3.0" />
         <PackageReference Include="System.Reflection" Version="4.3.0" />
         <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-        <PackageReference Include="HtmlAgilityPack" Version="1.11.34" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.38" />
         <PackageReference Include="System.Net.Requests" Version="4.3.0" />
 
         <PackageReference Include="protobuf-net" Version="3.0.101" />
-        <PackageReference Include="protobuf-net.BuildTools" Version="3.0.101" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3" />
-        <PackageReference Include="Roslynator.Analyzers" Version="3.2.0" />
-        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.2.0" />
+        <PackageReference Include="protobuf-net.BuildTools" Version="3.0.115" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0" />
+        <PackageReference Include="Roslynator.Analyzers" Version="3.2.2" />
+        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.2.2" />
         <PackageReference Include="AsyncFixer" Version="1.5.1" />
+        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.3" />
+        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.3" />
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="1.1.1" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj" />
@@ -94,4 +97,9 @@
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
+      <None Remove="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
+      <None Remove="Roslynator.CodeAnalysis.Analyzers" />
+    </ItemGroup>
 </Project>

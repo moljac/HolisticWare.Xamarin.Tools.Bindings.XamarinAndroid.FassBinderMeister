@@ -67,6 +67,7 @@
         <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.2.2" />
         <PackageReference Include="AsyncFixer" Version="1.5.1" />
         <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="1.1.1" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.38" />
     </ItemGroup>
 
     <ItemGroup>
@@ -75,6 +76,7 @@
       <None Remove="POM.ProjectObjectModel\" />
       <None Remove="RepositoryAgnosticDiscovery\" />
       <None Remove="Roslynator.CodeAnalysis.Analyzers" />
+      <None Remove="HtmlAgilityPack" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Repositories\" />
@@ -85,5 +87,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+      <ProjectReference Include="..\HolisticWare.Core.IO\HolisticWare.Core.IO.csproj" />
     </ItemGroup>
 </Project>
