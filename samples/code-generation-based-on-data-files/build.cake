@@ -98,10 +98,10 @@ exit_code = StartProcess
 input_path = "../../data/maven/xsd-maven-xsd-pom-xsd/pom.xsd";
 output_path = "./maven/xsd-maven-xsd-pom-xsd/";
 EnsureDirectoryExists($"{output_path}");
-ns_root = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven";
+ns_root = "HolisticWare.Xamarin.Tools.Maven";
 ns = ns_root 
         + "." +
-        "Models.Repositories.Maven.ProjectObjectModel.POM.XSD.Generated"
+        "ProjectObjectModelPOM.POM.XSD.Generated"
         ;
 exit_code = StartProcess
                 (
@@ -124,10 +124,10 @@ exit_code = StartProcess
 input_path = "../../data/maven/xsd-maven-xsd-pom-xsd/maven-4.0.0.xsd";
 output_path = "./maven/xsd-maven-xsd-pom-xsd/";
 EnsureDirectoryExists($"{output_path}");
-ns_root = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven";
+ns_root = "HolisticWare.Xamarin.Tools.Maven";
 ns = ns_root 
         + "." +
-        "Models.Repositories.Maven.ProjectObjectModel.Maven.v4.Generated"
+        "ProjectObjectModelPOM.Maven.v4.Generated"
         ;
 exit_code = StartProcess
                 (
@@ -184,7 +184,7 @@ CopyFile
 CopyFile
 (
     //input_path.ToString().Replace("xsd", "cs"),
-    "./maven/xsd-maven-xsd-pom-xsd/pom.cs",
+    "./maven/xsd-maven-xsd-pom-xsd/maven-4.0.0.cs",
     "../../source/HolisticWare.Xamarin.Tools.Maven.ProjectObjectModelPOM/generated/maven-4.0.0.xsd/generated.cs"
 );
 /*
