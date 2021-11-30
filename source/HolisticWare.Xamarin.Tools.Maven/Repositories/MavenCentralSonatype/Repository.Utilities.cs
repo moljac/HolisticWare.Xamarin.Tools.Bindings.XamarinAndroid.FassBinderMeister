@@ -91,25 +91,6 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
             {
                 MasterIndex result = null;
 
-                HtmlWeb web = new HtmlWeb();
-                HtmlDocument html_doc = await web.LoadFromWebAsync(Repository.UrlRootDefault.AbsoluteUri);
-
-                HtmlNodeCollection nodes = null;
-
-                nodes = html_doc.DocumentNode.SelectNodes
-                                                    (
-                                                        ".//*[contains(@class, 'devsite-article-body')]"
-                                                    );
-
-                IEnumerable<HtmlNode> links = html_doc.DocumentNode.Descendants("a");
-
-                foreach (HtmlNode link in links)
-                {
-                    if (link.InnerHtml == "../")
-                    {
-                        continue;
-                    }
-                }
 
                 MasterIndexDefault = result;
 

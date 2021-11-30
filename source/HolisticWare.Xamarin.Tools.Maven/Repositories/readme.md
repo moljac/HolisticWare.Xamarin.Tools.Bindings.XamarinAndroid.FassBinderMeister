@@ -18,29 +18,31 @@
 
 ## List
 
-1. https://maven.google.com/web/index.html
+1.  https://maven.google.com/web/index.html
 
-https://mvnrepository.com/repos?p=1
+2.  https://mvnrepository.com/repos?p=1
 
+    1.  Central
 
+        *   https://repo1.maven.org/maven2/
 
-1.  Central
+        *   7,848,630 indexed jars
 
-    *   https://repo1.maven.org/maven2/
+    2.  Sonatype
 
-    *   7,848,630 indexed jars
+        *   https://oss.sonatype.org/content/repositories/releases/
 
-2.  Sonatype
+        *   https://repo1.maven.org/maven2/
 
-    *   https://oss.sonatype.org/content/repositories/releases/
+            *   redirects to
 
-    *   2,088,946 indexed jars
+        *   2,088,946 indexed jars
 
-3.  Atlassian
+    3.  Atlassian
 
-    *   https://packages.atlassian.com/mvn/maven-atlassian-external/
+        *   https://packages.atlassian.com/mvn/maven-atlassian-external/
 
-    *   1,680,536 indexed jars
+        *   1,680,536 indexed jars
 
 4.  Spring Plugins
 
