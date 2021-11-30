@@ -68,106 +68,100 @@ using HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype;
 
 namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
 {
-    [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_Group
+    //[TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
+    public partial class Test_Repository
     {
-        static Test_Group()
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_Search_io_opencensus_01()
         {
-            HolisticWare.Xamarin.Tools.Maven.MavenClient.HttpClient = Tests.CommonShared.Http.Client;
 
+            SearchData result  = Repository.Utilities.Search("io.opencensus").Result;
+
+            #if MSTEST
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Artifacts);
+            Assert.Equals(result.Artifacts.Count, 20);
+            #elif NUNIT
+            Assert.NotNull(result);
+            Assert.NotNull(result.Artifacts);
+            Assert.Equals(result.Artifacts.Count, 20);
+            #elif XUNIT
+            Assert.NotNull(result);
+            Assert.NotNull(result.Artifacts);
+            Assert.NotEmpty(result.Artifacts);
+            Assert.Equal(20, result.Artifacts.Count);
+            #endif
+
+            return;
         }
 
         [Test]
-        public void Test_Group_MavenCentralSonatype_static_defaults()
+        public void Test_Repository_MavenCentralSonatype_static_Search_io_opencensus_02()
         {
-            Uri uri = new Uri($"https://repo1.maven.org/maven2");
+
+            SearchData result = Repository.Utilities.Search("io.opencensus", 100).Result;
 
             #if MSTEST
-            Assert.IsNotNull(Repository.UrlRootDefault);
-            Assert.IsNull(Repository.UrlMasterIndexDefault);
-            Assert.AreEqual
-                        (
-                            Repository.UrlRootDefault,
-                            uri
-                        );
-            Assert.AreEqual
-                        (
-                            Repository.UrlMasterIndexDefault,
-                            null
-                        );
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Artifacts);
+            Assert.Equals(result.Artifacts.Count, 41);
             #elif NUNIT
-            Assert.NotNull(Repository.UrlRootDefault);
-            Assert.Null(Repository.UrlMasterIndexDefault);
-            Assert.AreEqual
-                        (
-                            Repository.UrlRootDefault,
-                            uri
-                        );
-            Assert.AreEqual
-                        (
-                            Repository.UrlMasterIndexDefault,
-                            null
-                        );
+            Assert.NotNull(result);
+            Assert.NotNull(result.Artifacts);
+            Assert.Equals(result.Artifacts.Count, 41);
             #elif XUNIT
-            Assert.NotNull(Repository.UrlRootDefault);
-            Assert.Null(Repository.UrlMasterIndexDefault);
-            Assert.Equal
-                        (
-                            Repository.UrlRootDefault,
-                            uri
-                        );
-            Assert.Equal
-                        (
-                            Repository.UrlMasterIndexDefault,
-                            null
-                        );
-        #endif
+            Assert.NotNull(result);
+            Assert.NotNull(result.Artifacts);
+            Assert.NotEmpty(result.Artifacts);
+            Assert.Equal(41, result.Artifacts.Count);
+            #endif
 
+            return;
         }
 
         [Test]
-        public void Test_Group_MavenCentralSonatype_ctor01()
+        public void Test_Repository_MavenCentralSonatype_static_Search_androidx_car_01()
         {
-            Repository r = new Repository();
 
-            Uri uri = new Uri($"https://repo1.maven.org/maven2");
+            SearchData result = Repository.Utilities.Search("androidx.car").Result;
 
             #if MSTEST
-            Assert.IsNotNull(r);
-            Assert.AreEqual
-                        (
-                            r.UrlRoot,
-                            uri
-                        );
-            Assert.AreEqual
-                        (
-                            r.UrlRoot,
-                            Repository.UrlRootDefault
-                        );
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Artifacts);
+            Assert.Equals(result.Artifacts.Count, 0);
             #elif NUNIT
-            Assert.NotNull(r);
-            Assert.AreEqual
-                        (
-                            r.UrlRoot,
-                            uri
-                        );
-            Assert.AreEqual
-                        (
-                            r.UrlRoot,
-                            Repository.UrlRootDefault
-                        );
+            Assert.NotNull(result);
+            Assert.NotNull(result.Artifacts);
+            Assert.Equals(result.Artifacts.Count, 0);
             #elif XUNIT
-            Assert.NotNull(r);
-            Assert.Equal
-                        (
-                            r.UrlRoot,
-                            uri
-                        );
-            Assert.Equal
-                        (
-                            r.UrlRoot,
-                            Repository.UrlRootDefault
-                        );
+            Assert.NotNull(result);
+            Assert.NotNull(result.Artifacts);
+            Assert.Empty(result.Artifacts);
+            Assert.Equal(0, result.Artifacts.Count);
+            #endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_Search_androidx_car_02()
+        {
+
+            SearchData result = Repository.Utilities.Search("androidx.car", 100).Result;
+
+            #if MSTEST
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Artifacts);
+            Assert.Equals(result.Artifacts.Count, 0);
+            #elif NUNIT
+            Assert.NotNull(result);
+            Assert.NotNull(result.Artifacts);
+            Assert.Equals(result.Artifacts.Count, 0);
+            #elif XUNIT
+            Assert.NotNull(result);
+            Assert.NotNull(result.Artifacts);
+            Assert.Empty(result.Artifacts);
+            Assert.Equal(0, result.Artifacts.Count);
             #endif
 
             return;
