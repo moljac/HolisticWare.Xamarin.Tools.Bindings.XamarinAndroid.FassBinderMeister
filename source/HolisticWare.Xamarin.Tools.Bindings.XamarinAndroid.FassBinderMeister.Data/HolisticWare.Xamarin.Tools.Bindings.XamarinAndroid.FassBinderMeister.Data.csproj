@@ -107,11 +107,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0" />
-    <PackageReference Include="Roslynator.Analyzers" Version="3.2.2" />
-    <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.2.2" />
+    <PackageReference Include="Roslynator.Analyzers" Version="3.3.0" />
+    <PackageReference Include="Roslynator.Formatting.Analyzers" Version="3.3.0" />
     <PackageReference Include="AsyncFixer" Version="1.5.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.3" />
     <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.3" />
-    <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="1.1.1" />
+    <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="3.3.0" />
   </ItemGroup>
 </Project>

@@ -100,6 +100,6 @@
       http://www.asyncfixer.com/
     -->
     <PackageReference Include="AsyncFixer" Version="1.0.0" PrivateAssets="All" />
-
   </ItemGroup>
+
 </Project>
