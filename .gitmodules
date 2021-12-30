@@ -16,3 +16,6 @@
 [submodule "externals-submodules/Core.IO"]
 	path = externals-submodules/Core.IO
 	url = https://github.com/HolisticWare/HolisticWare.Core.IO.git
+[submodule "externals-submodules/Core.Text"]
+	path = externals-submodules/Core.Text
+	url = https://github.com/HolisticWare/HolisticWare.Core.Text.git
