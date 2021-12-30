@@ -140,9 +140,9 @@ namespace UnitTests.Core.Net.HTTP.IO
             List<global::Core.Net.HTTP.IO.FileSystemItem> fs_tree = null;
 
             // Create and add a new default trace listener.
-            //System.Diagnostics.DefaultTraceListener defaultListener;
-            //defaultListener = new System.Diagnostics.DefaultTraceListener();
-            //System.Diagnostics.Trace.Listeners.Add(defaultListener);
+            // System.Diagnostics.DefaultTraceListener defaultListener;
+            // defaultListener = new System.Diagnostics.DefaultTraceListener();
+            // System.Diagnostics.Trace.Listeners.Add(defaultListener);
             string p = "../../../../../../../../output";
             System.Diagnostics.Trace.Listeners.Clear();
             System.Diagnostics.Trace.Listeners.Add

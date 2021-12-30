@@ -82,7 +82,7 @@
     </ProjectReference>
       <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
       <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj">
-        <Project>{F42C1657-731C-47A8-9071-E0403D4C72D3}</Project>
+        <Project>{10AD1889-43C3-4038-9F56-4EF251D86C3F}</Project>
         <Name>HolisticWare.Core.Net.HTTP</Name>
       </ProjectReference>
       <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj">
@@ -90,7 +90,7 @@
         <Name>HolisticWare.Core.Text.Transformations</Name>
       </ProjectReference>
       <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj">
-        <Project>{2F2EFACD-C3E9-4BC1-81AB-0FA7002B5FAE}</Project>
+        <Project>{6901FB63-1697-4955-8096-7AAE88BA63BC}</Project>
         <Name>HolisticWare.Core.Versioning</Name>
       </ProjectReference>
   </ItemGroup>
