@@ -7,3 +7,12 @@
 [submodule "externals-submodules/Core.Math.Discrete.GraphTheory"]
 	path = externals-submodules/Core.Math.Discrete.GraphTheory
 	url = https://github.com/HolisticWare/HolisticWare.Core.Math.Discrete.GraphTheory.git
+[submodule "externals-submodules/Core.Versioning"]
+	path = externals-submodules/Core.Versioning
+	url = https://github.com/HolisticWare/HolisticWare.Core.Versioning.git
+[submodule "externals-submodules/Core.Net"]
+	path = externals-submodules/Core.Net
+	url = https://github.com/HolisticWare/HolisticWare.Core.Net.git
+[submodule "externals-submodules/Core.IO"]
+	path = externals-submodules/Core.IO
+	url = https://github.com/HolisticWare/HolisticWare.Core.IO.git
