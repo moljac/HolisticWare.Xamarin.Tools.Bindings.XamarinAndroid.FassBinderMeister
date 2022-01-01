@@ -40,7 +40,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
             string content = System.Text.Json.JsonSerializer.Serialize<GoogleMavenData>
                                                                     (
                                                                         GoogleMavenData,
-                                                                        null
+                                                                        default(System.Text.Json.JsonSerializerOptions)
                                                                     );
             string type_name = GoogleMavenData.GetType().Name;
             string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmm");

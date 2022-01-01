@@ -240,6 +240,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
 
         //-----------------------------------------------------------------------------------------------------------
+        #region         Download androidx.car.car
         // https://maven.google.com/web/index.html?q=car#androidx.car:car:1.0.0-alpha7
 
         [Test]
@@ -674,9 +675,11 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
             return;
         }
 
+        #endregion      Download androidx.car.car
         //-----------------------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------------------------------------------------
+        #region         Download androidx.biometric.biometric
         // https://maven.google.com/web/index.html#androidx.biometric:biometric:1.1.0
 
         [Test]
@@ -818,9 +821,11 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
             return;
         }
+        #endregion      Download androidx.biometric.biometric
         //-----------------------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------------------------------------------------
+        #region         Download androidx.appcompat.appcompat
         // https://maven.google.com/web/index.html#androidx.appcompat:appcompat:1.3.1
 
         [Test]
@@ -964,9 +969,11 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
             return;
         }
+        #endregion      Download androidx.appcompat.appcompat
         //-----------------------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------------------------------------------------
+        #region         Download com.google.android.gms.play-services-ads
         // https://maven.google.com/web/index.html?#com.google.android.gms:play-services-ads:20.3.0
 
         [Test]
@@ -1107,9 +1114,11 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
             return;
         }
+        #endregion      Download com.google.android.gms.play-services-ads
         //-----------------------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------------------------------------------------
+        #region         Download org.chromium.net.cronet-api
         // https://maven.google.com/web/index.html?#org.chromium.net:cronet-api:92.4515.131
         [Test]
         public void Test_Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_org_chromium_net_cronet_api_01()
@@ -1252,9 +1261,11 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
             return;
         }
+        #endregion      Download org.chromium.net.cronet-api
         //-----------------------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------------------------------------------------
+        #region         Download com.android.tools.build.jetifier.jetifier-core
         // https://maven.google.com/web/index.html?#com.android.tools.build.jetifier:jetifier-core:1.0.0-beta10
         [Test]
         public void Test_Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_com_android_tools_build_jetifier_jetifier_core_01()
@@ -1395,6 +1406,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
             return;
         }
+        #endregion      Download com.android.tools.build.jetifier.jetifier-core
         //-----------------------------------------------------------------------------------------------------------
 
 

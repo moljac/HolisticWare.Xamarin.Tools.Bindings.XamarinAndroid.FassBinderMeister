@@ -88,7 +88,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
 
             #if MSTEST
             Assert.IsNotNull(Repository.UrlRootDefault);
-            Assert.IsNotNull(Repository.UrlMasterIndexDefault);
+            Assert.IsNull(Repository.UrlMasterIndexDefault);
             Assert.AreEqual
                         (
                             Repository.UrlRootDefault,
@@ -101,7 +101,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                         );
             #elif NUNIT
             Assert.NotNull(Repository.UrlRootDefault);
-            Assert.NotNull(Repository.UrlMasterIndexDefault);
+            Assert.Null(Repository.UrlMasterIndexDefault);
             Assert.AreEqual
                         (
                             Repository.UrlRootDefault,
@@ -114,7 +114,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                         );
             #elif XUNIT
             Assert.NotNull(Repository.UrlRootDefault);
-            Assert.NotNull(Repository.UrlMasterIndexDefault);
+            Assert.Null(Repository.UrlMasterIndexDefault);
             Assert.Equal
                         (
                             Repository.UrlRootDefault,
@@ -130,47 +130,11 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_Search_io_opencensu_01()
-        {
-
-            SearchData result  = Repository.Utilities.Search("io.opencensus").Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_MavenCentralSonatype_static_Search_io_opencensu_02()
-        {
-
-            SearchData result = Repository.Utilities.Search("io.opencensus", 100).Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_MavenCentralSonatype_static_Search_androidx_car_01()
-        {
-
-            SearchData result = Repository.Utilities.Search("androidx.car").Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_MavenCentralSonatype_static_Search_androidx_car_02()
-        {
-
-            SearchData result = Repository.Utilities.Search("androidx.car", 100).Result;
-
-            return;
-        }
-
-        [Test]
         public void Test_Repository_MavenCentralSonatype_ctor01()
         {
             Repository r = new Repository();
 
-            Uri uri = new Uri($"https://dl.google.com/android/maven2");
+            Uri uri = new Uri($"https://repo1.maven.org/maven2");
 
             #if MSTEST
             Assert.IsNotNull(r);

@@ -1,4 +1,15 @@
 <Project>
+
+    <PropertyGroup Condition="$(Configuration.Contains('Release'))">
+        <DebugType>Full</DebugType>
+        <DefineDebug>false</DefineDebug>
+        <DefineTrace>true</DefineTrace>
+        <Optimize>true</Optimize>
+        <OutputPath>bin</OutputPath>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+
   <PropertyGroup>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
 
@@ -89,6 +100,6 @@
       http://www.asyncfixer.com/
     -->
     <PackageReference Include="AsyncFixer" Version="1.0.0" PrivateAssets="All" />
-
   </ItemGroup>
+
 </Project>

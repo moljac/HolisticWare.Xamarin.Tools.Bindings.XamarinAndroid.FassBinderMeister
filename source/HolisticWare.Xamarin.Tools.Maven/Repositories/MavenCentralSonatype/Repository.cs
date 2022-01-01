@@ -61,6 +61,19 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
             }
         }
 
+        public static Uri UrlSearchDefault
+        {
+            get
+            {
+                return url_search_default;
+            }
+            set
+            {
+                url_search_default = value;
+
+                return;
+            }
+        }
 
         public virtual async
             Task<SearchData>

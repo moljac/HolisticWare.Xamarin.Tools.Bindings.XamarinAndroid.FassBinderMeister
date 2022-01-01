@@ -509,11 +509,21 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Group_Google_ctor02_androidx_compose()
         {
-            Group g = new Group("androidx.compose");
+            string group_textual = "androidx.compose";
+            Group g = new Group(group_textual);
 
             Uri uri_group = null;
-            Uri uri_group_index = null;
-
+            Uri uri_group_index = new Uri
+                                        (
+                                            Group.UrlGroupIndexDefault
+                                                        .AbsoluteUri
+                                                        .Replace
+                                                            (
+                                                                "_PLACEHOLDER_GROUP_ID_",
+                                                                group_textual.Replace('.', '/')
+                                                            )
+                                        );
+            
             #if MSTEST
             Assert.IsNotNull(g);
             Assert.IsNotNull(g.UrlGroupIndex);
@@ -560,10 +570,20 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
         [Test]
         public void Test_Group_Google_ctor10_io_opencensus()
         {
-            Group g = new Group("io.opencensus");
+            string group_textual = "io.opencensus";
+            Group g = new Group(group_textual);
 
             Uri uri_group = null;
-            Uri uri_group_index = null;
+            Uri uri_group_index = new Uri
+                                        (
+                                            Group.UrlGroupIndexDefault
+                                                        .AbsoluteUri
+                                                        .Replace
+                                                            (
+                                                                "_PLACEHOLDER_GROUP_ID_",
+                                                                group_textual.Replace('.', '/')
+                                                            )
+                                        );
 
             #if MSTEST
             Assert.IsNotNull(g);

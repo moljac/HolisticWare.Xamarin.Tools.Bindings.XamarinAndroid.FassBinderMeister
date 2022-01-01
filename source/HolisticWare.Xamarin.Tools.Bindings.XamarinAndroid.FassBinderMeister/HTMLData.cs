@@ -19,7 +19,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
             set;
         } = "BinderatorConfigData/PROJECT/TIMESTAMP/config.json";
 
-        public async Task<ReleaseNotesHistory> ParseAsync(string html)
+        public async
+            Task<ReleaseNotesHistory>
+                                        ParseAsync
+                                                (
+                                                    string html
+                                                )
         {
             HtmlWeb web = new HtmlWeb();
             web.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36";

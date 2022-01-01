@@ -129,41 +129,6 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.Google
 
         }
 
-        [Test]
-        public void Test_Repository_Google_static_Search_io_opencensu_01()
-        {
-
-            SearchData result = Repository.Utilities.Search("io.opencensus").Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_Google_static_Search_io_opencensu_02()
-        {
-
-            SearchData result = Repository.Utilities.Search("io.opencensus", 100).Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_Google_static_Search_androidx_car_01()
-        {
-
-            SearchData result = Repository.Utilities.Search("androidx.car").Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_Google_static_Search_androidx_car_02()
-        {
-
-            SearchData result = Repository.Utilities.Search("androidx.car", 100).Result;
-
-            return;
-        }
 
         [Test]
         public void Test_Repository_Google_ctor01()

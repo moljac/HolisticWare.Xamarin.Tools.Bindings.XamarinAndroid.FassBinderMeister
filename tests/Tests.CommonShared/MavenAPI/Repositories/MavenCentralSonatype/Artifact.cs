@@ -572,7 +572,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
                                                                     "1.6.1",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.pom"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1.pom"
                                                                 )
                                                                 .Result;
 
@@ -599,7 +599,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
                                                                     "1.6.1",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.aar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1.aar"
                                                                 )
                                                                 .Result;
 
@@ -623,7 +623,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
                                                                     "1.6.1",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.jar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1.jar"
                                                                 )
                                                                 .Result;
             #if MSTEST
@@ -646,7 +646,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
                                                                     "1.6.1",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-javadoc.jar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-javadoc.jar"
                                                                 )
                                                                 .Result;
 
@@ -670,7 +670,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
                                                                     "1.6.1",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-sources.jar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-sources.jar"
                                                                 )
                                                                 .Result;
             #if MSTEST
@@ -691,7 +691,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                 (
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-maven-metadata.xml"
                                                                 )
                                                                 .Result;
 
@@ -712,7 +712,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.crypto.tink",
                                                                     "tink-android",
                                                                     "1.6.1",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-maven-metadata.xml"
                                                                 )
                                                                 .Result;
 
@@ -1075,7 +1075,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.dagger",
                                                                     "dagger-android",
                                                                     "2.9",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.pom"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1.pom"
                                                                 )
                                                                 .Result;
 
@@ -1102,7 +1102,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.dagger",
                                                                     "dagger-android",
                                                                     "2.9",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.aar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1.aar"
                                                                 )
                                                                 .Result;
 
@@ -1126,7 +1126,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.dagger",
                                                                     "dagger-android",
                                                                     "2.9",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.jar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1.jar"
                                                                 )
                                                                 .Result;
             #if MSTEST
@@ -1149,7 +1149,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.dagger",
                                                                     "dagger-android",
                                                                     "2.9",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-javadoc.jar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-javadoc.jar"
                                                                 )
                                                                 .Result;
 
@@ -1173,7 +1173,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.dagger",
                                                                     "dagger-android",
                                                                     "2.9",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-sources.jar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-sources.jar"
                                                                 )
                                                                 .Result;
             #if MSTEST
@@ -1195,7 +1195,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.dagger",
                                                                     "dagger-android",
                                                                     "2.9",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-maven-metadata.xml"
                                                                 )
                                                                 .Result;
 
@@ -1216,7 +1216,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.google.dagger",
                                                                     "dagger-android",
                                                                     "2.9",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-maven-metadata.xml"
                                                                 )
                                                                 .Result;
 
@@ -1563,7 +1563,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.squareup.dagger",
                                                                     "dagger",
                                                                     "1.2.5",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.pom"
+                                                                    "../../../../../../../../output/com.squareup.dagger:dagger:1.2.5.pom"
                                                                 )
                                                                 .Result;
 
@@ -1589,7 +1589,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.squareup.dagger",
                                                                     "dagger",
                                                                     "1.2.5",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.aar"
+                                                                    "../../../../../../../../output/com.squareup.dagger:dagger:1.2.5.aar"
                                                                 )
                                                                 .Result;
 
@@ -1613,7 +1613,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.squareup.dagger",
                                                                     "dagger",
                                                                     "1.2.5",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.jar"
+                                                                    "../../../../../../../../output/com.squareup.dagger:dagger:1.2.5.jar"
                                                                 )
                                                                 .Result;
             #if MSTEST
@@ -1636,7 +1636,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.squareup.dagger",
                                                                     "dagger",
                                                                     "1.2.5",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-javadoc.jar"
+                                                                    "../../../../../../../../output/com.squareup.dagger:dagger:1.2.5-javadoc.jar"
                                                                 )
                                                                 .Result;
 
@@ -1659,7 +1659,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.squareup.dagger",
                                                                     "dagger",
                                                                     "1.2.5",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-sources.jar"
+                                                                    "../../../../../../../../output/com.squareup.dagger:dagger:1.2.5-sources.jar"
                                                                 )
                                                                 .Result;
             #if MSTEST
@@ -1681,7 +1681,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "com.squareup.dagger",
                                                                     "dagger",
                                                                     "1.2.5",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                    "../../../../../../../../output/com.squareup.dagger:dagger:1.2.5-maven-metadata.xml"
                                                                 )
                                                                 .Result;
 
@@ -1701,7 +1701,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                 (
                                                                     "com.squareup.dagger",
                                                                     "dagger",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                    "../../../../../../../../output/com.squareup.dagger:dagger:1.2.5-maven-metadata.xml"
                                                                 )
                                                                 .Result;
 
@@ -2047,7 +2047,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "org.jetbrains.kotlin",
                                                                     "kotlin-stdlib",
                                                                     "1.5.30",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.pom"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1.pom"
                                                                 )
                                                                 .Result;
 
@@ -2073,7 +2073,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "org.jetbrains.kotlin",
                                                                     "kotlin-stdlib",
                                                                     "1.5.30",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.aar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1.aar"
                                                                 )
                                                                 .Result;
 
@@ -2097,7 +2097,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "org.jetbrains.kotlin",
                                                                     "kotlin-stdlib",
                                                                     "1.5.30",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1.jar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1.jar"
                                                                 )
                                                                 .Result;
             #if MSTEST
@@ -2120,7 +2120,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "org.jetbrains.kotlin",
                                                                     "kotlin-stdlib",
                                                                     "1.5.30",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-javadoc.jar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-javadoc.jar"
                                                                 )
                                                                 .Result;
 
@@ -2143,7 +2143,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "org.jetbrains.kotlin",
                                                                     "kotlin-stdlib",
                                                                     "1.5.30",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1-sources.jar"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-sources.jar"
                                                                 )
                                                                 .Result;
             #if MSTEST
@@ -2165,7 +2165,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                     "org.jetbrains.kotlin",
                                                                     "kotlin-stdlib",
                                                                     "1.5.30",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-maven-metadata.xml"
                                                                 )
                                                                 .Result;
 
@@ -2185,7 +2185,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                                                                 (
                                                                     "org.jetbrains.kotlin",
                                                                     "kotlin-stdlib",
-                                                                    "../../../../../../../../output/com.google.crypto.tink.tink-android-1.6.1--maven-metadata.xml"
+                                                                    "../../../../../../../../output/com.google.crypto.tink:tink-android:1.6.1-maven-metadata.xml"
                                                                 )
                                                                 .Result;
 
@@ -2206,11 +2206,491 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         #endregion      Download org_jetbrains_kotlin_kotlin_stdlib
         //-----------------------------------------------------------------------------------------------------------
 
+
+        //-----------------------------------------------------------------------------------------------------------
+        #region         Download com_google_guava_guava
         // https://repo1.maven.org/maven2/com/google/guava/guava/
         // https://repo1.maven.org/maven2/com/google/guava/guava/30.1-android/
-
-
         // https://repo1.maven.org/maven2/com/google/guava/guava-io/r03/
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadProjectObjecModelPOMAsync_com_google_guava_guava_01()
+        {
+            // 
+            string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+#elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+#elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadArtifactAndroidArchiveAARAsync_com_google_guava_guava_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNull(bytez);
+#elif NUNIT
+            Assert.Null(bytez);
+#elif XUNIT
+            Assert.Null(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadArtifactJavaArchiveJARAsync_com_google_guava_guava_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+#if MSTEST
+            Assert.IsNotNull(bytez);
+#elif NUNIT
+            Assert.IsNotNull(bytez);
+#elif XUNIT
+            Assert.NotNull(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadJavaDocJavaArchiveJARAsync_com_google_guava_guava_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(bytez);
+#elif NUNIT
+            Assert.IsNotNull(bytez);
+#elif XUNIT
+            Assert.NotNull(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadSourcesJavaArchiveJARAsync_com_google_guava_guava_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+#if MSTEST
+            Assert.IsNotNull(bytez);
+#elif NUNIT
+            Assert.IsNotNull(bytez);
+#elif XUNIT
+            Assert.NotNull(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadMetadataAsync_com_google_guava_guava_01()
+        {
+            string module_01 = Artifact.Utilities.DownloadMetadataAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+#elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+#elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+#endif
+
+
+            string module_02 = Artifact.Utilities.DownloadMetadataAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+#elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+#elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+#endif
+
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_com_google_guava_guava_01()
+        {
+            string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+#elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+#elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_com_google_guava_guava_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNull(bytez);
+#elif NUNIT
+            Assert.Null(bytez);
+#elif XUNIT
+            Assert.Null(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_com_google_guava_guava_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+#if MSTEST
+            Assert.IsNotNull(bytez);
+#elif NUNIT
+            Assert.IsNotNull(bytez);
+#elif XUNIT
+            Assert.NotNull(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_com_google_guava_guava_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(bytez);
+#elif NUNIT
+            Assert.IsNotNull(bytez);
+#elif XUNIT
+            Assert.NotNull(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_com_google_guava_guava_01()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+#if MSTEST
+            Assert.IsNotNull(bytez);
+#elif NUNIT
+            Assert.IsNotNull(bytez);
+#elif XUNIT
+            Assert.NotNull(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveModuleAsync_com_google_guava_guava_01()
+        {
+            string module_01 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+#elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+#elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+#endif
+
+
+            string module_02 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+#elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+#elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_com_google_guava_guava_02()
+        {
+            string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android",
+                                                                    "../../../../../../../../output/com.google.guava:guava:30.1-android.pom"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(pom);
+            Assert.IsFalse(string.IsNullOrEmpty(pom));
+#elif NUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+#elif XUNIT
+            Assert.NotNull(pom);
+            Assert.False(string.IsNullOrEmpty(pom));
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_com_google_guava_guava_02()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android",
+                                                                    "../../../../../../../../output/com.google.guava:guava:30.1-android.aar"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNull(bytez);
+#elif NUNIT
+            Assert.Null(bytez);
+#elif XUNIT
+            Assert.Null(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_com_google_guava_guava_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android",
+                                                                    "../../../../../../../../output/com.google.guava:guava:30.1-android.jar"
+                                                                )
+                                                                .Result;
+#if MSTEST
+            Assert.IsNotNull(bytez);
+#elif NUNIT
+            Assert.IsNotNull(bytez);
+#elif XUNIT
+            Assert.NotNull(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_com_google_guava_guava_02()
+        {
+            // N/A
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android",
+                                                                    "../../../../../../../../output/com.google.guava:guava:30.1-android-javadoc.jar"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(bytez);
+#elif NUNIT
+            Assert.IsNotNull(bytez);
+#elif XUNIT
+            Assert.NotNull(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_com_google_guava_guava_02()
+        {
+            byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android",
+                                                                    "../../../../../../../../output/com.google.guava:guava:30.1-android-sources.jar"
+                                                                )
+                                                                .Result;
+#if MSTEST
+            Assert.IsNotNull(bytez);
+#elif NUNIT
+            Assert.IsNotNull(bytez);
+#elif XUNIT
+            Assert.NotNull(bytez);
+#endif
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_MavenCentralSonatype_static_API_01_DownloadThenSaveMetadataAsync_com_google_guava_guava_02()
+        {
+            string module_01 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "30.1-android",
+                                                                    "../../../../../../../../output/com.google.guava:guava:30.1-android-maven-metadata.xml"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(module_01);
+            Assert.IsFalse(string.IsNullOrEmpty(module_01));
+#elif NUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+#elif XUNIT
+            Assert.NotNull(module_01);
+            Assert.False(string.IsNullOrEmpty(module_01));
+#endif
+
+
+            string module_02 = Artifact.Utilities.DownloadThenSaveMetadataAsync
+                                                                (
+                                                                    "com.google.guava",
+                                                                    "guava",
+                                                                    "../../../../../../../../output/com.google.guava:guava:30.1-android-maven-metadata.xml"
+                                                                )
+                                                                .Result;
+
+#if MSTEST
+            Assert.IsNotNull(module_02);
+            Assert.IsFalse(string.IsNullOrEmpty(module_02));
+#elif NUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+#elif XUNIT
+            Assert.NotNull(module_02);
+            Assert.False(string.IsNullOrEmpty(module_02));
+#endif
+
+            return;
+        }
+
+        #endregion      Download com_google_guava_guava
+        //-----------------------------------------------------------------------------------------------------------
 
 
         [Test]

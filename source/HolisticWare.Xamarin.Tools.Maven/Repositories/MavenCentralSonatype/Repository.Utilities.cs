@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
+
+using HtmlAgilityPack;
+
 using Core.Net.HTTP;
 
 namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
@@ -20,7 +23,6 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
             {
                 SearchData result = null;
 
-                // https://search.maven.org/solrsearch/select?q=_PLACEHOLDER_SEARCH_TERM_&start=0&rows=_PLACEHOLDER_SEARCH_RESULTS_
                 Uri url_default = Repository.UrlSearchDefault;
 
                 Uri url = new Uri
@@ -72,6 +74,29 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
 
                 return result;
             }
+
+
+            /// <summary>
+            /// Get MasterIndex of the MavenCentralSonatype Maven repository
+            /// MavenCentralSonatype Maven repository dos not have pregenerated MasterIndex
+            /// parsing HTTP directory output
+            /// https://repo1.maven.org/maven2/
+            /// </summary>
+            /// <returns>Maven.MasterIndex</returns>
+            public static new async
+                Task<Maven.MasterIndex>
+                                                GetMasterIndexAsync
+                                                        (
+                                                        )
+            {
+                MasterIndex result = null;
+
+
+                MasterIndexDefault = result;
+
+                return result;
+            }
+
         }
     }
 }

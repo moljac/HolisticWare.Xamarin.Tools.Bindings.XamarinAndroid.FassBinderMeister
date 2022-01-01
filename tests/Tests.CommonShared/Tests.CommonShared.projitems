@@ -46,6 +46,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Text\Transformations\PascalCase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\Repository.Search.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\Repository.MasterIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Repository.Search.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Repository.MasterIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\IO\Test_FileSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
@@ -67,5 +72,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\" />
     <Folder Include="$(MSBuildThisFileDirectory)Core\Text\" />
     <Folder Include="$(MSBuildThisFileDirectory)Core\Text\Transformations\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Core\IO\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\IO\" />
   </ItemGroup>
 </Project>

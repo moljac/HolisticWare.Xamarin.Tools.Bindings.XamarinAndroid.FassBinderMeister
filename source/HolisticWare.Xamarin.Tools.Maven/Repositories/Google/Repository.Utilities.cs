@@ -41,7 +41,12 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
                 return result;
             }
 
-
+            /// <summary>
+            /// Get MasterIndex of the Google's Maven repository
+            /// Google's Maven repository has MasterIndex in XML format
+            /// https://dl.google.com/android/maven2/master-index.xml
+            /// </summary>
+            /// <returns>Maven.MasterIndex</returns>
             public static async
                 Task<Maven.MasterIndex>
                                                 GetMasterIndexAsync

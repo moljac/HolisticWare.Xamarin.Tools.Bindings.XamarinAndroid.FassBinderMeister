@@ -1,4 +1,8 @@
-// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+using System.Collections.Generic;
+
+namespace HolisticWare.Xamarin.Tools.ComponentGovernance
+{
+    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
     public class Git
     {
         public string repositoryUrl { get; set; }
@@ -32,4 +36,4 @@
         public List<Registration> Registrations { get; set; }
         public int Version { get; set; }
     }
-
+}

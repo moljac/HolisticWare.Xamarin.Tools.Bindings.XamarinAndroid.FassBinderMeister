@@ -11,6 +11,10 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
     /// IdFullyQualified        <groupId>:<artifactId>:<version>
     /// </summary>
     /// <see href="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#minimal-pom"/>
+    /// https://maven.apache.org/guides/introduction/introduction-to-the-pom.html
+    ///         <groupId>:<artifactId>:<version>
+    /// https://www.javapedia.net/Maven-Interview-questions/119
+    ///         <groupId>:<artifactId>:<version>
     public partial class Artifact : Maven.Artifact
     {
         static Artifact()
