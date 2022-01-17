@@ -1,14 +1,31 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 using HolisticWare.Xamarin.Tools.GitHub;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType;
 using NuGet.Protocol.Core.Types;
+using System.Diagnostics;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator
 {
     public class BinderatorConfigDownloader
     {
+        public BinderatorConfigDownloader(HttpClient client)
+        {
+            HttpClient = client;
+
+            return;
+        }
+
+        // HttpClient is intended to be instantiated once per application,
+        // rather than per-use. See Remarks.
+        public static HttpClient HttpClient
+        {
+            get;
+            set;
+        }
+
         public IEnumerable<QuickType.ConfigRoot> Configs
         {
             get;
@@ -35,8 +52,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             get;
             set;
         }
-
-        static System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
 
         public async
             Task<Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>>>
@@ -74,8 +89,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                             List<IPackageSearchMetadata> package_metadata = null;
                             package_metadata = await a.GetPackageMetadataAsync()
                                                         .ConfigureAwait(false);
-
-
                         }
                     }
                 }
@@ -115,12 +128,16 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             foreach (KeyValuePair<string, IEnumerable<(Tag tag, string content)>> c in contents)
             {
                 string r = c.Key;
-                List<(Tag tag, List<ConfigRoot> config_object)> tags_config_objects = new List<(Tag tag, List<ConfigRoot> config_object)>();
+                List<(Tag tag, List<ConfigRoot> config_object)> tags_config_objects = null;
+                tags_config_objects = new List<(Tag tag, List<ConfigRoot> config_object)>();
+
                 foreach ((Tag tag, string content) tag_content in c.Value)
                 {
+                    FassBinderMeister.Binderator.QuickType.Artifact.HttpClient = HttpClient;
                     List<ConfigRoot> cr = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ConfigRoot>>(tag_content.content);
                     tags_config_objects.Add((tag_content.tag, cr));
                 }
+
                 config_objects.Add(r, tags_config_objects);
             }
 
@@ -169,25 +186,21 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                                     )
                                     >();
 
-            new Dictionary<string, IEnumerable<Tag>>();
+            tags_for_repo = new Dictionary<string, IEnumerable<Tag>>();
             Dictionary<string, IEnumerable<(Tag, string)>> tags_for_repo_content = null;
-            GitHubClient gc = new GitHubClient();
+            GitHubClient gc = new GitHubClient(BinderatorConfigDownloader.HttpClient);
 
             if (string.IsNullOrEmpty(tag))
             {
-                tags_for_repo.Add
-                                (
-                                    repo,
-                                    await gc.GetTagsAsync(user_org, repository: repo)
-                                );
+                IEnumerable<Tag> tags = await gc.GetTagsAsync(user_org, repository: repo);
+
+                tags_for_repo.Add(repo, tags);
             }
             else
             {
-                tags_for_repo.Add
-                                (
-                                    repo,
-                                    await gc.GetTagsAsync(user_org, repository: repo, tag)
-                                );
+                IEnumerable<Tag> tags = await gc.GetTagsAsync(user_org, repository: repo, tag);
+
+                tags_for_repo.Add(repo, tags);
             }
 
             tags_for_repo_content = new Dictionary<string, IEnumerable<(Tag, string)>>();
@@ -198,7 +211,9 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 foreach (Tag t in tags_for_repo[r])
                 {
                     string url_github = $"https://raw.githubusercontent.com/{user_org}/{r}/{t.Name}/config.json";
-                    System.Net.Http.HttpResponseMessage result = await client.GetAsync(url_github);
+
+                    Trace.WriteLine($"Downloading tags: {url_github}"); 
+                    System.Net.Http.HttpResponseMessage result = await HttpClient.GetAsync(url_github);
                     if(result.StatusCode == System.Net.HttpStatusCode.NotFound)
                     {
                         // TODO: configs not found

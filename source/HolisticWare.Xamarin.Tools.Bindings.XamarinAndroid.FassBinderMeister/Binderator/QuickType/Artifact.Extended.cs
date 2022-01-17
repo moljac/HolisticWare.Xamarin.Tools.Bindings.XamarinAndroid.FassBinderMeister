@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net.Http;
 
-using HolisticWare.Xamarin.Tools.NuGet;
-using NuGet.Packaging.Core;
-using NuGet.Protocol;
 
 // To parse this JSON data, add NuGet 'Newtonsoft.Json' then do:
 //
@@ -14,9 +10,16 @@ using NuGet.Protocol;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType
 {
-
     public partial class Artifact
     {
+        // HttpClient is intended to be instantiated once per application,
+        // rather than per-use. See Remarks.
+        public static HttpClient HttpClient
+        {
+            get;
+            set;
+        }
+
         public List<string> ArtifactIdDependencies
         {
             get;
@@ -35,10 +38,9 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
             set;
         }
 
-
         public Artifact()
         {
-            ngc = new NuGet.ClientAPI.NuGetClient();
+            ngc = new NuGet.ClientAPI.NuGetClient(HttpClient);
 
             return;
         }

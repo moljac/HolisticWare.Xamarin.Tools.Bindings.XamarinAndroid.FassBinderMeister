@@ -75,16 +75,20 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 
             this.NugetVersions = nuget_versions;
 
-            MavenNet.GoogleMavenRepository repo = MavenNet.MavenRepository.FromGoogle();
+            MavenNet.GoogleMavenRepository repo_google = MavenNet.MavenRepository.FromGoogle();
             try
             {
-                await repo.Refresh(this.GroupId);
+                await repo_google.Refresh(this.GroupId);
             }
             catch (System.Exception exc)
             {
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
                 sb.AppendLine($"Binderator.Artifact.GetPackageMetadataAsync Exception");
-                sb.AppendLine($"    Message : {exc.Message}");
+                sb.AppendLine($"    NugetId     : {this.NugetId}");
+                sb.AppendLine($"    GroupId     : {this.GroupId}");
+                sb.AppendLine($"    MavenNet    : Google");
+                sb.AppendLine($"    Exception   : {exc.GetType()}");
+                sb.AppendLine($"    Message     : {exc.Message}");
 
                 System.Diagnostics.Trace.WriteLine(sb.ToString());
 
@@ -99,7 +103,34 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 }
                 BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet.Add(this.GroupId);
 
-                throw;
+                //throw;
+            }
+
+            MavenNet.MavenCentralRepository repo_central = MavenNet.MavenRepository.FromMavenCentral();
+            try
+            {
+                await repo_central.Refresh(this.GroupId);
+            }
+            catch (System.Exception exc)
+            {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.AppendLine($"Binderator.Artifact.GetPackageMetadataAsync Exception");
+                sb.AppendLine($"    NugetId     : {this.NugetId}");
+                sb.AppendLine($"    GroupId     : {this.GroupId}");
+                sb.AppendLine($"    MavenNet    : Maven Central");
+                sb.AppendLine($"    Exception   : {exc.GetType()}");
+                sb.AppendLine($"    Message     : {exc.Message}");
+
+                System.Diagnostics.Trace.WriteLine(sb.ToString());
+
+                if (BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet == null)
+                {
+                    BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet = new List<string>();
+                }
+
+                BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet.Add(this.GroupId);
+
+                //throw;
             }
 
             return this.package_metadata.ToList();
@@ -121,20 +152,23 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 
             try
             {
-                MavenNet.Models.Project project = await repo.GetProjectAsync
-                                                                (
-                                                                    this.GroupId,
-                                                                    this.ArtifactId,
-                                                                    this.Version
-                                                                )
-                                                                .ConfigureAwait(false);
+                MavenNet.Models.Project project = await repo_google.GetProjectAsync
+                                                                        (
+                                                                            this.GroupId,
+                                                                            this.ArtifactId,
+                                                                            this.Version
+                                                                        )
+                                                                        .ConfigureAwait(false);
             }
             catch (System.Exception exc)
             {
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
                 sb.AppendLine($"Binderator.Artifact.GetPackageMetadataAsync Exception");
-                sb.AppendLine($"    Message : {exc.Message}");
-                sb.AppendLine($"    Not a Google Maven repository: {this.GroupId}");
+                sb.AppendLine($"    NugetId     : {this.NugetId}");
+                sb.AppendLine($"    GroupId     : {this.GroupId}");
+                sb.AppendLine($"    MavenNet    : Google");
+                sb.AppendLine($"    Exception   : {exc.GetType()}");
+                sb.AppendLine($"    Message     : {exc.Message}");
 
                 System.Diagnostics.Trace.WriteLine(sb.ToString());
 
@@ -142,6 +176,39 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
                 {
                     BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet = new List<string>();
                 }
+
+                BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet.Add(this.GroupId);
+
+                return this.package_metadata.ToList();
+            }
+
+            try
+            {
+                MavenNet.Models.Project project = await repo_central.GetProjectAsync
+                                                                        (
+                                                                            this.GroupId,
+                                                                            this.ArtifactId,
+                                                                            this.Version
+                                                                        )
+                                                                        .ConfigureAwait(false);
+            }
+            catch (System.Exception exc)
+            {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.AppendLine($"Binderator.Artifact.GetPackageMetadataAsync Exception");
+                sb.AppendLine($"    NugetId     : {this.NugetId}");
+                sb.AppendLine($"    GroupId     : {this.GroupId}");
+                sb.AppendLine($"    MavenNet    : Maven Central");
+                sb.AppendLine($"    Exception   : {exc.GetType()}");
+                sb.AppendLine($"    Message     : {exc.Message}");
+
+                System.Diagnostics.Trace.WriteLine(sb.ToString());
+
+                if (BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet == null)
+                {
+                    BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet = new List<string>();
+                }
+
                 BinderatorConfigDownloader.GroupIdsNotFoundByMavenNet.Add(this.GroupId);
 
                 return this.package_metadata.ToList();

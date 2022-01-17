@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 using NuGet.Protocol.Core.Types;
 using global::NuGet.Packaging;
@@ -12,9 +13,17 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
 {
     public partial class ArtifactBindingNuget
     {
+        // HttpClient is intended to be instantiated once per application,
+        // rather than per-use. See Remarks.
+        public static HttpClient HttpClient
+        {
+            get;
+            set;
+        }
+
         public ArtifactBindingNuget()
         {
-            nuget_client = new NuGet.ClientAPI.NuGetClient();
+            nuget_client = new NuGet.ClientAPI.NuGetClient(HttpClient);
 
             return;
         }
@@ -22,8 +31,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.B
         public ArtifactBindingNuget(string id_group, string id_artifact)
             : this()
         {
-            nuget_client = new NuGet.ClientAPI.NuGetClient();
-
             return;
         }
 

@@ -16,8 +16,10 @@ namespace HolisticWare.Xamarin.Tools.GitHub
             set;
         }
 
-        public GitHubClient()
+        public GitHubClient(HttpClient client)
         {
+            GitHubClient.HttpClient = client;
+
             HttpClient.DefaultRequestHeaders
                             .Add
                                 (

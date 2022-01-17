@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -33,8 +34,10 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
         SourceCacheContext cache = null;
         SourceRepository repository = null;
 
-        public NuGetClient()
+        public NuGetClient(HttpClient client)
         {
+            HttpClient = client;
+
             logger = NullLogger.Instance;
             cancellationToken = CancellationToken.None;
 
@@ -151,6 +154,8 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
                                                     bool include_unlisted = true
                                                 )
         {
+            Trace.WriteLine($"NuGetClient.GetPackageMetadataAsync: {nuget_id}");
+
             PackageMetadataResource resource = null;
             resource = await repository.GetResourceAsync<PackageMetadataResource>();
 
