@@ -70,15 +70,15 @@ using HolisticWare.Xamarin.Tools.GitHub;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType;
 
-namespace UnitTests.Binderator.Configs
+namespace UnitTests.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.Configs
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_BinderatorConfigDownloader_AndroidX
     {
         [Test]
-        public void Test_BinderatorConfig_DownloadBinderatorConfigContents()
+        public void Test_BinderatorConfig_DownloadBinderatorConfigContents_xamarin_AndroidX()
         {
-            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader();
+            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader(Tests.CommonShared.Http.Client);
 
             Dictionary<string, IEnumerable<(Tag, string)>> configs = null;
             configs = bcd.DownloadBinderatorConfigContentsAsync
@@ -125,9 +125,9 @@ namespace UnitTests.Binderator.Configs
         }
 
         [Test]
-        public void Test_BinderatorConfigDownloader_DownloadBinderatorConfigObjects()
+        public void Test_BinderatorConfigDownloader_DownloadBinderatorConfigObjects_xamarin_AndroidX()
         {
-            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader();
+            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader(Tests.CommonShared.Http.Client);
 
             Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>> configs = null;
 
@@ -142,9 +142,9 @@ namespace UnitTests.Binderator.Configs
 
 
         [Test]
-        public void Test_BinderatorConfigDownloader_DownloadAndExtendBinderatorConfigObjects()
+        public void Test_BinderatorConfigDownloader_DownloadAndExtendBinderatorConfigObjects_xamarin_AndroidX()
         {
-            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader();
+            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader(Tests.CommonShared.Http.Client);
 
             Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>> configs = null;
 

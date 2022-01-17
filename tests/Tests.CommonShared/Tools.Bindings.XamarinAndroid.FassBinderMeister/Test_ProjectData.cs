@@ -65,35 +65,62 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 using HolisticWare.Xamarin.Tools.GitHub;
-using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator;
-using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType;
-using Tests.CommonShared;
-using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister;
 
-namespace UnitTests.Binderator.Configs
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator;
+using ConfigRoot = HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.QuickType.ConfigRoot;
+
+namespace UnitTests.Tools.Bindings.XamarinAndroid.FassBinderMeister
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_BinderatorConfigsFetcher
+    public partial class Test_ProjectData
     {
         [Test]
-        public void Test_BinderatorConfigsFetcher_InitializeAsync()
+        public void Test_Test_ProjectData()
         {
-            BinderatorConfigsFetcher.InitializeAsync();
+            Dictionary<string, string> d = new Dictionary<string, string>()
+            {
+                {
+                    "AndroidX",
+                    "https://raw.githubusercontent.com/xamarin/AndroidX/main/config.json"
+                },
+                {
+                    "GooglePlayServices with AndroidX",
+                    "https://raw.githubusercontent.com/xamarin/GooglePlayServicesComponents/main/config.json"
+                },
+                {
+                    "GooglePlayServices with Android.Support",
+                    "https://raw.githubusercontent.com/xamarin/GooglePlayServicesComponents/71.x.y.z-legacy-Android.Support/config.json"
+                },
+                {
+                    "Android.Support",
+                    "https://raw.githubusercontent.com/xamarin/AndroidSupportComponents/master/config.json"
+                },
+                {
+                    "XamarinComponents Android Kotlin",
+                    "https://raw.githubusercontent.com/xamarin/XamarinComponents/main/Android/Kotlin/config.json"
+                },
+            };
+
+            ProjectData.ProjectConfigUrls = d;
+
 
             #if MSTEST
-            Assert.IsNotNull(ProjectData.ProjectConfigs);
-            Assert.IsTrue(ProjectData.ProjectConfigs.Any());
+            Assert.IsNotNull(ProjectData.ProjectConfigUrls );
+            Assert.IsTrue(ProjectData.ProjectConfigUrls.Any());
             #elif NUNIT
-            Assert.NotNull(ProjectData.ProjectConfigs);
-            Assert.IsTrue(ProjectData.ProjectConfigs.Any());
+            Assert.NotNull(ProjectData.ProjectConfigUrls );
+            Assert.IsTrue(ProjectData.ProjectConfigUrls.Any());
             #elif XUNIT
-            Assert.NotNull(ProjectData.ProjectConfigs);
-            Assert.True(ProjectData.ProjectConfigs.Any());
+            Assert.NotNull(ProjectData.ProjectConfigUrls);
+            Assert.True(ProjectData.ProjectConfigUrls.Any());
             #endif
 
+            return;
         }
+
+
     }
 }

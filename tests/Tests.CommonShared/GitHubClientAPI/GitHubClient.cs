@@ -79,8 +79,7 @@ namespace UnitTests.ClientsAPI.GitHub
         [Test]
         public void Test_GetTagsAsync_AndroidX()
         {
-            GitHubClient.HttpClient = Tests.CommonShared.Http.Client;
-            GitHubClient ghc = new GitHubClient();
+            GitHubClient ghc = new GitHubClient(Tests.CommonShared.Http.Client);
 
             IEnumerable<Tag> tags = ghc.GetTagsAsync("xamarin", "AndroidX").Result;
 
@@ -98,8 +97,7 @@ namespace UnitTests.ClientsAPI.GitHub
         [Test]
         public void Test_GetTagsAsync_GooglePlayServices()
         {
-            GitHubClient.HttpClient = Tests.CommonShared.Http.Client;
-            GitHubClient ghc = new GitHubClient();
+            GitHubClient ghc = new GitHubClient(Tests.CommonShared.Http.Client);
 
             IEnumerable<Tag> tags = ghc.GetTagsAsync("xamarin", "GooglePlayServicesComponents").Result;
 
@@ -117,8 +115,7 @@ namespace UnitTests.ClientsAPI.GitHub
         [Test]
         public void Test_GetTagsAsync_Essentials()
         {
-            GitHubClient.HttpClient = Tests.CommonShared.Http.Client;
-            GitHubClient ghc = new GitHubClient();
+            GitHubClient ghc = new GitHubClient(Tests.CommonShared.Http.Client);
 
             IEnumerable<Tag> tags = ghc.GetTagsAsync("xamarin", "Essentials").Result;
 

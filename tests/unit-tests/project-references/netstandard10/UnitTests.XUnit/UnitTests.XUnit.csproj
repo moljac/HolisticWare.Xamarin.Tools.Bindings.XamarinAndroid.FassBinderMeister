@@ -14,14 +14,19 @@
     <DefineConstants>TRACE;XUNIT;RELEASE;NETCOREAPP3_1;NET;NET5_0;NETCOREAPP</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="1.2.0" />
+    <PackageReference Include="coverlet.collector" Version="3.1.0"><IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+<PrivateAssets>all</PrivateAssets>
+</PackageReference>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
+    <PackageReference Include="System.Diagnostics.Tracing" Version="4.3.0" />
+    <PackageReference Include="Nito.AsyncEx.Tasks" Version="5.1.2" />
+    <PackageReference Include="Nito.AsyncEx.Context" Version="5.1.2" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -39,6 +44,12 @@
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj" />
     <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Text\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj" />
     <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Versioning\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="System.Diagnostics.Tracing" />
+    <None Remove="Nito.AsyncEx.Tasks" />
+    <None Remove="Nito.AsyncEx.Context" />
   </ItemGroup>
   <Choose>
     <When Condition="! exists('..\..\..\..\source\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10.csproj')">

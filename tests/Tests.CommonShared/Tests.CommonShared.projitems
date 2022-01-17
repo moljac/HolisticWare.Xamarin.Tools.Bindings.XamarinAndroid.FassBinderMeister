@@ -10,8 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)HttpClient.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Binderator.Config\Binderator.Config_AndroidX.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Binderator.Config\Binderator.Config_GooglePlayServicesComponents.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GitHubClientAPI\GitHubClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\GroupIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MasterIndex.cs" />
@@ -29,7 +27,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ClientAPI\NugetPackages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ServerAPI\NuGetClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BinderatorConfigsFetcher.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Binderator.Config\BinderatorConfigsFetcher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\RepositoryAgnosticDiscovery\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\RepositoryAgnosticDiscovery\Group.cs" />
@@ -40,21 +37,22 @@
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\MavenClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\MasterIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\GroupIndex.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Serialization\JSON_Deserialization_BuddyClass.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\VersionSemantic.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\HttpClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\Artifact.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Text\Transformations\PascalCase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\Repository.Search.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\Repository.MasterIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Repository.Search.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\Repository.MasterIndex.cs" />
+
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\HttpClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\IO\Test_FileSystem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Test_ProjectData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Binderator.Config\Binderator.Config_AndroidX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Binderator.Config\Binderator.Config_GooglePlayServicesComponents.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Binderator.Config\BinderatorConfigsFetcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Core\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenNET\" />
     <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\" />
@@ -67,12 +65,13 @@
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\Google\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\Repositories\MavenCentralSonatype\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Core\Serialization\" />
+
+
+    <Folder Include="$(MSBuildThisFileDirectory)Core\" />
     <Folder Include="$(MSBuildThisFileDirectory)Core\Net\" />
     <Folder Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Core\Text\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Core\Text\Transformations\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Core\IO\" />
     <Folder Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\IO\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Binderator.Config\" />
   </ItemGroup>
 </Project>

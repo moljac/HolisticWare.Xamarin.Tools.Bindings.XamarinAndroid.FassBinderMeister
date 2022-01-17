@@ -155,7 +155,7 @@ namespace UnitTests.Core.Net.HTTP.IO
                                                 );
             System.Diagnostics.Trace.Listeners.Add
                                                 (
-                                                    new System.Diagnostics.ConsoleTraceListener()
+                                                    new System.Diagnostics.DefaultTraceListener()
                                                 );
 
             fs_tree = fs.BuildAsync().Result;

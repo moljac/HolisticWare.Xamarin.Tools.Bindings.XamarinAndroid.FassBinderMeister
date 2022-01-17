@@ -78,7 +78,7 @@ namespace UnitTests.Binderator.Configs
         [Test]
         public void Test_BinderatorConfig_DownloadBinderatorConfigContents()
         {
-            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader();
+            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader(Tests.CommonShared.Http.Client);
 
             Dictionary<string, IEnumerable<(Tag, string)>> configs = null;
             configs = bcd.DownloadBinderatorConfigContentsAsync
@@ -128,7 +128,7 @@ namespace UnitTests.Binderator.Configs
         [Test]
         public void Test_BinderatorConfig_DownloadBinderatorConfigObjects()
         {
-            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader();
+            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader(Tests.CommonShared.Http.Client);
 
             Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>> configs = null;
 
@@ -146,7 +146,7 @@ namespace UnitTests.Binderator.Configs
         [Test]
         public void Test_BinderatorConfig_DownloadAndExtendBinderatorConfigObjects()
         {
-            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader();
+            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader(Tests.CommonShared.Http.Client);
 
             Dictionary<string, IEnumerable<(Tag, List<ConfigRoot>)>> configs = null;
 

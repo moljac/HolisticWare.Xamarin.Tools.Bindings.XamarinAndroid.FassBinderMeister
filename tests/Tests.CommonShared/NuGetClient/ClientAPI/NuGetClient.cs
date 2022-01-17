@@ -81,7 +81,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         {
             NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
 
-            NuGetClient ngc = new NuGetClient();
+            NuGetClient ngc = new NuGetClient(Tests.CommonShared.Http.Client);
 
             IEnumerable<IPackageSearchMetadata> search = null;
             search = ngc.SearchPackagesByKeywordAsync
@@ -127,7 +127,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         [Test]
         public void NuGetClient_Packages_PackageMetadata()
         {
-            NuGetClient ngc = new NuGetClient();
+            NuGetClient ngc = new NuGetClient(Tests.CommonShared.Http.Client);
 
             IEnumerable<IPackageSearchMetadata> package_metadata = null;
             package_metadata = ngc.GetPackageMetadataAsync
@@ -158,7 +158,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         [Test]
         public void NuGetClient_Packages_PackageVersions()
         {
-            NuGetClient ngc = new NuGetClient();
+            NuGetClient ngc = new NuGetClient(Tests.CommonShared.Http.Client);
 
             IEnumerable<NuGetVersion> package_versions = ngc.GetPackageVersionsAsync
                                                                                 (

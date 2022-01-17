@@ -78,7 +78,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         [Test]
         public void Test_NuGet_NugetPackage_GetPackageMetadataAsync()
         {
-            NuGetPackage.NugetClient = new NuGetClient();
+            NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
             NuGetPackage np = new NuGetPackage()
             {
@@ -124,7 +124,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         [Test]
         public void Test_NuGet_NugetPackage_GetDependencyTreeHierarchyAsync_AndroidX_MultiDex()
         {
-            NuGetPackage.NugetClient = new NuGetClient();
+            NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
             NuGetPackage np = new NuGetPackage()
             {
@@ -170,7 +170,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         [Test]
         public void Test_NuGet_NugetPackage_GetDependencyTreeHierarchyAsync_AndroidX_Migration()
         {
-            NuGetPackage.NugetClient = new NuGetClient();
+            NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
             NuGetPackage np = new NuGetPackage()
             {
@@ -215,7 +215,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         [Test]
         public void Test_NuGet_NugetPackage_GetDependencyTreeHierarchyAsync_AndroidX_Core()
         {
-            NuGetPackage.NugetClient = new NuGetClient();
+            NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
             NuGetPackage np = new NuGetPackage()
             {
@@ -261,7 +261,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         [Test]
         public void Test_NuGet_NugetPackage_GetDependencyTreeHierarchyAsync_AndroidX_Activity()
         {
-            NuGetPackage.NugetClient = new NuGetClient();
+            NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
             NuGetPackage np = new NuGetPackage()
             {
@@ -307,7 +307,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         [Test]
         public void Test_NuGet_NugetPackage_Versioned_VersionLatest()
         {
-            NuGetPackage.NugetClient = new NuGetClient();
+            NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
             NuGetPackage np = new NuGetPackage()
             {
@@ -323,14 +323,14 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         [Test]
         public void Test_NuGet_NugetPackage_Named_VersionLatest()
         {
-            NuGetPackage.NugetClient = new NuGetClient();
+            NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
             NuGetPackage np = new NuGetPackage()
             {
                 PackageId = "Xamarin.AndroidX.Activity",
             };
 
-            NuGetClient ngc = new NuGetClient();
+            NuGetClient ngc = new NuGetClient(Tests.CommonShared.Http.Client);
 
             IEnumerable<IPackageSearchMetadata> package_metadata = null;
             package_metadata = np.GetPackageMetadataAsync().Result;
