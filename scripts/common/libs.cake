@@ -32,21 +32,21 @@ Task("libs-msbuild-solutions")
     (
         () =>
         {
-
             foreach (string configuration in configurations)
             {
-                MSBuildSettings settings = new MSBuildSettings()
-                                                    .WithRestore()
-                                                    .WithTarget("Build")
-                                                    .SetConfiguration(configuration)
-                                                    .EnableBinaryLogger($"./output/libs-{configuration}.binlog")
-                                                    .WithProperty("DesignTimeBuild", "false")
-                                                    //.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
-                                                    ;
-
                 foreach(FilePath sln in LibrarySourceSolutions)
                 {
-                    MSBuild(sln.ToString(), settings);
+                    MSBuild
+                    (
+                        sln.ToString(),
+                        new MSBuildSettings
+                        {
+                            Configuration = configuration,
+                            Restore = true,
+                        }
+                        //.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
+                        .WithRestore()
+                    );
                 }
             }
 
@@ -94,8 +94,10 @@ Task("libs-msbuild-projects")
                         new MSBuildSettings
                         {
                             Configuration = configuration,
+                            Restore = true,
                         }
                         //.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
+                        .WithRestore()
                     );
                 }
             }
@@ -143,10 +145,11 @@ public void Build(string pattern)
 				new MSBuildSettings
 				{
 					Configuration = configuration,
+                    Restore = true,
 				}
 				//.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
 				.WithProperty("AndroidClassParser", "jar2xml")
-				
+				.WithRestore()
 			);
 		}
 	}

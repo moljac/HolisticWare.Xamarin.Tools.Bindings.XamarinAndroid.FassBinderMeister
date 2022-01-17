@@ -3,57 +3,32 @@
 
 //---------------------------------------------------------------------------------------
 Task ("externals")
-    //.IsDependentOn ("externals-base")
+    .IsDependentOn ("externals-build")
+    .IsDependentOn ("externals-build-submodules")
     // .WithCriteria (!FileExists ("./externals/HolisticWare.Core.Math.Statistics.aar"))
     .Does
     (
         () =>
         {
-            Information("externals ...");
-
-            string [] folders = new string[]
-            {
-                "./externals/",
-                "./externals/results/",
-                "./externals/results/unit-tests/",
-            };
-
-            foreach(string folder in folders)
-            {
-                Information($"    creating ...{folder}");
-                if (! DirectoryExists (folder))
-                {
-                    CreateDirectory (folder);
-                }
-            }
-
-            if (FileExists("externals.private.cake"))
-            {
-                CakeExecuteScript("externals.private.cake");
-            }
-
-            Information("    downloading ...");
-
-            // if ( ! string.IsNullOrEmpty(AAR_URL) )
-            // {
-            // 	//DownloadFile (AAR_URL, "./externals/HolisticWare.Core.Math.Statistics.aar");
-            // }
-
-            return;
-            // Externals.Initialize(Context);
-            // Externals.Execute();
-
             return;
         }
     );
 
 Task("externals-build")
-    .IsDependentOn ("nuget-restore")
     .Does
     (
         () =>
         {
-            FilePathCollection files = GetFiles("./external*/**/build.cake");
+            return;
+        }
+    );
+
+Task("externals-build-submodules")
+    .Does
+    (
+        () =>
+        {
+            FilePathCollection files = GetFiles("./external*-submodule*/**/build.cake");
             foreach(FilePath file in files)
             {
                 Information("File: {0}", file);
@@ -65,8 +40,8 @@ Task("externals-build")
                             Verbosity = Verbosity.Diagnostic,
                             Arguments = new Dictionary<string, string>()
                             {
-                                //{"verbosity",   "diagnostic"},
-                                {"target",      "libs"},
+                                //{ "verbosity",     "diagnostic"},
+                                { "target",          "nuget-pack"},
                             },
                         }
                     );
