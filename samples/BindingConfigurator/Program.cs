@@ -15,13 +15,16 @@ namespace BindingConfigurator
 {
     class Program
     {
+        static System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+
         static async Task Main(string[] args)
         {
             Trace.Listeners.Add(new ConsoleTraceListener());
 
             Dictionary<string, IEnumerable<(Tag, string)>> repo_tags_content;
 
-            repo_tags_content = await new BinderatorConfigDownloader().DownloadBinderatorConfigContentsAsync
+            repo_tags_content = await new BinderatorConfigDownloader(client)
+                                            .DownloadBinderatorConfigContentsAsync
                                                                             (
                                                                                 "xamarin",
                                                                                 "androidx"
@@ -64,7 +67,7 @@ namespace BindingConfigurator
             ConfigRoot cr = new ConfigRoot();
             IEnumerable<ConfigRoot> config = JsonConvert.DeserializeObject<IEnumerable<ConfigRoot>>(json);
 
-            google_maven_data.BinderatorConfig = new BinderatorConfigDownloader()
+            google_maven_data.BinderatorConfig = new BinderatorConfigDownloader(client)
             {
                 Configs = config
             };
@@ -190,7 +193,7 @@ namespace BindingConfigurator
                                 );
             IEnumerable<ConfigRoot> config = JsonConvert.DeserializeObject<IEnumerable<ConfigRoot>>(json);
 
-            google_maven_data.BinderatorConfig = new BinderatorConfigDownloader()
+            google_maven_data.BinderatorConfig = new BinderatorConfigDownloader(client)
             {
                 Configs = config
             };
