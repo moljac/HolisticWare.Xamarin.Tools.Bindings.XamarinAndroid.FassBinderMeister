@@ -73,5 +73,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\IO\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Binderator.Config\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister.Core\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister.Extensions\" />
   </ItemGroup>
 </Project>
