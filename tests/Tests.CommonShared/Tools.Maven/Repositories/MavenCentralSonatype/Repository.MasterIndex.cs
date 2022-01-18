@@ -62,68 +62,23 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System;
 
-using HolisticWare.Xamarin.Tools.Maven;
+using HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype;
 
-namespace UnitTests.ClientsAPI.Maven
+namespace UnitTests.Tools.Maven.Repositories.MavenCentralSonatype
 {
-    [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
+    //[TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Repository
     {
         [Test]
-        public void Test_Maven_Repository_ctor01()
+        public void Test_Repository_Google_static_GetMasterIndexAsync_io_opencensu_01()
         {
-            Repository r = new Repository();
-
-            #if MSTEST
-            Assert.IsNotNull(r);
-            #elif NUNIT
-            Assert.NotNull(r);
-            #elif XUNIT
-            Assert.NotNull(r);
-            #endif
+            HolisticWare.Xamarin.Tools.Maven.MasterIndex mi = null;
+            mi = HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype
+                                            .Repository.Utilities.GetMasterIndexAsync().Result;
 
             return;
         }
-
-
-        [Test]
-        public void Test_Repository_static_Search_io_opencensu_01()
-        {
-
-            SearchData result = Repository.Utilities.Search("io.opencensus").Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_static_Search_io_opencensu_02()
-        {
-
-            SearchData result = Repository.Utilities.Search("io.opencensus", 100).Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_static_Search_androidx_car_01()
-        {
-
-            SearchData result = Repository.Utilities.Search("androidx.car").Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_static_Search_androidx_car_02()
-        {
-
-            SearchData result = Repository.Utilities.Search("androidx.car", 100).Result;
-
-            return;
-        }
-
     }
 }

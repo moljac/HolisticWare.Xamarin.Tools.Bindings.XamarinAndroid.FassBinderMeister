@@ -70,7 +70,7 @@ using HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype;
 //using AliasRepoAgnostic   = global::HolisticWare.Xamarin.Tools.Maven;
 //using Artifact = global::HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype.Artifact;
 
-namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
+namespace UnitTests.Tools.Maven.Repositories.MavenCentralSonatype
 {
 
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed

@@ -66,7 +66,7 @@ using System;
 
 using HolisticWare.Xamarin.Tools.Maven.Repositories.Google;
 
-namespace UnitTests.ClientsAPI.Maven.Repositories.Google
+namespace UnitTests.Tools.Maven.Repositories.Google
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Group

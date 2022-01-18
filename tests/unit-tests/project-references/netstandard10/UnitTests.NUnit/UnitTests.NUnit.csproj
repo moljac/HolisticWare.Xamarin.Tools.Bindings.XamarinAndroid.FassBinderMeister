@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DefineConstants>TRACE;XUNIT;DEBUG;NETCOREAPP3_1;NET;NET5_0;NET6_0;NETCOREAPP</DefineConstants>
+    <DefineConstants>NUNIT;TRACE;DEBUG;NETCOREAPP3_1;NET;NET5_0;NET6_0;NETCOREAPP</DefineConstants>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DefineConstants>TRACE;XUNIT;RELEASE;NETCOREAPP3_1;NET;NET5_0;NET6_0;NETCOREAPP</DefineConstants>
+    <DefineConstants>NUNIT;TRACE;RELEASE;NETCOREAPP3_1;NET;NET5_0;NET6_0;NETCOREAPP</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

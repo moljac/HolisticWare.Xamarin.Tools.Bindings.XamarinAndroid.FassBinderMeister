@@ -62,107 +62,65 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
-using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-using HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype;
+using HolisticWare.Xamarin.Tools.Maven;
 
-namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
+namespace UnitTests.Tools.Maven
 {
-    //[TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
+    [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Repository
     {
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_Search_io_opencensus_01()
+        public void Test_Maven_Repository_ctor01()
         {
-
-            SearchData result  = Repository.Utilities.Search("io.opencensus").Result;
+            Repository r = new Repository();
 
             #if MSTEST
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.Artifacts);
-            Assert.Equals(result.Artifacts.Count, 20);
+            Assert.IsNotNull(r);
             #elif NUNIT
-            Assert.NotNull(result);
-            Assert.NotNull(result.Artifacts);
-            Assert.Equals(result.Artifacts.Count, 20);
+            Assert.NotNull(r);
             #elif XUNIT
-            Assert.NotNull(result);
-            Assert.NotNull(result.Artifacts);
-            Assert.NotEmpty(result.Artifacts);
-            Assert.Equal(20, result.Artifacts.Count);
+            Assert.NotNull(r);
             #endif
 
             return;
         }
 
+
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_Search_io_opencensus_02()
+        public void Test_Repository_static_Search_io_opencensu_01()
+        {
+
+            SearchData result = Repository.Utilities.Search("io.opencensus").Result;
+
+            return;
+        }
+
+        [Test]
+        public void Test_Repository_static_Search_io_opencensu_02()
         {
 
             SearchData result = Repository.Utilities.Search("io.opencensus", 100).Result;
 
-            #if MSTEST
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.Artifacts);
-            Assert.Equals(result.Artifacts.Count, 41);
-            #elif NUNIT
-            Assert.NotNull(result);
-            Assert.NotNull(result.Artifacts);
-            Assert.Equals(result.Artifacts.Count, 41);
-            #elif XUNIT
-            Assert.NotNull(result);
-            Assert.NotNull(result.Artifacts);
-            Assert.NotEmpty(result.Artifacts);
-            Assert.Equal(41, result.Artifacts.Count);
-            #endif
-
             return;
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_Search_androidx_car_01()
+        public void Test_Repository_static_Search_androidx_car_01()
         {
 
             SearchData result = Repository.Utilities.Search("androidx.car").Result;
 
-            #if MSTEST
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.Artifacts);
-            Assert.Equals(result.Artifacts.Count, 0);
-            #elif NUNIT
-            Assert.NotNull(result);
-            Assert.NotNull(result.Artifacts);
-            Assert.Equals(result.Artifacts.Count, 0);
-            #elif XUNIT
-            Assert.NotNull(result);
-            Assert.NotNull(result.Artifacts);
-            Assert.Empty(result.Artifacts);
-            Assert.Equal(0, result.Artifacts.Count);
-            #endif
-
             return;
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_Search_androidx_car_02()
+        public void Test_Repository_static_Search_androidx_car_02()
         {
 
             SearchData result = Repository.Utilities.Search("androidx.car", 100).Result;
-
-            #if MSTEST
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.Artifacts);
-            Assert.Equals(result.Artifacts.Count, 0);
-            #elif NUNIT
-            Assert.NotNull(result);
-            Assert.NotNull(result.Artifacts);
-            Assert.Equals(result.Artifacts.Count, 0);
-            #elif XUNIT
-            Assert.NotNull(result);
-            Assert.NotNull(result.Artifacts);
-            Assert.Empty(result.Artifacts);
-            Assert.Equal(0, result.Artifacts.Count);
-            #endif
 
             return;
         }

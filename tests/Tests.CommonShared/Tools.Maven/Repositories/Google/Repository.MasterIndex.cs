@@ -64,41 +64,20 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 
 using System;
 
+using HolisticWare.Xamarin.Tools.Maven;
 using HolisticWare.Xamarin.Tools.Maven.Repositories.Google;
 
-namespace UnitTests.ClientsAPI.Maven.Repositories.Google
+namespace UnitTests.Tools.Maven.Repositories.Google
 {
     //[TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Repository
     {
         [Test]
-        public void Test_Repository_Google_static_Search_io_opencensu_01()
+        public void Test_Repository_Google_static_GetMasterIndexAsync_io_opencensu_01()
         {
-            SearchData result = Repository.Utilities.Search("io.opencensus").Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_Google_static_Search_io_opencensu_02()
-        {
-            SearchData result = Repository.Utilities.Search("io.opencensus", 100).Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_Google_static_Search_androidx_car_01()
-        {
-            SearchData result = Repository.Utilities.Search("androidx.car").Result;
-
-            return;
-        }
-
-        [Test]
-        public void Test_Repository_Google_static_Search_androidx_car_02()
-        {
-            SearchData result = Repository.Utilities.Search("androidx.car", 100).Result;
+            HolisticWare.Xamarin.Tools.Maven.MasterIndex mi = null;
+            mi = HolisticWare.Xamarin.Tools.Maven.Repositories.Google
+                                            .Repository.Utilities.GetMasterIndexAsync().Result;
 
             return;
         }

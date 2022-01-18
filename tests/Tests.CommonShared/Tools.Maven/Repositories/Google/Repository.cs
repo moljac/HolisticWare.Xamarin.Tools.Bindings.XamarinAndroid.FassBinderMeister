@@ -64,9 +64,9 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 
 using System;
 
-using HolisticWare.Xamarin.Tools.Maven.Repositories.MavenCentralSonatype;
+using HolisticWare.Xamarin.Tools.Maven.Repositories.Google;
 
-namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
+namespace UnitTests.Tools.Maven.Repositories.Google
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_Repository
@@ -78,17 +78,15 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
         }
 
         [Test]
-        public void Test_Repository_MavenCentralSonatype_static_defaults()
+        public void Test_Repository_Google_static_defaults()
         {
-            Uri uri_root_default = new Uri($"https://repo1.maven.org/maven2");
-
-            // Maven Central Sonatype - does not have master index
-            // must be built from HTML
-            Uri uri_master_index_default = null;
+            Uri uri_root_default = new Uri($"https://dl.google.com/android/maven2");
+            Uri uri_master_index_default = new Uri($"https://dl.google.com/android/maven2/master-index.xml");
 
             #if MSTEST
             Assert.IsNotNull(Repository.UrlRootDefault);
-            Assert.IsNull(Repository.UrlMasterIndexDefault);
+            Assert.IsNotNull(Repository.UrlMasterIndexDefault);
+            Assert.IsNotNull(Repository.MasterIndexDefault);
             Assert.AreEqual
                         (
                             Repository.UrlRootDefault,
@@ -101,7 +99,8 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                         );
             #elif NUNIT
             Assert.NotNull(Repository.UrlRootDefault);
-            Assert.Null(Repository.UrlMasterIndexDefault);
+            Assert.NotNull(Repository.UrlMasterIndexDefault);
+            Assert.Null(Repository.MasterIndexDefault);
             Assert.AreEqual
                         (
                             Repository.UrlRootDefault,
@@ -114,7 +113,8 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
                         );
             #elif XUNIT
             Assert.NotNull(Repository.UrlRootDefault);
-            Assert.Null(Repository.UrlMasterIndexDefault);
+            Assert.NotNull(Repository.UrlMasterIndexDefault);
+            Assert.NotNull(Repository.MasterIndexDefault);
             Assert.Equal
                         (
                             Repository.UrlRootDefault,
@@ -129,19 +129,23 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
 
         }
 
+
         [Test]
-        public void Test_Repository_MavenCentralSonatype_ctor01()
+        public void Test_Repository_Google_ctor01()
         {
             Repository r = new Repository();
 
-            Uri uri = new Uri($"https://repo1.maven.org/maven2");
+            Uri uri_root = new Uri($"https://dl.google.com/android/maven2");
+
 
             #if MSTEST
             Assert.IsNotNull(r);
+            Assert.IsNotNull(r.UrlMasterIndex);
+            Assert.IsNotNull(r.MasterIndex);
             Assert.AreEqual
                         (
                             r.UrlRoot,
-                            uri
+                            uri_root
                         );
             Assert.AreEqual
                         (
@@ -153,7 +157,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
             Assert.AreEqual
                         (
                             r.UrlRoot,
-                            uri
+                            uri_root
                         );
             Assert.AreEqual
                         (
@@ -165,7 +169,7 @@ namespace UnitTests.ClientsAPI.Maven.Repositories.MavenCentralSonatype
             Assert.Equal
                         (
                             r.UrlRoot,
-                            uri
+                            uri_root
                         );
             Assert.Equal
                         (
