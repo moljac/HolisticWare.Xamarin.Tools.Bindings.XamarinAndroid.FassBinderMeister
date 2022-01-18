@@ -91,21 +91,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="externals\Binderator\Binderator.Artifacts\Artifact-androidx.car.car-1.0.0-alpha7.json" />
-    <None Remove="externals\RepositoryData\maven.google.com\20200229-2112.json" />
-    <None Remove="externals\Binderator\BinderatorConfigData\AndroidX\20190706\config.json" />
-    <None Remove="externals\Binderator\BinderatorConfigData\AndroidX\201911\config.json" />
-    <None Remove="externals\Binderator\BinderatorConfigData\AndroidX\201912\config.json" />
-    <None Remove="externals\Binderator\BinderatorConfigData\AndroidX\202001\config.json" />
-    <None Remove="externals\Binderator\BinderatorConfigData\AndroidX\202002\config.json" />
-    <None Remove="externals\Binderator\BinderatorConfigData\GooglePlayServicesFirebase\20190706\config.json" />
-    <None Remove="externals\Binderator\BinderatorConfigData\GooglePlayServicesFirebase\201911\config.json" />
-    <None Remove="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
-    <None Remove="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
-    <None Remove="Roslynator.CodeAnalysis.Analyzers" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0" />
     <PackageReference Include="Roslynator.Analyzers" Version="3.3.0" />
     <PackageReference Include="Roslynator.Formatting.Analyzers" Version="3.3.0" />
