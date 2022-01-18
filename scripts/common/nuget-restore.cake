@@ -28,7 +28,8 @@ Task("nuget-restore-externals")
                         file,
                         new NuGetRestoreSettings
                         {
-                            PackagesDirectory = $"{file.GetFilename().ToString()}-packages"
+                            // separate folder for nuget packages for analysis
+                            PackagesDirectory = $"{file.ToString()}-packages"
                         }
                     );
             }
@@ -42,7 +43,8 @@ Task("nuget-restore-externals")
                         file,
                         new NuGetRestoreSettings
                         {
-                            PackagesDirectory = $"{file.GetFilename().ToString()}-packages"
+                            // separate folder for nuget packages for analysis
+                            PackagesDirectory = $"{file.ToString()}-packages"
                         }
                     );
             }
@@ -56,6 +58,7 @@ Task("nuget-restore-externals")
                         file,
                         new NuGetRestoreSettings
                         {
+                            // separate folder for nuget packages for analysis
                             PackagesDirectory = $"{file.GetDirectory()}-packages"
                         }
                     );
@@ -70,6 +73,7 @@ Task("nuget-restore-externals")
                         file,
                         new NuGetRestoreSettings
                         {
+                            // separate folder for nuget packages for analysis
                             PackagesDirectory = $"{file.GetDirectory()}-packages"
                         }
                     );
@@ -94,7 +98,8 @@ Task("nuget-restore-libs")
                         file,
                         new NuGetRestoreSettings
                         {
-                            PackagesDirectory = $"{file.GetFilename().ToString()}-packages"
+                            // separate folder for nuget packages for analysis
+                            PackagesDirectory = $"{file.ToString()}-packages"
                         }
                     );
             }
@@ -108,6 +113,7 @@ Task("nuget-restore-libs")
                         file,
                         new NuGetRestoreSettings
                         {
+                            // separate folder for nuget packages for analysis
                             PackagesDirectory = $"{file.GetDirectory()}-packages"
                         }
                     );
@@ -132,7 +138,8 @@ Task("nuget-restore-samples")
                         file,
                         new NuGetRestoreSettings
                         {
-                            PackagesDirectory = $"{file.GetFilename().ToString()}-packages"
+                            // separate folder for nuget packages for analysis
+                            PackagesDirectory = $"{file.ToString()}-packages"
                         }
                     );
             }
@@ -146,6 +153,7 @@ Task("nuget-restore-samples")
                         file,
                         new NuGetRestoreSettings
                         {
+                            // separate folder for nuget packages for analysis
                             PackagesDirectory = $"{file.GetDirectory()}-packages"
                         }
                     );
@@ -171,7 +179,8 @@ Task("nuget-restore-tests")
                         file,
                         new NuGetRestoreSettings
                         {
-                            PackagesDirectory = $"{file.GetFilename().ToString()}-packages"
+                            // separate folder for nuget packages for analysis
+                            PackagesDirectory = $"{file.ToString()}-packages"
                         }
                     );
             }
@@ -185,6 +194,7 @@ Task("nuget-restore-tests")
                         file,
                         new NuGetRestoreSettings
                         {
+                            // separate folder for nuget packages for analysis
                             PackagesDirectory = $"{file.GetDirectory()}-packages"
                         }
                     );
