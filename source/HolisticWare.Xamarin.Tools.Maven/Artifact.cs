@@ -345,6 +345,32 @@ namespace HolisticWare.Xamarin.Tools.Maven
                                             )
         {
             ProjectObjectModel.Project result = null;
+            ProjectObjectModel.Project r_g = null;
+            ProjectObjectModel.Project r_mcs = null;
+
+            Parallel.Invoke
+                        (
+                            () =>
+                            {
+                                r_g = Repositories.Google
+                                                   .Artifact.Utilities.DeserializeProjectObjectModelPOM();
+                            },
+                            () =>
+                            {
+                                r_mcs = Repositories.MavenCentralSonatype
+                                                   .Artifact.Utilities.DeserializeProjectObjectModelPOM();
+                            }
+                        );
+
+            if ( null != r_g )
+            {
+                result = r_g;
+            }
+
+            if ( null != r_mcs )
+            {
+                result = r_g;
+            }
 
             return result;
         }
