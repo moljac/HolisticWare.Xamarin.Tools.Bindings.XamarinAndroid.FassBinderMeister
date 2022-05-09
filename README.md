@@ -373,9 +373,14 @@ https://api.nuget.org/v3/registration3/ravendb.client/page/1.0.531/1.0.729-unsta
 
 #### Download
 
+https://api.nuget.org/v3-flatcontainer/Xamarin.AndroidX.Window/index.json
+
+
 GET {@id}/{LOWER_ID}/{LOWER_VERSION}/{LOWER_ID}.{LOWER_VERSION}.nupkg
 
-https://api.nuget.org/v3-flatcontainer/newtonsoft.json/9.0.1/newtonsoft.json.9.0.1.nupkg
+https://api.nuget.org/v3-flatcontainer/Xamarin.AndroidX.Window/1.0.0.5-beta04/Xamarin.AndroidX.Window.1.0.0.5-beta04.nupkg
+
+https://api.nuget.org/v3-flatcontainer/Xamarin.AndroidX.Window/1.0.0.5-beta04/Xamarin.AndroidX.Window.nuspec
 
 
 ## NuGet Client API
