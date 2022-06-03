@@ -71,23 +71,23 @@
     
     <ItemGroup>
         <PackageReference Include="MavenNet" Version="2.2.13" />
-        <PackageReference Include="NuGet.Protocol" Version="6.0.0" />
+        <PackageReference Include="NuGet.Protocol" Version="6.2.0" />
         <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
         <PackageReference Include="System.Diagnostics.TextWriterTraceListener" Version="4.3.0" />
         <PackageReference Include="System.Reflection" Version="4.3.0" />
         <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-        <PackageReference Include="HtmlAgilityPack" Version="1.11.39" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />
         <PackageReference Include="System.Net.Requests" Version="4.3.0" />
 
-        <PackageReference Include="protobuf-net" Version="3.0.101" />
+        <PackageReference Include="protobuf-net" Version="3.1.4" />
         <PackageReference Include="protobuf-net.BuildTools" Version="3.0.115" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0" />
-        <PackageReference Include="Roslynator.Analyzers" Version="3.3.0" />
-        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="3.3.0" />
-        <PackageReference Include="AsyncFixer" Version="1.5.1" />
+        <PackageReference Include="Roslynator.Analyzers" Version="4.1.1" />
+        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.1.1" />
+        <PackageReference Include="AsyncFixer" Version="1.6.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.3" />
         <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.3" />
-        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="3.3.0" />
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.1.1" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj" />
