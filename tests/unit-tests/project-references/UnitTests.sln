@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "library-source", "library-source", "{56123580-99E9-45AC-8300-ABF8EE1D021E}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\source\Directory.Build.props = ..\..\..\source\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UnitTests.Common.Utils.Shared", "..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.shproj", "{E390F6DA-9F4B-43A4-8ABF-F9434DF2C70D}"
 EndProject
