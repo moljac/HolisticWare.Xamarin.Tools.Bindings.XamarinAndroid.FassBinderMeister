@@ -36,6 +36,25 @@ namespace HolisticWare.Xamarin.Tools.Maven.Repositories.Google
             }
 
             public static async
+                Task<string>
+                                        DeserializaProjectObjecModelPOMAsync
+                                                (
+                                                    string group_id,
+                                                    string artifact_id,
+                                                    string version
+                                                )
+            {
+                string pom = await Utilities.DownloadProjectObjecModelPOMAsync
+                                                (
+                                                    group_id,
+                                                    artifact_id,
+                                                    version
+                                                );
+
+                return pom;
+            }
+
+            public static async
                 Task<byte[]>
                                         DownloadArtifactAndroidArchiveAARAsync
                                                 (

@@ -350,15 +350,15 @@ namespace HolisticWare.Xamarin.Tools.Maven
 
             Parallel.Invoke
                         (
-                            () =>
+                            async () =>
                             {
-                                r_g = Repositories.Google
-                                                   .Artifact.Utilities.DeserializeProjectObjectModelPOM();
+                                //r_g = await Repositories.Google
+                                //                   .Artifact.Utilities.DeserializaProjectObjecModelPOMAsync();
                             },
-                            () =>
+                            async () =>
                             {
-                                r_mcs = Repositories.MavenCentralSonatype
-                                                   .Artifact.Utilities.DeserializeProjectObjectModelPOM();
+                                //r_mcs = await Repositories.MavenCentralSonatype
+                                //                   .Artifact.Utilities.DeserializaProjectObjecModelPOMAsync();
                             }
                         );
 
