@@ -69,6 +69,8 @@ using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
 
 using HolisticWare.Xamarin.Tools.NuGet.ClientAPI;
+using System.Linq;
+using System.Text;
 
 namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
 {
@@ -92,14 +94,15 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
                                                                             includePrerelease: true
                                                                         ),
                                 skip: 0,
-                                take: 100,
+                                take: 1000,
                                 psm =>
                                 {
                                     return
                                     (
-                                        psm.Description.Contains("car")
-                                        ||
-                                        psm.Description.Contains("androidx.car")
+                                        psm.Identity.Id.StartsWith("Xamarin.AndroidX")
+                                        //psm.Description.Contains("car")
+                                        //||
+                                        //psm.Description.Contains("androidx.car")
                                     );
                                 }
                             ).Result;
@@ -115,10 +118,25 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
             Console.WriteLine($"Packages found...");
             foreach (IPackageSearchMetadata pm in search)
             {
+                IEnumerable<VersionInfo> versions = pm.GetVersionsAsync().Result;
+
+                IEnumerable<(string version, long count)> versions_sorted = null;
+                versions_sorted = versions
+                                        .OrderByDescending(v => v.Version)
+                                        .Select(v => (v.Version.ToString(), v.DownloadCount.Value));
+                                        ;
+                StringBuilder versions_dump = new StringBuilder();
+                foreach((string version, long count) v_c in versions_sorted)
+                {
+                    versions_dump.AppendLine($"{v_c.version}   {v_c.count}".PadLeft(10));
+                }
                 Console.WriteLine($"----------------------------------------------------------");
-                Console.WriteLine($"Title   : {pm.Title}");
+                Console.WriteLine($"Identity.Id     : {pm.Identity.Id}");
+                Console.WriteLine($"Title           : {pm.Title}");
                 Console.WriteLine($"Summary         : {pm.Summary}");
                 Console.WriteLine($"Tags            : {pm.Tags}");
+                Console.WriteLine($"Versions        : ");
+                Console.WriteLine($"{versions_dump}");
             }
 
             return;

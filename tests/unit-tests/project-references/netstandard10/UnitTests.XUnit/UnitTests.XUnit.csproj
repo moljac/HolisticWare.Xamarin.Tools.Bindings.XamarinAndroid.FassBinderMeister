@@ -48,13 +48,6 @@
     <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
     <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Versioning\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Remove="System.Diagnostics.Tracing" />
-    <None Remove="Nito.AsyncEx.Tasks" />
-    <None Remove="Nito.AsyncEx.Context" />
-    <None Remove="System.Memory" />
-    <None Remove="System.Text.Json" />
-  </ItemGroup>
   <Choose>
     <When Condition="! exists('..\..\..\..\source\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10.csproj')">
       <!-- nuget packages (dll) refs -->

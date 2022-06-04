@@ -77,49 +77,28 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
     {
 
         [Test]
-        public void NuGetClient_Packages_Search()
+        public void NuGetClient_GetNugetPackageVersionsFromIndexAsync()
         {
             NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
 
             NuGetClient ngc = new NuGetClient();
 
-            IEnumerable<IPackageSearchMetadata> search = null;
-            //search = ngc.SearchPackagesByKeywordAsync
-            //                (
-            //                    "androidx",
-            //                    new global::NuGet.Protocol.Core.Types.SearchFilter
-            //                                                            (
-            //                                                                includePrerelease: true
-            //                                                            ),
-            //                    skip: 0,
-            //                    take: 100,
-            //                    psm =>
-            //                    {
-            //                        return
-            //                        (
-            //                            psm.Description.Contains("car")
-            //                            ||
-            //                            psm.Description.Contains("androidx.car")
-            //                        );
-            //                    }
-            //                ).Result;
-
-            #if MSTEST
-            Assert.IsNotNull(search);
-            #elif NUNIT
-            Assert.NotNull(search);
-            #elif XUNIT
-            Assert.NotNull(search);
-            #endif
+            //#if MSTEST
+            //Assert.IsNotNull(search);
+            //#elif NUNIT
+            //Assert.NotNull(search);
+            //#elif XUNIT
+            //Assert.NotNull(search);
+            //#endif
 
             Console.WriteLine($"Packages found...");
-            foreach (IPackageSearchMetadata pm in search)
-            {
-                Console.WriteLine($"----------------------------------------------------------");
-                Console.WriteLine($"Title   : {pm.Title}");
-                Console.WriteLine($"Summary         : {pm.Summary}");
-                Console.WriteLine($"Tags            : {pm.Tags}");
-            }
+            //foreach (IPackageSearchMetadata pm in search)
+            //{
+            //    Console.WriteLine($"----------------------------------------------------------");
+            //    Console.WriteLine($"Title   : {pm.Title}");
+            //    Console.WriteLine($"Summary         : {pm.Summary}");
+            //    Console.WriteLine($"Tags            : {pm.Tags}");
+            //}
 
             return;
         }
