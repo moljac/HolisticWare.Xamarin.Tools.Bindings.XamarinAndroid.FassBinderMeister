@@ -1,0 +1,944 @@
+{
+    "@id": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/index.json",
+    "@type": [
+        "catalog:CatalogRoot",
+        "PackageRegistration",
+        "catalog:Permalink"
+    ],
+    "commitId": "68ef8926-65fa-4f10-89eb-cc0558cd7b62",
+    "commitTimeStamp": "2022-04-05T19:48:11.8464329+00:00",
+    "count": 1,
+    "items": [
+        {
+            "@id": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/index.json#page/1.0.0/1.1.1.1",
+            "@type": "catalog:CatalogPage",
+            "commitId": "68ef8926-65fa-4f10-89eb-cc0558cd7b62",
+            "commitTimeStamp": "2022-04-05T19:48:11.8464329+00:00",
+            "count": 7,
+            "items": [
+                {
+                    "@id": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/1.0.0.json",
+                    "@type": "Package",
+                    "commitId": "039b28e4-38d3-4147-b275-321c634b04cb",
+                    "commitTimeStamp": "2021-11-02T07:54:53.9013724+00:00",
+                    "catalogEntry": {
+                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json",
+                        "@type": "PackageDetails",
+                        "authors": "Microsoft",
+                        "dependencyGroups": [
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/monoandroid9.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/monoandroid9.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.0.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/monoandroid9.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.0.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/monoandroid9.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.0.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/monoandroid9.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.0.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/monoandroid9.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.5.31.2, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "MonoAndroid9.0"
+                            },
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/net6.0-android31.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.0.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.0.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.0.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.0.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.11.02.07.53.45/xamarin.androidx.compose.material.ripple.1.0.0.json#dependencygroup/net6.0-android31.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.5.31.2, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "net6.0-android31.0"
+                            }
+                        ],
+                        "description": "Xamarin.Android bindings for AndroidX - material-ripple (bindings without managed callable wrappers (C#) and are only used for including Java files) artifact=androidx.compose.material:material-ripple artifact_versioned=androidx.compose.material:material-ripple:1.0.0",
+                        "iconUrl": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.0/icon",
+                        "id": "Xamarin.AndroidX.Compose.Material.Ripple",
+                        "language": "",
+                        "licenseExpression": "MIT",
+                        "licenseUrl": "https://www.nuget.org/packages/Xamarin.AndroidX.Compose.Material.Ripple/1.0.0/license",
+                        "listed": true,
+                        "minClientVersion": "",
+                        "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.0/xamarin.androidx.compose.material.ripple.1.0.0.nupkg",
+                        "projectUrl": "https://go.microsoft.com/fwlink/?linkid=2113238",
+                        "published": "2021-11-02T07:51:22.29+00:00",
+                        "requireLicenseAcceptance": true,
+                        "summary": "",
+                        "tags": [
+                            "Xamarin",
+                            "AndroidX",
+                            "Xamarin.AndroidX",
+                            "Support",
+                            "Google",
+                            "material-ripple",
+                            "artifact=androidx.compose.material:material-ripple",
+                            "artifact_versioned=androidx.compose.material:material-ripple:1.0.0"
+                        ],
+                        "title": "Xamarin AndroidX - material-ripple",
+                        "version": "1.0.0"
+                    },
+                    "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.0/xamarin.androidx.compose.material.ripple.1.0.0.nupkg",
+                    "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/index.json"
+                },
+                {
+                    "@id": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/1.0.0.1.json",
+                    "@type": "Package",
+                    "commitId": "e5c6a1d8-6929-4451-9185-fe9bae00b303",
+                    "commitTimeStamp": "2021-12-13T22:38:02.8056405+00:00",
+                    "catalogEntry": {
+                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json",
+                        "@type": "PackageDetails",
+                        "authors": "Microsoft",
+                        "dependencyGroups": [
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/monoandroid9.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/monoandroid9.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.0.0.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/monoandroid9.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.0.0.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/monoandroid9.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.0.0.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/monoandroid9.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.0.0.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/monoandroid9.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.5.31.3, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "MonoAndroid9.0"
+                            },
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/net6.0-android31.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.0.0.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.0.0.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.0.0.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.0.0.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2021.12.13.22.37.27/xamarin.androidx.compose.material.ripple.1.0.0.1.json#dependencygroup/net6.0-android31.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.5.31.3, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "net6.0-android31.0"
+                            }
+                        ],
+                        "description": "Xamarin.Android bindings for AndroidX - material-ripple (bindings without managed callable wrappers (C#) and are only used for including Java files) artifact=androidx.compose.material:material-ripple artifact_versioned=androidx.compose.material:material-ripple:1.0.0",
+                        "iconUrl": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.0.1/icon",
+                        "id": "Xamarin.AndroidX.Compose.Material.Ripple",
+                        "language": "",
+                        "licenseExpression": "MIT",
+                        "licenseUrl": "https://www.nuget.org/packages/Xamarin.AndroidX.Compose.Material.Ripple/1.0.0.1/license",
+                        "listed": false,
+                        "minClientVersion": "",
+                        "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.0.1/xamarin.androidx.compose.material.ripple.1.0.0.1.nupkg",
+                        "projectUrl": "https://go.microsoft.com/fwlink/?linkid=2113238",
+                        "published": "1900-01-01T00:00:00+00:00",
+                        "requireLicenseAcceptance": true,
+                        "summary": "",
+                        "tags": [
+                            "Xamarin",
+                            "AndroidX",
+                            "Xamarin.AndroidX",
+                            "Support",
+                            "Google",
+                            "material-ripple",
+                            "artifact=androidx.compose.material:material-ripple",
+                            "artifact_versioned=androidx.compose.material:material-ripple:1.0.0"
+                        ],
+                        "title": "Xamarin AndroidX - material-ripple",
+                        "version": "1.0.0.1"
+                    },
+                    "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.0.1/xamarin.androidx.compose.material.ripple.1.0.0.1.nupkg",
+                    "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/index.json"
+                },
+                {
+                    "@id": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/1.0.5.1.json",
+                    "@type": "Package",
+                    "commitId": "176ba31f-ef27-4a70-aecd-2e73841f83ee",
+                    "commitTimeStamp": "2022-02-01T15:41:55.7105186+00:00",
+                    "catalogEntry": {
+                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json",
+                        "@type": "PackageDetails",
+                        "authors": "Microsoft",
+                        "dependencyGroups": [
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/monoandroid12.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.0.5.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.0.5.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.0.5.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.0.5.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/monoandroid12.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.5.31.4, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "MonoAndroid12.0"
+                            },
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/net6.0-android31.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.0.5.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.0.5.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.0.5.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.0.5.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.01.15.41.27/xamarin.androidx.compose.material.ripple.1.0.5.1.json#dependencygroup/net6.0-android31.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.5.31.4, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "net6.0-android31.0"
+                            }
+                        ],
+                        "description": "Xamarin.Android bindings for AndroidX - material-ripple (bindings without managed callable wrappers (C#) and are only used for including Java files) artifact=androidx.compose.material:material-ripple artifact_versioned=androidx.compose.material:material-ripple:1.0.5",
+                        "iconUrl": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.5.1/icon",
+                        "id": "Xamarin.AndroidX.Compose.Material.Ripple",
+                        "language": "",
+                        "licenseExpression": "MIT",
+                        "licenseUrl": "https://www.nuget.org/packages/Xamarin.AndroidX.Compose.Material.Ripple/1.0.5.1/license",
+                        "listed": true,
+                        "minClientVersion": "",
+                        "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.5.1/xamarin.androidx.compose.material.ripple.1.0.5.1.nupkg",
+                        "projectUrl": "https://go.microsoft.com/fwlink/?linkid=2113238",
+                        "published": "2022-02-01T15:38:53.69+00:00",
+                        "requireLicenseAcceptance": true,
+                        "summary": "",
+                        "tags": [
+                            "Xamarin",
+                            "AndroidX",
+                            "Xamarin.AndroidX",
+                            "Support",
+                            "Google",
+                            "material-ripple",
+                            "artifact=androidx.compose.material:material-ripple",
+                            "artifact_versioned=androidx.compose.material:material-ripple:1.0.5"
+                        ],
+                        "title": "Xamarin AndroidX - material-ripple",
+                        "version": "1.0.5.1"
+                    },
+                    "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.5.1/xamarin.androidx.compose.material.ripple.1.0.5.1.nupkg",
+                    "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/index.json"
+                },
+                {
+                    "@id": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/1.0.5.2.json",
+                    "@type": "Package",
+                    "commitId": "2a17fb44-c3de-4017-84ee-85cea9b9971e",
+                    "commitTimeStamp": "2022-02-18T14:55:36.1041525+00:00",
+                    "catalogEntry": {
+                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json",
+                        "@type": "PackageDetails",
+                        "authors": "Microsoft",
+                        "dependencyGroups": [
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/monoandroid12.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.0.5.2, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.0.5.2, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.0.5.2, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.0.5.2, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/monoandroid12.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.6.0.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "MonoAndroid12.0"
+                            },
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/net6.0-android31.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.0.5.2, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.0.5.2, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.0.5.2, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.0.5.2, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.02.18.14.54.20/xamarin.androidx.compose.material.ripple.1.0.5.2.json#dependencygroup/net6.0-android31.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.6.0.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "net6.0-android31.0"
+                            }
+                        ],
+                        "description": "Xamarin.Android bindings for AndroidX - material-ripple (bindings without managed callable wrappers (C#) and are only used for including Java files) artifact=androidx.compose.material:material-ripple artifact_versioned=androidx.compose.material:material-ripple:1.0.5",
+                        "iconUrl": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.5.2/icon",
+                        "id": "Xamarin.AndroidX.Compose.Material.Ripple",
+                        "language": "",
+                        "licenseExpression": "MIT",
+                        "licenseUrl": "https://www.nuget.org/packages/Xamarin.AndroidX.Compose.Material.Ripple/1.0.5.2/license",
+                        "listed": true,
+                        "minClientVersion": "",
+                        "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.5.2/xamarin.androidx.compose.material.ripple.1.0.5.2.nupkg",
+                        "projectUrl": "https://go.microsoft.com/fwlink/?linkid=2113238",
+                        "published": "2022-02-18T14:51:17.48+00:00",
+                        "requireLicenseAcceptance": true,
+                        "summary": "",
+                        "tags": [
+                            "Xamarin",
+                            "AndroidX",
+                            "Xamarin.AndroidX",
+                            "Support",
+                            "Google",
+                            "material-ripple",
+                            "artifact=androidx.compose.material:material-ripple",
+                            "artifact_versioned=androidx.compose.material:material-ripple:1.0.5"
+                        ],
+                        "title": "Xamarin AndroidX - material-ripple",
+                        "version": "1.0.5.2"
+                    },
+                    "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.5.2/xamarin.androidx.compose.material.ripple.1.0.5.2.nupkg",
+                    "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/index.json"
+                },
+                {
+                    "@id": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/1.1.0.json",
+                    "@type": "Package",
+                    "commitId": "22ad9c71-e379-4dbf-b1cf-f50689a3174f",
+                    "commitTimeStamp": "2022-03-01T18:13:49.9594906+00:00",
+                    "catalogEntry": {
+                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json",
+                        "@type": "PackageDetails",
+                        "authors": "Microsoft",
+                        "dependencyGroups": [
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/monoandroid12.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.1.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.1.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.1.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.1.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/monoandroid12.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.6.10, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "MonoAndroid12.0"
+                            },
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/net6.0-android31.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.1.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.1.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.1.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.1.0, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.01.18.12.10/xamarin.androidx.compose.material.ripple.1.1.0.json#dependencygroup/net6.0-android31.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.6.10, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "net6.0-android31.0"
+                            }
+                        ],
+                        "description": "Xamarin.Android bindings for AndroidX - material-ripple (bindings without managed callable wrappers (C#) and are only used for including Java files) artifact=androidx.compose.material:material-ripple artifact_versioned=androidx.compose.material:material-ripple:1.1.0",
+                        "iconUrl": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.1.0/icon",
+                        "id": "Xamarin.AndroidX.Compose.Material.Ripple",
+                        "language": "",
+                        "licenseExpression": "MIT",
+                        "licenseUrl": "https://www.nuget.org/packages/Xamarin.AndroidX.Compose.Material.Ripple/1.1.0/license",
+                        "listed": true,
+                        "minClientVersion": "",
+                        "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.1.0/xamarin.androidx.compose.material.ripple.1.1.0.nupkg",
+                        "projectUrl": "https://go.microsoft.com/fwlink/?linkid=2113238",
+                        "published": "2022-03-01T18:09:17.857+00:00",
+                        "requireLicenseAcceptance": true,
+                        "summary": "",
+                        "tags": [
+                            "Xamarin",
+                            "AndroidX",
+                            "Xamarin.AndroidX",
+                            "Support",
+                            "Google",
+                            "material-ripple",
+                            "artifact=androidx.compose.material:material-ripple",
+                            "artifact_versioned=androidx.compose.material:material-ripple:1.1.0"
+                        ],
+                        "title": "Xamarin AndroidX - material-ripple",
+                        "version": "1.1.0"
+                    },
+                    "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.1.0/xamarin.androidx.compose.material.ripple.1.1.0.nupkg",
+                    "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/index.json"
+                },
+                {
+                    "@id": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/1.1.1.json",
+                    "@type": "Package",
+                    "commitId": "f4411bd1-ced6-47d3-981b-ca5554dc7f1e",
+                    "commitTimeStamp": "2022-03-03T20:33:22.760013+00:00",
+                    "catalogEntry": {
+                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json",
+                        "@type": "PackageDetails",
+                        "authors": "Microsoft",
+                        "dependencyGroups": [
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/monoandroid12.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/monoandroid12.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.6.10, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "MonoAndroid12.0"
+                            },
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/net6.0-android31.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.03.03.20.32.31/xamarin.androidx.compose.material.ripple.1.1.1.json#dependencygroup/net6.0-android31.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.6.10, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "net6.0-android31.0"
+                            }
+                        ],
+                        "description": "Xamarin.Android bindings for AndroidX - material-ripple (bindings without managed callable wrappers (C#) and are only used for including Java files) artifact=androidx.compose.material:material-ripple artifact_versioned=androidx.compose.material:material-ripple:1.1.1",
+                        "iconUrl": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.1.1/icon",
+                        "id": "Xamarin.AndroidX.Compose.Material.Ripple",
+                        "language": "",
+                        "licenseExpression": "MIT",
+                        "licenseUrl": "https://www.nuget.org/packages/Xamarin.AndroidX.Compose.Material.Ripple/1.1.1/license",
+                        "listed": true,
+                        "minClientVersion": "",
+                        "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.1.1/xamarin.androidx.compose.material.ripple.1.1.1.nupkg",
+                        "projectUrl": "https://go.microsoft.com/fwlink/?linkid=2113238",
+                        "published": "2022-03-03T20:30:15.99+00:00",
+                        "requireLicenseAcceptance": true,
+                        "summary": "",
+                        "tags": [
+                            "Xamarin",
+                            "AndroidX",
+                            "Xamarin.AndroidX",
+                            "Support",
+                            "Google",
+                            "material-ripple",
+                            "artifact=androidx.compose.material:material-ripple",
+                            "artifact_versioned=androidx.compose.material:material-ripple:1.1.1"
+                        ],
+                        "title": "Xamarin AndroidX - material-ripple",
+                        "version": "1.1.1"
+                    },
+                    "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.1.1/xamarin.androidx.compose.material.ripple.1.1.1.nupkg",
+                    "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/index.json"
+                },
+                {
+                    "@id": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/1.1.1.1.json",
+                    "@type": "Package",
+                    "commitId": "68ef8926-65fa-4f10-89eb-cc0558cd7b62",
+                    "commitTimeStamp": "2022-04-05T19:48:11.8464329+00:00",
+                    "catalogEntry": {
+                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json",
+                        "@type": "PackageDetails",
+                        "authors": "Microsoft",
+                        "dependencyGroups": [
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/monoandroid12.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/monoandroid12.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/monoandroid12.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.6.20.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "MonoAndroid12.0"
+                            },
+                            {
+                                "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/net6.0-android31.0",
+                                "@type": "PackageDependencyGroup",
+                                "dependencies": [
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.animation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Animation",
+                                        "range": "[1.1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.animation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.foundation",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Foundation",
+                                        "range": "[1.1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.foundation/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.runtime",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.Runtime",
+                                        "range": "[1.1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.runtime/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/net6.0-android31.0/xamarin.androidx.compose.ui.util",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.AndroidX.Compose.UI.Util",
+                                        "range": "[1.1.1.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.ui.util/index.json"
+                                    },
+                                    {
+                                        "@id": "https://api.nuget.org/v3/catalog0/data/2022.04.05.19.47.14/xamarin.androidx.compose.material.ripple.1.1.1.1.json#dependencygroup/net6.0-android31.0/xamarin.kotlin.stdlib.common",
+                                        "@type": "PackageDependency",
+                                        "id": "Xamarin.Kotlin.StdLib.Common",
+                                        "range": "[1.6.20.1, )",
+                                        "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.kotlin.stdlib.common/index.json"
+                                    }
+                                ],
+                                "targetFramework": "net6.0-android31.0"
+                            }
+                        ],
+                        "description": "Xamarin.Android bindings for AndroidX - material-ripple (bindings without managed callable wrappers (C#) and are only used for including Java files) artifact=androidx.compose.material:material-ripple artifact_versioned=androidx.compose.material:material-ripple:1.1.1",
+                        "iconUrl": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.1.1.1/icon",
+                        "id": "Xamarin.AndroidX.Compose.Material.Ripple",
+                        "language": "",
+                        "licenseExpression": "MIT",
+                        "licenseUrl": "https://www.nuget.org/packages/Xamarin.AndroidX.Compose.Material.Ripple/1.1.1.1/license",
+                        "listed": true,
+                        "minClientVersion": "",
+                        "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.1.1.1/xamarin.androidx.compose.material.ripple.1.1.1.1.nupkg",
+                        "projectUrl": "https://go.microsoft.com/fwlink/?linkid=2113238",
+                        "published": "2022-04-05T19:43:54.213+00:00",
+                        "requireLicenseAcceptance": true,
+                        "summary": "",
+                        "tags": [
+                            "Xamarin",
+                            "AndroidX",
+                            "Xamarin.AndroidX",
+                            "Support",
+                            "Google",
+                            "material-ripple",
+                            "artifact=androidx.compose.material:material-ripple",
+                            "artifact_versioned=androidx.compose.material:material-ripple:1.1.1"
+                        ],
+                        "title": "Xamarin AndroidX - material-ripple",
+                        "version": "1.1.1.1"
+                    },
+                    "packageContent": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.1.1.1/xamarin.androidx.compose.material.ripple.1.1.1.1.nupkg",
+                    "registration": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/index.json"
+                }
+            ],
+            "parent": "https://api.nuget.org/v3/registration5-semver1/xamarin.androidx.compose.material.ripple/index.json",
+            "lower": "1.0.0",
+            "upper": "1.1.1.1"
+        }
+    ],
+    "@context": {
+        "@vocab": "http://schema.nuget.org/schema#",
+        "catalog": "http://schema.nuget.org/catalog#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "items": {
+            "@id": "catalog:item",
+            "@container": "@set"
+        },
+        "commitTimeStamp": {
+            "@id": "catalog:commitTimeStamp",
+            "@type": "xsd:dateTime"
+        },
+        "commitId": {
+            "@id": "catalog:commitId"
+        },
+        "count": {
+            "@id": "catalog:count"
+        },
+        "parent": {
+            "@id": "catalog:parent",
+            "@type": "@id"
+        },
+        "tags": {
+            "@id": "tag",
+            "@container": "@set"
+        },
+        "reasons": {
+            "@container": "@set"
+        },
+        "packageTargetFrameworks": {
+            "@id": "packageTargetFramework",
+            "@container": "@set"
+        },
+        "dependencyGroups": {
+            "@id": "dependencyGroup",
+            "@container": "@set"
+        },
+        "dependencies": {
+            "@id": "dependency",
+            "@container": "@set"
+        },
+        "packageContent": {
+            "@type": "@id"
+        },
+        "published": {
+            "@type": "xsd:dateTime"
+        },
+        "registration": {
+            "@type": "@id"
+        }
+    }
+}
