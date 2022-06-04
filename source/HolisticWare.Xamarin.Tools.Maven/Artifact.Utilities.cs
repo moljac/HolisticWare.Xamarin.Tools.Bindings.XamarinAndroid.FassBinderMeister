@@ -64,10 +64,6 @@ namespace HolisticWare.Xamarin.Tools.Maven
             }
         }
 
-
-
-
-
         public static async
             Task<byte[]>
                                     DownloadArtifactAndroidArchiveAARAsync

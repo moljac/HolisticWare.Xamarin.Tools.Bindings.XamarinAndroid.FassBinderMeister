@@ -18,6 +18,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
     /// </summary>
     /// <see cref="https://docs.microsoft.com/en-us/nuget/reference/nuget-client-sdk"/>
     /// <see cref="https://devblogs.microsoft.com/nuget/improved-search-syntax/"/>
+    /// <see cref="https://github.com/NuGet/NuGet.Client/tree/dev/src/NuGet.Core/NuGet.Protocol/Model"/>
     public partial class NuGetClient
     {
         // HttpClient is intended to be instantiated once per application,

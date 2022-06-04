@@ -11,11 +11,5 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
 {
     public partial class NuGetClient
     {
-        public static HttpClient HttpClient
-        {
-            get;
-            set;
-        }
-
     }
 }
