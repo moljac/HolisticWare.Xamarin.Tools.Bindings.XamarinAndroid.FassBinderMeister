@@ -9,25 +9,22 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance.Generated
 
     public partial class ComponentGovernanceManifest
     {
-        [JsonProperty("Registrations")]
+        [JsonProperty("registrations")]
         public Registration[] Registrations { get; set; }
 
-        [JsonProperty("Version")]
+        [JsonProperty("version")]
         public long Version { get; set; }
     }
 
     public partial class Registration
     {
-        // [JsonProperty("component", NullValueHandling = NullValueHandling.Ignore)]
-        // public ComponentClass RegistrationComponent { get; set; }
-
-        [JsonProperty("Component", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("component")]
         public Component Component { get; set; }
 
-        [JsonProperty("license", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("license")]
         public string License { get; set; }
 
-        [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("version")]
         public string Version { get; set; }
 
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
@@ -40,42 +37,21 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance.Generated
     public partial class Component
     {
         [JsonProperty("type")]
-        [JsonProperty("Type")]
         public string Type { get; set; }
-
-        [JsonProperty("Maven")]
-        public Maven Maven { get; set; }
-
 
         [JsonProperty("git")]
         public Git Git { get; set; }
     }
 
-    public partial class Maven
-    {
-        [JsonProperty("ArtifactId")]
-        public string ArtifactId { get; set; }
-
-        [JsonProperty("GroupId")]
-        public string GroupId { get; set; }
-
-        [JsonProperty("Version")]
-        public string Version { get; set; }
-
-        [JsonProperty("NuGetId")]
-        public string NuGetId { get; set; }
-    }
-
-
     public partial class Git
     {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
         [JsonProperty("repositoryUrl")]
         public Uri RepositoryUrl { get; set; }
 
         [JsonProperty("commitHash")]
         public string CommitHash { get; set; }
-
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
     }
 }

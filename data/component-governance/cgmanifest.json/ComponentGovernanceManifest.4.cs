@@ -40,6 +40,8 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance.Generated
     public partial class Component
     {
         [JsonProperty("type")]
+        public string Type { get; set; }
+
         [JsonProperty("Type")]
         public string Type { get; set; }
 
