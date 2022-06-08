@@ -60,13 +60,15 @@
 
     <ItemGroup>
         <PackageReference Include="System.Net.Http" Version="4.3.4" />
-        <PackageReference Include="System.Text.Json" Version="5.0.2" />
+        <PackageReference Include="System.Text.Json" Version="6.0.4" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3" />
-        <PackageReference Include="Roslynator.Analyzers" Version="3.2.2" />
-        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="1.2.2" />
-        <PackageReference Include="AsyncFixer" Version="1.5.1" />
-        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="1.1.1" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0" />
+        <PackageReference Include="Roslynator.Analyzers" Version="4.1.1" />
+        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.1.1" />
+        <PackageReference Include="AsyncFixer" Version="1.6.0" />
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.1.1" />
+        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.3" />
+        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.3" />
     </ItemGroup>
 
     <ItemGroup>
@@ -78,6 +80,8 @@
       <None Remove="Repositories\MavenCentralSonatype\Search\" />
       <None Remove="Repositories\MavenCentralSonatype\ArtifactMetadata\" />
       <None Remove="Roslynator.CodeAnalysis.Analyzers" />
+      <None Remove="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
+      <None Remove="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Repositories\" />
