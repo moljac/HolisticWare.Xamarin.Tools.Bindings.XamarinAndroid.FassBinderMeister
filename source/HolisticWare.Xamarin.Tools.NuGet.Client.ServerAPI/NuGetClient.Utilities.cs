@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Core.Net.HTTP;
+using global::Core.Net.HTTP;
 
 namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
 {
