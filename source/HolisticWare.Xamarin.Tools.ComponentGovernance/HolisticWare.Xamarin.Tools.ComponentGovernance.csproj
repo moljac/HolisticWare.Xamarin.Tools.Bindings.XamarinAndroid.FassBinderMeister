@@ -46,8 +46,8 @@
         <VersionPrefix>0.0.1</VersionPrefix>
         <!--
         VersionSuffix - For debugging and local Maven feed
-        -->
         <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</VersionSuffix>
+        -->
         <PackageVersion>$(Version)</PackageVersion>
     </PropertyGroup>
 
@@ -72,28 +72,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Repositories\" />
-      <None Remove="Repositories\Google\" />
-      <None Remove="Repositories\MavenCentralSonatype\" />
-      <None Remove="POM.ProjectObjectModel\" />
-      <None Remove="RepositoryAgnosticDiscovery\" />
-      <None Remove="Repositories\MavenCentralSonatype\Search\" />
-      <None Remove="Repositories\MavenCentralSonatype\ArtifactMetadata\" />
-      <None Remove="Roslynator.CodeAnalysis.Analyzers" />
-      <None Remove="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
-      <None Remove="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Repositories\" />
-      <Folder Include="Repositories\Google\" />
-      <Folder Include="Repositories\MavenCentralSonatype\" />
-      <Folder Include="POM.ProjectObjectModel\" />
-      <Folder Include="RepositoryAgnosticDiscovery\" />
-      <Folder Include="Repositories\MavenCentralSonatype\Search\" />
-      <Folder Include="Repositories\MavenCentralSonatype\ArtifactMetadata\" />
+      <Folder Include="Generated\" />
     </ItemGroup>
 
     <ItemGroup>
+      <!--
       <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+      -->
+     <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
     </ItemGroup>
 </Project>

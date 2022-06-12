@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net6</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
 
         <LangVersion>Latest</LangVersion>
         <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.Client.Core</RootNamespace>
@@ -73,8 +73,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+      <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
     </ItemGroup>
+    
     <ItemGroup>
       <None Remove="Roslynator.CodeAnalysis.Analyzers" />
       <None Remove="Microsoft.CodeAnalysis.BannedApiAnalyzers" />

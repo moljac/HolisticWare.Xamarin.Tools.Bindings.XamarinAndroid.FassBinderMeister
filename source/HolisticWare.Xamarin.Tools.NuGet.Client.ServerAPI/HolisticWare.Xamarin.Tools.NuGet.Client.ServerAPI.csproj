@@ -58,14 +58,18 @@
         -->
         <PackageOutputPath>../../output</PackageOutputPath>
     </PropertyGroup>
-
-    <ItemGroup>
-    </ItemGroup>
-
+    
     <ItemGroup>
       <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
-      <ProjectReference Include="..\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+        <!--
+      <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
+        -->
+    </ItemGroup>
+
     <ItemGroup>
       <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0" />
       <PackageReference Include="Roslynator.Analyzers" Version="4.1.1" />

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>Latest</LangVersion>
         <RootNamespace>HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Core</RootNamespace>
         <!--
@@ -92,8 +92,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj" />
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj" />
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj" />
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI.csproj" />
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj" />
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
