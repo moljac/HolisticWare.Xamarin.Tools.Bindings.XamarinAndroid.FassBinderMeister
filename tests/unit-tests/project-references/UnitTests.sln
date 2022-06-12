@@ -93,6 +93,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Extensions", "..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Extensions\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Extensions.csproj", "{2B375FB4-3B39-401A-BE7E-5D783206A6D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.ComponentGovernance", "..\..\..\source\HolisticWare.Xamarin.Tools.ComponentGovernance\HolisticWare.Xamarin.Tools.ComponentGovernance.csproj", "{950496C1-F5F4-4D38-A019-860C3D5C5AA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "externals-submodules", "externals-submodules", "{619F32EF-FAF6-476A-8B3E-9E76F9C9036C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.IO", "..\..\..\externals-submodules\Core.Net\externals-submodules\HWC.IO\source\HolisticWare.Core.IO\HolisticWare.Core.IO.csproj", "{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\Tests.CommonShared\Tests.CommonShared.projitems*{13ab4ad2-d077-48e0-b6f2-791bc25eb413}*SharedItemsImports = 13
@@ -429,6 +435,30 @@ Global
 		{2B375FB4-3B39-401A-BE7E-5D783206A6D5}.Release|iPhone.Build.0 = Release|Any CPU
 		{2B375FB4-3B39-401A-BE7E-5D783206A6D5}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{2B375FB4-3B39-401A-BE7E-5D783206A6D5}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Release|iPhone.Build.0 = Release|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Release|iPhone.Build.0 = Release|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -470,6 +500,9 @@ Global
 		{FAF54A1F-EBE4-405D-95AF-4E3BA9541625} = {139D0A00-E382-4C5A-971F-9CE2DAC75D04}
 		{8906D416-8BFD-470E-AD33-FC6865C16DCD} = {56123580-99E9-45AC-8300-ABF8EE1D021E}
 		{2B375FB4-3B39-401A-BE7E-5D783206A6D5} = {56123580-99E9-45AC-8300-ABF8EE1D021E}
+		{950496C1-F5F4-4D38-A019-860C3D5C5AA6} = {56123580-99E9-45AC-8300-ABF8EE1D021E}
+		{619F32EF-FAF6-476A-8B3E-9E76F9C9036C} = {190E01DB-84A4-4473-87C2-C53F1FEB692D}
+		{54AD8971-AEFC-49B4-BC5E-BA0A672174B8} = {619F32EF-FAF6-476A-8B3E-9E76F9C9036C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F904396-1602-4536-AE11-A3F2F24B7CD3}

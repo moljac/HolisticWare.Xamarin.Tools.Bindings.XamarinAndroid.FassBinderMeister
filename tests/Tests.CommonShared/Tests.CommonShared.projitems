@@ -49,6 +49,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools.Maven\Repositories\MavenCentralSonatype\Repository.Search.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools.Maven\RepositoryAgnosticDiscovery\Group.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools.Maven\RepositoryAgnosticDiscovery\Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ComponentGovernance\ComponentGovernanceManifest_cgmsinfest_json.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
@@ -72,5 +73,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Tools.Maven\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools.Maven\Repositories\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools.Maven\RepositoryAgnosticDiscovery\" />
+    <Folder Include="$(MSBuildThisFileDirectory)ComponentGovernance\" />
   </ItemGroup>
 </Project>

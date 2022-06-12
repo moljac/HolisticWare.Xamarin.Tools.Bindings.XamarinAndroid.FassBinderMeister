@@ -79,28 +79,20 @@
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI.csproj" />
-    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj">
-      <Name>HolisticWare.Xamarin.Tools.Maven</Name>
-    </ProjectReference>
-      <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Serialization\source\HolisticWare.Core.Serialization\HolisticWare.Core.Serialization.csproj">
-        <Name>HolisticWare.Core.Serialization</Name>
-      </ProjectReference>
-      <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Text\source\HolisticWare.Core.Text\HolisticWare.Core.Text.csproj">
-        <Name>HolisticWare.Core.Text</Name>
-      </ProjectReference>
-      <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Text\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj">
-        <Name>HolisticWare.Core.Text.Transformations</Name>
-      </ProjectReference>
-      <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net\HolisticWare.Core.Net.csproj">
-        <Name>HolisticWare.Core.Net</Name>
-      </ProjectReference>
-      <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj">
-        <Name>HolisticWare.Core.Net.HTTP</Name>
-      </ProjectReference>
-      <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Versioning\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj">
-        <Name>HolisticWare.Core.Versioning</Name>
-      </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Maven.Repositories\HolisticWare.Xamarin.Tools.Maven.Repositories.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.ComponentGovernance\HolisticWare.Xamarin.Tools.ComponentGovernance.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Text\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj" />
+    <!--
+    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+    -->
+    <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
+    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Versioning\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="MavenNet">
       <Version>2.2.13</Version>

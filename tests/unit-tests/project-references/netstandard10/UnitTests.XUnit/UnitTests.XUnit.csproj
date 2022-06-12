@@ -1,16 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6</TargetFrameworks>
+    <TargetFramework>net6</TargetFramework>
     <LangVersion>Latest</LangVersion>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DefineConstants>XUNIT;TRACE;DEBUG;NETCOREAPP3_1;NET;NET5_0;NET6_0;NETCOREAPP</DefineConstants>
+    <DefineConstants>XUNIT;TRACE;DEBUG;NETCOREAPP3_1;NET;NET6_0;NETCOREAPP</DefineConstants>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DefineConstants>XUNIT;TRACE;RELEASE;NETCOREAPP3_1;NET;NET5_0;NET6_0;NETCOREAPP</DefineConstants>
+    <DefineConstants>XUNIT;TRACE;RELEASE;NETCOREAPP3_1;NET;NET6_0;NETCOREAPP</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -44,10 +44,16 @@
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj" />
-    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Text\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj" />
-    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
-    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Versioning\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.ComponentGovernance\HolisticWare.Xamarin.Tools.ComponentGovernance.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Text\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj" />
+    <!--
+    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+    -->
+    <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
+    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Versioning\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj" />
+  </ItemGroup>  
   <Choose>
     <When Condition="! exists('..\..\..\..\source\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10.csproj')">
       <!-- nuget packages (dll) refs -->
