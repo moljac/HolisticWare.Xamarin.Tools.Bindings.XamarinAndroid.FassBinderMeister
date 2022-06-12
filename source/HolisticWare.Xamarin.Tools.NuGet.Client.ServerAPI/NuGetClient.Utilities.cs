@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-using global::Core.Net.HTTP;
+using Core.Net.HTTP;
+using HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated;
 
 namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
 {
@@ -45,7 +46,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                     response = await NuGetClient.HttpClient.GetStringContentAsync(url);
                 }
 
-                Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+                Root myDeserializedClass = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(response);
 
                 return response;
             }
@@ -69,7 +70,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                 response = await NuGetClient.HttpClient.GetStringContentAsync(url);
             }
 
-            Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+            Root myDeserializedClass = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(response);
 
             return response;
         }
