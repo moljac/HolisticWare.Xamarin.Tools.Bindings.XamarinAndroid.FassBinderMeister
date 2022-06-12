@@ -12,7 +12,6 @@ string[] configurations = new string[]
 //---------------------------------------------------------------------------------------
 Task("libs")
     .IsDependentOn ("clean")
-    .IsDependentOn ("nuget-restore")
     .IsDependentOn ("nuget-restore-libs")
     .IsDependentOn ("libs-msbuild-solutions")
     .IsDependentOn ("libs-msbuild-projects")
@@ -63,7 +62,7 @@ Task("libs-dotnet-solutions")
             {
                 foreach(FilePath sln in LibrarySourceSolutions)
                 {
-                    DotNetCoreBuild
+                    DotNetBuild
                     (
                         sln.ToString(),
                         new DotNetCoreBuildSettings
@@ -115,7 +114,7 @@ Task("libs-dotnet-projects")
             {
                 foreach(FilePath prj in LibrarySourceProjects)
                 {
-                    DotNetCoreBuild
+                    DotNetBuild
                     (
                         prj.ToString(),
                         new DotNetCoreBuildSettings
