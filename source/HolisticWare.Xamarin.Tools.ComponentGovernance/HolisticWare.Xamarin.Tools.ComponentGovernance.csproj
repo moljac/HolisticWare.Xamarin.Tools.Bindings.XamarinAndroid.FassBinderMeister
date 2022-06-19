@@ -43,7 +43,7 @@
         <PackageIconUrl>
             https://secure.gravatar.com/avatar/b662959e712466f393541935b664d3c5        
         </PackageIconUrl>
-        <VersionPrefix>0.0.1</VersionPrefix>
+        <VersionPrefix>0.0.1.1</VersionPrefix>
         <!--
         VersionSuffix - For debugging and local Maven feed
         <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</VersionSuffix>
@@ -77,8 +77,8 @@
 
     <ItemGroup>
       <!--
-      <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+      <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
       -->
-     <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
+      <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
     </ItemGroup>
 </Project>

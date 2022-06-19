@@ -74,9 +74,4 @@
     <ItemGroup>
       <Folder Include="Repositories\" />
     </ItemGroup>
-    <ItemGroup>
-      <None Remove="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
-      <None Remove="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
-      <None Remove="Roslynator.CodeAnalysis.Analyzers" />
-    </ItemGroup>
 </Project>

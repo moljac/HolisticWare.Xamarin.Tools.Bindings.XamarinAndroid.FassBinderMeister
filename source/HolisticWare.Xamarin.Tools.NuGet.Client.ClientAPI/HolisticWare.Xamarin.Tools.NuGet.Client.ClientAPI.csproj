@@ -78,9 +78,4 @@
       <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Remove="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
-      <None Remove="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
-      <None Remove="Roslynator.CodeAnalysis.Analyzers" />
-    </ItemGroup>
 </Project>
