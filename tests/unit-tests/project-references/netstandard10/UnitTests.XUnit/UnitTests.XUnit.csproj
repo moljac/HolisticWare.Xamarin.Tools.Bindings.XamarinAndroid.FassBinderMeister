@@ -49,9 +49,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Text\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj" />
     <!--
-    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
-    -->
     <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
+    -->
+    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
     <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Versioning\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj" />
   </ItemGroup>  
   <Choose>

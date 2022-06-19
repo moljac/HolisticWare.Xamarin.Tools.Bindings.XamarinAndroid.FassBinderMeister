@@ -11,6 +11,10 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UnitTests.Common.Utils.Shared", "..\UnitTests.Common.Utils.Shared\UnitTests.Common.Utils.Shared.shproj", "{E390F6DA-9F4B-43A4-8ABF-F9434DF2C70D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test-runner-projects", "test-runner-projects", "{C362EF23-0582-49A5-A658-3F12E0885F1C}"
+	ProjectSection(SolutionItems) = preProject
+		..\Directory.Packages.props = ..\Directory.Packages.props
+		..\..\global.json = ..\..\global.json
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.XUnit", "netstandard10\UnitTests.XUnit\UnitTests.XUnit.csproj", "{20720034-0C48-47D1-9B31-743088366300}"
 EndProject
