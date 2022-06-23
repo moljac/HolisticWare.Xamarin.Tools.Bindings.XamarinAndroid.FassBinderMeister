@@ -69,6 +69,7 @@ using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
 
 using HolisticWare.Xamarin.Tools.ComponentGovernance;
+using Newtonsoft.Json;
 
 namespace UnitTests.ComponentGovernance
 {
@@ -481,7 +482,61 @@ namespace UnitTests.ComponentGovernance
                 ("org.tensorflow:tensorflow-lite-gpu", "2.6.0", "Xamarin.TensorFlow.Lite.Gpu", "2.6.0.1"),
             };
 
-
+            /*
+            Manifest.Defaults.VersionBasedOnFullyQualifiedArtifactIdDelegate = delegate(string s)
+            {
+                if 
+                (
+                    s.StartsWith("androidx.")
+                    ||
+                    s.StartsWith("com.google.android.material")
+                    ||
+                    s.StartsWith("com.google.firebase")
+                )
+                {
+                    return "The Apache Software License, Version 2.0";
+                }
+                
+                if 
+                (
+                    s.StartsWith("com.google.android.gms")
+                    ||
+                    s.StartsWith("com.google.android.odml")
+                    ||
+                    s.StartsWith("com.google.android.ump")
+                )
+                {
+                    return "Android Software Development Kit License";
+                }
+                
+                if 
+                (
+                    s.StartsWith("org.chromium.net")
+                )
+                {
+                    return "Chromium and built-in dependencies";
+                }
+                
+                if 
+                (
+                    s.StartsWith("com.google.mlkit")
+                )
+                {
+                    return "ML Kit Terms of Service";
+                }
+                
+                if 
+                (
+                    s.StartsWith("com.google.android.play")
+                )
+                {
+                    return "Play Core Software Development Kit Terms of Service";
+                }
+                
+                return null;    
+            };
+            */
+            
             return;
         }
 
@@ -494,7 +549,16 @@ namespace UnitTests.ComponentGovernance
 
             Console.WriteLine($"Saving ComponetGovernanceManifest cgmanifest.json...");
             manifest.Save("./cgmanifest.01.json");
-
+            System.IO.File.WriteAllText
+                                (
+                                    "Licenses.01.json",
+                                    Newtonsoft.Json.JsonConvert.SerializeObject
+                                                                            ( 
+                                                                                Manifest.Defaults.Licenses,
+                                                                                Formatting.Indented
+                                                                            )
+                                );
+                
             //#if MSTEST
             //Assert.IsNotNull(search);
             //#elif NUNIT
@@ -523,6 +587,15 @@ namespace UnitTests.ComponentGovernance
 
             Console.WriteLine($"Saving ComponetGovernanceManifest cgmanifest.json...");
             manifest.Save("./cgmanifest.02.json");
+            System.IO.File.WriteAllText
+                                (
+                                    "Licenses.02.json",
+                                    Newtonsoft.Json.JsonConvert.SerializeObject
+                                                                            ( 
+                                                                                Manifest.Defaults.Licenses,
+                                                                                Formatting.Indented
+                                                                            )
+                                                                        );
 
             //#if MSTEST
             //Assert.IsNotNull(search);
