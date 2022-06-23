@@ -76,6 +76,8 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance
                 {
                     string[] artifact_parts = m.ArtifactIdFullyQualified.Split(new char[] { ':' });
 
+                    string fq_id_v = $"{m.ArtifactIdFullyQualified}:{m.ArtifactVersion}";
+                    
                     Generated.Registration r = new Generated.Registration
                     {
                         Component = new Generated.Component
@@ -91,7 +93,7 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance
                                                     },
                         },
                         Description     = Defaults.Description,
-                        License         = Defaults.License,
+                        License         = Defaults.VersionBasedOnFullyQualifiedArtifactIdDelegate(fq_id_v),
                         LicenseDetail   = Defaults.LicenseDetail
                     };
 
