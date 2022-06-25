@@ -19,6 +19,159 @@ var TARGET = Argument ("t", Argument ("target", "Default"));
 JArray binderator_json_array = null;
 
 List<(string, string, string, string)> mappings_artifact_nuget = new List<(string, string, string, string)>();
+Dictionary<string, string> Licenses = new Dictionary<string, string>();
+
+
+// modifying default method for licenses
+Manifest.Defaults.VersionBasedOnFullyQualifiedArtifactIdDelegate = delegate(string s)
+{
+    if 
+        (
+            fully_qualified_artifact_id.StartsWith("androidx")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.google.android.material")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.google.firebase")
+            ||
+            fully_qualified_artifact_id.StartsWith("org.jetbrains.kotlin")
+            ||
+            fully_qualified_artifact_id.StartsWith("org.jetbrains.kotlinx")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.squareup")
+            ||
+            fully_qualified_artifact_id.StartsWith("io.grpc")
+        )
+    {
+        const string l = "The Apache Software License, Version 2.0";
+        const string u = "https://www.apache.org/licenses/LICENSE-2.0.txt";
+
+        if (!Licenses.ContainsKey(l))
+        {
+            Licenses.Add(l, u);
+        }
+
+        return l;
+    }
+
+    if 
+        (
+            fully_qualified_artifact_id.StartsWith("com.google.android.gms")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.google.android.odml")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.google.android.ump")
+        )
+    {
+        const string l = "Android Software Development Kit License";
+        const string u = "https://developer.android.com/studio/terms";
+
+        if (!Licenses.ContainsKey(l))
+        {
+            Licenses.Add(l, u);
+        }
+
+        return l;
+    }
+
+    if 
+        (
+            fully_qualified_artifact_id.StartsWith("org.chromium.net")
+        )
+    {
+        const string l = "Chromium and built-in dependencies";
+        const string u = "https://storage.cloud.google.com/chromium-cronet/android/72.0.3626.96/Release/cronet/LICENSE";
+
+        if (!Licenses.ContainsKey(l))
+        {
+            Licenses.Add(l, u);
+        }
+
+        return l;
+    }
+
+    if 
+        (
+            fully_qualified_artifact_id.StartsWith("com.google.mlkit")
+        )
+    {
+        const string l = "ML Kit Terms of Service";
+        const string u = "https://developers.google.com/ml-kit/terms";
+
+        if (!Licenses.ContainsKey(l))
+        {
+            Licenses.Add(l, u);
+        }
+
+        return l;
+    }
+
+    if
+        (
+            fully_qualified_artifact_id.StartsWith("com.google.android.play")
+        )
+    {
+        const string l = "Play Core Software Development Kit Terms of Service";
+        const string u = "https://developer.android.com/guide/playcore#license";
+
+        if (!Licenses.ContainsKey(l))
+        {
+            Licenses.Add(l, u);
+        }
+
+        return l;
+    }
+
+    if 
+        (
+            fully_qualified_artifact_id.StartsWith("com.google.android.play")
+        )
+    {
+        const string l = "Play Core Software Development Kit Terms of Service";
+        const string u = "https://developer.android.com/guide/playcore#license";
+
+        if (!Licenses.ContainsKey(l))
+        {
+            Licenses.Add(l, u);
+        }
+
+        return l;
+    }
+    
+    if 
+        (
+            fully_qualified_artifact_id.StartsWith("com.google.android.play")
+        )
+    {
+        const string l = "Play Core Software Development Kit Terms of Service";
+        const string u = "https://developer.android.com/guide/playcore#license";
+
+        if (!Licenses.ContainsKey(l))
+        {
+            Licenses.Add(l, u);
+        }
+
+        return l;
+    }
+
+    if 
+        (
+            fully_qualified_artifact_id.StartsWith("com.google.protobuf")
+        )
+    {
+        const string l = "BSD 2/3 Clause";
+        const string u = "https://opensource.org/licenses/BSD-3-Clause";
+
+        if (!Licenses.ContainsKey(l))
+        {
+            Licenses.Add(l, u);
+        }
+
+        return l;
+    }
+    
+        
+    return null;
+};
 
 
 Task ("mappings-artifact-nuget")
