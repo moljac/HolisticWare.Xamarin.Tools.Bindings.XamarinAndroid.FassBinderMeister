@@ -21,7 +21,6 @@ JArray binderator_json_array = null;
 List<(string, string, string, string)> mappings_artifact_nuget = null;
 Dictionary<string, string> Licenses = new Dictionary<string, string>();
 
-
 // modifying default method for licenses
 Manifest.Defaults.VersionBasedOnFullyQualifiedArtifactIdDelegate = delegate(string fully_qualified_artifact_id)
 {
@@ -56,6 +55,28 @@ Manifest.Defaults.VersionBasedOnFullyQualifiedArtifactIdDelegate = delegate(stri
             fully_qualified_artifact_id.StartsWith("com.google.code.gson")
             ||
             fully_qualified_artifact_id.StartsWith("com.google.crypto.tink")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.google.android:annotations")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.google.android.datatransport")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.google.code.findbugs")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.google.dagger")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.google.errorprone")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.google.zxing")
+            ||
+            fully_qualified_artifact_id.StartsWith("io.opencensus")
+            ||
+            fully_qualified_artifact_id.StartsWith("io.perfmark")
+            ||
+            fully_qualified_artifact_id.StartsWith("javax.inject")
+            ||
+            fully_qualified_artifact_id.StartsWith("org.tensorflow")
+            ||
+            fully_qualified_artifact_id.StartsWith("com.android.volley")
         )
     {
         const string l = "The Apache Software License, Version 2.0";
@@ -72,10 +93,28 @@ Manifest.Defaults.VersionBasedOnFullyQualifiedArtifactIdDelegate = delegate(stri
     if
         (
             fully_qualified_artifact_id.StartsWith("org.checkerframework")
+            ||
+            fully_qualified_artifact_id.StartsWith("org.codehaus.mojo")            
         )
     {
         const string l = "MIT";
         const string u = "http://opensource.org/licenses/MIT";
+
+        if (!Licenses.ContainsKey(l))
+        {
+            Licenses.Add(l, u);
+        }
+
+        return l;
+    }
+
+    if
+        (
+            fully_qualified_artifact_id.StartsWith("com.github.bumptech.glide")
+        )
+    {
+        const string l = "The Apache Software License, Version 2.0 AND Simplified BSD License";
+        const string u = "https://www.apache.org/licenses/LICENSE-2.0.txt;http://www.opensource.org/licenses/bsd-license";
 
         if (!Licenses.ContainsKey(l))
         {
@@ -171,11 +210,11 @@ Manifest.Defaults.VersionBasedOnFullyQualifiedArtifactIdDelegate = delegate(stri
 
     if
         (
-            fully_qualified_artifact_id.StartsWith("com.google.android.play")
+            fully_qualified_artifact_id.StartsWith("com.google.android.libraries.places")
         )
     {
-        const string l = "Play Core Software Development Kit Terms of Service";
-        const string u = "https://developer.android.com/guide/playcore#license";
+        const string l = "Google Maps Platform Terms of Service";
+        const string u = "https://cloud.google.com/maps-platform/terms/";
 
         if (!Licenses.ContainsKey(l))
         {
@@ -184,30 +223,14 @@ Manifest.Defaults.VersionBasedOnFullyQualifiedArtifactIdDelegate = delegate(stri
 
         return l;
     }
-
-    if
-        (
-            fully_qualified_artifact_id.StartsWith("com.google.android.play")
-        )
-    {
-        const string l = "Play Core Software Development Kit Terms of Service";
-        const string u = "https://developer.android.com/guide/playcore#license";
-
-        if (!Licenses.ContainsKey(l))
-        {
-            Licenses.Add(l, u);
-        }
-
-        return l;
-    }
-
+    
     if
         (
             fully_qualified_artifact_id.StartsWith("com.google.protobuf")
         )
     {
-        const string l = "BSD 2/3 Clause";
-        const string u = "https://opensource.org/licenses/BSD-3-Clause";
+        const string l = "BSD 2 Clause AND BSD 3 Clause";
+        const string u = "https://opensource.org/licenses/BSD-2-Clause;https://opensource.org/licenses/BSD-3-Clause;";
 
         if (!Licenses.ContainsKey(l))
         {
