@@ -68,27 +68,27 @@
     </ItemGroup>
     
     <ItemGroup>
-        <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
-        <PackageReference Include="System.Diagnostics.TextWriterTraceListener" Version="4.3.0" />
-        <PackageReference Include="System.Reflection" Version="4.3.0" />
-        <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-        <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+        <PackageReference Include="System.IO.FileSystem" />
+        <PackageReference Include="System.Diagnostics.TextWriterTraceListener" />
+        <PackageReference Include="System.Reflection" />
+        <PackageReference Include="System.ComponentModel.Annotations" />
+        <PackageReference Include="System.Net.Requests" />
+        <PackageReference Include="protobuf-net" />
+        <PackageReference Include="protobuf-net.BuildTools" />
 
-        <PackageReference Include="protobuf-net" Version="3.1.4" />
-        <PackageReference Include="protobuf-net.BuildTools" Version="3.0.115" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
         <!--
         <PackageReference Include="HtmlAgilityPack" Version="1.11.40" />
         <PackageReference Include="MavenNet" Version="2.2.13" />
         <PackageReference Include="NuGet.Protocol" Version="6.0.0" />
         -->
 
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0" />
-        <PackageReference Include="Roslynator.Analyzers" Version="4.1.1" />
-        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.1.1" />
-        <PackageReference Include="AsyncFixer" Version="1.6.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.3" />
-        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.3" />
-        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.1.1" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" />
+        <PackageReference Include="Roslynator.Analyzers" />
+        <PackageReference Include="Roslynator.Formatting.Analyzers" />
+        <PackageReference Include="AsyncFixer" />
+        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
+        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" />
     </ItemGroup>
 
     <ItemGroup>

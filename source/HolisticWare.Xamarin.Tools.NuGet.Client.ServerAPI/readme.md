@@ -1,8 +1,12 @@
 ﻿# NuGetClient (ServerAPI)
 
-*   https://docs.microsoft.com/en-us/nuget/api/overview
+* https://docs.microsoft.com/en-us/nuget/api/overview
 
-*   service index
+* https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-(server-side)
+
+https://stackoverflow.com/questions/55380045/nuget-api-get-version-of-package
+
+* service index
 
     *   https://api.nuget.org/v3/index.json
 
