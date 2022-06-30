@@ -1,0 +1,122 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <!--
+    https://github.com/dotnet/roslyn-analyzers
+    Microsoft.CodeAnalysis.NetAnalyzers
+  -->
+  <PropertyGroup>
+      <!--
+        EnableNETAnalyzers  
+        -->
+      <EnableNETAnalyzers>true</EnableNETAnalyzers>
+      <!--
+        AnalysisLevel
+        -->
+      <AnalysisLevel>latest</AnalysisLevel>
+    </PropertyGroup>
+
+  <ItemGroup>
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageVersion Include="System.Net.Http" Version="4.3.4" />
+    <PackageVersion Include="System.Text.Json" Version="6.0.5" />
+    <PackageVersion Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
+    <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
+    <PackageVersion Include="NuGet.Protocol" Version="6.2.0" />
+
+    <!--
+      HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Core.csproj
+    -->
+    <PackageVersion Include="System.IO.FileSystem" Version="4.3.0" />
+    <PackageVersion Include="System.Diagnostics.TextWriterTraceListener" Version="4.3.0" />
+    <PackageVersion Include="System.Reflection" Version="4.3.0" />
+    <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageVersion Include="System.Net.Requests" Version="4.3.0" />
+    <PackageVersion Include="protobuf-net" Version="3.1.4" />
+    <PackageVersion Include="protobuf-net.BuildTools" Version="3.0.115" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+
+    <!--
+      HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Extensions.csproj
+    -->
+    <PackageVersion Include="NuGet.Protocol" Version="6.2.0" />
+    <PackageVersion Include="System.Reflection" Version="4.3.0" />
+    <PackageVersion Include="System.Net.Requests" Version="4.3.0" />
+    <PackageVersion Include="MavenNet" Version="2.2.13" />
+    <PackageVersion Include="HtmlAgilityPack" Version="1.11.43" />
+    <PackageVersion Include="protobuf-net" Version="3.1.4" />
+    <PackageVersion Include="protobuf-net.BuildTools" Version="3.0.115" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+
+    <!--
+      HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.csproj
+    -->
+    <PackageVersion Include="MavenNet" Version="2.2.13" />
+    <PackageVersion Include="NuGet.Protocol" Version="6.2.0" />
+    <PackageVersion Include="System.IO.FileSystem" Version="4.3.0" />
+    <PackageVersion Include="System.Diagnostics.TextWriterTraceListener" Version="4.3.0" />
+    <PackageVersion Include="System.Reflection" Version="4.3.0" />
+    <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageVersion Include="HtmlAgilityPack" Version="1.11.43" />
+    <PackageVersion Include="System.Net.Requests" Version="4.3.0" />
+    <PackageVersion Include="protobuf-net" Version="3.1.4" />
+    <PackageVersion Include="protobuf-net.BuildTools" Version="3.0.115" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 
+      PrivateAssets="All" is on these packages to ensure they're development dependencies
+      and aren't included as transitionary dependencies to package consumers.
+      For clarity, without PrivateAssets marked here, anyone consuming Microsoft.Identity.Client
+      would also be forced to install these dependencies.  PrivateAssets avoids this problem. 
+    -->
+    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0" PrivateAssets="All" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.3" PrivateAssets="All" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.3" PrivateAssets="All" />
+    <!--
+    https://github.com/dotnet/roslyn-analyzers
+    package has been deprecated in favor of 'Microsoft.CodeAnalysis.NetAnalyzers'
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2" PrivateAssets="All" />    
+    -->
+    <!--
+    https://github.com/dotnet/roslyn-analyzers
+    package has been deprecated in favor of 'Microsoft.CodeAnalysis.NetAnalyzers'
+    <PackageReference Include="Microsoft.CodeQuality.Analyzers" Version="3.3.2" PrivateAssets="All" />
+    -->
+    <!--
+    https://github.com/dotnet/roslyn-analyzers
+    package has been deprecated in favor of 'Microsoft.CodeAnalysis.NetAnalyzers'
+    <PackageReference Include="Microsoft.NetCore.Analyzers" Version="3.3.2" PrivateAssets="All" />
+    -->
+    <!--
+    https://github.com/dotnet/roslyn-analyzers
+    package has been deprecated in favor of 'Microsoft.CodeAnalysis.NetAnalyzers'
+    <PackageReference Include="Microsoft.NetFramework.Analyzers" Version="3.3.2" PrivateAssets="All" />
+    -->
+  
+  
+    <!--
+    https://github.com/DotNetAnalyzers/StyleCopAnalyzers  
+    -->
+    <PackageVersion Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="All" />
+      
+    <!--
+      https://github.com/JosefPihrt/Roslynator#nuget-analyzers
+
+      https://www.nuget.org/packages/Roslynator.DotNet.Cli
+    -->
+    <PackageVersion Include="Roslynator.Analyzers" Version="3.0.0" PrivateAssets="All" />
+    <PackageVersion Include="Roslynator.CodeAnalysis.Analyzers" Version="1.0.0" PrivateAssets="All" />
+    <PackageVersion Include="Roslynator.Formatting.Analyzers" Version="1.0.0" PrivateAssets="All" />
+  
+  
+    <PackageVersion Include="AsyncUsageAnalyzers" Version="1.0.0-alpha003" PrivateAssets="All" />
+    <!--
+      http://www.asyncfixer.com/
+    -->
+    <PackageVersion Include="AsyncFixer" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+      
+</Project>
