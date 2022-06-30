@@ -9,9 +9,10 @@
     <Import_RootNamespace>Tests.CommonShared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Data\AndroidX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\GooglePlayServices-Firebase-MLKit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HttpClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GitHubClientAPI\GitHubClient.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MavenNET\MavenNET.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\ReleaseNotesHTMLData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\ArtifactBindingNugetData.cs" />
@@ -54,7 +55,6 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)GitHubClientAPI\" />
     <Folder Include="$(MSBuildThisFileDirectory)MavenAPI\" />
-    <Folder Include="$(MSBuildThisFileDirectory)MavenNET\" />
     <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\" />
     <Folder Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\" />
     <Folder Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\" />

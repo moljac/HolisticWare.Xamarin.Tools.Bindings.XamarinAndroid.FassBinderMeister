@@ -75,13 +75,19 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
     public partial class Test_NuGetClient
     {
-
+        
         [Test]
-        public void NuGetClient_GetNugetPackageVersionsFromIndexAsync()
+        public void GetNugetPackageVersionsFromIndexAsync()
         {
             NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
 
-            NuGetClient ngc = new NuGetClient();
+            foreach ((string , string, string, string) mapping in Data.AX.mappings_artifact_nuget)
+            {
+                string nuget_id = mapping.Item3;
+                string versions = NuGetClient.Utilities.GetPackageVersionsFromIndexAsync(nuget_id).Result;
+                
+                Console.WriteLine($"nuget_id:    {nuget_id}");
+            }
 
             //#if MSTEST
             //Assert.IsNotNull(search);
@@ -91,75 +97,53 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
             //Assert.NotNull(search);
             //#endif
 
-            Console.WriteLine($"Packages found...");
-            //foreach (IPackageSearchMetadata pm in search)
-            //{
-            //    Console.WriteLine($"----------------------------------------------------------");
-            //    Console.WriteLine($"Title   : {pm.Title}");
-            //    Console.WriteLine($"Summary         : {pm.Summary}");
-            //    Console.WriteLine($"Tags            : {pm.Tags}");
-            //}
+            return;
+        }
+
+        [Test]
+        public void GetPackageRegistrationFromIndexAsync()
+        {
+            NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
+
+            foreach ((string , string, string, string) mapping in Data.AX.mappings_artifact_nuget)
+            {
+                string nuget_id = mapping.Item3;
+                string versions = NuGetClient.Utilities.GetPackageRegistrationFromIndexAsync(nuget_id).Result;
+                
+                Console.WriteLine($"nuget_id:    {nuget_id}");
+            }
+
+            // #if MSTEST
+            // Assert.IsNotNull(package_metadata);
+            // #elif NUNIT
+            // Assert.NotNull(package_metadata);
+            // #elif XUNIT
+            // Assert.NotNull(package_metadata);
+            // #endif
 
             return;
         }
 
         [Test]
-        public void NuGetClient_Packages_PackageMetadata()
+        public void GetNugetNuSpecAsync()
         {
-            NuGetClient ngc = new NuGetClient();
+            NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
 
-            IEnumerable<IPackageSearchMetadata> package_metadata = null;
-            //package_metadata = ngc.GetPackageMetadataAsync
-            //                                    (
-            //                                      "Xamarin.AndroidX.Core"
-            //                                    ).Result;
-
-            #if MSTEST
-            Assert.IsNotNull(package_metadata);
-            #elif NUNIT
-            Assert.NotNull(package_metadata);
-            #elif XUNIT
-            Assert.NotNull(package_metadata);
-            #endif
-
-            Console.WriteLine($"Package metadata...");
-            foreach (IPackageSearchMetadata pm in package_metadata)
+            foreach ((string , string, string, string) mapping in Data.AX.mappings_artifact_nuget)
             {
-                Console.WriteLine($"----------------------------------------------------------");
-                Console.WriteLine($"Title   : {pm.Title}");
-                Console.WriteLine($"Summary         : {pm.Summary}");
-                Console.WriteLine($"Tags            : {pm.Tags}");
+                string nuget_id = mapping.Item3;
+                string version  = mapping.Item4;
+                
+                string nuspec = NuGetClient.Utilities.GetNugetNuSpecAsync(nuget_id, version).Result;
             }
 
-            return;
-        }
-
-        [Test]
-        public void NuGetClient_Packages_PackageVersions()
-        {
-            NuGetClient ngc = new NuGetClient();
-
-            IEnumerable<NuGetVersion> package_versions = null;
-            //package_versions = ngc.GetPackageVersionsAsync
-            //                                        (
-            //                                            "Xamarin.AndroidX.Core"
-            //                                        ).Result;
-
-            #if MSTEST
-            Assert.IsNotNull(package_versions);
-            #elif NUNIT
-            Assert.NotNull(package_versions);
-            #elif XUNIT
-            Assert.NotNull(package_versions);
-            #endif
-
-            Console.WriteLine($"Package metadata...");
-            foreach (NuGetVersion v in package_versions)
-            {
-                Console.WriteLine($"----------------------------------------------------------");
-                Console.WriteLine($"Version         : {v.Version}");
-                Console.WriteLine($"Summary         : {v.OriginalVersion}");
-            }
+            // #if MSTEST
+            // Assert.IsNotNull(package_versions);
+            // #elif NUNIT
+            // Assert.NotNull(package_versions);
+            // #elif XUNIT
+            // Assert.NotNull(package_versions);
+            // #endif
 
             return;
         }
