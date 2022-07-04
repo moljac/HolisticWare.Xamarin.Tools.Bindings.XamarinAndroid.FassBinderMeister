@@ -130,7 +130,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
                                             (
                                                 $"\t{Environment.NewLine}\t\t",
                                                 np.VersionsDates
-                                                        .Select(kv => kv.Key + "\t = \t " + kv.Value)
+                                                    .Select(kv => kv.Key + "\t = \t " + kv.Value.ToString("yyyy-MM-dd hh:mm:ss"))
                                                         .ToArray()
                                             );
                 Console.WriteLine(versions);
@@ -148,7 +148,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
                                             (
                                                 $"\t{Environment.NewLine}\t\t",
                                                 np.VersionsDates
-                                                    .Select(kv => kv.Key + "\t = \t " + kv.Value.ToString("yyyy-MM-ddThh:mm:ss"))
+                                                    .Select(kv => kv.Key + "\t = \t " + kv.Value.ToString("yyyy-MM-dd hh:mm:ss"))
                                                     .ToArray()
                                             );
                 Console.WriteLine(versions);
