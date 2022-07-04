@@ -1,9 +1,16 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
-using Core.Net.HTTP;
+using Newtonsoft.Json.Linq;
 
-using HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated;
+using Core.Net.HTTP;
+using HolisticWare.Xamarin.Tools.NuGet.Core;
+
+using Versions=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root;
+using PackageRegistration=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageRegistration.Root;
+using NuSpecData=HolisticWare.Xamarin.Tools.NuGet.NuSpec.Generated.Microsoft.package;
 
 namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
 {
@@ -16,24 +23,42 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
     ///     https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.compose.material.ripple/index.json
     public partial class NuGetClient
     {
-        public static HttpClient HttpClient { get; set; }
+        public static HttpClient HttpClient
+        {
+            get;
+            set;
 
+        }
+
+        // https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/index.json
+        // https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/1.0.0/xamarin.androidx.compose.material.ripple.1.0.0.nupkg        
         public static
             string
-            UrlFlatcontainerV3Default { get; } = "https://api.nuget.org/";
+                                        UrlV3FlatcontainerDefault
+        {
+            get;
+        } = "https://api.nuget.org/v3-flatcontainer";
+
+        // https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.compose.material.ripple/index.json
+        // https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.compose.material.ripple/1.0.0.json
+        public static
+            string
+                                        UrlV3Registration5SemVerDefault
+        {
+            get;
+        } = "https://api.nuget.org/v3/registration5-gz-semver2";
 
         public static partial class Utilities
         {
             public static async
-                Task<string>
+                Task<Versions>
                                         GetPackageVersionsFromIndexAsync
                                             (
                                                 string nuget_id
                                             )
             {
                 string nuget_id_lower = nuget_id.ToLower();
-                // https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/index.json
-                string url = $"{NuGetClient.UrlFlatcontainerV3Default}/v3-flatcontainer/{nuget_id_lower}/index.json";
+                string url = $"{NuGetClient.UrlV3FlatcontainerDefault}/{nuget_id_lower}/index.json";
 
                 string response = null;
 
@@ -42,23 +67,124 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                     response = await NuGetClient.HttpClient.GetStringContentAsync(url);
                 }
 
-                HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root data = null;
+                Versions data = Newtonsoft.Json.JsonConvert.DeserializeObject<Versions>(response);
 
-                data = Newtonsoft.Json.JsonConvert.DeserializeObject<HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root>(response);
-
-                return response;
+                return data;
             }
 
             public static async
-                Task<string>
+                Task<NuGetPackage>
+                                        GetNuGetPackageFromRegistrationAsync
+                                            (
+                                                string nuget_id
+                                            )
+            {
+                string nuget_id_lower = nuget_id.ToLower();
+                string url = $"{NuGetClient.UrlV3Registration5SemVerDefault}/{nuget_id_lower}/index.json";
+
+                string response = null;
+
+                if (await NuGetClient.HttpClient.IsReachableUrlAsync(url))
+                {
+                    response = await NuGetClient.HttpClient.GetStringContentAsync(url);
+                }
+                
+                NuGetPackage nuget_package = new NuGetPackage()
+                {
+                    VersionsTextual = new List<string>(),
+                    VersionsDates = new Dictionary<string, DateTime>(),
+                };
+                // https://www.newtonsoft.com/json/help/html/queryinglinqtojson.htm
+                JObject jo = JObject.Parse(response);
+
+                JArray jarray_items0 = (JArray) jo["items"];
+                foreach (JToken jtoken_item0 in jarray_items0)
+                {
+                    JArray jarray_items1 = (JArray) jtoken_item0["items"];
+                    
+                    foreach (JToken jtoken_item1 in jarray_items1)
+                    {
+                        JValue jvalue_id = (JValue) jtoken_item1["catalogEntry"]["id"];
+                        nuget_package.Id = jvalue_id.Value.ToString();
+                        JValue jvalue_version = (JValue) jtoken_item1["catalogEntry"]["version"];
+                        string version = jvalue_version.Value.ToString();
+                        nuget_package.VersionTextual = version;
+                        nuget_package.VersionsTextual.Add(version);
+                        JValue jvalue_published = (JValue) jtoken_item1["catalogEntry"]["published"];
+                        nuget_package.Published = DateTime.Parse(jvalue_published.Value.ToString());
+                        nuget_package.VersionsDates.Add(nuget_package.VersionTextual, nuget_package.Published);
+                        JValue jvalue_description = (JValue) jtoken_item1["catalogEntry"]["description"];
+                        nuget_package.Description = jvalue_description.Value.ToString();
+                        JValue jvalue_summary = (JValue) jtoken_item1["catalogEntry"]["summary"];
+                        nuget_package.Summary = jvalue_summary.Value.ToString();
+                        
+                        // nuget_package.LicenseExpression = jvalue_summary.Value.ToString();
+                        // nuget_package.LicenseURL = jvalue_summary.Value.ToString();
+                        // nuget_package.LicenseAcceptanceRequired = jvalue_summary.Value.ToString();
+                        // nuget_package.ProjectURL = jvalue_summary.Value.ToString();
+                            
+                        JArray jarray_dependency_groups = (JArray) jtoken_item1["catalogEntry"]["dependencyGroups"];
+
+                        if (jarray_dependency_groups == null)
+                        {
+                            continue;
+                        }
+                        
+                        if (jarray_dependency_groups.Count > 0)
+                        {
+                            nuget_package.DependencyGroups = new List<DependencyGroup>();
+                        }
+
+                        foreach (JToken jtoken_dependency_group in jarray_dependency_groups)
+                        {
+                            DependencyGroup dg = new DependencyGroup();
+
+                            JValue jvalue_target_framework = (JValue) jtoken_dependency_group["targetFramework"];
+                            dg.TargetFramework = jvalue_target_framework?.Value?.ToString();
+                            
+                            nuget_package.DependencyGroups.Add(dg);
+                            
+                            JArray jarray_dependencies = (JArray) jtoken_dependency_group["dependencies"];
+
+                            if (jarray_dependencies == null)
+                            {
+                                continue;
+                            }
+                            
+                            if (jarray_dependencies.Count > 0)
+                            {
+                                dg.Dependencies = new List<NuGetPackageDependency>();
+                            }
+                            
+                            foreach (JToken jtoken_dependency in jarray_dependencies)
+                            {
+                                JValue jvalue_dependency_id    = (JValue) jtoken_dependency["id"];
+                                JValue jvalue_range            = (JValue) jtoken_dependency["range"];
+
+                                NuGetPackageDependency nuget_package_dependency = new NuGetPackageDependency()
+                                {
+                                    Id = jvalue_dependency_id.Value.ToString(),
+                                    VersionRangeTextualDependency = jvalue_range.Value.ToString(),
+                                };
+                                
+                                dg.Dependencies.Add(nuget_package_dependency);
+                            }
+                        }
+                    }
+                }
+
+                return nuget_package;
+            }
+
+            public static async
+                Task<PackageRegistration>
                                         GetPackageRegistrationFromIndexAsync
                                             (
                                                 string nuget_id
                                             )
             {
                 string nuget_id_lower = nuget_id.ToLower();
-                // https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.compose.material.ripple/index.json
-                string url = $"{NuGetClient.UrlFlatcontainerV3Default}/v3-flatcontainer/{nuget_id_lower}/index.json";
+                string url = $"{NuGetClient.UrlV3Registration5SemVerDefault}/{nuget_id_lower}/index.json";
 
                 string response = null;
 
@@ -67,11 +193,9 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                     response = await NuGetClient.HttpClient.GetStringContentAsync(url);
                 }
 
-                HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageRegistration.Root data = null;
-
-                data = Newtonsoft.Json.JsonConvert.DeserializeObject<HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageRegistration.Root>(response);
-
-                return response;
+                PackageRegistration data = Newtonsoft.Json.JsonConvert.DeserializeObject<PackageRegistration>(response);
+                
+                return data;
             }
 
             public static async
@@ -83,9 +207,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                                             )
             {
                 string nuget_id_lower = nuget_id.ToLower();
-                // https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.compose.material.ripple/1.0.0.json
-                string url =
-                    $"{NuGetClient.UrlFlatcontainerV3Default}/v3/registration5-gz-semver2/{nuget_id_lower}/{version}.json";
+                string url = $"{NuGetClient.UrlV3Registration5SemVerDefault}/{nuget_id_lower}/{version}.json";
 
                 string response = null;
 
@@ -98,8 +220,8 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
             }
 
             public static async
-                Task<string>
-                                        GetNugetNuSpecAsync
+                Task<NuSpecData>
+                                        GetNuSpecAsync
                                             (
                                                 string nuget_id,
                                                 string version
@@ -108,7 +230,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                 string nuget_id_lower = nuget_id.ToLower();
                 // https://api.nuget.org/v3-flatcontainer/xamarin.androidx.fragment/1.3.0/xamarin.androidx.fragment.nuspec
                 string url =
-                    $"{NuGetClient.UrlFlatcontainerV3Default}/v3-flatcontainer//{nuget_id_lower}/{version}/{nuget_id_lower}.nuspec";
+                    $"{NuGetClient.UrlV3FlatcontainerDefault}/{nuget_id_lower}/{version}/{nuget_id_lower}.nuspec";
 
                 string response = null;
 
@@ -116,8 +238,19 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                 {
                     response = await NuGetClient.HttpClient.GetStringContentAsync(url);
                 }
-
-                return response;
+                response = response.Replace("xmlns=\"http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd\"", "");
+                
+                NuSpecData data = null;
+                System.Xml.Serialization.XmlSerializer xs = new System.Xml.Serialization.XmlSerializer
+                                                                                            (
+                                                                                                typeof(NuSpecData)
+                                                                                            );
+                using (System.IO.StringReader reader = new System.IO.StringReader(response))
+                {
+                    data = xs.Deserialize(reader) as NuSpecData;
+                }
+                
+                return data;
             }
             
             public static async
@@ -129,8 +262,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                                             )
             {
                 string nuget_id_lower = nuget_id.ToLower();
-                // https://api.nuget.org/v3-flatcontainer/xamarin.androidx.compose.material.ripple/index.json
-                string url = $"{NuGetClient.UrlFlatcontainerV3Default}/{nuget_id_lower}/index.json";
+                string url = $"{NuGetClient.UrlV3FlatcontainerDefault}/{nuget_id_lower}/{version}/{nuget_id_lower}.{version}.json";
 
                 byte[] response = null;
 
