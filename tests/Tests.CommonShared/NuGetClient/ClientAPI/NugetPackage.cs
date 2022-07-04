@@ -82,7 +82,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
 
             NuGetPackage np = new NuGetPackage()
             {
-                PackageId = "Xamarin.AndroidX.Activity",
+                Id = "Xamarin.AndroidX.Activity",
                 VersionTextual = "1.1.0.4",
             };
 
@@ -128,7 +128,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
 
             NuGetPackage np = new NuGetPackage()
             {
-                PackageId = "Xamarin.AndroidX.MultiDex",
+                Id = "Xamarin.AndroidX.MultiDex",
                 VersionTextual = "2.1.0.5",
             };
 
@@ -174,7 +174,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
 
             NuGetPackage np = new NuGetPackage()
             {
-                PackageId = "Xamarin.AndroidX.Migration",
+                Id = "Xamarin.AndroidX.Migration",
                 VersionTextual = "1.0.8",
             };
 
@@ -219,7 +219,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
 
             NuGetPackage np = new NuGetPackage()
             {
-                PackageId = "Xamarin.AndroidX.Core",
+                Id = "Xamarin.AndroidX.Core",
                 VersionTextual = "1.3.2",
             };
 
@@ -265,7 +265,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
 
             NuGetPackage np = new NuGetPackage()
             {
-                PackageId = "Xamarin.AndroidX.Activity",
+                Id = "Xamarin.AndroidX.Activity",
                 VersionTextual = "1.1.0.4",
             };
 
@@ -311,7 +311,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
 
             NuGetPackage np = new NuGetPackage()
             {
-                PackageId = "Xamarin.AndroidX.Activity",
+                Id = "Xamarin.AndroidX.Activity",
                 VersionTextual = "1.1.0.4",
             };
 
@@ -327,7 +327,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
 
             NuGetPackage np = new NuGetPackage()
             {
-                PackageId = "Xamarin.AndroidX.Activity",
+                Id = "Xamarin.AndroidX.Activity",
             };
 
             NuGetClient ngc = new NuGetClient(Tests.CommonShared.Http.Client);

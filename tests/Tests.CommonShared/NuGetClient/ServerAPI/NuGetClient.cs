@@ -64,11 +64,14 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
+using HolisticWare.Xamarin.Tools.NuGet.Core;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
-
-using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
+using NuGetClient = HolisticWare.Xamarin.Tools.NuGet.ServerAPI.NuGetClient;
+using VersionsData=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root;
+using PackageRegistrationData=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageRegistration.Root;
+using NuSpecData=HolisticWare.Xamarin.Tools.NuGet.NuSpec.Generated.Microsoft.package;
 
 namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
 {
@@ -77,14 +80,18 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
     {
         
         [Test]
-        public void GetNugetPackageVersionsFromIndexAsync()
+        public void GetPackageVersionsFromIndexAsync()
         {
             NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
 
-            foreach ((string , string, string, string) mapping in Data.AX.mappings_artifact_nuget)
+            Random rnd = new Random();
+            IOrderedEnumerable<(string, string, string, string)> randomized = null;
+            randomized = Data.AX.mappings_artifact_nuget.OrderBy((item) => rnd.Next());
+            
+            foreach ((string , string, string, string) mapping in randomized.Take(10))
             {
                 string nuget_id = mapping.Item3;
-                string versions = NuGetClient.Utilities.GetPackageVersionsFromIndexAsync(nuget_id).Result;
+                VersionsData versions = NuGetClient.Utilities.GetPackageVersionsFromIndexAsync(nuget_id).Result;
                 
                 Console.WriteLine($"nuget_id:    {nuget_id}");
             }
@@ -101,14 +108,68 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
         }
 
         [Test]
-        public void GetPackageRegistrationFromIndexAsync()
+        public
+            void
+                                        GetNuGetPackageFromRegistrationAsync()
         {
             NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
 
-            foreach ((string , string, string, string) mapping in Data.AX.mappings_artifact_nuget)
+            Random rnd = new Random();
+            IOrderedEnumerable<(string, string, string, string)> randomized = null;
+            randomized = Data.AX.mappings_artifact_nuget.OrderBy((item) => rnd.Next());
+
+            foreach ((string, string, string, string) mapping in Data.AX.mappings_artifact_nuget)//.Take(10))
             {
                 string nuget_id = mapping.Item3;
-                string versions = NuGetClient.Utilities.GetPackageRegistrationFromIndexAsync(nuget_id).Result;
+                NuGetPackage np = NuGetClient.Utilities
+                                                .GetNuGetPackageFromRegistrationAsync(nuget_id)
+                                                .Result;
+
+                Console.WriteLine($"nuget_id:    {nuget_id}");
+                string versions = string.Join
+                                            (
+                                                $"\t{Environment.NewLine}\t\t",
+                                                np.VersionsDates
+                                                        .Select(kv => kv.Key + "\t = \t " + kv.Value)
+                                                        .ToArray()
+                                            );
+                Console.WriteLine(versions);
+            }
+            
+            foreach ((string, string, string, string) mapping in Data.GPS_FB_MLKit.mappings_artifact_nuget)//.Take(10))
+            {
+                string nuget_id = mapping.Item3;
+                NuGetPackage np = NuGetClient.Utilities
+                                                .GetNuGetPackageFromRegistrationAsync(nuget_id)
+                                                .Result;
+
+                Console.WriteLine($"nuget_id:    {nuget_id}");
+                string versions = string.Join
+                                            (
+                                                $"\t{Environment.NewLine}\t\t",
+                                                np.VersionsDates
+                                                    .Select(kv => kv.Key + "\t = \t " + kv.Value.ToString("yyyy-MM-ddThh:mm:ss"))
+                                                    .ToArray()
+                                            );
+                Console.WriteLine(versions);
+            }
+        }
+
+        [Test]
+        public
+            void 
+                                        GetPackageRegistrationFromIndexAsync()
+        {
+            NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
+
+            Random rnd = new Random();
+            IOrderedEnumerable<(string, string, string, string)> randomized = null;
+            randomized = Data.AX.mappings_artifact_nuget.OrderBy((item) => rnd.Next());
+            
+            foreach ((string , string, string, string) mapping in randomized.Take(10))
+            {
+                string nuget_id = mapping.Item3;
+                PackageRegistrationData pr = NuGetClient.Utilities.GetPackageRegistrationFromIndexAsync(nuget_id).Result;
                 
                 Console.WriteLine($"nuget_id:    {nuget_id}");
             }
@@ -125,16 +186,52 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
         }
 
         [Test]
-        public void GetNugetNuSpecAsync()
+        public 
+            void 
+                                        GetNuSpecAsync()
         {
             NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
 
-            foreach ((string , string, string, string) mapping in Data.AX.mappings_artifact_nuget)
+            Random rnd = new Random();
+            IOrderedEnumerable<(string, string, string, string)> randomized = null;
+            randomized = Data.AX.mappings_artifact_nuget.OrderBy((item) => rnd.Next());
+            
+            foreach ((string , string, string, string) mapping in randomized.Take(10))
             {
                 string nuget_id = mapping.Item3;
                 string version  = mapping.Item4;
                 
-                string nuspec = NuGetClient.Utilities.GetNugetNuSpecAsync(nuget_id, version).Result;
+                NuSpecData nuspec = NuGetClient.Utilities.GetNuSpecAsync(nuget_id, version).Result;
+            }
+
+            // #if MSTEST
+            // Assert.IsNotNull(package_versions);
+            // #elif NUNIT
+            // Assert.NotNull(package_versions);
+            // #elif XUNIT
+            // Assert.NotNull(package_versions);
+            // #endif
+
+            return;
+        }
+        
+        [Test]
+        public 
+            void 
+                                        DownloadNuGetPackageNuPkgAsync()
+        {
+            NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
+
+            Random rnd = new Random();
+            IOrderedEnumerable<(string, string, string, string)> randomized = null;
+            randomized = Data.AX.mappings_artifact_nuget.OrderBy((item) => rnd.Next());
+            
+            foreach ((string , string, string, string) mapping in randomized.Take(10))
+            {
+                string nuget_id = mapping.Item3;
+                string version  = mapping.Item4;
+                
+                byte[] blob = NuGetClient.Utilities.DownloadNuGetPackageNuPkgAsync(nuget_id, version).Result;
             }
 
             // #if MSTEST
