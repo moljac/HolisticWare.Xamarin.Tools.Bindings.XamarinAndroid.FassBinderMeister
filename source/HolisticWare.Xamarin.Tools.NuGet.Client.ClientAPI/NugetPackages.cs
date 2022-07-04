@@ -26,7 +26,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
             {
                NuGetPackage np = new NuGetPackage
                 {
-                    PackageId = package_id,
+                    Id = package_id,
                  };
 
                 NuGetPackage.NugetClient = NuGetPackages.NugetClient;

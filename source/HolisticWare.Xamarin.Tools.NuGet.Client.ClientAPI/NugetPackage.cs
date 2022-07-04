@@ -21,13 +21,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
             get;
             set;
         }
-
-        public NuGetPackage DependencyOf
-        {
-            get;
-            set;
-        }
-
+        
         public IEnumerable<IPackageSearchMetadata> PackageSearchMetadata
         {
             get;
@@ -43,7 +37,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
             List<IPackageSearchMetadata> package_metadata = null;
             package_metadata = await NugetClient.GetPackageMetadataAsync
                                                             (
-                                                                this.PackageId
+                                                                this.Id
                                                             );
             // sorting in reverse order of version
             // in order to hit later versions first (speeding up) when iterating through
@@ -80,7 +74,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
         {
             #if DEBUG
             w.Indent++;
-            await w.WriteLineAsync($" id = {this.PackageId}");
+            await w.WriteLineAsync($" id = {this.Id}");
             #endif
 
             List<NuGetPackage> dependencies = null;
@@ -114,12 +108,10 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
                             global::NuGet.Versioning.VersionRange vr = p.VersionRange;
                             string vrpp = vr.PrettyPrint();
 
-                            NuGetPackage np = new NuGetPackage()
+                            NuGetPackageDependency np = new NuGetPackageDependency()
                             {
-                                PackageId = id,
+                                Id = id,
                                 VersionTextual = vr.MinVersion.ToFullString(),
-                                DependencyVersionRange = vrpp,
-                                DependencyOf = this,
                             };
 
                             np.Dependencies = await np.GetDependencyTreeHierarchyAsync();
@@ -148,7 +140,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
             IEnumerable<IPackageSearchMetadata> package_metadata = null;
             package_metadata = await NugetClient.GetPackageMetadataAsync
                                                 (
-                                                    this.PackageId
+                                                    this.Id
                                                 ).ConfigureAwait(false);
 
             PackageSearchMetadata = package_metadata;

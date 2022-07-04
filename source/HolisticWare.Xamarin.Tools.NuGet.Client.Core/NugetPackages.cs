@@ -39,7 +39,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.Core
             {
                NuGetPackage np = new NuGetPackage
                 {
-                    PackageId = package_id,
+                    Id = package_id,
                  };
 
                 result.Add(np);
