@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6</TargetFramework>
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <LangVersion>Latest</LangVersion>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -19,6 +19,9 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="5.0.0" />
+    <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
+    <!--
+    -->
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
@@ -36,9 +39,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Text\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj" />
     <!--
-    <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
-    -->
     <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+    -->
     <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Versioning\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj" />
   </ItemGroup>
 
