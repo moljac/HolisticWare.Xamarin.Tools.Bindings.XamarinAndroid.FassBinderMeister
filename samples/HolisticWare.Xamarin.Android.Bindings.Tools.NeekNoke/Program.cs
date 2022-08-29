@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Collections.Concurrent;
+
 string about =
 @"
                  _                       _                                     
@@ -28,18 +30,50 @@ https://github.com/moljac
 
 Console.WriteLine($"{about}");
 
-
-string[] files_projects = System.IO.Directory.GetFiles
-                                                (
-                                                    ".", 
-                                                    "*.csproj",
-                                                    System.IO.SearchOption.AllDirectories
-                                                );
-
-
-foreach(string file_project in files_projects)
+string[] patterns = new string[]
 {
-    Console.WriteLine($"file {file_project}");
+    "*.csproj",
+    "directory.build.*.props",
+    "directory.packages.*.props",
+    "*.props",
+    "*.targets",
+    "*.fsproj",
+    "*.vbproj",
+    "*.proj",
+};
+
+Dictionary<string, string[]> patterns_files = new Dictionary<string, string[]>();
+
+foreach (string pattern in patterns)
+{
+    patterns_files.Add(pattern, new string[] { });
+}
+
+Parallel.ForEach
+            (
+                patterns,
+                pattern =>
+                {
+                    string[] files_for_pattern = System.IO.Directory.GetFiles
+                                                                        (
+                                                                            ".",
+                                                                            pattern,
+                                                                            System.IO.SearchOption.AllDirectories
+                                                                        );
+
+                    patterns_files[pattern] = files_for_pattern;
+                }
+            );
+
+
+foreach (KeyValuePair<string, string[]> pattern in patterns_files)
+{
+    Console.WriteLine($"file {pattern.Key}");
+
+    foreach (string p in pattern.Value)
+    {
+        Console.WriteLine($"        {p}");
+    }
 }
 
 //Console.ReadLine();
