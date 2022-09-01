@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Collections.Concurrent;
+using System.Diagnostics;
+using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
 
 string about =
 @"
@@ -28,52 +30,48 @@ moljac AKA miljenko mel cvjetko
 https://github.com/moljac
 ";
 
-Console.WriteLine($"{about}");
+
+Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+Trace.AutoFlush = true;
+
+Trace.WriteLine($"{about}");
 
 string[] patterns = new string[]
-{
-    "*.csproj",
-    "directory.build.*.props",
-    "directory.packages.*.props",
-    "*.props",
-    "*.targets",
-    "*.fsproj",
-    "*.vbproj",
-    "*.proj",
-};
+                                {
+                                    "*.csproj",
+                                    "config.json",
+                                    "directory.build.*.props",
+                                    "directory.packages.*.props",
+                                    "*.props",
+                                    "*.targets",
+                                    "*.fsproj",
+                                    "*.vbproj",
+                                    "*.proj",
+                                };
 
-Dictionary<string, string[]> patterns_files = new Dictionary<string, string[]>();
+Dictionary<string, string[]> patterns_files = new Scraper().Harvest(patterns);
 
-foreach (string pattern in patterns)
-{
-    patterns_files.Add(pattern, new string[] { });
-}
-
-Parallel.ForEach
-            (
-                patterns,
-                pattern =>
-                {
-                    string[] files_for_pattern = System.IO.Directory.GetFiles
-                                                                        (
-                                                                            ".",
-                                                                            pattern,
-                                                                            System.IO.SearchOption.AllDirectories
-                                                                        );
-
-                    patterns_files[pattern] = files_for_pattern;
-                }
-            );
-
-
+/*
 foreach (KeyValuePair<string, string[]> pattern in patterns_files)
 {
-    Console.WriteLine($"file {pattern.Key}");
+    Trace.Indent();
+    Trace.WriteLine(new string('=', 120));
+    Trace.WriteLine($"file {pattern.Key}");
 
     foreach (string p in pattern.Value)
     {
-        Console.WriteLine($"        {p}");
+        Trace.Indent();
+        Trace.WriteLine($"{p}");
+        Trace.Unindent();
     }
+
+    Trace.Unindent();
 }
+*/
+
+Trace.Flush();
+Console.Clear();
+
+new Neeker().Neek(patterns_files);
 
 //Console.ReadLine();
