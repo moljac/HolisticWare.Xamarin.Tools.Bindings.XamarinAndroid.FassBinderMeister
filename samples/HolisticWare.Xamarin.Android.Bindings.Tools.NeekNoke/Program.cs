@@ -44,9 +44,14 @@ string[] patterns = new string[]
                                     "directory.packages.*.props",
                                     "*.props",
                                     "*.targets",
+                                    "global.json",
+                                    "*.cake",
+                                    "*.csx",
                                     "*.fsproj",
                                     "*.vbproj",
                                     "*.proj",
+                                    "*.xproj",
+                                    "packages.config",
                                 };
 
 Dictionary<string, string[]> patterns_files = new Scraper().Harvest(patterns);
