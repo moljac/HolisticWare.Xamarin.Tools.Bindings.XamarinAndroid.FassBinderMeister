@@ -35,7 +35,7 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance
                     PropertyNameCaseInsensitive = true,
                     WriteIndented = true,
                     DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
-                    PropertyNamingPolicy = new JsonNamingPolicyLowerCase (),
+                    PropertyNamingPolicy = new JsonNamingPolicyCustomCase (),
                 };
 
         protected
@@ -83,7 +83,7 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance
                     {
                         Component = new Generated.Component
                         {
-                            Type    = "Maven",
+                            Type    = "maven",
                             Maven   = new Generated.Maven
                                                     {
                                                         ArtifactId      = artifact_parts[1],
@@ -138,9 +138,36 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance
         }
     }
 
-    public class JsonNamingPolicyLowerCase : JsonNamingPolicy
+    public class JsonNamingPolicyCustomCase : JsonNamingPolicy
     {
-        public override string ConvertName(string name) 
-                                    => name.ToLower();
+        public override string ConvertName(string name)
+        {
+            string result = null;
+
+            switch( name )
+            {
+                case "Schema": 
+                    result = "$schema";
+                    break;
+                case "Maven": 
+                    result = "maven";
+                    break;
+                case "NuGet": 
+                    result = "nuget";
+                    break;
+                case "git": 
+                    result = "git";
+                    break;
+                default:
+                    break;
+            }
+
+            if ( result == null)
+            {
+                result = System.Text.Json.JsonNamingPolicy.CamelCase.ConvertName(name);
+            }
+
+            return result;
+        }
     }
 }
