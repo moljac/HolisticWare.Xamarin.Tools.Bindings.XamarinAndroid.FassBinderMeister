@@ -2,21 +2,25 @@
 #tool nuget:?package=Cake.CoreCLR
 
 #addin nuget:?package=Newtonsoft.Json&version=12.0.3
+#addin nuget:?package=Newtonsoft.Json.Schema&version=3.0.4&loaddependencies=true
+#addin nuget:?package=NJsonSchema&version=10.7.2&loaddependencies=true
+#addin nuget:?package=JsonSchema.Net&version=3.2.0&loaddependencies=true
+#addin nuget:?package=Spectre.Console&version=0.44.0&loaddependencies=true
 
-#addin nuget:?package=HolisticWare.Xamarin.Tools.ComponentGovernance&version=0.0.1.1
+
+#addin nuget:?package=HolisticWare.Xamarin.Tools.ComponentGovernance&version=0.0.1.2
 #addin nuget:?package=HolisticWare.Core.Net.HTTP&version=0.0.1
 #addin nuget:?package=HolisticWare.Core.IO&version=0.0.1
 
 using System.Collections.Generic;
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using Spectre.Console;
 
 using HolisticWare.Xamarin.Tools.ComponentGovernance;
 
 var TARGET = Argument ("t", Argument ("target", "Default"));
 
-JArray binderator_json_array = null;
+Newtonsoft.Json.Linq.JArray binderator_json_array = null;
 
 List<(string, string, string, string)> mappings_artifact_nuget = null;
 Dictionary<string, string> Licenses = new Dictionary<string, string>();
@@ -255,13 +259,13 @@ Task ("mappings-artifact-nuget")
 
             using (StreamReader reader = System.IO.File.OpenText(@"./config.ax.json"))
             {
-                JsonTextReader jtr = new JsonTextReader(reader);
-                binderator_json_array = (JArray)JToken.ReadFrom(jtr);
+                Newtonsoft.Json.JsonTextReader jtr = new Newtonsoft.Json.JsonTextReader(reader);
+                binderator_json_array = (Newtonsoft.Json.Linq.JArray) Newtonsoft.Json.Linq.JToken.ReadFrom(jtr);
             }
 
             mappings_artifact_nuget = new List<(string, string, string, string)>();
 
-            foreach(JObject jo in binderator_json_array[0]["artifacts"])
+            foreach(Newtonsoft.Json.Linq.JObject jo in binderator_json_array[0]["artifacts"])
             {
                 bool? dependency_only = (bool?) jo["dependencyOnly"];
                 if ( dependency_only == true)
@@ -304,13 +308,13 @@ Task ("mappings-artifact-nuget")
 
             using (StreamReader reader = System.IO.File.OpenText(@"./config.gps-fb-mlkit.json"))
             {
-                JsonTextReader jtr = new JsonTextReader(reader);
-                binderator_json_array = (JArray)JToken.ReadFrom(jtr);
+                Newtonsoft.Json.JsonTextReader jtr = new Newtonsoft.Json.JsonTextReader(reader);
+                binderator_json_array = (Newtonsoft.Json.Linq.JArray) Newtonsoft.Json.Linq.JToken.ReadFrom(jtr);
             }
 
             mappings_artifact_nuget = new List<(string, string, string, string)>();
 
-            foreach(JObject jo in binderator_json_array[0]["artifacts"])
+            foreach(Newtonsoft.Json.Linq.JObject jo in binderator_json_array[0]["artifacts"])
             {
                 bool? dependency_only = (bool?) jo["dependencyOnly"];
                 if ( dependency_only == true)
@@ -356,5 +360,99 @@ Task ("mappings-artifact-nuget")
 Task ("Default")
     .IsDependentOn ("mappings-artifact-nuget")
     ;
+
+var table = new Table()
+                    .RoundedBorder()
+                    .AddColumn("📁 file name")
+                    .AddColumn("🚨 errors")
+                    ;
+string[] files = new[] 
+                    { 
+                        "./cgmanifest.ax.json", 
+                        "./cgmanifest.gps-fb-mlkit.json",
+                    };
+
+foreach (string file in files)
+{
+    string text = await System.IO.File.ReadAllTextAsync(file);
+    Newtonsoft.Json.Linq.JToken json = Newtonsoft.Json.Linq.JToken.Parse(text);
+    
+    // use the schema on the json model
+    string jsonSchema = json["$schema"]?.ToString();
+    NJsonSchema.JsonSchema schema = jsonSchema switch 
+                                                {
+                                                    {Length: > 0} when jsonSchema.StartsWith("http") 
+                                                        => 
+                                                        await NJsonSchema.JsonSchema.FromUrlAsync(jsonSchema),
+                                                    {Length: > 0} 
+                                                        =>
+                                                        await NJsonSchema.JsonSchema.FromFileAsync(jsonSchema),
+                                                    _ => null
+                                                };
+
+    if (schema is null)
+    {
+        table.AddRow(file, "[purple]unavailable $schema[/]");
+        continue;
+    }
+    
+    ICollection<NJsonSchema.Validation.ValidationError> errors = schema.Validate(json);
+    string results = errors.Any()
+        ? 
+            $"‣ {errors.Count} total errors\n" 
+            +
+            string.Join
+                    (
+                        "", 
+                        errors
+                        .Select
+                            (
+                                e 
+                                => 
+                                    $"  ‣ [red]{e}[/] at " 
+                                    +
+                                    $"[yellow]{e.LineNumber}:{e.LinePosition}[/]\n"
+                            )
+                    )
+        : 
+            "[green]✔[/] [lime]looks good![/]"
+        ;
+
+    Information(file);
+    Information(results);
+    // table.AddRow(file, results);
+}
+
+AnsiConsole.Render(table);
+
+// string verification_repo_url_git = "https://github.com/JamieMagee/verify-cgmanifest.git";
+// string verification_repo_url_zip = "https://github.com/JamieMagee/verify-cgmanifest/archive/refs/heads/main.zip";
+// 
+// DownloadFile(verification_repo_url_zip, "verification_repo_url.zip");
+// Unzip("verification_repo_url.zip", "./verification_repo_url");
+
+// CopyFile("cgmanifest.ax.json", "./verification_repo_url/cgmanifest.json"); 
+// StartProcess("cd", "./verification_repo_url");
+// StartProcess("pwd");
+// StartProcess("ll", "./");
+// StartProcess("npm", "install");
+// StartProcess("npm", "verify");
+// StartProcess("cd", "../");
+
+// CopyFile("cgmanifest.gps-fb-mlkit.json", "./verification_repo_url/cgmanifest.json"); 
+// StartProcess("cd", "./verification_repo_url");
+// StartProcess("npm", "install");
+// StartProcess("npm", "verify");
+// StartProcess("cd", "../");
+
+// DeleteDirectory
+//         (
+//             "./verification_repo_url",
+//             new DeleteDirectorySettings 
+//             {
+//                 Recursive = true,
+//                 Force = true
+//             }
+//         );
 
 RunTarget (TARGET);
