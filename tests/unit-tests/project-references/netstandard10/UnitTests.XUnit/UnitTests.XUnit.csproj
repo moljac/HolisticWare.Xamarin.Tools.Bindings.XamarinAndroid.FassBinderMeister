@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DefineConstants>XUNIT;TRACE;DEBUG;NETCOREAPP3_1;NET;NET6_0;NETCOREAPP</DefineConstants>
+    <DefineConstants>XUNIT;TRACE;DEBUG;NET;NET6_0</DefineConstants>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DefineConstants>XUNIT;TRACE;RELEASE;NETCOREAPP3_1;NET;NET6_0;NETCOREAPP</DefineConstants>
+    <DefineConstants>XUNIT;TRACE;RELEASE;NET;NET6_0</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +20,8 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="3.1.2"><IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    <PackageReference Include="coverlet.collector" Version="3.1.2">
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
@@ -29,6 +30,9 @@
     <PackageReference Include="Nito.AsyncEx.Context" Version="5.1.2" />
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="System.Text.Json" Version="6.0.4" />
+    <!--
+    <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
+    -->
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -47,12 +51,11 @@
     <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.ComponentGovernance\HolisticWare.Xamarin.Tools.ComponentGovernance.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Text\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj" />
     <!--
-    <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
     -->
     <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
     <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Versioning\source\HolisticWare.Core.Versioning\HolisticWare.Core.Versioning.csproj" />
+    <ProjectReference Include="..\..\..\..\..\externals-submodules\Core.Text\source\HolisticWare.Core.Text.Transformations\HolisticWare.Core.Text.Transformations.csproj" />
   </ItemGroup>  
   <Choose>
     <When Condition="! exists('..\..\..\..\source\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10\HolisticWare.Core.Math.Statistics.Descriptive.Sequential.NetStandard10.csproj')">
