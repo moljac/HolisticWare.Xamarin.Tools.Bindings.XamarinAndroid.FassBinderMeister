@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 
-namespace HolisticWare.Xamarin.Tools.NuGet.Core;
-
-public partial class NuGetPackageDependency : NuGetPackage
+namespace HolisticWare.Xamarin.Tools.NuGet.Core
 {
-    public List<NuGetPackageDependency> Dependencies
+    public partial class NuGetPackageDependency : NuGetPackage
     {
-        get;
-        set;
+        public List<NuGetPackageDependency> Dependencies
+        {
+            get;
+            set;
+        }
+
     }
-    
 }

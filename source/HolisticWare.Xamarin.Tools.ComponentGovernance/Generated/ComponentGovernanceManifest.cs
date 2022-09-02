@@ -7,6 +7,8 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance.Generated
 
     public partial class ComponentGovernanceManifest
     {
+        public string schema = "https://json.schemastore.org/component-detection-manifest.json";
+
         public Registration[] Registrations { get; set; }
 
         public long Version { get; set; }

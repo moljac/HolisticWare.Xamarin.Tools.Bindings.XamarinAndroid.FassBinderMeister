@@ -1,18 +1,20 @@
 using System.Collections.Generic;
 
-namespace HolisticWare.Xamarin.Tools.NuGet.Core;
-
-public partial class DependencyGroup
+namespace HolisticWare.Xamarin.Tools.NuGet.Core
 {
-    public string TargetFramework
-    {
-        get;
-        set;
-    }
 
-    public List<NuGetPackageDependency> Dependencies
+    public partial class DependencyGroup
     {
-        get;
-        set;
+        public string TargetFramework
+        {
+            get;
+            set;
+        }
+
+        public List<NuGetPackageDependency> Dependencies
+        {
+            get;
+            set;
+        }
     }
 }
