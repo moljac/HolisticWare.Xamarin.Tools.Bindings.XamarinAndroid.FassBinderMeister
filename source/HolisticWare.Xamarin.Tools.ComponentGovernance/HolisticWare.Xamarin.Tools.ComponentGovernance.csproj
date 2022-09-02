@@ -43,7 +43,7 @@
         <PackageIconUrl>
             https://secure.gravatar.com/avatar/b662959e712466f393541935b664d3c5        
         </PackageIconUrl>
-        <VersionPrefix>0.0.1.1</VersionPrefix>
+        <VersionPrefix>0.0.1.2</VersionPrefix>
         <!--
         VersionSuffix - For debugging and local Maven feed
         <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</VersionSuffix>

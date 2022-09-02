@@ -31,11 +31,12 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance
 
             set;
         } = new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true,
-            WriteIndented = true,
-            DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
-        };
+                {
+                    PropertyNameCaseInsensitive = true,
+                    WriteIndented = true,
+                    DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                    PropertyNamingPolicy = new JsonNamingPolicyLowerCase (),
+                };
 
         protected
             List
@@ -135,5 +136,11 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance
 
             return;
         }
+    }
+
+    public class JsonNamingPolicyLowerCase : JsonNamingPolicy
+    {
+        public override string ConvertName(string name) 
+                                    => name.ToLower();
     }
 }
