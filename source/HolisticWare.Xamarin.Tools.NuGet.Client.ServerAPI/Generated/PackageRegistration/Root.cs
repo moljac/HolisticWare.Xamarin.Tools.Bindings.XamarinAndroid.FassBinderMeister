@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageRegistration;
-
+namespace HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageRegistration
+{
     public partial class Root
     {
         public Uri Id { get; set; }
@@ -147,3 +147,4 @@ namespace HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageReg
 
     public enum ItemType { Package };
 
+}

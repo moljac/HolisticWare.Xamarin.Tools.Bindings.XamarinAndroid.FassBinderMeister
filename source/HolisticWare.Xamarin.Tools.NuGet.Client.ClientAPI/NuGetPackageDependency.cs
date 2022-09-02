@@ -1,11 +1,12 @@
-namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI;
-
-public class NuGetPackageDependency : NuGetPackage
+namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
 {
-    public NuGetPackage DependencyOf
+    public class NuGetPackageDependency : NuGetPackage
     {
-        get;
-        set;
+        public NuGetPackage DependencyOf
+        {
+            get;
+            set;
+        }
+        
     }
-    
 }
