@@ -66,13 +66,14 @@ public partial class Neeker
             switch(kvp.Key)
             {
                 case "config.json":
-                    this.Result 
+                    this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerBinderatorConfig();
                     new Formats.NeekerBinderatorConfig().Neek(kvp.Value);
                     break;  
                 case "*.csproj":
                 case "*.fsproj":
                 case "*.vbproj":
                 case "*.proj":
+                    this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerMsBuildProject();
                     new Formats.NeekerMsBuildProject().Neek(kvp.Value);
                     break;
                 case "directory.packages.*.props":

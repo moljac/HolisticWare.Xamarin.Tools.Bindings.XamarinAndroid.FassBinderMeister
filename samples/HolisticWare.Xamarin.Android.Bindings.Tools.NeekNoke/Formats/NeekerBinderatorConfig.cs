@@ -41,8 +41,6 @@ public partial class NeekerBinderatorConfig
 						}
 					);
 
-		this.Log = log;
-
         return;        
     }
 
