@@ -149,15 +149,6 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance
                 case "Schema": 
                     result = "$schema";
                     break;
-                case "Maven": 
-                    result = "maven";
-                    break;
-                case "NuGet": 
-                    result = "nuget";
-                    break;
-                case "git": 
-                    result = "git";
-                    break;
                 default:
                     break;
             }
