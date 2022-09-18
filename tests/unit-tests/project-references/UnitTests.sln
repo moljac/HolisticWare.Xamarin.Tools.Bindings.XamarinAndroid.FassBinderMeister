@@ -29,6 +29,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "externals", "externals", "{4CA4F6C3-EE77-4829-B0AA-A4D1BA076720}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{80C70099-123A-4EEC-B2C0-426E7244B592}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\samples\global.json = ..\..\..\samples\global.json
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven", "..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj", "{DE08CDA6-AFAA-4724-A5F0-9D2B500F5A2D}"
 EndProject
