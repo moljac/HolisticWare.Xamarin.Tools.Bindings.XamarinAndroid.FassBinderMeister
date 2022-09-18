@@ -4,24 +4,55 @@
 //---------------------------------------------------------------------------------------
 Task ("externals")
     .IsDependentOn ("externals-build")
-    .IsDependentOn ("externals-build-submodules")
     // .WithCriteria (!FileExists ("./externals/HolisticWare.Core.Math.Statistics.aar"))
+    ;
+    
+Task("externals-git-submodules-update")
     .Does
     (
         () =>
         {
+            int exit_code;
+            exit_code = StartProcess
+                            (
+                                "git", 
+                                new ProcessSettings
+                                { 
+                                    Arguments = "submodule init" 
+                                }
+                            );
+            exit_code = StartProcess
+                            (
+                                "git", 
+                                new ProcessSettings
+                                { 
+                                    Arguments = "submodule update --init --recursive" 
+                                }
+                            );
+            exit_code = StartProcess
+                            (
+                                "git", 
+                                new ProcessSettings
+                                { 
+                                    Arguments = "pull --recurse-submodules" 
+                                }
+                            );
+            exit_code = StartProcess
+                            (
+                                "git", 
+                                new ProcessSettings
+                                { 
+                                    Arguments = "submodule foreach --recursive git pull" 
+                                }
+                            );
+
             return;
         }
     );
 
 Task("externals-build")
-    .Does
-    (
-        () =>
-        {
-            return;
-        }
-    );
+    .IsDependentOn ("externals-build-submodules")
+    ;
 
 Task("externals-build-submodules")
     .Does
@@ -40,8 +71,8 @@ Task("externals-build-submodules")
                             Verbosity = Verbosity.Diagnostic,
                             Arguments = new Dictionary<string, string>()
                             {
-                                //{ "verbosity",     "diagnostic"},
-                                { "target",          "nuget-pack"},
+                                { "verbosity",  verbosity},
+                                { "target",     "nuget-pack"},
                             },
                         }
                     );

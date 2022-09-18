@@ -3,12 +3,6 @@
 LibrarySourceSolutions  = GetFiles(source_solutions);
 LibrarySourceProjects   = GetFiles(source_projects);
 
-string[] configurations = new string[] 
-{ 
-    "Debug", 
-    "Release" 
-};
-
 //---------------------------------------------------------------------------------------
 Task("libs")
     .IsDependentOn ("clean")
@@ -17,14 +11,7 @@ Task("libs")
     .IsDependentOn ("libs-msbuild-projects")
     .IsDependentOn ("libs-dotnet-solutions")
     .IsDependentOn ("libs-dotnet-projects")
-    .Does
-    (
-        () =>
-        {
-            return;
-        }
-    );
-
+    ;
 
 Task("libs-msbuild-solutions")
     .Does
@@ -43,8 +30,8 @@ Task("libs-msbuild-solutions")
                             Configuration = configuration,
                             Restore = true,
                         }
-                        //.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
                         .WithRestore()
+                        //.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
                     );
                 }
             }
@@ -95,8 +82,8 @@ Task("libs-msbuild-projects")
                             Configuration = configuration,
                             Restore = true,
                         }
-                        //.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
                         .WithRestore()
+                        //.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
                     );
                 }
             }
@@ -146,9 +133,9 @@ public void Build(string pattern)
 					Configuration = configuration,
                     Restore = true,
 				}
-				//.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
-				.WithProperty("AndroidClassParser", "jar2xml")
 				.WithRestore()
+				.WithProperty("AndroidClassParser", "class-parse")
+				//.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
 			);
 		}
 	}

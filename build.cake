@@ -97,6 +97,12 @@ FilePathCollection LibrarySourceProjects   = GetFiles(source_projects);
 FilePathCollection SamplesSolutions         = GetFiles(sample_solutions);
 FilePathCollection SamplesProjects          = GetFiles(sample_projects);
 
+string[] configurations = new string[] 
+{ 
+    //"Debug", 
+    "Release",
+};
+
 string[] clean_folder_patterns = new string[]
 {
     "./externals/",
@@ -116,6 +122,8 @@ string[] clean_folder_patterns = new string[]
     "./tests/**/obj/",
     "./tests/**/packages/",
 };
+
+string verbosity = "Diagnostic";
 
 string[] clean_file_patterns = new string[]
 {

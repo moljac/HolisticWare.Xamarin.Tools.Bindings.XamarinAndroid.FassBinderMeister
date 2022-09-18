@@ -4,14 +4,8 @@ Task("nuget-restore")
     .IsDependentOn("nuget-restore-externals")
     .IsDependentOn("nuget-restore-libs")
     .IsDependentOn("nuget-restore-tests")
-    .Does
-    (
-        () =>
-        {
-            return;
-        }
-    );
-
+    ;
+    
 Task("nuget-restore-externals")
     .Does
     (
