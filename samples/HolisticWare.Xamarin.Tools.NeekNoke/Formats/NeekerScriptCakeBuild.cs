@@ -1,10 +1,10 @@
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
-public partial class NeekerBinderatorConfig
+public partial class NeekerScriptCakeBuild
 						:
 						NeekerBase
 {
-	public NeekerBinderatorConfig ()
+	public NeekerScriptCakeBuild ()
 	{
 		this.Result = new ResultData();
 
@@ -37,7 +37,16 @@ public partial class NeekerBinderatorConfig
 						files,
 						file =>
 						{
-							this.Result.Log.Add(file, $" file {file}");
+							string extension = Path.GetExtension(file);
+							string ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+							string file_new = Path.ChangeExtension
+															(
+																file, 
+																$"bckp-ts-{ts}{extension}"
+															);
+							System.IO.File.Copy(file, file_new);
+
+							this.Result.Log[file] = $" file {file}";
 						}
 					);
 
@@ -46,6 +55,13 @@ public partial class NeekerBinderatorConfig
 
 	public partial class ResultData
 	{
+		public ResultData()
+		{
+			this.Log = new Dictionary<string, string>();
+			
+			return;
+		}
+
 		public 
 			Dictionary<string, string>
 										Log

@@ -8,7 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HolisticWare.Xamarin.Tools.NuGet" Version="*-*" />
+    <PackageReference Include="HolisticWare.Xamarin.Tools.NuGet" Version="0.0.1-alpha-202105151759" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NeekNoke.Data\HolisticWare.Xamarin.Tools.NeekNoke.Data.csproj" />
   </ItemGroup>
   
 </Project>

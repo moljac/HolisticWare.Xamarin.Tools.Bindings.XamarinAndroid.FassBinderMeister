@@ -81,6 +81,22 @@ public partial class Neeker
                 case "*.props":
                 case "*.targets":
                     break;
+                case "global.json":
+                    this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerDotNetGlobalJSON();
+                    new Formats.NeekerDotNetGlobalJSON().Neek(kvp.Value);
+                    break;
+                case "*.cake":
+                    this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerScriptCakeBuild();
+                    new Formats.NeekerScriptCakeBuild().Neek(kvp.Value);
+                    break;
+                case "*.csx":
+                    this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerScriptCSharpScriptAndScriptCS();
+                    new Formats.NeekerScriptCSharpScriptAndScriptCS().Neek(kvp.Value);
+                    break;
+                case "*.xproj":
+                case "packages.config":
+                    // TODO
+                    break;
                 default:
                     throw new NotSupportedException($"Neeker.Neek: Pattern {kvp.Key} not supported");
             }
@@ -91,6 +107,13 @@ public partial class Neeker
 
 	public partial class ResultData
 	{
+        public ResultData()
+        {
+            this.Results = new Dictionary<string, Formats.NeekerBase>();
+
+            return;
+        }
+
 		public 
 			Dictionary<string, Formats.NeekerBase>
 										Results

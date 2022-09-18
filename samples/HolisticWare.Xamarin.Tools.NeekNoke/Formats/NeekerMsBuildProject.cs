@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
 public partial class NeekerMsBuildProject
@@ -32,7 +34,16 @@ public partial class NeekerMsBuildProject
 						files,
 						file =>
 						{
-							log.Add(file, $" file {file}");
+							string extension = Path.GetExtension(file);
+							string ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+							string file_new = Path.ChangeExtension
+															(
+																file, 
+																$"bckp-ts-{ts}{extension}"
+															);
+							System.IO.File.Copy(file, file_new);
+
+							log[file] = $" file {file}";
 						}
 					);
 
