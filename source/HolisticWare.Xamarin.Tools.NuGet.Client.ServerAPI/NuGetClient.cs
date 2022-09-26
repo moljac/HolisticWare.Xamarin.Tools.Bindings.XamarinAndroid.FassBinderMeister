@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
 {
-    public partial class NuGetClient
+    public partial class NuGetClient : Core.NuGetClient
     {
     }
 }
