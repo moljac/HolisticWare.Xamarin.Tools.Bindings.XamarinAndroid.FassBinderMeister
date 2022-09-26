@@ -24,12 +24,19 @@ string about =
                              |_|                         |_|
 neek-noke
 NuGet peek-poke
+"
++
+@"
+to collect backups
 
+    find ./ -name ''*bckp-ts-$(date +\\"%Y%m%d\\"*''  
 
 moljac AKA miljenko mel cvjetko 
 https://github.com/moljac
+
 ";
 
+// find ./ -name "*bckp-ts-$(date +"%Y%m%d)*"  
 
 Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
 Trace.AutoFlush = true;
