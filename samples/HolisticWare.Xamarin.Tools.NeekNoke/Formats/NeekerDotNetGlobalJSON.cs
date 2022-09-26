@@ -38,7 +38,6 @@ public partial class NeekerDotNetGlobalJSON
 						file =>
 						{
 							string extension = Path.GetExtension(file);
-							string file_new = Path.ChangeExtension
 							string ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
 							string file_new = Path.ChangeExtension
 															(
