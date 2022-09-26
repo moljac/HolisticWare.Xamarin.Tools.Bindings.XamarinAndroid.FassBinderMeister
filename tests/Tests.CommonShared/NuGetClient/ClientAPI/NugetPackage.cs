@@ -335,7 +335,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
             IEnumerable<IPackageSearchMetadata> package_metadata = null;
             package_metadata = np.GetPackageMetadataAsync().Result;
 
-            string ersion_latest = np.VersionLatestTextual;
+            string version_latest = np.VersionLatestTextual;
 
             return;
         }

@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)BinderatorConfigsFetcher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\HttpClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\IO\Test_FileSystem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NuGetClient\ServerAPI\NuGetPackage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Test_ProjectData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Binderator.Config\Binderator.Config_AndroidX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Binderator.Config\Binderator.Config_GooglePlayServicesComponents.cs" />
