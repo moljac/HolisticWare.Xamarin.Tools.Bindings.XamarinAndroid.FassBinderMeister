@@ -10,6 +10,25 @@ Fast Binding Master/Guru tool for
   
   * generating binderator `config.json` files for following projects:
 
+## Building 
+
+*   perequisites
+
+    *   dotnet
+
+    *   Cake Build
+
+
+```bash
+git clone \
+    --recursive \
+    https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.git \
+    FassBinderMeister/
+
+cd FassBinderMeister/
+dotnet cake    
+```
+
 ## `bundler` .NET `dotnet` tool (CLI, commandline API)
 
 ```
