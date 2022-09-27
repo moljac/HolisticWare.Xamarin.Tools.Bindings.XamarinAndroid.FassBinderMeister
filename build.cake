@@ -83,19 +83,21 @@ Running Cake to Build targets
 //---------------------------------------------------------------------------------------
 var TARGET = Argument ("t", Argument ("target", "Default"));
 
-string source_solutions         = $"./source/**/*.sln";
-string source_projects          = $"./source/**/*.csproj";
-string sample_solutions         = $"./samples/**/*.sln";
-string sample_projects          = $"./samples/**/*.csproj";
-string externals_cake_scripts   = $"./samples/**/*.cake";
-string samples_cake_scripts     = $"./samples/**/*.cake";
-string tests_cake_scripts       = $"./samples/**/*.cake";
+string source_solutions                             = $"./source/**/*.sln";
+string source_projects                              = $"./source/**/*.csproj";
+string samples_solutions                            = $"./samples/**/*.sln";
+string samples_projects                             = $"./samples/**/*.csproj";
+string samples_scripts_interactive_csharp_cake      = $"./samples/**/*.cake";
+string externals_scripts_interactive_csharp_cake    = $"./externals/**/*.cake";
+string samples_cake_scripts                         = $"./samples/**/*.cake";
+string tests_cake_scripts                           = $"./samples/**/*.cake";
 
-FilePathCollection LibrarySourceSolutions   = GetFiles(source_solutions);
-FilePathCollection LibrarySourceProjects   = GetFiles(source_projects);
+FilePathCollection LibrarySourceSolutions                   = GetFiles(source_solutions);
+FilePathCollection LibrarySourceProjects                    = GetFiles(source_projects);
 
-FilePathCollection SamplesSolutions         = GetFiles(sample_solutions);
-FilePathCollection SamplesProjects          = GetFiles(sample_projects);
+FilePathCollection SamplesSolutions                         = GetFiles(samples_solutions);
+FilePathCollection SamplesScriptsInteractiveCsharpCake      = GetFiles(samples_solutions);
+FilePathCollection SamplesProjects                          = GetFiles(samples_projects);
 
 string[] configurations = new string[] 
 { 
@@ -138,6 +140,7 @@ string[] clean_file_patterns = new string[]
 #load "./scripts/common/nuget-restore.cake"
 #load "./scripts/common/nuget-pack.cake"
 #load "./scripts/common/libs.cake"
+#load "./scripts/common/samples.cake"
 #load "./scripts/common/tests-unit-tests.cake"
 
 
@@ -153,6 +156,7 @@ Task("Default")
         {
             // RunTarget("unit-tests");
             RunTarget("nuget-pack");
+            RunTarget("samples");
         }
     );
 
