@@ -1,0 +1,88 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>Latest</LangVersion>
+        <RootNamespace>HolisticWare.Xamarin.Tools.Maven</RootNamespace>
+        <!--
+        If moved to separate PropertyGroup - UI is cleared?!?!
+        -->
+        <PackOnBuild>true</PackOnBuild>
+        <PackageId>HolisticWare.Xamarin.Tools.Maven</PackageId>
+        <Title>
+            HolisticWare.Xamarin.Tools.Maven
+        </Title>
+        <summary>
+            Maven client API. Tools for Maven client API for bindings productivity.
+        </summary>
+        <Description>
+            Maven client API. Tools for Maven client API for bindings productivity.
+        </Description>
+        <Owners>HolisticWare, moljac</Owners>
+        <Authors>HolisticWare, moljac</Authors>
+        <Copyright>2020</Copyright>
+        <ProjectUrl>
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+        </ProjectUrl>
+        <PackageProjectUrl>
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+        </PackageProjectUrl>
+        <RepositoryUrl>
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+        </RepositoryUrl>
+        <license>LICENSE</license>
+        <licenseUrl>
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/blob/master/LICENSE
+        </licenseUrl>
+        <PackageLicenseUrl>
+            https://Maven.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/blob/master/LICENSE
+        </PackageLicenseUrl>
+        <iconUrl>
+            https://secure.gravatar.com/avatar/b662959e712466f393541935b664d3c5
+        </iconUrl>
+        <PackageIconUrl>
+            https://secure.gravatar.com/avatar/b662959e712466f393541935b664d3c5        
+        </PackageIconUrl>
+        <VersionPrefix>0.0.1</VersionPrefix>
+        <!--
+        VersionSuffix - For debugging and local Maven feed
+        -->
+        <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</VersionSuffix>
+        <PackageVersion>$(Version)</PackageVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!--
+        put the package output into a Maven test folder
+        -->
+        <PackageOutputPath>../../output</PackageOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="System.Text.Json" />
+        <PackageReference Include="System.Net.Http" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" />
+        <PackageReference Include="Roslynator.Analyzers" />
+        <PackageReference Include="Roslynator.Formatting.Analyzers" />
+        <PackageReference Include="AsyncFixer" />
+        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
+        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Repositories\" />
+      <Folder Include="Repositories\Google\" />
+      <Folder Include="POM.ProjectObjectModel\" />
+      <Folder Include="RepositoryAgnosticDiscovery\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+    </ItemGroup>
+</Project>
