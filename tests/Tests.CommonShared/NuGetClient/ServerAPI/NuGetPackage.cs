@@ -120,7 +120,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
             foreach ((string , string, string, string) mapping in randomized.Take(10))
             {
                 string nuget_id = mapping.Item3;
-                VersionsData versions = NugePackage.Utilities.GetPackageVersionsFromIndexAsync(nuget_id).Result;
+                VersionsData versions = NuGetPackage.Utilities.GetPackageVersionsFromIndexAsync(nuget_id).Result;
                 
                 Console.WriteLine($"nuget_id:    {nuget_id}");
             }
@@ -219,6 +219,33 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
         [Test]
         public
             void 
+                                        GetPackageRegistrationFromIndexAsync_Xamarin_AndroidX_Browser
+                                            (
+                                            )
+        {
+            NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
+
+            string nuget_id = "Xamarin.AndroidX.Browser";
+            PackageRegistrationData pr = NuGetPackage.Utilities
+                                                            .GetPackageRegistrationFromIndexAsync(nuget_id)
+                                                            .Result;
+                
+            Console.WriteLine($"nuget_id:    {nuget_id}");
+
+            // #if MSTEST
+            // Assert.IsNotNull(package_metadata);
+            // #elif NUNIT
+            // Assert.NotNull(package_metadata);
+            // #elif XUNIT
+            // Assert.NotNull(package_metadata);
+            // #endif
+
+            return;
+        }
+        
+        [Test]
+        public
+            void 
                                         GetPackageRegistrationFromIndexAsync_BulkBatch
                                             (
                                             )
@@ -233,7 +260,9 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
             foreach ((string , string, string, string) mapping in randomized.Take(count))
             {
                 string nuget_id = mapping.Item3;
-                PackageRegistrationData pr = NuGetPackage.Utilities.GetPackageRegistrationFromIndexAsync(nuget_id).Result;
+                PackageRegistrationData pr = NuGetPackage.Utilities
+                                                                .GetPackageRegistrationFromIndexAsync(nuget_id)
+                                                                .Result;
                 
                 Console.WriteLine($"nuget_id:    {nuget_id}");
             }
@@ -268,7 +297,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
                 string nuget_id = mapping.Item3;
                 string version  = mapping.Item4;
                 
-                NuSpecData nuspec = NuGetClient.Utilities.GetNuSpecAsync(nuget_id, version).Result;
+                NuSpecData nuspec = NuGetPackage.Utilities.GetNuSpecAsync(nuget_id, version).Result;
             }
 
             // #if MSTEST
@@ -282,6 +311,33 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
             return;
         }
         
+        [Test]
+        public 
+            void
+                                        GetNuSpecAsync_Xamarin_AndroidX_Borwser
+                                            (
+                                            )
+        {
+            NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
+
+            string nuget_id = "Xamarin.AndroidX.Browser";
+            string version  = "1.3.0.4";
+                
+            NuSpecData nuspec = NuGetPackage.Utilities
+                                                .GetNuSpecAsync(nuget_id, version)
+                                                .Result;
+
+            // #if MSTEST
+            // Assert.IsNotNull(package_versions);
+            // #elif NUNIT
+            // Assert.NotNull(package_versions);
+            // #elif XUNIT
+            // Assert.NotNull(package_versions);
+            // #endif
+
+            return;
+        }
+
         [Test]
         public 
             void

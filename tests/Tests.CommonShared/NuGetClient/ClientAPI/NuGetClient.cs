@@ -174,7 +174,11 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         }
 
         [Test]
-        public void NuGetClient_Packages_PackageVersions()
+        public 
+            void 
+                                        NuGetClient_Packages_PackageVersions_Xamarin_AndroidX_Core
+                                            (
+                                            )
         {
             NuGetClient ngc = new NuGetClient(Tests.CommonShared.Http.Client);
 
