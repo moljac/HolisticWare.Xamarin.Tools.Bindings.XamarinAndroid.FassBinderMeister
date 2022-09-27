@@ -75,3 +75,4 @@ nuget_id = "Xamarin.AndroidX.Activity";
                                     );
 
                 Console.WriteLine(versions);
+
