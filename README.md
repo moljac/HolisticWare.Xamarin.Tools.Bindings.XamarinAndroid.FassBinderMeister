@@ -40,6 +40,11 @@ dotnet cake
 cd -
 ```
 
+```
+cd samples/scripts-interactive/nuget-package-references/csharp/Cake/code-generation-based-on-data-files
+dotnet cake
+cd -
+```
 
 ## `bundler` .NET `dotnet` tool (CLI, commandline API)
 
