@@ -16,7 +16,7 @@ EnsureDirectoryExists("./nuspec/");
 
 
 
-input_path = "../../data/nuspec/microsoft-nuget/nuspec.xsd";
+input_path = "../../../../../../data/nuget/nuspec/microsoft-nuget/nuspec.xsd";
 output_path = "./nuspec/microsoft-nuget/";
 EnsureDirectoryExists($"{output_path}");
 ns_root = "HolisticWare.Tools.NuGet";
@@ -43,7 +43,7 @@ exit_code = StartProcess
                 );                
 
 
-input_path = "../../data/nuspec/sharwell/nuspec.xsd";
+input_path = "../../../../../../data/nuget/nuspec/sharwell/nuspec.xsd";
 output_path = "./nuspec/sharwell/";
 EnsureDirectoryExists($"{output_path}");
 ns = ns_root 
@@ -69,7 +69,7 @@ exit_code = StartProcess
                 );                
 
 
-input_path = "../../data/nuspec/myget/nuspec.xsd";
+input_path = "../../../../../../data/nuget/nuspec/myget/nuspec.xsd";
 output_path = "./nuspec/myget/";
 EnsureDirectoryExists($"{output_path}");
 ns = ns_root 
@@ -95,7 +95,7 @@ exit_code = StartProcess
                 );                
 
 
-input_path = "../../data/maven/xsd-maven-xsd-pom-xsd/pom.xsd";
+input_path = "../../../../../../data/maven/xsd-maven-xsd-pom-xsd/pom.xsd";
 output_path = "./maven/xsd-maven-xsd-pom-xsd/";
 EnsureDirectoryExists($"{output_path}");
 ns_root = "HolisticWare.Xamarin.Tools.Maven";
@@ -121,7 +121,7 @@ exit_code = StartProcess
                     }
                 );                
 
-input_path = "../../data/maven/xsd-maven-xsd-pom-xsd/maven-4.0.0.xsd";
+input_path = "../../../../../../data/maven/xsd-maven-xsd-pom-xsd/maven-4.0.0.xsd";
 output_path = "./maven/xsd-maven-xsd-pom-xsd/";
 EnsureDirectoryExists($"{output_path}");
 ns_root = "HolisticWare.Xamarin.Tools.Maven";
@@ -149,7 +149,7 @@ exit_code = StartProcess
 
 
 
-input_path = "../../data/maven/maven-central/artifact-id-fully-qualified/maven-central.xsd";
+input_path = "../../../../../../data/maven/maven-central/artifact-id-fully-qualified/maven-central.xsd";
 output_path = "./maven/maven-central/artifact-id-fully-qualified/";
 EnsureDirectoryExists($"{output_path}");
 ns = ns_root 
@@ -179,13 +179,13 @@ CopyFile
 (
     //input_path.ToString().Replace("xsd", "cs"),
     "./maven/xsd-maven-xsd-pom-xsd/pom.cs",
-    "../../source/HolisticWare.Xamarin.Tools.Maven.ProjectObjectModelPOM/generated/pom.xsd/generated.cs"
+    "../../../../../../source/HolisticWare.Xamarin.Tools.Maven.ProjectObjectModelPOM/generated/pom.xsd/generated.cs"
 );
 CopyFile
 (
     //input_path.ToString().Replace("xsd", "cs"),
     "./maven/xsd-maven-xsd-pom-xsd/maven-4.0.0.cs",
-    "../../source/HolisticWare.Xamarin.Tools.Maven.ProjectObjectModelPOM/generated/maven-4.0.0.xsd/generated.cs"
+    "../../../../../../source/HolisticWare.Xamarin.Tools.Maven.ProjectObjectModelPOM/generated/maven-4.0.0.xsd/generated.cs"
 );
 /*
 CopyFile
