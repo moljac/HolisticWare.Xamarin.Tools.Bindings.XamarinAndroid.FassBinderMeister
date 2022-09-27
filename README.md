@@ -27,7 +27,19 @@ git clone \
 
 cd FassBinderMeister/
 dotnet cake    
+
+cd -
 ```
+
+Test cake script[s]:
+
+
+```
+cd samples/nuget-package-references/scripts-interactive/csharp/Cake/NuGetClient/ServerAPI
+dotnet cake
+cd -
+```
+
 
 ## `bundler` .NET `dotnet` tool (CLI, commandline API)
 
