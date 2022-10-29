@@ -31,7 +31,35 @@ dotnet cake
 cd -
 ```
 
-Test cake script[s]:
+## 
+
+* Nuget
+
+  * update tool - Neek-Noke (NuGet Peek-Poke)
+
+* Nuget
+
+  * update tool - Neek-Noke (NuGet Peek-Poke)
+
+## Samples / Usage
+
+
+### Test console apps
+
+NeekNoke
+
+```bash
+dotnet build \
+  samples/console/apps/project-references/HolisticWare.Xamarin.Tools.NeekNoke/HolisticWare.Xamarin.Tools.NeekNoke.csproj
+```
+
+```bash
+dotnet run \
+  --project \
+    samples/console/apps/project-references/HolisticWare.Xamarin.Tools.NeekNoke/HolisticWare.Xamarin.Tools.NeekNoke.csproj
+```
+
+### Test cake script[s]
 
 
 ```
