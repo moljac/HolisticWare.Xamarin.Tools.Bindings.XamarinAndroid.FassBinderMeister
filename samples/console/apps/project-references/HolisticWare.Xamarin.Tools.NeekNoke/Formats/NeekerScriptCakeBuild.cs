@@ -25,7 +25,7 @@ public partial class NeekerScriptCakeBuild
 										(
 											string[] files
 										)										
-    {
+	{
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
 		{
@@ -45,13 +45,19 @@ public partial class NeekerScriptCakeBuild
 																$"bckp-ts-{ts}{extension}"
 															);
 							System.IO.File.Copy(file, file_new);
+							string[] lines = System.IO.File.ReadLines(file).ToArray();
+
+							foreach(string s in lines)
+							{
+
+							}
 
 							this.Result.Log[file] = $" file {file}";
 						}
 					);
 
-        return;        
-    }
+		return;        
+	}
 
 	public partial class ResultData
 	{

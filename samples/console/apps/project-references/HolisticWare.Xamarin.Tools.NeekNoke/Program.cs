@@ -27,12 +27,22 @@ NuGet peek-poke
 "
 +
 @"
-to collect backups
-
-    find ./ -name ""*bckp-ts-$(date +""%Y%m%d)*""
-
 moljac AKA miljenko mel cvjetko 
 https://github.com/moljac
+
+to collect backups
+
+    find ./ -name ""*bckp-ts-*""
+or 
+    find ./ -name ""*bckp-ts-$(date +""%Y%m%d)*""
+
+to cleanup backups:
+
+    rm $(find ./ -name ""*bckp-ts-*"")
+
+or
+
+    rm $(find ./ -name ""*bckp-ts-$(date +""%Y%m%d)*"")
 ";
 
 // http://easyonlineconverter.com/converters/dot-net-string-escape.html
@@ -84,7 +94,11 @@ foreach (KeyValuePair<string, string[]> pattern in patterns_files)
 
 Trace.Flush();
 
-new Neeker().Neek(patterns_files);
+Neeker neeker = new Neeker();
+
+neeker.Neek(patterns_files);
 
 //Console.ReadLine();
 //Console.Clear();
+
+return;
