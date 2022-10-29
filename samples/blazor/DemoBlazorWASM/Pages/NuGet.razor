@@ -1,0 +1,95 @@
+@page "/nuget"
+
+@using Microsoft.Extensions.Logging
+
+@using HolisticWare.Xamarin.Tools.NuGet.ClientAPI;
+
+@inject ILogger<Pages.NuGet> Logger
+@inject HttpClient Http
+
+<h1>NuGet</h1>
+
+<EditForm Model="@ngc" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    @* 
+    <InputText id="nuget_id" @bind-Value="nc.Name" />
+     *@
+    <InputText 
+        id="nuget_id" @bind-Value="search_nuget_id"
+        >
+    </InputText>>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+</EditForm>
+
+@code 
+{    
+    string search_nuget_id = "androidx";
+    NuGetClient.HttpClient = Http.
+    private NuGetClient ngc = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await Http.GetStringAsync
+                                            (
+                                                //"/api/Customer"
+                                                "https://holisticware.net"
+                                            );
+        Console.WriteLine(response);
+    }
+
+    private async void HandleValidSubmit()
+    {
+        Logger.LogInformation("HandleValidSubmit called");
+
+        var client = new HttpClient();
+        var response = await client.GetStringAsync("https://api.nuget.org/v3/index.json");
+        Console.WriteLine("Didn't throw exception");
+
+        // Process the valid form
+        IEnumerable<global::NuGet.Protocol.Core.Types.IPackageSearchMetadata> package_metadata = null;
+        package_metadata = ngc.GetPackageMetadataAsync
+                                            (
+                                                "Xamarin.AndroidX.Core"
+                                            ).Result;
+
+
+        @* 
+        IEnumerable<global::NuGet.Protocol.Core.Types.IPackageSearchMetadata> search = null;
+        search = ngc.SearchPackagesByKeywordAsync
+                        (
+                            "androidx",
+                            new global::NuGet.Protocol.Core.Types.SearchFilter
+                                                                    (
+                                                                        includePrerelease: true
+                                                                    ),
+                            skip: 0,
+                            take: 100,
+                            psm =>
+                            {
+                                return
+                                (
+                                    psm.Description.Contains("car")
+                                    ||
+                                    psm.Description.Contains("androidx.car")
+                                );
+                            }
+                        ).Result; 
+        *@
+
+        @*
+        Console.WriteLine($"Packages found = {search.Count()}");
+        foreach (global::NuGet.Protocol.Core.Types.IPackageSearchMetadata pm in search)
+        {
+            Console.WriteLine($"----------------------------------------------------------");
+            Console.WriteLine($"Title   : {pm.Title}");
+            Console.WriteLine($"Summary         : {pm.Summary}");
+            Console.WriteLine($"Tags            : {pm.Tags}");
+        }
+        *@
+
+        return;
+    }
+}
