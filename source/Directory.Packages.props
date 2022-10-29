@@ -27,7 +27,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
     <PackageVersion Include="NuGet.Protocol" Version="6.2.0" />
 
-    <!-- 
+    <!--
       https://www.nuget.org/packages/UnoptimizedAssemblyDetector
     -->
     <PackageVersion Include="UnoptimizedAssemblyDetector" Version="0.1.1" PrivateAssets="All" />
