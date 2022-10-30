@@ -32,10 +32,22 @@ public partial class Neeker
         return new Scraper().Harvest(patterns, location);
     }
 
-	public 
-        void
-										Neek
-										(
+	public
+        Dictionary
+            <
+                string,         // pattern
+                Dictionary      // results
+                        <
+                            string,                         // filename
+                            (
+                                string file_backup,         // filename backup
+                                string content,             // content (changed, new)
+                                string content_backup       // content backu
+                            )
+                        >
+            >
+                                        Neek
+                                        (
                                             Dictionary<string, string[]> patterns_files
 										)										
     {
@@ -61,10 +73,39 @@ public partial class Neeker
                                                         "*.proj",
                                                     },
                                     "."
-                                );            
+                                );
         }
 
-        foreach(KeyValuePair<string, string[]> kvp in patterns_files)
+        Dictionary
+            <
+                string,         // pattern
+                Dictionary      // results
+                        <
+                            string,                         // filename
+                            (
+                                string file_backup,         // filename backup
+                                string content,             // content (changed, new)
+                                string content_backup       // content backu
+                            )
+                        >
+            >
+            results = null;
+
+        results = new Dictionary
+                            <
+                                string,
+                                Dictionary
+                                    <
+                                        string,
+                                        (
+                                            string file_backup,
+                                            string content,
+                                            string content_backup
+                                        )
+                                    >
+                            >();
+
+        foreach (KeyValuePair<string, string[]> kvp in patterns_files)
         {
             switch(kvp.Key)
             {
@@ -77,7 +118,17 @@ public partial class Neeker
                 case "*.vbproj":
                 case "*.proj":
                     this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerMsBuildProject();
-                    new Formats.NeekerMsBuildProject().Neek(kvp.Value);
+                    Dictionary      // results
+                        <
+                            string,                         // filename
+                            (
+                                string file_backup,         // filename backup
+                                string content,             // content (changed, new)
+                                string content_backup       // content backup
+                            )
+                        > result = null;
+                    result = new Formats.NeekerMsBuildProject().Neek(kvp.Value);
+                    results.Add(kvp.Key, result);
                     break;
                 case "directory.packages.*.props":
                 case "directory.build.*.props":
@@ -105,7 +156,7 @@ public partial class Neeker
             }
         }
 
-        return;
+        return results;
     }
 
 	public partial class ResultData

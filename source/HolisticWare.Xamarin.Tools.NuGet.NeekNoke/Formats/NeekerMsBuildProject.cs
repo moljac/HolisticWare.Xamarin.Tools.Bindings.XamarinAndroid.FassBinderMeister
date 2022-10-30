@@ -110,23 +110,64 @@ public partial class NeekerMsBuildProject
 								> package_references = null;
 
                             package_references = new List
-											<
-												(
-													string nuget_id,
-													string version
-												)
-											>();
+														<
+															(
+																string nuget_id,
+																string version
+															)
+														>();
 
                             string xpath = "//msbuild_project:Project/msbuild_project:ItemGroup/msbuild_project:PackageReference";
 
 							System.Xml.XmlNodeList node_list = xmldoc.SelectNodes(xpath, ns1);
 
-							foreach (System.Xml.XmlNode node in node_list)
-							{
-								System.Xml.XmlAttribute xml_attribute_include = node.Attributes["Include"];
-								System.Xml.XmlNode xml_node_version = node.SelectSingleNode("Version", ns1);
+                            string nuget_id = null;
+                            string version = null;
 
-								string inner_text = node.InnerText; //.Value;
+                            foreach (System.Xml.XmlNode node in node_list)
+							{
+								// nuget id is in Include attribute
+								System.Xml.XmlAttribute xml_attribute_include = node.Attributes["Include"];
+                                // nuget version could be in
+								//		Version attribute
+                                System.Xml.XmlAttribute xml_attribute_version = node.Attributes["Version"];
+								//		Version node
+								if (xml_attribute_version == null)
+								{
+									System.Xml.XmlNode xml_node_version = node.SelectSingleNode("Version", ns1);
+                                    
+									if (xml_node_version == null)
+									{
+										// NOOP
+										// version can be null in NuGet Central Pakcage Management
+									}
+									else
+									{
+                                        version = xml_node_version.Value;
+                                    }
+                                }
+                                else
+								{
+                                    version = xml_attribute_version.Value;
+                                }
+
+                                nuget_id = xml_attribute_include.Value;
+
+
+								if (version != null)
+								{
+									// add only if Version is defined (not null)
+									// otherwise it is NuGet Central Package Management and defined in other file
+									package_references.Add
+														(
+															(
+																nuget_id: nuget_id,
+																version: version
+															)
+														);
+								}
+
+                                string inner_text = node.InnerText; //.Value;
 								string outer_text = node.OuterXml; //.Value;
 							}
 
