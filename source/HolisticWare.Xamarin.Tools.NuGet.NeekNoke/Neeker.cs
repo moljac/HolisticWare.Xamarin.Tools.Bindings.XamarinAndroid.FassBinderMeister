@@ -1,6 +1,9 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
+
 public partial class Neeker
 {
 	public Neeker()

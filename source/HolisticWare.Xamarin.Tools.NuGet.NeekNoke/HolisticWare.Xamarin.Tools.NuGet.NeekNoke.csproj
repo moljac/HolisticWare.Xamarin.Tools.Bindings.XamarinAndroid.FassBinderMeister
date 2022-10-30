@@ -1,0 +1,85 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+
+        <LangVersion>Latest</LangVersion>
+        <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.NeekNoke</RootNamespace>
+        <!--
+        If moved to separate PropertyGroup - UI is cleared?!?!
+        -->
+        <PackOnBuild>true</PackOnBuild>
+        <PackageId>HolisticWare.Xamarin.Tools.NuGet.NeekNoke</PackageId>
+        <Title>
+            HolisticWare.Xamarin.Tools.NuGet.NeekNoke
+        </Title>
+        <summary>
+            NuGet updating APIs. Tools for nuget package updates API for productivity.
+        </summary>
+        <Description>
+            NuGet updating APIs. Tools for nuget package updates API for productivity.
+        </Description>
+        <Owners>HolisticWare, moljac</Owners>
+        <Authors>HolisticWare, moljac</Authors>
+        <Copyright>2020</Copyright>
+        <ProjectUrl>
+            https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+        </ProjectUrl>
+        <PackageProjectUrl>
+            https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+        </PackageProjectUrl>
+        <RepositoryUrl>
+            https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister
+        </RepositoryUrl>
+        <license>LICENSE</license>
+        <licenseUrl>
+            https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/blob/master/LICENSE
+        </licenseUrl>
+        <PackageLicenseUrl>
+            https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/blob/master/LICENSE
+        </PackageLicenseUrl>
+        <iconUrl>
+            https://secure.gravatar.com/avatar/b662959e712466f393541935b664d3c5
+        </iconUrl>
+        <PackageIconUrl>
+            https://secure.gravatar.com/avatar/b662959e712466f393541935b664d3c5        
+        </PackageIconUrl>
+        <VersionPrefix>0.0.1</VersionPrefix>
+        <!--
+        VersionSuffix - For debugging and local nuget feed
+        <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</VersionSuffix>
+        <PackageVersion>$(Version)</PackageVersion>
+        -->
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!--
+        put the package output into a nuget test folder
+        -->
+        <PackageOutputPath>../../output</PackageOutputPath>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <!--
+        <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
+        -->
+    </ItemGroup>
+
+    <ItemGroup>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" />
+        <PackageReference Include="Roslynator.Analyzers" />
+        <PackageReference Include="Roslynator.Formatting.Analyzers" />
+        <PackageReference Include="AsyncFixer" />
+        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
+        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" />
+        <PackageReference Include="Newtonsoft.Json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Generated\" />
+    </ItemGroup>
+</Project>

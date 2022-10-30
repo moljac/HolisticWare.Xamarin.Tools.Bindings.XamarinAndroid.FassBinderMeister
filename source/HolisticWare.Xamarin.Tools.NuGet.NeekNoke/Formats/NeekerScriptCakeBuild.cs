@@ -1,10 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
-public partial class NeekerScriptCSharpScriptAndScriptCS
-                        :
+public partial class NeekerScriptCakeBuild
+						:
 						NeekerBase
 {
-	public NeekerScriptCSharpScriptAndScriptCS()
+	public NeekerScriptCakeBuild ()
 	{
 		this.Result = new ResultData();
 
@@ -25,7 +31,7 @@ public partial class NeekerScriptCSharpScriptAndScriptCS
 										(
 											string[] files
 										)										
-    {
+	{
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
 		{
@@ -45,13 +51,19 @@ public partial class NeekerScriptCSharpScriptAndScriptCS
 																$"bckp-ts-{ts}{extension}"
 															);
 							System.IO.File.Copy(file, file_new);
+							string[] lines = System.IO.File.ReadLines(file).ToArray();
+
+							foreach(string s in lines)
+							{
+
+							}
 
 							this.Result.Log[file] = $" file {file}";
 						}
 					);
 
-        return;        
-    }
+		return;        
+	}
 
 	public partial class ResultData
 	{
