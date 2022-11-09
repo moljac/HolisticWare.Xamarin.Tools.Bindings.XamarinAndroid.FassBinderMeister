@@ -7,7 +7,7 @@ namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
 public partial class NeekerScriptCSharpScriptAndScriptCS
                         :
-						NeekerBase
+						NeekerNokerBase
 {
 	public NeekerScriptCSharpScriptAndScriptCS()
 	{

@@ -7,7 +7,7 @@ namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
 public partial class NeekerBinderatorConfig
 						:
-						NeekerBase
+						NeekerNokerBase
 {
 	public NeekerBinderatorConfig ()
 	{

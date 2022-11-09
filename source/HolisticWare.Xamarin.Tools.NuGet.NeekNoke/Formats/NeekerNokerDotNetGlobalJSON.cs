@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
 public partial class NeekerDotNetGlobalJSON
 						:
-						NeekerBase
+						NeekerNokerBase
 {
 	public NeekerDotNetGlobalJSON ()
 	{
@@ -46,7 +47,7 @@ public partial class NeekerDotNetGlobalJSON
 							string ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
 							string file_new = Path.ChangeExtension
 															(
-																file, 
+																file,
 																$"bckp-ts-{ts}{extension}"
 															);
 							System.IO.File.Copy(file, file_new);
@@ -61,31 +62,45 @@ public partial class NeekerDotNetGlobalJSON
 								json_object = (Newtonsoft.Json.Linq.JObject) Newtonsoft.Json.Linq.JToken.ReadFrom(jtr);
 							}
 
-							foreach(Newtonsoft.Json.Linq.JProperty jp in json_object["sdk"])
+							Dictionary<string, JToken?> jt_sections = null;
+							jt_sections = new Dictionary<string, JToken>()
 							{
-								string version  = (string) jp.Value;
+								{"sdk", json_object["sdk"]},
+								{"msbuild-sdks", json_object["msbuild-sdks"]},
+							};
+
+							foreach (KeyValuePair<string, JToken?> kvp in jt_sections)
+							{
+								if (kvp.Value != null)
+								{
+									foreach (Newtonsoft.Json.Linq.JProperty jp in kvp.Value)
+									{
+										string name = (string) jp.Name;
+										string version = (string) jp.Value;
+									}
+								}
 							}
 
 							List
 								<(
-									string nuget_id, 
+									string nuget_id,
 									string version
 								)> msbuild_sdks = new List
 														<(
-															string nuget_id, 
+															string nuget_id,
 															string vetsion
 														)>();
-							
+	
 							foreach(Newtonsoft.Json.Linq.JProperty jp in json_object["msbuild-sdks"])
 							{
 								string name  = (string) jp.Name;
 								string value  = (string) jp.Value;
 								msbuild_sdks.Add((name, value));
-							}							
+							}
 						}
 					);
 
-        return;        
+        return;
     }
 
 	public partial class ResultData

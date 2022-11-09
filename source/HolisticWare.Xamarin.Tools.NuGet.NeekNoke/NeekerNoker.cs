@@ -49,10 +49,10 @@ public partial class Neeker
                                         Neek
                                         (
                                             Dictionary<string, string[]> patterns_files
-										)										
+										)
     {
         if 
-            ( 
+            (
                 null == patterns_files
                 ||
                 patterns_files.Count == 0
@@ -112,7 +112,7 @@ public partial class Neeker
                 case "config.json":
                     this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerBinderatorConfig();
                     new Formats.NeekerBinderatorConfig().Neek(kvp.Value);
-                    break;  
+                    break;
                 case "*.csproj":
                 case "*.fsproj":
                 case "*.vbproj":
@@ -163,17 +163,21 @@ public partial class Neeker
 	{
         public ResultData()
         {
-            this.Results = new Dictionary<string, Formats.NeekerBase>();
+            this.Results = new Dictionary<string, Formats.NeekerNokerBase>();
 
             return;
         }
 
 		public 
-			Dictionary<string, Formats.NeekerBase>
+			Dictionary
+                <
+                    string,                     // format regex
+                    Formats.NeekerNokerBase
+                >
 										Results
 		{
 			get;
-			set;			
+			set;
 		}
 
 	}
