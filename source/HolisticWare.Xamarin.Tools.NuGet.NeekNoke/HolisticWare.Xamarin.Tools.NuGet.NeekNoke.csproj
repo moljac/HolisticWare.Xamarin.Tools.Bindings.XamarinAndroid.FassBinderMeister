@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-
         <LangVersion>Latest</LangVersion>
         <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.NeekNoke</RootNamespace>
         <!--
@@ -59,10 +58,11 @@
         <PackageOutputPath>../../output</PackageOutputPath>
     </PropertyGroup>
     
-    <ItemGroup>
-        <!--
+    <ItemGroup><!--
         <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
         -->
+    
+      <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj" />
     </ItemGroup>
 
     <ItemGroup>

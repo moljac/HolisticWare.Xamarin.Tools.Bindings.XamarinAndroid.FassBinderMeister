@@ -164,7 +164,17 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                     response = await NuGetClient.HttpClient.GetStringContentAsync(url);
                 }
 
-                PackageRegistration data = Newtonsoft.Json.JsonConvert.DeserializeObject<PackageRegistration>(response);
+                PackageRegistration data = null;
+                try
+                {
+                    data = Newtonsoft.Json.JsonConvert
+                                                .DeserializeObject<PackageRegistration>(response);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
 
                 return data;
             }

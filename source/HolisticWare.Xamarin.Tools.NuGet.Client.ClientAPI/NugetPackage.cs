@@ -133,15 +133,15 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ClientAPI
 
         public async
              Task<IEnumerable<IPackageSearchMetadata>>
-                                 GetPackageMetadataAsync
-                                         (
-                                         )
+                                        GetPackageMetadataAsync
+                                            (
+                                            )
         {
             IEnumerable<IPackageSearchMetadata> package_metadata = null;
             package_metadata = await NugetClient.GetPackageMetadataAsync
-                                                (
-                                                    this.Id
-                                                ).ConfigureAwait(false);
+                                                        (
+                                                            this.Id
+                                                        ).ConfigureAwait(false);
 
             PackageSearchMetadata = package_metadata;
 

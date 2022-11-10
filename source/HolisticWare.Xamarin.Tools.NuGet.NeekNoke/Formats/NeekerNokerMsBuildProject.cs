@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
@@ -45,7 +46,7 @@ public partial class NeekerMsBuildProject
 		Parallel.ForEach
 					(
 						files,
-						file =>
+						async (file) =>
 						{
 							string extension = Path.GetExtension(file);
 							string ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
@@ -82,6 +83,40 @@ public partial class NeekerMsBuildProject
 
 							IEnumerable<XElement> xe_package_references = null;
 							xe_package_references = xdoc.XPathSelectElements("//PackageReference");
+
+							/*
+							 
+							 */
+							List
+								<
+									(
+										string nuget_id,
+										string version,
+										string[] versions
+									)
+								> 
+									package_data;
+							package_data = new List<(string nuget_id, string version, string[] versions)>();
+							
+							IEnumerable<XElement> xe_package_references_inclde_attribute = null;
+							xe_package_references_inclde_attribute = xdoc.XPathSelectElements("//PackageReference[@Include]");
+							foreach (XElement xe in xe_package_references_inclde_attribute)
+							{
+								nuget_id = xe.Attribute("Include").Value;
+
+								NuGetPackage np = await NuGetPackage.Utilities
+																		.GetNuGetPackageFromRegistrationAsync(nuget_id);
+
+								package_data.Add
+												(
+													(
+														nuget_id: nuget_id,
+														version: null,
+														versions: null
+													)
+												);
+							}
+
 							/*
 							 
 							 */
