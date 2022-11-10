@@ -80,7 +80,7 @@ using NuSpecData=HolisticWare.Xamarin.Tools.NuGet.NuSpec.Generated.Microsoft.pac
 namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_NuGetPackage
+    public partial class NuGetPackages_Test
     {
         [Test]
         public void Constructor_01_01()

@@ -4,8 +4,25 @@ namespace Data
 {
     public partial class AX
     {
-        public static List<(string, string, string, string)> mappings_artifact_nuget =
-            new List<(string, string, string, string)>
+        public static 
+            List
+                <
+                    (
+                        string, 
+                        string, 
+                        string, 
+                        string
+                    )
+                > mappings_artifact_nuget =
+            new List
+                <
+                    (
+                        string, 
+                        string, 
+                        string, 
+                        string
+                    )
+                >
             {
                 ("androidx.activity:activity", "1.4.0", "Xamarin.AndroidX.Activity", "1.4.0.4"),
                 ("androidx.activity:activity-ktx", "1.4.0", "Xamarin.AndroidX.Activity.Ktx", "1.4.0.3"),

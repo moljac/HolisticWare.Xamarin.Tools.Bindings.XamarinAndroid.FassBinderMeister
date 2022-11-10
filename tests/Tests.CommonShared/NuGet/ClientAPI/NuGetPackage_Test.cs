@@ -62,21 +62,19 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
-using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using NuGet.Protocol.Core.Types;
-using NuGet.Versioning;
 
 using HolisticWare.Xamarin.Tools.NuGet.ClientAPI;
 
 namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_NugetPackage
+    public partial class NuGetPackage_Tests
     {
         [Test]
-        public void Test_NuGet_NugetPackage_GetPackageMetadataAsync()
+        public void GetPackageMetadataAsync()
         {
             NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
@@ -122,7 +120,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         }
 
         [Test]
-        public void Test_NuGet_NugetPackage_GetDependencyTreeHierarchyAsync_AndroidX_MultiDex()
+        public void GetDependencyTreeHierarchyAsync_AndroidX_MultiDex()
         {
             NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
@@ -168,7 +166,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         }
 
         [Test]
-        public void Test_NuGet_NugetPackage_GetDependencyTreeHierarchyAsync_AndroidX_Migration()
+        public void GetDependencyTreeHierarchyAsync_AndroidX_Migration()
         {
             NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
@@ -213,7 +211,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         }
 
         [Test]
-        public void Test_NuGet_NugetPackage_GetDependencyTreeHierarchyAsync_AndroidX_Core()
+        public void GetDependencyTreeHierarchyAsync_AndroidX_Core()
         {
             NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
@@ -259,7 +257,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         }
 
         [Test]
-        public void Test_NuGet_NugetPackage_GetDependencyTreeHierarchyAsync_AndroidX_Activity()
+        public void GetDependencyTreeHierarchyAsync_AndroidX_Activity()
         {
             NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
@@ -305,7 +303,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         }
 
         [Test]
-        public void Test_NuGet_NugetPackage_Versioned_VersionLatest()
+        public void VersionLatest_Package_Versioned()
         {
             NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 
@@ -315,13 +313,13 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
                 VersionTextual = "1.1.0.4",
             };
 
-            string ersion_latest = np.VersionLatestTextual;
+            string version_latest = np.VersionLatestTextual;
 
             return;
         }
 
         [Test]
-        public void Test_NuGet_NugetPackage_Named_VersionLatest()
+        public void VersionLatest_Package_Named()
         {
             NuGetPackage.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
 

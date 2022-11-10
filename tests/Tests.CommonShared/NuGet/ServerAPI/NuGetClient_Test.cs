@@ -62,65 +62,21 @@ using Benchmark = HolisticWare.Core.Testing.BenchmarkTests.Benchmark;
 using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 #endif
 
-using System.Threading.Tasks;
+using System;
 using System.Collections.Generic;
-
+using System.Linq;
+using HolisticWare.Xamarin.Tools.NuGet.Core;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
+using NuGetClient = HolisticWare.Xamarin.Tools.NuGet.ServerAPI.NuGetClient;
+using VersionsData=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root;
+using PackageRegistrationData=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageRegistration.Root;
+using NuSpecData=HolisticWare.Xamarin.Tools.NuGet.NuSpec.Generated.Microsoft.package;
 
-using HolisticWare.Xamarin.Tools.NuGet.ClientAPI;
-
-namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
+namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_NugetPackages
+    public partial class NuGetClient_Test
     {
-        [Test]
-        public void Test_NuGet_NugetPackages_GetPackageMetadataAsync()
-        {
-            NuGetPackages.NugetClient = new NuGetClient(Tests.CommonShared.Http.Client);
-            NuGetPackages np = new NuGetPackages();
-
-            List<string> package_ids = new List<string>()
-            {
-                "Xamarin.AndroidX.Legacy.Support.V13",
-                "Xamarin.Google.Guava.ListenableFuture",
-                "Xamarin.AndroidX.Annotations",
-                "Xamarin.AndroidX.Activity",
-                "Xamarin.AndroidX.NonExistentPackage",
-            };
-            List<NuGetPackage> result = np.GetPackageSearchMetadataForPackageNamesAsync(package_ids)
-                                                .Result;
-
-            System.IO.Directory.CreateDirectory
-                                    (
-                                        $"nuget-client-api/NugetPackages/"
-                                    );
-
-            string timestamp = System.DateTime.Now.ToString("yyyyMMdd-HHmmssff");
-            string json = null;
-
-            json = Newtonsoft.Json.JsonConvert.SerializeObject
-                                                    (
-                                                        result,
-                                                        Newtonsoft.Json.Formatting.Indented
-                                                    );
-            System.IO.File.WriteAllText
-                                (
-                                    $"nuget-client-api/NugetPackages/PackageSearchMetadata-{timestamp}.json",
-                                    json
-                                );
-
-            //#if MSTEST
-            //Assert.IsNotNull(search);
-            //#elif NUNIT
-            //Assert.NotNull(search);
-            //#elif XUNIT
-            //Assert.NotNull(search);
-            //#endif
-
-
-            return;
-        }
     }
 }

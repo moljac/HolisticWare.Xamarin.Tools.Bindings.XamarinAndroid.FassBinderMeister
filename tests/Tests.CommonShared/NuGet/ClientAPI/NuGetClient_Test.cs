@@ -75,11 +75,11 @@ using System.Text;
 namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_NuGetClient
+    public partial class NuGetClient_Tests
     {
 
         [Test]
-        public void NuGetClient_Packages_Search()
+        public void Packages_Search()
         {
             NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
 
@@ -143,7 +143,11 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         }
 
         [Test]
-        public void NuGetClient_Packages_PackageMetadata()
+        public 
+            void 
+                                        Packages_PackageMetadata
+                                            (
+                                            )
         {
             NuGetClient ngc = new NuGetClient(Tests.CommonShared.Http.Client);
 
@@ -176,7 +180,7 @@ namespace UnitTests.ClientsAPI.NuGetClients.ClientAPI
         [Test]
         public 
             void 
-                                        NuGetClient_Packages_PackageVersions_Xamarin_AndroidX_Core
+                                        Packages_PackageVersions_Xamarin_AndroidX_Core
                                             (
                                             )
         {
