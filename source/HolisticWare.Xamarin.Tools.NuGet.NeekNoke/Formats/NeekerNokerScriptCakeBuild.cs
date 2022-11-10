@@ -53,9 +53,25 @@ public partial class NeekerScriptCakeBuild
 							System.IO.File.Copy(file, file_new);
 							string[] lines = System.IO.File.ReadLines(file).ToArray();
 
-							foreach(string s in lines)
+							foreach(string line in lines)
 							{
-
+								switch (line)
+								{
+									case string line_preprocessor when line.StartsWith("#"):
+										line_preprocessor = line.Replace("#", "").Trim();
+										switch (line_preprocessor)
+										{
+											case string preprocessor_cmd when line.StartsWith("addin"):
+												break;
+											case string preprocessor_cmd when line.StartsWith("tool"):
+												break;
+											default:
+												break;
+										}
+										break;
+									default:
+										break;
+								}
 							}
 
 							this.Result.Log[file] = $" file {file}";
