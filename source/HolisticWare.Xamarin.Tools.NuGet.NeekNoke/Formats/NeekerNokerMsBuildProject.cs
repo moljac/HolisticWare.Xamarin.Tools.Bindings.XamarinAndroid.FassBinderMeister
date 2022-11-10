@@ -102,6 +102,10 @@ public partial class NeekerMsBuildProject
 								)
 							{
 								// There are Version (Attributes)
+								foreach (XElement xe in xe_package_references_version_attribute)
+								{
+									version = xe.Attribute("Version").Value;
+								}
 							}
 
 							if
@@ -112,6 +116,13 @@ public partial class NeekerMsBuildProject
 								)
 							{
 								// There are Version (Nodes)
+								foreach (XElement xe in xe_package_references_version_node)
+								{
+									if (xe.Name == "Version")
+									{
+										version = xe.Value;
+									}
+								}
 							}
 
 							// Version is null or empty => Central Package Management
