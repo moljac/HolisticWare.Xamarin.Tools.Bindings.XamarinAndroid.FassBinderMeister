@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
@@ -62,253 +65,124 @@ public partial class NeekerMsBuildProject
                             string text_snippet_original = null;
                             string text_snippet_new = null;
 
-                            System.Xml.XmlDocument xmldoc = null;
-							System.Xml.XmlNamespaceManager ns1 = null;
-
-							string xpath = null;
-							//  namespace is required, otherwise NRE
-							string xml_namespace_name = "msbuild_project"; // string conntent is irrelevant
-
-							xmldoc = new System.Xml.XmlDocument();
-							ns1 = new System.Xml.XmlNamespaceManager(xmldoc.NameTable);
-							ns1.AddNamespace(xml_namespace_name, "http://schemas.microsoft.com/developer/msbuild/2003");
-
-							try
+                            XDocument xdoc = null;
+                            try
 							{
-								xmldoc.Load(file.ToString());
+								xdoc = XDocument.Load(file);
 							}
-							catch (System.Xml.XmlException exc_xml)
+							catch (System.Exception exc)
 							{
-								Console.WriteLine(exc_xml.Message);
+								Trace.WriteLine(exc.Message);
 								throw;
 							}
-							Console.WriteLine($"file:		{Environment.NewLine}	{file}");
+							Trace.WriteLine($"file:		{Environment.NewLine}	{file}");
 
 							//------------------------------------------------------------------------------------------------------
 							// PackageReference
-							xpath = "//msbuild_project:Project/msbuild_project:ItemGroup/msbuild_project:PackageReference";
-							
-                            System.Xml.XmlNodeList node_list_package_references = xmldoc.SelectNodes(xpath, ns1);
 
-                            foreach (System.Xml.XmlNode node in node_list_package_references)
+							IEnumerable<XElement> xe_package_references = null;
+							xe_package_references = xdoc.XPathSelectElements("//PackageReference");
+							/*
+							 
+							 */
+							IEnumerable<XElement> xe_package_references_version_attribute = null;
+							xe_package_references_version_attribute = xdoc.XPathSelectElements("//PackageReference[@Version]");
+
+							/*
+							 
+							 */
+							IEnumerable<XElement> xe_package_references_version_node = null;
+							xe_package_references_version_node = xdoc.XPathSelectElements("//PackageReference/Version");
+
+							if
+								(
+									xe_package_references_version_attribute != null
+									&&
+									xe_package_references_version_attribute.Any()
+								)
 							{
-								// nuget id is in Include attribute
-								System.Xml.XmlAttribute xml_attribute_include = node.Attributes["Include"];
-                                // nuget version could be in
-								//		Version attribute
-                                System.Xml.XmlAttribute xml_attribute_version = node.Attributes["Version"];
-								//		Version node
-								if (xml_attribute_version == null)
-								{
-									System.Xml.XmlNode xml_node_version = node.SelectSingleNode("Version", ns1);
-                                    
-									if (xml_node_version == null)
-									{
-										// NOOP
-										// version can be null in NuGet central Pakcage Management
-									}
-									else
-									{
-                                        version = xml_node_version.Value;
-                                    }
-                                }
-                                else
-								{
-                                    version = xml_attribute_version.Value;
-                                }
-
-                                //		VersionOverride attribute
-                                System.Xml.XmlAttribute xml_attribute_version_override = node.Attributes["VersionOverride"];
-
-                                if (xml_attribute_version_override == null)
-                                {
-                                    System.Xml.XmlNode xml_node_version_override = node.SelectSingleNode("VersionOverride", ns1);
-
-                                    if (xml_node_version_override == null)
-                                    {
-                                        // NOOP
-                                        // version can be null in NuGet Central Pakcage Management
-                                    }
-                                    else
-                                    {
-                                        version_override = xml_node_version_override.Value;
-                                    }
-                                }
-                                else
-                                {
-                                    version_override = xml_attribute_version_override.Value;
-                                }
-
-                                nuget_id = xml_attribute_include.Value;
-
-								if (version == null && version_override != null)
-								{
-									version = version_override;
-                                }
-								
-                                inner_text = node.InnerText; //.Value;
-                                outer_xml = node.OuterXml; //.Value;
-                                
-                                //if (version != null)
-                                {
-	                                // add only if Version is defined (not null)
-	                                // otherwise it is NuGet Central Package Management and defined in other file
-	                                package_references.Add
-	                                (
-		                                (
-			                                nuget_id: nuget_id,
-			                                version: version,
-			                                versions_upgradeable: null,
-			                                text_snippet_original: text_snippet_original,
-			                                text_snippet_new: text_snippet_new
-		                                )
-	                                );
-                                }
+								// There are Version (Attributes)
 							}
+
+							if
+								(
+									xe_package_references_version_node != null
+									&&
+									xe_package_references_version_node.Any()
+								)
+							{
+								// There are Version (Nodes)
+							}
+
+							// Version is null or empty => Central Package Management
+							if
+								(
+									xe_package_references != null
+									&&
+									xe_package_references.Any()
+									&&
+									(
+										xe_package_references_version_attribute == null
+										||
+										(
+											xe_package_references_version_attribute != null
+											&&
+											! xe_package_references_version_attribute.Any()
+										)
+									)
+									&&
+									(
+										xe_package_references_version_node == null
+										||
+										(
+											xe_package_references_version_node != null
+											&&
+											! xe_package_references_version_node.Any()
+										)
+									)
+								)
+							{ 
+								// Central Package Management
+							}
+							else
+							{
+								// No PackageReferences
+								// TODO: check packages.config
+							}
+
+							foreach (XElement xe in xe_package_references_version_attribute)
+							{
+								if (xe.Attribute("Version") != null)
+								{
+									version = xe.Attribute("Version").Value;
+									continue;
+								}
+							}
+							foreach (XElement xe in xe_package_references_version_node)
+							{
+								if (xe.Element("Version") != null)
+								{
+									//version = xe.Nodes().Select(n => { return true; });
+									continue;
+								}
+							}
+
+							package_references.Add
+				                                (
+					                                (
+						                                nuget_id: nuget_id,
+						                                version: version,
+						                                versions_upgradeable: null,
+						                                text_snippet_original: text_snippet_original,
+						                                text_snippet_new: text_snippet_new
+					                                )
+				                                );
                             //------------------------------------------------------------------------------------------------------
                             //------------------------------------------------------------------------------------------------------
                             // PackageVersion
-                            xpath = "//msbuild_project:Project/msbuild_project:ItemGroup/msbuild_project:PackageVersion";
-
-                            List
-                                <
-                                    (
-                                        string nuget_id,
-                                        string version_current,
-                                        string[] versions_updateable
-                                    )
-                                > package_versions = null;
-
-                            package_references = new List
-                                                        <
-                                                            (
-                                                                string nuget_id,
-                                                                string version,
-                                                                string[] versions_upgradeable,
-																string text_snippet_original,
-																string text_snippet_new
-                                                            )
-                                                        >();
-
-                            System.Xml.XmlNodeList node_list_package_versions = xmldoc.SelectNodes(xpath, ns1);
-
-							foreach (System.Xml.XmlNode node in node_list_package_versions)
-							{
-								// nuget id is in Include attribute
-								System.Xml.XmlAttribute xml_attribute_include = node.Attributes["Include"];
-								// nuget version could be in
-								//		Version attribute
-								System.Xml.XmlAttribute xml_attribute_version = node.Attributes["Version"];
-								//		Version node
-								if (xml_attribute_version == null)
-								{
-									System.Xml.XmlNode xml_node_version = node.SelectSingleNode("Version", ns1);
-
-									if (xml_node_version == null)
-									{
-										// NOOP
-										// version can be null in NuGet Central Pakcage Management
-									}
-									else
-									{
-										version = xml_node_version.Value;
-									}
-								}
-								else
-								{
-									version = xml_attribute_version.Value;
-								}
-
-                                nuget_id = xml_attribute_include.Value;
-
-                                if (version == null && version_override != null)
-                                {
-                                    version = version_override;
-                                }
-
-                                inner_text = node.InnerText; //.Value;
-                                outer_xml = node.OuterXml; //.Value;
-
-                                //if (version != null)
-                                {
-                                    // add only if Version is defined (not null)
-                                    // otherwise it is NuGet Central Package Management and defined in other file
-                                    package_references.Add
-                                                        (
-                                                            (
-                                                                nuget_id: nuget_id,
-                                                                version: version,
-                                                                versions_upgradeable: null,
-                                                                text_snippet_original: text_snippet_original,
-                                                                text_snippet_new: text_snippet_new
-                                                            )
-                                                        );
-                                }
-							}
+                            
                             //------------------------------------------------------------------------------------------------------
 
-                            /*
-							XDocument xDoc = XDocument.Load(file);
-
-							XNamespace ns2 = XNamespace.Get("http://schemas.microsoft.com/developer/msbuild/2003");
-
-							//References "By DLL (file)"
-							var list1 = from list in xDoc.Descendants(ns2 + "ItemGroup")
-										from item in list.Elements(ns2 + "PackageReference")
-											// where item.Element(ns + "HintPath") != null
-										select new
-										{
-											CsProjFileName = file,
-											ReferenceInclude = item.Attribute("Include").Value,
-											RefType = (item.Element(ns2 + "HintPath") == null) ? "CompiledDLLInGac" : "CompiledDLL",
-											HintPath = (item.Element(ns2 + "HintPath") == null) ? string.Empty : item.Element(ns2 + "HintPath").Value
-										};
-
-
-							foreach (var v in list1)
-							{
-								Console.WriteLine(v.ToString());
-							}
-
-
-							//References "By Project"
-							var list2 = from list in xDoc.Descendants(ns2 + "ItemGroup")
-										from item in list.Elements(ns2 + "ProjectReference")
-										where
-										item.Element(ns2 + "Project") != null
-										select new
-										{
-											CsProjFileName = file,
-											ReferenceInclude = item.Attribute("Include").Value,
-											RefType = "ProjectReference",
-											ProjectGuid = item.Element(ns2 + "Project").Value
-										};
-
-
-							foreach (var v in list2)
-							{
-								Console.WriteLine(v.ToString());
-							}
-
-							//References "By Project"
-							var list3 = from list in xDoc.Descendants(ns2 + "ItemGroup")
-										from item in list.Elements(ns2 + "PackageReference")
-										where
-										item.Element(ns2 + "Project") != null
-										select new
-										{
-											CsProjFileName = file,
-											ReferenceInclude = item.Attribute("Include").Value,
-											RefType = "ProjectReference",
-											ProjectGuid = item.Element(ns2 + "Project").Value
-										};
-
-
-							foreach (var v in list2)
-							{
-								Console.WriteLine(v.ToString());
-							}
-							*/
 
                             log[file] =
 										(
