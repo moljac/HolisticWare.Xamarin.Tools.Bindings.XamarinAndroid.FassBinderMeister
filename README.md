@@ -37,16 +37,29 @@ cd -
 
   * update tool - Neek-Noke (NuGet Peek-Poke)
 
-* Nuget
+Ever seen (formatted a bit):
 
-  * update tool - Neek-Noke (NuGet Peek-Poke)
+```
+BlahBlah.csproj : 
+  error NU1605: 
+  Detected package downgrade: NuGet.Protocol from 6.2.0 to 5.9.1. 
+  Reference the package directly from the project to select a different version. 
+BlahBlah.csproj : 
+  error NU1605:  
+  DemoBlazorWASM -> HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI 0.0.1-alpha-202210282216 -> NuGet.Protocol (>= 6.2.0) 
+BlahBlah.csproj : 
+  error NU1605:  DemoBlazorWASM -> NuGet.Protocol (>= 5.9.1)
+```
+??
+
+So, `NeekNoke` tool helps with this nagging stuff.
 
 ## Samples / Usage
 
 
 ### Test console apps
 
-NeekNoke
+#### NeekNoke
 
 ```bash
 dotnet build \
