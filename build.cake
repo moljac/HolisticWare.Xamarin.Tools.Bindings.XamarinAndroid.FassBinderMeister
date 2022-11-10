@@ -123,6 +123,7 @@ string[] clean_folder_patterns = new string[]
     "./tests/**/bin/",
     "./tests/**/obj/",
     "./tests/**/packages/",
+    "./tests/**/tools/",
 };
 
 string verbosity = "Diagnostic";
