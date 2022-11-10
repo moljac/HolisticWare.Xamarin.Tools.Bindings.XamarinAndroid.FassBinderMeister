@@ -61,9 +61,9 @@ public partial class NeekerScriptCakeBuild
 										line_preprocessor = line.Replace("#", "").Trim();
 										switch (line_preprocessor)
 										{
-											case string preprocessor_cmd when line.StartsWith("addin"):
+											case string preprocessor_cmd when line_preprocessor.StartsWith("addin"):
 												break;
-											case string preprocessor_cmd when line.StartsWith("tool"):
+											case string preprocessor_cmd when line_preprocessor.StartsWith("tool"):
 												break;
 											default:
 												break;
