@@ -97,22 +97,33 @@ public partial class NeekerMsBuildProject
 								> 
 									package_data;
 							package_data = new List<(string nuget_id, string version, string[] versions)>();
-							
-							IEnumerable<XElement> xe_package_references_inclde_attribute = null;
-							xe_package_references_inclde_attribute = xdoc.XPathSelectElements("//PackageReference[@Include]");
-							foreach (XElement xe in xe_package_references_inclde_attribute)
+
+							IEnumerable<XElement> xe_package_references_include_attribute = null;
+							xe_package_references_include_attribute = xdoc.XPathSelectElements("//PackageReference[@Include]");
+							foreach (XElement xe in xe_package_references_include_attribute)
 							{
 								nuget_id = xe.Attribute("Include").Value;
 
-								NuGetPackage np = await NuGetPackage.Utilities
-																		.GetNuGetPackageFromRegistrationAsync(nuget_id);
+								NuGetPackage np = null;
+								try
+								{
+									np = await NuGetPackage.Utilities
+															.GetNuGetPackageFromRegistrationAsync(nuget_id)
+															;
+
+								}
+								catch (Exception exc)
+								{
+									Trace.WriteLine(exc);
+									throw;
+								}
 
 								package_data.Add
 												(
 													(
-														nuget_id: nuget_id,
-														version: null,
-														versions: null
+														nuget_id: np.Id,
+														version: np.VersionTextual,
+														versions: np.VersionsTextual.ToArray()
 													)
 												);
 							}

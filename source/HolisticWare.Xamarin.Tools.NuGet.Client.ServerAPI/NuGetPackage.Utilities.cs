@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -65,83 +66,110 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                     VersionsTextual = new List<string>(),
                     VersionsDates = new Dictionary<string, DateTime>(),
                 };
-                // https://www.newtonsoft.com/json/help/html/queryinglinqtojson.htm
-                JObject jo = JObject.Parse(response);
 
-                JArray jarray_items0 = (JArray) jo["items"];
-                foreach (JToken jtoken_item0 in jarray_items0)
+                JObject jo = null;
+                try
                 {
-                    JArray jarray_items1 = (JArray) jtoken_item0["items"];
+                    // https://www.newtonsoft.com/json/help/html/queryinglinqtojson.htm
+                    jo = JObject.Parse(response);
+                }
+                catch (Exception exc)
+                {
+                    /*
+                        If you get gibberish and ...
+                        HttpClientHandler handler = new HttpClientHandler()
+                        {
+                            AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+                        };
 
-                    foreach (JToken jtoken_item1 in jarray_items1)
+                        NuGetClient.HttpClient = new HttpClient(handler);
+                     */
+                    string msg = "";
+                    throw;
+                }
+
+                try
+                {
+                    JArray jarray_items0 = (JArray) jo["items"];
+                    foreach (JToken jtoken_item0 in jarray_items0)
                     {
-                        JValue jvalue_id = (JValue) jtoken_item1["catalogEntry"]["id"];
-                        nuget_package.Id = jvalue_id.Value.ToString();
-                        JValue jvalue_version = (JValue) jtoken_item1["catalogEntry"]["version"];
-                        string version = jvalue_version.Value.ToString();
-                        nuget_package.VersionTextual = version;
-                        nuget_package.VersionsTextual.Add(version);
-                        JValue jvalue_published = (JValue) jtoken_item1["catalogEntry"]["published"];
-                        nuget_package.Published = DateTime.Parse(jvalue_published.Value.ToString());
-                        nuget_package.VersionsDates.Add(nuget_package.VersionTextual, nuget_package.Published);
-                        JValue jvalue_description = (JValue) jtoken_item1["catalogEntry"]["description"];
-                        nuget_package.Description = jvalue_description.Value.ToString();
-                        JValue jvalue_summary = (JValue) jtoken_item1["catalogEntry"]["summary"];
-                        nuget_package.Summary = jvalue_summary.Value.ToString();
+                        JArray jarray_items1 = (JArray) jtoken_item0["items"];
 
-                        // nuget_package.LicenseExpression = jvalue_summary.Value.ToString();
-                        // nuget_package.LicenseURL = jvalue_summary.Value.ToString();
-                        // nuget_package.LicenseAcceptanceRequired = jvalue_summary.Value.ToString();
-                        // nuget_package.ProjectURL = jvalue_summary.Value.ToString();
-
-                        JArray jarray_dependency_groups = (JArray) jtoken_item1["catalogEntry"]["dependencyGroups"];
-
-                        if (jarray_dependency_groups == null)
+                        foreach (JToken jtoken_item1 in jarray_items1)
                         {
-                            continue;
-                        }
+                            JValue jvalue_id = (JValue) jtoken_item1["catalogEntry"]["id"];
+                            nuget_package.Id = jvalue_id.Value.ToString();
+                            JValue jvalue_version = (JValue) jtoken_item1["catalogEntry"]["version"];
+                            string version = jvalue_version.Value.ToString();
+                            nuget_package.VersionTextual = version;
+                            nuget_package.VersionsTextual.Add(version);
+                            JValue jvalue_published = (JValue) jtoken_item1["catalogEntry"]["published"];
+                            nuget_package.Published = DateTime.Parse(jvalue_published.Value.ToString());
+                            nuget_package.VersionsDates.Add(nuget_package.VersionTextual, nuget_package.Published);
+                            JValue jvalue_description = (JValue) jtoken_item1["catalogEntry"]["description"];
+                            nuget_package.Description = jvalue_description.Value.ToString();
+                            JValue jvalue_summary = (JValue) jtoken_item1["catalogEntry"]["summary"];
+                            nuget_package.Summary = jvalue_summary.Value.ToString();
 
-                        if (jarray_dependency_groups.Count > 0)
-                        {
-                            nuget_package.DependencyGroups = new List<DependencyGroup>();
-                        }
+                            // nuget_package.LicenseExpression = jvalue_summary.Value.ToString();
+                            // nuget_package.LicenseURL = jvalue_summary.Value.ToString();
+                            // nuget_package.LicenseAcceptanceRequired = jvalue_summary.Value.ToString();
+                            // nuget_package.ProjectURL = jvalue_summary.Value.ToString();
 
-                        foreach (JToken jtoken_dependency_group in jarray_dependency_groups)
-                        {
-                            DependencyGroup dg = new DependencyGroup();
+                            JArray jarray_dependency_groups = (JArray) jtoken_item1["catalogEntry"]["dependencyGroups"];
 
-                            JValue jvalue_target_framework = (JValue) jtoken_dependency_group["targetFramework"];
-                            dg.TargetFramework = jvalue_target_framework?.Value?.ToString();
-
-                            nuget_package.DependencyGroups.Add(dg);
-
-                            JArray jarray_dependencies = (JArray) jtoken_dependency_group["dependencies"];
-
-                            if (jarray_dependencies == null)
+                            if (jarray_dependency_groups == null)
                             {
                                 continue;
                             }
 
-                            if (jarray_dependencies.Count > 0)
+                            if (jarray_dependency_groups.Count > 0)
                             {
-                                dg.Dependencies = new List<NuGetPackageDependency>();
+                                nuget_package.DependencyGroups = new List<DependencyGroup>();
                             }
 
-                            foreach (JToken jtoken_dependency in jarray_dependencies)
+                            foreach (JToken jtoken_dependency_group in jarray_dependency_groups)
                             {
-                                JValue jvalue_dependency_id    = (JValue) jtoken_dependency["id"];
-                                JValue jvalue_range            = (JValue) jtoken_dependency["range"];
+                                DependencyGroup dg = new DependencyGroup();
 
-                                NuGetPackageDependency nuget_package_dependency = new NuGetPackageDependency()
+                                JValue jvalue_target_framework = (JValue) jtoken_dependency_group["targetFramework"];
+                                dg.TargetFramework = jvalue_target_framework?.Value?.ToString();
+
+                                nuget_package.DependencyGroups.Add(dg);
+
+                                JArray jarray_dependencies = (JArray) jtoken_dependency_group["dependencies"];
+
+                                if (jarray_dependencies == null)
                                 {
-                                    Id = jvalue_dependency_id.Value.ToString(),
-                                    VersionRangeTextualDependency = jvalue_range.Value.ToString(),
-                                };
+                                    continue;
+                                }
 
-                                dg.Dependencies.Add(nuget_package_dependency);
+                                if (jarray_dependencies.Count > 0)
+                                {
+                                    dg.Dependencies = new List<NuGetPackageDependency>();
+                                }
+
+                                foreach (JToken jtoken_dependency in jarray_dependencies)
+                                {
+                                    JValue jvalue_dependency_id    = (JValue) jtoken_dependency["id"];
+                                    JValue jvalue_range            = (JValue) jtoken_dependency["range"];
+
+                                    NuGetPackageDependency nuget_package_dependency = new NuGetPackageDependency()
+                                    {
+                                        Id = jvalue_dependency_id.Value.ToString(),
+                                        VersionRangeTextualDependency = jvalue_range.Value.ToString(),
+                                    };
+
+                                    dg.Dependencies.Add(nuget_package_dependency);
+                                }
                             }
                         }
                     }
+                }
+                catch (Exception exc)
+                {
+                    Trace.WriteLine(exc);
+                    throw;
                 }
 
                 return nuget_package;
