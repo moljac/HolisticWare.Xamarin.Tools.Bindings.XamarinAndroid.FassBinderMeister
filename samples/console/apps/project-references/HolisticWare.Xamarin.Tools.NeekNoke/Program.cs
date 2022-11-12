@@ -2,7 +2,13 @@
 
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Timers;
 using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
+using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
+using Action = HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Action;
+
+System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+stopwatch.Start();
 
 string about =
 @"
@@ -54,6 +60,32 @@ Trace.AutoFlush = true;
 
 Trace.WriteLine($"{about}");
 
+switch (args.Length)
+{
+    case 0:
+        NeekerNoker.Action = Action.Neek;
+        break;
+    case 1:
+        switch (args[0])
+        {
+            case "neek":
+                NeekerNoker.Action = Action.Neek;
+                break;
+            case "noke":
+                NeekerNoker.Action = Action.Noke;
+                break;
+            default:
+                Trace.WriteLine($"{args[0]} not recognized!!");
+                Trace.WriteLine("verb/command (command line argument) can be neek or noke");
+                return 1;
+                break;
+        }
+        break;
+    default:
+        Trace.WriteLine("verb/command (command line argument) can be neek or noke");
+        return 1;
+}
+
 string[] patterns = new string[]
                                 {
                                     "*.csproj",
@@ -94,11 +126,82 @@ foreach (KeyValuePair<string, string[]> pattern in patterns_files)
 
 Trace.Flush();
 
-Neeker neeker = new Neeker();
+NeekerNoker neeker = new NeekerNoker();
 
-neeker.Neek(patterns_files);
+neeker.NeekNoke(patterns_files);
 
-//Console.ReadLine();
-//Console.Clear();
+foreach (KeyValuePair<string, NeekerNokerBase> nnb in neeker.ResultsPerPattern.Results)
+{
+    Trace.WriteLine($"pattern:      {nnb.Key}");
+    NeekerNokerBase nn = nnb.Value;
 
-return;
+    foreach
+    (
+        KeyValuePair
+            <
+                string,                         // file
+                (
+                    string file_backup,         // file backup
+                    string content,
+                    string content_backup
+                )
+            >
+            kv_log in nn.ResultsPerFile.Log
+    )
+    {
+        Trace.WriteLine($"  file:      {kv_log.Key}");
+        if (NeekerNoker.Action == Action.Noke)
+        {
+            Trace.WriteLine($"      file_backup:      {kv_log.Value.file_backup}");
+        }
+    }
+
+    Trace.WriteLine($"      Packages failed      ");
+    Trace.WriteLine($"              NuGet packages that failed with information retrieval");
+    Trace.WriteLine($"              NuGet packages that failed with information retrieval");
+    Trace.WriteLine($"              please report (open issue)");
+    Trace.WriteLine($"              https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/issues");
+    
+    foreach
+    (
+        (
+            string nuget_id,
+            string version
+        )
+        pr in nn.ResultsPerFile.PackagesFailed
+    )
+    {
+        Trace.WriteLine($"              nuget_id:           {pr.nuget_id}");
+        Trace.WriteLine($"                  version:        {pr.version}");
+    }
+
+    Trace.WriteLine($"      Packages found      ");
+    
+    foreach
+        (
+            KeyValuePair
+                <
+                    string, 
+                    (
+                        string nuget_id,
+                        string version_current, 
+                        string[] versions_upgradeable, 
+                        string text_snippet_original, 
+                        string text_snippet_new
+                    )
+                > 
+                    pr in nn.ResultsPerFile.PackageReferences
+            )
+    {
+        Trace.WriteLine($"              nuget_id:           {pr.Value.nuget_id}");
+        Trace.WriteLine($"                  version:           {pr.Value.version_current}");
+        // string vu = Environment.NewLine + "\t\t" + string.Join($"{Environment.NewLine}\t\t", pr.versions_upgradeable);
+        // Trace.WriteLine($"  versions:        {vu}");
+    }
+}
+
+stopwatch.Stop();
+
+Trace.WriteLine($"Elapsed:       {stopwatch.Elapsed}");
+
+return 0;

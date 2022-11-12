@@ -76,13 +76,32 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                 catch (Exception exc)
                 {
                     /*
-                        If you get gibberish and ...
+                        If you get gibberish and exception similar to:
+                        
+                        ```
+                        System.AggregateException: 
+                            One or more errors occurred. 
+                                (Unexpected character encountered while parsing value: . Path '', line 0, position 0.)
+                         ---> Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: . Path '', line 0, position 0.
+                           at Newtonsoft.Json.JsonTextReader.ParseValue()
+                           at Newtonsoft.Json.JsonTextReader.Read()
+                           at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+                           at Newtonsoft.Json.Linq.JObject.Parse(String json, JsonLoadSettings settings)
+                           at Newtonsoft.Json.Linq.JObject.Parse(String json)
+                           at HolisticWare.Xamarin.Tools.NuGet.ServerAPI.NuGetPackage.Utilities.GetNuGetPackageFromRegistrationAsync(String nuget_id) 
+                            in ./source/HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI/NuGetPackage.Utilities.cs:line 69
+                        ```
+                        
+                        add:
+                        
+                        ```csharp
                         HttpClientHandler handler = new HttpClientHandler()
                         {
                             AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
                         };
 
                         NuGetClient.HttpClient = new HttpClient(handler);
+                        ```
                      */
                     string msg = "";
                     throw;
