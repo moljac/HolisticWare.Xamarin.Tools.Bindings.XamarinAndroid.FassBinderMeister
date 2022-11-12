@@ -4,22 +4,30 @@ using System.Diagnostics;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
 
-public partial class Neeker
+public partial class NeekerNoker
 {
-	public Neeker()
+    public static 
+        Action 
+                                        Action
+    {
+        get;
+        set;
+    }
+
+    public NeekerNoker()
 	{
-		this.Result = new ResultData();
+		this.ResultsPerPattern = new ResultsPerPattern();
 
         return;
 	}
 
-	public
-		ResultData
-										Result
-	{
-		get;
-		set;
-	}
+    public
+        ResultsPerPattern
+                                        ResultsPerPattern
+    {
+        get;
+        set;
+    }
 
 	public 
 		Dictionary<string, string[]>
@@ -46,7 +54,7 @@ public partial class Neeker
                             )
                         >
             >
-                                        Neek
+                                        NeekNoke
                                         (
                                             Dictionary<string, string[]> patterns_files
 										)
@@ -110,25 +118,19 @@ public partial class Neeker
             switch(kvp.Key)
             {
                 case "config.json":
-                    this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerBinderatorConfig();
-                    new Formats.NeekerBinderatorConfig().Neek(kvp.Value);
+                    NeekNoke.Formats.NeekerNokerBinderatorConfig f_binderator = null;
+                    f_binderator = new NeekNoke.Formats.NeekerNokerBinderatorConfig();
+                    this.ResultsPerPattern.Results[kvp.Key] = f_binderator;
+                    f_binderator.NeekNoke(kvp.Value);
                     break;
                 case "*.csproj":
                 case "*.fsproj":
                 case "*.vbproj":
                 case "*.proj":
-                    this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerMsBuildProject();
-                    Dictionary      // results
-                        <
-                            string,                         // filename
-                            (
-                                string file_backup,         // filename backup
-                                string content,             // content (changed, new)
-                                string content_backup       // content backup
-                            )
-                        > result = null;
-                    result = new Formats.NeekerMsBuildProject().Neek(kvp.Value);
-                    results.Add(kvp.Key, result);
+                    NeekNoke.Formats.NeekerNokerMsBuildProject f_msbuild_proj = null;
+                    f_msbuild_proj = new NeekNoke.Formats.NeekerNokerMsBuildProject();
+                    this.ResultsPerPattern.Results[kvp.Key] = f_msbuild_proj;
+                    f_msbuild_proj.NeekNoke(kvp.Value);
                     break;
                 case "directory.packages.*.props":
                 case "directory.build.*.props":
@@ -136,49 +138,32 @@ public partial class Neeker
                 case "*.targets":
                     break;
                 case "global.json":
-                    this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerDotNetGlobalJSON();
-                    new Formats.NeekerDotNetGlobalJSON().Neek(kvp.Value);
+                    NeekNoke.Formats.NeekerNokerDotNetGlobalJSON f_global_json = null;
+                    f_global_json = new NeekNoke.Formats.NeekerNokerDotNetGlobalJSON();
+                    this.ResultsPerPattern.Results[kvp.Key] = f_global_json;
+                    f_global_json.NeekNoke(kvp.Value);
                     break;
                 case "*.cake":
-                    this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerScriptCakeBuild();
-                    new Formats.NeekerScriptCakeBuild().Neek(kvp.Value);
+                    NeekNoke.Formats.NeekerNokerScriptCakeBuild f_cake = null;
+                    f_cake = new NeekNoke.Formats.NeekerNokerScriptCakeBuild();
+                    this.ResultsPerPattern.Results[kvp.Key] = f_cake;
+                    f_cake.NeekNoke(kvp.Value);
                     break;
                 case "*.csx":
-                    this.Result.Results[kvp.Key] = new NeekNoke.Formats.NeekerScriptCSharpScriptAndScriptCS();
-                    new Formats.NeekerScriptCSharpScriptAndScriptCS().Neek(kvp.Value);
+                    NeekNoke.Formats.NeekerNokerScriptCSharpScriptAndScriptCS f_csx = null;
+                    f_csx = new NeekNoke.Formats.NeekerNokerScriptCSharpScriptAndScriptCS();
+                    this.ResultsPerPattern.Results[kvp.Key] = f_csx;
+                    f_csx.NeekNoke(kvp.Value);
                     break;
                 case "*.xproj":
                 case "packages.config":
                     // TODO
                     break;
                 default:
-                    throw new NotSupportedException($"Neeker.Neek: Pattern {kvp.Key} not supported");
+                    throw new NotSupportedException($"Neeker.NeekNoke: Pattern {kvp.Key} not supported");
             }
         }
 
         return results;
     }
-
-	public partial class ResultData
-	{
-        public ResultData()
-        {
-            this.Results = new Dictionary<string, Formats.NeekerNokerBase>();
-
-            return;
-        }
-
-		public 
-			Dictionary
-                <
-                    string,                     // format regex
-                    Formats.NeekerNokerBase
-                >
-										Results
-		{
-			get;
-			set;
-		}
-
-	}
 }

@@ -6,36 +6,38 @@ using Newtonsoft.Json.Linq;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
-public partial class NeekerDotNetGlobalJSON
+public partial class NeekerNokerDotNetGlobalJSON
 						:
 						NeekerNokerBase
 {
-	public NeekerDotNetGlobalJSON ()
+	public 
+										NeekerNokerDotNetGlobalJSON 
+										(
+										)
 	{
-		this.Result = new ResultData();
 
 		return;
 	}
 
-	public
-		ResultData
-										Result
-	{
-		get;
-		set;
-	}
-
 	public 
 		void
-										Neek
-										(
-											string[] files
-										)										
+										NeekNoke
+											(
+												string[] files
+											)								
     {
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
 		{
-			this.Result.Log.Add(file, "");
+			this.ResultsPerFile.Log.Add
+										(
+											file,
+											(
+												null,
+												null,
+												null
+											) 
+										);
 		}
 
 		Parallel.ForEach
@@ -43,14 +45,24 @@ public partial class NeekerDotNetGlobalJSON
 						files,
 						file =>
 						{
-							string extension = Path.GetExtension(file);
-							string ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-							string file_new = Path.ChangeExtension
-															(
-																file,
-																$"bckp-ts-{ts}{extension}"
-															);
-							System.IO.File.Copy(file, file_new);
+							string extension = null;
+							string ts = null;
+							string file_new = null;
+							string content_original = System.IO.File.ReadAllText(file);
+							string content_new = null;
+
+							if (NeekerNoker.Action == Action.Noke)
+							{
+								extension = Path.GetExtension(file);
+								ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+								file_new = Path.ChangeExtension
+								(
+									file,
+									$"bckp-ts-{ts}{extension}"
+								);
+								System.IO.File.Copy(file, file_new);
+								content_new = System.IO.File.ReadAllText(file_new);
+							}
 
 							// https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
 							// 
@@ -82,43 +94,37 @@ public partial class NeekerDotNetGlobalJSON
 							}
 
 							List
-								<(
-									string nuget_id,
-									string version
-								)> msbuild_sdks = new List
-														<(
-															string nuget_id,
-															string vetsion
-														)>();
-	
-							foreach(Newtonsoft.Json.Linq.JProperty jp in json_object["msbuild-sdks"])
+							<
+								(
+								string nuget_id,
+								string version
+								)
+							> msbuild_sdks = new List
+							<
+								(
+								string nuget_id,
+								string vetsion
+								)
+							>();
+
+							foreach (Newtonsoft.Json.Linq.JProperty jp in json_object["msbuild-sdks"])
 							{
-								string name  = (string) jp.Name;
-								string value  = (string) jp.Value;
+								string name = (string) jp.Name;
+								string value = (string) jp.Value;
 								msbuild_sdks.Add((name, value));
 							}
+
+							this.ResultsPerFile.Log[file] =
+															(
+																file_new: file_new,
+																content: content_original,
+																content_new: content_new
+															);
+
+							return;
 						}
 					);
 
         return;
     }
-
-	public partial class ResultData
-	{
-		public ResultData()
-		{
-			this.Log = new Dictionary<string, string>();
-			
-			return;
-		}
-
-		public 
-			Dictionary<string, string>
-										Log
-		{
-			get;
-			set;			
-		}
-
-	}
 }

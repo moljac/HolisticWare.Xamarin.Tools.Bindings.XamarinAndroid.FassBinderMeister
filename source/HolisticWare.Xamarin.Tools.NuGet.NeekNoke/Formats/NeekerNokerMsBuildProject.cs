@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -10,37 +11,40 @@ using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
-public partial class NeekerMsBuildProject
+public partial class NeekerNokerMsBuildProject
 						:
 						NeekerNokerBase
 {
 	public
-        Dictionary
-            <
-                string,
-                (
-                    string file_backup,
-                    string content,
-                    string content_backup
-                )
-            >
-                                            Neek
-                                                    (
-														string[] files
-													)										
+		void
+										NeekNoke
+											(
+												string[] files
+											)
 	{
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
 		{
-			log.Add
-					(
-						file,
-						(
-							file_backup: "",
-							content: null,
-							content_backup: null
-						)
-					);
+			this.ResultsPerFile.Log.Add
+										(
+											file,
+											(
+												file_backup: null,
+												content: null,
+												content_backup: null
+											)
+										);
+			this.ResultsPerFile.PackageReferences.Add
+													(
+														file,
+														(
+															nuget_id: null,
+															version: null,
+															versions_upgradeable: null,
+															text_snippet_original: null,
+															text_snippet_new: null
+														)
+													);
 		}
 
 		Parallel.ForEach
@@ -48,23 +52,33 @@ public partial class NeekerMsBuildProject
 						files,
 						async (file) =>
 						{
-							string extension = Path.GetExtension(file);
-							string ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-							string file_new = Path.ChangeExtension
-															(
-																file, 
-																$"bckp-ts-{ts}{extension}"
-															);
-							System.IO.File.Copy(file, file_new);
+							string extension = null;
+							string ts = null;
+							string file_new = null;
 							string content_original = System.IO.File.ReadAllText(file);
-                            string content_new = System.IO.File.ReadAllText(file_new);
+							string content_new = null;
+
+							if (NeekerNoker.Action == Action.Noke)
+							{
+								extension = Path.GetExtension(file);
+								ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+								file_new = Path.ChangeExtension
+																(
+																	file,
+																	$"bckp-ts-{ts}{extension}"
+																);
+								System.IO.File.Copy(file, file_new);
+								content_new = System.IO.File.ReadAllText(file_new);
+							}
+
                             string nuget_id = null;
                             string version = null;
+                            string text_snippet_original = null;
+                            string text_snippet_new = null;
+
                             string version_override = null;
                             string inner_text = null;
                             string outer_xml = null;
-                            string text_snippet_original = null;
-                            string text_snippet_new = null;
 
                             XDocument xdoc = null;
                             try
@@ -89,17 +103,28 @@ public partial class NeekerMsBuildProject
 							 */
 							List
 								<
-									(
-										string nuget_id,
-										string version,
-										string[] versions
-									)
+									string
 								> 
 									package_data;
-							package_data = new List<(string nuget_id, string version, string[] versions)>();
+
+							package_data = new List
+													<
+														string
+													>();
 
 							IEnumerable<XElement> xe_package_references_include_attribute = null;
 							xe_package_references_include_attribute = xdoc.XPathSelectElements("//PackageReference[@Include]");
+							if
+							(
+								xe_package_references_include_attribute == null
+								||
+								! xe_package_references_include_attribute.Any()
+							)
+							{
+								// No PackageReferences;
+								return;
+							}
+							
 							foreach (XElement xe in xe_package_references_include_attribute)
 							{
 								nuget_id = xe.Attribute("Include").Value;
@@ -110,22 +135,29 @@ public partial class NeekerMsBuildProject
 									np = await NuGetPackage.Utilities
 															.GetNuGetPackageFromRegistrationAsync(nuget_id)
 															;
-
 								}
 								catch (Exception exc)
 								{
-									Trace.WriteLine(exc);
-									throw;
+									this.ResultsPerFile.PackagesFailed.Add
+																		(
+																			(
+																				nuget_id: nuget_id,
+																				version: version
+																			)
+																		);
 								}
 
-								package_data.Add
-												(
-													(
-														nuget_id: np.Id,
-														version: np.VersionTextual,
-														versions: np.VersionsTextual.ToArray()
-													)
-												);
+								this.ResultsPerFile.PackageReferences.Add
+																		(
+																			file,
+																			(
+																				nuget_id: nuget_id,
+																				version: np.VersionLatestTextual,
+																				versions_upgradeable: np.VersionsTextual.ToArray(),
+																				text_snippet_original: text_snippet_original,
+																				text_snippet_new: text_snippet_new
+																			)
+																		);
 							}
 
 							/*
@@ -224,41 +256,62 @@ public partial class NeekerMsBuildProject
 								}
 							}
 
-							package_references.Add
-				                                (
-					                                (
-						                                nuget_id: nuget_id,
-						                                version: version,
-						                                versions_upgradeable: null,
-						                                text_snippet_original: text_snippet_original,
-						                                text_snippet_new: text_snippet_new
-					                                )
-				                                );
-                            //------------------------------------------------------------------------------------------------------
+							if (nuget_id == null)
+							{
+								string msg = "nuget_id is null";
+							}
+
+							if 
+								(
+									this.ResultsPerFile.PackageReferences.ContainsKey(nuget_id)
+								)
+							{
+								this.ResultsPerFile.PackageReferences[file] =
+																				(
+																					nuget_id: nuget_id,
+																					version: version,
+																					versions_upgradeable: null,
+																					text_snippet_original: text_snippet_original,
+																					text_snippet_new: text_snippet_new
+																				);
+							}
+							else
+							{
+								this.ResultsPerFile.PackageReferences.Add
+																		(
+																			file,
+																			(
+																				nuget_id: nuget_id,
+																				version: version,
+																				versions_upgradeable: null,
+																				text_snippet_original: text_snippet_original,
+																				text_snippet_new: text_snippet_new
+																			)
+																		);
+							}
+							//------------------------------------------------------------------------------------------------------
                             //------------------------------------------------------------------------------------------------------
                             // PackageVersion
                             
                             //------------------------------------------------------------------------------------------------------
 
 
-                            log[file] =
-										(
-											file_backup: file_new,
-											content: content_original,
-											content_backup: content_new
-										);
+                            this.ResultsPerFile.Log[file] =
+															(
+																file_backup: file_new,
+																content: content_original,
+																content_backup: content_new
+															);
                             
-                            Console.WriteLine($"nuget_id:		{Environment.NewLine}			{nuget_id}");
-                            Console.WriteLine($"	version:			{Environment.NewLine}	{version}");
-                            Console.WriteLine($"		outer_xml:		{Environment.NewLine}	{outer_xml}");
+                            // Console.WriteLine($"nuget_id:		{Environment.NewLine}			{nuget_id}");
+                            // Console.WriteLine($"	version:			{Environment.NewLine}	{version}");
+                            // Console.WriteLine($"		outer_xml:		{Environment.NewLine}	{outer_xml}");
                             
                             return;
 						}
 
 					);
 
-		this.Log = log;
-
-		return log;        
+		return;
 	}
 }

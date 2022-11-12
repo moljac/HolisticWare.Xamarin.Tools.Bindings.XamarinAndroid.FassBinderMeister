@@ -5,36 +5,37 @@ using System.Threading.Tasks;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
-public partial class NeekerBinderatorConfig
+public partial class NeekerNokerBinderatorConfig
 						:
 						NeekerNokerBase
 {
-	public NeekerBinderatorConfig ()
+	public 
+										NeekerNokerBinderatorConfig 
+											(
+											)
 	{
-		this.Result = new ResultData();
-
 		return;
-	}
-
-	public
-		ResultData
-										Result
-	{
-		get;
-		set;
 	}
 
 	public 
 		void
-										Neek
-										(
-											string[] files
-										)										
+										NeekNoke
+											(
+												string[] files
+											)
     {
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
 		{
-			this.Result.Log.Add(file, "");
+			this.ResultsPerFile.Log.Add
+									(
+										file,
+										(
+											null,
+											null,
+											null
+										) 
+									);
 		}
 
 		Parallel.ForEach
@@ -42,16 +43,31 @@ public partial class NeekerBinderatorConfig
 						files,
 						file =>
 						{
-							string extension = Path.GetExtension(file);
-							string ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-							string file_new = Path.ChangeExtension
-															(
-																file, 
-																$"bckp-ts-{ts}{extension}"
-															);
-							System.IO.File.Copy(file, file_new);
+							string extension = null;
+							string ts = null;
+							string file_new = null;
+							string content_original = System.IO.File.ReadAllText(file);
+							string content_new = null;
 
-							this.Result.Log[file] = $" file {file}";
+							if (NeekerNoker.Action == Action.Noke)
+							{
+								extension = Path.GetExtension(file);
+								ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+								file_new = Path.ChangeExtension
+								(
+									file,
+									$"bckp-ts-{ts}{extension}"
+								);
+								System.IO.File.Copy(file, file_new);
+								content_new = System.IO.File.ReadAllText(file_new);
+							}
+
+							this.ResultsPerFile.Log[file] = 
+																(
+																	file_new: file_new,
+																	content: content_original,
+																	content_new: content_new
+																);
 						}
 					);
 
