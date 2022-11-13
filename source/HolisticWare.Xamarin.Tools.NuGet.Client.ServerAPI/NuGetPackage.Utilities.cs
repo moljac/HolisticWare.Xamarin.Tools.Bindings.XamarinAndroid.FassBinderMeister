@@ -14,7 +14,7 @@ using HolisticWare.Xamarin.Tools.NuGet.Core;
 
 using Versions=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root;
 using PackageRegistration=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageRegistration.Root;
-using NuSpecData=HolisticWare.Xamarin.Tools.NuGet.NuSpec.Generated.Microsoft.package;
+using PackageFromNuSpec=HolisticWare.Xamarin.Tools.NuGet.NuSpec.Generated.Microsoft.Package;
 
 namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
 {
@@ -113,6 +113,11 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                     foreach (JToken jtoken_item0 in jarray_items0)
                     {
                         JArray jarray_items1 = (JArray) jtoken_item0["items"];
+
+                        if (jarray_items1 == null)
+                        {
+                            break;
+                        }
 
                         foreach (JToken jtoken_item1 in jarray_items1)
                         {
@@ -248,7 +253,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
             }
 
             public static async
-                Task<NuSpecData>
+                Task<PackageFromNuSpec>
                                         GetNuSpecAsync
                                             (
                                                 string nuget_id,
@@ -261,21 +266,22 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                     $"{NuGetClient.UrlV3FlatcontainerDefault}/{nuget_id_lower}/{version}/{nuget_id_lower}.nuspec";
 
                 string response = null;
-
+                string ns = "http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd";
                 if (await NuGetClient.HttpClient.IsReachableUrlAsync(url))
                 {
                     response = await NuGetClient.HttpClient.GetStringContentAsync(url);
                 }
-                response = response.Replace("xmlns=\"http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd\"", "");
+                //response = response.Replace(ns, "");
 
-                NuSpecData data = null;
+                PackageFromNuSpec data = null;
                 System.Xml.Serialization.XmlSerializer xs = new System.Xml.Serialization.XmlSerializer
                                                                                             (
-                                                                                                typeof(NuSpecData)
+                                                                                                typeof(PackageFromNuSpec),
+                                                                                                ns
                                                                                             );
                 using (System.IO.StringReader reader = new System.IO.StringReader(response))
                 {
-                    data = xs.Deserialize(reader) as NuSpecData;
+                    data = xs.Deserialize(reader) as PackageFromNuSpec;
                 }
 
                 return data;

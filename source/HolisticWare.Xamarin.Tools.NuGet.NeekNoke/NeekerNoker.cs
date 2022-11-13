@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
+
 using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
+using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
 
@@ -281,14 +284,45 @@ public partial class NeekerNoker
 
         return packages_found;
     }
-    
+
     public
-        void
-        PackageDataFetch
-        (
-            Dictionary<string, string[]> patterns_files
-        )
+        Dictionary<string, NuGetPackage>
+                                        PackageDataFetch
+                                            (
+                                                Dictionary<string, string> packages
+                                            )
     {
-        return;
+        Dictionary<string, NuGetPackage> packages_data = null;
+        Dictionary<string, Exception> packages_data_failed = null;
+        
+        packages_data = new Dictionary<string, NuGetPackage>();
+        packages_data_failed = new Dictionary<string, Exception>();
+
+        Parallel.ForEach
+                    (
+                        packages,
+                         nuget_id_x_version =>
+                        {
+                            NuGetPackage np = null;
+                            
+                            try
+                            {
+                                np = NuGetPackage
+                                                .Utilities
+                                                    .GetNuGetPackageFromRegistrationAsync(nuget_id_x_version.Key)
+                                                    .Result
+                                                    ;
+                                
+                                packages_data.Add(nuget_id_x_version.Key, np);
+                            }
+                            catch (Exception exc)
+                            {
+                                string msg = "";
+                                packages_data_failed.Add(nuget_id_x_version.Key, exc);
+                            }
+                        }
+                );
+
+        return packages_data;
     }
 }

@@ -176,29 +176,4 @@ public partial class NeekerNokerScriptCakeBuild
 
 		return;
 	}
-
-	public async void Verify(string file, string nuget_id)
-	{
-		NuGetPackage np = null;
-		try
-		{
-			np = await NuGetPackage.Utilities
-					.GetNuGetPackageFromRegistrationAsync(nuget_id)
-				;
-		}
-		catch (Exception exc)
-		{
-			this.ResultsPerFormat
-				.ResultsPerFile[file]
-				.PackagesFailed.Add
-				(
-					(
-						nuget_id: nuget_id,
-						version: np.VersionTextual
-					)
-				);
-		}
-		
-	}
-	
 }
