@@ -88,20 +88,20 @@ switch (args.Length)
 
 string[] patterns = new string[]
                                 {
+                                    // "*.cake",
                                     "*.csproj",
-                                    "config.json",
-                                    "directory.build.*.props",
-                                    "directory.packages.*.props",
-                                    "*.props",
-                                    "*.targets",
-                                    "global.json",
-                                    "*.cake",
-                                    "*.csx",
-                                    "*.fsproj",
-                                    "*.vbproj",
-                                    "*.proj",
-                                    "*.xproj",
-                                    "packages.config",
+                                    // "config.json",
+                                    // "directory.build.*.props",
+                                    // "directory.packages.*.props",
+                                    // "*.props",
+                                    // "*.targets",
+                                    // "global.json",
+                                    // "*.csx",
+                                    // "*.fsproj",
+                                    // "*.vbproj",
+                                    // "*.proj",
+                                    // "*.xproj",
+                                    // "packages.config",
                                 };
 
 Dictionary<string, string[]> patterns_files = new Scraper().Harvest(patterns);
@@ -128,77 +128,10 @@ Trace.Flush();
 
 NeekerNoker neeker = new NeekerNoker();
 
-neeker.NeekNoke(patterns_files);
+neeker.Neek(patterns_files);
+neeker.Dump();
 
-foreach (KeyValuePair<string, NeekerNokerBase> nnb in neeker.ResultsPerPattern.Results)
-{
-    Trace.WriteLine($"pattern:      {nnb.Key}");
-    NeekerNokerBase nn = nnb.Value;
-
-    foreach
-    (
-        KeyValuePair
-            <
-                string,                         // file
-                (
-                    string file_backup,         // file backup
-                    string content,
-                    string content_backup
-                )
-            >
-            kv_log in nn.ResultsPerFile.Log
-    )
-    {
-        Trace.WriteLine($"  file:      {kv_log.Key}");
-        if (NeekerNoker.Action == Action.Noke)
-        {
-            Trace.WriteLine($"      file_backup:      {kv_log.Value.file_backup}");
-        }
-    }
-
-    Trace.WriteLine($"      Packages failed      ");
-    Trace.WriteLine($"              NuGet packages that failed with information retrieval");
-    Trace.WriteLine($"              NuGet packages that failed with information retrieval");
-    Trace.WriteLine($"              please report (open issue)");
-    Trace.WriteLine($"              https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/issues");
-    
-    foreach
-    (
-        (
-            string nuget_id,
-            string version
-        )
-        pr in nn.ResultsPerFile.PackagesFailed
-    )
-    {
-        Trace.WriteLine($"              nuget_id:           {pr.nuget_id}");
-        Trace.WriteLine($"                  version:        {pr.version}");
-    }
-
-    Trace.WriteLine($"      Packages found      ");
-    
-    foreach
-        (
-            KeyValuePair
-                <
-                    string, 
-                    (
-                        string nuget_id,
-                        string version_current, 
-                        string[] versions_upgradeable, 
-                        string text_snippet_original, 
-                        string text_snippet_new
-                    )
-                > 
-                    pr in nn.ResultsPerFile.PackageReferences
-            )
-    {
-        Trace.WriteLine($"              nuget_id:           {pr.Value.nuget_id}");
-        Trace.WriteLine($"                  version:           {pr.Value.version_current}");
-        // string vu = Environment.NewLine + "\t\t" + string.Join($"{Environment.NewLine}\t\t", pr.versions_upgradeable);
-        // Trace.WriteLine($"  versions:        {vu}");
-    }
-}
+Dictionary<string, string> packages_found = neeker.PackageDataCleanup();
 
 stopwatch.Stop();
 
