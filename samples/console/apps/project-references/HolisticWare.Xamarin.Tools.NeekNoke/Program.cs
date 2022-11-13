@@ -3,8 +3,10 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Timers;
+
 using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
-using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
+using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
+
 using Action = HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Action;
 
 System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
@@ -132,6 +134,8 @@ neeker.Neek(patterns_files);
 neeker.Dump();
 
 Dictionary<string, string> packages_found = neeker.PackageDataCleanup();
+
+Dictionary<string, NuGetPackage> packages_info = neeker.PackageDataFetch(packages_found);
 
 stopwatch.Stop();
 
