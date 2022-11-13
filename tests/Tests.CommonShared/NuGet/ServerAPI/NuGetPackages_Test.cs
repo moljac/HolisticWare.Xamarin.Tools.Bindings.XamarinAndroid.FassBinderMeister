@@ -75,7 +75,7 @@ using NuGetPackage = HolisticWare.Xamarin.Tools.NuGet.ServerAPI.NuGetPackage;
 using NuGetClient = HolisticWare.Xamarin.Tools.NuGet.ServerAPI.NuGetClient;
 using VersionsData=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root;
 using PackageRegistrationData=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageRegistration.Root;
-using NuSpecData=HolisticWare.Xamarin.Tools.NuGet.NuSpec.Generated.Microsoft.package;
+using NuSpecData=HolisticWare.Xamarin.Tools.NuGet.NuSpec.Generated.Microsoft.Package;
 
 namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
 {

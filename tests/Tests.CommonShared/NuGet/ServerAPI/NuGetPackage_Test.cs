@@ -65,7 +65,6 @@ using ShortRunJob = HolisticWare.Core.Testing.BenchmarkTests.ShortRunJob;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
 
@@ -75,7 +74,7 @@ using NuGetPackage = HolisticWare.Xamarin.Tools.NuGet.ServerAPI.NuGetPackage;
 using NuGetClient = HolisticWare.Xamarin.Tools.NuGet.ServerAPI.NuGetClient;
 using VersionsData=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root;
 using PackageRegistrationData=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageRegistration.Root;
-using NuSpecData=HolisticWare.Xamarin.Tools.NuGet.NuSpec.Generated.Microsoft.package;
+using NuSpecData=HolisticWare.Xamarin.Tools.NuGet.NuSpec.Generated.Microsoft.Package;
 
 namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
 {
@@ -287,6 +286,9 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
                 NuGetPackage np = NuGetPackage.Utilities
                                                     .GetNuGetPackageFromRegistrationAsync(nuget_id)
                                                     .Result;
+                PackageRegistrationData pr = NuGetPackage.Utilities
+                                                    .GetPackageRegistrationFromIndexAsync(nuget_id)
+                                                    .Result;
                 
                 Console.WriteLine($"NuGet:    ");
                 Console.WriteLine($"    Id                  {np.Id}");
@@ -397,6 +399,187 @@ namespace UnitTests.ClientsAPI.NuGetClients.ServerAPI
             // Assert.NotNull(package_versions);
             // #elif XUNIT
             // Assert.NotNull(package_versions);
+            // #endif
+
+            return;
+        }
+        
+        [Test]
+        public
+            void
+                                        GetPackageRegistrationFromIndexAsync_Dictionary_of_NuGetIds
+                                            (
+                                            )
+        {
+            Dictionary<string, NuGetPackage> nuget_ids = null;
+
+            nuget_ids = new Dictionary<string, NuGetPackage>()
+            {
+                {
+                    "HtmlAgilityPack",
+                    null
+                },
+                {
+                    "Microsoft.NET.Test.Sdk",
+                    null
+                },
+                {
+                    "Xamarin.Forms",
+                    null
+                },
+                {
+                    "YamlDotNet",
+                    null
+                },
+                {
+                    "Spectre.Console",
+                    null
+                },
+                {
+                    "CsvHelper",
+                    null
+                },
+                {
+                    "XmlSchemaClassGenerator-beta",
+                    null
+                },
+            };
+
+            NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
+
+            foreach (KeyValuePair<string, NuGetPackage> kvp in nuget_ids)
+            {
+                string nuget_id = kvp.Key;
+                NuGetPackage np = NuGetPackage.Utilities
+                                                    .GetNuGetPackageFromRegistrationAsync(nuget_id)
+                                                    .Result;
+
+                PackageRegistrationData pr = NuGetPackage.Utilities
+                                                    .GetPackageRegistrationFromIndexAsync(nuget_id)
+                                                    .Result;
+
+                Console.WriteLine($"nuget_id:    {nuget_id}");
+                nuget_ids[nuget_id] = np;
+            }
+
+            // #if MSTEST
+            // Assert.IsNotNull(package_metadata);
+            // #elif NUNIT
+            // Assert.NotNull(package_metadata);
+            // #elif XUNIT
+            // Assert.NotNull(package_metadata);
+            // #endif
+
+            return;
+        }
+
+        [Test]
+        public
+            void
+                                        GetPackageVersionsFromIndexAsync_Dictionary_of_NuGetIds
+                                            (
+                                            )
+        {
+            Dictionary<string, VersionsData> nuget_ids = null;
+
+            nuget_ids = new Dictionary<string, VersionsData>()
+            {
+                {
+                    "HtmlAgilityPack",
+                    null
+                },
+                {
+                    "Microsoft.NET.Test.Sdk",
+                    null
+                },
+                {
+                    "Xamarin.Forms",
+                    null
+                },
+                {
+                    "YamlDotNet",
+                    null
+                },
+                {
+                    "Spectre.Console",
+                    null
+                },
+                {
+                    "CsvHelper",
+                    null
+                },
+                {
+                    "XmlSchemaClassGenerator-beta",
+                    null
+                },
+            };
+
+            NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
+
+            foreach (KeyValuePair<string, VersionsData> kvp in nuget_ids)
+            {
+                string nuget_id = kvp.Key;
+                
+                global::HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root v = null;
+                
+                v = NuGetPackage.Utilities
+                    .GetPackageVersionsFromIndexAsync(nuget_id)
+                    .Result;
+                
+                Console.WriteLine($"nuget_id:    {nuget_id}");
+                nuget_ids[nuget_id] = v;
+            }
+            
+            return;
+        }
+        
+        [Test]
+        public
+            void 
+                                        GetPackageVersionsFromIndexAsync__BulkBatch
+                                            (
+                                            )
+        {
+            NuGetClient.HttpClient = Tests.CommonShared.Http.Client;
+
+            int count = 10;
+            Random rnd = new Random();
+            IOrderedEnumerable
+                <
+                    (
+                        string maven_artifact_id,
+                        string maven_artifact_version,
+                        string nuget_package_id,
+                        string nuget_package_version
+                    )
+                > randomized = null;
+            randomized = Data.AX.mappings_artifact_nuget.OrderBy((item) => rnd.Next());
+            
+            foreach 
+                (
+                    (
+                        string maven_artifact_id,
+                        string maven_artifact_version,
+                        string nuget_package_id,
+                        string nuget_package_version
+                    ) mapping in randomized.Take(count)
+                )
+            {
+                string nuget_id = mapping.nuget_package_id;
+
+                global::HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root v = null;
+                
+                v = NuGetPackage.Utilities
+                                    .GetPackageVersionsFromIndexAsync(nuget_id)
+                                    .Result;
+            }
+
+            // #if MSTEST
+            // Assert.IsNotNull(package_metadata);
+            // #elif NUNIT
+            // Assert.NotNull(package_metadata);
+            // #elif XUNIT
+            // Assert.NotNull(package_metadata);
             // #endif
 
             return;
