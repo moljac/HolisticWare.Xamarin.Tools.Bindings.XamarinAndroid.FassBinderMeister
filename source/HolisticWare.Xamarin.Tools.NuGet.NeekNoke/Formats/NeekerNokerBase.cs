@@ -23,8 +23,8 @@ public partial class NeekerNokerBase
     }
 
     public
-        ResultsPerFile
-                                        ResultsPerFile
+        ResultsPerFormat
+                                        ResultsPerFormat
     {
         get;
         set;
@@ -35,7 +35,7 @@ public partial class NeekerNokerBase
                                             (
                                             )
     {
-        this.ResultsPerFile = new ResultsPerFile();
+        this.ResultsPerFormat = new ResultsPerFormat();
         
         return;
     }

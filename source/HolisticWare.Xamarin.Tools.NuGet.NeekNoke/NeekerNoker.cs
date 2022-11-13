@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
 
@@ -16,14 +17,14 @@ public partial class NeekerNoker
 
     public NeekerNoker()
 	{
-		this.ResultsPerPattern = new ResultsPerPattern();
+		this.ResultsPerFormat = new ResultsPerFormat();
 
         return;
 	}
 
     public
-        ResultsPerPattern
-                                        ResultsPerPattern
+        ResultsPerFormat
+                                        ResultsPerFormat
     {
         get;
         set;
@@ -35,26 +36,14 @@ public partial class NeekerNoker
 										(
 											string[] patterns,
 											string location = "."
-										)										
+										)
     {
         return new Scraper().Harvest(patterns, location);
     }
 
 	public
-        Dictionary
-            <
-                string,         // pattern
-                Dictionary      // results
-                        <
-                            string,                         // filename
-                            (
-                                string file_backup,         // filename backup
-                                string content,             // content (changed, new)
-                                string content_backup       // content backu
-                            )
-                        >
-            >
-                                        NeekNoke
+        void
+                                        Neek
                                         (
                                             Dictionary<string, string[]> patterns_files
 										)
@@ -120,7 +109,7 @@ public partial class NeekerNoker
                 case "config.json":
                     NeekNoke.Formats.NeekerNokerBinderatorConfig f_binderator = null;
                     f_binderator = new NeekNoke.Formats.NeekerNokerBinderatorConfig();
-                    this.ResultsPerPattern.Results[kvp.Key] = f_binderator;
+                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_binderator;
                     f_binderator.NeekNoke(kvp.Value);
                     break;
                 case "*.csproj":
@@ -129,7 +118,7 @@ public partial class NeekerNoker
                 case "*.proj":
                     NeekNoke.Formats.NeekerNokerMsBuildProject f_msbuild_proj = null;
                     f_msbuild_proj = new NeekNoke.Formats.NeekerNokerMsBuildProject();
-                    this.ResultsPerPattern.Results[kvp.Key] = f_msbuild_proj;
+                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_msbuild_proj;
                     f_msbuild_proj.NeekNoke(kvp.Value);
                     break;
                 case "directory.packages.*.props":
@@ -140,19 +129,19 @@ public partial class NeekerNoker
                 case "global.json":
                     NeekNoke.Formats.NeekerNokerDotNetGlobalJSON f_global_json = null;
                     f_global_json = new NeekNoke.Formats.NeekerNokerDotNetGlobalJSON();
-                    this.ResultsPerPattern.Results[kvp.Key] = f_global_json;
+                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_global_json;
                     f_global_json.NeekNoke(kvp.Value);
                     break;
                 case "*.cake":
                     NeekNoke.Formats.NeekerNokerScriptCakeBuild f_cake = null;
                     f_cake = new NeekNoke.Formats.NeekerNokerScriptCakeBuild();
-                    this.ResultsPerPattern.Results[kvp.Key] = f_cake;
+                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_cake;
                     f_cake.NeekNoke(kvp.Value);
                     break;
                 case "*.csx":
                     NeekNoke.Formats.NeekerNokerScriptCSharpScriptAndScriptCS f_csx = null;
                     f_csx = new NeekNoke.Formats.NeekerNokerScriptCSharpScriptAndScriptCS();
-                    this.ResultsPerPattern.Results[kvp.Key] = f_csx;
+                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_csx;
                     f_csx.NeekNoke(kvp.Value);
                     break;
                 case "*.xproj":
@@ -160,10 +149,146 @@ public partial class NeekerNoker
                     // TODO
                     break;
                 default:
-                    throw new NotSupportedException($"Neeker.NeekNoke: Pattern {kvp.Key} not supported");
+                    throw new NotSupportedException($"Neeker.Neek: Pattern {kvp.Key} not supported");
             }
         }
 
-        return results;
+        return;
+    }
+
+    public
+        void
+                                        Noke
+                                            (
+                                                Dictionary<string, string[]> patterns_files
+                                            )
+    {
+        return;
+    }
+    
+    public
+        void
+                                        Dump
+                                            (
+                                            )
+    {
+        foreach (KeyValuePair<string, NeekerNokerBase> nnb in this.ResultsPerFormat.ResultsNeekerNoker)
+        {
+            string pattern = nnb.Key;
+            NeekerNokerBase nn = nnb.Value;
+
+            Trace.WriteLine($"pattern:      {pattern}");
+
+            foreach (KeyValuePair<string, ResultsPerFile> rpf in nn.ResultsPerFormat.ResultsPerFile)
+            {
+                string file = rpf.Key;
+
+                Trace.WriteLine($"  file:      {file}");
+
+                if (NeekerNoker.Action == Action.Noke)
+                {
+                    foreach
+                    (
+                        (
+                            string file_backup,
+                            string content,
+                            string content_backup
+                        )
+                            kv_log in rpf.Value.Log
+                    )
+                    {
+                        Trace.WriteLine($"      file_backup:      {kv_log.file_backup}");
+                    }
+                }
+
+                Trace.WriteLine($"      Packages failed      ");
+                Trace.WriteLine($"              NuGet packages that failed with information retrieval");
+                Trace.WriteLine($"              please report (open issue)");
+                Trace.WriteLine($"              https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/issues");
+                foreach ((string nuget_id, string version_current) pf in rpf.Value.PackagesFailed)
+                {
+                    Trace.WriteLine($"              nuget_id    :           {pf.nuget_id}");
+                    Trace.WriteLine($"                  version :           {pf.version_current}");
+                }
+
+                Trace.WriteLine($"      Packages found      ");
+
+                foreach
+                (
+                    (
+                        string nuget_id,
+                        string version_current,
+                        string[] versions_upgradeable,
+                        string text_snippet_original,
+                        string text_snippet_new
+                    )
+                        pr in rpf.Value.PackageReferences
+                )
+                {
+                    Trace.WriteLine($"              nuget_id:           {pr.nuget_id}");
+                    Trace.WriteLine($"                  version:           {pr.version_current}");
+                    // string vu = Environment.NewLine + "\t\t" + string.Join($"{Environment.NewLine}\t\t", pr.versions_upgradeable);
+                    // Trace.WriteLine($"  versions:        {vu}");
+                }
+            }
+        }
+
+        return;
+    }
+
+    public
+        Dictionary<string, string>
+                                        PackageDataCleanup
+                                            (
+                                            )
+    {
+        Dictionary<string, string> packages_found = new Dictionary<string, string>();
+
+        foreach (KeyValuePair<string, NeekerNokerBase> nnb in this.ResultsPerFormat.ResultsNeekerNoker)
+        {
+            string pattern = nnb.Key;
+            NeekerNokerBase nn = nnb.Value;
+
+            Trace.WriteLine($"pattern:      {pattern}");
+
+            foreach (KeyValuePair<string, ResultsPerFile> rpf in nn.ResultsPerFormat.ResultsPerFile)
+            {
+                string file = rpf.Key;
+
+                Trace.WriteLine($"  file:      {file}");
+
+                foreach
+                (
+                    (
+                        string nuget_id,
+                        string version_current,
+                        string[] versions_upgradeable,
+                        string text_snippet_original,
+                        string text_snippet_new
+                    )
+                        pr in rpf.Value.PackageReferences
+                )
+                {
+                    string ni = pr.nuget_id;
+
+                    if (!packages_found.ContainsKey(ni))
+                    {
+                        packages_found.Add(pr.nuget_id, pr.version_current);
+                    }
+                }
+            }
+        }
+
+        return packages_found;
+    }
+    
+    public
+        void
+        PackageDataFetch
+        (
+            Dictionary<string, string[]> patterns_files
+        )
+    {
+        return;
     }
 }

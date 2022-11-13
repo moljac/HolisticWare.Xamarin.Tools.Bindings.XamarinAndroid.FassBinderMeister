@@ -27,15 +27,14 @@ public partial class NeekerNokerBinderatorConfig
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
 		{
-			this.ResultsPerFile.Log.Add
-									(
-										file,
-										(
-											null,
-											null,
-											null
-										) 
-									);
+			this.ResultsPerFormat.ResultsPerFile.Add
+													(
+														file,
+														new ResultsPerFile()
+														{
+															File = file
+														}
+													);
 		}
 
 		Parallel.ForEach
@@ -62,34 +61,18 @@ public partial class NeekerNokerBinderatorConfig
 								content_new = System.IO.File.ReadAllText(file_new);
 							}
 
-							this.ResultsPerFile.Log[file] = 
+							this.ResultsPerFormat
+									.ResultsPerFile[file].Log.Add
 																(
-																	file_new: file_new,
-																	content: content_original,
-																	content_new: content_new
+																	(
+																		file_new: file_new,
+																		content: content_original,
+																		content_new: content_new
+																	)
 																);
 						}
 					);
 
-        return;        
+        return;
     }
-
-	public partial class ResultData
-	{
-		public ResultData()
-		{
-			this.Log = new Dictionary<string, string>();
-			
-			return;
-		}
-
-		public 
-			Dictionary<string, string>
-										Log
-		{
-			get;
-			set;			
-		}
-
-	}
 }

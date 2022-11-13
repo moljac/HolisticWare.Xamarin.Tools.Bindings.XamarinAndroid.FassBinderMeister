@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
+using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
+
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
 public partial class NeekerNokerScriptCakeBuild
@@ -28,33 +30,20 @@ public partial class NeekerNokerScriptCakeBuild
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
 		{
-			this.ResultsPerFile.Log.Add
-										(
-											file,
-											(
-												file_backup: null,
-												content: null,
-												content_backup: null
-											)
-										);
-			this.ResultsPerFile.PackageReferences.Add
+			this.ResultsPerFormat.ResultsPerFile.Add
 													(
 														file,
-														(
-															nuget_id: null,
-															version: null,
-															versions_upgradeable: null,
-															text_snippet_original: null,
-															text_snippet_new: null
-														)
+														new ResultsPerFile()
+														{
+															File = file
+														}
 													);
-			
 		}
 
 		Parallel.ForEach
 					(
 						files,
-						file =>
+						async (file) =>
 						{
 							string extension = null;
 							string ts = null;
@@ -85,8 +74,6 @@ public partial class NeekerNokerScriptCakeBuild
 
 							foreach(string line in lines)
 							{
-								nuget_id = null;
-								version = null;
 								switch (line)
 								{
 									case string line_preprocessor when line.StartsWith("#"):
@@ -115,6 +102,7 @@ public partial class NeekerNokerScriptCakeBuild
 														version = part.Replace("version=", "");
 													}
 												}
+												
 												break;
 											case string preprocessor_cmd when line_preprocessor.StartsWith("tool"):
 												if (line.Contains("nuget:?package="))
@@ -137,34 +125,49 @@ public partial class NeekerNokerScriptCakeBuild
 														version = part.Replace("version=", "");
 													}
 												}
+												
 												break;
 											default:
-												continue;
 												break;
 										}
+
+										if (nuget_id == null)
+										{
+											break;
+										}
+
+										this.ResultsPerFormat
+												.ResultsPerFile[file]
+													.PackageReferences.Add
+																		(
+																			(
+																				nuget_id: nuget_id,
+																				version_current: version,
+																				versions_upgradeable: null,
+																				text_snippet_original: text_snippet_original,
+																				text_snippet_new: text_snippet_new
+																			)
+																		);
+										nuget_id = null;
+										version = null;
 										break;
 									default:
 										continue;
 										break;
 								}
 
-								this.ResultsPerFile.PackageReferences[file] =
-																				(
-																					nuget_id: nuget_id,
-																					version: version,
-																					versions_upgradeable: null,
-																					text_snippet_original: text_snippet_original,
-																					text_snippet_new: text_snippet_new
-																				);
 
 							}
 
-							this.ResultsPerFile.Log[file] =
-															(
-																file_new: file_new,
-																content: content_original,
-																content_new: content_new
-															);
+							this.ResultsPerFormat
+									.ResultsPerFile[file].Log.Add
+																(
+																	(
+																		file_new: file_new,
+																		content: content_original,
+																		content_new: content_new
+																	)
+																);
 
 							return;
 
@@ -173,4 +176,29 @@ public partial class NeekerNokerScriptCakeBuild
 
 		return;
 	}
+
+	public async void Verify(string file, string nuget_id)
+	{
+		NuGetPackage np = null;
+		try
+		{
+			np = await NuGetPackage.Utilities
+					.GetNuGetPackageFromRegistrationAsync(nuget_id)
+				;
+		}
+		catch (Exception exc)
+		{
+			this.ResultsPerFormat
+				.ResultsPerFile[file]
+				.PackagesFailed.Add
+				(
+					(
+						nuget_id: nuget_id,
+						version: np.VersionTextual
+					)
+				);
+		}
+		
+	}
+	
 }

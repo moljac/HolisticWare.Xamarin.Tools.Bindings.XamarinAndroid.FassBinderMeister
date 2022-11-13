@@ -29,15 +29,14 @@ public partial class NeekerNokerDotNetGlobalJSON
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
 		{
-			this.ResultsPerFile.Log.Add
-										(
-											file,
-											(
-												null,
-												null,
-												null
-											) 
-										);
+			this.ResultsPerFormat.ResultsPerFile.Add
+													(
+														file,
+														new ResultsPerFile()
+														{
+															File = file
+														}
+													);
 		}
 
 		Parallel.ForEach
@@ -114,12 +113,15 @@ public partial class NeekerNokerDotNetGlobalJSON
 								msbuild_sdks.Add((name, value));
 							}
 
-							this.ResultsPerFile.Log[file] =
-															(
-																file_new: file_new,
-																content: content_original,
-																content_new: content_new
-															);
+							this.ResultsPerFormat
+									.ResultsPerFile[file].Log.Add
+																(
+																	(
+																		file_new: file_new,
+																		content: content_original,
+																		content_new: content_new
+																	)
+																);
 
 							return;
 						}

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
 
-public class ResultsPerFile
+public partial class ResultsPerFile
 {
     public
         string
@@ -13,25 +13,23 @@ public class ResultsPerFile
     }
 
     public 
-        Dictionary
-                <
-                    string,                             // nuget_id
-                    (
-                        string version_current,         // version_current
-                        string[] versions_updateable    // versions_updateable
-                    )
-                >
+        List
+                        <
+                            (
+                                string version_current,         // version_current
+                                string[] versions_updateable    // versions_updateable
+                            )
+                        >
                 package_versions = null;
 
     public
-        Dictionary
-                <
-                    string,                             // nuget_id
-                    (
-                        string version_current,         // version_current
-                        string[] versions_updateable    // versions_updateable
-                    )
-                > 
+        List
+                        <
+                            (
+                                string version_current,         // version_current
+                                string[] versions_updateable    // versions_updateable
+                            )
+                        >
                                         PackageVersions
     {
         get
@@ -47,32 +45,30 @@ public class ResultsPerFile
         }
     }
     
-    protected 
-        Dictionary
-            <
-                string,                             // file
-                (
-                    string nuget_id,                // nuget_id
-                    string version_current,         // version current (from file)
-                    string[] versions_upgradeable,  // version upgradeable (from nuget feed[s])
-                    string text_snippet_original,   // text snippet original (form file to preserve formatting) 
-                    string text_snippet_new         // text snippet new (from nuget feed changed version)
-                )
-            > 
+    protected
+        List
+                    <
+                        (
+                            string nuget_id,                // nuget_id
+                            string version_current,         // version current (from file)
+                            string[] versions_upgradeable,  // version upgradeable (from nuget feed[s])
+                            string text_snippet_original,   // text snippet original (form file to preserve formatting) 
+                            string text_snippet_new         // text snippet new (from nuget feed changed version)
+                        )
+                    >
                 package_references = null;
 
     public
-        Dictionary
-            <
-                string,                             // file
-                (
-                    string nuget_id,                // nuget_id
-                    string version_current,         // version current (from file)
-                    string[] versions_upgradeable,  // version upgradeable (from nuget feed[s])
-                    string text_snippet_original,   // text snippet original (form file to preserve formatting) 
-                    string text_snippet_new         // text snippet new (from nuget feed changed version)
-                )
-            > 
+                List
+                    <
+                        (
+                            string nuget_id,                // nuget_id
+                            string version_current,         // version current (from file)
+                            string[] versions_upgradeable,  // version upgradeable (from nuget feed[s])
+                            string text_snippet_original,   // text snippet original (form file to preserve formatting) 
+                            string text_snippet_new         // text snippet new (from nuget feed changed version)
+                        )
+                    >
                                         PackageReferences
     {
         get
@@ -89,13 +85,13 @@ public class ResultsPerFile
     }
 
     public
-        List
-            <
-                (
-                    string nuget_id,                // nuget_id
-                    string version_current          // version current (from file)
-                )
-            > 
+                List
+                    <
+                        (
+                            string nuget_id,                // nuget_id
+                            string version_current          // version current (from file)
+                        )
+                    >
                                         PackagesFailed
     {
         get
@@ -111,27 +107,26 @@ public class ResultsPerFile
         }
     }
 
-    protected 
-        List
-            <
-                (
-                    string nuget_id,                // nuget_id
-                    string version_current         // version current (from file)
-                )
-            > 
+    protected
+                List
+                    <
+                        (
+                            string nuget_id,                // nuget_id
+                            string version_current         // version current (from file)
+                        )
+                    >
                                         packages_failed = null;
 
     public 
-        Dictionary
-                <
-                    string,                             // file with references (changed if noked)
-                    (
-                        string file_backup,             // file backup with original content
-                        string content,                 // contnent (changed if noked)
-                        string content_backup           // content backup with original content
-                    )
-                > 
-        Log
+                    List
+                        <
+                            (
+                                string file_backup,             // file backup with original content
+                                string content,                 // contnent (changed if noked)
+                                string content_backup           // content backup with original content
+                            )
+                        >
+                                        Log
     {
         get
         {
@@ -147,15 +142,14 @@ public class ResultsPerFile
     }
 
     protected
-        Dictionary
-                <
-                    string,                             // file with references (changed if noked)
-                    (
-                        string file_backup,             // file backup with original content
-                        string content,                 // contnent (changed if noked)
-                        string content_backup           // content backup with original content
-                    )
-                >
+                    List
+                        <
+                            (
+                                string file_backup,             // file backup with original content
+                                string content,                 // contnent (changed if noked)
+                                string content_backup           // content backup with original content
+                            )
+                        >
                 log = null;
 
     public
@@ -163,48 +157,45 @@ public class ResultsPerFile
                                             (
                                             )
     {
-        log = new Dictionary
-                        <
-                            string,                             // file with references (changed if noked)
-                            (
-                                string file_backup,             // file backup with original content
-                                string content,                 // contnent (changed if noked)
-                                string content_backup           // content backup with original content
-                            )
-                        >
-                        ();
-        
-        package_versions = new Dictionary
-                                        <
-                                            string,
-                                            (
-                                                string version_current,
-                                                string[] versions_updateable
-                                            )
-                                        >
-                                        ();
-        
-        package_references = new Dictionary
-                                        <
-                                            string,                             // file
-                                            (
-                                                string nuget_id,                // nuget_id
-                                                string version_current,
-                                                string[] versions_upgradeable,
-                                                string text_snippet_original,
-                                                string text_snippet_new
-                                            )
-                                        >
-                                            ();
-
-        packages_failed = new List
+        log = new List
                                 <
                                     (
-                                        string nuget_id,
-                                        string version_current
+                                        string file_backup,             // file backup with original content
+                                        string content,                 // contnent (changed if noked)
+                                        string content_backup           // content backup with original content
                                     )
                                 >
                                     ();
+        
+        package_versions = new List
+                                                <
+                                                    (
+                                                        string version_current,
+                                                        string[] versions_updateable
+                                                    )
+                                                >
+                                        ();
+        
+        package_references = new List
+                                                <
+                                                    (
+                                                        string nuget_id,                // nuget_id
+                                                        string version_current,
+                                                        string[] versions_upgradeable,
+                                                        string text_snippet_original,
+                                                        string text_snippet_new
+                                                    )
+                                                >
+                                            ();
+
+        packages_failed = new List
+                                            <
+                                                (
+                                                    string nuget_id,
+                                                    string version_current
+                                                )
+                                            >
+                                        ();
 
         return;
     }
