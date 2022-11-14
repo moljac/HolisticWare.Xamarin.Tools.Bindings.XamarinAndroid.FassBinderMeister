@@ -39,6 +39,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NeekNoke.SpanJson", "HolisticWare.Xamarin.Tools.NeekNoke.SpanJson\HolisticWare.Xamarin.Tools.NeekNoke.SpanJson.csproj", "{D3FA0746-C731-4FF8-A731-566BE98813F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.SpanJSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.SpanJSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.SpanJSON.csproj", "{162EE50D-D0F2-473E-B2E0-9DCE5BA01634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.UTF8JSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.UTF8JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.UTF8JSON.csproj", "{FF52DA10-5B63-4739-AEE7-C4301887D167}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Jil", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Jil\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Jil.csproj", "{3065AF1C-9D73-4FF2-A80C-18B7413283A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Newtonsoft.JSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Newtonsoft.JSON\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Newtonsoft.JSON.csproj", "{DFDD62EF-666D-44D6-B28F-65EC13458B68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.SpanJSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.SpanJSON\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.SpanJSON.csproj", "{8B0AE814-0AC3-4CA4-A700-B73DB5346B69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON.csproj", "{C7C7862D-E1F9-4053-BFCF-685064CC3329}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +128,30 @@ Global
 		{D3FA0746-C731-4FF8-A731-566BE98813F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3FA0746-C731-4FF8-A731-566BE98813F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3FA0746-C731-4FF8-A731-566BE98813F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{162EE50D-D0F2-473E-B2E0-9DCE5BA01634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{162EE50D-D0F2-473E-B2E0-9DCE5BA01634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{162EE50D-D0F2-473E-B2E0-9DCE5BA01634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{162EE50D-D0F2-473E-B2E0-9DCE5BA01634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF52DA10-5B63-4739-AEE7-C4301887D167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF52DA10-5B63-4739-AEE7-C4301887D167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF52DA10-5B63-4739-AEE7-C4301887D167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF52DA10-5B63-4739-AEE7-C4301887D167}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3065AF1C-9D73-4FF2-A80C-18B7413283A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3065AF1C-9D73-4FF2-A80C-18B7413283A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3065AF1C-9D73-4FF2-A80C-18B7413283A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3065AF1C-9D73-4FF2-A80C-18B7413283A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFDD62EF-666D-44D6-B28F-65EC13458B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFDD62EF-666D-44D6-B28F-65EC13458B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFDD62EF-666D-44D6-B28F-65EC13458B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFDD62EF-666D-44D6-B28F-65EC13458B68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0AE814-0AC3-4CA4-A700-B73DB5346B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0AE814-0AC3-4CA4-A700-B73DB5346B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0AE814-0AC3-4CA4-A700-B73DB5346B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0AE814-0AC3-4CA4-A700-B73DB5346B69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7C7862D-E1F9-4053-BFCF-685064CC3329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7C7862D-E1F9-4053-BFCF-685064CC3329}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7C7862D-E1F9-4053-BFCF-685064CC3329}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7C7862D-E1F9-4053-BFCF-685064CC3329}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{369671E9-EA61-468A-8F07-AFC230BF7A82} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
@@ -129,5 +165,11 @@ Global
 		{79D98785-6F49-425D-BC28-309F80924467} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
 		{03A5FC2C-90D3-4270-8583-A05A53659977} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
 		{5F3DB83B-BF8C-4C91-B240-A1F796C1C643} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
+		{162EE50D-D0F2-473E-B2E0-9DCE5BA01634} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
+		{FF52DA10-5B63-4739-AEE7-C4301887D167} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
+		{3065AF1C-9D73-4FF2-A80C-18B7413283A0} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
+		{DFDD62EF-666D-44D6-B28F-65EC13458B68} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
+		{8B0AE814-0AC3-4CA4-A700-B73DB5346B69} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
+		{C7C7862D-E1F9-4053-BFCF-685064CC3329} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
 	EndGlobalSection
 EndGlobal

@@ -65,7 +65,7 @@
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.System.Text.JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.System.Text.JSON.csproj" />
         -->
             
-        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Jil\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Jil.csproj" />
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON.csproj" />
     </ItemGroup>
 
     <ItemGroup>
