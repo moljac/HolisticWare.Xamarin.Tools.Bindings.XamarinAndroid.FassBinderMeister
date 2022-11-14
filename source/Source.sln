@@ -69,6 +69,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON", "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON.csproj", "{A2381718-5D13-446F-BEC4-5856A915C959}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.UTF8JSON", "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.UTF8JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.UTF8JSON.csproj", "{2FFBEFC7-8733-4365-B53D-CDDBC32D2D0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.SpanJSON", "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.SpanJSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.SpanJSON.csproj", "{B049641A-DF9C-4CDB-B7C4-2B122565F5BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.SpanJSON", "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.SpanJSON\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.SpanJSON.csproj", "{AF1A9716-C803-475B-971C-0382FF1A299C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Jil", "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Jil\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Jil.csproj", "{C3E28EBC-D78E-4F4E-BFD3-F2656BC9D5D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON", "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON.csproj", "{2DA037CE-3497-4B8A-B12C-EA2D75554817}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Newtonsoft.JSON", "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Newtonsoft.JSON\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Newtonsoft.JSON.csproj", "{EB83CCD1-2DB9-40D9-AD90-480CFCD62108}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\externals-submodules\Core.Math.Discrete.GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10-shared\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10-shared.projitems*{558868b8-8818-4578-8710-12e6a127f37a}*SharedItemsImports = 5
@@ -170,6 +182,30 @@ Global
 		{A2381718-5D13-446F-BEC4-5856A915C959}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2381718-5D13-446F-BEC4-5856A915C959}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2381718-5D13-446F-BEC4-5856A915C959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FFBEFC7-8733-4365-B53D-CDDBC32D2D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FFBEFC7-8733-4365-B53D-CDDBC32D2D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FFBEFC7-8733-4365-B53D-CDDBC32D2D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FFBEFC7-8733-4365-B53D-CDDBC32D2D0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B049641A-DF9C-4CDB-B7C4-2B122565F5BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B049641A-DF9C-4CDB-B7C4-2B122565F5BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B049641A-DF9C-4CDB-B7C4-2B122565F5BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B049641A-DF9C-4CDB-B7C4-2B122565F5BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF1A9716-C803-475B-971C-0382FF1A299C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF1A9716-C803-475B-971C-0382FF1A299C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF1A9716-C803-475B-971C-0382FF1A299C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF1A9716-C803-475B-971C-0382FF1A299C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3E28EBC-D78E-4F4E-BFD3-F2656BC9D5D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E28EBC-D78E-4F4E-BFD3-F2656BC9D5D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E28EBC-D78E-4F4E-BFD3-F2656BC9D5D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E28EBC-D78E-4F4E-BFD3-F2656BC9D5D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DA037CE-3497-4B8A-B12C-EA2D75554817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DA037CE-3497-4B8A-B12C-EA2D75554817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DA037CE-3497-4B8A-B12C-EA2D75554817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DA037CE-3497-4B8A-B12C-EA2D75554817}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB83CCD1-2DB9-40D9-AD90-480CFCD62108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB83CCD1-2DB9-40D9-AD90-480CFCD62108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB83CCD1-2DB9-40D9-AD90-480CFCD62108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB83CCD1-2DB9-40D9-AD90-480CFCD62108}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,22 +2,21 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-
         <LangVersion>Latest</LangVersion>
-        <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI</RootNamespace>
+        <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.NeekNoke</RootNamespace>
         <!--
         If moved to separate PropertyGroup - UI is cleared?!?!
         -->
         <PackOnBuild>true</PackOnBuild>
-        <PackageId>HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI</PackageId>
+        <PackageId>HolisticWare.Xamarin.Tools.NuGet.NeekNoke</PackageId>
         <Title>
-            HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI
+            HolisticWare.Xamarin.Tools.NuGet.NeekNoke
         </Title>
         <summary>
-            NuGet client API. Tools for nuget client API for bindings productivity.
+            NuGet updating APIs. Tools for nuget package updates API for productivity.
         </summary>
         <Description>
-            NuGet client API. Tools for nuget client API for bindings productivity.
+            NuGet updating APIs. Tools for nuget package updates API for productivity.
         </Description>
         <Owners>HolisticWare, moljac</Owners>
         <Authors>HolisticWare, moljac</Authors>
@@ -58,27 +57,15 @@
         -->
         <PackageOutputPath>../../output</PackageOutputPath>
     </PropertyGroup>
-
-    <ItemGroup>
-        <Content Include="readme.md">
-            <Pack>true</Pack>
-            <PackagePath>README.txt</PackagePath>
-        </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
-        <!--
-      <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
+    
+    <ItemGroup><!--
+        <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj" />
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON.csproj" />
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.System.Text.JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.System.Text.JSON.csproj" />
         -->
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" />
+            
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Jil\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Jil.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -89,9 +76,6 @@
         <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
         <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
         <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Generated\" />
+        <PackageReference Include="System.Text.Json" />
     </ItemGroup>
 </Project>

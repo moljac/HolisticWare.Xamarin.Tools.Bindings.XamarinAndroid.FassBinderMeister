@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
 
         <LangVersion>Latest</LangVersion>
         <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI</RootNamespace>
@@ -78,7 +78,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="SpanJson" />
     </ItemGroup>
 
     <ItemGroup>
