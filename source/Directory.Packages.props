@@ -19,6 +19,8 @@
     </PropertyGroup>
 
   <ItemGroup>
+    <PackageVersion Include="System.Text.Json" Version="4.3.0"/>
+    <PackageVersion Include="Jil" Version="2.17.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageVersion Include="System.Net.Http" Version="4.3.4" />
     <PackageVersion Include="System.Text.Json" Version="6.0.5" />

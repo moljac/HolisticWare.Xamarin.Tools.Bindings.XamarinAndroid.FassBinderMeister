@@ -286,23 +286,69 @@ public partial class NeekerNoker
     }
 
     public
-        Dictionary<string, NuGetPackage>
+        Dictionary
+                <
+                    string, // nuget_id
+                    (
+                        string version_current,
+                        string version_latest,
+                        string[] versions_upgradeable,
+                        NuGetPackage package_details,
+                        bool failed
+                    )
+                >
                                         PackageDataFetch
                                             (
                                                 Dictionary<string, string> packages
                                             )
     {
-        Dictionary<string, NuGetPackage> packages_data = null;
-        Dictionary<string, Exception> packages_data_failed = null;
-        
-        packages_data = new Dictionary<string, NuGetPackage>();
-        packages_data_failed = new Dictionary<string, Exception>();
+        Dictionary
+            <
+                string,                 // nuget_id
+                (
+                    string version_current,
+                    string version_latest,
+                    string[] versions_upgradeable,
+                    NuGetPackage package_details,
+                    bool failed
+                )
+            >
+                packages_data = null;
 
+        packages_data = new Dictionary
+                                    <
+                                        string, // nuget_id
+                                        (
+                                            string version_current,
+                                            string version_latest,
+                                            string[] versions_upgradeable,
+                                            NuGetPackage package_details,
+                                            bool failed
+                                        )
+                                    >
+                                        ();
+        
         Parallel.ForEach
                     (
                         packages,
                          nuget_id_x_version =>
                         {
+                            string nuget_id = nuget_id_x_version.Key;
+                            string version = nuget_id_x_version.Value;
+            
+                            global::HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root v = null;
+
+                            try
+                            {
+                                v = NuGetPackage.Utilities
+                                                    .GetPackageVersionsFromIndexAsync(nuget_id)
+                                                    .Result;
+                            }
+                            catch (Exception exc)
+                            {
+                                Console.WriteLine(exc);
+                                // throw;
+                            }
                             NuGetPackage np = null;
                             
                             try
@@ -312,13 +358,35 @@ public partial class NeekerNoker
                                                     .GetNuGetPackageFromRegistrationAsync(nuget_id_x_version.Key)
                                                     .Result
                                                     ;
+
+                                string version_latest = (v.versions.ToArray())[v.versions.Count - 1];
+                                string[] versions_upgradeable = v.versions.ToArray();
                                 
-                                packages_data.Add(nuget_id_x_version.Key, np);
+                                packages_data.Add
+                                                (
+                                                    nuget_id_x_version.Key, 
+                                                    (
+                                                        version_current: version,
+                                                        version_latest: version_latest,
+                                                        versions_upgradeable: versions_upgradeable,
+                                                        NuGetPackage: np,
+                                                        failed: false
+                                                    )
+                                                );
                             }
                             catch (Exception exc)
                             {
-                                string msg = "";
-                                packages_data_failed.Add(nuget_id_x_version.Key, exc);
+                                packages_data.Add
+                                                (
+                                                    nuget_id_x_version.Key,
+                                                    (
+                                                        version_current: version,
+                                                        version_latest: null,
+                                                        versions_upgradeable: null,
+                                                        NuGetPackage: null,
+                                                        failed: false
+                                                    )
+                                                );
                             }
                         }
                 );

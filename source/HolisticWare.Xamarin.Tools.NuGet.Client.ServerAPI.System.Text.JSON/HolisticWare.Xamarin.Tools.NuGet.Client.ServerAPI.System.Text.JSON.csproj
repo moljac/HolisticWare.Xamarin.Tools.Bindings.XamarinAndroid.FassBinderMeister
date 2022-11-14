@@ -58,7 +58,14 @@
         -->
         <PackageOutputPath>../../output</PackageOutputPath>
     </PropertyGroup>
-    
+
+    <ItemGroup>
+        <Content Include="readme.md">
+            <Pack>true</Pack>
+            <PackagePath>README.txt</PackagePath>
+        </Content>
+    </ItemGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
     </ItemGroup>
@@ -71,7 +78,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="System.Text.Json" />
     </ItemGroup>
 
     <ItemGroup>

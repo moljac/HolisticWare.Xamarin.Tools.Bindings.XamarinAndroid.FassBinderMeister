@@ -1,5 +1,9 @@
 ﻿# NuGetClient (ServerAPI)
 
+NOTE: this NuGet package uses Jil - not intended for mobile usage (especially iOS)
+
+## Server API
+
 * https://docs.microsoft.com/en-us/nuget/api/overview
 
 * https://github.com/NuGet/Home/wiki/SemVer2-support-for-nuget.org-(server-side)
