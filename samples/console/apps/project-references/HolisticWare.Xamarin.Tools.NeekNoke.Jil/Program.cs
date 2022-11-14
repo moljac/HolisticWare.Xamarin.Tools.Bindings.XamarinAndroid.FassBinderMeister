@@ -90,20 +90,20 @@ switch (args.Length)
 
 string[] patterns = new string[]
                                 {
-                                    // "*.cake",
                                     "*.csproj",
-                                    // "config.json",
-                                    // "directory.build.*.props",
-                                    // "directory.packages.*.props",
-                                    // "*.props",
-                                    // "*.targets",
-                                    // "global.json",
-                                    // "*.csx",
-                                    // "*.fsproj",
-                                    // "*.vbproj",
-                                    // "*.proj",
-                                    // "*.xproj",
-                                    // "packages.config",
+                                    "*.cake",
+                                    "config.json",
+                                    "directory.build.*.props",
+                                    "directory.packages.*.props",
+                                    "*.props",
+                                    "*.targets",
+                                    "global.json",
+                                    "*.csx",
+                                    "*.fsproj",
+                                    "*.vbproj",
+                                    "*.proj",
+                                    "*.xproj",
+                                    "packages.config",
                                 };
 
 Dictionary<string, string[]> patterns_files = new Scraper().Harvest(patterns);
@@ -152,6 +152,12 @@ packages_info = neeker.PackageDataFetch(packages_found);
 
 stopwatch.Stop();
 
-Trace.WriteLine($"Elapsed:       {stopwatch.Elapsed}");
+#if DEBUG
+Trace.WriteLine($"Elapsed:       {stopwatch.Elapsed},Release,");
+Trace.WriteLine($"               {DateTime.Now.ToString("yyyyMMdd-HHmmss")},{stopwatch.Elapsed},Debug,");
+#else
+Trace.WriteLine($"Elapsed:       {stopwatch.Elapsed},Release,");
+Trace.WriteLine($"               {DateTime.Now.ToString("yyyyMMdd-HHmmss")},{stopwatch.Elapsed},Release,");
+#endif
 
 return 0;
