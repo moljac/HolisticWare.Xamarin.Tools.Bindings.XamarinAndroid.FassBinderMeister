@@ -135,7 +135,20 @@ neeker.Dump();
 
 Dictionary<string, string> packages_found = neeker.PackageDataCleanup();
 
-Dictionary<string, NuGetPackage> packages_info = neeker.PackageDataFetch(packages_found);
+Dictionary
+        <
+            string, // nuget_id
+            (
+                string version_current,
+                string version_latest,
+                string[] versions_upgradeable,
+                NuGetPackage package_details,
+                bool failed
+            )
+        >
+        packages_info = null;
+
+packages_info = neeker.PackageDataFetch(packages_found);
 
 stopwatch.Stop();
 
