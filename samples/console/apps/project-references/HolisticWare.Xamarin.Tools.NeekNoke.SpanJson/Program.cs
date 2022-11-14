@@ -1,8 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Timers;
 
 using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
 using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
