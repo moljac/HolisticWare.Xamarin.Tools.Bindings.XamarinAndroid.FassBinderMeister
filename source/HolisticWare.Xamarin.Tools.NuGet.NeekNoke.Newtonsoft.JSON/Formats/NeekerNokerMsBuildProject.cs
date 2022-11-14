@@ -38,7 +38,7 @@ public partial class NeekerNokerMsBuildProject
 		Parallel.ForEach
 					(
 						files,
-						async (file) =>
+						(file) =>
 						{
 							string extension = null;
 							string ts = null;
