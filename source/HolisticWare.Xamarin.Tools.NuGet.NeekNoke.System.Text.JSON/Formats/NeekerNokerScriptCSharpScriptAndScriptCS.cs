@@ -62,13 +62,17 @@ public partial class NeekerNokerScriptCSharpScriptAndScriptCS
 								content_new = System.IO.File.ReadAllText(file_new);
 							}
 
+							// #r "nuget:Newtonsoft.Json"
+							// #r "nuget: AutoMapper, 6.1.0"
+							// #r "nuget:Newtonsoft.Json,1.20"
+							
 							this.ResultsPerFormat
 									.ResultsPerFile[file].Log.Add
 																(
 																	(
-																		file_new: file_new,
+																		file_backup: file_new,
 																		content: content_original,
-																		content_new: content_new
+																		content_backup: content_new
 																	)
 																);
 
