@@ -34,8 +34,8 @@ namespace BindingConfigurator
 
             //await GoogleMavenData.LoadAsync(local: false);
 
-            //ProcesGoogleAndroidX();
-            //ProcesGooglePlayServicesFirebase();
+            ProcesGoogleAndroidX();
+            ProcesGooglePlayServicesFirebase();
 
             Console.WriteLine("Exiting ...");
 
