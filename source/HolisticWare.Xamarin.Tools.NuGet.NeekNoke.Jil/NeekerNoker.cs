@@ -352,6 +352,7 @@ public partial class NeekerNoker
             
                             global::HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root v = null;
 
+                            bool failed = false;
                             try
                             {
                                 v = NuGetPackage.Utilities
@@ -360,9 +361,9 @@ public partial class NeekerNoker
                             }
                             catch (Exception exc)
                             {
-                                Console.WriteLine(exc);
-                                // throw;
+                                failed = true;
                             }
+                            
                             NuGetPackage np = null;
                             
                             try
@@ -382,7 +383,7 @@ public partial class NeekerNoker
                                                                             version_latest: version_latest,
                                                                             versions_upgradeable: versions_upgradeable,
                                                                             NuGetPackage: np,
-                                                                            failed: false
+                                                                            failed: failed
                                                                         );
                             }
                             catch (Exception exc)

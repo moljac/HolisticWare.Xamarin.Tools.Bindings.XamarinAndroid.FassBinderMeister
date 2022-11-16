@@ -352,6 +352,8 @@ public partial class NeekerNoker
             
                             global::HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root v = null;
 
+                            bool failed = false;
+
                             try
                             {
                                 v = NuGetPackage.Utilities
@@ -360,11 +362,11 @@ public partial class NeekerNoker
                             }
                             catch (Exception exc)
                             {
-                                Console.WriteLine(exc);
-                                // throw;
+                                failed = true;
                             }
-                            NuGetPackage np = null;
                             
+                            NuGetPackage np = null;
+
                             try
                             {
                                 np = NuGetPackage
@@ -382,18 +384,19 @@ public partial class NeekerNoker
                                                                             version_latest: version_latest,
                                                                             versions_upgradeable: versions_upgradeable,
                                                                             NuGetPackage: np,
-                                                                            failed: false
+                                                                            failed: failed
                                                                         );
                             }
                             catch (Exception exc)
                             {
+                                failed = true;
                                 packages_data[nuget_id_x_version.Key] = 
                                                                         (
                                                                             version_current: version,
                                                                             version_latest: null,
                                                                             versions_upgradeable: null,
                                                                             NuGetPackage: null,
-                                                                            failed: false
+                                                                            failed: failed
                                                                         );
                             }
                         }
