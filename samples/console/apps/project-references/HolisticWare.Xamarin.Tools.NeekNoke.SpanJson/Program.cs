@@ -150,12 +150,20 @@ packages_info = neeker.PackageDataFetch(packages_found);
 
 stopwatch.Stop();
 
+string log_data = null;
+
 #if DEBUG
-Trace.WriteLine($"Elapsed:       {stopwatch.Elapsed},Release,");
-Trace.WriteLine($"               {DateTime.Now.ToString("yyyyMMdd-HHmmss")},{stopwatch.Elapsed},Debug,");
+log_data = $"               {DateTime.Now.ToString("yyyyMMdd-HHmmss")},{stopwatch.Elapsed},Debug";
+Trace.WriteLine($"Elapsed:");
+Trace.WriteLine($"                      {log_data},");
 #else
-Trace.WriteLine($"Elapsed:       {stopwatch.Elapsed},Release,");
-Trace.WriteLine($"               {DateTime.Now.ToString("yyyyMMdd-HHmmss")},{stopwatch.Elapsed},Release,");
+log_data = $"               {DateTime.Now.ToString("yyyyMMdd-HHmmss")},{stopwatch.Elapsed},Release";
+Trace.WriteLine($"Elapsed:");
+Trace.WriteLine($"                      {log_data},");
 #endif
+string filename = "timings-SpanJson.csv";
+string[] lines = System.IO.File.ReadAllLines(filename);
+lines[0] = log_data + Environment.NewLine + lines[0];
+System.IO.File.WriteAllLines(filename,lines);
 
 return 0;
