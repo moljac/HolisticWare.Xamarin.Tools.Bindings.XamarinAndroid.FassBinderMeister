@@ -282,7 +282,7 @@ public partial class NeekerNokerMsBuildProject
 														(
 															(
 																nuget_id: nuget_id,
-																version: version,
+																version_current: version,
 																versions_upgradeable: null,
 																text_snippet_original: text_snippet_original,
 																text_snippet_new: text_snippet_new
@@ -298,9 +298,9 @@ public partial class NeekerNokerMsBuildProject
 									.ResultsPerFile[file].Log.Add
 									                            (
 										                            (
-											                            file_new: file_new,
+											                            file_backup: file_new,
 											                            content: content_original,
-											                            content_new: content_new
+											                            content_backup: content_new
 										                            )
 									                            );
                             
