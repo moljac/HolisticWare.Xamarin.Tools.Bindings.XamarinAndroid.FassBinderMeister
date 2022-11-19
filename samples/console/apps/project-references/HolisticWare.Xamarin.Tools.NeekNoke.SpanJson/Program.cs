@@ -60,30 +60,28 @@ Trace.AutoFlush = true;
 
 Trace.WriteLine($"{about}");
 
-switch (args.Length)
+string filename_timing = null;
+
+foreach (string arg in args)
 {
-    case 0:
-        NeekerNoker.Action = Action.Neek;
-        break;
-    case 1:
-        switch (args[0])
-        {
-            case "neek":
-                NeekerNoker.Action = Action.Neek;
-                break;
-            case "noke":
-                NeekerNoker.Action = Action.Noke;
-                break;
-            default:
-                Trace.WriteLine($"{args[0]} not recognized!!");
-                Trace.WriteLine("verb/command (command line argument) can be neek or noke");
-                return 1;
-                break;
-        }
-        break;
-    default:
-        Trace.WriteLine("verb/command (command line argument) can be neek or noke");
-        return 1;
+    switch (arg)
+    {
+        case "neek":
+            NeekerNoker.Action = Action.Neek;
+            break;
+        case "noke":
+            NeekerNoker.Action = Action.Noke;
+            break;
+        case string line_preprocessor when arg.StartsWith("--file-timing:"):
+            filename_timing = arg.Replace("--file-timing:", "");
+            break;
+        default:
+            Trace.WriteLine($"{arg} not recognized!!");
+            Trace.WriteLine("verb/command (command line argument) can be neek or noke");
+            return 1;
+            break;
+    }
+
 }
 
 string[] patterns = new string[]
@@ -126,12 +124,12 @@ foreach (KeyValuePair<string, string[]> pattern in patterns_files)
 
 Trace.Flush();
 
-NeekerNoker neeker = new NeekerNoker();
+NeekerNoker neeker_noker = new NeekerNoker();
 
-neeker.Neek(patterns_files);
-neeker.Dump();
+neeker_noker.Neek(patterns_files);
+neeker_noker.Dump();
 
-Dictionary<string, string> packages_found = neeker.PackageDataCleanup();
+Dictionary<string, string> packages_found = neeker_noker.PackageDataCleanup();
 
 Dictionary
         <
@@ -146,24 +144,12 @@ Dictionary
         >
         packages_info = null;
 
-packages_info = neeker.PackageDataFetch(packages_found);
+packages_info = neeker_noker.PackageDataFetch(packages_found);
 
 stopwatch.Stop();
 
-string log_data = null;
-
-#if DEBUG
-log_data = $"               {DateTime.Now.ToString("yyyyMMdd-HHmmss")},{stopwatch.Elapsed},Debug";
-Trace.WriteLine($"Elapsed:");
-Trace.WriteLine($"                      {log_data},");
-#else
-log_data = $"               {DateTime.Now.ToString("yyyyMMdd-HHmmss")},{stopwatch.Elapsed},Release";
-Trace.WriteLine($"Elapsed:");
-Trace.WriteLine($"                      {log_data},");
-#endif
-string filename = "timings-SpanJson.csv";
-string[] lines = System.IO.File.ReadAllLines(filename);
-lines[0] = log_data + Environment.NewLine + lines[0];
-System.IO.File.WriteAllLines(filename,lines);
+// neek --file-timing:timings-System.Text.JSON.csv
+// neek --file-timing:./samples/console/apps/project-references/timings-System.Text.JSON.csv
+neeker_noker.DumpTiming(filename_timing, stopwatch);
 
 return 0;
