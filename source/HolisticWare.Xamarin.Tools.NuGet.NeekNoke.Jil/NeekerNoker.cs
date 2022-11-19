@@ -402,4 +402,36 @@ public partial class NeekerNoker
 
         return packages_data;
     }
+
+    public
+        void
+                                        DumpTiming
+                                            (
+                                                string file,
+                                                Stopwatch stopwatch
+                                            )
+    {
+        string log_data = null;
+
+        #if DEBUG
+        log_data = $"               {DateTime.Now.ToString("yyyyMMdd-HHmmss")},{stopwatch.Elapsed},Debug";
+        Trace.WriteLine($"Elapsed:");
+        Trace.WriteLine($"                      {log_data},");
+        #else
+        log_data = $"               {DateTime.Now.ToString("yyyyMMdd-HHmmss")},{stopwatch.Elapsed},Release";
+        Trace.WriteLine($"Elapsed:");
+        Trace.WriteLine($"                      {log_data},");
+        #endif
+
+        string dir_current = System.IO.Directory.GetCurrentDirectory();
+        string filename =
+                            file
+                            // $"{dir_current}/timings-System.Text.JSON.csv"
+                            ;
+        string[] lines = System.IO.File.ReadAllLines(filename);
+        lines[0] = log_data + Environment.NewLine + lines[0];
+        System.IO.File.WriteAllLines(filename, lines);
+
+        return;
+    }
 }
