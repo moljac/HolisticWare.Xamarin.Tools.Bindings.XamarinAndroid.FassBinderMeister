@@ -34,7 +34,8 @@ namespace HolisticWare.Xamarin.Tools.ComponentGovernance
                 {
                     PropertyNameCaseInsensitive = true,
                     WriteIndented = true,
-                    DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                    // DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                    IgnoreNullValues = true,
                     PropertyNamingPolicy = new JsonNamingPolicyCustomCase (),
                 };
 
