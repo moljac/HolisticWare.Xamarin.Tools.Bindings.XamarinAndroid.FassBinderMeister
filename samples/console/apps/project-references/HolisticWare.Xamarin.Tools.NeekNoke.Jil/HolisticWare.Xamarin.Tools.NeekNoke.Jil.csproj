@@ -2,9 +2,18 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+
+  <PropertyGroup>
+    <PackageVersion>0.0.1</PackageVersion>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>Execute custom commands by dotnet</Description>
+    <PackageType>DotnetCliTool</PackageType>
+    <PackAsTool>true</PackAsTool>
   </PropertyGroup>
 
   <ItemGroup>
