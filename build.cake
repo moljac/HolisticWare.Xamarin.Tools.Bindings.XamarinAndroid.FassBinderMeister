@@ -80,8 +80,11 @@ Running Cake to Build targets
 #tool "nuget:?package=ReportUnit"
 #tool "nuget:?package=ReportGenerator"
 
+#load "./externals-data.cake"
+
 //---------------------------------------------------------------------------------------
-var TARGET = Argument ("t", Argument ("target", "Default"));
+string TARGET = Argument ("t", Argument ("target", "Default"));
+string verbosity = Argument ("v", Argument ("verbosity", "diagnostic"));
 
 string source_solutions                             = $"./source/**/*.sln";
 string source_projects                              = $"./source/**/*.csproj";
@@ -126,7 +129,6 @@ string[] clean_folder_patterns = new string[]
     "./tests/**/tools/",
 };
 
-string verbosity = "Diagnostic";
 
 string[] clean_file_patterns = new string[]
 {

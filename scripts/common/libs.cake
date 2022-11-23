@@ -22,15 +22,13 @@ Task("libs-msbuild-solutions")
             {
                 foreach(FilePath sln in LibrarySourceSolutions)
                 {
-                    MSBuild
+                    DotNetMSBuild
                     (
                         sln.ToString(),
-                        new MSBuildSettings
+                        new DotNetMSBuildSettings
                         {
-                            Configuration = configuration,
-                            Restore = true,
                         }
-                        .WithRestore()
+                        .SetConfiguration(configuration)
                         //.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
                     );
                 }
@@ -52,7 +50,7 @@ Task("libs-dotnet-solutions")
                     DotNetBuild
                     (
                         sln.ToString(),
-                        new DotNetCoreBuildSettings
+                        new DotNetBuildSettings
                         {
                             Configuration = configuration,
                         }
@@ -74,15 +72,13 @@ Task("libs-msbuild-projects")
             {
                 foreach(FilePath prj in LibrarySourceProjects)
                 {
-                    MSBuild
+                    DotNetMSBuild
                     (
                         prj.ToString(),
-                        new MSBuildSettings
+                        new DotNetMSBuildSettings
                         {
-                            Configuration = configuration,
-                            Restore = true,
                         }
-                        .WithRestore()
+                        .SetConfiguration(configuration)
                         //.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
                     );
                 }
@@ -104,7 +100,7 @@ Task("libs-dotnet-projects")
                     DotNetBuild
                     (
                         prj.ToString(),
-                        new DotNetCoreBuildSettings
+                        new DotNetBuildSettings
                         {
                             Configuration = configuration,
                         }
@@ -125,15 +121,13 @@ public void Build(string pattern)
 	{
 		foreach (string configuration in configurations)
 		{
-			MSBuild
+			DotNetMSBuild
 			(
 				file.ToString(),
-				new MSBuildSettings
+				new DotNetMSBuildSettings
 				{
-					Configuration = configuration,
-                    Restore = true,
 				}
-				.WithRestore()
+                .SetConfiguration(configuration)
 				.WithProperty("AndroidClassParser", "class-parse")
 				//.WithProperty("DefineConstants", "TRACE;DEBUG;NETCOREAPP2_0;NUNIT")
 			);
