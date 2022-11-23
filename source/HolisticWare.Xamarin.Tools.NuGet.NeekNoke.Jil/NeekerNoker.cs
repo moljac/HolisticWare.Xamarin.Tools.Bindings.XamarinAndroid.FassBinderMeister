@@ -382,7 +382,7 @@ public partial class NeekerNoker
                                                                             version_current: version,
                                                                             version_latest: version_latest,
                                                                             versions_upgradeable: versions_upgradeable,
-                                                                            NuGetPackage: np,
+                                                                            package_details: np,
                                                                             failed: failed
                                                                         );
                             }
@@ -393,7 +393,7 @@ public partial class NeekerNoker
                                                                             version_current: version,
                                                                             version_latest: null,
                                                                             versions_upgradeable: null,
-                                                                            NuGetPackage: null,
+                                                                            package_details: null,
                                                                             failed: false
                                                                         );
                             }
