@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <LangVersion>Latest</LangVersion>
+        <LangVersion>11</LangVersion>
         <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.NeekNoke</RootNamespace>
         <!--
         If moved to separate PropertyGroup - UI is cleared?!?!
@@ -57,18 +57,9 @@
         -->
         <PackageOutputPath>../../output</PackageOutputPath>
     </PropertyGroup>
-    
-    <ItemGroup><!--
-        <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
-        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj" />
-        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON.csproj" />
-        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.System.Text.JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.System.Text.JSON.csproj" />
-        -->
-            
-        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Jil\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Jil.csproj" />
-    </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj" />
     </ItemGroup>
 
     <ItemGroup>
