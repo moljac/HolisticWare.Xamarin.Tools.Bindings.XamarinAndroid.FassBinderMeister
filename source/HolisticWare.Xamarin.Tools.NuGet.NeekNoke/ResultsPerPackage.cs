@@ -1,13 +1,15 @@
-namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
-
-public class ResultsPerPackage
+namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke
 {
-    public
-        string
-                                        NuGetId
+    public class 
+                                        ResultsPerPackage
     {
-        get;
-        set;
+        public
+            string
+            NuGetId
+        {
+            get;
+            set;
+        } = null;
     }
-    
+
 }
