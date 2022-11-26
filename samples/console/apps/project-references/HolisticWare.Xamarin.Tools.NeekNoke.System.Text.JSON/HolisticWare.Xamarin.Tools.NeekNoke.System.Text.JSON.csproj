@@ -12,8 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NeekNoke.Data\HolisticWare.Xamarin.Tools.NeekNoke.Data.csproj" />
-    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.csproj" />
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON.csproj" />
   </ItemGroup>
 
   <ItemGroup>
