@@ -148,6 +148,7 @@ Dictionary
 
 packages_info = neeker_noker.PackageDataFetch(packages_found);
 
+neeker_noker.Noke();
 stopwatch.Stop();
 
 // neek --file-timing:timings-System.Text.JSON.csv
