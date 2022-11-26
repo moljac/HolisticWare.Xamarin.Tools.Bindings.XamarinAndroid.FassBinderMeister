@@ -75,19 +75,23 @@ using ConfigRoot = HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinder
 namespace UnitTests.Tools.Bindings.XamarinAndroid.FassBinderMeister
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_ProjectData
+    public partial class 
+                                        ProjectData_Test
     {
         [Test]
-        public void Test_Test_ProjectData()
+        public void 
+                                        ProjectData_Test
+                                            (
+                                            )
         {
             Dictionary<string, string> d = new Dictionary<string, string>()
             {
                 {
-                    "AndroidX",
+                    "AndroidX latest",
                     "https://raw.githubusercontent.com/xamarin/AndroidX/main/config.json"
                 },
                 {
-                    "GooglePlayServices with AndroidX",
+                    "GooglePlayServices latest",
                     "https://raw.githubusercontent.com/xamarin/GooglePlayServicesComponents/main/config.json"
                 },
                 {
@@ -95,12 +99,8 @@ namespace UnitTests.Tools.Bindings.XamarinAndroid.FassBinderMeister
                     "https://raw.githubusercontent.com/xamarin/GooglePlayServicesComponents/71.x.y.z-legacy-Android.Support/config.json"
                 },
                 {
-                    "Android.Support",
+                    "Android.Support latest",
                     "https://raw.githubusercontent.com/xamarin/AndroidSupportComponents/master/config.json"
-                },
-                {
-                    "XamarinComponents Android Kotlin",
-                    "https://raw.githubusercontent.com/xamarin/XamarinComponents/main/Android/Kotlin/config.json"
                 },
             };
 

@@ -161,6 +161,9 @@ public partial class NeekerNokerMsBuildProject
 									version = xe.Attribute("Version").Value;
 									string nuget_id_version_attribute = xe.Attribute("Include").Value;
 
+									text_snippet_original = xe.ToString();
+									text_snippet_new = text_snippet_original;
+
 									if 
 										(
 											! packages_with_versions_found.ContainsKey
@@ -179,8 +182,8 @@ public partial class NeekerNokerMsBuildProject
 																				version: version
 																			),
 																			(
-																				snippet_original: null,
-																				snippet_new: null
+																				snippet_original: text_snippet_original,
+																				snippet_new: text_snippet_new
 																			)
 																		);
 									}
@@ -202,6 +205,9 @@ public partial class NeekerNokerMsBuildProject
 									{
 										version = xe.Value;
 										string nuget_id_version_node = xe.Parent.Attribute("Include").Value;
+										text_snippet_original = xe.Parent.ToString();
+										text_snippet_new = text_snippet_original;
+
 										packages_with_versions_found.Add
 																		(
 																			(
@@ -209,8 +215,8 @@ public partial class NeekerNokerMsBuildProject
 																				version: version
 																			),
 																			(
-																				snippet_original: null,
-																				snippet_new: null
+																				snippet_original: text_snippet_original,
+																				snippet_new: text_snippet_new
 																			)
 																		);
 									}
@@ -276,8 +282,16 @@ public partial class NeekerNokerMsBuildProject
 								string msg = "nuget_id is null";
 							}
 
-							this.ResultsPerFormat
-								.ResultsPerFile[file]
+							if (string.IsNullOrEmpty(version))
+							{
+								// NOOP
+								// do not add nuget package without a version (most likely central package mngmt)
+							}
+							else
+							{
+
+								this.ResultsPerFormat
+									.ResultsPerFile[file]
 									.PackageReferences.Add
 														(
 															(
@@ -288,6 +302,7 @@ public partial class NeekerNokerMsBuildProject
 																text_snippet_new: text_snippet_new
 															)
 														);
+							}
 							//------------------------------------------------------------------------------------------------------
                             //------------------------------------------------------------------------------------------------------
                             // PackageVersion

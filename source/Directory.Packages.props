@@ -30,6 +30,7 @@
     <PackageVersion Include="System.Diagnostics.TextWriterTraceListener" Version="4.3.0" />
     <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageVersion Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
+    <PackageVersion Include="System.IO.FileSystem" Version="4.3.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
 
     <PackageVersion Include="UnoptimizedAssemblyDetector" Version="0.1.1" PrivateAssets="All" />
