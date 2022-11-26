@@ -73,10 +73,14 @@ using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binde
 namespace UnitTests.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.Configs
 {
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_BinderatorConfigDownloader_AndroidX
+    public partial class 
+                                        BinderatorConfigDownloader_AndroidX_Test
     {
         [Test]
-        public void Test_BinderatorConfig_DownloadBinderatorConfigContents_xamarin_AndroidX()
+        public void 
+                                        DownloadBinderatorConfigContentsAsync_xamarin_AndroidX
+                                            (
+                                            )
         {
             BinderatorConfigDownloader bcd = new BinderatorConfigDownloader(Tests.CommonShared.Http.Client);
 
@@ -125,7 +129,10 @@ namespace UnitTests.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.C
         }
 
         [Test]
-        public void Test_BinderatorConfigDownloader_DownloadBinderatorConfigObjects_xamarin_AndroidX()
+        public void 
+                                        DownloadBinderatorConfigObjects_xamarin_AndroidX
+                                            (
+                                            )
         {
             BinderatorConfigDownloader bcd = new BinderatorConfigDownloader(Tests.CommonShared.Http.Client);
 
@@ -142,7 +149,10 @@ namespace UnitTests.Tools.Bindings.XamarinAndroid.FassBinderMeister.Binderator.C
 
 
         [Test]
-        public void Test_BinderatorConfigDownloader_DownloadAndExtendBinderatorConfigObjects_xamarin_AndroidX()
+        public void 
+                                        DownloadAndExtendBinderatorConfigObjects_xamarin_AndroidX
+                                            (
+                                            )
         {
             BinderatorConfigDownloader bcd = new BinderatorConfigDownloader(Tests.CommonShared.Http.Client);
 

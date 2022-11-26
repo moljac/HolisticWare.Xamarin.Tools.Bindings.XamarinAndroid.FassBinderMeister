@@ -74,9 +74,13 @@ namespace UnitTests.Tools.Maven.Repositories.Google
 {
 
     [TestClass] // for MSTest - NUnit [TestFixture] and XUnit not needed
-    public partial class Test_Artifact
+    public partial class 
+                                        Artifact_static_API_Test
     {
-        static Test_Artifact()
+        static 
+                                        Artifact_static_API_Test
+                                            (
+                                            )
         {
             HolisticWare.Xamarin.Tools.Maven.MavenClient.HttpClient = Tests.CommonShared.Http.Client;
 
@@ -85,11 +89,15 @@ namespace UnitTests.Tools.Maven.Repositories.Google
             {
                 System.IO.Directory.CreateDirectory("../../../../../../../../output/");
             }
+            
             return;
         }
 
         [Test]
-        public void Test_Artifact_Google_static_defaults()
+        public void 
+                                        Defaults
+                                            (
+                                            )
         {
             /*
                 https://dl.google.com/android/maven2/androidx/biometric/biometric/1.1.0/biometric-1.1.0.aar
@@ -235,16 +243,13 @@ namespace UnitTests.Tools.Maven.Repositories.Google
 
             return;
         }
-
-
-
-
+        
         //-----------------------------------------------------------------------------------------------------------
         #region         Download androidx.car.car
         // https://maven.google.com/web/index.html?q=car#androidx.car:car:1.0.0-alpha7
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_androidx_car_car_01()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.pom
             string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
@@ -270,7 +275,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_androidx_car_car_01()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.aar
             byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
@@ -293,7 +298,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_androidx_car_car_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
@@ -315,7 +320,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_androidx_car_car_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
@@ -338,7 +343,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_androidx_car_car_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadSourcesJavaArchiveJARAsync
@@ -360,7 +365,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadModuleAsync_androidx_car_car_01()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.module
             string module = Artifact.Utilities.DownloadModuleAsync
@@ -386,7 +391,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_androidx_car_car_01()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.pom
             string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
@@ -412,7 +417,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_androidx_car_car_01()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.aar
             byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
@@ -435,7 +440,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_androidx_car_car_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
@@ -457,7 +462,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_androidx_car_car_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
@@ -480,7 +485,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_androidx_car_car_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
@@ -502,7 +507,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveModuleAsync_androidx_car_car_01()
+        public void Repository_Google_static_API_01_DownloadThenSaveModuleAsync_androidx_car_car_01()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.module
             string module = Artifact.Utilities.DownloadThenSaveModuleAsync
@@ -528,7 +533,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_androidx_car_car_02()
+        public void Repository_Google_static_API_01_DownloadThenSaveProjectObjecModelPOMAsync_androidx_car_car_02()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.pom
             string pom = Artifact.Utilities.DownloadThenSaveProjectObjecModelPOMAsync
@@ -555,7 +560,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_androidx_car_car_02()
+        public void Repository_Google_static_API_01_DownloadThenSaveArtifactAndroidArchiveAARAsync_androidx_car_car_02()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.aar
             byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactAndroidArchiveAARAsync
@@ -579,7 +584,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_androidx_car_car_02()
+        public void Repository_Google_static_API_01_DownloadThenSaveArtifactJavaArchiveJARAsync_androidx_car_car_02()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadThenSaveArtifactJavaArchiveJARAsync
@@ -602,7 +607,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_androidx_car_car_02()
+        public void Repository_Google_static_API_01_DownloadThenSaveJavaDocJavaArchiveJARAsync_androidx_car_car_02()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadThenSaveJavaDocJavaArchiveJARAsync
@@ -626,7 +631,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_androidx_car_car_02()
+        public void Repository_Google_static_API_01_DownloadThenSaveSourcesJavaArchiveJARAsync_androidx_car_car_02()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadThenSaveSourcesJavaArchiveJARAsync
@@ -649,7 +654,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadThenSaveModuleAsync_androidx_car_car_02()
+        public void Repository_Google_static_API_01_DownloadThenSaveModuleAsync_androidx_car_car_02()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.module
             string module = Artifact.Utilities.DownloadThenSaveModuleAsync
@@ -683,7 +688,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         // https://maven.google.com/web/index.html#androidx.biometric:biometric:1.1.0
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_androidx_biometric_biometric_01()
+        public void Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_androidx_biometric_biometric_01()
         {
             string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
                                                                 (
@@ -708,7 +713,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_androidx_biometric_biometric_01()
+        public void Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_androidx_biometric_biometric_01()
         {
             byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
                                                                 (
@@ -730,7 +735,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_androidx_biometric_biometric_01()
+        public void Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_androidx_biometric_biometric_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
@@ -752,7 +757,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_androidx_biometric_biometric_01()
+        public void Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_androidx_biometric_biometric_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
@@ -775,7 +780,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_androidx_biometric_biometric_01()
+        public void Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_androidx_biometric_biometric_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadSourcesJavaArchiveJARAsync
@@ -797,7 +802,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_androidx_biometric_biometric_01()
+        public void Repository_Google_static_API_01_DownloadModuleAsync_androidx_biometric_biometric_01()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.module
             string module = Artifact.Utilities.DownloadModuleAsync
@@ -829,7 +834,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         // https://maven.google.com/web/index.html#androidx.appcompat:appcompat:1.3.1
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_androidx_appcompat_appcompat_01()
+        public void Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_androidx_appcompat_appcompat_01()
         {
             // https://dl.google.com/android/maven2/androidx/appcompat/appcompat/1.3.1/car-1.3.1.pom
             string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
@@ -855,7 +860,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_androidx_appcompat_appcompat_01()
+        public void Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_androidx_appcompat_appcompat_01()
         {
             // https://dl.google.com/android/maven2/androidx/appcompat/appcompat/1.3.1/car-1.3.1.aar
             byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
@@ -878,7 +883,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_androidx_appcompat_appcompat_01()
+        public void Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_androidx_appcompat_appcompat_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
@@ -900,7 +905,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_androidx_appcompat_appcompat_01()
+        public void Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_androidx_appcompat_appcompat_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
@@ -923,7 +928,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_androidx_appcompat_appcompat_01()
+        public void Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_androidx_appcompat_appcompat_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadSourcesJavaArchiveJARAsync
@@ -945,7 +950,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_androidx_appcompat_appcompat_01()
+        public void Repository_Google_static_API_01_DownloadModuleAsync_androidx_appcompat_appcompat_01()
         {
             // https://dl.google.com/android/maven2/androidx/car/car/1.0.0-alpha7/car-1.0.0-alpha7.module
             string module = Artifact.Utilities.DownloadModuleAsync
@@ -977,7 +982,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         // https://maven.google.com/web/index.html?#com.google.android.gms:play-services-ads:20.3.0
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_com_google_android_gms_play_services_ads_01()
+        public void Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_com_google_android_gms_play_services_ads_01()
         {
             string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
                                                                 (
@@ -1002,7 +1007,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_com_google_android_gms_play_services_ads_01()
+        public void Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_com_google_android_gms_play_services_ads_01()
         {
             byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
                                                                 (
@@ -1024,7 +1029,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_com_google_android_gms_play_services_ads_01()
+        public void Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_com_google_android_gms_play_services_ads_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
@@ -1046,7 +1051,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_com_google_android_gms_play_services_ads_01()
+        public void Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_com_google_android_gms_play_services_ads_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
@@ -1069,7 +1074,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_com_google_android_gms_play_services_ads_01()
+        public void Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_com_google_android_gms_play_services_ads_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadSourcesJavaArchiveJARAsync
@@ -1091,7 +1096,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_com_google_android_gms_play_services_ads_01()
+        public void Repository_Google_static_API_01_DownloadModuleAsync_com_google_android_gms_play_services_ads_01()
         {
             string module = Artifact.Utilities.DownloadModuleAsync
                                                                 (
@@ -1121,7 +1126,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         #region         Download org.chromium.net.cronet-api
         // https://maven.google.com/web/index.html?#org.chromium.net:cronet-api:92.4515.131
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_org_chromium_net_cronet_api_01()
+        public void Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_org_chromium_net_cronet_api_01()
         {
             string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
                                                                 (
@@ -1146,7 +1151,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_org_chromium_net_cronet_api_01()
+        public void Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_org_chromium_net_cronet_api_01()
         {
             byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
                                                                 (
@@ -1168,7 +1173,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_org_chromium_net_cronet_api_01()
+        public void Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_org_chromium_net_cronet_api_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
@@ -1190,7 +1195,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_org_chromium_net_cronet_api_01()
+        public void Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_org_chromium_net_cronet_api_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
@@ -1213,7 +1218,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_org_chromium_net_cronet_api_01()
+        public void Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_org_chromium_net_cronet_api_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadSourcesJavaArchiveJARAsync
@@ -1238,7 +1243,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_org_chromium_net_cronet_api_01()
+        public void Repository_Google_static_API_01_DownloadModuleAsync_org_chromium_net_cronet_api_01()
         {
             string module = Artifact.Utilities.DownloadModuleAsync
                                                                 (
@@ -1268,7 +1273,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         #region         Download com.android.tools.build.jetifier.jetifier-core
         // https://maven.google.com/web/index.html?#com.android.tools.build.jetifier:jetifier-core:1.0.0-beta10
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_com_android_tools_build_jetifier_jetifier_core_01()
+        public void Repository_Google_static_API_01_DownloadProjectObjecModelPOMAsync_com_android_tools_build_jetifier_jetifier_core_01()
         {
             string pom = Artifact.Utilities.DownloadProjectObjecModelPOMAsync
                                                                 (
@@ -1293,7 +1298,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_com_android_tools_build_jetifier_jetifier_core_01()
+        public void Repository_Google_static_API_01_DownloadArtifactAndroidArchiveAARAsync_com_android_tools_build_jetifier_jetifier_core_01()
         {
             byte[] bytez = Artifact.Utilities.DownloadArtifactAndroidArchiveAARAsync
                                                                 (
@@ -1315,7 +1320,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_com_android_tools_build_jetifier_jetifier_core_01()
+        public void Repository_Google_static_API_01_DownloadArtifactJavaArchiveJARAsync_com_android_tools_build_jetifier_jetifier_core_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadArtifactJavaArchiveJARAsync
@@ -1337,7 +1342,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_com_android_tools_build_jetifier_jetifier_core_01()
+        public void Repository_Google_static_API_01_DownloadJavaDocJavaArchiveJARAsync_com_android_tools_build_jetifier_jetifier_core_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadJavaDocJavaArchiveJARAsync
@@ -1360,7 +1365,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_com_android_tools_build_jetifier_jetifier_core_01()
+        public void Repository_Google_static_API_01_DownloadSourcesJavaArchiveJARAsync_com_android_tools_build_jetifier_jetifier_core_01()
         {
             // N/A
             byte[] bytez = Artifact.Utilities.DownloadSourcesJavaArchiveJARAsync
@@ -1383,7 +1388,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Repository_Google_static_API_01_DownloadModuleAsync_com_android_tools_build_jetifier_jetifier_core_01()
+        public void Repository_Google_static_API_01_DownloadModuleAsync_com_android_tools_build_jetifier_jetifier_core_01()
         {
             string module = Artifact.Utilities.DownloadModuleAsync
                                                                 (
@@ -1411,7 +1416,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
 
 
         [Test]
-        public void Test_Artifact_Google_member_API_01_ParseArtifactIdFullyQualified()
+        public void Artifact_Google_member_API_01_ParseArtifactIdFullyQualified()
         {
             Artifact a01 = new Artifact("androidx.car", "car", "1.0.0-alpha1");
 
@@ -1421,7 +1426,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Artifact_Google_member_API_02_ParseArtifactIdFullyQualfied()
+        public void Artifact_Google_member_API_02_ParseArtifactIdFullyQualfied()
         {
             Artifact a01 = new Artifact("androidx.ads.ads-identifier");
 
@@ -1480,7 +1485,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Artifact_Google_member_API_03_DeserializeProjectObjectModelPOM()
+        public void Artifact_Google_member_API_03_DeserializeProjectObjectModelPOM()
         {
             Artifact a01 = new Artifact("androidx.car", "car", "1.0.0-alpha1");
 
@@ -1535,7 +1540,7 @@ namespace UnitTests.Tools.Maven.Repositories.Google
         }
 
         [Test]
-        public void Test_Artifact_Google_member_API_03_DependencyTree()
+        public void Artifact_Google_member_API_03_DependencyTree()
         {
             Dictionary<string, Artifact> d01 = new Dictionary<string, Artifact>();
             Artifact a01 = new Artifact("androidx.car", "car", "1.0.0-alpha1");

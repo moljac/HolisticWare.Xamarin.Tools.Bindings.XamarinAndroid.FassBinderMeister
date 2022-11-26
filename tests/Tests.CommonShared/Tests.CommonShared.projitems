@@ -13,12 +13,9 @@
     <Folder Include="$(MSBuildThisFileDirectory)Maven\" />
     <Folder Include="$(MSBuildThisFileDirectory)ComponentGovernance\" />
     <Folder Include="$(MSBuildThisFileDirectory)GitHub\" />
-
     <Folder Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\" />
     <Folder Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\" />
     <Folder Include="$(MSBuildThisFileDirectory)Binderator.Artifact\" />
-    <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\ClientAPI\" />
-    <Folder Include="$(MSBuildThisFileDirectory)NuGetClient\ServerAPI\" />
     <Folder Include="$(MSBuildThisFileDirectory)Core\" />
     <Folder Include="$(MSBuildThisFileDirectory)Core\Net\" />
     <Folder Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\" />
@@ -32,7 +29,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Tools.Maven\Repositories\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools.Maven\RepositoryAgnosticDiscovery\" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\HttpClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Net\HTTP\IO\Test_FileSystem.cs" />
@@ -79,13 +75,12 @@
       GitHub
     -->
     <Compile Include="$(MSBuildThisFileDirectory)GitHub\GitHubClient.cs" />
-
     <Compile Include="$(MSBuildThisFileDirectory)Android.Developer.ReleaseNotesScraping\ReleaseNotesHTMLData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FassBinderMeister.BindEx\ArtifactBindingNugetData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Binderator.Artifact\Artifact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BinderatorConfigsFetcher.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Test_ProjectData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\ProjectData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Binderator.Config\Binderator.Config_AndroidX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Binderator.Config\Binderator.Config_GooglePlayServicesComponents.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools.Bindings.XamarinAndroid.FassBinderMeister\Binderator.Config\BinderatorConfigsFetcher.cs" />
