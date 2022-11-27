@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NeekNoke.Data", "HolisticWare.Xamarin.Tools.NeekNoke.Data\HolisticWare.Xamarin.Tools.NeekNoke.Data.csproj", "{4C65165A-4EF5-4932-A848-34859379E4A3}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "BindingConfigurator", "BindingConfigurator\BindingConfigurator.csproj", "{29D69A4C-A8DC-47D3-9B77-1A357245A0DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingConfigurator", "BindingConfigurator\BindingConfigurator.csproj", "{29D69A4C-A8DC-47D3-9B77-1A357245A0DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "library-source", "library-source", "{A13E9A46-AD22-40A4-A98B-0F07101BDCF1}"
 EndProject
@@ -17,13 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data", "..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data.csproj", "{8997E144-FF26-45FD-8835-AA3495F30B23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Jil", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Jil\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Jil.csproj", "{275C1307-06E8-4EEB-9606-07CDF0E6E327}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.Core", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj", "{B2EA505F-9B70-4E19-B9B3-6ED86363C422}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON.csproj", "{26CE93E9-ABFE-450E-B7AF-F063D978EBAD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.System.Text.JSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.System.Text.JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.System.Text.JSON.csproj", "{7C36B149-FA68-402A-B0BD-8E2D2F1F8AC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven", "..\..\..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj", "{79D98785-6F49-425D-BC28-309F80924467}"
 EndProject
@@ -31,25 +25,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.GitHub", "..\..\..\..\source\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj", "{5F3DB83B-BF8C-4C91-B240-A1F796C1C643}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NeekNoke.Newtonsoft.JSON", "HolisticWare.Xamarin.Tools.NeekNoke.Newtonsoft.JSON\HolisticWare.Xamarin.Tools.NeekNoke.Newtonsoft.JSON.csproj", "{56E732AE-EDD1-4162-8EA0-7B80A1A9CDD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NeekNoke.App.Console.DotNetTool", "HolisticWare.Xamarin.Tools.NeekNoke.App.Console.DotNetTool\HolisticWare.Xamarin.Tools.NeekNoke.App.Console.DotNetTool.csproj", "{70B1419A-5CEC-4AC7-999D-56FDCB48623A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NeekNoke.System.Text.JSON", "HolisticWare.Xamarin.Tools.NeekNoke.System.Text.JSON\HolisticWare.Xamarin.Tools.NeekNoke.System.Text.JSON.csproj", "{6B0BE063-B489-4DAB-9CEC-C719DC3DC74C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NeekNoke.Jil", "HolisticWare.Xamarin.Tools.NeekNoke.Jil\HolisticWare.Xamarin.Tools.NeekNoke.Jil.csproj", "{8000B514-6AC6-494D-ADB6-74D30E7C5D8E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NeekNoke.SpanJson", "HolisticWare.Xamarin.Tools.NeekNoke.SpanJson\HolisticWare.Xamarin.Tools.NeekNoke.SpanJson.csproj", "{D3FA0746-C731-4FF8-A731-566BE98813F6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.SpanJSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.SpanJSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.SpanJSON.csproj", "{162EE50D-D0F2-473E-B2E0-9DCE5BA01634}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.UTF8JSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.UTF8JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.UTF8JSON.csproj", "{FF52DA10-5B63-4739-AEE7-C4301887D167}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Jil", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Jil\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Jil.csproj", "{3065AF1C-9D73-4FF2-A80C-18B7413283A0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Newtonsoft.JSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Newtonsoft.JSON\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Newtonsoft.JSON.csproj", "{DFDD62EF-666D-44D6-B28F-65EC13458B68}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.SpanJSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.SpanJSON\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.SpanJSON.csproj", "{8B0AE814-0AC3-4CA4-A700-B73DB5346B69}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON", "..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON.csproj", "{C7C7862D-E1F9-4053-BFCF-685064CC3329}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Serialization.JSON", "..\..\..\..\source\HolisticWare.Core.Serialization.JSON\HolisticWare.Core.Serialization.JSON.csproj", "{33E500DC-1189-4BC6-84B5-107B1E792B49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,22 +62,10 @@ Global
 		{8997E144-FF26-45FD-8835-AA3495F30B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8997E144-FF26-45FD-8835-AA3495F30B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8997E144-FF26-45FD-8835-AA3495F30B23}.Release|Any CPU.Build.0 = Release|Any CPU
-		{275C1307-06E8-4EEB-9606-07CDF0E6E327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{275C1307-06E8-4EEB-9606-07CDF0E6E327}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{275C1307-06E8-4EEB-9606-07CDF0E6E327}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{275C1307-06E8-4EEB-9606-07CDF0E6E327}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2EA505F-9B70-4E19-B9B3-6ED86363C422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B2EA505F-9B70-4E19-B9B3-6ED86363C422}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2EA505F-9B70-4E19-B9B3-6ED86363C422}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2EA505F-9B70-4E19-B9B3-6ED86363C422}.Release|Any CPU.Build.0 = Release|Any CPU
-		{26CE93E9-ABFE-450E-B7AF-F063D978EBAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26CE93E9-ABFE-450E-B7AF-F063D978EBAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26CE93E9-ABFE-450E-B7AF-F063D978EBAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{26CE93E9-ABFE-450E-B7AF-F063D978EBAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C36B149-FA68-402A-B0BD-8E2D2F1F8AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C36B149-FA68-402A-B0BD-8E2D2F1F8AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C36B149-FA68-402A-B0BD-8E2D2F1F8AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C36B149-FA68-402A-B0BD-8E2D2F1F8AC3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79D98785-6F49-425D-BC28-309F80924467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79D98785-6F49-425D-BC28-309F80924467}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79D98785-6F49-425D-BC28-309F80924467}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -112,64 +78,24 @@ Global
 		{5F3DB83B-BF8C-4C91-B240-A1F796C1C643}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F3DB83B-BF8C-4C91-B240-A1F796C1C643}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F3DB83B-BF8C-4C91-B240-A1F796C1C643}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56E732AE-EDD1-4162-8EA0-7B80A1A9CDD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56E732AE-EDD1-4162-8EA0-7B80A1A9CDD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56E732AE-EDD1-4162-8EA0-7B80A1A9CDD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56E732AE-EDD1-4162-8EA0-7B80A1A9CDD3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6B0BE063-B489-4DAB-9CEC-C719DC3DC74C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B0BE063-B489-4DAB-9CEC-C719DC3DC74C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B0BE063-B489-4DAB-9CEC-C719DC3DC74C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B0BE063-B489-4DAB-9CEC-C719DC3DC74C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8000B514-6AC6-494D-ADB6-74D30E7C5D8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8000B514-6AC6-494D-ADB6-74D30E7C5D8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8000B514-6AC6-494D-ADB6-74D30E7C5D8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8000B514-6AC6-494D-ADB6-74D30E7C5D8E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3FA0746-C731-4FF8-A731-566BE98813F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3FA0746-C731-4FF8-A731-566BE98813F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3FA0746-C731-4FF8-A731-566BE98813F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3FA0746-C731-4FF8-A731-566BE98813F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{162EE50D-D0F2-473E-B2E0-9DCE5BA01634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{162EE50D-D0F2-473E-B2E0-9DCE5BA01634}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{162EE50D-D0F2-473E-B2E0-9DCE5BA01634}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{162EE50D-D0F2-473E-B2E0-9DCE5BA01634}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF52DA10-5B63-4739-AEE7-C4301887D167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF52DA10-5B63-4739-AEE7-C4301887D167}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF52DA10-5B63-4739-AEE7-C4301887D167}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF52DA10-5B63-4739-AEE7-C4301887D167}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3065AF1C-9D73-4FF2-A80C-18B7413283A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3065AF1C-9D73-4FF2-A80C-18B7413283A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3065AF1C-9D73-4FF2-A80C-18B7413283A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3065AF1C-9D73-4FF2-A80C-18B7413283A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFDD62EF-666D-44D6-B28F-65EC13458B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFDD62EF-666D-44D6-B28F-65EC13458B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFDD62EF-666D-44D6-B28F-65EC13458B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFDD62EF-666D-44D6-B28F-65EC13458B68}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B0AE814-0AC3-4CA4-A700-B73DB5346B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B0AE814-0AC3-4CA4-A700-B73DB5346B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B0AE814-0AC3-4CA4-A700-B73DB5346B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B0AE814-0AC3-4CA4-A700-B73DB5346B69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7C7862D-E1F9-4053-BFCF-685064CC3329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7C7862D-E1F9-4053-BFCF-685064CC3329}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7C7862D-E1F9-4053-BFCF-685064CC3329}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7C7862D-E1F9-4053-BFCF-685064CC3329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70B1419A-5CEC-4AC7-999D-56FDCB48623A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B1419A-5CEC-4AC7-999D-56FDCB48623A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B1419A-5CEC-4AC7-999D-56FDCB48623A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B1419A-5CEC-4AC7-999D-56FDCB48623A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33E500DC-1189-4BC6-84B5-107B1E792B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33E500DC-1189-4BC6-84B5-107B1E792B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33E500DC-1189-4BC6-84B5-107B1E792B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33E500DC-1189-4BC6-84B5-107B1E792B49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{369671E9-EA61-468A-8F07-AFC230BF7A82} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
 		{FD14A0F9-6124-4917-8E46-6B8D744A4A4F} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
 		{0E61AE0B-AD26-4128-8B94-41BBF20DD67F} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
 		{8997E144-FF26-45FD-8835-AA3495F30B23} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
-		{275C1307-06E8-4EEB-9606-07CDF0E6E327} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
 		{B2EA505F-9B70-4E19-B9B3-6ED86363C422} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
-		{26CE93E9-ABFE-450E-B7AF-F063D978EBAD} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
-		{7C36B149-FA68-402A-B0BD-8E2D2F1F8AC3} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
 		{79D98785-6F49-425D-BC28-309F80924467} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
 		{03A5FC2C-90D3-4270-8583-A05A53659977} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
 		{5F3DB83B-BF8C-4C91-B240-A1F796C1C643} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
-		{162EE50D-D0F2-473E-B2E0-9DCE5BA01634} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
-		{FF52DA10-5B63-4739-AEE7-C4301887D167} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
-		{3065AF1C-9D73-4FF2-A80C-18B7413283A0} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
-		{DFDD62EF-666D-44D6-B28F-65EC13458B68} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
-		{8B0AE814-0AC3-4CA4-A700-B73DB5346B69} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
-		{C7C7862D-E1F9-4053-BFCF-685064CC3329} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
+		{33E500DC-1189-4BC6-84B5-107B1E792B49} = {A13E9A46-AD22-40A4-A98B-0F07101BDCF1}
 	EndGlobalSection
 EndGlobal
