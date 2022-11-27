@@ -7,9 +7,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Newtonsoft.Json.Linq;
-
 using Core.Net.HTTP;
+
 using HolisticWare.Xamarin.Tools.NuGet.Core;
 
 using Versions=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root;
@@ -39,7 +38,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                     response = await NuGetClient.HttpClient.GetStringContentAsync(url);
                 }
 
-                Versions data = Newtonsoft.Json.JsonConvert.DeserializeObject<Versions>(response);
+                Versions data = global::Core.Serialization.JSON.JSON<Versions>.Deserialize(response);
 
                 return data;
             }

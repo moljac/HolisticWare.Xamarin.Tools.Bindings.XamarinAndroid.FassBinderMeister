@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>Latest</LangVersion>
         <RootNamespace>HolisticWare.Xamarin.Tools.NuGet.NeekNoke</RootNamespace>
         <!--
         If moved to separate PropertyGroup - UI is cleared?!?!
@@ -57,9 +57,15 @@
         -->
         <PackageOutputPath>../../output</PackageOutputPath>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj" />
+    
+    <ItemGroup><!--
+        <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj" />
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Newtonsoft.JSON.csproj" />
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.System.Text.JSON\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.System.Text.JSON.csproj" />
+        -->
+            
+        <ProjectReference Include="..\HolisticWare.Core.Serialization.JSON\HolisticWare.Core.Serialization.JSON.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -70,10 +76,9 @@
         <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
         <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
         <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" />
-        <PackageReference Include="Newtonsoft.Json" />
-    </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Generated\" />
+        <PackageReference Include="System.Text.Json" />
+        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="Jil" />
     </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats.GlobalJson;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
@@ -64,54 +64,8 @@ public partial class NeekerNokerDotNetGlobalJSON
 							}
 
 							// https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
-							// 
-							Newtonsoft.Json.Linq.JObject json_object = null;
 
-							using (StringReader string_reader = new StringReader(System.IO.File.ReadAllText(file)))
-							{
-								Newtonsoft.Json.JsonTextReader jtr = new Newtonsoft.Json.JsonTextReader(string_reader);
-								json_object = (Newtonsoft.Json.Linq.JObject) Newtonsoft.Json.Linq.JToken.ReadFrom(jtr);
-							}
-
-							Dictionary<string, JToken?> jt_sections = null;
-							jt_sections = new Dictionary<string, JToken>()
-							{
-								{"sdk", json_object["sdk"]},
-								{"msbuild-sdks", json_object["msbuild-sdks"]},
-							};
-
-							foreach (KeyValuePair<string, JToken?> kvp in jt_sections)
-							{
-								if (kvp.Value != null)
-								{
-									foreach (Newtonsoft.Json.Linq.JProperty jp in kvp.Value)
-									{
-										string name = (string) jp.Name;
-										string version = (string) jp.Value;
-									}
-								}
-							}
-
-							List
-							<
-								(
-								string nuget_id,
-								string version
-								)
-							> msbuild_sdks = new List
-							<
-								(
-								string nuget_id,
-								string vetsion
-								)
-							>();
-
-							foreach (Newtonsoft.Json.Linq.JProperty jp in json_object["msbuild-sdks"])
-							{
-								string name = (string) jp.Name;
-								string value = (string) jp.Value;
-								msbuild_sdks.Add((name, value));
-							}
+							Root r = Core.Serialization.JSON.JSON<Root>.Deserialize(content_original);
 
 							this.ResultsPerFormat
 									.ResultsPerFile[file].Log.Add

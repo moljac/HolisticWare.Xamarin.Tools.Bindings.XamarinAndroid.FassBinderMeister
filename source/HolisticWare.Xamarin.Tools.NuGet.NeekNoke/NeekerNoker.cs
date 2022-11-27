@@ -10,23 +10,20 @@ namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
 
 public partial class NeekerNoker
 {
-    public static
-        Action
+    public static 
+        Action 
                                         Action
     {
         get;
         set;
     }
 
-    public 
-                                        NeekerNoker
-                                            (
-                                            )
-    {
-        this.ResultsPerFormat = new ResultsPerFormat();
+    public NeekerNoker()
+	{
+		this.ResultsPerFormat = new ResultsPerFormat();
 
         return;
-    }
+	}
 
     public
         ResultsPerFormat
@@ -36,43 +33,25 @@ public partial class NeekerNoker
         set;
     }
 
-    public
-        Dictionary
-                <
-                    string, // nuget_id
-                    (
-                        string version_current,
-                        string version_latest,
-                        string[] versions_upgradeable,
-                        NuGetPackage package_details,
-                        bool failed
-                    )
-                >
-                                        PackagesDetails
-    {
-        get;
-        set;
-    }
-
-    public
-        Dictionary<string, string[]>
-                                        Harvest
-                                        (
-                                            string[] patterns,
-                                            string location = "."
-                                        )
+	public 
+		Dictionary<string, string[]>
+										Harvest
+										(
+											string[] patterns,
+											string location = "."
+										)
     {
         return new Scraper().Harvest(patterns, location);
     }
 
-    public
+	public
         void
                                         Neek
                                         (
                                             Dictionary<string, string[]> patterns_files
-                                        )
+										)
     {
-        if
+        if 
             (
                 null == patterns_files
                 ||
@@ -128,7 +107,7 @@ public partial class NeekerNoker
 
         foreach (KeyValuePair<string, string[]> kvp in patterns_files)
         {
-            switch (kvp.Key)
+            switch(kvp.Key)
             {
                 case "config.json":
                     NeekNoke.Formats.NeekerNokerBinderatorConfig f_binderator = null;
@@ -184,53 +163,12 @@ public partial class NeekerNoker
         void
                                         Noke
                                             (
+                                                Dictionary<string, string[]> patterns_files
                                             )
     {
-        foreach (KeyValuePair<string, NeekerNokerBase> nnb in this.ResultsPerFormat.ResultsNeekerNoker)
-        {
-            string pattern = nnb.Key;
-            NeekerNokerBase nn = nnb.Value;
-
-            Parallel.ForEach
-                        (
-                            nn.ResultsPerFormat.ResultsPerFile,
-                            rpf =>
-                            {
-                                string file = rpf.Key;
-                                ResultsPerFile rrpf = rpf.Value;
-                                foreach
-                                (
-                                    (
-                                        string nuget_id,
-                                        string version_current,
-                                        string[] versions_upgradeable,
-                                        string text_snippet_original,
-                                        string text_snippet_new
-                                    )
-                                        pr in rrpf.PackageReferences
-                                )
-                                {
-                                    string nuget_id = pr.nuget_id;
-                                    string version_current = pr.version_current;
-
-                                    (
-                                        string version_current,
-                                        string version_latest,
-                                        string[] versions_upgradeable,
-                                        NuGetPackage package_details,
-                                        bool failed
-                                    ) 
-                                        data = this.PackagesDetails[nuget_id];
-
-                                    string[] versions_upgradeable = data.versions_upgradeable;
-                                }
-                            }
-                        );
-        }
-
         return;
     }
-
+    
     public
         void
                                         Dump
@@ -411,9 +349,11 @@ public partial class NeekerNoker
                         {
                             string nuget_id = nuget_id_x_version.Key;
                             string version = nuget_id_x_version.Value;
-
+            
                             global::HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root v = null;
 
+                            bool failed = false;
+                            
                             try
                             {
                                 v = NuGetPackage.Utilities
@@ -422,11 +362,11 @@ public partial class NeekerNoker
                             }
                             catch (Exception exc)
                             {
-                                Console.WriteLine(exc);
-                                // throw;
+                                failed = true;
                             }
+                            
                             NuGetPackage np = null;
-
+                            
                             try
                             {
                                 np = NuGetPackage
@@ -437,32 +377,31 @@ public partial class NeekerNoker
 
                                 string version_latest = (v.versions.ToArray())[v.versions.Count - 1];
                                 string[] versions_upgradeable = v.versions.ToArray();
-
-                                packages_data[nuget_id_x_version.Key] =
+                                
+                                packages_data[nuget_id_x_version.Key] = 
                                                                         (
                                                                             version_current: version,
                                                                             version_latest: version_latest,
                                                                             versions_upgradeable: versions_upgradeable,
                                                                             NuGetPackage: np,
-                                                                            failed: false
+                                                                            failed: failed
                                                                         );
                             }
                             catch (Exception exc)
                             {
-                                packages_data[nuget_id_x_version.Key] =
+                                failed = true;
+                                packages_data[nuget_id_x_version.Key] = 
                                                                         (
                                                                             version_current: version,
                                                                             version_latest: null,
                                                                             versions_upgradeable: null,
                                                                             NuGetPackage: null,
-                                                                            failed: false
+                                                                            failed: failed
                                                                         );
                             }
                         }
                 );
 
-        this.PackagesDetails = packages_data;
-        
         return packages_data;
     }
 
@@ -474,11 +413,6 @@ public partial class NeekerNoker
                                                 Stopwatch stopwatch
                                             )
     {
-        if (string.IsNullOrEmpty(file))
-        {
-            return;
-        }
-        
         string log_data = null;
 
         #if DEBUG

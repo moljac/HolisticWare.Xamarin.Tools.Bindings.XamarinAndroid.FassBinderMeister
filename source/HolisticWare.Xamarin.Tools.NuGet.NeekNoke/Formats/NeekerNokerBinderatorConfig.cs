@@ -65,9 +65,9 @@ public partial class NeekerNokerBinderatorConfig
 									.ResultsPerFile[file].Log.Add
 																(
 																	(
-																		file_new: file_new,
+																		file_backup: file_new,
 																		content: content_original,
-																		content_new: content_new
+																		content_backup: content_new
 																	)
 																);
 						}

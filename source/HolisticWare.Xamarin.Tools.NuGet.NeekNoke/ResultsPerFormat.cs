@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 
-namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke
-{
+namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
 
 public partial class ResultsPerFormat
 {
@@ -50,5 +49,4 @@ public partial class ResultsPerFormat
 
         return;
     }
-}
 }

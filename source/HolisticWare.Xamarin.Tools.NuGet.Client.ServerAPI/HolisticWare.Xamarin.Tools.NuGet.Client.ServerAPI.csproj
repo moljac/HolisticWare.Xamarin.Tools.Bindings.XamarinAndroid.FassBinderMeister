@@ -68,6 +68,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
+      <ProjectReference Include="..\HolisticWare.Core.Serialization.JSON\HolisticWare.Core.Serialization.JSON.csproj" />
     </ItemGroup>
 
     <ItemGroup>
