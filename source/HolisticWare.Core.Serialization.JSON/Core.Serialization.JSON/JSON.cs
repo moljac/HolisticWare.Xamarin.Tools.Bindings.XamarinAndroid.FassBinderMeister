@@ -10,41 +10,78 @@ namespace Core.Serialization.JSON
 										(
 										)
 		{
-            Deserialize = Deserialize_System_Text_Json<T>;
+            Deserialize = DeserializeUsingSystemTextJson;
 
             return;
 		}
 
         public static
-            Func<string, T>
+            Func<string, Settings, T>
                                     Deserialize;
 
 
         public static
             T
-									Deserialize_System_Text_Json<T>
-										(
-                                            string json
+                                    DeserializeUsingSystemTextJson
+                                        (
+                                            string json,
+                                            Settings settings = null
                                         )
         {
-            return System.Text.Json.JsonSerializer.Deserialize<T>(json);
+            T retval = default(T);
+
+            if (settings == null)
+            {
+                retval = System.Text.Json.JsonSerializer.Deserialize<T>
+                                                                (
+                                                                    json
+                                                                );
+            }
+            else
+            {
+                // https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/customize-properties?pivots=dotnet-7-0
+                // 
+                System.Text.Json.JsonSerializerOptions jso = null;
+
+                jso = settings.Data as System.Text.Json.JsonSerializerOptions;
+            }
+
+            return retval;
         }
 
         public static
             T
-                                    Deserialize_Newtonsoft_Json<T>
+                                    DeserializeUsingNewtonsoftJson
                                         (
-                                            string json
+                                            string json,
+                                            Settings settings = null
                                         )
         {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
+            T retval = default(T);
+
+            if (settings == null)
+            {
+                retval = Newtonsoft.Json.JsonConvert.DeserializeObject<T>
+                                                                (
+                                                                    json
+                                                                );
+            }
+            else
+            {
+                Newtonsoft.Json.Serialization.DefaultContractResolver jso = null;
+
+                jso = settings.Data as Newtonsoft.Json.Serialization.DefaultContractResolver;
+            }
+
+            return retval;
         }
 
         public static
             T
-                                    Deserialize_Jil<T>
+                                    DeserializeUsingJil
                                         (
-                                            string json
+                                            string json,
+                                            Settings settings = null
                                         )
         {
             return Jil.JSON.Deserialize<T>(json);

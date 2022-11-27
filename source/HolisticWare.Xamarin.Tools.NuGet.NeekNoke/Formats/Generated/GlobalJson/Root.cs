@@ -1,14 +1,14 @@
-namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats.GlobalJson
+namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats.Generated.GlobalJson
 {
 
     public partial class Root
     {
         public Sdk Sdk { get; set; }
 
-        public MsbuildSdks MsbuildSdks { get; set; }
+        public MsBuildSdks MsbuildSdks { get; set; }
     }
 
-    public partial class MsbuildSdks
+    public partial class MsBuildSdks
     {
         public string MsBuildSdkExtras { get; set; }
 

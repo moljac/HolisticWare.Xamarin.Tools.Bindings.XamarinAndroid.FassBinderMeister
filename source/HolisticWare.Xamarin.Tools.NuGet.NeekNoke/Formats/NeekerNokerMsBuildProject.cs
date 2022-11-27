@@ -11,9 +11,10 @@ using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
-public partial class NeekerNokerMsBuildProject
-						:
-						NeekerNokerBase
+public partial class
+										NeekerNokerMsBuildProject
+										:
+										NeekerNokerBase
 {
 	public
 		void

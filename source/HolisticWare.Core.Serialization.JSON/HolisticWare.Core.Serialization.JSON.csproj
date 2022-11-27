@@ -41,8 +41,10 @@
 
   <ItemGroup>
     <None Remove="Core.Serialization.JSON\" />
+    <None Remove="Core.Serialization.JSON\Options\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core.Serialization.JSON\" />
+    <Folder Include="Core.Serialization.JSON\Options\" />
   </ItemGroup>
 </Project>

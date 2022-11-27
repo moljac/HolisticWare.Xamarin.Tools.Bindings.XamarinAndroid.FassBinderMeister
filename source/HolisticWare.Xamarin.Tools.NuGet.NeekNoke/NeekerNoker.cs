@@ -18,7 +18,28 @@ public partial class NeekerNoker
         set;
     }
 
-    public NeekerNoker()
+    public
+        Dictionary
+                <
+                    string, // nuget_id
+                    (
+                        string version_current,
+                        string version_latest,
+                        string[] versions_upgradeable,
+                        NuGetPackage package_details,
+                        bool failed
+                    )
+                >
+                                        PackagesDetails
+    {
+        get;
+        set;
+    }
+
+    public
+                                        NeekerNoker
+                                            (
+                                            )
 	{
 		this.ResultsPerFormat = new ResultsPerFormat();
 
@@ -135,6 +156,13 @@ public partial class NeekerNoker
                     this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_global_json;
                     f_global_json.NeekNoke(kvp.Value);
                     break;
+                case "workloads.json":
+                    NeekNoke.Formats.NeekerNokerDotNetWorkloadsJSON f_workloads_json = null;
+                    f_workloads_json = new NeekNoke.Formats.NeekerNokerDotNetWorkloadsJSON();
+                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_workloads_json;
+                    f_workloads_json.NeekNoke(kvp.Value);
+                    break;
+                    
                 case "*.cake":
                     NeekNoke.Formats.NeekerNokerScriptCakeBuild f_cake = null;
                     f_cake = new NeekNoke.Formats.NeekerNokerScriptCakeBuild();
@@ -163,9 +191,50 @@ public partial class NeekerNoker
         void
                                         Noke
                                             (
-                                                Dictionary<string, string[]> patterns_files
                                             )
     {
+        foreach (KeyValuePair<string, NeekerNokerBase> nnb in this.ResultsPerFormat.ResultsNeekerNoker)
+        {
+            string pattern = nnb.Key;
+            NeekerNokerBase nn = nnb.Value;
+
+            Parallel.ForEach
+                        (
+                            nn.ResultsPerFormat.ResultsPerFile,
+                            rpf =>
+                            {
+                                string file = rpf.Key;
+                                ResultsPerFile rrpf = rpf.Value;
+                                foreach
+                                (
+                                    (
+                                        string nuget_id,
+                                        string version_current,
+                                        string[] versions_upgradeable,
+                                        string text_snippet_original,
+                                        string text_snippet_new
+                                    )
+                                        pr in rrpf.PackageReferences
+                                )
+                                {
+                                    string nuget_id = pr.nuget_id;
+                                    string version_current = pr.version_current;
+
+                                    (
+                                        string version_current,
+                                        string version_latest,
+                                        string[] versions_upgradeable,
+                                        NuGetPackage package_details,
+                                        bool failed
+                                    )
+                                        data = this.PackagesDetails[nuget_id];
+
+                                    string[] versions_upgradeable = data.versions_upgradeable;
+                                }
+                            }
+                        );
+        }
+
         return;
     }
     
@@ -402,6 +471,8 @@ public partial class NeekerNoker
                         }
                 );
 
+        this.PackagesDetails = packages_data;
+
         return packages_data;
     }
 
@@ -413,6 +484,11 @@ public partial class NeekerNoker
                                                 Stopwatch stopwatch
                                             )
     {
+        if (string.IsNullOrEmpty(file))
+        {
+            return;
+        }
+
         string log_data = null;
 
         #if DEBUG

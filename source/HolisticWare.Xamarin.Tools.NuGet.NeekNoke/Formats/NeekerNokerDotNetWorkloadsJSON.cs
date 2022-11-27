@@ -7,13 +7,13 @@ using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats.GlobalJson;
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
 public partial class
-										NeekerNokerDotNetGlobalJSON
+                                        NeekerNokerDotNetWorkloadsJSON
 										:
 										NeekerNokerBase
 {
-	public 
-										NeekerNokerDotNetGlobalJSON 
-										(
+	public
+                                        NeekerNokerDotNetWorkloadsJSON
+                                        (
 										)
 	{
 
@@ -66,12 +66,8 @@ public partial class
 
 							// https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
 
-							Core.Serialization.JSON.JSON<Root>.Deserialize =
-																	//Core.Serialization.JSON.JSON<Root>.Deserialize_System_Text_Json
-                                                                    //Core.Serialization.JSON.JSON<Root>.Deserialize_Newtonsoft_Json
-                                                                    Core.Serialization.JSON.JSON<Root>.Deserialize_Jil
-                                                                    ;
-                            Root r = Core.Serialization.JSON.JSON<Root>.Deserialize(content_original);
+							Root r = global::Core.Serialization
+													.JSON.JSON<Root>.Deserialize(content_original);
 
 							this.ResultsPerFormat
 									.ResultsPerFile[file].Log.Add

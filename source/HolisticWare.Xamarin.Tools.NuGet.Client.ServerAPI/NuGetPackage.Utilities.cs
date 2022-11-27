@@ -7,13 +7,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Core.Net.HTTP;
+using global::Core.Net.HTTP;
 
 using HolisticWare.Xamarin.Tools.NuGet.Core;
 
 using Versions=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root;
 using PackageRegistration=HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.PackageRegistration.Root;
 using PackageFromNuSpec=HolisticWare.Xamarin.Tools.NuGet.NuSpec.Generated.Microsoft.Package;
+using Newtonsoft.Json.Linq;
 
 namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
 {

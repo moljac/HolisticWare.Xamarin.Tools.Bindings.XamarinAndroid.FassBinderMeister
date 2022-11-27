@@ -66,6 +66,7 @@
         -->
             
         <ProjectReference Include="..\HolisticWare.Core.Serialization.JSON\HolisticWare.Core.Serialization.JSON.csproj" />
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -80,5 +81,11 @@
         <PackageReference Include="System.Text.Json" />
         <PackageReference Include="Newtonsoft.Json" />
         <PackageReference Include="Jil" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Formats\Generated\workloads.json\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Formats\Generated\workloads.json\" />
     </ItemGroup>
 </Project>
