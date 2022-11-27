@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime;
+using System.Text.Json;
 
 namespace Core.Serialization.JSON
 {
@@ -11,31 +13,51 @@ namespace Core.Serialization.JSON
 										)
 		{
             Deserialize = DeserializeUsingSystemTextJson;
+            DeserializeCustom = DeserializeUsingSystemTextJson;
 
             return;
 		}
 
         public static
-            Func<string, Settings, T>
+            Func<string, T>
                                     Deserialize;
+
+
+        public static
+            Func<string, Settings, T>
+                                    DeserializeCustom;
 
 
         public static
             T
                                     DeserializeUsingSystemTextJson
                                         (
+                                            string json
+                                        )
+        {
+            T retval = default(T);
+
+            retval = System.Text.Json.JsonSerializer.Deserialize<T>
+                                                            (
+                                                                json
+                                                            );
+
+            return retval;
+        }
+
+        public static
+            T
+                                    DeserializeUsingSystemTextJson
+                                        (
                                             string json,
-                                            Settings settings = null
+                                            Settings settings
                                         )
         {
             T retval = default(T);
 
             if (settings == null)
             {
-                retval = System.Text.Json.JsonSerializer.Deserialize<T>
-                                                                (
-                                                                    json
-                                                                );
+                retval = DeserializeUsingSystemTextJson(json);
             }
             else
             {
@@ -43,8 +65,28 @@ namespace Core.Serialization.JSON
                 // 
                 System.Text.Json.JsonSerializerOptions jso = null;
 
-                jso = settings.Data as System.Text.Json.JsonSerializerOptions;
+                jso = new System.Text.Json.JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = settings.Settings
+                };
             }
+
+            return retval;
+        }
+
+        public static
+            T
+                                    DeserializeUsingNewtonsoftJson
+                                        (
+                                            string json
+                                        )
+        {
+            T retval = default(T);
+
+            retval = Newtonsoft.Json.JsonConvert.DeserializeObject<T>
+                                                            (
+                                                                json
+                                                            );
 
             return retval;
         }
@@ -61,11 +103,7 @@ namespace Core.Serialization.JSON
 
             if (settings == null)
             {
-                retval = Newtonsoft.Json.JsonConvert.DeserializeObject<T>
-                                                                (
-                                                                    json
-                                                                );
-            }
+                DeserializeUsingNewtonsoftJson(json);            }
             else
             {
                 Newtonsoft.Json.Serialization.DefaultContractResolver jso = null;
@@ -80,11 +118,41 @@ namespace Core.Serialization.JSON
             T
                                     DeserializeUsingJil
                                         (
+                                            string json
+                                        )
+        {
+            T retval = default(T);
+
+            retval = Jil.JSON.Deserialize<T>
+                                        (
+                                            json
+                                        );
+
+            return retval;
+        }
+
+        public static
+            T
+                                    DeserializeUsingJil
+                                        (
                                             string json,
                                             Settings settings = null
                                         )
         {
-            return Jil.JSON.Deserialize<T>(json);
+            T retval = default(T);
+
+            if (settings == null)
+            {
+                DeserializeUsingJil(json);
+            }
+            else
+            {
+                Newtonsoft.Json.Serialization.DefaultContractResolver jso = null;
+
+                jso = settings.Data as Newtonsoft.Json.Serialization.DefaultContractResolver;
+            }
+
+            return retval;
         }
     }
 }

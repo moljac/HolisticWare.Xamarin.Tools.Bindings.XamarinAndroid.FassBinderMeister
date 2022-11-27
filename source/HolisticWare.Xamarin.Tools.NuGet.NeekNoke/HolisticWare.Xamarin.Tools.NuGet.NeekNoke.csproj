@@ -82,10 +82,4 @@
         <PackageReference Include="Newtonsoft.Json" />
         <PackageReference Include="Jil" />
     </ItemGroup>
-    <ItemGroup>
-      <None Remove="Formats\Generated\workloads.json\" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Formats\Generated\workloads.json\" />
-    </ItemGroup>
 </Project>

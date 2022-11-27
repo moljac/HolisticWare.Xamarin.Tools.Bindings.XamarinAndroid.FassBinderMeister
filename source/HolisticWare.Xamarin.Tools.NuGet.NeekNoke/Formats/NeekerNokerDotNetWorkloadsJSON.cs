@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats.GlobalJson;
+using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats.Generated.WorkloadsJson;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
@@ -25,7 +25,7 @@ public partial class
 										NeekNoke
 											(
 												string[] files
-											)								
+											)
     {
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)

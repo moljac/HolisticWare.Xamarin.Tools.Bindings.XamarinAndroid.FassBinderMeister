@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Core.Serialization.JSON
 {
-	public class
+	public abstract class
 									Settings
 	{
 		public
@@ -11,14 +11,6 @@ namespace Core.Serialization.JSON
 		{
 
 			return;
-		}
-
-		public virtual
-			object
-									Data
-		{
-			get;
-			set;
 		}
 	}
 }

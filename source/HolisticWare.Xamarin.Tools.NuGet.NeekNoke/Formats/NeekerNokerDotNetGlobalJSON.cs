@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats.GlobalJson;
+using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats.Generated.GlobalJson;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
@@ -25,7 +25,7 @@ public partial class
 										NeekNoke
 											(
 												string[] files
-											)								
+											)
     {
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
@@ -67,11 +67,24 @@ public partial class
 							// https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
 
 							Core.Serialization.JSON.JSON<Root>.Deserialize =
-																	//Core.Serialization.JSON.JSON<Root>.Deserialize_System_Text_Json
-                                                                    //Core.Serialization.JSON.JSON<Root>.Deserialize_Newtonsoft_Json
-                                                                    Core.Serialization.JSON.JSON<Root>.Deserialize_Jil
+																	Core.Serialization.JSON.JSON<Root>.DeserializeUsingSystemTextJson
+																	//Core.Serialization.JSON.JSON<Root>.DeserializeUsingNewtonsoftJson
+                                                                    //Core.Serialization.JSON.JSON<Root>.DeserializeUsingJil
                                                                     ;
-                            Root r = Core.Serialization.JSON.JSON<Root>.Deserialize(content_original);
+                            Core.Serialization.JSON.JSON<Root>.DeserializeCustom =
+                                                                    Core.Serialization.JSON.JSON<Root>.DeserializeUsingSystemTextJson
+                                                                    //Core.Serialization.JSON.JSON<Root>.DeserializeUsingNewtonsoftJson
+                                                                    //Core.Serialization.JSON.JSON<Root>.DeserializeUsingJil
+                                                                    ;
+
+                            Root r = Core.Serialization.JSON.JSON<Root>.DeserializeCustom
+																				(
+																					content_original,
+																					new Core.Serialization.JSON.SettingsSystemTextJson()
+																					{
+																						Data
+																					}
+																				);
 
 							this.ResultsPerFormat
 									.ResultsPerFile[file].Log.Add

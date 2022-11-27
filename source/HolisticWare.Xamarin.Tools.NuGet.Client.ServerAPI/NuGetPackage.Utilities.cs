@@ -39,7 +39,8 @@ namespace HolisticWare.Xamarin.Tools.NuGet.ServerAPI
                     response = await NuGetClient.HttpClient.GetStringContentAsync(url);
                 }
 
-                Versions data = global::Core.Serialization.JSON.JSON<Versions>.Deserialize(response);
+                Versions data = global::Core.Serialization.JSON
+                                                            .JSON<Versions>.Deserialize(response);
 
                 return data;
             }

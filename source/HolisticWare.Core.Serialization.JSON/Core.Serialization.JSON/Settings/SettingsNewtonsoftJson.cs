@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace Core.Serialization.JSON
 {
 	public class
@@ -7,13 +8,13 @@ namespace Core.Serialization.JSON
                                     :
                                     Settings
     {
-		public
-                                    SettingsNewtonsoftJson
-                                    (
-									)
-		{
-            return;
-		}
+        public
+            Newtonsoft.Json.Serialization.NamingStrategy
+                                    Settings
+        {
+            get;
+            set;
+        }
 
         // Newtonsoft.Json.Serialization.DefaultContractResolver
         // https://www.newtonsoft.com/json/help/html/NamingStrategySkipSpecifiedNames.htm

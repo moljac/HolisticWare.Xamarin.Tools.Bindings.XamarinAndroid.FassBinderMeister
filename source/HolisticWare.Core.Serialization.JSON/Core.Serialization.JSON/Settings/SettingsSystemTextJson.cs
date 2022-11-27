@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Text.Json;
+
 
 namespace Core.Serialization.JSON
 {
@@ -9,8 +9,8 @@ namespace Core.Serialization.JSON
                                     Settings
     {
         public
-            JsonNamingPolicy
-                                    JsonNamingPolicy
+            System.Text.Json.JsonNamingPolicy
+                                    Settings
         {
             get;
             set;
