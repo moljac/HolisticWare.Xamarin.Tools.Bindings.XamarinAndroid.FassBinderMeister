@@ -89,19 +89,20 @@ foreach(string arg in args)
 string[] patterns = new string[]
                                 {
                                     "*.csproj",
-                                    "*.cake",
-                                    "config.json",
-                                    "directory.build.*.props",
-                                    "directory.packages.*.props",
-                                    "*.props",
-                                    "*.targets",
+                                    //"*.cake",
+                                    //"config.json",
+                                    //"directory.build.*.props",
+                                    //"directory.packages.*.props",
+                                    //"*.props",
+                                    //"*.targets",
                                     "global.json",
-                                    "*.csx",
-                                    "*.fsproj",
-                                    "*.vbproj",
-                                    "*.proj",
-                                    "*.xproj",
-                                    "packages.config",
+                                    "workloads.json",
+                                    //"*.csx",
+                                    //"*.fsproj",
+                                    //"*.vbproj",
+                                    //"*.proj",
+                                    //"*.xproj",
+                                    //"packages.config",
                                 };
 
 Dictionary<string, string[]> patterns_files = new Scraper().Harvest(patterns);

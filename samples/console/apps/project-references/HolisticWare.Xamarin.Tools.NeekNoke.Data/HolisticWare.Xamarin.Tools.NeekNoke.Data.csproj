@@ -10,12 +10,26 @@
 
     <ItemGroup>
       <Folder Include="global.json.dotnet" />
+      <Folder Include="dotnet\" />
+      <Folder Include="dotnet\files.global.json\" />
+      <Folder Include="dotnet\files.workloads.json\" />
+      <Folder Include="dotnet\files.workloads.json\AX\" />
+      <Folder Include="dotnet\files.workloads.json\GPS-FB-MLKit\" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="global.json.dotnet\global.json" />
-      <Content Include="global.json.dotnet\global.json">
+      <None Remove="dotnet\" />
+      <None Remove="dotnet\files.global.json\" />
+      <None Remove="dotnet\files.global.json\global.json" />
+      <Content Include="dotnet\files.global.json\global.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
+      <None Remove="dotnet\files.workloads.json\" />
+      <None Remove="dotnet\files.workloads.json\AX\" />
+      <None Remove="dotnet\files.workloads.json\GPS-FB-MLKit\" />
+      <None Remove="dotnet\files.workloads.json\AX\workloads.json" />
+      <Content Include="**/*" />
+      <None Remove="dotnet\files.workloads.json\GPS-FB-MLKit\workloads.json" />
+      <Content Include="**/*" />
     </ItemGroup>
 </Project>

@@ -12,13 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.System.Text.JSON.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI">
       <HintPath>bin\Debug\net6.0\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.dll</HintPath>
     </Reference>
   </ItemGroup>
   
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\source\HolisticWare.Xamarin.Tools.NuGet.NeekNoke\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.csproj" />
+  </ItemGroup>
 </Project>
