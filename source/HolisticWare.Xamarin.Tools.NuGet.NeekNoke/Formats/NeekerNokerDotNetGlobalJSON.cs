@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats.Generated.GlobalJson;
+using HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Formats;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 
@@ -77,16 +78,12 @@ public partial class
                                                                     //Core.Serialization.JSON.JSON<Root>.DeserializeUsingJil
                                                                     ;
 
-                            Root r = Core.Serialization.JSON.JSON<Root>.DeserializeCustom
-																				(
-																					content_original,
-																					new Core.Serialization.JSON.SettingsSystemTextJson()
-																					{
-																						Data
-																					}
-																				);
+                            Root r = this
+                                        //.DeserializeUsingSystemTextJson(content_original)
+                                        .DeserializeUsingNewtonsoftJson(content_original)
+                                        ;
 
-							this.ResultsPerFormat
+                            this.ResultsPerFormat
 									.ResultsPerFile[file].Log.Add
 																(
 																	(
@@ -101,5 +98,57 @@ public partial class
 					);
 
         return;
+    }
+
+    public
+        Root
+                                    DeserializeUsingSystemTextJson
+                                        (
+                                            string json
+                                        )
+    {
+        Root r = null;
+
+        Core.Serialization.JSON.SettingsSystemTextJson settings = null;
+
+        settings = new Core.Serialization.JSON.SettingsSystemTextJson
+        {
+            Settings = new SettingsSystemTextJsonGlobalJson()
+        };
+
+        r = global::Core.Serialization
+                                .JSON.JSON<Root>.DeserializeCustom
+                                                        (
+                                                            json,
+                                                            settings
+                                                        );
+
+        return r;
+    }
+
+    public
+        Root
+                                    DeserializeUsingNewtonsoftJson
+                                        (
+                                            string json
+                                        )
+    {
+        Root r = null;
+
+        Core.Serialization.JSON.SettingsNewtonsoftJson settings = null;
+
+        settings = new Core.Serialization.JSON.SettingsNewtonsoftJson
+        {
+            Settings = new SettingsNewtonsoftJsonGlobalJson()
+        };
+
+        r = global::Core.Serialization
+                                .JSON.JSON<Root>.DeserializeCustom
+                                                        (
+                                                            json,
+                                                            settings
+                                                        );
+
+        return r;
     }
 }

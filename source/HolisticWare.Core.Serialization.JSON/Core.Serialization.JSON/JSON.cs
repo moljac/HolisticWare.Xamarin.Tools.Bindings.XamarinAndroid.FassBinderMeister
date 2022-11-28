@@ -61,14 +61,16 @@ namespace Core.Serialization.JSON
             }
             else
             {
-                // https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/customize-properties?pivots=dotnet-7-0
-                // 
+                SettingsSystemTextJson s = settings as SettingsSystemTextJson;
+
                 System.Text.Json.JsonSerializerOptions jso = null;
 
                 jso = new System.Text.Json.JsonSerializerOptions
                 {
-                    PropertyNamingPolicy = settings.Settings
+                    PropertyNamingPolicy = s.Settings
                 };
+
+                retval = DeserializeUsingSystemTextJson(json, s);
             }
 
             return retval;
@@ -106,9 +108,13 @@ namespace Core.Serialization.JSON
                 DeserializeUsingNewtonsoftJson(json);            }
             else
             {
-                Newtonsoft.Json.Serialization.DefaultContractResolver jso = null;
+                SettingsNewtonsoftJson s = settings as SettingsNewtonsoftJson;
 
-                jso = settings.Data as Newtonsoft.Json.Serialization.DefaultContractResolver;
+                Newtonsoft.Json.Serialization.NamingStrategy jso = null;
+
+                jso = s.Settings;
+
+                retval = DeserializeUsingSystemTextJson(json, s);
             }
 
             return retval;
@@ -147,9 +153,7 @@ namespace Core.Serialization.JSON
             }
             else
             {
-                Newtonsoft.Json.Serialization.DefaultContractResolver jso = null;
-
-                jso = settings.Data as Newtonsoft.Json.Serialization.DefaultContractResolver;
+                throw new NotImplementedException("TODO: Jil ");
             }
 
             return retval;

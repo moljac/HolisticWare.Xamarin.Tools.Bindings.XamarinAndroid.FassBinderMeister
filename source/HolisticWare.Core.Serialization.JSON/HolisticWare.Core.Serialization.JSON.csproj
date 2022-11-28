@@ -37,6 +37,7 @@
         <PackageReference Include="Newtonsoft.Json" />
         <PackageReference Include="Jil" />
         <PackageReference Include="Utf8Json" />
+        <PackageReference Include="HolisticWare.SpanJson 3.6.0-rtm-221002-01" />         
     </ItemGroup>
 
   <ItemGroup>
