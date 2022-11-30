@@ -21,28 +21,22 @@ namespace BindingConfigurator
         {
             Trace.Listeners.Add(new ConsoleTraceListener());
 
-            Dictionary<string, IEnumerable<(Tag, string)>> repo_tags_content;
-
-            repo_tags_content = await new BinderatorConfigDownloader(client)
-                                            .DownloadBinderatorConfigContentsAsync
-                                                                            (
-                                                                                "xamarin",
-                                                                                "androidx"
-                                                                            );
-
-
+            BinderatorConfigDownloader_Download();
 
             //await GoogleMavenData.LoadAsync(local: false);
-
-            ProcesGoogleAndroidX();
-            ProcesGooglePlayServicesFirebase();
+            //ProcesGoogleAndroidX();
+            //ProcesGooglePlayServicesFirebase();
 
             Console.WriteLine("Exiting ...");
 
             return;
         }
 
-        private static void ProcesGooglePlayServicesFirebase()
+        private static
+            void
+                                        ProcesGooglePlayServicesFirebase
+                                            (
+                                            )
         {
             GoogleMavenData google_maven_data = new GoogleMavenData();
 
@@ -171,13 +165,13 @@ namespace BindingConfigurator
             return;
         }
 
-        private static void ProcesGoogleAndroidX()
+        private static
+            void
+                                        ProcesGoogleAndroidX
+                                            (
+                                            )
         {
             GoogleMavenData google_maven_data = new GoogleMavenData();
-
-            google_maven_data.RepositoryNames = new List<string>()
-            {
-            };
 
             google_maven_data.Name = "androidx";
             string json = null;
@@ -213,5 +207,26 @@ namespace BindingConfigurator
             return;
         }
 
+        private static
+            void
+                                        BinderatorConfigDownloader_Download
+                                            (
+                                            )
+        {
+            BinderatorConfigDownloader bcd = new BinderatorConfigDownloader(client);
+
+            Dictionary
+                <
+                    string,
+                    IEnumerable<(Tag, string)>
+                > configs_ax = bcd.DownloadBinderatorConfigContentsAsync
+                                                        (
+                                                            "xamarin",
+                                                            "AndroidX",
+                                                            null
+                                                        )
+                                                        .Result;
+            return;
+        }
     }
 }
