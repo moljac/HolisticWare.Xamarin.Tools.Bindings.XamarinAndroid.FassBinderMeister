@@ -5,7 +5,6 @@ LibrarySourceProjects   = GetFiles(source_projects);
 
 //---------------------------------------------------------------------------------------
 Task("libs")
-    .IsDependentOn ("clean")
     .IsDependentOn ("nuget-restore-libs")
     .IsDependentOn ("libs-msbuild-solutions")
     .IsDependentOn ("libs-msbuild-projects")
