@@ -12,24 +12,28 @@ public partial class ResultsPerFile
         set;
     }
 
+
+
+
+
     public 
         List
-                        <
-                            (
-                                string version_current,         // version_current
-                                string[] versions_updateable    // versions_updateable
-                            )
-                        >
+            <
+                (
+                    string version_current,         // version_current
+                    string[] versions_updateable    // versions_updateable
+                )
+            >
                 package_versions = null;
 
     public
         List
-                        <
-                            (
-                                string version_current,         // version_current
-                                string[] versions_updateable    // versions_updateable
-                            )
-                        >
+            <
+                (
+                    string version_current,         // version_current
+                    string[] versions_updateable    // versions_updateable
+                )
+            >
                                         PackageVersions
     {
         get
@@ -47,28 +51,28 @@ public partial class ResultsPerFile
     
     protected
         List
-                    <
-                        (
-                            string nuget_id,                // nuget_id
-                            string version_current,         // version current (from file)
-                            string[] versions_upgradeable,  // version upgradeable (from nuget feed[s])
-                            string text_snippet_original,   // text snippet original (form file to preserve formatting) 
-                            string text_snippet_new         // text snippet new (from nuget feed changed version)
-                        )
-                    >
+            <
+                (
+                    string nuget_id,                // nuget_id
+                    string version_current,         // version current (from file)
+                    string[] versions_upgradeable,  // version upgradeable (from nuget feed[s])
+                    string text_snippet_original,   // text snippet original (form file to preserve formatting) 
+                    string text_snippet_new         // text snippet new (from nuget feed changed version)
+                )
+            >
                 package_references = null;
 
     public
-                List
-                    <
-                        (
-                            string nuget_id,                // nuget_id
-                            string version_current,         // version current (from file)
-                            string[] versions_upgradeable,  // version upgradeable (from nuget feed[s])
-                            string text_snippet_original,   // text snippet original (form file to preserve formatting) 
-                            string text_snippet_new         // text snippet new (from nuget feed changed version)
-                        )
-                    >
+        List
+            <
+                (
+                    string nuget_id,                // nuget_id
+                    string version_current,         // version current (from file)
+                    string[] versions_upgradeable,  // version upgradeable (from nuget feed[s])
+                    string text_snippet_original,   // text snippet original (form file to preserve formatting) 
+                    string text_snippet_new         // text snippet new (from nuget feed changed version)
+                )
+            >
                                         PackageReferences
     {
         get
@@ -108,24 +112,44 @@ public partial class ResultsPerFile
     }
 
     protected
-                List
-                    <
-                        (
-                            string nuget_id,                // nuget_id
-                            string version_current         // version current (from file)
-                        )
-                    >
-                                        packages_failed = null;
+        List
+            <
+                (
+                    string nuget_id,                // nuget_id
+                    string version_current         // version current (from file)
+                )
+            >
+                packages_failed = null;
 
-    public 
-                    List
-                        <
-                            (
-                                string file_backup,             // file backup with original content
-                                string content,                 // contnent (changed if noked)
-                                string content_backup           // content backup with original content
-                            )
-                        >
+    public
+        Dictionary<string, string>
+                                        DotNetWorkloadsJson
+    {
+        get;
+        set;
+    }
+
+    public
+        Dictionary
+                <
+                    string,
+                    Dictionary<string, object>
+                >
+                                        DotNetGlobalJson
+    {
+        get;
+        set;
+    }
+
+    public
+        List
+            <
+                (
+                    string file_backup,             // file backup with original content
+                    string content,                 // contnent (changed if noked)
+                    string content_backup           // content backup with original content
+                )
+            >
                                         Log
     {
         get
@@ -142,14 +166,14 @@ public partial class ResultsPerFile
     }
 
     protected
-                    List
-                        <
-                            (
-                                string file_backup,             // file backup with original content
-                                string content,                 // contnent (changed if noked)
-                                string content_backup           // content backup with original content
-                            )
-                        >
+        List
+            <
+                (
+                    string file_backup,             // file backup with original content
+                    string content,                 // contnent (changed if noked)
+                    string content_backup           // content backup with original content
+                )
+            >
                 log = null;
 
     public
@@ -158,35 +182,35 @@ public partial class ResultsPerFile
                                             )
     {
         log = new List
-                                <
-                                    (
-                                        string file_backup,             // file backup with original content
-                                        string content,                 // contnent (changed if noked)
-                                        string content_backup           // content backup with original content
-                                    )
-                                >
-                                    ();
+                    <
+                        (
+                            string file_backup,             // file backup with original content
+                            string content,                 // contnent (changed if noked)
+                            string content_backup           // content backup with original content
+                        )
+                    >
+                        ();
         
         package_versions = new List
-                                                <
-                                                    (
-                                                        string version_current,
-                                                        string[] versions_updateable
-                                                    )
-                                                >
+                                    <
+                                        (
+                                            string version_current,
+                                            string[] versions_updateable
+                                        )
+                                    >
                                         ();
         
         package_references = new List
-                                                <
-                                                    (
-                                                        string nuget_id,                // nuget_id
-                                                        string version_current,
-                                                        string[] versions_upgradeable,
-                                                        string text_snippet_original,
-                                                        string text_snippet_new
-                                                    )
-                                                >
-                                            ();
+                                    <
+                                        (
+                                            string nuget_id,                // nuget_id
+                                            string version_current,
+                                            string[] versions_upgradeable,
+                                            string text_snippet_original,
+                                            string text_snippet_new
+                                        )
+                                    >
+                                        ();
 
         packages_failed = new List
                                             <

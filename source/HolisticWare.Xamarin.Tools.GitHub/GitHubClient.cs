@@ -120,8 +120,25 @@ namespace HolisticWare.Xamarin.Tools.GitHub
                 string response_body = await response.Content.ReadAsStringAsync();
                 */
                 // new helper method below
-                string response_string_json = await HttpClient.GetStringAsync(url).ConfigureAwait(false);
-                tags = GitHub.Tags.Deserialize(response_string_json);
+                string response_string_json = null;
+                int page = 1;
+
+                do
+                {
+                    response_string_json = await HttpClient
+                                                        .GetStringAsync($"{url}?page={page}")
+                                                        .ConfigureAwait(false);
+                    if (tags == null)
+                    {
+                        tags = GitHub.Tags.Deserialize(response_string_json);
+                    }
+                    else
+                    {
+                        tags.Concat(GitHub.Tags.Deserialize(response_string_json));
+                    }
+
+                    page++;
+                } while (tags.Count() == 30);
             }
             catch (HttpRequestException e)
             {

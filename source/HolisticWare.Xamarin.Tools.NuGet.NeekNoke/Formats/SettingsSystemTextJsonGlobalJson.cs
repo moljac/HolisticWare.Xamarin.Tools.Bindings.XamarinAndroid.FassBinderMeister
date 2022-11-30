@@ -17,6 +17,18 @@ namespace HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Formats
         {
             string retval = null;
 
+            switch(name)
+            {
+                case "Sdk":
+                    retval = "sdk";
+                    break;
+                case "MsBuildSdks":
+                    retval = "msbuild-sdks";
+                    break;
+                default:
+                    break;
+            }
+
             return retval;
         }
     }

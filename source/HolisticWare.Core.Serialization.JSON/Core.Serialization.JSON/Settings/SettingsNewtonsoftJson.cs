@@ -17,7 +17,7 @@ namespace Core.Serialization.JSON
                                     Settings
     {
         public
-            Newtonsoft.Json.Serialization.NamingStrategy
+            Newtonsoft.Json.Serialization.DefaultContractResolver
                                     Settings
         {
             get;

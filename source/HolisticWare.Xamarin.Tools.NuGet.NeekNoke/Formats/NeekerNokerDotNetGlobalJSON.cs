@@ -65,8 +65,8 @@ public partial class
 								content_new = System.IO.File.ReadAllText(file_new);
 							}
 
-							// https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
-
+                            // https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
+                            /*
 							Core.Serialization.JSON.JSON<Root>.Deserialize =
 																	Core.Serialization.JSON.JSON<Root>.DeserializeUsingSystemTextJson
 																	//Core.Serialization.JSON.JSON<Root>.DeserializeUsingNewtonsoftJson
@@ -79,9 +79,53 @@ public partial class
                                                                     ;
 
                             Root r = this
-                                        //.DeserializeUsingSystemTextJson(content_original)
-                                        .DeserializeUsingNewtonsoftJson(content_original)
+                                        .DeserializeUsingSystemTextJson(content_original)
+                                        //.DeserializeUsingNewtonsoftJson(content_original)
                                         ;
+							*/
+
+                            Dictionary
+                                    <
+                                        string,
+                                        Dictionary<string, object>
+                                    >
+                                        global_newtosoft_json = null;
+
+                            global_newtosoft_json = Newtonsoft.Json.JsonConvert
+                                                                            .DeserializeObject
+                                                                                <
+                                                                                    Dictionary
+                                                                                            <
+                                                                                                string,
+                                                                                                Dictionary<string, object>
+                                                                                            >
+                                                                                >
+                                                                                    (
+                                                                                        content_original
+                                                                                    );
+
+                            Dictionary
+                                    <
+                                        string,
+                                        Dictionary<string, object>
+                                    >
+                                        global_system_text_json = null;
+
+                            global_system_text_json = System.Text.Json.JsonSerializer
+                                                                            .Deserialize
+                                                                                <
+                                                                                    Dictionary
+                                                                                            <
+                                                                                                string,
+                                                                                                Dictionary<string, object>
+                                                                                            >
+                                                                                >
+                                                                                    (
+                                                                                        content_original
+                                                                                    );
+
+                            this.ResultsPerFormat
+                                    .ResultsPerFile[file].DotNetGlobalJson = global_newtosoft_json;
 
                             this.ResultsPerFormat
 									.ResultsPerFile[file].Log.Add

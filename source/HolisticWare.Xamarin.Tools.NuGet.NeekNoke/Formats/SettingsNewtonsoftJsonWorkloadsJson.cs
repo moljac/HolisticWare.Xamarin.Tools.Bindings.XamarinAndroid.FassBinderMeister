@@ -5,7 +5,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Formats
     public class
                                     SettingsNewtonsoftJsonWorkloadsJson
                                     :
-                                    Newtonsoft.Json.Serialization.NamingStrategy
+                                    Newtonsoft.Json.Serialization.DefaultContractResolver
 
     {
         protected override

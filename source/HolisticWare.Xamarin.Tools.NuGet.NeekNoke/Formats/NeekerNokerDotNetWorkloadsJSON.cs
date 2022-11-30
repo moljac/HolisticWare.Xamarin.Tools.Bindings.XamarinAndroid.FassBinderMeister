@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+
 using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats.Generated.WorkloadsJson;
 using HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Formats;
 
@@ -65,12 +66,23 @@ public partial class
 								content_new = System.IO.File.ReadAllText(file_new);
 							}
 
-							// https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
+							// 
 
+							/*
 							Root r = this
                                         //.DeserializeUsingSystemTextJson(content_original)
                                         .DeserializeUsingNewtonsoftJson(content_original)
                                         ;
+							*/
+							Dictionary<string, string> workloads_json = null;
+
+                            workloads_json =
+                                                //DeserializeDictionaryUsingNewtonsoftJson(content_original)
+                                                DeserializeDictionaryUsingSystemTextJson(content_original)
+                                                ;
+
+							this.ResultsPerFormat
+									.ResultsPerFile[file].DotNetWorkloadsJson = workloads_json;
 
                             this.ResultsPerFormat
 									.ResultsPerFile[file].Log.Add
@@ -87,6 +99,48 @@ public partial class
 					);
 
         return;
+    }
+
+    public
+        Dictionary<string, string>
+                                    DeserializeDictionaryUsingSystemTextJson
+                                        (
+                                            string json
+                                        )
+	{
+        Dictionary<string, string> workloads_system_text_json = null;
+
+        workloads_system_text_json = System.Text.Json.JsonSerializer
+                                                        .Deserialize
+                                                            <
+                                                                Dictionary<string, string>
+                                                            >
+                                                                (
+                                                                    json
+
+                                                                );
+		return workloads_system_text_json;
+    }
+
+    public
+        Dictionary<string, string>
+                                    DeserializeDictionaryUsingNewtonsoftJson
+                                        (
+                                            string json
+                                        )
+    {
+        Dictionary<string, string> workloads_newtosoft_json = null;
+
+        workloads_newtosoft_json = Newtonsoft.Json.JsonConvert
+                                                        .DeserializeObject
+                                                            <
+                                                                Dictionary<string, string>
+                                                            >
+                                                                (
+                                                                    json
+                                                                );
+
+        return workloads_newtosoft_json;
     }
 
     public
@@ -126,10 +180,10 @@ public partial class
 
 		Core.Serialization.JSON.SettingsNewtonsoftJson settings = null;
 
-		settings = new Core.Serialization.JSON.SettingsNewtonsoftJson
-		{ 
-			Settings = new SettingsNewtonsoftJsonWorkloadsJson()
-		};
+        settings = new Core.Serialization.JSON.SettingsNewtonsoftJson
+        {
+            Settings = new SettingsNewtonsoftJsonWorkloadsJson()
+        };
 
         r = global::Core.Serialization
                                 .JSON.JSON<Root>.DeserializeCustom

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime;
 using System.Text.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Core.Serialization.JSON
 {
@@ -70,7 +71,10 @@ namespace Core.Serialization.JSON
                     PropertyNamingPolicy = s.Settings
                 };
 
-                retval = DeserializeUsingSystemTextJson(json, s);
+                retval = System.Text.Json.JsonSerializer.Deserialize<T>
+                                                                (
+                                                                    json,
+                                                                    jso                                                                );
             }
 
             return retval;
@@ -110,11 +114,18 @@ namespace Core.Serialization.JSON
             {
                 SettingsNewtonsoftJson s = settings as SettingsNewtonsoftJson;
 
-                Newtonsoft.Json.Serialization.NamingStrategy jso = null;
+                Newtonsoft.Json.Serialization.DefaultContractResolver dcr = s.Settings;
 
-                jso = s.Settings;
+                Newtonsoft.Json.JsonSerializerSettings jss = new Newtonsoft.Json.JsonSerializerSettings
+                {
+                    ContractResolver = dcr,
+                };
 
-                retval = DeserializeUsingSystemTextJson(json, s);
+                retval = Newtonsoft.Json.JsonConvert.DeserializeObject<T>
+                                                                (
+                                                                    json,
+                                                                    jss
+                                                                );
             }
 
             return retval;

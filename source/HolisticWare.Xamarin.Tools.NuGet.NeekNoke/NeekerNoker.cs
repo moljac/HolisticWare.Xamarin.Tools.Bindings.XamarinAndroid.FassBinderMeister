@@ -205,6 +205,7 @@ public partial class NeekerNoker
                             {
                                 string file = rpf.Key;
                                 ResultsPerFile rrpf = rpf.Value;
+
                                 foreach
                                 (
                                     (
@@ -406,7 +407,7 @@ public partial class NeekerNoker
                                     version_current: null,
                                     version_latest: null,
                                     versions_upgradeable: null,
-                                    NuGetPackage: null,
+                                    package_details: null,
                                     failed: false
                                 )
                             );
@@ -429,7 +430,7 @@ public partial class NeekerNoker
                                                     .GetPackageVersionsFromIndexAsync(nuget_id)
                                                     .Result;
                             }
-                            catch (Exception exc)
+                            catch (Exception)
                             {
                                 failed = true;
                             }
@@ -452,7 +453,7 @@ public partial class NeekerNoker
                                                                             version_current: version,
                                                                             version_latest: version_latest,
                                                                             versions_upgradeable: versions_upgradeable,
-                                                                            NuGetPackage: np,
+                                                                            package_details: np,
                                                                             failed: failed
                                                                         );
                             }
@@ -464,7 +465,7 @@ public partial class NeekerNoker
                                                                             version_current: version,
                                                                             version_latest: null,
                                                                             versions_upgradeable: null,
-                                                                            NuGetPackage: null,
+                                                                            package_details: null,
                                                                             failed: failed
                                                                         );
                             }
