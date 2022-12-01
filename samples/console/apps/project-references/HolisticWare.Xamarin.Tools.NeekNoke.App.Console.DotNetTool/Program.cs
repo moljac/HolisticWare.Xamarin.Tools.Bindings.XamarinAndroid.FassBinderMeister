@@ -86,23 +86,26 @@ foreach(string arg in args)
 
 }
 
+var netCoreVer = System.Environment.Version; // 3.0.0
+var runtimeVer = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription; // .NET Core 3.0.0-preview4.19113.15
+
 string[] patterns = new string[]
                                 {
                                     "*.csproj",
-                                    //"*.cake",
-                                    //"config.json",
-                                    //"directory.build.*.props",
-                                    //"directory.packages.*.props",
-                                    //"*.props",
-                                    //"*.targets",
+                                    "*.cake",
+                                    "config.json",
+                                    "directory.build.*.props",
+                                    "directory.packages.*.props",
+                                    "*.props",
+                                    "*.targets",
                                     "global.json",
                                     "workloads.json",
-                                    //"*.csx",
-                                    //"*.fsproj",
-                                    //"*.vbproj",
-                                    //"*.proj",
-                                    //"*.xproj",
-                                    //"packages.config",
+                                    "*.csx",
+                                    "*.fsproj",
+                                    "*.vbproj",
+                                    "*.proj",
+                                    "*.xproj",
+                                    "packages.config",
                                 };
 
 Dictionary<string, string[]> patterns_files = new Scraper().Harvest(patterns);
@@ -127,6 +130,8 @@ foreach (KeyValuePair<string, string[]> pattern in patterns_files)
 
 Trace.Flush();
 
+
+NeekerNoker.VersionDotNetSDKBand = "6.0.400";   // needed for workloads
 NeekerNoker neeker_noker = new NeekerNoker();
 
 neeker_noker.Neek(patterns_files);
