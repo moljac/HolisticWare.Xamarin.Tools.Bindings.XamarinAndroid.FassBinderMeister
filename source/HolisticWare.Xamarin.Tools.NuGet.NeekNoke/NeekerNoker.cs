@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
 using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
+using Newtonsoft.Json.Linq;
 
 namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
 
@@ -16,6 +17,22 @@ public partial class NeekerNoker
     {
         get;
         set;
+    }
+
+    public static
+        string
+                                        VersionDotNetSDKBand
+    {
+        get
+        {
+            return NeekerNokerDotNetWorkloadsJSON.VersionDotNetSDKBand;
+        }
+        set
+        {
+            NeekerNokerDotNetWorkloadsJSON.VersionDotNetSDKBand = value;
+
+            return;
+        }
     }
 
     public
@@ -84,14 +101,20 @@ public partial class NeekerNoker
                                     new string[]
                                                     {
                                                         "*.csproj",
+                                                        "*.cake",
                                                         "config.json",
                                                         "directory.build.*.props",
                                                         "directory.packages.*.props",
                                                         "*.props",
                                                         "*.targets",
+                                                        "global.json",
+                                                        "workloads.json",
+                                                        "*.csx",
                                                         "*.fsproj",
                                                         "*.vbproj",
                                                         "*.proj",
+                                                        "*.xproj",
+                                                        "packages.config",
                                                     },
                                     "."
                                 );
@@ -205,6 +228,8 @@ public partial class NeekerNoker
                             {
                                 string file = rpf.Key;
                                 ResultsPerFile rrpf = rpf.Value;
+
+                                string file_content = System.IO.File.ReadAllText(file);
 
                                 foreach
                                 (

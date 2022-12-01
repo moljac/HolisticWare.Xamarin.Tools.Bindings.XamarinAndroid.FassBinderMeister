@@ -22,6 +22,14 @@ public partial class
 		return;
 	}
 
+    public static
+        string
+                                        VersionDotNetSDKBand
+    {
+        get;
+        set;
+    }
+
 	public 
 		void
 										NeekNoke
@@ -83,6 +91,29 @@ public partial class
 
 							this.ResultsPerFormat
 									.ResultsPerFile[file].DotNetWorkloadsJson = workloads_json;
+
+                            foreach (KeyValuePair<string, string> kvp in workloads_json)
+                            {
+                                string nuget_id = kvp.Key;
+                                string[] version_nuget_dotnet = kvp.Value.Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
+                                string version_nuget = version_nuget_dotnet[0];
+                                string version_dotnet = version_nuget_dotnet[1];
+
+                                nuget_id = $"{nuget_id}.manifest-{version_dotnet}";
+
+                                this.ResultsPerFormat
+                                    .ResultsPerFile[file]
+                                        .PackageReferences.Add
+                                                            (
+                                                                (
+                                                                    nuget_id: nuget_id,
+                                                                    version_current: version_nuget,
+                                                                    versions_upgradeable: null,
+                                                                    text_snippet_original: content_original,
+                                                                    text_snippet_new: content_original
+                                                                )
+                                                            );
+                            }
 
                             this.ResultsPerFormat
 									.ResultsPerFile[file].Log.Add

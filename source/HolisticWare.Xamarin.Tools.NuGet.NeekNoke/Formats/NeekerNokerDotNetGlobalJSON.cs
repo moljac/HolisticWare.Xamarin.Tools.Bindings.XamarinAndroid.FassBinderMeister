@@ -127,6 +127,18 @@ public partial class
                             this.ResultsPerFormat
                                     .ResultsPerFile[file].DotNetGlobalJson = global_newtosoft_json;
 
+                            foreach
+                                (
+                                    KeyValuePair
+                                        <
+                                            string,
+                                            Dictionary<string, object>
+                                        >
+                                            kvp in global_newtosoft_json
+                                )
+                            {
+                            }
+
                             this.ResultsPerFormat
 									.ResultsPerFile[file].Log.Add
 																(
