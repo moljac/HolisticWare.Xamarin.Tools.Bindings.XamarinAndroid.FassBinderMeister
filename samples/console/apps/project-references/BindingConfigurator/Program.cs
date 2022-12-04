@@ -226,6 +226,16 @@ namespace BindingConfigurator
                                                             null
                                                         )
                                                         .Result;
+
+            foreach(var kvp in configs_ax)
+            {
+                foreach((Tag, string) t in kvp.Value)
+                {
+                    string a = t.Item2;
+                    Tag tag = t.Item1;
+                }
+            }
+
             return;
         }
     }
