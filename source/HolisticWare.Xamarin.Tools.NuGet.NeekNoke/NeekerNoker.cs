@@ -255,8 +255,31 @@ public partial class NeekerNoker
                                     )
                                         data = this.PackagesDetails[nuget_id];
 
-                                    string[] versions_upgradeable = data.versions_upgradeable;
+                                    if (rrpf.PackageReferences == null || rrpf.PackageReferences.Count == 0)
+                                    {
+                                        // no package references found
+                                        continue;
+                                    }
+
+                                    // TODO: performance - check if version is
+                                    if ( string.Compare(pr.version_current, data.version_latest) >= 0)
+                                    {
+                                        continue;
+                                    }
+
+                                    if (pr.text_snippet_original != null)
+                                    {
+                                        string text_snippet_new = pr.text_snippet_original.Replace
+                                                                                                (
+                                                                                                    pr.version_current,
+                                                                                                    data.version_latest
+                                                                                                );
+                                        file_content = file_content.Replace(pr.text_snippet_original, text_snippet_new);
+                                    }
                                 }
+
+
+                                System.IO.File.WriteAllText(file, file_content);
                             }
                         );
         }
@@ -437,6 +460,7 @@ public partial class NeekerNoker
                                 )
                             );
         }
+
         Parallel.ForEach
                     (
                         packages,
@@ -458,8 +482,16 @@ public partial class NeekerNoker
                             catch (Exception)
                             {
                                 failed = true;
+                                packages_data[nuget_id_x_version.Key] =
+                                                                        (
+                                                                            version_current: version,
+                                                                            version_latest: null,
+                                                                            versions_upgradeable: null,
+                                                                            package_details: null,
+                                                                            failed: failed
+                                                                        );
                             }
-                            
+
                             NuGetPackage np = null;
                             
                             try
