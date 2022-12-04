@@ -76,12 +76,8 @@ public partial class
 							}
 							catch (System.Exception exc)
 							{
-								Trace.WriteLine(exc.Message);
 								throw;
 							}
-
-							Trace.WriteLine($"file:		{Environment.NewLine}	{file}");
-
 							//------------------------------------------------------------------------------------------------------
 							// PackageReference
 
@@ -229,9 +225,9 @@ public partial class
 									xe_package_references_version_attribute == null
 									||
 									(
-										xe_package_references_version_attribute != null
-										&&
-										!xe_package_references_version_attribute.Any()
+										//xe_package_references_version_attribute != null
+										//&&
+										! xe_package_references_version_attribute.Any()
 									)
 								)
 								&&
@@ -239,9 +235,9 @@ public partial class
 									xe_package_references_version_node == null
 									||
 									(
-										xe_package_references_version_node != null
-										&&
-										!xe_package_references_version_node.Any()
+										//xe_package_references_version_node != null
+										//&&
+										! xe_package_references_version_node.Any()
 									)
 								)
 							)
@@ -259,15 +255,21 @@ public partial class
 								if (xe.Attribute("Version") != null)
 								{
 									version = xe.Attribute("Version").Value;
+									text_snippet_original = xe.ToString();
+								}
+								else
+								{
 									continue;
 								}
 							}
 
 							foreach (XElement xe in xe_package_references_version_node)
 							{
-								if (xe.Element("Version") != null)
+                                version = xe.Value; //.Select(n => { return true; });
+                                text_snippet_original = xe.Parent.ToString();
+
+                                if (xe.Element("Version") != null)
 								{
-									//version = xe.Nodes().Select(n => { return true; });
 									continue;
 								}
 							}
@@ -278,17 +280,17 @@ public partial class
 							}
 
 							this.ResultsPerFormat
-								.ResultsPerFile[file]
-									.PackageReferences.Add
-														(
+									.ResultsPerFile[file]
+										.PackageReferences.Add
 															(
-																nuget_id: nuget_id,
-																version_current: version,
-																versions_upgradeable: null,
-																text_snippet_original: text_snippet_original,
-																text_snippet_new: text_snippet_new
-															)
-														);
+																(
+																	nuget_id: nuget_id,
+																	version_current: version,
+																	versions_upgradeable: null,
+																	text_snippet_original: text_snippet_original,
+																	text_snippet_new: text_snippet_new
+																)
+															);
 							//------------------------------------------------------------------------------------------------------
                             //------------------------------------------------------------------------------------------------------
                             // PackageVersion
@@ -296,14 +298,15 @@ public partial class
                             //------------------------------------------------------------------------------------------------------
                             
                             this.ResultsPerFormat
-									.ResultsPerFile[file].Log.Add
-									                            (
-										                            (
-											                            file_backup: file_new,
-											                            content: content_original,
-											                            content_backup: content_new
-										                            )
-									                            );
+									.ResultsPerFile[file]
+										.Log.Add
+									            (
+										            (
+											            file_backup: file_new,
+											            content: content_original,
+											            content_backup: content_new
+										            )
+									            );
                             
                             // Console.WriteLine($"nuget_id:		{Environment.NewLine}			{nuget_id}");
                             // Console.WriteLine($"	version:			{Environment.NewLine}	{version}");
