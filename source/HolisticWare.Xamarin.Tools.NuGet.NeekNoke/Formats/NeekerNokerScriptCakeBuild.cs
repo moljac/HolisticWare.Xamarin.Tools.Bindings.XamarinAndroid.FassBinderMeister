@@ -70,6 +70,7 @@ public partial class NeekerNokerScriptCakeBuild
 							}
 
 							string[] lines = System.IO.File.ReadLines(file).ToArray();
+							string nuget_reference = null;
 							string[] nuget_reference_parts = null;
 
 							foreach(string line in lines)
@@ -77,59 +78,42 @@ public partial class NeekerNokerScriptCakeBuild
 								switch (line)
 								{
 									case string line_preprocessor when line.StartsWith("#"):
-										if (line.Contains("nuget:?package="))
+                                        if ( ! line.Contains("nuget:?package="))
 										{
-											text_snippet_original = line;
+											continue;
 										}
-										line_preprocessor = line.Replace("#", "").Trim();
-										switch (line_preprocessor)
+                                        text_snippet_original = line_preprocessor;
+										line_preprocessor = line_preprocessor.Replace("#", "").Trim();
+                                        line_preprocessor = line_preprocessor.Replace("\"", "").Trim();
+
+                                        switch (line_preprocessor)
 										{
 											case string preprocessor_cmd when line_preprocessor.StartsWith("addin"):
-												preprocessor_cmd = preprocessor_cmd.Replace("addin", "");
-												preprocessor_cmd = preprocessor_cmd.Replace("nuget:?package=", "");
-												preprocessor_cmd = preprocessor_cmd.Trim();
-												nuget_reference_parts = preprocessor_cmd.Split
-																							(
-																								new[] {"&"}, 
-																								StringSplitOptions.RemoveEmptyEntries
-																							);
-												nuget_id = nuget_reference_parts[0];
-												
-												foreach (string part in nuget_reference_parts)
-												{
-													if (part.StartsWith("version="))
-													{
-														version = part.Replace("version=", "");
-													}
-												}
-												
+                                                nuget_reference = preprocessor_cmd.Replace("addin", "");
 												break;
 											case string preprocessor_cmd when line_preprocessor.StartsWith("tool"):
-												if (line.Contains("nuget:?package="))
-												{
-													text_snippet_original = line;
-												}
-												preprocessor_cmd = preprocessor_cmd.Replace("tool", "");
-												preprocessor_cmd = preprocessor_cmd.Replace("nuget:?package=", "");
-												preprocessor_cmd = preprocessor_cmd.Trim();
-												nuget_reference_parts = preprocessor_cmd.Split
-																							(
-																								new[] {"&"}, 
-																								StringSplitOptions.RemoveEmptyEntries
-																							);
-												nuget_id = nuget_reference_parts[0];
-												foreach (string part in nuget_reference_parts)
-												{
-													if (part.StartsWith("version="))
-													{
-														version = part.Replace("version=", "");
-													}
-												}
-												
+                                                nuget_reference = preprocessor_cmd.Replace("tool", "");												
 												break;
 											default:
 												break;
 										}
+
+                                        nuget_reference = nuget_reference.Replace("nuget:?package=", "");
+                                        nuget_reference = nuget_reference.Trim();
+                                        nuget_reference_parts = nuget_reference.Split
+                                                                                    (
+                                                                                        new[] { "&" },
+                                                                                        StringSplitOptions.RemoveEmptyEntries
+                                                                                    );
+                                        nuget_id = nuget_reference_parts[0];
+
+                                        foreach (string part in nuget_reference_parts)
+                                        {
+                                            if (part.StartsWith("version="))
+                                            {
+                                                version = part.Replace("version=", "");
+                                            }
+                                        }
 
 										if (nuget_id == null)
 										{
