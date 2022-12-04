@@ -127,16 +127,32 @@ public partial class
                             this.ResultsPerFormat
                                     .ResultsPerFile[file].DotNetGlobalJson = global_newtosoft_json;
 
+                            Dictionary<string, object> global_msbuild_sdks = global_newtosoft_json["msbuild-sdks"];
                             foreach
                                 (
                                     KeyValuePair
                                         <
                                             string,
-                                            Dictionary<string, object>
+                                            object
                                         >
-                                            kvp in global_newtosoft_json
+                                            kvp in global_msbuild_sdks
                                 )
                             {
+                                string nuget_id = kvp.Key;
+                                string version_nuget = (string)kvp.Value;
+
+                                this.ResultsPerFormat
+                                    .ResultsPerFile[file]
+                                        .PackageReferences.Add
+                                                            (
+                                                                (
+                                                                    nuget_id: nuget_id,
+                                                                    version_current: version_nuget,
+                                                                    versions_upgradeable: null,
+                                                                    text_snippet_original: content_original,
+                                                                    text_snippet_new: content_original
+                                                                )
+                                                            );
                             }
 
                             this.ResultsPerFormat
