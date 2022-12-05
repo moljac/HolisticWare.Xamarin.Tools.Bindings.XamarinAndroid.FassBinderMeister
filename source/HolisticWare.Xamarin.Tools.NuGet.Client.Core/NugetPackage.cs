@@ -48,14 +48,14 @@ namespace HolisticWare.Xamarin.Tools.NuGet.Core
         }
 
         public
-                                                    NuGetPackage
-                                                        (
-                                                            // nuget_id
-                                                            string nuget_id,
-                                                            // version - semantic
-                                                            // TODO: details
-                                                            string version
-                                                        )
+                                        NuGetPackage
+                                            (
+                                                // nuget_id
+                                                string nuget_id,
+                                                // version - semantic
+                                                // TODO: details
+                                                string version
+                                            )
         {
             // Fully
             this.Id = nuget_id;
