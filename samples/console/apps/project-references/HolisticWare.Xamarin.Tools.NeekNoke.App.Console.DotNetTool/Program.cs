@@ -138,4 +138,9 @@ if (NeekerNoker.Action == Action.Noke)
     Trace.WriteLine($"{Settings.Outro}");
 }
 
+/*
+git submodule deinit -f .
+git submodule update --init
+*/
+
 return 0;
