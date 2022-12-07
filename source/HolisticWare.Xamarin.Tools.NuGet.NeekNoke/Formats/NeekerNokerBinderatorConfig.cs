@@ -48,28 +48,16 @@ public partial class NeekerNokerBinderatorConfig
 							string content_original = System.IO.File.ReadAllText(file);
 							string content_new = null;
 
-							if (NeekerNoker.Action == Action.Noke)
-							{
-								extension = Path.GetExtension(file);
-								ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-								file_new = Path.ChangeExtension
-								(
-									file,
-									$"bckp-ts-{ts}{extension}"
-								);
-								System.IO.File.Copy(file, file_new);
-								content_new = System.IO.File.ReadAllText(file_new);
-							}
-
 							this.ResultsPerFormat
-									.ResultsPerFile[file].Log.Add
-																(
-																	(
-																		file_backup: file_new,
-																		content: content_original,
-																		content_backup: content_new
-																	)
-																);
+									.ResultsPerFile[file]
+										.Log.Add
+												(
+													(
+														file_backup: file_new,
+														content: content_original,
+														content_backup: content_new
+													)
+												);
 						}
 					);
 

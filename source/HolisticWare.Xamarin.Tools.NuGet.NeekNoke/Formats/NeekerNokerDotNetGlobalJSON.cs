@@ -52,19 +52,6 @@ public partial class
 							string content_original = System.IO.File.ReadAllText(file);
 							string content_new = null;
 
-							if (NeekerNoker.Action == Action.Noke)
-							{
-								extension = Path.GetExtension(file);
-								ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-								file_new = Path.ChangeExtension
-								(
-									file,
-									$"bckp-ts-{ts}{extension}"
-								);
-								System.IO.File.Copy(file, file_new);
-								content_new = System.IO.File.ReadAllText(file_new);
-							}
-
                             // https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
                             /*
 							Core.Serialization.JSON.JSON<Root>.Deserialize =
@@ -127,7 +114,13 @@ public partial class
                             this.ResultsPerFormat
                                     .ResultsPerFile[file].DotNetGlobalJson = global_newtosoft_json;
 
+                            if ( ! global_newtosoft_json.ContainsKey("msbuild-sdks") )
+                            {
+                                return;
+                            }
+
                             Dictionary<string, object> global_msbuild_sdks = global_newtosoft_json["msbuild-sdks"];
+
                             foreach
                                 (
                                     KeyValuePair
@@ -142,28 +135,29 @@ public partial class
                                 string version_nuget = (string)kvp.Value;
 
                                 this.ResultsPerFormat
-                                    .ResultsPerFile[file]
-                                        .PackageReferences.Add
-                                                            (
+                                        .ResultsPerFile[file]
+                                            .PackageReferences.Add
                                                                 (
-                                                                    nuget_id: nuget_id,
-                                                                    version_current: version_nuget,
-                                                                    versions_upgradeable: null,
-                                                                    text_snippet_original: content_original,
-                                                                    text_snippet_new: content_original
-                                                                )
-                                                            );
+                                                                    (
+                                                                        nuget_id: nuget_id,
+                                                                        version_current: version_nuget,
+                                                                        versions_upgradeable: null,
+                                                                        text_snippet_original: content_original,
+                                                                        text_snippet_new: content_original
+                                                                    )
+                                                                );
                             }
 
                             this.ResultsPerFormat
-									.ResultsPerFile[file].Log.Add
-																(
-																	(
-																		file_backup: file_new,
-																		content: content_original,
-																		content_backup: content_new
-																	)
-																);
+									.ResultsPerFile[file]
+                                        .Log.Add
+											    (
+												    (
+													    file_backup: file_new,
+													    content: content_original,
+													    content_backup: content_new
+												    )
+											    );
 
 							return;
 						}

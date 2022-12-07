@@ -56,19 +56,6 @@ public partial class NeekerNokerScriptCakeBuild
 							string text_snippet_original = null;
 							string text_snippet_new = null;
 
-							if (NeekerNoker.Action == Action.Noke)
-							{
-								extension = Path.GetExtension(file);
-								ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-								file_new = Path.ChangeExtension
-								(
-									file,
-									$"bckp-ts-{ts}{extension}"
-								);
-								System.IO.File.Copy(file, file_new);
-								content_new = System.IO.File.ReadAllText(file_new);
-							}
-
 							string[] lines = System.IO.File.ReadLines(file).ToArray();
 							string nuget_reference = null;
 							string[] nuget_reference_parts = null;
@@ -115,7 +102,7 @@ public partial class NeekerNokerScriptCakeBuild
                                             }
                                         }
 
-										if (nuget_id == null)
+										if (nuget_id == null || version == null)
 										{
 											break;
 										}
@@ -144,14 +131,15 @@ public partial class NeekerNokerScriptCakeBuild
 							}
 
 							this.ResultsPerFormat
-									.ResultsPerFile[file].Log.Add
-																(
-																	(
-																		file_new: file_new,
-																		content: content_original,
-																		content_new: content_new
-																	)
-																);
+									.ResultsPerFile[file]
+										.Log.Add
+												(
+													(
+														file_new: file_new,
+														content: content_original,
+														content_new: content_new
+													)
+												);
 
 							return;
 

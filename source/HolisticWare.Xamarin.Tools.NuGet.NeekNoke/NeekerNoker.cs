@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 
 using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
@@ -230,6 +231,7 @@ public partial class NeekerNoker
                                 ResultsPerFile rrpf = rpf.Value;
 
                                 string file_content = System.IO.File.ReadAllText(file);
+                                string file_content_original = string.Copy(file_content);
 
                                 foreach
                                 (
@@ -267,7 +269,7 @@ public partial class NeekerNoker
                                         continue;
                                     }
 
-                                    if (pr.text_snippet_original != null)
+                                    if (pr.text_snippet_original != null && pr.version_current != null)
                                     {
                                         string text_snippet_new = pr.text_snippet_original.Replace
                                                                                                 (
@@ -278,8 +280,21 @@ public partial class NeekerNoker
                                     }
                                 }
 
+                                if ( ! file_content.Equals(file_content_original) )
+                                {
+                                    // make backup and save new updated content to original file
+                                    string extension = Path.GetExtension(file);
+                                    string ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                                    string file_new = Path.ChangeExtension
+                                                                    (
+                                                                        file,
+                                                                        $"bckp-ts-{ts}{extension}"
+                                                                    );
+                                    System.IO.File.Copy(file, file_new);
+                                    System.IO.File.WriteAllText(file, file_content);
+                                }
 
-                                System.IO.File.WriteAllText(file, file_content);
+                                return;
                             }
                         );
         }

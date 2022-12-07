@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
@@ -47,19 +48,6 @@ public partial class
 							string content_original = System.IO.File.ReadAllText(file);
 							string content_new = null;
 
-							if (NeekerNoker.Action == Action.Noke)
-							{
-								extension = Path.GetExtension(file);
-								ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-								file_new = Path.ChangeExtension
-								(
-									file,
-									$"bckp-ts-{ts}{extension}"
-								);
-								System.IO.File.Copy(file, file_new);
-								content_new = System.IO.File.ReadAllText(file_new);
-							}
-
 							string nuget_id = null;
 							string version = null;
 							string text_snippet_original = null;
@@ -69,20 +57,19 @@ public partial class
 							string inner_text = null;
 							string outer_xml = null;
 
-							XDocument xdoc = null;
+							XmlReader xreader = null;
+                            XDocument xdoc = null;
 							try
 							{
-								xdoc = XDocument.Load(file);
-							}
+								xreader = XmlReader.Create(new StreamReader(file));
+                                xdoc = XDocument.Load(xreader);
+                            }
 							catch (System.Exception exc)
 							{
 								throw;
 							}
 							//------------------------------------------------------------------------------------------------------
 							// PackageReference
-
-							IEnumerable<XElement> xe_package_references = null;
-							xe_package_references = xdoc.XPathSelectElements("//PackageReference");
 
 							/*
 							 
@@ -112,10 +99,28 @@ public partial class
 																	)
 																>
 																	();
-	
+
+                            // namespace manager that knows of the namespaces used in xreader
+                            XmlNamespaceManager namespace_manager = new XmlNamespaceManager(xreader.NameTable);
+                            // add an explicit prefix mapping for query
+                            namespace_manager.AddNamespace("ns", "http://schemas.microsoft.com/developer/msbuild/2003");
+
+                            IEnumerable<XElement> xe_package_references = null;
+							xe_package_references =
+													xdoc.XPathSelectElements
+																		(
+																			"//ns:PackageReference",
+																			namespace_manager
+																		);
+
 							IEnumerable<XElement> xe_package_references_include_attribute = null;
 							xe_package_references_include_attribute =
-								xdoc.XPathSelectElements("//PackageReference[@Include]");
+													xdoc.XPathSelectElements
+																		(
+																			"//ns:PackageReference[@Include]",
+																			namespace_manager
+																		);
+
 							if
 							(
 								xe_package_references_include_attribute == null
@@ -137,13 +142,21 @@ public partial class
 							 */
 							IEnumerable<XElement> xe_package_references_version_attribute = null;
 							xe_package_references_version_attribute =
-								xdoc.XPathSelectElements("//PackageReference[@Version]");
+														xdoc.XPathSelectElements
+																			(
+																				"//ns:PackageReference[@Version]",
+																				namespace_manager
+																			);
 
 							/*
 							 
 							 */
 							IEnumerable<XElement> xe_package_references_version_node = null;
-							xe_package_references_version_node = xdoc.XPathSelectElements("//PackageReference/Version");
+							xe_package_references_version_node = xdoc.XPathSelectElements
+																			(
+																				"//ns:PackageReference/ns:Version",
+																				namespace_manager
+																			);
 
 							if
 							(
@@ -217,9 +230,9 @@ public partial class
 							// Version is null or empty => Central Package Management
 							if
 							(
-								xe_package_references != null
+                                xe_package_references_include_attribute != null
 								&&
-								xe_package_references.Any()
+                                xe_package_references_include_attribute.Any()
 								&&
 								(
 									xe_package_references_version_attribute == null
@@ -254,43 +267,49 @@ public partial class
 							{
 								if (xe.Attribute("Version") != null)
 								{
+									nuget_id = xe.Attribute("Include").Value;
 									version = xe.Attribute("Version").Value;
 									text_snippet_original = xe.ToString();
 								}
-								else
-								{
-									continue;
-								}
-							}
 
-							foreach (XElement xe in xe_package_references_version_node)
+                                this.ResultsPerFormat
+                                        .ResultsPerFile[file]
+                                            .PackageReferences.Add
+                                                                (
+                                                                    (
+                                                                        nuget_id: nuget_id,
+                                                                        version_current: version,
+                                                                        versions_upgradeable: null,
+                                                                        text_snippet_original: text_snippet_original,
+                                                                        text_snippet_new: text_snippet_new
+                                                                    )
+                                                                );
+                            }
+
+                            foreach (XElement xe in xe_package_references_version_node)
 							{
+								nuget_id = xe.Parent.Attribute("Include").Value;
                                 version = xe.Value; //.Select(n => { return true; });
                                 text_snippet_original = xe.Parent.ToString();
 
-                                if (xe.Element("Version") != null)
-								{
-									continue;
-								}
-							}
+                                this.ResultsPerFormat
+                                        .ResultsPerFile[file]
+                                            .PackageReferences.Add
+                                                                (
+                                                                    (
+                                                                        nuget_id: nuget_id,
+                                                                        version_current: version,
+                                                                        versions_upgradeable: null,
+                                                                        text_snippet_original: text_snippet_original,
+                                                                        text_snippet_new: text_snippet_new
+                                                                    )
+                                                                );
+                            }
 
-							if (nuget_id == null)
+                            if (nuget_id == null)
 							{
 								string msg = "nuget_id is null";
 							}
-
-							this.ResultsPerFormat
-									.ResultsPerFile[file]
-										.PackageReferences.Add
-															(
-																(
-																	nuget_id: nuget_id,
-																	version_current: version,
-																	versions_upgradeable: null,
-																	text_snippet_original: text_snippet_original,
-																	text_snippet_new: text_snippet_new
-																)
-															);
 							//------------------------------------------------------------------------------------------------------
                             //------------------------------------------------------------------------------------------------------
                             // PackageVersion
