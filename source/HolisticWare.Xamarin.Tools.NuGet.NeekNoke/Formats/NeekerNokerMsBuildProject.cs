@@ -265,12 +265,14 @@ public partial class
 
 							foreach (XElement xe in xe_package_references_version_attribute)
 							{
-								if (xe.Attribute("Version") != null)
+								if (xe.Attribute("Version") == null)
 								{
-									nuget_id = xe.Attribute("Include").Value;
-									version = xe.Attribute("Version").Value;
-									text_snippet_original = xe.ToString();
+									continue;
 								}
+
+								nuget_id = xe.Attribute("Include").Value;
+								version = xe.Attribute("Version").Value;
+								text_snippet_original = xe.ToString();
 
                                 this.ResultsPerFormat
                                         .ResultsPerFile[file]
