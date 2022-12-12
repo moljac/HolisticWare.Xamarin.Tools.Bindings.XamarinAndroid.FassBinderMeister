@@ -102,8 +102,9 @@ public partial class
 
                             // namespace manager that knows of the namespaces used in xreader
                             XmlNamespaceManager namespace_manager = new XmlNamespaceManager(xreader.NameTable);
-                            // add an explicit prefix mapping for query
-                            namespace_manager.AddNamespace("ns", "http://schemas.microsoft.com/developer/msbuild/2003");
+							// add an explicit prefix mapping for query
+							string xml_namespace = "http://schemas.microsoft.com/developer/msbuild/2003";
+                            namespace_manager.AddNamespace("ns", xml_namespace);
 
                             IEnumerable<XElement> xe_package_references = null;
 							xe_package_references =
@@ -272,7 +273,13 @@ public partial class
 
 								nuget_id = xe.Attribute("Include").Value;
 								version = xe.Attribute("Version").Value;
-								text_snippet_original = xe.ToString();
+								text_snippet_original = xe
+                                                        .ToString()
+                                                        .Replace
+                                                            (
+                                                                $"xmlns=\"{xml_namespace}\" ",
+                                                                ""
+                                                            );
 
                                 this.ResultsPerFormat
                                         .ResultsPerFile[file]
@@ -292,7 +299,13 @@ public partial class
 							{
 								nuget_id = xe.Parent.Attribute("Include").Value;
                                 version = xe.Value; //.Select(n => { return true; });
-                                text_snippet_original = xe.Parent.ToString();
+                                text_snippet_original = xe.Parent
+																	.ToString()
+																	.Replace
+																		(
+																			$"xmlns=\"{xml_namespace}\"",
+																			""
+																		);
 
                                 this.ResultsPerFormat
                                         .ResultsPerFile[file]
