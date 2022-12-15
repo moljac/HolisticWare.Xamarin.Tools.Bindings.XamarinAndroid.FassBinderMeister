@@ -12,6 +12,14 @@ namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
 
 public partial class NeekerNoker
 {
+    public static
+        bool
+                                        AllowPrereleases
+    {
+        get;
+        set;
+    } = false;
+
     public static 
         Action 
                                         Action
@@ -493,6 +501,21 @@ public partial class NeekerNoker
                                 v = NuGetPackage.Utilities
                                                     .GetPackageVersionsFromIndexAsync(nuget_id)
                                                     .Result;
+
+                                if (NeekerNoker.AllowPrereleases == false)
+                                {
+                                    List<string> versions_stable = new List<string>();
+                                    foreach (string ver in v.versions)
+                                    {
+                                        if (ver.Contains("-"))
+                                        {
+                                            continue;
+                                        }
+                                        versions_stable.Add(ver);
+                                    }
+
+                                    v.versions = versions_stable;
+                                }
                             }
                             catch (Exception)
                             {
@@ -517,8 +540,8 @@ public partial class NeekerNoker
                                                     .Result
                                                     ;
 
-                                string version_latest = (v.versions.ToArray())[v.versions.Count - 1];
-                                string[] versions_upgradeable = v.versions.ToArray();
+                                string version_latest = np.VersionTextual;
+                                string[] versions_upgradeable = np.VersionsTextual.ToArray();
                                 
                                 packages_data[nuget_id_x_version.Key] = 
                                                                         (
