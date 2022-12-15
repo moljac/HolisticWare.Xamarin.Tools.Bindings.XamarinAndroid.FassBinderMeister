@@ -49,19 +49,6 @@ public partial class NeekerNokerScriptCSharpScriptAndScriptCS
 							string content_original = System.IO.File.ReadAllText(file);
 							string content_new = null;
 
-							if (NeekerNoker.Action == Action.Noke)
-							{
-								extension = Path.GetExtension(file);
-								ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-								file_new = Path.ChangeExtension
-								(
-									file,
-									$"bckp-ts-{ts}{extension}"
-								);
-								System.IO.File.Copy(file, file_new);
-								content_new = System.IO.File.ReadAllText(file_new);
-							}
-
 							// #r "nuget:Newtonsoft.Json"
 							// #r "nuget: AutoMapper, 6.1.0"
 							// #r "nuget:Newtonsoft.Json,1.20"
