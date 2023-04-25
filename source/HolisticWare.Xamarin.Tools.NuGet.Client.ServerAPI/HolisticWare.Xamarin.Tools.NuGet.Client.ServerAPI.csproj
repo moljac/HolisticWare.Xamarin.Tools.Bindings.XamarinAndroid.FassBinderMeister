@@ -95,5 +95,9 @@
 
     <ItemGroup>
       <Folder Include="Generated\" />
+      <Folder Include="Generated\Search\" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Generated\Search\" />
     </ItemGroup>
 </Project>
