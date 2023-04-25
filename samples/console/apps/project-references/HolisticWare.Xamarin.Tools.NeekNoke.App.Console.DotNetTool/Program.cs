@@ -4,13 +4,16 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Timers;
 
-using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
 using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
 
+using HolisticWare.Xamarin.Tools.NuGet.NeekNoke;
 using HolisticWare.Xamarin.Tools.NeekNoke.App.Console.DotNetTool;
 
-using Action = HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Action;
+using Action = HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Action;
 
+Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+Trace.AutoFlush = true;
+int width = Console.WindowWidth;
 
 System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
 stopwatch.Start();
@@ -19,8 +22,6 @@ stopwatch.Start();
 // https://www.csharpescaper.com/
 // find ./ -name "*bckp-ts-$(date +"%Y%m%d)*"
 
-Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
-Trace.AutoFlush = true;
 
 Trace.WriteLine($"{Settings.Intro}");
 
@@ -55,8 +56,6 @@ string[] patterns = new string[]
                                     "*.csproj",
                                     "*.cake",
                                     "config.json",
-                                    "directory.build.*.props",
-                                    "directory.packages.*.props",
                                     "*.props",
                                     "*.targets",
                                     "global.json",
@@ -95,12 +94,10 @@ Trace.Flush();
 NeekerNoker.VersionDotNetSDKBand = "6.0.400";   // needed for workloads
 NeekerNoker neeker_noker = new NeekerNoker();
 
-Trace.WriteLine("grepping files for NuGet packages ...");
-
 neeker_noker.Neek(patterns_files);
 neeker_noker.Dump();
 
-Dictionary<string, string> packages_found = neeker_noker.PackageDataCleanup();
+Dictionary<string, PackageAppearanceData> packages_found = neeker_noker.PackageDataCleanup();
 
 Dictionary
         <
@@ -108,7 +105,7 @@ Dictionary
             (
                 string version_current,
                 string version_latest,
-                string[] versions_upgradeable,
+                List<string> versions_upgradeable,
                 NuGetPackage package_details,
                 bool failed
             )
