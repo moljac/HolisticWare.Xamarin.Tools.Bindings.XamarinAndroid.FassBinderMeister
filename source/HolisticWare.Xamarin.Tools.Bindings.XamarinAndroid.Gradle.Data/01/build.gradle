@@ -1,0 +1,434 @@
+import groovy.json.JsonSlurper
+
+import java.nio.charset.StandardCharsets
+import java.nio.file.FileSystem
+import java.nio.file.FileSystems
+import java.nio.file.Files
+import java.nio.file.Paths
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+
+        // Needed for the Android Gradle Plugin to work
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.3'
+    }
+}
+
+// TODO: Examine the switch from plain "android" to this some more
+apply plugin: "com.android.application"
+
+repositories {
+    mavenLocal()
+
+    // Good ole Maven central
+    mavenCentral()
+
+    // For the Android libraries
+    google()
+
+    // Repos for LibGDX
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+
+    // Terasology Artifactory for any shared libs
+    maven { url "http://artifactory.terasology.org/artifactory/virtual-repo-live" }
+
+    // everit-org JSON schema dependency
+    maven { url "https://jitpack.io" }
+
+    // Needed for Jsemver, which is a gestalt dependency
+    maven { url = 'https://heisluft.de/maven/' }
+
+    maven { url "https://maven.google.com" }
+}
+
+configurations {
+    natives
+}
+
+dependencies {
+    // TODO: Maybe exclude the commons-logging dependency from main (or set it as 'provided' here)
+    api 'com.google.guava:guava:27.0.1-android'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'org.apache.commons:commons-vfs2:2.2'
+    implementation group: 'com.android.support', name: 'support-annotations', version: '28.0.0'
+    implementation 'net.jcip:jcip-annotations:1.0'
+    implementation 'net.sf.trove4j:trove4j:3.0.3'
+    implementation 'com.google.protobuf:protobuf-java:3.4.0'
+    implementation 'com.googlecode.gentyref:gentyref:1.2.0'
+    compile(group: 'com.github.everit-org.json-schema', name: 'org.everit.json.schema', version: '1.9.2', ext: 'pom')
+
+    implementation(project(":engine")) {
+        // Resolves duplicate class errors
+        exclude group: "org.reflections"
+        // The default JOML package doesn't compile with the Android tooling, so we use a jdk3 variant
+        exclude group: "org.joml"
+    }
+    // Android-compatible JOML variant
+    implementation "org.joml:joml-jdk3:1.9.25"
+    implementation(group: 'org.terasology.gestalt', name: 'gestalt-android', version: gestaltVersion)
+    // TODO: Needed for gestalt because of an internal dependency but since that dependency is never
+    //       exposed in a public API, I have no idea why it's needed for compilation.
+    implementation "com.github.zafarkhaja:java-semver:0.10.0"
+
+    implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
+    implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-arm64-v8a"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
+
+    // Add reflections purely for NUI. NUI uses the ReflectionUtils class from it.
+    implementation "org.terasology:reflections:0.9.12-MB"
+
+    // Android-compatible logging
+    implementation group: 'org.slf4j', name: 'slf4j-android', version: '1.7.25'
+
+    // Backport some Java 8 APIs like java.time for gestalt
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+}
+
+ext {
+    // Set broken defaults just so Gradle won't complain about non-existent properties. Supply real values externally
+    keyStoreToUse = "notset"
+    storePassToUse = "notset"
+    keyAliasToUse = "notset"
+    keyPassToUse = "notset"
+
+    compileSdk = 30
+    minSdk = 24
+    targetSdk = 30
+
+    // Load values from properties passed to the project, such as via gradle.properties in the user's home .gradle dir
+    if (project.hasProperty("signingKeystore")) {
+        keyStoreToUse = signingKeystore
+    }
+
+    if (project.hasProperty("signingStorePass")) {
+        storePassToUse = signingStorePass
+    }
+
+    if (project.hasProperty("signingKeyAlias")) {
+        keyAliasToUse = signingKeyAlias
+    }
+
+    if (project.hasProperty("signingKeyPass")) {
+        keyPassToUse = signingKeyPass
+    }
+}
+
+android {
+    compileSdkVersion(project.ext.compileSdk)
+
+    // Make it clear we're compiling for Java 8
+    compileOptions {
+        // Backport some Java 8 APIs like java.time for gestalt
+        coreLibraryDesugaringEnabled true
+
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            //aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    packagingOptions {
+        exclude 'org/destinationsol/module.json'
+        exclude 'org/destinationsol/reflections.cache'
+        exclude 'org/destinationsol/assets/**'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    packagingOptions {
+        merge 'META-INF/annotations/*'
+        merge 'META-INF/subtypes/*'
+        merge 'META-INF/services/*'
+
+        // The contents of the "gestalt-indexes-present" file is never read, so just pick any one of them
+        pickFirst 'META-INF/gestalt-indexes-present'
+    }
+
+    defaultConfig {
+        targetSdkVersion(project.ext.targetSdk)
+        minSdkVersion(project.ext.minSdk)
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(project.ext.keyStoreToUse)
+            storePassword project.ext.storePassToUse
+            keyAlias project.ext.keyAliasToUse
+            keyPassword project.ext.keyPassToUse
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            jniDebuggable false
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+// called every time gradle gets executed, takes the native dependencies of
+// the natives configuration, and extracts them to the proper libs/ folders
+// so they get packed with the APK.
+task copyAndroidNatives {
+    doFirst {
+        file("libs/armeabi/").mkdirs()
+        file("libs/armeabi-v7a/").mkdirs()
+        file("libs/arm64-v8a/").mkdirs()
+        file("libs/x86_64/").mkdirs()
+        file("libs/x86/").mkdirs()
+
+        configurations.natives.copy().files.each { jar ->
+            def outputDir = null
+            if(jar.name.endsWith("natives-arm64-v8a.jar")) outputDir = file("libs/arm64-v8a")
+            if(jar.name.endsWith("natives-armeabi-v7a.jar")) outputDir = file("libs/armeabi-v7a")
+            if(jar.name.endsWith("natives-armeabi.jar")) outputDir = file("libs/armeabi")
+            if(jar.name.endsWith("natives-x86_64.jar")) outputDir = file("libs/x86_64")
+            if(jar.name.endsWith("natives-x86.jar")) outputDir = file("libs/x86")
+            if(outputDir != null) {
+                copy {
+                    from zipTree(jar)
+                    into outputDir
+                    include "*.so"
+                }
+            }
+        }
+    }
+}
+
+tasks.whenTaskAdded { packageTask ->
+    if (packageTask.name.contains("package")) {
+        packageTask.dependsOn 'copyAndroidNatives'
+    }
+}
+
+def deleteDir(File dir) {
+    if (!Files.isSymbolicLink(dir.toPath())) {
+        File[] files = dir.listFiles()
+        if (files != null) {
+            for (File file in files) {
+                deleteDir(file)
+            }
+        }
+    }
+
+    dir.delete()
+}
+
+task modulesJar
+rootProject.destinationSolModules().each { module ->
+    modulesJar.dependsOn ":modules:$module.name" + ":jar"
+}
+
+task exportModules() {
+    inputs.dir("$rootDir/engine/src/main/resources/")
+    for (module in rootProject.destinationSolModules()) {
+        def moduleClassesDir = "${rootProject.projectDir}/modules/${module.name}/build/classes"
+        def assetsDir = "${rootProject.projectDir}/modules/${module.name}/assets"
+        if (file(moduleClassesDir).exists()) {
+            inputs.dir(moduleClassesDir)
+            inputs.dir(assetsDir)
+        }
+    }
+
+    outputs.dir("$projectDir/assets/modules")
+
+    dependsOn modulesJar
+
+    doLast {
+        dexModules()
+
+        // Clear the modules directory to ensure that it is up-to date
+        def assetsModulesDir = new File("$projectDir/assets", "modules")
+        deleteDir(assetsModulesDir)
+        assetsModulesDir.mkdir()
+
+        // Delete the engine module symlink, since you cannot create a new symlink when one already exists.
+        def engineModuleDir = new File("$projectDir/assets", "engine")
+        deleteDir(engineModuleDir)
+
+        boolean canCreateSymlinks
+
+        try {
+            Files.createSymbolicLink(Paths.get("$projectDir/assets/engine"), Paths.get("$rootDir/engine/build/resources/main/org/destinationsol"))
+            canCreateSymlinks = true
+        } catch (Exception ignore) {
+            // Copy the files instead
+            canCreateSymlinks = false
+        }
+
+        if (canCreateSymlinks) {
+            rootProject.destinationSolModules().each { module ->
+                file("$projectDir/assets/modules/${module.name}").mkdir()
+                Files.createSymbolicLink(Paths.get("$projectDir/assets/modules/${module.name}/assets"), Paths.get("$rootDir/modules/${module.name}/assets"))
+                Files.createSymbolicLink(Paths.get("$projectDir/assets/modules/${module.name}/overrides"), Paths.get("$rootDir/modules/${module.name}/overrides"))
+                Files.createSymbolicLink(Paths.get("$projectDir/assets/modules/${module.name}/deltas"), Paths.get("$rootDir/modules/${module.name}/deltas"))
+                Files.createSymbolicLink(Paths.get("$projectDir/assets/modules/${module.name}/module.json"), Paths.get("$rootDir/modules/${module.name}/module.json"))
+
+                file("$projectDir/assets/modules/${module.name}/build/classes").mkdirs()
+                Files.createSymbolicLink(Paths.get("$projectDir/assets/modules/${module.name}/build/dexes"), Paths.get("$rootDir/modules/${module.name}/build/dexes"))
+            }
+        } else {
+            copy {
+                from "$rootDir/engine/build/resources/main/org/destinationsol"
+                into "$projectDir/assets/engine"
+                include "assets/**"
+                include "module.json"
+                include "reflections.cache"
+            }
+
+            copy {
+                into "$projectDir/assets/modules"
+                from("$rootDir/modules") {
+                    rootProject.destinationSolModules().each { module ->
+                        include "${module.name}/module.json"
+                        include "${module.name}/assets/**"
+                        include "${module.name}/overrides/**"
+                        include "${module.name}/deltas/**"
+                        include "${module.name}/build/dexes/*.jar"
+                    }
+                }
+            }
+        }
+    }
+}
+
+def dexModules() {
+    def path = androidSdkPath()
+    def dexCommand = System.getProperty("os.name").toLowerCase().contains("windows") ? "d8.bat" : "d8"
+    def buildToolsVersions = new File(path, "build-tools").listFiles(new FileFilter() {
+        @Override
+        boolean accept(File file) {
+            String[] versionParts = file.name.split('\\.');
+            if (versionParts.length < 3) {
+                // This is not an SDK build-tools directory
+                return false;
+            }
+            return file.isDirectory() && Integer.parseInt(versionParts[0]) >= compileSdk
+        }
+    })
+
+    if (buildToolsVersions.length == 0) {
+        throw new TaskExecutionException(exportModules, new FileNotFoundException("An Android SDK build tools version >= $compileSdk could not be found."))
+    }
+    def dex = "${buildToolsVersions[0]}/$dexCommand"
+    for (module in rootProject.destinationSolModules()) {
+        def moduleClassesDir = file("${rootProject.projectDir}/modules/${module.name}/build/classes/")
+        def moduleClassesFiles = fileTree(moduleClassesDir).filter { it.isFile() && it.name.endsWith('.class')}.files
+        def classesRootPath = moduleClassesDir.toPath()
+        def moduleClasses = []
+        for (file in moduleClassesFiles) {
+            moduleClasses.add(classesRootPath.relativize(file.toPath()))
+        }
+        if (moduleClasses.size() == 0) {
+            // The dexed code jars are only produced for code-bearing modules.
+            continue;
+        }
+        def moduleDexesDir = "${rootProject.projectDir}/modules/${module.name}/build/dexes/"
+        mkdir(moduleDexesDir)
+        def jarOutputPath = "$moduleDexesDir/${module.name}.jar"
+        exec {
+            workingDir moduleClassesDir
+            commandLine (["$dex"] + moduleClasses + ['--classpath', "$rootDir/engine/build/classes",
+                                                     '--lib', "$path/platforms/android-$compileSdk/android.jar",
+                                                     '--min-api', "$minSdk",
+                                                     '--output', "$jarOutputPath"])
+        }
+        FileSystem jarFileSystem
+        try {
+            jarFileSystem = FileSystems.newFileSystem(URI.create("jar:" + new File(jarOutputPath).toURI()), new HashMap<String, Object>())
+            fileTree(moduleClassesDir).filter {
+                it.isFile() && !it.name.endsWith(".class") && !it.path.startsWith("assets/")
+            }.each {
+                def destinationPath = jarFileSystem.getPath("/${moduleClassesDir.relativePath(it)}")
+                Files.createDirectories(destinationPath.parent)
+                Files.copy(it.toPath(), destinationPath)
+            }
+        } catch (Exception e) {
+            e.printStackTrace()
+        } finally {
+            if (jarFileSystem != null) {
+                jarFileSystem.close()
+            }
+        }
+    }
+}
+
+preBuild.dependsOn(exportModules)
+
+def androidSdkPath() {
+    def path
+    def localProperties = project.file("../local.properties")
+    if (localProperties.exists()) {
+        Properties properties = new Properties()
+        localProperties.withInputStream { instr ->
+            properties.load(instr)
+        }
+        def sdkDir = properties.getProperty('sdk.dir')
+        if (sdkDir) {
+            path = sdkDir
+        } else {
+            path = "$System.env.ANDROID_HOME"
+        }
+    } else {
+        path = "$System.env.ANDROID_HOME"
+    }
+    return path
+}
+
+task android(type: Exec) {
+    def path = androidSdkPath()
+    def adb = path + "/platform-tools/adb"
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.miloshpetrov.sol2.android/com.miloshpetrov.sol2.android.SolAndroid'
+}
+
+// sets up the Android Idea project, using the old Ant based build.
+idea {
+    module {
+        sourceDirs += file("src");
+        scopes = [ COMPILE: [plus:[project.configurations.compile]]]        
+
+        iml {
+            withXml {
+                def node = it.asNode()
+                def builder = NodeBuilder.newInstance();
+                builder.current = node;
+                builder.component(name: "FacetManager") {
+                    facet(type: "android", name: "Android") {
+                        configuration {
+                            option(name: "UPDATE_PROPERTY_FILES", value:"true")
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
