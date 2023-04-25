@@ -4,7 +4,7 @@
 #addin nuget:?package=Newtonsoft.Json&version=13.0.2
 #addin nuget:?package=Newtonsoft.Json.Schema&version=3.0.4&loaddependencies=true
 #addin nuget:?package=NJsonSchema&version=10.8.0&loaddependencies=true
-#addin nuget:?package=JsonSchema.Net&version=4.0.0-beta1a&loaddependencies=true
+#addin nuget:?package=JsonSchema.Net&version=4.0.0-beta2&loaddependencies=true
 #addin nuget:?package=Spectre.Console&version=0.45.1-preview.0.46&loaddependencies=true
 
 
