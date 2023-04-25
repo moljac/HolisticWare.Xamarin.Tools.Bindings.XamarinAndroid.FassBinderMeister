@@ -1,28 +1,19 @@
 using System.Collections.Generic;
 
-namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
+using HolisticWare.Xamarin.Tools.NuGet.NeekNoke;
 
-public partial class ResultsPerFormat
+namespace HolisticWare.Xamarin.Tools.NuGet.NeekNoke;
+
+public partial class
+                                        ResultsPerFormat
 {
     public 
         Dictionary
                 <
-                    string,                     // format regex
-                    Formats.NeekerNokerBase
+                    string,             // format regex
+                    ResultsPerFilePattern
                 >
-                                        ResultsNeekerNoker
-    {
-        get;
-        set;
-    }
-
-    public 
-        Dictionary
-                <
-                    string,                     // format regex
-                    ResultsPerFile
-                >
-                                        ResultsPerFile
+                                        ResultsPerFilePattern
     {
         get;
         set;
@@ -33,19 +24,13 @@ public partial class ResultsPerFormat
                                             (
                                             )
     {
-        this.ResultsNeekerNoker = new Dictionary
+        this.ResultsPerFilePattern = new Dictionary
                                             <
                                                 string,                     // format / pattern
-                                                Formats.NeekerNokerBase
+                                                ResultsPerFilePattern
                                             >
-                                            ();
-
-        this.ResultsPerFile = new Dictionary
-                                            <
-                                                string,                     // file
-                                                ResultsPerFile
-                                            >
-                                            ();
+        {
+        };
 
         return;
     }

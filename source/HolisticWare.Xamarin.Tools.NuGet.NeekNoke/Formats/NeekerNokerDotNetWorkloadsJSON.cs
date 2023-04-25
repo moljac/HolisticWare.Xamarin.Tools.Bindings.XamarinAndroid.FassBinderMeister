@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats.Generated.WorkloadsJson;
 using HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Formats;
+using HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Formats.Generated.WorkloadsJson;
 
-namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
+namespace HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Formats;
 
 public partial class
                                         NeekerNokerDotNetWorkloadsJSON
@@ -34,23 +34,28 @@ public partial class
 		void
 										NeekNoke
 											(
+                                                string pattern,
 												string[] files
 											)
     {
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
 		{
-			this.ResultsPerFormat.ResultsPerFile.Add
-													(
-														file,
-														new ResultsPerFile()
-														{
-															File = file
-														}
-													);
-		}
+            this.NeekNoker
+                    .ResultsPerFormat["dotnet workloads files (used: workloads.json)"]
+                        .ResultsPerFilePattern[pattern]
+                            .ResultsPerFile
+                                .Add
+                                    (
+                                        file,
+                                        new ResultsPerFile()
+                                        {
+                                            File = file
+                                        }
+                                    );
+        }
 
-		Parallel.ForEach
+        Parallel.ForEach
 					(
 						files,
 						file =>
@@ -89,8 +94,11 @@ public partial class
                                                 DeserializeDictionaryUsingSystemTextJson(content_original)
                                                 ;
 
-							this.ResultsPerFormat
-									.ResultsPerFile[file].DotNetWorkloadsJson = workloads_json;
+                            this.NeekNoker
+                                    .ResultsPerFormat["dotnet workloads files (used: workloads.json)"]
+                                        .ResultsPerFilePattern[pattern]
+                                            .ResultsPerFile[file]
+                                                .DotNetWorkloadsJson = workloads_json;
 
                             foreach (KeyValuePair<string, string> kvp in workloads_json)
                             {
@@ -101,9 +109,12 @@ public partial class
 
                                 nuget_id = $"{nuget_id}.manifest-{version_dotnet}";
 
-                                this.ResultsPerFormat
-                                    .ResultsPerFile[file]
-                                        .PackageReferences.Add
+                                this.NeekNoker
+                                        .ResultsPerFormat["dotnet workloads files (used: workloads.json)"]
+                                            .ResultsPerFilePattern[pattern]
+                                                .ResultsPerFile[file]
+                                                    .PackageReferences
+                                                        .Add
                                                             (
                                                                 (
                                                                     nuget_id: nuget_id,
@@ -115,17 +126,21 @@ public partial class
                                                             );
                             }
 
-                            this.ResultsPerFormat
-									.ResultsPerFile[file].Log.Add
-																(
-																	(
-																		file_backup: file_new,
-																		content: content_original,
-																		content_backup: content_new
-																	)
-																);
+                            this.NeekNoker
+                                    .ResultsPerFormat["dotnet workloads files (used: workloads.json)"]
+                                        .ResultsPerFilePattern[pattern]
+                                            .ResultsPerFile[file]
+                                                .Log
+                                                    .Add
+                                                        (
+                                                            (
+                                                                file_backup: file_new,
+                                                                content: content_original,
+                                                                content_backup: content_new
+                                                            )
+                                                        );
 
-							return;
+                            return;
 						}
 					);
 
@@ -183,9 +198,9 @@ public partial class
     {
         Root r = null;
 
-        Core.Serialization.JSON.SettingsSystemTextJson settings = null;
+        global::Core.Serialization.JSON.SettingsSystemTextJson settings = null;
 
-        settings = new Core.Serialization.JSON.SettingsSystemTextJson
+        settings = new global::Core.Serialization.JSON.SettingsSystemTextJson
         {
             Settings = new SettingsSystemTextJsonWorkloadsJson()
         };
@@ -209,9 +224,9 @@ public partial class
 	{
 		Root r = null;
 
-		Core.Serialization.JSON.SettingsNewtonsoftJson settings = null;
+        global::Core.Serialization.JSON.SettingsNewtonsoftJson settings = null;
 
-        settings = new Core.Serialization.JSON.SettingsNewtonsoftJson
+        settings = new global::Core.Serialization.JSON.SettingsNewtonsoftJson
         {
             Settings = new SettingsNewtonsoftJsonWorkloadsJson()
         };

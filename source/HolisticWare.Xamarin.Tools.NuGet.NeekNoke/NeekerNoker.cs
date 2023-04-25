@@ -4,13 +4,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-using HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
-using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
 using Newtonsoft.Json.Linq;
 
-namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
+using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
+using HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Formats;
 
-public partial class NeekerNoker
+namespace HolisticWare.Xamarin.Tools.NuGet.NeekNoke;
+
+public partial class
+                                        NeekerNoker
 {
     public static
         bool
@@ -34,11 +36,11 @@ public partial class NeekerNoker
     {
         get
         {
-            return NeekerNokerDotNetWorkloadsJSON.VersionDotNetSDKBand;
+            return Formats.NeekerNokerDotNetWorkloadsJSON.VersionDotNetSDKBand;
         }
         set
         {
-            NeekerNokerDotNetWorkloadsJSON.VersionDotNetSDKBand = value;
+            Formats.NeekerNokerDotNetWorkloadsJSON.VersionDotNetSDKBand = value;
 
             return;
         }
@@ -51,7 +53,7 @@ public partial class NeekerNoker
                     (
                         string version_current,
                         string version_latest,
-                        string[] versions_upgradeable,
+                        List<string> versions_upgradeable,
                         NuGetPackage package_details,
                         bool failed
                     )
@@ -67,13 +69,153 @@ public partial class NeekerNoker
                                             (
                                             )
 	{
-		this.ResultsPerFormat = new ResultsPerFormat();
+		this.ResultsPerFormat = new Dictionary<string, ResultsPerFormat>()
+        {
+            {
+                "MSBuild (Project Files, Property/Target Files)",
+                new ResultsPerFormat()
+                {
+                    ResultsPerFilePattern = new Dictionary<string, ResultsPerFilePattern>
+                    {
+                        {
+                            "*.csproj",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                        {
+                            "*.fsproj",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                        {
+                            "*.vbproj",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                        {
+                            "*.xproj",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                        {
+                            "*.proj",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                        {
+                            "*.props",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                        {
+                            "*.targets",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                    }
+                }
+            },
+            {
+                "Binderator Config",
+                new ResultsPerFormat()
+                {
+                    ResultsPerFilePattern = new Dictionary<string, ResultsPerFilePattern>
+                    {
+                        {
+                            "config.json",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                    }
+                }
+            },
+            {
+                "dotnet global.json files",
+                new ResultsPerFormat()
+                {
+                    ResultsPerFilePattern = new Dictionary<string, ResultsPerFilePattern>
+                    {
+                        {
+                            "global.json",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                    },
+                }
+            },
+            {
+                "dotnet workloads files (used: workloads.json)",
+                new ResultsPerFormat()
+                {
+                    ResultsPerFilePattern = new Dictionary<string, ResultsPerFilePattern>
+                    {
+                        {
+                            "workloads.json",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                    },
+                }
+            },
+            {
+                "Cake Build Script Files",
+                new ResultsPerFormat()
+                {
+                    ResultsPerFilePattern = new Dictionary<string, ResultsPerFilePattern>
+                    {
+                        {
+                            "*.cake",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                    },
+                }
+            },
+            {
+                "Script Files (dotnet script, csx, scriptcs)",
+                new ResultsPerFormat()
+                {
+                    ResultsPerFilePattern = new Dictionary<string, ResultsPerFilePattern>
+                    {
+                        {
+                            "*.csx",
+                            new ResultsPerFilePattern()
+                            {
+                                ResultsPerFile = new Dictionary<string, ResultsPerFile>()
+                            }
+                        },
+                    },
+                }
+            },
+        };
 
         return;
 	}
 
     public
-        ResultsPerFormat
+        Dictionary<string, ResultsPerFormat>
                                         ResultsPerFormat
     {
         get;
@@ -83,10 +225,10 @@ public partial class NeekerNoker
 	public 
 		Dictionary<string, string[]>
 										Harvest
-										(
-											string[] patterns,
-											string location = "."
-										)
+										    (
+											    string[] patterns,
+    											string location = "."
+	    									)
     {
         return new Scraper().Harvest(patterns, location);
     }
@@ -94,9 +236,9 @@ public partial class NeekerNoker
 	public
         void
                                         Neek
-                                        (
-                                            Dictionary<string, string[]> patterns_files
-										)
+                                            (
+                                                Dictionary<string, string[]> patterns_files
+										    )
     {
         if 
             (
@@ -112,8 +254,6 @@ public partial class NeekerNoker
                                                         "*.csproj",
                                                         "*.cake",
                                                         "config.json",
-                                                        "directory.build.*.props",
-                                                        "directory.packages.*.props",
                                                         "*.props",
                                                         "*.targets",
                                                         "global.json",
@@ -129,85 +269,84 @@ public partial class NeekerNoker
                                 );
         }
 
-        Dictionary
-            <
-                string,         // pattern
-                Dictionary      // results
-                        <
-                            string,                         // filename
-                            (
-                                string file_backup,         // filename backup
-                                string content,             // content (changed, new)
-                                string content_backup       // content backu
-                            )
-                        >
-            >
-            results = null;
-
-        results = new Dictionary
-                            <
-                                string,
-                                Dictionary
-                                    <
-                                        string,
-                                        (
-                                            string file_backup,
-                                            string content,
-                                            string content_backup
-                                        )
-                                    >
-                            >();
 
         foreach (KeyValuePair<string, string[]> kvp in patterns_files)
         {
             switch(kvp.Key)
             {
-                case "config.json":
-                    NeekNoke.Formats.NeekerNokerBinderatorConfig f_binderator = null;
-                    f_binderator = new NeekNoke.Formats.NeekerNokerBinderatorConfig();
-                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_binderator;
-                    f_binderator.NeekNoke(kvp.Value);
-                    break;
                 case "*.csproj":
                 case "*.fsproj":
                 case "*.vbproj":
                 case "*.proj":
-                    NeekNoke.Formats.NeekerNokerMsBuildProject f_msbuild_proj = null;
-                    f_msbuild_proj = new NeekNoke.Formats.NeekerNokerMsBuildProject();
-                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_msbuild_proj;
-                    f_msbuild_proj.NeekNoke(kvp.Value);
-                    break;
-                case "directory.packages.*.props":
-                case "directory.build.*.props":
+                case "*.xproj":
                 case "*.props":
                 case "*.targets":
+                    NeekNoke.Formats.NeekerNokerMsBuildProject f_msbuild_proj = null;
+                    f_msbuild_proj = new NeekNoke.Formats.NeekerNokerMsBuildProject()
+                                                                    {
+                                                                        NeekNoker = this
+                                                                    };
+                    this.ResultsPerFormat["MSBuild (Project Files, Property/Target Files)"]
+                            .ResultsPerFilePattern[kvp.Key]
+                                .NeekNokeFormatter = f_msbuild_proj;
+                    f_msbuild_proj.NeekNoke(kvp.Key, kvp.Value);
+                    break;
+                case "config.json":
+                    NeekNoke.Formats.NeekerNokerBinderatorConfig f_binderator = null;
+                    f_binderator = new NeekNoke.Formats.NeekerNokerBinderatorConfig()
+                                                                    {
+                                                                        NeekNoker = this
+                                                                    };
+                    this.ResultsPerFormat["Binderator Config"]
+                            .ResultsPerFilePattern[kvp.Key]
+                                .NeekNokeFormatter = f_binderator;
+                    f_binderator.NeekNoke(kvp.Key, kvp.Value);
                     break;
                 case "global.json":
                     NeekNoke.Formats.NeekerNokerDotNetGlobalJSON f_global_json = null;
-                    f_global_json = new NeekNoke.Formats.NeekerNokerDotNetGlobalJSON();
-                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_global_json;
-                    f_global_json.NeekNoke(kvp.Value);
+                    f_global_json = new NeekNoke.Formats.NeekerNokerDotNetGlobalJSON()
+                                                                    {
+                                                                        NeekNoker = this
+                                                                    };
+                    this.ResultsPerFormat["dotnet global.json files"]
+                            .ResultsPerFilePattern[kvp.Key]
+                                .NeekNokeFormatter = f_global_json;
+                    f_global_json.NeekNoke(kvp.Key, kvp.Value);
                     break;
                 case "workloads.json":
                     NeekNoke.Formats.NeekerNokerDotNetWorkloadsJSON f_workloads_json = null;
-                    f_workloads_json = new NeekNoke.Formats.NeekerNokerDotNetWorkloadsJSON();
-                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_workloads_json;
-                    f_workloads_json.NeekNoke(kvp.Value);
+                    f_workloads_json = new NeekNoke.Formats.NeekerNokerDotNetWorkloadsJSON()
+                                                                    {
+                                                                        NeekNoker = this
+                                                                    };
+                    this.ResultsPerFormat["dotnet workloads files (used: workloads.json)"]
+                            .ResultsPerFilePattern[kvp.Key]
+                                .NeekNokeFormatter = f_workloads_json;
+                    f_workloads_json.NeekNoke(kvp.Key, kvp.Value);
                     break;
                     
                 case "*.cake":
                     NeekNoke.Formats.NeekerNokerScriptCakeBuild f_cake = null;
-                    f_cake = new NeekNoke.Formats.NeekerNokerScriptCakeBuild();
-                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_cake;
-                    f_cake.NeekNoke(kvp.Value);
+                    f_cake = new NeekNoke.Formats.NeekerNokerScriptCakeBuild()
+                                                                    {
+                                                                        NeekNoker = this
+                                                                    };
+                    this.ResultsPerFormat["Cake Build Script Files"]
+                            .ResultsPerFilePattern[kvp.Key]
+                                .NeekNokeFormatter = f_cake;
+                        f_cake.NeekNoke(kvp.Key, kvp.Value);
                     break;
                 case "*.csx":
                     NeekNoke.Formats.NeekerNokerScriptCSharpScriptAndScriptCS f_csx = null;
-                    f_csx = new NeekNoke.Formats.NeekerNokerScriptCSharpScriptAndScriptCS();
-                    this.ResultsPerFormat.ResultsNeekerNoker[kvp.Key] = f_csx;
-                    f_csx.NeekNoke(kvp.Value);
+                    f_csx = new NeekNoke.Formats.NeekerNokerScriptCSharpScriptAndScriptCS()
+                                                                    {
+                                                                        NeekNoker = this
+                                                                    };
+                    this.ResultsPerFormat["Script Files (dotnet script, csx, scriptcs)"]
+                            .ResultsPerFilePattern[kvp.Key]
+                                .NeekNokeFormatter = f_csx;
+                    f_csx.NeekNoke(kvp.Key, kvp.Value);
                     break;
-                case "*.xproj":
                 case "packages.config":
                     // TODO
                     break;
@@ -225,86 +364,22 @@ public partial class NeekerNoker
                                             (
                                             )
     {
-        foreach (KeyValuePair<string, NeekerNokerBase> nnb in this.ResultsPerFormat.ResultsNeekerNoker)
+        foreach (KeyValuePair<string, ResultsPerFormat> format_rpf in this.ResultsPerFormat)
         {
-            string pattern = nnb.Key;
-            NeekerNokerBase nn = nnb.Value;
+            string format = format_rpf.Key;
 
-            Parallel.ForEach
-                        (
-                            nn.ResultsPerFormat.ResultsPerFile,
-                            rpf =>
-                            {
-                                string file = rpf.Key;
-                                ResultsPerFile rrpf = rpf.Value;
+            foreach (KeyValuePair<string, ResultsPerFilePattern> pattern_rpfp in format_rpf.Value.ResultsPerFilePattern)
+            {
+                string pattern = pattern_rpfp.Key;
+                ResultsPerFilePattern rpfp = pattern_rpfp.Value;
 
-                                string file_content = System.IO.File.ReadAllText(file);
-                                string file_content_original = string.Copy(file_content);
+                foreach (KeyValuePair<string, ResultsPerFile> file_rpf in rpfp.ResultsPerFile)
+                {
+                    string file = file_rpf.Key;
+                    ResultsPerFile rpf = file_rpf.Value;
+                }
 
-                                foreach
-                                (
-                                    (
-                                        string nuget_id,
-                                        string version_current,
-                                        string[] versions_upgradeable,
-                                        string text_snippet_original,
-                                        string text_snippet_new
-                                    )
-                                        pr in rrpf.PackageReferences
-                                )
-                                {
-                                    string nuget_id = pr.nuget_id;
-                                    string version_current = pr.version_current;
-
-                                    (
-                                        string version_current,
-                                        string version_latest,
-                                        string[] versions_upgradeable,
-                                        NuGetPackage package_details,
-                                        bool failed
-                                    )
-                                        data = this.PackagesDetails[nuget_id];
-
-                                    if (rrpf.PackageReferences == null || rrpf.PackageReferences.Count == 0)
-                                    {
-                                        // no package references found
-                                        continue;
-                                    }
-
-                                    // TODO: performance - check if version is
-                                    if ( string.Compare(pr.version_current, data.version_latest) >= 0)
-                                    {
-                                        continue;
-                                    }
-
-                                    if (pr.text_snippet_original != null && pr.version_current != null)
-                                    {
-                                        string text_snippet_new = pr.text_snippet_original.Replace
-                                                                                                (
-                                                                                                    pr.version_current,
-                                                                                                    data.version_latest
-                                                                                                );
-                                        file_content = file_content.Replace(pr.text_snippet_original, text_snippet_new);
-                                    }
-                                }
-
-                                if ( ! file_content.Equals(file_content_original) )
-                                {
-                                    // make backup and save new updated content to original file
-                                    string extension = Path.GetExtension(file);
-                                    string ts = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-                                    string file_new = Path.ChangeExtension
-                                                                    (
-                                                                        file,
-                                                                        $"bckp-ts-{ts}{extension}"
-                                                                    );
-                                    System.IO.File.Copy(file, file_new);
-                                    System.IO.File.WriteAllText(file, file_content);
-                                }
-
-                                return;
-                            }
-                        );
+            }
         }
 
         return;
@@ -316,63 +391,56 @@ public partial class NeekerNoker
                                             (
                                             )
     {
-        foreach (KeyValuePair<string, NeekerNokerBase> nnb in this.ResultsPerFormat.ResultsNeekerNoker)
+        Trace.WriteLine(new string('#', Console.WindowWidth));
+        Trace.WriteLine($"grepping files for NuGet packages ...");
+        string directory = global::Core.IO.Directory.Current["System.Environment.CurrentDirectory"];
+        Trace.WriteLine($"   DirectoryCurrent = {directory}");
+
+        foreach (KeyValuePair<string, ResultsPerFormat> result_per_format in this.ResultsPerFormat)
         {
-            string pattern = nnb.Key;
-            NeekerNokerBase nn = nnb.Value;
+            string format = result_per_format.Key;
+            ResultsPerFormat rp_format = result_per_format.Value;
 
-            Trace.WriteLine($"pattern:      {pattern}");
+            Trace.WriteLine($"format:      {format}");
 
-            foreach (KeyValuePair<string, ResultsPerFile> rpf in nn.ResultsPerFormat.ResultsPerFile)
+            foreach (var rp_pattern in rp_format.ResultsPerFilePattern)
             {
-                string file = rpf.Key;
+                string pattern = rp_pattern.Key;
+                ResultsPerFilePattern rp_file_pattern = rp_pattern.Value;
 
-                Trace.WriteLine($"  file:      {file}");
+                Trace.WriteLine($"  pattern:      {pattern}");
+                Trace.WriteLine($"      files:    {rp_file_pattern.ResultsPerFile.Count}");
 
-                if (NeekerNoker.Action == Action.Noke)
+                foreach (var rp_file in rp_file_pattern.ResultsPerFile)
                 {
-                    foreach
-                    (
-                        (
-                            string file_backup,
-                            string content,
-                            string content_backup
-                        )
-                            kv_log in rpf.Value.Log
-                    )
+                    string file = rp_file.Key;
+                    ResultsPerFile rpf = rp_file.Value;
+
+                    Trace.WriteLine($"      file:       {file}");
+                    Trace.WriteLine($"                      {rpf.File}");
+
+                    Trace.WriteLine($"          package references:");
+                    foreach (var pr in rpf.PackageReferences)
                     {
-                        Trace.WriteLine($"      file_backup:      {kv_log.file_backup}");
+                        Trace.WriteLine($"              nuget_id:   {pr.nuget_id}");
+                        Trace.WriteLine($"                  version:   {pr.version_current}");
+                        if (pr.versions_upgradeable != null)
+                        {
+                            Trace.WriteLine($"                  versions_upgradeable:");
+                            
+                            foreach (string vu in pr.versions_upgradeable)
+                            {
+                                Trace.WriteLine($"                      {vu}");
+                            }
+                        }
                     }
-                }
-
-                Trace.WriteLine($"      Packages failed      ");
-                Trace.WriteLine($"              NuGet packages that failed with information retrieval");
-                Trace.WriteLine($"              please report (open issue)");
-                Trace.WriteLine($"              https://github.com/HolisticWare-Xamarin-Tools/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister/issues");
-                foreach ((string nuget_id, string version_current) pf in rpf.Value.PackagesFailed)
-                {
-                    Trace.WriteLine($"              nuget_id    :           {pf.nuget_id}");
-                    Trace.WriteLine($"                  version :           {pf.version_current}");
-                }
-
-                Trace.WriteLine($"      Packages found      ");
-
-                foreach
-                (
-                    (
-                        string nuget_id,
-                        string version_current,
-                        string[] versions_upgradeable,
-                        string text_snippet_original,
-                        string text_snippet_new
-                    )
-                        pr in rpf.Value.PackageReferences
-                )
-                {
-                    Trace.WriteLine($"              nuget_id:           {pr.nuget_id}");
-                    Trace.WriteLine($"                  version:           {pr.version_current}");
-                    // string vu = Environment.NewLine + "\t\t" + string.Join($"{Environment.NewLine}\t\t", pr.versions_upgradeable);
-                    // Trace.WriteLine($"  versions:        {vu}");
+                    
+                    Trace.WriteLine($"          packages failed:");
+                    foreach (var pf in rpf.PackagesFailed)
+                    {
+                        Trace.WriteLine($"              nuget_id:   {pf.nuget_id}");
+                        Trace.WriteLine($"                  version:   {pf.version_current}");
+                    }
                 }
             }
         }
@@ -381,47 +449,79 @@ public partial class NeekerNoker
     }
 
     public
-        Dictionary<string, string>
+        Dictionary<string, PackageAppearanceData>
                                         PackageDataCleanup
                                             (
                                             )
     {
-        Dictionary<string, string> packages_found = new Dictionary<string, string>();
+        Dictionary<string, PackageAppearanceData> packages_found = null;
 
-        foreach (KeyValuePair<string, NeekerNokerBase> nnb in this.ResultsPerFormat.ResultsNeekerNoker)
+        packages_found = new Dictionary<string, PackageAppearanceData>();
+
+        foreach (KeyValuePair<string, ResultsPerFormat> result_per_format in this.ResultsPerFormat)
         {
-            string pattern = nnb.Key;
-            NeekerNokerBase nn = nnb.Value;
+            ResultsPerFormat rp_format = result_per_format.Value;
 
-            Trace.WriteLine($"pattern:      {pattern}");
-
-            foreach (KeyValuePair<string, ResultsPerFile> rpf in nn.ResultsPerFormat.ResultsPerFile)
+            foreach (var rp_pattern in rp_format.ResultsPerFilePattern)
             {
-                string file = rpf.Key;
+                ResultsPerFilePattern rp_file_pattern = rp_pattern.Value;
 
-                Trace.WriteLine($"  file:      {file}");
-
-                foreach
-                (
-                    (
-                        string nuget_id,
-                        string version_current,
-                        string[] versions_upgradeable,
-                        string text_snippet_original,
-                        string text_snippet_new
-                    )
-                        pr in rpf.Value.PackageReferences
-                )
+                foreach (var rp_file in rp_file_pattern.ResultsPerFile)
                 {
-                    string ni = pr.nuget_id;
+                    string file = rp_file.Key;
+                    ResultsPerFile rpf = rp_file.Value;
 
-                    if (!packages_found.ContainsKey(ni))
+                    foreach (var pr in rpf.PackageReferences)
                     {
-                        packages_found.Add(pr.nuget_id, pr.version_current);
+                        if (pr.versions_upgradeable != null)
+                        {                            
+                            foreach (string vu in pr.versions_upgradeable)
+                            {
+                            }
+                        }
+                    }
+
+                    foreach (var pf in rpf.PackagesFailed)
+                    {
                     }
                 }
             }
         }
+
+        //foreach (KeyValuePair<string, NeekerNokerBase> nnb in this.ResultsPerFormat.ResultsNeekerNoker)
+        //{
+        //    string pattern = nnb.Key;
+        //    NeekerNokerBase nn = nnb.Value;
+
+        //    Trace.WriteLine($"pattern:      {pattern}");
+
+        //    foreach (KeyValuePair<string, ResultsPerFile> rpf in nn.ResultsPerFormat.ResultsPerFile)
+        //    {
+        //        string file = rpf.Key;
+
+        //        Trace.WriteLine($"  file:      {file}");
+
+        // foreach
+        // (
+        //     (
+        //         string nuget_id,
+        //         string version_current,
+        //         string[] versions_upgradeable,
+        //         string text_snippet_original,
+        //         string text_snippet_new
+        //     )
+        //         pr in rpf.Value.PackageReferences
+        // )
+        // {
+        //     string ni = pr.nuget_id;
+        //
+        //     if (!packages_found.ContainsKey(ni))
+        //     {
+        //         packages_found.Add(pr.nuget_id, pr.version_current);
+        //     }
+        // }
+        //    }
+        //}
 
         return packages_found;
     }
@@ -433,14 +533,14 @@ public partial class NeekerNoker
                     (
                         string version_current,
                         string version_latest,
-                        string[] versions_upgradeable,
+                        List<string> versions_upgradeable,
                         NuGetPackage package_details,
                         bool failed
                     )
                 >
                                         PackageDataFetch
                                             (
-                                                Dictionary<string, string> packages
+                                                Dictionary<string, PackageAppearanceData> packages
                                             )
     {
         Dictionary
@@ -449,7 +549,7 @@ public partial class NeekerNoker
                 (
                     string version_current,
                     string version_latest,
-                    string[] versions_upgradeable,
+                    List<string> versions_upgradeable,
                     NuGetPackage package_details,
                     bool failed
                 )
@@ -462,14 +562,14 @@ public partial class NeekerNoker
                                         (
                                             string version_current,
                                             string version_latest,
-                                            string[] versions_upgradeable,
+                                            List<string> versions_upgradeable,
                                             NuGetPackage package_details,
                                             bool failed
                                         )
                                     >
                                         ();
 
-        foreach (KeyValuePair<string, string> kvp in packages)
+        foreach (KeyValuePair<string, PackageAppearanceData> kvp in packages)
         {
             packages_data.Add
                             (
@@ -487,10 +587,10 @@ public partial class NeekerNoker
         Parallel.ForEach
                     (
                         packages,
-                         nuget_id_x_version =>
+                        nuget_id_x_appearance =>
                         {
-                            string nuget_id = nuget_id_x_version.Key;
-                            string version = nuget_id_x_version.Value;
+                            string nuget_id = nuget_id_x_appearance.Key;
+                            PackageAppearanceData appearance_data = nuget_id_x_appearance.Value;
             
                             global::HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.Generated.Versions.Root v = null;
 
@@ -507,6 +607,10 @@ public partial class NeekerNoker
                                     List<string> versions_stable = new List<string>();
                                     foreach (string ver in v.versions)
                                     {
+                                        if (ver.Contains("+"))
+                                        {
+                                            continue;
+                                        }
                                         if (ver.Contains("-"))
                                         {
                                             continue;
@@ -517,17 +621,17 @@ public partial class NeekerNoker
                                     v.versions = versions_stable;
                                 }
                             }
-                            catch (Exception)
+                            catch (Exception exc)
                             {
                                 failed = true;
-                                packages_data[nuget_id_x_version.Key] =
-                                                                        (
-                                                                            version_current: version,
-                                                                            version_latest: null,
-                                                                            versions_upgradeable: null,
-                                                                            package_details: null,
-                                                                            failed: failed
-                                                                        );
+                                packages_data[nuget_id_x_appearance.Key] =
+                                                            (
+                                                                version_current: appearance_data.VersionCurrent,
+                                                                version_latest: appearance_data.VersionLatest,
+                                                                versions_upgradeable: appearance_data.VersionsUpgradeable,
+                                                                package_details: null,
+                                                                failed: failed
+                                                            );
                             }
 
                             NuGetPackage np = null;
@@ -536,28 +640,28 @@ public partial class NeekerNoker
                             {
                                 np = NuGetPackage
                                                 .Utilities
-                                                    .GetNuGetPackageFromRegistrationAsync(nuget_id_x_version.Key)
+                                                    .GetNuGetPackageFromRegistrationAsync(nuget_id_x_appearance.Key)
                                                     .Result
                                                     ;
 
                                 string version_latest = np.VersionTextual;
-                                string[] versions_upgradeable = np.VersionsTextual.ToArray();
+                                List<string> versions_upgradeable = np.VersionsTextual;
                                 
-                                packages_data[nuget_id_x_version.Key] = 
-                                                                        (
-                                                                            version_current: version,
-                                                                            version_latest: version_latest,
-                                                                            versions_upgradeable: versions_upgradeable,
-                                                                            package_details: np,
-                                                                            failed: failed
-                                                                        );
+                                packages_data[nuget_id_x_appearance.Key] = 
+                                                            (
+                                                                version_current: appearance_data.VersionCurrent,
+                                                                version_latest: version_latest,
+                                                                versions_upgradeable: versions_upgradeable,
+                                                                package_details: np,
+                                                                failed: failed
+                                                            );
                             }
                             catch (Exception exc)
                             {
                                 failed = true;
-                                packages_data[nuget_id_x_version.Key] = 
+                                packages_data[nuget_id_x_appearance.Key] = 
                                                                         (
-                                                                            version_current: version,
+                                                                            version_current: appearance_data.VersionCurrent,
                                                                             version_latest: null,
                                                                             versions_upgradeable: null,
                                                                             package_details: null,

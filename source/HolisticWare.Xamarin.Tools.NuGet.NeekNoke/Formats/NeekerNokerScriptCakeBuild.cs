@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
 
-namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
+namespace HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Formats;
 
 public partial class NeekerNokerScriptCakeBuild
 						:
@@ -24,29 +24,32 @@ public partial class NeekerNokerScriptCakeBuild
 		void
 										NeekNoke
 											(
+												string pattern,
 												string[] files
 											)
 	{
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
 		{
-			this.ResultsPerFormat.ResultsPerFile.Add
-													(
-														file,
-														new ResultsPerFile()
-														{
-															File = file
-														}
-													);
-		}
+            this.NeekNoker
+                    .ResultsPerFormat["Cake Build Script Files"]
+                        .ResultsPerFilePattern[pattern]
+                            .ResultsPerFile
+                                .Add
+                                    (
+                                        file,
+                                        new ResultsPerFile()
+                                        {
+                                            File = file
+                                        }
+                                    );
+        }
 
-		Parallel.ForEach
+        Parallel.ForEach
 					(
 						files,
-						async (file) =>
+						file =>
 						{
-							string extension = null;
-							string ts = null;
 							string file_new = null;
 							string content_original = System.IO.File.ReadAllText(file);
 							string content_new = null;
@@ -107,18 +110,21 @@ public partial class NeekerNokerScriptCakeBuild
 											break;
 										}
 
-										this.ResultsPerFormat
-												.ResultsPerFile[file]
-													.PackageReferences.Add
-																		(
-																			(
-																				nuget_id: nuget_id,
-																				version_current: version,
-																				versions_upgradeable: null,
-																				text_snippet_original: text_snippet_original,
-																				text_snippet_new: text_snippet_new
-																			)
-																		);
+                                        this.NeekNoker
+		                                        .ResultsPerFormat["Cake Build Script Files"]
+			                                        .ResultsPerFilePattern[pattern]
+					                                    .ResultsPerFile[file]
+							                                .PackageReferences
+		                                                        .Add
+		                                                            (
+		                                                                        (
+																			nuget_id: nuget_id,
+																			version_current: version,
+																			versions_upgradeable: null,
+																			text_snippet_original: text_snippet_original,
+																			text_snippet_new: text_snippet_new
+																		)
+																	);
 										nuget_id = null;
 										version = null;
 										break;
@@ -127,21 +133,23 @@ public partial class NeekerNokerScriptCakeBuild
 										break;
 								}
 
-
 							}
 
-							this.ResultsPerFormat
-									.ResultsPerFile[file]
-										.Log.Add
-												(
-													(
-														file_new: file_new,
-														content: content_original,
-														content_new: content_new
-													)
-												);
+							this.NeekNoker
+								.ResultsPerFormat["Cake Build Script Files"]
+									.ResultsPerFilePattern[pattern]
+		                                .ResultsPerFile[file]
+	                                        .Log
+	                                            .Add
+	                                                (
+	                                                    (
+	                                                        file_backup: file_new,
+	                                                        content: content_original,
+	                                                        content_backup: content_new
+	                                                    )
+	                                                );
 
-							return;
+                            return;
 
 						}
 					);

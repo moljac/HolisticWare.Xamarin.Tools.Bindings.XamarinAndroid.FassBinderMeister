@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+
+using HolisticWare.Xamarin.Tools.NuGet.NeekNoke;
 using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
 
-namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
+namespace HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Formats;
 
-public partial class NeekerNokerBase
+public partial class
+                                        NeekerNokerBase
 {
     static 
                                         NeekerNokerBase
@@ -23,8 +26,21 @@ public partial class NeekerNokerBase
     }
 
     public
-        ResultsPerFormat
-                                        ResultsPerFormat
+        NeekerNoker
+                                        NeekNoker
+    {
+        get;
+        set;
+    }
+
+    public
+        virtual
+        Dictionary
+            <
+                string,
+                ResultsPerFilePattern
+            >
+                                        ResultsPerFilePattern
     {
         get;
         set;
@@ -35,7 +51,7 @@ public partial class NeekerNokerBase
                                             (
                                             )
     {
-        this.ResultsPerFormat = new ResultsPerFormat();
+        this.ResultsPerFilePattern = new Dictionary<string, ResultsPerFilePattern>();
         
         return;
     }

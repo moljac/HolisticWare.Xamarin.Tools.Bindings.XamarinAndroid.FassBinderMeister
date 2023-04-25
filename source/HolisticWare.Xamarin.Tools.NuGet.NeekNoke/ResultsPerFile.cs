@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 
-namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
+namespace HolisticWare.Xamarin.Tools.NuGet.NeekNoke;
 
-public partial class ResultsPerFile
+public partial class
+                                        ResultsPerFile
 {
     public
         string
@@ -11,12 +12,8 @@ public partial class ResultsPerFile
         get;
         set;
     }
-
-
-
-
-
-    public 
+    
+    public
         List
             <
                 (

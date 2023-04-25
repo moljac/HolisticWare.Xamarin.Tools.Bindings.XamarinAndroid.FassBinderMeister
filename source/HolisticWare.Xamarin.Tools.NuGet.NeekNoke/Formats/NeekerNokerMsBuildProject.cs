@@ -8,42 +8,47 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+
+using HolisticWare.Xamarin.Tools.NuGet.NeekNoke;
 using HolisticWare.Xamarin.Tools.NuGet.ServerAPI;
 
-namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke.Formats;
+namespace HolisticWare.Xamarin.Tools.NuGet.NeekNoke.Formats;
 
 public partial class
 										NeekerNokerMsBuildProject
 										:
 										NeekerNokerBase
 {
-	public
-		void
+    public
+        void
 										NeekNoke
 											(
+												string pattern,
 												string[] files
 											)
 	{
 		// initialize result, so Add does not crash (parallel) and no Concurrent Collections are needed
 		foreach (string file in files)
 		{
-			this.ResultsPerFormat.ResultsPerFile.Add
-													(
-														file,
-														new ResultsPerFile()
-														{
-															File = file
-														}
-													);
-		}
+            this.NeekNoker
+					.ResultsPerFormat["MSBuild (Project Files, Property/Target Files)"]
+                        .ResultsPerFilePattern[pattern]
+							.ResultsPerFile
+								.Add
+									(
+										file,
+										new ResultsPerFile()
+										{
+											File = file
+										}
+									);
+			}
 
-		Parallel.ForEach
+        Parallel.ForEach
 					(
 						files,
-						async (file) =>
+						(file) =>
 						{
-							string extension = null;
-							string ts = null;
 							string file_new = null;
 							string content_original = System.IO.File.ReadAllText(file);
 							string content_new = null;
@@ -52,10 +57,6 @@ public partial class
 							string version = null;
 							string text_snippet_original = null;
 							string text_snippet_new = null;
-
-							string version_override = null;
-							string inner_text = null;
-							string outer_xml = null;
 
 							XmlReader xreader = null;
                             XDocument xdoc = null;
@@ -281,18 +282,21 @@ public partial class
                                                                 ""
                                                             );
 
-                                this.ResultsPerFormat
-                                        .ResultsPerFile[file]
-                                            .PackageReferences.Add
-                                                                (
-                                                                    (
-                                                                        nuget_id: nuget_id,
-                                                                        version_current: version,
-                                                                        versions_upgradeable: null,
-                                                                        text_snippet_original: text_snippet_original,
-                                                                        text_snippet_new: text_snippet_new
-                                                                    )
-                                                                );
+								this.NeekNoker
+									.ResultsPerFormat["MSBuild (Project Files, Property/Target Files)"]
+										.ResultsPerFilePattern[pattern]
+											.ResultsPerFile[file]
+			                                    .PackageReferences
+													.Add
+														(
+															(
+																nuget_id: nuget_id,
+																version_current: version,
+																versions_upgradeable: null,
+																text_snippet_original: text_snippet_original,
+																text_snippet_new: text_snippet_new
+															)
+														);
                             }
 
                             foreach (XElement xe in xe_package_references_version_node)
@@ -307,40 +311,45 @@ public partial class
 																			""
 																		);
 
-                                this.ResultsPerFormat
-                                        .ResultsPerFile[file]
-                                            .PackageReferences.Add
-                                                                (
-                                                                    (
-                                                                        nuget_id: nuget_id,
-                                                                        version_current: version,
-                                                                        versions_upgradeable: null,
-                                                                        text_snippet_original: text_snippet_original,
-                                                                        text_snippet_new: text_snippet_new
-                                                                    )
-                                                                );
+                                this.NeekNoker
+										.ResultsPerFormat["MSBuild (Project Files, Property/Target Files)"]
+											.ResultsPerFilePattern[pattern]
+												.ResultsPerFile[file]
+													.PackageReferences
+														.Add
+	                                                        (
+	                                                            (
+	                                                                nuget_id: nuget_id,
+	                                                                version_current: version,
+	                                                                versions_upgradeable: null,
+	                                                                text_snippet_original: text_snippet_original,
+	                                                                text_snippet_new: text_snippet_new
+	                                                            )
+	                                                        );
                             }
 
                             if (nuget_id == null)
 							{
 								string msg = "nuget_id is null";
 							}
-							//------------------------------------------------------------------------------------------------------
+                            //------------------------------------------------------------------------------------------------------
                             //------------------------------------------------------------------------------------------------------
                             // PackageVersion
 
                             //------------------------------------------------------------------------------------------------------
-                            
-                            this.ResultsPerFormat
-									.ResultsPerFile[file]
-										.Log.Add
-									            (
-										            (
-											            file_backup: file_new,
-											            content: content_original,
-											            content_backup: content_new
-										            )
-									            );
+                            this.NeekNoker
+		                            .ResultsPerFormat["MSBuild (Project Files, Property/Target Files)"]
+										.ResultsPerFilePattern[pattern]
+											.ResultsPerFile[file]
+												.Log
+													.Add
+											            (
+												            (
+													            file_backup: file_new,
+													            content: content_original,
+													            content_backup: content_new
+												            )
+											            );
                             
                             // Console.WriteLine($"nuget_id:		{Environment.NewLine}			{nuget_id}");
                             // Console.WriteLine($"	version:			{Environment.NewLine}	{version}");

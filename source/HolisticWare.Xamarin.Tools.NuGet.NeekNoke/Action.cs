@@ -1,4 +1,4 @@
-namespace HolisticWare.Xamarin.Android.Bindings.Tools.NeekNoke;
+namespace HolisticWare.Xamarin.Tools.NuGet.NeekNoke;
 
 public enum Action
 {
