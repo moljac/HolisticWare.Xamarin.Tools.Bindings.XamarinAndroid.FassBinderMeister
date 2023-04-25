@@ -1,0 +1,813 @@
+{
+    "@context": {
+        "@vocab": "http://schema.nuget.org/schema#",
+        "@base": "https://api.nuget.org/v3/registration5-gz-semver2/"
+    },
+    "totalHits": 6,
+    "data": [
+        {
+            "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/index.json",
+            "@type": "Package",
+            "registration": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/index.json",
+            "id": "Xamarin.AndroidX.Fragment",
+            "version": "1.5.5.1",
+            "description": ".NET for Android (formerly Xamarin.Android) bindings for AndroidX library 'androidx.fragment:fragment'.",
+            "summary": "",
+            "title": ".NET for Android (formerly Xamarin.Android) AndroidX - fragment",
+            "iconUrl": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.fragment/1.5.5.1/icon",
+            "licenseUrl": "https://www.nuget.org/packages/Xamarin.AndroidX.Fragment/1.5.5.1/license",
+            "projectUrl": "https://aka.ms/androidx",
+            "tags": [
+                ".NET",
+                "for",
+                "Android",
+                "Xamarin",
+                "AndroidX",
+                "Xamarin.AndroidX",
+                "Support",
+                "Google",
+                "fragment",
+                "artifact=androidx.fragment:fragment",
+                "artifact_versioned=androidx.fragment:fragment:1.5.5"
+            ],
+            "authors": [
+                "Microsoft"
+            ],
+            "owners": [
+                "Microsoft",
+                "Xamarin"
+            ],
+            "totalDownloads": 18695512,
+            "verified": true,
+            "packageTypes": [
+                {
+                    "name": "Dependency"
+                }
+            ],
+            "versions": [
+                {
+                    "version": "1.0.0",
+                    "downloads": 34458,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.0.0.json"
+                },
+                {
+                    "version": "1.0.0.1",
+                    "downloads": 58269,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.0.0.1.json"
+                },
+                {
+                    "version": "1.1.0",
+                    "downloads": 2281466,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.1.0.json"
+                },
+                {
+                    "version": "1.1.0.1",
+                    "downloads": 3128145,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.1.0.1.json"
+                },
+                {
+                    "version": "1.2.2",
+                    "downloads": 126138,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.2.json"
+                },
+                {
+                    "version": "1.2.2.1",
+                    "downloads": 108603,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.2.1.json"
+                },
+                {
+                    "version": "1.2.3",
+                    "downloads": 22586,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.3.json"
+                },
+                {
+                    "version": "1.2.3.1",
+                    "downloads": 2452,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.3.1.json"
+                },
+                {
+                    "version": "1.2.4",
+                    "downloads": 113239,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.4.json"
+                },
+                {
+                    "version": "1.2.4.1",
+                    "downloads": 389944,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.4.1.json"
+                },
+                {
+                    "version": "1.2.4.2",
+                    "downloads": 390383,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.4.2.json"
+                },
+                {
+                    "version": "1.2.5.1",
+                    "downloads": 77932,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.5.1.json"
+                },
+                {
+                    "version": "1.2.5.2",
+                    "downloads": 117180,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.5.2.json"
+                },
+                {
+                    "version": "1.2.5.3",
+                    "downloads": 1586016,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.5.3.json"
+                },
+                {
+                    "version": "1.2.5.4",
+                    "downloads": 1855516,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.5.4.json"
+                },
+                {
+                    "version": "1.2.5.5",
+                    "downloads": 443484,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.2.5.5.json"
+                },
+                {
+                    "version": "1.3.0",
+                    "downloads": 19816,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.0.json"
+                },
+                {
+                    "version": "1.3.0.1",
+                    "downloads": 1071119,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.0.1.json"
+                },
+                {
+                    "version": "1.3.1",
+                    "downloads": 28530,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.1.json"
+                },
+                {
+                    "version": "1.3.2",
+                    "downloads": 1159240,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.2.json"
+                },
+                {
+                    "version": "1.3.3",
+                    "downloads": 172198,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.3.json"
+                },
+                {
+                    "version": "1.3.4",
+                    "downloads": 247790,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.4.json"
+                },
+                {
+                    "version": "1.3.5",
+                    "downloads": 183126,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.5.json"
+                },
+                {
+                    "version": "1.3.6",
+                    "downloads": 22092,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.6.json"
+                },
+                {
+                    "version": "1.3.6.1",
+                    "downloads": 2058442,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.6.1.json"
+                },
+                {
+                    "version": "1.3.6.2",
+                    "downloads": 6017,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.6.2.json"
+                },
+                {
+                    "version": "1.3.6.3",
+                    "downloads": 1295002,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.6.3.json"
+                },
+                {
+                    "version": "1.3.6.5",
+                    "downloads": 105406,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.3.6.5.json"
+                },
+                {
+                    "version": "1.4.1",
+                    "downloads": 42545,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.4.1.json"
+                },
+                {
+                    "version": "1.4.1.1",
+                    "downloads": 774879,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.4.1.1.json"
+                },
+                {
+                    "version": "1.4.1.2",
+                    "downloads": 212585,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.4.1.2.json"
+                },
+                {
+                    "version": "1.5.0",
+                    "downloads": 9212,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.5.0.json"
+                },
+                {
+                    "version": "1.5.1",
+                    "downloads": 17972,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.5.1.json"
+                },
+                {
+                    "version": "1.5.2",
+                    "downloads": 102116,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.5.2.json"
+                },
+                {
+                    "version": "1.5.3",
+                    "downloads": 98145,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.5.3.json"
+                },
+                {
+                    "version": "1.5.3.1",
+                    "downloads": 127609,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.5.3.1.json"
+                },
+                {
+                    "version": "1.5.4",
+                    "downloads": 17459,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.5.4.json"
+                },
+                {
+                    "version": "1.5.5",
+                    "downloads": 7463,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.5.5.json"
+                },
+                {
+                    "version": "1.5.5.1",
+                    "downloads": 5058,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment/1.5.5.1.json"
+                }
+            ]
+        },
+        {
+            "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/index.json",
+            "@type": "Package",
+            "registration": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/index.json",
+            "id": "Xamarin.AndroidX.Fragment.Ktx",
+            "version": "1.5.5.1",
+            "description": ".NET for Android (formerly Xamarin.Android) bindings for AndroidX library 'androidx.fragment:fragment-ktx'.",
+            "summary": "",
+            "title": ".NET for Android (formerly Xamarin.Android) AndroidX - fragment-ktx",
+            "iconUrl": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.fragment.ktx/1.5.5.1/icon",
+            "licenseUrl": "https://www.nuget.org/packages/Xamarin.AndroidX.Fragment.Ktx/1.5.5.1/license",
+            "projectUrl": "https://aka.ms/androidx",
+            "tags": [
+                ".NET",
+                "for",
+                "Android",
+                "Xamarin",
+                "AndroidX",
+                "Xamarin.AndroidX",
+                "Support",
+                "Google",
+                "fragment-ktx",
+                "artifact=androidx.fragment:fragment-ktx",
+                "artifact_versioned=androidx.fragment:fragment-ktx:1.5.5"
+            ],
+            "authors": [
+                "Microsoft"
+            ],
+            "owners": [
+                "Microsoft",
+                "Xamarin"
+            ],
+            "totalDownloads": 700896,
+            "verified": true,
+            "packageTypes": [
+                {
+                    "name": "Dependency"
+                }
+            ],
+            "versions": [
+                {
+                    "version": "1.3.3",
+                    "downloads": 9449,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.3.3.json"
+                },
+                {
+                    "version": "1.3.4",
+                    "downloads": 2316,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.3.4.json"
+                },
+                {
+                    "version": "1.3.5",
+                    "downloads": 483,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.3.5.json"
+                },
+                {
+                    "version": "1.3.6",
+                    "downloads": 3983,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.3.6.json"
+                },
+                {
+                    "version": "1.3.6.1",
+                    "downloads": 3022,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.3.6.1.json"
+                },
+                {
+                    "version": "1.3.6.2",
+                    "downloads": 267,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.3.6.2.json"
+                },
+                {
+                    "version": "1.3.6.3",
+                    "downloads": 10189,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.3.6.3.json"
+                },
+                {
+                    "version": "1.3.6.5",
+                    "downloads": 327,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.3.6.5.json"
+                },
+                {
+                    "version": "1.4.1",
+                    "downloads": 19232,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.4.1.json"
+                },
+                {
+                    "version": "1.4.1.1",
+                    "downloads": 423126,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.4.1.1.json"
+                },
+                {
+                    "version": "1.4.1.2",
+                    "downloads": 44575,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.4.1.2.json"
+                },
+                {
+                    "version": "1.5.0",
+                    "downloads": 836,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.5.0.json"
+                },
+                {
+                    "version": "1.5.1",
+                    "downloads": 15262,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.5.1.json"
+                },
+                {
+                    "version": "1.5.2",
+                    "downloads": 63227,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.5.2.json"
+                },
+                {
+                    "version": "1.5.3",
+                    "downloads": 584,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.5.3.json"
+                },
+                {
+                    "version": "1.5.3.1",
+                    "downloads": 98277,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.5.3.1.json"
+                },
+                {
+                    "version": "1.5.4",
+                    "downloads": 2921,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.5.4.json"
+                },
+                {
+                    "version": "1.5.5",
+                    "downloads": 597,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.5.5.json"
+                },
+                {
+                    "version": "1.5.5.1",
+                    "downloads": 1313,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.fragment.ktx/1.5.5.1.json"
+                }
+            ]
+        },
+        {
+            "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/index.json",
+            "@type": "Package",
+            "registration": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/index.json",
+            "id": "Xamarin.AndroidX.Navigation.Fragment",
+            "version": "2.5.3.1",
+            "description": ".NET for Android (formerly Xamarin.Android) bindings for AndroidX library 'androidx.navigation:navigation-fragment'.",
+            "summary": "",
+            "title": ".NET for Android (formerly Xamarin.Android) AndroidX - navigation-fragment",
+            "iconUrl": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.navigation.fragment/2.5.3.1/icon",
+            "licenseUrl": "https://www.nuget.org/packages/Xamarin.AndroidX.Navigation.Fragment/2.5.3.1/license",
+            "projectUrl": "https://aka.ms/androidx",
+            "tags": [
+                ".NET",
+                "for",
+                "Android",
+                "Xamarin",
+                "AndroidX",
+                "Xamarin.AndroidX",
+                "Support",
+                "Google",
+                "navigation-fragment",
+                "artifact=androidx.navigation:navigation-fragment",
+                "artifact_versioned=androidx.navigation:navigation-fragment:2.5.3"
+            ],
+            "authors": [
+                "Microsoft"
+            ],
+            "owners": [
+                "Microsoft",
+                "Xamarin"
+            ],
+            "totalDownloads": 812237,
+            "verified": true,
+            "packageTypes": [
+                {
+                    "name": "Dependency"
+                }
+            ],
+            "versions": [
+                {
+                    "version": "2.0.0",
+                    "downloads": 4856,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.0.0.json"
+                },
+                {
+                    "version": "2.0.0.1",
+                    "downloads": 351,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.0.0.1.json"
+                },
+                {
+                    "version": "2.1.0",
+                    "downloads": 995,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.1.0.json"
+                },
+                {
+                    "version": "2.1.0.1",
+                    "downloads": 534,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.1.0.1.json"
+                },
+                {
+                    "version": "2.2.1",
+                    "downloads": 525,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.2.1.json"
+                },
+                {
+                    "version": "2.2.1.1",
+                    "downloads": 383,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.2.1.1.json"
+                },
+                {
+                    "version": "2.2.2",
+                    "downloads": 831,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.2.2.json"
+                },
+                {
+                    "version": "2.2.2.1",
+                    "downloads": 6627,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.2.2.1.json"
+                },
+                {
+                    "version": "2.2.2.2",
+                    "downloads": 2734,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.2.2.2.json"
+                },
+                {
+                    "version": "2.2.2.3",
+                    "downloads": 431,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.2.2.3.json"
+                },
+                {
+                    "version": "2.2.2.4",
+                    "downloads": 454,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.2.2.4.json"
+                },
+                {
+                    "version": "2.2.2.5",
+                    "downloads": 2602,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.2.2.5.json"
+                },
+                {
+                    "version": "2.3.1",
+                    "downloads": 1212,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.3.1.json"
+                },
+                {
+                    "version": "2.3.2",
+                    "downloads": 390,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.3.2.json"
+                },
+                {
+                    "version": "2.3.2.1",
+                    "downloads": 1429,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.3.2.1.json"
+                },
+                {
+                    "version": "2.3.3",
+                    "downloads": 2941,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.3.3.json"
+                },
+                {
+                    "version": "2.3.3.1",
+                    "downloads": 10834,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.3.3.1.json"
+                },
+                {
+                    "version": "2.3.4",
+                    "downloads": 797,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.3.4.json"
+                },
+                {
+                    "version": "2.3.5",
+                    "downloads": 40300,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.3.5.json"
+                },
+                {
+                    "version": "2.3.5.1",
+                    "downloads": 48364,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.3.5.1.json"
+                },
+                {
+                    "version": "2.3.5.2",
+                    "downloads": 266,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.3.5.2.json"
+                },
+                {
+                    "version": "2.3.5.3",
+                    "downloads": 71303,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.3.5.3.json"
+                },
+                {
+                    "version": "2.3.5.5",
+                    "downloads": 1770,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.3.5.5.json"
+                },
+                {
+                    "version": "2.4.1",
+                    "downloads": 765,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.4.1.json"
+                },
+                {
+                    "version": "2.4.1.1",
+                    "downloads": 12751,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.4.1.1.json"
+                },
+                {
+                    "version": "2.4.1.2",
+                    "downloads": 27224,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.4.1.2.json"
+                },
+                {
+                    "version": "2.4.2",
+                    "downloads": 396168,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.4.2.json"
+                },
+                {
+                    "version": "2.4.2.1",
+                    "downloads": 4878,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.4.2.1.json"
+                },
+                {
+                    "version": "2.5.0",
+                    "downloads": 761,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.5.0.json"
+                },
+                {
+                    "version": "2.5.1",
+                    "downloads": 14364,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.5.1.json"
+                },
+                {
+                    "version": "2.5.2",
+                    "downloads": 63078,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.5.2.json"
+                },
+                {
+                    "version": "2.5.2.1",
+                    "downloads": 86293,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.5.2.1.json"
+                },
+                {
+                    "version": "2.5.3",
+                    "downloads": 2518,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.5.3.json"
+                },
+                {
+                    "version": "2.5.3.1",
+                    "downloads": 611,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment/2.5.3.1.json"
+                }
+            ]
+        },
+        {
+            "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/index.json",
+            "@type": "Package",
+            "registration": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/index.json",
+            "id": "Xamarin.AndroidX.Navigation.Fragment.Ktx",
+            "version": "2.5.3.1",
+            "description": ".NET for Android (formerly Xamarin.Android) bindings for AndroidX library 'androidx.navigation:navigation-fragment-ktx'.",
+            "summary": "",
+            "title": ".NET for Android (formerly Xamarin.Android) AndroidX - navigation-fragment-ktx",
+            "iconUrl": "https://api.nuget.org/v3-flatcontainer/xamarin.androidx.navigation.fragment.ktx/2.5.3.1/icon",
+            "licenseUrl": "https://www.nuget.org/packages/Xamarin.AndroidX.Navigation.Fragment.Ktx/2.5.3.1/license",
+            "projectUrl": "https://aka.ms/androidx",
+            "tags": [
+                ".NET",
+                "for",
+                "Android",
+                "Xamarin",
+                "AndroidX",
+                "Xamarin.AndroidX",
+                "Support",
+                "Google",
+                "navigation-fragment-ktx",
+                "artifact=androidx.navigation:navigation-fragment-ktx",
+                "artifact_versioned=androidx.navigation:navigation-fragment-ktx:2.5.3"
+            ],
+            "authors": [
+                "Microsoft"
+            ],
+            "owners": [
+                "Microsoft",
+                "Xamarin"
+            ],
+            "totalDownloads": 16355,
+            "verified": true,
+            "packageTypes": [
+                {
+                    "name": "Dependency"
+                }
+            ],
+            "versions": [
+                {
+                    "version": "2.3.5",
+                    "downloads": 7175,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.3.5.json"
+                },
+                {
+                    "version": "2.3.5.1",
+                    "downloads": 2633,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.3.5.1.json"
+                },
+                {
+                    "version": "2.3.5.2",
+                    "downloads": 230,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.3.5.2.json"
+                },
+                {
+                    "version": "2.3.5.3",
+                    "downloads": 762,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.3.5.3.json"
+                },
+                {
+                    "version": "2.3.5.5",
+                    "downloads": 276,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.3.5.5.json"
+                },
+                {
+                    "version": "2.4.1",
+                    "downloads": 372,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.4.1.json"
+                },
+                {
+                    "version": "2.4.1.1",
+                    "downloads": 300,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.4.1.1.json"
+                },
+                {
+                    "version": "2.4.2",
+                    "downloads": 1193,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.4.2.json"
+                },
+                {
+                    "version": "2.4.2.1",
+                    "downloads": 463,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.4.2.1.json"
+                },
+                {
+                    "version": "2.5.0",
+                    "downloads": 308,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.5.0.json"
+                },
+                {
+                    "version": "2.5.1",
+                    "downloads": 1228,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.5.1.json"
+                },
+                {
+                    "version": "2.5.2",
+                    "downloads": 349,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.5.2.json"
+                },
+                {
+                    "version": "2.5.2.1",
+                    "downloads": 269,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.5.2.1.json"
+                },
+                {
+                    "version": "2.5.3",
+                    "downloads": 421,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.5.3.json"
+                },
+                {
+                    "version": "2.5.3.1",
+                    "downloads": 128,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/xamarin.androidx.navigation.fragment.ktx/2.5.3.1.json"
+                }
+            ]
+        },
+        {
+            "@id": "https://api.nuget.org/v3/registration5-gz-semver2/karamunting.androidx.navigation.fragmentktx/index.json",
+            "@type": "Package",
+            "registration": "https://api.nuget.org/v3/registration5-gz-semver2/karamunting.androidx.navigation.fragmentktx/index.json",
+            "id": "Karamunting.AndroidX.Navigation.FragmentKtx",
+            "version": "2.0.0",
+            "description": "Xamarin.Android Binding for Android Navigation Fragment Kotlin Extensions (navigation-fragment-ktx).",
+            "summary": "Android Navigation Fragment Kotlin Extensions",
+            "title": "Android Navigation Fragment Kotlin Extensions",
+            "iconUrl": "https://api.nuget.org/v3-flatcontainer/karamunting.androidx.navigation.fragmentktx/2.0.0/icon",
+            "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+            "projectUrl": "https://android.googlesource.com/platform/frameworks/support",
+            "tags": [
+                "android",
+                "android-library",
+                "kotlin",
+                "kotlinx",
+                "navigation-fragment-ktx",
+                "ktx",
+                "fragment",
+                "navigation",
+                "navigation-fragment",
+                "jetpack",
+                "droid",
+                "xamarin",
+                "xamarin-android",
+                "xamarin.android"
+            ],
+            "authors": [
+                "Rofiq Setiawan"
+            ],
+            "owners": [
+                "rofiqsetiawan"
+            ],
+            "totalDownloads": 5941,
+            "verified": false,
+            "packageTypes": [
+                {
+                    "name": "Dependency"
+                }
+            ],
+            "versions": [
+                {
+                    "version": "2.0.0",
+                    "downloads": 4809,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/karamunting.androidx.navigation.fragmentktx/2.0.0.json"
+                }
+            ]
+        },
+        {
+            "@id": "https://api.nuget.org/v3/registration5-gz-semver2/karamunting.androidx.cysionliu.wedialog/index.json",
+            "@type": "Package",
+            "registration": "https://api.nuget.org/v3/registration5-gz-semver2/karamunting.androidx.cysionliu.wedialog/index.json",
+            "id": "Karamunting.AndroidX.CysionLiu.WeDialog",
+            "version": "1.0.3",
+            "description": "Xamarin.Android Bindings for Cysion Liu's WeDialog. A simple, support CustomView dialog library based on DialogFragment",
+            "summary": "A simple, support CustomView dialog library based on DialogFragment",
+            "title": "WeDialog",
+            "iconUrl": "https://api.nuget.org/v3-flatcontainer/karamunting.androidx.cysionliu.wedialog/1.0.3/icon",
+            "licenseUrl": "https://github.com/CysionLiu/WeDialog#license",
+            "projectUrl": "https://github.com/CysionLiu/WeDialog",
+            "tags": [
+                "alert",
+                "alert-dialog",
+                "android",
+                "android-library",
+                "android-ui",
+                "androidx",
+                "jetpack",
+                "ios",
+                "ios-ui",
+                "apple-ui",
+                "dialog",
+                "dialog-fragment",
+                "dialogfragment",
+                "droid",
+                "xamarin",
+                "xamarin-android",
+                "xamarin.android"
+            ],
+            "authors": [
+                "Rofiq Setiawan"
+            ],
+            "owners": [
+                "rofiqsetiawan"
+            ],
+            "totalDownloads": 405,
+            "verified": false,
+            "packageTypes": [
+                {
+                    "name": "Dependency"
+                }
+            ],
+            "versions": [
+                {
+                    "version": "1.0.3",
+                    "downloads": 405,
+                    "@id": "https://api.nuget.org/v3/registration5-gz-semver2/karamunting.androidx.cysionliu.wedialog/1.0.3.json"
+                }
+            ]
+        }
+    ]
+}
