@@ -55,6 +55,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 		Rules-N-Recommendations.ruleset = Rules-N-Recommendations.ruleset
 		Directory.Packages.props = Directory.Packages.props
+		..\NuGet.config = ..\NuGet.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Core", "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Core\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Core.csproj", "{95BFE42E-B4D4-499B-888E-8CD402502E90}"

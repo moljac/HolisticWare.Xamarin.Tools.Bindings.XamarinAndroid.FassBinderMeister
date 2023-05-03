@@ -4,7 +4,7 @@
       <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>Latest</LangVersion>
         <RootNamespace>HolisticWare.Xamarin.Tools.GitHub</RootNamespace>
-        <Assembly>HolisticWare.Xamarin.Tools.GitHub</RootNamespace>
+        <Assembly>HolisticWare.Xamarin.Tools.GitHub</Assembly>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -66,31 +66,31 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" >
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Roslynator.Analyzers" >
+        <PackageReference Include="Roslynator.Analyzers">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Roslynator.Formatting.Analyzers" >
+        <PackageReference Include="Roslynator.Formatting.Analyzers">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="AsyncFixer" >
+        <PackageReference Include="AsyncFixer">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" >
+        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" >
+        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" >
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>

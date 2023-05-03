@@ -43,7 +43,7 @@
         <PackageIconUrl>
             https://secure.gravatar.com/avatar/b662959e712466f393541935b664d3c5        
         </PackageIconUrl>
-        <VersionPrefix>0.0.1.2</VersionPrefix>
+        <VersionPrefix>0.0.1.3</VersionPrefix>
         <!--
         VersionSuffix - For debugging and local Maven feed
         <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</VersionSuffix>
@@ -60,18 +60,39 @@
 
     <ItemGroup>
         <PackageReference Include="System.Net.Http" />
-        <PackageReference Include="System.Text.Json" />
+        <PackageReference Include="System.Text.Json" Version="7.0.2" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" />
-        <PackageReference Include="Roslynator.Analyzers" />
-        <PackageReference Include="Roslynator.Formatting.Analyzers" />
-        <PackageReference Include="AsyncFixer" />
-        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
-        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
-        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.1">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Roslynator.Analyzers" Version="4.3.0">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.3.0">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="AsyncFixer" Version="1.6.0">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.4">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.3.0">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
