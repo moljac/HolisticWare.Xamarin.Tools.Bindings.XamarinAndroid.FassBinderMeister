@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <PackageVersion Include="System.Text.Json" Version="6.0.5" />
-    <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="Jil" Version="2.17.0" />
     <PackageVersion Include="SpanJson" Version="3.3.1" />
     <PackageVersion Include="Utf8Json" Version="1.3.7" />
@@ -32,27 +32,23 @@
     <PackageVersion Include="System.Reflection" Version="4.3.0" />
     <PackageVersion Include="System.Net.Requests" Version="4.3.0" />
     <PackageVersion Include="System.Diagnostics.TextWriterTraceListener" Version="4.3.0" />
-    <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageVersion Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
     <PackageVersion Include="System.IO.FileSystem" Version="4.3.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
+    <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
 
     <PackageVersion Include="UnoptimizedAssemblyDetector" Version="0.1.1" PrivateAssets="All" />
 
 
-    <PackageVersion Include="protobuf-net" Version="3.1.4" />
-    <PackageVersion Include="protobuf-net.BuildTools" Version="3.0.115" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+    <PackageVersion Include="protobuf-net" Version="3.2.16" />
+    <PackageVersion Include="protobuf-net.BuildTools" Version="3.2.12" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
 
     <!--
       HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Extensions.csproj
     -->
-    <PackageVersion Include="NuGet.Protocol" Version="6.2.0" />
+    <PackageVersion Include="NuGet.Protocol" Version="6.5.0" />
     <PackageVersion Include="MavenNet" Version="2.2.13" />
-    <PackageVersion Include="HtmlAgilityPack" Version="1.11.43" />
-
-    <PackageVersion Include="MavenNet" Version="2.2.13" />
-    <PackageVersion Include="HtmlAgilityPack" Version="1.11.43" />
-    <PackageVersion Include="System.Net.Requests" Version="4.3.0" />
+    <PackageVersion Include="HtmlAgilityPack" Version="1.11.46" />
 
   </ItemGroup>
 
@@ -63,9 +59,9 @@
       For clarity, without PrivateAssets marked here, anyone consuming Microsoft.Identity.Client
       would also be forced to install these dependencies.  PrivateAssets avoids this problem. 
     -->
-    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0" PrivateAssets="All" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.3" PrivateAssets="All" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.3" PrivateAssets="All" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.1" PrivateAssets="All" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.4" PrivateAssets="All" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4" PrivateAssets="All" />
     <!--
     https://github.com/dotnet/roslyn-analyzers
     package has been deprecated in favor of 'Microsoft.CodeAnalysis.NetAnalyzers'
