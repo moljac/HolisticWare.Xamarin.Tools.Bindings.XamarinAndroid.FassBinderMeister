@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageVersion Include="System.Text.Json" Version="6.0.5" />
+    <PackageVersion Include="System.Text.Json" Version="7.0.2" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="Jil" Version="2.17.0" />
     <PackageVersion Include="SpanJson" Version="3.3.1" />
@@ -106,8 +106,6 @@
     <PackageVersion Include="AsyncFixer" Version="1.0.0" PrivateAssets="All" />
 
 
-    <PackageVersion Include="System.Net.Http" Version="4.3.4" />
-    <PackageVersion Include="System.Text.Json" Version="7.0.2" />
   </ItemGroup>
       
 </Project>
