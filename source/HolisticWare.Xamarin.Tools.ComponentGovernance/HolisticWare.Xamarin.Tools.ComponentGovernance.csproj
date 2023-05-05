@@ -64,7 +64,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" >
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
@@ -80,11 +80,11 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" >
+        <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" >
+        <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
@@ -100,8 +100,10 @@
 
     <ItemGroup>
       <!--
-      <PackageReference Include="HolisticWare.Core.Net.HTTP" Version="0.0.1" />
       -->
+      <PackageReference Include="HolisticWare.Core.Net.HTTP" />
+      <!--
       <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+      -->
     </ItemGroup>
 </Project>

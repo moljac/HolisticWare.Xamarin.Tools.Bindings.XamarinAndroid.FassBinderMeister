@@ -26,8 +26,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI", "HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI.csproj", "{52E23EFC-504B-472A-9580-CC8355B9C9FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10", "..\externals-submodules\Core.Math.Discrete.GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10.csproj", "{558868B8-8818-4578-8710-12E6A127F37A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.NuGet.Client.Core", "HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj", "{09FC6485-959E-440F-BA16-284960DE50B7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Maven", "HolisticWare.Xamarin.Tools.Maven\HolisticWare.Xamarin.Tools.Maven.csproj", "{FCFB4B96-C0BC-4DFE-B3F4-B5118E586792}"
@@ -65,6 +63,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet.NeekNoke", "HolisticWare.Xamarin.Tools.NuGet.NeekNoke\HolisticWare.Xamarin.Tools.NuGet.NeekNoke.csproj", "{60AB3429-5FFC-46CB-9791-261BF6903738}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Serialization.JSON", "HolisticWare.Core.Serialization.JSON\HolisticWare.Core.Serialization.JSON.csproj", "{E7848689-9A15-45D4-BD49-216F7FDE6DF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Math.Discrete.GraphTheory", "..\externals-submodules\Core.Math.Discrete.GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory\HolisticWare.Core.Math.Discrete.GraphTheory.csproj", "{8CEFDA50-611D-413E-A2CB-4326B728D734}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HolisticWare.Core.Math.Discrete.GraphTheory.shared", "..\externals-submodules\Core.Math.Discrete.GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.shared\HolisticWare.Core.Math.Discrete.GraphTheory.shared.shproj", "{C0839C83-7725-420D-B39A-6B5E5FBF7162}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -107,10 +109,6 @@ Global
 		{52E23EFC-504B-472A-9580-CC8355B9C9FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52E23EFC-504B-472A-9580-CC8355B9C9FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52E23EFC-504B-472A-9580-CC8355B9C9FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{558868B8-8818-4578-8710-12E6A127F37A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{558868B8-8818-4578-8710-12E6A127F37A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{558868B8-8818-4578-8710-12E6A127F37A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{558868B8-8818-4578-8710-12E6A127F37A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{09FC6485-959E-440F-BA16-284960DE50B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{09FC6485-959E-440F-BA16-284960DE50B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09FC6485-959E-440F-BA16-284960DE50B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -159,6 +157,10 @@ Global
 		{E7848689-9A15-45D4-BD49-216F7FDE6DF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7848689-9A15-45D4-BD49-216F7FDE6DF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7848689-9A15-45D4-BD49-216F7FDE6DF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CEFDA50-611D-413E-A2CB-4326B728D734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CEFDA50-611D-413E-A2CB-4326B728D734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CEFDA50-611D-413E-A2CB-4326B728D734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CEFDA50-611D-413E-A2CB-4326B728D734}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -169,7 +171,6 @@ Global
 		{3B0E422A-965B-42E0-BD9E-1DB96D9014FC} = {4CA4F6C3-EE77-4829-B0AA-A4D1BA076720}
 		{30B61126-739F-47EC-97FE-D8D9F45D6D87} = {1CC48AA9-5618-4049-9649-E50DADE9CBEF}
 		{8E0F537C-1023-4AE1-B244-E6E87758053F} = {9BBB7531-CA9D-4169-BAF6-C40E9E5388A7}
-		{558868B8-8818-4578-8710-12E6A127F37A} = {3B0E422A-965B-42E0-BD9E-1DB96D9014FC}
 		{DA160ED1-81E2-453F-B4FD-97AC5F6DAF8F} = {A5E12862-8663-46DC-8CEE-EDBD151451F4}
 		{328BB28A-F244-4257-B0BB-3B9BEB99E004} = {2B02FBEB-F2B9-4D52-9214-ED84F35827C0}
 		{F987630B-CCBF-4FCA-83CC-0CDF4EF36C49} = {2B02FBEB-F2B9-4D52-9214-ED84F35827C0}
@@ -177,6 +178,8 @@ Global
 		{A5E12862-8663-46DC-8CEE-EDBD151451F4} = {4CA4F6C3-EE77-4829-B0AA-A4D1BA076720}
 		{2B02FBEB-F2B9-4D52-9214-ED84F35827C0} = {4CA4F6C3-EE77-4829-B0AA-A4D1BA076720}
 		{33B02CB4-CF30-4EAF-981A-FC286F837015} = {4CA4F6C3-EE77-4829-B0AA-A4D1BA076720}
+		{8CEFDA50-611D-413E-A2CB-4326B728D734} = {3B0E422A-965B-42E0-BD9E-1DB96D9014FC}
+		{C0839C83-7725-420D-B39A-6B5E5FBF7162} = {3B0E422A-965B-42E0-BD9E-1DB96D9014FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {110BC8EF-DB8B-4752-949E-1F6DFFA3521E}

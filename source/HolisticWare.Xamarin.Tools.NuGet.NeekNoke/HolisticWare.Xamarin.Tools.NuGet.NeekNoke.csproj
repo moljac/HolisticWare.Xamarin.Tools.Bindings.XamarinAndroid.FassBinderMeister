@@ -71,12 +71,24 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" />
-        <PackageReference Include="Roslynator.Analyzers" />
-        <PackageReference Include="Roslynator.Formatting.Analyzers" />
-        <PackageReference Include="AsyncFixer" />
+        <PackageReference Include="Roslynator.Analyzers" >
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Roslynator.Formatting.Analyzers" >
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="AsyncFixer" >
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" />
         <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" />
-        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" />
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" >
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
 
         <PackageReference Include="System.Text.Json" />
         <PackageReference Include="Newtonsoft.Json" />
