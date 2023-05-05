@@ -50,6 +50,7 @@
     <PackageVersion Include="MavenNet" Version="2.2.13" />
     <PackageVersion Include="HtmlAgilityPack" Version="1.11.46" />
 
+    <PackageVersion Include="HolisticWare.Core.Net.HTTP" Version="0.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -94,16 +95,16 @@
 
       https://www.nuget.org/packages/Roslynator.DotNet.Cli
     -->
-    <PackageVersion Include="Roslynator.Analyzers" Version="3.0.0" PrivateAssets="All" />
-    <PackageVersion Include="Roslynator.CodeAnalysis.Analyzers" Version="1.0.0" PrivateAssets="All" />
-    <PackageVersion Include="Roslynator.Formatting.Analyzers" Version="1.0.0" PrivateAssets="All" />
+    <PackageVersion Include="Roslynator.Analyzers" Version="4.3.0" PrivateAssets="All" />
+    <PackageVersion Include="Roslynator.CodeAnalysis.Analyzers" Version="4.3.0" PrivateAssets="All" />
+    <PackageVersion Include="Roslynator.Formatting.Analyzers" Version="4.3.0" PrivateAssets="All" />
   
   
     <PackageVersion Include="AsyncUsageAnalyzers" Version="1.0.0-alpha003" PrivateAssets="All" />
     <!--
       http://www.asyncfixer.com/
     -->
-    <PackageVersion Include="AsyncFixer" Version="1.0.0" PrivateAssets="All" />
+    <PackageVersion Include="AsyncFixer" Version="1.6.0" PrivateAssets="All" />
 
 
   </ItemGroup>
