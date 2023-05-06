@@ -61,7 +61,11 @@
     <ItemGroup>
         <PackageReference Include="System.Net.Http" />
         <PackageReference Include="System.Text.Json" />
+        <PackageReference Include="Newtonsoft.Json" />
+        <!--
+        old - very old
         <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" />
+        -->
     </ItemGroup>
 
     <ItemGroup>

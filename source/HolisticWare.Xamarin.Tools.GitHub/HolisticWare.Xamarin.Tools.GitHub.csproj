@@ -62,6 +62,11 @@
     <ItemGroup>
         <PackageReference Include="System.Net.Http" />
         <PackageReference Include="System.Text.Json" />
+        <PackageReference Include="Newtonsoft.Json" />
+        <!--
+        old - very old
+        TODO: replacement - buddy classes
+        -->
         <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" />
     </ItemGroup>
 

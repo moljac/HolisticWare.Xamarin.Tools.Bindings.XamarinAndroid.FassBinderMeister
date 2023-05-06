@@ -84,11 +84,11 @@
         <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj" />
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.GitHub\HolisticWare.Xamarin.Tools.GitHub.csproj" />
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Maven.csproj" />
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ClientAPI.csproj" />
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI\HolisticWare.Xamarin.Tools.NuGet.Client.ServerAPI.csproj" />
-        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
         <ProjectReference Include="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Core\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Core.csproj" />
     </ItemGroup>
 

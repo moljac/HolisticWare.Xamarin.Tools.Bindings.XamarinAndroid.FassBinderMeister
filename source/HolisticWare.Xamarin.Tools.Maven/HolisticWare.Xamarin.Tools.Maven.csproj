@@ -62,7 +62,10 @@
         <PackageReference Include="Newtonsoft.Json" />
         <PackageReference Include="System.Text.Json" />
         <PackageReference Include="System.Net.Http" />
+        <!--
+        old - very old
         <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" />
+        -->
     </ItemGroup>
 
     <ItemGroup>
@@ -83,6 +86,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <!--
+      -->
+      <PackageReference Include="HolisticWare.Core.Net.HTTP" />
+      <!--
       <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
+      -->
     </ItemGroup>
 </Project>

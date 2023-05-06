@@ -15,9 +15,15 @@ namespace HolisticWare.Xamarin.Tools.GitHub
             typeof(HolisticWare.Xamarin.Tools.GitHub.Serialization.Formatters.Tag)
         )
     ]
-    public partial class Tag
+    public partial class
+                                        Tag
     {
-        public static Tag Deserialize(string json)
+        public static
+            Tag
+                                        Deserialize
+                                            (
+                                                string json
+                                            )
         {
             return JsonConvert.DeserializeObject<Tag>(json, Converter.Settings);
         }

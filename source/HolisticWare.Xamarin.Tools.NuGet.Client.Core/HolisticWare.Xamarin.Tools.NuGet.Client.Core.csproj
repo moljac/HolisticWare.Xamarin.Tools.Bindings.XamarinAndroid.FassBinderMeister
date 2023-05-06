@@ -73,8 +73,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <!--
       <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
       <ProjectReference Include="..\..\externals-submodules\Core.IO\source\HolisticWare.Core.IO\HolisticWare.Core.IO.csproj" />
+      -->
+      <PackageReference Include="HolisticWare.Core.Net.HTTP" />
     </ItemGroup>
     
 </Project>
