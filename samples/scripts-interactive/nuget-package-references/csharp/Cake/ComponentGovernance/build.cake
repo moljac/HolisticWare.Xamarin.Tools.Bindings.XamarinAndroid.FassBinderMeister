@@ -1,5 +1,5 @@
 //  Cake.CoreCLR add to ./tools/ folder for debugging
-#tool nuget:?package=Cake.CoreCLR
+// #tool nuget:?package=Cake.CoreCLR
 
 #addin nuget:?package=Newtonsoft.Json&version=13.0.2
 #addin nuget:?package=Newtonsoft.Json.Schema&version=3.0.4&loaddependencies=true
@@ -8,9 +8,9 @@
 #addin nuget:?package=Spectre.Console&version=0.45.1-preview.0.46&loaddependencies=true
 
 
-#addin nuget:?package=HolisticWare.Xamarin.Tools.ComponentGovernance&version=0.0.1.2
-#addin nuget:?package=HolisticWare.Core.Net.HTTP&version=0.0.1
-#addin nuget:?package=HolisticWare.Core.IO&version=0.0.1
+#addin nuget:?package=HolisticWare.Xamarin.Tools.ComponentGovernance&version=0.0.1.4
+#addin nuget:?package=HolisticWare.Core.Net.HTTP&version=0.0.4
+#addin nuget:?package=HolisticWare.Core.IO&version=0.0.4
 
 using System.Collections.Generic;
 
