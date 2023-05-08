@@ -66,8 +66,8 @@
         <!--
         old - very old
         TODO: replacement - buddy classes
-        -->
         <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" />
+        -->
     </ItemGroup>
 
     <ItemGroup>

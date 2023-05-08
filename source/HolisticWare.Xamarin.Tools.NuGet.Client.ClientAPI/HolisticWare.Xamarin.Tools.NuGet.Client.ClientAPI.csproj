@@ -60,10 +60,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="NuGet.Protocol" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" />
         <PackageReference Include="Roslynator.Analyzers" />
         <PackageReference Include="Roslynator.Formatting.Analyzers" />
@@ -74,10 +70,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
+        <PackageReference Include="NuGet.Protocol" />
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
         <!-- 
       <ProjectReference Include="..\..\externals-submodules\Core.Net\source\HolisticWare.Core.Net.HTTP\HolisticWare.Core.Net.HTTP.csproj" />
         -->    

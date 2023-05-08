@@ -59,11 +59,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Net.Http" />
-        <PackageReference Include="System.Text.Json" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
@@ -96,6 +91,11 @@
 
     <ItemGroup>
       <Folder Include="Generated\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Net.Http" />
+        <PackageReference Include="System.Text.Json" />
     </ItemGroup>
 
     <ItemGroup>

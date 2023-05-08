@@ -76,10 +76,6 @@
         <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" />
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" />
-        <PackageReference Include="Jil" />
-    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\HolisticWare.Xamarin.Tools.NuGet.Client.Core\HolisticWare.Xamarin.Tools.NuGet.Client.Core.csproj" />
@@ -90,6 +86,8 @@
       -->
 
       <PackageReference Include="HolisticWare.Core.Net.HTTP" />
+      <PackageReference Include="Newtonsoft.Json" />
+      <PackageReference Include="Jil" />
     </ItemGroup>
 
     <ItemGroup>

@@ -63,9 +63,13 @@
         <PackageReference Include="Newtonsoft.Json" />
         <PackageReference Include="System.Text.Json" />
         <PackageReference Include="System.Net.Http" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" />
         <PackageReference Include="System.Threading.Tasks.Parallel" />
         <PackageReference Include="System.ComponentModel.Annotations" />
+        <!--
+        old - very old
+        TODO: replacement - buddy classes
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" />
+        -->
     </ItemGroup>
 
     <ItemGroup>
