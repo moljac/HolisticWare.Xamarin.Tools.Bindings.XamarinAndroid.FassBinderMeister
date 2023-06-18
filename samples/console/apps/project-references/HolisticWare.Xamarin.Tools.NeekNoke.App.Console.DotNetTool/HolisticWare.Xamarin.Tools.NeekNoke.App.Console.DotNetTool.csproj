@@ -7,6 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="HolisticWare.Xamarin.Tools.NuGet" Version="0.0.1-alpha-202105151759" />
   </ItemGroup>
