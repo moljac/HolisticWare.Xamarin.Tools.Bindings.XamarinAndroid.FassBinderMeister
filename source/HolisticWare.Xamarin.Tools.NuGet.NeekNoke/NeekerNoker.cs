@@ -364,6 +364,24 @@ public partial class
                                             (
                                             )
     {
+        List
+            <
+                (
+                    string nuget_id,
+                    string version_current,
+                    string[] versions_upgradeable
+                )
+            >
+            package_nuget_references = new List
+                                                <
+                                                    (
+                                                        string nuget_id,
+                                                        string version_current,
+                                                        string[] versions_upgradeable
+                                                    )
+                                                >
+                                                ();
+
         foreach (KeyValuePair<string, ResultsPerFormat> format_rpf in this.ResultsPerFormat)
         {
             string format = format_rpf.Key;
@@ -377,6 +395,18 @@ public partial class
                 {
                     string file = file_rpf.Key;
                     ResultsPerFile rpf = file_rpf.Value;
+
+                    foreach(var pr in rpf.PackageReferences)
+                    {
+                        package_nuget_references.Add
+                                                    (
+                                                        (
+                                                            nuget_id: pr.nuget_id,
+                                                            version_current: pr.version_current,
+                                                            versions_upgradeable: pr.versions_upgradeable
+                                                        )
+                                                    );
+                    }
                 }
 
             }
