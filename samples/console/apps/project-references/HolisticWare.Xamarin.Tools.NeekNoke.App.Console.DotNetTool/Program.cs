@@ -91,7 +91,7 @@ foreach (KeyValuePair<string, string[]> pattern in patterns_files)
 Trace.Flush();
 
 
-NeekerNoker.VersionDotNetSDKBand = "6.0.400";   // needed for workloads
+NeekerNoker.VersionDotNetSDKBand = "7.0.300";   // needed for workloads
 NeekerNoker neeker_noker = new NeekerNoker();
 
 neeker_noker.Neek(patterns_files);
