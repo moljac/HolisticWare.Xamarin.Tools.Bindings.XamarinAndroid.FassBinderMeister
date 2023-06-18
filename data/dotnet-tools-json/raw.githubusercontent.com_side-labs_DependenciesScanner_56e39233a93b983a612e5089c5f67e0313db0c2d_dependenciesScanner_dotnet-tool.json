@@ -1,0 +1,11 @@
+{
+    "isRoot": true,
+    "tools": {
+        "depscanner": {
+            "version": "0.0.1",
+            "commands": [
+                "depscanner"
+            ]
+        }
+    }
+}
