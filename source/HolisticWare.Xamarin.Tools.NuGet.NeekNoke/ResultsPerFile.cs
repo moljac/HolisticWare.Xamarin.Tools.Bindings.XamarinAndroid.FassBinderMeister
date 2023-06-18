@@ -86,13 +86,13 @@ public partial class
     }
 
     public
-                List
-                    <
-                        (
-                            string nuget_id,                // nuget_id
-                            string version_current          // version current (from file)
-                        )
-                    >
+        List
+            <
+                (
+                    string nuget_id,                // nuget_id
+                    string version_current          // version current (from file)
+                )
+            >
                                         PackagesFailed
     {
         get
@@ -116,7 +116,7 @@ public partial class
                     string version_current         // version current (from file)
                 )
             >
-                packages_failed = null;
+                                        packages_failed = null;
 
     public
         Dictionary<string, string>
